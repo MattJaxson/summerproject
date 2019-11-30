@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-landing',
@@ -16,16 +17,20 @@ export class LandingPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.registerUser().unsubscribe();
+    // this.loginrUser().unsubscribe();
     console.log('Unsubscribed from Registered User Observable');
   }
 
-  registerUser() {
-    return this.authService.register('Tony', 'eddielacrosse2@gmail.com', '12345').subscribe(data => {
-      console.log('POST Request is sucessful', data);
-    }, error => {
-      console.log('Error', error);
-    });
+  loginUser() {
+    if (Error) {
+      // Future: Write better Error handling code
+      console.log(Error);
+      console.log('Log in failed');
+    } else {
+      this.authService.login('eddielacrosse2@gmail.com', '12345').subscribe(data => {
+        console.log(data);
+      });
+    }
   }
 
 }
