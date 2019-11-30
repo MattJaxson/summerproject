@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    IonicStorageModule.forRoot();
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
