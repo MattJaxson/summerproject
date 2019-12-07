@@ -1,0 +1,38 @@
+<!-- ion-header is required -->
+<ion-header></ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col id="profile-header" size="12">
+
+      </ion-col>
+      <ion-col size="11" offset="0.5">
+          <ion-list>
+              <ion-item (click)="changeEmail()">
+                <ion-label>Change Email</ion-label>
+              </ion-item>
+              <ion-item (click)="changePassword()">
+                <ion-label>Change Password</ion-label>
+              </ion-item>
+              <ion-item (click)="changePhoneNumber()">
+                <ion-label>Change Phone Number</ion-label>
+              </ion-item>
+              <ion-item (click)="changeSchool()">
+                <ion-label>Change School</ion-label>
+              </ion-item>
+              <ion-item (click)="changeProfilePicture()">
+                <ion-label>Change Profile Picture</ion-label>
+              </ion-item>
+              <ion-item (click)="updateResume()">
+                <ion-label>View/Update Resume</ion-label>
+              </ion-item >
+              <ion-item (click)="logout()">
+                <ion-label>Logout</ion-label>
+              </ion-item>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

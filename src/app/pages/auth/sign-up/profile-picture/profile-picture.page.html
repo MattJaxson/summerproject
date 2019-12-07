@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile picture</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content text-center>
+  <p>Please select your profile picture.</p>
+  <div id="img-wrapper">
+    upload photo
+  </div>
+  <ion-button (click)="getPhotoFromCamera()">
+    Camera
+  </ion-button>
+  <ion-button (click)="getPhotoFromGallery()">
+    Gallery
+  </ion-button>
+  <ion-button class="skip-button" (click)="skip()">
+      Skip
+    </ion-button>
+</ion-content>
+<button (click)="goToUploadResumePage()" id="next-button">NEXT</button>

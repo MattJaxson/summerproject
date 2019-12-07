@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>confirm-photo</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;">
+        new picture goes here
+      </div>
+      <p>Are you sure you want to use this photo? </p>
+</ion-content>
+<button (click)="uploadPhoto()" id="next-button">YES</button>
+<button (click)="takeAnotherPhoto()" id="next-button">TAKE ANOTHER PHOTO</button>

@@ -1,0 +1,49 @@
+<ion-content>
+  <ion-grid fixed class="ion-text-center">
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <!-- Refactor Logo Section -->
+        <div style="background: lightgray; width: 100%; height: 100px; margin: 35px 0 30px 0;"> Logo
+        </div>
+        <!--  -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+          <form [formGroup]="credentialsForm">
+              <!-- Email -->
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input
+                  value="eddielacrosse2@gmail.com"
+                  placeholder="email"
+                  formControlName="email"
+                  type="email">
+                </ion-input>
+              </ion-item>
+
+              <!-- Password -->
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input
+                  value="12345"
+                  placeholder="password"
+                  formControlName="password"
+                  type="password">
+                </ion-input>
+              </ion-item>
+
+              <!-- Login Button -->
+              <ion-button id="login-button" type=submit shape="round"       expand="full" [routerLink]="['home']">Login</ion-button>
+
+            </form>
+      </ion-col>
+    </ion-row>
+
+    <!-- Forgot Password -->
+    <a [routerLink]="['enter-email']">Forgot Password</a>
+  </ion-grid>
+</ion-content>
+
+<!-- Positioning Sign up Button outside of Ion Content for customization -->
+<button id="sign-up-button" expand="full" [routerLink]="['personal-info']">Sign Up</button>

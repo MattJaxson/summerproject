@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage()">
+  <ion-item>
+    <ion-input formControlName="name" placeholder="name"></ion-input>
+  </ion-item>
+    <br>
+  <ion-item>
+    <ion-input formControlName="addressOne" placeholder="address 1"></ion-input>
+  </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="addressTwo"  placeholder="address 2"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="city"  placeholder="city"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="state"  placeholder="state"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="zip"  placeholder="zip"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="gender"  placeholder="gender"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="dob"  placeholder="date of birth"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="school"  placeholder="school"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="grade"  placeholder="grade"></ion-input>
+    </ion-item>
+    <br>
+    <button id="next-button" type="submit" expand="full">NEXT</button>
+</form>
+</ion-content>
+
+

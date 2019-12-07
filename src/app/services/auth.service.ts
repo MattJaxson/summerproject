@@ -22,6 +22,9 @@ export class AuthService {
   user = null;
   authenticationState = new BehaviorSubject(false);
 
+  //  Define type
+  userInfo: {};
+
   constructor(
     private httpClient: HttpClient,
     private storage: Storage,
@@ -33,47 +36,59 @@ export class AuthService {
       this.plt.ready().then(() => {
         this.checkToken();
       });
+      console.log('Authentication State: ');
+      this.authenticationState.subscribe(console.log);
      }
+
+checkUserInfo(data) {
+  console.log(data);
+  this.userInfo = data;
+  console.log('From Service');
+  console.log(this.userInfo);
+}
 
   // looks up our storage for a valid JWT and if found, changes our authenticationState
   checkToken() {
+    console.log('Checking for Token...');
     this.storage.get(this.TOKEN_KEY).then(token => {
+      if (!token) { console.log('There is no Token'); }
+      // if there is a token, decode it, and also check if it is expired.
       if (token) {
+        console.log('JWTOken' + token);
         let decoded = this.jwtHelper.decodeToken(token);
+        console.log(decoded);
         let isExpired = this.jwtHelper.isTokenExpired(token);
+        console.log(isExpired);
 
+        // if token is not expired, user value becomes decoded, and the authentication state changes
         if (!isExpired) {
           this.user = decoded;
           this.authenticationState.next(true);
         } else {
+          console.log('This token is expired');
           this.storage.remove(this.TOKEN_KEY);
         }
       }
     });
   }
 
-  // // Login / Find User
-  // login(email: string, password: string) {
-  //   console.log('From Service: Find User');
-  //   return this.httpClient.get<User>('http://localhost:3000/api/users/current', { email, password });
-  // }
-
-
   // Register User
-  register(name: string, email: string, password: string) {
+  register(credentials) {
     this.showAlert('Registered User');
     console.log('From Service: Registered User');
-    return this.httpClient.post<User>('http://localhost:3000/api/signup', { name, email, password });
+    return this.httpClient.post<User>('http://localhost:3000/api/signup', credentials);
   }
 
   login(credentials) {
-    this.showAlert('User Logged in');
+
     return this.httpClient
       .get<User>('http://localhost:3000/api/', credentials)
       .pipe(
         tap(res => {
-          this.storage.set(this.TOKEN_KEY, res['token']);
-          this.user = this.jwtHelper.decodeToken(res['token']);
+          this.showAlert('User Logged in');
+          this.storage.set(this.TOKEN_KEY, res['x-auth-token']);
+          this.user = this.jwtHelper.decodeToken(res['x-auth-token']);
+          console.log('Authentication State: ');
           this.authenticationState.next(true);
         }),
         catchError(e => {
@@ -120,7 +135,7 @@ export class AuthService {
   showAlert(msg) {
     const alert = this.alertController.create({
       message: msg,
-      header: 'Registered',
+      header: 'Message',
       buttons: ['OK']
     });
     alert.then(alert => alert.present());

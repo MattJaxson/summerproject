@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>change-school</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed class="ion-text-center">
+      <ion-row>
+        <ion-col size="12">
+            <form [formGroup]="changeSchool">
+                <!-- Email -->
+                <ion-item>
+                  <ion-label>Current School</ion-label>
+                  <p>Wayne State University</p>
+                </ion-item>
+                <ion-item>
+                    <ion-input
+                      placeholder="name of new school"
+                      formControlName="newSchool"
+                      type="">
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input
+                      placeholder="password"
+                      formControlName="password"
+                      type="password">
+                    </ion-input>
+                </ion-item>
+              </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+<button (click)="confirmChangedSchool()" id="next-button">CHANGE SCHOOL</button>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>upload-resume</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>Please upload your resume.</p>
+  <h1>no resume uploaded</h1>
+  <ion-button (click)="getFileFromPhone()">
+      Get file
+    </ion-button>
+  <ion-button (click)="uploadResume()">
+      Upload
+  </ion-button>
+  <ion-button class="skip-button" (click)="skip()">
+      Skip
+    </ion-button>
+</ion-content>
+<button (click)="goToCredentialsPage()" id="next-button">NEXT</button>
+

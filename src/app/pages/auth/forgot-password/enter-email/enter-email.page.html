@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>enter-email</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <h4>Please enter your email. An email will be sent to you with a link to reset your password.</h4>
+          <form [formGroup]="forgotPassword">
+            <ion-item>
+              <ion-input formControlName="email" type="text" placeholder="enter email"></ion-input>
+            </ion-item>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <button (click)="goToNewPasswordPage()" id="next-button">LOGIN</button>

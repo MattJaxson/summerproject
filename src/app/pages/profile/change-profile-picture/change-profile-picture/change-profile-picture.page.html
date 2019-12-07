@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>change-profile-picture</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;">
+    current picture goes here
+  </div>
+  <p>Please upload a new photo from your gallery, or take a new one with your camera. </p>
+</ion-content>
+<button (click)="useCamera()" id="next-button">CAMERA</button>
+<button (click)="upload()" id="next-button">UPLOAD</button>

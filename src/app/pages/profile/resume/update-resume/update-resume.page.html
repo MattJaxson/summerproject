@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>update-resume</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Need to express to User formats that are acceptable -->
+  <!-- pdf, ect -->
+  <p>Please upload a resume from your phone</p>
+  <ion-item>
+    <ion-label>file</ion-label>
+    <p>resume.pdf</p>
+  </ion-item>
+</ion-content>
+<button (click)="updateResume()" id="next-button">UPLOAD</button>
