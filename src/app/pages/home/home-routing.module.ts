@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: HomePage
   },
+  {
+    path: 'job-page/:id/:name/:posted/:companyName/:description',
+    loadChildren: () => import('./job-page/job-page.module').then( m => m.JobPagePageModule)
+  }
 ];
 
 @NgModule({

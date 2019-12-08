@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>apply</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  fixed>
+    <ion-row>
+      <ion-col size="12">{{jobName}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">{{jobCompanyName}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">Please go over your Resume and information before you apply. </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label position="stacked">Phone Number</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="stacked"> Go over your Resume</ion-label>
+                  <ion-button (click)="viewResume()">
+                    View Resume
+                  </ion-button>
+                </ion-item>
+                <p>or</p>
+                <ion-item>
+                    <ion-button (click)="viewResume()">
+                      Upload Resume
+                    </ion-button>
+                  </ion-item>
+                <p>resume_2019.pdf</p>
+                <ion-item>
+                        <ion-textarea
+                        rows="10" placeholder="Why are you a great candidate for the position of {{jobName}}?"></ion-textarea>
+                  </ion-item>
+                  <p>optional - ??? characters max</p>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<button (click)="finishApplication()" id="next-button">Submit Application</button>

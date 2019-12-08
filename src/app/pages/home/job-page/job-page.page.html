@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button>
+          </ion-back-button>
+        </ion-buttons>
+        <ion-title>Job Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+        <ion-col size="10">
+            <h6 style="font-size: 0.6em">{{jobName}}</h6>
+            <h6 style="font-size: 0.6em">{{jobId}}</h6>
+            <h6 style="font-size: 0.6em">{{jobCompanyName}}</h6>
+            <h6 style="font-size: 0.5em; opacity: 0.5;">{{jobPosted}}</h6>
+            <h6 style="font-size: 0.5em; opacity: 0.5;">{{jobDescription}}</h6>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="heart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
+<button (click)="applyForJob()" id="next-button">Apply for Job</button>

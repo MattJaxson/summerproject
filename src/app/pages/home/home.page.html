@@ -1,11 +1,29 @@
+<!-- No Header, ion header's display: none -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-    
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <!-- Searchbar with cancel button always shown -->
+        <ion-searchbar showCancelButton="false"></ion-searchbar>
+          <ion-list>
+              <ion-item *ngFor="let job of jobs" (click)="jobPage(job)">
+                <ion-row class="job-section">
+                  <ion-col size="10">
+                      <h6>{{job.name}}</h6>
+                      <h6 style="font-size: 0.5em; opacity: 0.5;">{{job.companyName}}</h6>
+                  </ion-col>
+                  <ion-col size="2">
+                      <h6 style="font-size: 0.4em; opacity: 0.5; float: right;">{{job.posted}}</h6>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
