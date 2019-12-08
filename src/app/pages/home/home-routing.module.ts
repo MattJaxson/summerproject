@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'job-page/:id/:name/:posted/:companyName/:description',
     loadChildren: () => import('./job-page/job-page.module').then( m => m.JobPagePageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   }
 ];
 

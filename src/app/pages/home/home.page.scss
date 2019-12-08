@@ -18,3 +18,8 @@ ion-header {
 h6, p {
   display: block;
 }
+
+--ion-buttons {
+  --color: #888;
+  font-size:55px !important;
+}

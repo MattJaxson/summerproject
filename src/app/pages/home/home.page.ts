@@ -100,5 +100,9 @@ export class HomePage implements OnInit {
     console.log(job.name);
   }
 
+  favoritesPage() {
+    this.router.navigate(['/home/home/favorites']);
+  }
+
 
 }
