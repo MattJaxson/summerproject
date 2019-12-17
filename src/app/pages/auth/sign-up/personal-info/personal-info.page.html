@@ -8,9 +8,9 @@
 </ion-header>
 
 <ion-content>
-<form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage()">
+<form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
   <ion-item>
-    <ion-input formControlName="name" placeholder="name"></ion-input>
+    <ion-input formControlName="fullName" placeholder="first & last name"></ion-input>
   </ion-item>
     <br>
   <ion-item>

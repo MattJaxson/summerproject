@@ -20,7 +20,7 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      fullName: ['', Validators.required],
       addressOne: ['', Validators.required],
       addressTwo: ['', Validators.required],
       city: ['', Validators.required],
@@ -38,15 +38,18 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
     // console.log('Unsubscribed from Registered User Observable');
   }
 
-  goToProfilePicturePage() {
-    let name = this.userInfoForm.controls.name.value;
-    name = this.auth.userInfo;
-    this.auth.checkUserInfo(name);
+  goToProfilePicturePage(data) {
+    // I need to collect all of the form info
+    // I need to pass this data to the Auth Service
+    // I need to go to the next page
+    console.log(data);
+    this.auth.getPersonalInfo(data);
     this.router.navigate(['/personal-info/profile-picture']);
     }
 
   cancel() {
     console.log('Sign up cancelled');
+    this.auth.clearUserInfo();
     this.router.navigate(['']);
   }
   // registerUser() {

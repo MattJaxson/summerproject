@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-enter-code',
@@ -9,24 +10,62 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 })
 export class EnterCodePage implements OnInit {
   emailCode: FormGroup;
+  code = '';
+  userEmail = '';
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.emailCode =  this.formBuilder.group({
       code: ['', Validators.required],
     });
+
+    this.userEmail = this.activatedRoute.snapshot.paramMap.get('email');
+
+    this.generateCode(6).then(code => {
+      console.log(`Sent Email to ${this.userEmail}`);
+      this.auth.sendEmailWithCode(code);
+    });
+
   }
 
-  goToThankYouPage() {
-    console.log('Going to Enter Code Page');
-    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/thank-you-page']);
+  async generateCode(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+
+    for ( let i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    console.log('Generated Code: ' + result);
+    return this.code = result;
+ }
+
+ async sendNewCode() {
+  this.generateCode(6).then(code => {
+    console.log('Data: ' + code);
+    this.auth.sendEmailWithCode(code);
+  });
+ }
+
+  thankYouPage() {
+    if (this.emailCode.controls.code.value !== this.code) {
+      console.log('Codes do not match');
+    } else {
+      // Save user to database
+      this.auth.register();
+      console.log('Going to thank you page');
+      this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
+    }
   }
 
   cancel() {
     console.log('Sign up cancelled');
+    this.auth.clearUserInfo();
     this.router.navigate(['']);
   }
 

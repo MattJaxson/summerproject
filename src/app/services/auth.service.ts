@@ -23,10 +23,25 @@ export class AuthService {
   authenticationState = new BehaviorSubject(false);
 
   //  Define type
-  userInfo: {};
+  userInfo = {
+    fullName: '',
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zip: '',
+    gender: '',
+    dob: '',
+    school: '',
+    grade: '',
+    profilePicture: '',
+    resume: '',
+    email: '',
+    password: ''
+  };
 
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
     private storage: Storage,
     private alertController: AlertController,
     private jwtHelper: JwtHelperService,
@@ -40,62 +55,76 @@ export class AuthService {
       this.authenticationState.subscribe(console.log);
      }
 
-checkUserInfo(data) {
-  console.log(data);
-  this.userInfo = data;
-  console.log('From Service');
+// tslint:disable-next-line: use-lifecycle-interface
+ngOnDestroy() {
+}
+// Get UserInfo -- testing purposes. Delete eventually.
+getUserInfo() {
   console.log(this.userInfo);
 }
 
-  // looks up our storage for a valid JWT and if found, changes our authenticationState
-  checkToken() {
-    console.log('Checking for Token...');
-    this.storage.get(this.TOKEN_KEY).then(token => {
-      if (!token) { console.log('There is no Token'); }
-      // if there is a token, decode it, and also check if it is expired.
-      if (token) {
-        console.log('JWTOken' + token);
-        let decoded = this.jwtHelper.decodeToken(token);
-        console.log(decoded);
-        let isExpired = this.jwtHelper.isTokenExpired(token);
-        console.log(isExpired);
+//  Sign up Functions
+getPersonalInfo(data) {
+  console.log('Sent Personal Infoto Auth Service: ');
+  this.userInfo.fullName = data.fullName;
+  this.userInfo.addressOne = data.addressOne;
+  this.userInfo.addressTwo = data.addressTwo;
+  this.userInfo.city = data.city;
+  this.userInfo.state = data.state;
+  this.userInfo.zip = data.zip;
+  this.userInfo.gender = data.gender;
+  this.userInfo.dob = data.dob;
+  this.userInfo.school = data.school;
+  this.userInfo.grade = data.grade;
+}
 
-        // if token is not expired, user value becomes decoded, and the authentication state changes
-        if (!isExpired) {
-          this.user = decoded;
-          this.authenticationState.next(true);
-        } else {
-          console.log('This token is expired');
-          this.storage.remove(this.TOKEN_KEY);
-        }
-      }
-    });
+// Push the User's photo to the UserInfo Object
+getProfilePicture(data) {
+  console.log('Sent Profile Picture to Auth Service');
+  this.userInfo.profilePicture = data;
+  console.log(this.userInfo);
+
+}
+
+getResume(data) {
+  console.log('Sent Resume to Auth Service');
+  this.userInfo.resume = data;
+  console.log(this.userInfo);
+
+}
+
+getLoginCredentials(data) {
+  console.log('Sent Login Credentials to Auth Service');
+  this.userInfo.email = data.email;
+  this.userInfo.password =  data.password;
+  console.log(this.userInfo);
+
+}
+
+printMessage() {
+  this.http.get('http://localhost:3000/api/').subscribe();
+}
+
+// When user hits Cancel, or when they complete the sign up.
+clearUserInfo() {
+
+}
+
+
+  checkToken() {
+    // looks up our storage for a valid JWT and if found, changes our authenticationState
+  }
+
+  // Observables are lazy, and the request is only made when we subscribe. (Cold Observable)
+
+  //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
+  sendEmailWithCode(code)  {
+    return this.http.post('http://localhost:3000/api/login-credentials', { code }, { responseType: 'text'}).subscribe();
   }
 
   // Register User
-  register(credentials) {
-    this.showAlert('Registered User');
-    console.log('From Service: Registered User');
-    return this.httpClient.post<User>('http://localhost:3000/api/signup', credentials);
-  }
-
-  login(credentials) {
-
-    return this.httpClient
-      .get<User>('http://localhost:3000/api/', credentials)
-      .pipe(
-        tap(res => {
-          this.showAlert('User Logged in');
-          this.storage.set(this.TOKEN_KEY, res['x-auth-token']);
-          this.user = this.jwtHelper.decodeToken(res['x-auth-token']);
-          console.log('Authentication State: ');
-          this.authenticationState.next(true);
-        }),
-        catchError(e => {
-          this.showAlert(e.error.msg);
-          throw new Error(e);
-        })
-      );
+  register() {
+      this.http.post('http://localhost:3000/api/signup', this.userInfo).subscribe();
   }
 
   logout() {
@@ -108,19 +137,6 @@ checkUserInfo(data) {
     return this.authenticationState.value;
   }
 
-  getSpecialData() {
-    return this.httpClient.get('http://localhost:3000//api/special').pipe(
-      catchError(e => {
-        let status = e.status;
-        if (status === 401) {
-          this.showAlert('You are not authorized for this!');
-          this.logout();
-        }
-        throw new Error(e);
-      })
-    )
-  }
-
 
   // Update User
   update() {
@@ -130,14 +146,5 @@ checkUserInfo(data) {
   // Delete User
   delete() {
     console.log('Deleted User');
-  }
-
-  showAlert(msg) {
-    const alert = this.alertController.create({
-      message: msg,
-      header: 'Message',
-      buttons: ['OK']
-    });
-    alert.then(alert => alert.present());
   }
 }

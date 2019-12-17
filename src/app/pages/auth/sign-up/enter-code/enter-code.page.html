@@ -11,15 +11,20 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="10" offset="1">
-        <p>Please enter the ___ code that was sent to [insert email]</p>
-        <form [formGroup]="emailCode">
+        <p>Please enter the 6 character code that was sent to {{userEmail}}</p>
+        <form (ngSubmit)="thankYouPage()" [formGroup]="emailCode">
             <ion-item>
-              <ion-input formControlName="code" type="email"placeholder="email"></ion-input>
+              <ion-input formControlName="code" type="email"placeholder="enter code"></ion-input>
             </ion-item>
+            <ion-button expand="full" (click)="sendNewCode()">
+              Send new code
+            </ion-button>
+            <ion-button expand="full" type="submit">
+              ENTER CODE
+            </ion-button>
         </form>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<button (click)="goToThankYouPage()" id="next-button">NEXT</button>
 

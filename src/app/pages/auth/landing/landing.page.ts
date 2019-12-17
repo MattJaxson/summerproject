@@ -14,7 +14,8 @@ export class LandingPage implements OnInit, OnDestroy {
 
   constructor(
     // private auth: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -22,6 +23,8 @@ export class LandingPage implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
+
+    this.authService.printMessage();
   }
 
   ngOnDestroy() {

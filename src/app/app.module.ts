@@ -4,6 +4,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -12,9 +14,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+
 
 
 
@@ -52,6 +56,8 @@ export function jwtOptionsFactory(storage) {
     SplashScreen,
     Keyboard,
     Vibration,
+    Camera,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

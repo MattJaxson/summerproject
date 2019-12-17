@@ -22,12 +22,6 @@ export class ProfilePage implements OnInit {
     ngOnInit() {
     }
 
-    loadSpecialInfo() {
-      this.auth.getSpecialData().subscribe(res => {
-        this.data = res['msg'];
-      });
-    }
-
     clearToken() {
       // ONLY FOR TESTING!
       this.storage.remove('access_token');

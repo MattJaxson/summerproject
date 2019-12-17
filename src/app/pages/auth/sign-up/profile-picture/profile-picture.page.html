@@ -9,8 +9,9 @@
 <ion-content text-center>
   <p>Please select your profile picture.</p>
   <div id="img-wrapper">
-    upload photo
+    <img src="{{profilePicture}}" alt="">
   </div>
+  <p>{{profilePicture}}</p>
   <ion-button (click)="getPhotoFromCamera()">
     Camera
   </ion-button>
@@ -21,4 +22,4 @@
       Skip
     </ion-button>
 </ion-content>
-<button (click)="goToUploadResumePage()" id="next-button">NEXT</button>
+<button (click)="goToUploadResumePage(profilePicture)" id="next-button">NEXT</button>

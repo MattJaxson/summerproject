@@ -10,25 +10,36 @@ import { AuthService } from '../../../../services/auth.service';
 })
 export class LoginCredentialsPage implements OnInit {
   credentialsForm: FormGroup;
+  code = '';
+  email = '';
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private auth: AuthService
+    ) { }
 
   ngOnInit() {
     this.credentialsForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      enterPassword: ['', Validators.required],
+      email: ['eddielacrosse2@gmail.com', Validators.required],
+      password: ['', Validators.required],
       reTypePassword: ['', Validators.required]
     });
+
+    this.email = this.credentialsForm.controls.email.value;
+    console.log('this email: ' + this.email);
   }
 
-  goToEnterCodePage() {
+
+
+  enterCodePage(data) {
+    this.auth.getLoginCredentials(this.credentialsForm.value);
     console.log('Going to Enter Code Page');
-    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/']);
+    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
   }
 
   cancel() {
+    this.auth.clearUserInfo();
     console.log('Sign up cancelled');
     this.router.navigate(['']);
   }
