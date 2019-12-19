@@ -20,8 +20,8 @@ export class LandingPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      email: ['eddie@gmail.com', [Validators.required, Validators.email]],
+      password: ['eddie2', [Validators.required, Validators.minLength(5)]]
     });
   }
 

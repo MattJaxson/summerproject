@@ -15,7 +15,6 @@ export class ProfilePage implements OnInit {
   activeEmail = '';
   user = null;
 
-
   constructor(
     private auth: AuthService,
     private profile: ProfileService,
@@ -23,7 +22,10 @@ export class ProfilePage implements OnInit {
     private router: Router,
     private toastController: ToastController) {
       this.activeEmail = this.auth.user.eamil;
-      this.user = this.profile.getUserDetails();
+      this.user = this.profile.getUserDetails().subscribe(data => {
+        console.log(data);
+        this.user = data;
+      });
     }
 
     ngOnInit() {

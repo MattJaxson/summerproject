@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
+import { ProfileService } from '../../../../services/profile.service';
+
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -18,7 +20,9 @@ export class ChangeEmailPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
-    private toast: ToastController) {
+    private toast: ToastController,
+    private profile: ProfileService
+    ) {
       this.activeEmail = this.auth.user.email;
       console.log('Active Email: ' + this.activeEmail);
      }
@@ -32,7 +36,7 @@ export class ChangeEmailPage implements OnInit {
 
   confirmChangedEmail(newEmail, password) {
     this.auth.user.email = newEmail;
-    this.auth.changeEmail(this.activeEmail, newEmail, password);
+    this.profile.changeEmail(this.activeEmail, newEmail, password);
   }
 
   cancel() {

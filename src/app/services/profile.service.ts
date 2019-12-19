@@ -83,11 +83,8 @@ export class ProfileService {
       });
     }
 
-    async getUserDetails() {
-      return await this.http.post('http://localhost:3000/api/home/profile', {email: this.activeEmail}).subscribe( data => {
-        console.log('User Details: :');
-        return data;
-      });
+     getUserDetails() {
+        return this.http.post('http://localhost:3000/api/home/profile', {email: this.activeEmail});
     }
 
     // Delete User

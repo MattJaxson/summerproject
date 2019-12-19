@@ -23,6 +23,7 @@ export class AuthService {
   TOKEN_KEY = 'access_token';
   user = null;
   authenticationState = new BehaviorSubject(false);
+  activeEmail = '';
 
   //  Define type
   userInfo = {
@@ -159,6 +160,7 @@ async getEmailFromToken() {
           this.storage.set(this.TOKEN_KEY, res.token);
           this.user = this.helper.decodeToken( res.token);
           this.authenticationState.next(true);
+          this.activeEmail = this.user.email;
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {
