@@ -23,6 +23,7 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
       fullName: ['', Validators.required],
       addressOne: ['', Validators.required],
       addressTwo: ['', Validators.required],
+      phone: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       zip: ['', Validators.required, Validators.minLength(5)],

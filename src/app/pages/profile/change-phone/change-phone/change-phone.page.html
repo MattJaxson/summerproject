@@ -10,14 +10,18 @@
 <ion-content>
     <ion-grid fixed class="ion-text-center">
       <ion-row>
+        <h3>{{activePhone}}</h3>
         <ion-col size="12">
-            <form [formGroup]="changePhone">
+            <form (ngSubmit)="confirmChangedPhoneNumber(
+              this.changePhone.controls.newNumber.value,
+              this.changePhone.controls.password.value
+            )" [formGroup]="changePhone">
                 <!-- Email -->
                 <ion-item>
                   <ion-input
                     placeholder="new number"
                     formControlName="newNumber"
-                    type="email">
+                    type="name">
                   </ion-input>
                 </ion-item>
                 <ion-item>
@@ -27,9 +31,10 @@
                       type="password">
                     </ion-input>
                 </ion-item>
+                <ion-button type="submit" id="next-button">CHANGE PHONE NUMBER</ion-button>
               </form>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
-<button (click)="confirmChangedPhoneNumber()" id="next-button">CHANGE PHONE NUMBER</button>
+

@@ -10,13 +10,12 @@
     </ion-row>
     <ion-row>
       <ion-col size="12">
-          <form [formGroup]="credentialsForm">
+          <form  [formGroup]="loginForm"
+                 (ngSubmit)="login(this.loginForm.value)">
               <!-- Email -->
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
                 <ion-input
-                  value="eddielacrosse2@gmail.com"
-                  placeholder="email"
                   formControlName="email"
                   type="email">
                 </ion-input>
@@ -26,15 +25,13 @@
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input
-                  value="12345"
-                  placeholder="password"
                   formControlName="password"
                   type="password">
                 </ion-input>
               </ion-item>
 
               <!-- Login Button -->
-              <ion-button id="login-button" type=submit shape="round"       expand="full" [routerLink]="['home']">Login</ion-button>
+              <ion-button id="login-button" type="submit" shape="round" expand="full">Login</ion-button>
 
             </form>
       </ion-col>

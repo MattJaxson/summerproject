@@ -9,32 +9,32 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./landing.page.scss'],
 })
 export class LandingPage implements OnInit, OnDestroy {
-  credentialsForm: FormGroup;
+  loginForm: FormGroup;
 
 
   constructor(
     // private auth: AuthService,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
-    this.credentialsForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
-
-    this.authService.printMessage();
   }
 
+
+
   ngOnDestroy() {
-    // this.loginrUser().unsubscribe();
+    // this.auth.login().unsubscribe();
     console.log('Unsubscribed from Registered User Observable');
   }
 
-  // onSubmit() {
-  //   this.auth.login(this.credentialsForm.value).subscribe();
-  // }
+  login(data) {
+    this.auth.login(data);
+  }
 
 
   }

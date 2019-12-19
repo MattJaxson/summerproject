@@ -18,10 +18,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 
 
-
-
-
-
 // For JWT
 export function jwtOptionsFactory(storage) {
   return {

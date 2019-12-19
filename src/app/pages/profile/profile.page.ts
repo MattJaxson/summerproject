@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
+import { ProfileService } from '../../services/profile.service';
 import { Router } from '@angular/router';
 
 
@@ -11,13 +12,19 @@ import { Router } from '@angular/router';
   styleUrls: ['profile.page.scss']
 })
 export class ProfilePage implements OnInit {
-  data = '';
+  activeEmail = '';
+  user = null;
+
 
   constructor(
     private auth: AuthService,
+    private profile: ProfileService,
     private storage: Storage,
     private router: Router,
-    private toastController: ToastController) {}
+    private toastController: ToastController) {
+      this.activeEmail = this.auth.user.eamil;
+      this.user = this.profile.getUserDetails();
+    }
 
     ngOnInit() {
     }
@@ -64,7 +71,6 @@ export class ProfilePage implements OnInit {
 
     }
     logout() {
-      console.log('Logging Out...');
       this.router.navigate(['/home/profile/logout']);
       // this.auth.logout();
     }

@@ -1,6 +1,8 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage';
 import { Platform, AlertController } from '@ionic/angular';
@@ -27,6 +29,7 @@ export class AuthService {
     fullName: '',
     addressOne: '',
     addressTwo: '',
+    phone: '',
     city: '',
     state: '',
     zip: '',
@@ -44,12 +47,15 @@ export class AuthService {
     private http: HttpClient,
     private storage: Storage,
     private alertController: AlertController,
-    private jwtHelper: JwtHelperService,
-    private plt: Platform) {
+    private helper: JwtHelperService,
+    private plt: Platform,
+    private router: Router,
+    private toastController: ToastController) {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
       this.plt.ready().then(() => {
         this.checkToken();
+        this.getEmailFromToken();
       });
       console.log('Authentication State: ');
       this.authenticationState.subscribe(console.log);
@@ -69,6 +75,7 @@ getPersonalInfo(data) {
   this.userInfo.fullName = data.fullName;
   this.userInfo.addressOne = data.addressOne;
   this.userInfo.addressTwo = data.addressTwo;
+  this.userInfo.phone = data.phone;
   this.userInfo.city = data.city;
   this.userInfo.state = data.state;
   this.userInfo.zip = data.zip;
@@ -101,22 +108,38 @@ getLoginCredentials(data) {
 
 }
 
-printMessage() {
-  this.http.get('http://localhost:3000/api/').subscribe();
-}
-
 // When user hits Cancel, or when they complete the sign up.
 clearUserInfo() {
 
 }
 
+ // looks up our storage for a valid JWT and if found, changes our authenticationState
+ async checkToken() {
+  this.storage.get(this.TOKEN_KEY).then(token => {
+    if (token) {
+      const decoded = this.helper.decodeToken(token);
+      const isExpired = this.helper.isTokenExpired(token);
 
-  checkToken() {
-    // looks up our storage for a valid JWT and if found, changes our authenticationState
-  }
+      if (!isExpired) {
+         this.user.email = decoded.email;
+         console.log('Decoded Token: ' + this.user.email);
+         this.authenticationState.next(true);
+      } else {
+        console.log('Token Removed from Storage');
+        this.storage.remove(this.TOKEN_KEY);
+      }
+    }
+  });
+}
 
-  // Observables are lazy, and the request is only made when we subscribe. (Cold Observable)
-
+async getEmailFromToken() {
+  this.storage.get(this.TOKEN_KEY).then(token => {
+    if (token) {
+      const decoded = this.helper.decodeToken(token);
+      console.log('Token Email: ' + decoded.email);
+    }
+  });
+}
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
   sendEmailWithCode(code)  {
     return this.http.post('http://localhost:3000/api/login-credentials', { code }, { responseType: 'text'}).subscribe();
@@ -127,24 +150,32 @@ clearUserInfo() {
       this.http.post('http://localhost:3000/api/signup', this.userInfo).subscribe();
   }
 
+  // Login User
+  login(data) {
+    console.log('Logging in');
+    return this.http.post('http://localhost:3000/api/', {email: data.email, password: data.password})
+      .pipe(
+        tap(res => {
+          this.storage.set(this.TOKEN_KEY, res.token);
+          this.user = this.helper.decodeToken( res.token);
+          this.authenticationState.next(true);
+          console.log('Active User: ' + this.user.email);
+        }),
+        catchError(e => {
+          throw new Error(e);
+        })
+      ).subscribe();
+  }
+
   logout() {
-    this.storage.remove(this.TOKEN_KEY).then(() => {
+    this.storage.remove(this.TOKEN_KEY).then((token) => {
+      console.log('Logging out...');
+      this.user = null;
       this.authenticationState.next(false);
     });
   }
 
   isAuthenticated() {
     return this.authenticationState.value;
-  }
-
-
-  // Update User
-  update() {
-    console.log('Deleted User');
-  }
-
-  // Delete User
-  delete() {
-    console.log('Deleted User');
   }
 }

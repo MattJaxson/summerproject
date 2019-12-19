@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuardService]
   },
  // Change to sign up path name later
  {
@@ -24,7 +25,7 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {  })
+    RouterModule.forRoot(routes, { enableTracing: false })
   ],
   exports: [RouterModule]
 })

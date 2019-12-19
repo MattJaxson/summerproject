@@ -23,24 +23,26 @@ export class AppComponent {
     private vibration: Vibration,
     private keyboard: Keyboard,
 
-    private authService: AuthService,
+    private auth: AuthService,
     private router: Router
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    this.auth.checkToken();
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#319ecb');
       // this.splashScreen.hide();
     });
 
-    // this.authService.authenticationState.subscribe(state => {
-    //   if (state) {
-    //     this.router.navigate(['profile']);
-    //   } else {
-    //     this.router.navigate(['/']);
-    //   }
-    // });
+    // State for the User. If Authentication State == False, the app reverts back to the landing page
+    this.auth.authenticationState.subscribe(state => {
+      if (state) {
+        this.router.navigate(['home']);
+      } else {
+        this.router.navigate(['']);
+      }
+    });
   }
 }
