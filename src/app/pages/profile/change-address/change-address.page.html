@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>change-address</ion-title>
+    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+        cancel
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="11" offset="0.5">
+        <h4>Your Address</h4>
+        <p>Address 1: {{addressOne}}</p>
+        <p>Address 2: {{addressTwo}}</p>
+        <p>City: {{city}}</p>
+        <p>State: {{state}}</p>
+        <p>Zip: {{zip}}</p>
+      </ion-col>
+      <ion-col size="11" offset="0.5">
+        <h5>Please enter your new Address</h5>
+          <form [formGroup]="changeAddress" (ngSubmit)="confirmChangeAddress(
+            this.activeEmail,
+            this.changeAddress.controls.addressOne.value,
+            this.changeAddress.controls.addressTwo.value,
+            this.changeAddress.controls.city.value,
+            this.changeAddress.controls.state.value,
+            this.changeAddress.controls.zip.value,
+            this.changeAddress.controls.password.value
+          )">
+            <ion-item>
+                <ion-input
+                  placeholder="address 1"
+                  formControlName="addressOne">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input
+                  placeholder="address 2"
+                  formControlName="addressTwo">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input
+                  placeholder="city"
+                  formControlName="city">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input
+                  placeholder="state"
+                  formControlName="state">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input
+                  placeholder="zip"
+                  formControlName="zip">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input
+                  placeholder="password"
+                  formControlName="password">
+                </ion-input>
+            </ion-item>
+              <ion-button type="submit" id="next-button">CHANGE ADDRESS</ion-button>
+          </form>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

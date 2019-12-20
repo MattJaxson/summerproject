@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
-import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
 

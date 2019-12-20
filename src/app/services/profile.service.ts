@@ -25,6 +25,11 @@ export class ProfileService {
       this.activeEmail = this.auth.user.email;
      }
 
+    //  Gets User Details from Server to populate the Profile tab with User information.
+     getUserDetails() {
+      return this.http.post('http://localhost:3000/api/home/profile', {email: this.activeEmail});
+  }
+
     async changeEmail(activeEmail, newEmail, password) {
       // tslint:disable-next-line: max-line-length
       return this.http.post('http://localhost:3000/api/home/profile/change-email', {
@@ -83,8 +88,37 @@ export class ProfileService {
       });
     }
 
-     getUserDetails() {
-        return this.http.post('http://localhost:3000/api/home/profile', {email: this.activeEmail});
+    async changeAddress(email, addressOne, addressTwo, city, state, zip, password) {
+      return await this.http.post('http://localhost:3000/api/home/profile/change-address', {
+        email,
+        addressOne,
+        addressTwo,
+        city,
+        state,
+        zip,
+        password
+      }).subscribe(data => {
+        if ( data === true ) {
+          this.router.navigate(['/home/profile/change-address/:addressOne/:addressTwo/:city/:state/:zip/confirm']);
+         } else {
+          return console.log('Passwords dont match');
+        }
+  });
+    }
+
+    async changeSchool(email, newSchool, newGrade, password) {
+      return await this.http.post('http://localhost:3000/api/home/profile/change-school', {
+        email,
+        newSchool,
+        newGrade,
+        password
+      }).subscribe(data => {
+        if ( data === true ) {
+          this.router.navigate(['/home/profile/change-school/:school/confirm']);
+         } else {
+          return console.log('Passwords dont match');
+        }
+      });
     }
 
     // Delete User

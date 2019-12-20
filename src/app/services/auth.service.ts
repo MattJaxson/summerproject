@@ -55,10 +55,9 @@ export class AuthService {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
       this.plt.ready().then(() => {
-        this.checkToken();
         this.getEmailFromToken();
       });
-      console.log('Authentication State: ');
+      console.log('Authentication State');
       this.authenticationState.subscribe(console.log);
      }
 
@@ -122,8 +121,8 @@ clearUserInfo() {
       const isExpired = this.helper.isTokenExpired(token);
 
       if (!isExpired) {
-         this.user.email = decoded.email;
-         console.log('Decoded Token: ' + this.user.email);
+         this.user = decoded;
+         console.log('Decoded Token: ' + JSON.stringify(decoded));
          this.authenticationState.next(true);
       } else {
         console.log('Token Removed from Storage');

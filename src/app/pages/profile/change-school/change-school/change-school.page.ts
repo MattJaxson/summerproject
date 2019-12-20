@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../../../../services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-change-school',
@@ -9,20 +12,38 @@ import { Router } from '@angular/router';
 })
 export class ChangeSchoolPage implements OnInit {
   changeSchool: FormGroup;
+  activeEmail = '';
+  school = '';
+  grade = '';
+  newSchool = '';
+
   constructor(
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private profile: ProfileService,
+    private auth: AuthService,
+    private router: Router) {
+      this.activeEmail = this.auth.user.email;
+     }
 
   ngOnInit() {
     this.changeSchool =  this.formBuilder.group({
       newSchool: ['', Validators.required],
+      newGrade: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    const school  = this.activatedRoute.snapshot.paramMap.get('school');
+    const grade  = this.activatedRoute.snapshot.paramMap.get('grade');
+
+    this.school = school;
+    this.grade = grade;
   }
 
-    confirmChangedSchool() {
-      console.log('Going to Change School Confirm');
-      this.router.navigate(['/home/profile/change-school/confirm']);
+    confirmChangedSchool(email, newSchool, newGrade, password) {
+      this.profile.changeSchool(email, newSchool, newGrade,  password);
+      // console.log('Going to Change School Confirm');
+      // this.router.navigate(['/home/profile/change-school/:school/confirm']);
     }
 
     cancel() {

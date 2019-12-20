@@ -11,16 +11,29 @@
     <ion-grid fixed class="ion-text-center">
       <ion-row>
         <ion-col size="12">
-            <form [formGroup]="changeSchool">
+            <form [formGroup]="changeSchool" (ngSubmit)="confirmChangedSchool(
+              this.activeEmail,
+              this.changeSchool.controls.newSchool.value,
+              this.changeSchool.controls.newGrade.value,
+              this.changeSchool.controls.password.value
+            )" >
                 <!-- Email -->
                 <ion-item>
-                  <ion-label>Current School</ion-label>
-                  <p>Wayne State University</p>
+                  <ion-label>Current School & Grade</ion-label>
                 </ion-item>
+                <h4>School: {{school}}</h4>
+                <h4>Grade: {{grade}}</h4>
                 <ion-item>
                     <ion-input
                       placeholder="name of new school"
                       formControlName="newSchool"
+                      type="">
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input
+                      placeholder="name of new grade"
+                      formControlName="newGrade"
                       type="">
                     </ion-input>
                 </ion-item>
@@ -31,9 +44,9 @@
                       type="password">
                     </ion-input>
                 </ion-item>
+                <ion-button type="submit" id="next-button">CHANGE SCHOOL</ion-button>
               </form>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
-<button (click)="confirmChangedSchool()" id="next-button">CHANGE SCHOOL</button>

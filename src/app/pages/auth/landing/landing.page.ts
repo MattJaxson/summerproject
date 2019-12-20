@@ -16,7 +16,8 @@ export class LandingPage implements OnInit, OnDestroy {
     // private auth: AuthService,
     private formBuilder: FormBuilder,
     private auth: AuthService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

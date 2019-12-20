@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
+import { ProfileService } from '../../../../services/profile.service';
 
 @Component({
   selector: 'app-change-phone',
@@ -17,6 +18,7 @@ export class ChangePhonePage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
+    private profile: ProfileService
     ) {
       this.activeEmail = this.auth.user.email;
       // this.auth.getPhoneNumber(this.activeEmail);
@@ -30,7 +32,7 @@ export class ChangePhonePage implements OnInit {
   }
 
   confirmChangedPhoneNumber(newNumber, password) {
-    this.auth.changePhone(this.activeEmail, newNumber, password);
+    this.profile.changePhone(this.activeEmail, newNumber, password);
     // console.log('Going to Change Phone Number Confirm');
     // this.router.navigate(['/home/profile/change-phone/confirm']);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: 'profile.page.html',
   styleUrls: ['profile.page.scss']
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage implements OnInit, OnDestroy {
   activeEmail = '';
   user = null;
 
@@ -21,14 +21,18 @@ export class ProfilePage implements OnInit {
     private storage: Storage,
     private router: Router,
     private toastController: ToastController) {
-      this.activeEmail = this.auth.user.eamil;
+      this.activeEmail = this.auth.user.email;
+    }
+
+    ngOnInit() {
       this.user = this.profile.getUserDetails().subscribe(data => {
         console.log(data);
         this.user = data;
       });
     }
 
-    ngOnInit() {
+    ngOnDestroy() {
+
     }
 
     clearToken() {
@@ -47,6 +51,13 @@ export class ProfilePage implements OnInit {
       this.router.navigate(['/home/profile/change-email']);
 
     }
+
+    changeAddress() {
+      console.log('Navigating to Change Address Page');
+      // tslint:disable-next-line: max-line-length
+      this.router.navigate(['/home/profile/change-address/', this.user.addressOne, this.user.addressTwo, this.user.city, this.user.state, this.user.city, ]);
+
+    }
     changePassword() {
       console.log('Navigating to Change Password Page');
       this.router.navigate(['/home/profile/change-password']);
@@ -59,7 +70,7 @@ export class ProfilePage implements OnInit {
     }
     changeSchool() {
       console.log('Navigating to Change School Page');
-      this.router.navigate(['/home/profile/change-school']);
+      this.router.navigate(['/home/profile/change-school', this.user.school, this.user.grade]);
 
     }
     changeProfilePicture() {

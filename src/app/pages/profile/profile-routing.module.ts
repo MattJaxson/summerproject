@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./change-phone/change-phone/change-phone.module').then( m => m.ChangePhonePageModule)
   },
   {
-    path: 'change-school',
+    path: 'change-school/:school/:grade',
     loadChildren: () => import('./change-school/change-school/change-school.module').then( m => m.ChangeSchoolPageModule)
   },
   {
@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'confirm-photo',
     loadChildren: () => import('./change-profile-picture/confirm-photo/confirm-photo.module').then( m => m.ConfirmPhotoPageModule)
+  },
+  {
+    path: 'change-address/:addressOne/:addressTwo/:city/:state/:zip',
+    loadChildren: () => import('./change-address/change-address.module').then( m => m.ChangeAddressPageModule)
   }
 ];
 
