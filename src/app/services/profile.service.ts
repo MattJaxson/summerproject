@@ -76,9 +76,9 @@ export class ProfileService {
       .subscribe(data => {
         if ( data === true ) {
           console.log('TRUE');
-          this.router.navigate(['/home/profile/change-phone/confirm']);
+          this.router.navigate(['/home/profile']);
           const toast = this.toastController.create({
-            message: 'Please login with your new Password',
+            message: 'Phone Number Changed',
             duration: 3000
           });
           toast.then(t => t.present());
@@ -114,7 +114,8 @@ export class ProfileService {
         password
       }).subscribe(data => {
         if ( data === true ) {
-          this.router.navigate(['/home/profile/change-school/:school/confirm']);
+          this.getUserDetails();
+          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
          } else {
           return console.log('Passwords dont match');
         }

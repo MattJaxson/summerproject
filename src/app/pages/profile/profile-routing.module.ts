@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./change-password/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
   {
-    path: 'change-phone',
+    path: 'change-phone/:phone',
     loadChildren: () => import('./change-phone/change-phone/change-phone.module').then( m => m.ChangePhonePageModule)
   },
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
     loadChildren: () => import('./change-school/change-school/change-school.module').then( m => m.ChangeSchoolPageModule)
   },
   {
-    path: 'change-profile-picture',
+    path: 'change-profile-picture/:profilePicture',
     loadChildren: () => import('./change-profile-picture/change-profile-picture/change-profile-picture.module').then( m => m.ChangeProfilePicturePageModule)
   },
   {

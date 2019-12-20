@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
+import { ProfileService } from '../../../../services/profile.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
 
 @Component({
   selector: 'app-change-profile-picture',
@@ -9,18 +13,29 @@ import { Router } from '@angular/router';
 })
 export class ChangeProfilePicturePage implements OnInit {
   changePicture: FormGroup;
+  activeEmail = '';
+  activePicture = '';
+
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private auth: AuthService,
+    private profile: ProfileService,
+    private activatedRoute: ActivatedRoute,
+    private camera: Camera,
+    ) { }
 
   ngOnInit() {
-    this.changePicture =  this.formBuilder.group({
-      email: ['', Validators.required]
-    });
+
+    const picture  = this.activatedRoute.snapshot.paramMap.get('profilePicture');
+
+    this.activePicture = picture;
   }
+
     confirmChangeProfilePicture() {
-      console.log('Going to Change Picture Confirm');
-      this.router.navigate(['/home/profile/change-profile-picture/confirm']);
+      
+      // console.log('Going to Change Picture Confirm');
+      // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
     }
 
     cancel() {
@@ -30,9 +45,26 @@ export class ChangeProfilePicturePage implements OnInit {
 
     // Not finished
     useCamera() {
+
+      let options: CameraOptions = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        correctOrientation: true,
+      };
+
+      this.camera.getPicture(options).then((imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        let base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.activePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
+       }, (err) => {
+        alert('error ' + JSON.stringify(err));
+       });
       console.log("Accessing Phone's Camera to gather Photo");
 
-      this.router.navigate(['/home/profile/confirm-photo']);
+      // this.router.navigate(['/home/profile/confirm-photo']);
     }
 
     // Not finished

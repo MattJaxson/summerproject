@@ -10,7 +10,7 @@
 <ion-content>
     <ion-grid fixed class="ion-text-center">
       <ion-row>
-        <h3>{{activePhone}}</h3>
+        <h5>Current Phone Number: {{activePhone}}</h5>
         <ion-col size="12">
             <form (ngSubmit)="confirmChangedPhoneNumber(
               this.changePhone.controls.newNumber.value,

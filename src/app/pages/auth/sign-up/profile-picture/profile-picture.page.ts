@@ -61,6 +61,7 @@ export class ProfilePicturePage implements OnInit {
       correctOrientation: true,
     };
 
+    //  Get Picture from Camera
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):

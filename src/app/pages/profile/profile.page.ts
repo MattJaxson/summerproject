@@ -65,7 +65,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     }
     changePhoneNumber() {
       console.log('Navigating to Change Phone Number Page');
-      this.router.navigate(['/home/profile/change-phone']);
+      this.router.navigate(['/home/profile/change-phone', this.user.phone]);
 
     }
     changeSchool() {
@@ -75,7 +75,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     }
     changeProfilePicture() {
       console.log('Navigating to Change Profile Page');
-      this.router.navigate(['/home/profile/change-profile-picture']);
+      this.router.navigate(['/home/profile/change-profile-picture', this.user.profilePicture]);
 
     }
     updateResume() {
