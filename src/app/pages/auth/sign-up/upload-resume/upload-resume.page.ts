@@ -52,8 +52,23 @@ export class UploadResumePage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Skip',
-      message: 'If you skip, you can always upload a picture in the future by going to your Profile.',
-      buttons: ['OK', 'CANCEL']
+      message: 'Are you sure you want to skip? You can always upload a Resume in the future by going to your Profile.',
+      buttons: [
+        {
+          text: 'Skip',
+          handler: () => {
+            this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials']);
+            console.log('Skipping Resume Upload...');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelling Resume Upload Skip...');
+          }
+        }
+      ]
     });
 
     await alert.present();

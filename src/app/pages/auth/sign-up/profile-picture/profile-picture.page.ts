@@ -38,6 +38,31 @@ export class ProfilePicturePage implements OnInit {
     this.router.navigate(['/personal-info/profile-picture/upload-resume']);
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Skip',
+      message: 'Are you sure you want to skip? You can always upload a picture in the future by going to your Profile.',
+      buttons: [
+        {
+          text: 'Skip',
+          handler: () => {
+            this.router.navigate(['/personal-info/profile-picture/upload-resume']);
+            console.log('Skipping Profile Picture...');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelling Profile Picture Upload Skip...');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   skip() {
     console.log('Skipping to Upload Resume >>');
     this.presentAlert();
@@ -78,14 +103,5 @@ export class ProfilePicturePage implements OnInit {
 
 }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Skip',
-      message: 'If you skip, you can always upload a picture in the future by going to your Profile.',
-      buttons: ['OK', 'CANCEL']
-    });
-
-    await alert.present();
-  }
 
 }
