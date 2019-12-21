@@ -12,15 +12,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ChangeAddressPage implements OnInit {
   changeAddress: FormGroup;
-  activeEmail = '';
-  addressOne = '';
-  addressTwo = '';
-  city = '';
-  state = '';
-  zip = '';
+  activeEmail = this.profile.email.getValue();
+  addressOne = this.profile.addressOne.getValue();
+  addressTwo = this.profile.addressTwo.getValue();
+  city = this.profile.city.getValue();
+  state = this.profile.state.getValue();
+  zip = this.profile.zip.getValue();
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private profile: ProfileService,
     private auth: AuthService,
@@ -39,22 +38,6 @@ export class ChangeAddressPage implements OnInit {
       password: ['', Validators.required]
     });
 
-     // tslint:disable-next-line: radix
-    const addressOne  = this.activatedRoute.snapshot.paramMap.get('addressOne');
-     // tslint:disable-next-line: radix
-    const addressTwo  = this.activatedRoute.snapshot.paramMap.get('addressTwo');
-     // tslint:disable-next-line: radix
-    const city  = this.activatedRoute.snapshot.paramMap.get('city');
-     // tslint:disable-next-line: radix
-    const state  = this.activatedRoute.snapshot.paramMap.get('state');
-      // tslint:disable-next-line: radix
-    const zip  = this.activatedRoute.snapshot.paramMap.get('zip');
-
-    this.addressOne = addressOne;
-    this.addressTwo = addressTwo;
-    this.city = city;
-    this.state = state;
-    this.zip = zip;
   }
 
   async confirmChangeAddress(email, addressOne, addressTwo, city, state, zip, password) {

@@ -55,6 +55,7 @@ export class AuthService {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
       this.plt.ready().then(() => {
+        this.checkToken();
         this.getEmailFromToken();
       });
       console.log('Authentication State');
@@ -88,7 +89,7 @@ getPersonalInfo(data) {
 // Push the User's photo to the UserInfo Object
 getProfilePicture(data) {
   console.log('Sent Profile Picture to Auth Service');
-  this.userInfo.profilePicture = data;
+  this.userInfo.profilePicture = data.profilePicture;
   console.log(this.userInfo);
 
 }
@@ -137,27 +138,28 @@ async getEmailFromToken() {
     if (token) {
       const decoded = this.helper.decodeToken(token);
       console.log('Token Email: ' + decoded.email);
+      this.activeEmail = decoded.email;
     }
   });
 }
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
   sendEmailWithCode(code)  {
-    return this.http.post('http://localhost:3000/api/login-credentials', { code }, { responseType: 'text'}).subscribe();
+    return this.http.post('http://10.0.1.8:3000/api/login-credentials', { code }, { responseType: 'text'}).subscribe();
   }
 
   // Register User
   register() {
-      this.http.post('http://localhost:3000/api/signup', this.userInfo).subscribe();
+      this.http.post('http://10.0.1.8:3000/api/signup', this.userInfo).subscribe();
   }
 
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.http.post('http://localhost:3000/api/', {email: data.email, password: data.password})
+    return this.http.post('http://10.0.1.8:3000/api/', {email: data.email, password: data.password})
       .pipe(
         tap(res => {
-          this.storage.set(this.TOKEN_KEY, res.token);
-          this.user = this.helper.decodeToken( res.token);
+          this.storage.set(this.TOKEN_KEY, res['token']);
+          this.user = this.helper.decodeToken( res['token']);
           this.authenticationState.next(true);
           this.activeEmail = this.user.email;
           console.log('Active User: ' + this.user.email);

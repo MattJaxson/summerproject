@@ -23,7 +23,7 @@ export class ChangeEmailPage implements OnInit {
     private toast: ToastController,
     private profile: ProfileService
     ) {
-      this.activeEmail = this.auth.user.email;
+      this.activeEmail = this.profile.email.getValue();
       console.log('Active Email: ' + this.activeEmail);
      }
 
@@ -32,11 +32,13 @@ export class ChangeEmailPage implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+
   }
 
+
+
   confirmChangedEmail(newEmail, password) {
-    this.auth.user.email = newEmail;
-    this.profile.changeEmail(this.activeEmail, newEmail, password);
+    this.profile.changeEmail('eddie@gmail.com', newEmail, password);
   }
 
   cancel() {

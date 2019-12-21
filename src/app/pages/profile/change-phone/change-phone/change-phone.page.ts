@@ -12,7 +12,7 @@ import { ProfileService } from '../../../../services/profile.service';
 export class ChangePhonePage implements OnInit {
   changePhone: FormGroup;
   activeEmail = '';
-  activePhone = '';
+  activePhone = this.profile.phone.getValue();
 
   constructor(
     private activatedRoute: ActivatedRoute,

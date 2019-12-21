@@ -29,7 +29,7 @@ export class ProfilePicturePage implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    this.profilePicture = '<image url>';
+    this.profilePicture = '';
   }
 
   goToUploadResumePage(data) {
@@ -67,13 +67,11 @@ export class ProfilePicturePage implements OnInit {
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.profilePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
+       //  Add this profile picture to UserInfo in AuthService
+      this.auth.getProfilePicture(this.profilePicture);
      }, (err) => {
       alert('error ' + JSON.stringify(err));
      });
-
-    //  Add this profile picture to UserInfo in AuthService
-    this.auth.getProfilePicture(this.profilePicture);
-    this.profilePicture = '';
   }
 
   getPhotoFromGallery(selection) {

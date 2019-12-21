@@ -12,10 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ChangeSchoolPage implements OnInit {
   changeSchool: FormGroup;
-  activeEmail = '';
-  school = '';
-  grade = '';
-  newSchool = '';
+  activeEmail = this.profile.email.getValue();
+  school = this.profile.school.getValue();
+  grade = this.profile.grade.getValue();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,18 +31,11 @@ export class ChangeSchoolPage implements OnInit {
       newGrade: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    const school  = this.activatedRoute.snapshot.paramMap.get('school');
-    const grade  = this.activatedRoute.snapshot.paramMap.get('grade');
-
-    this.school = school;
-    this.grade = grade;
   }
 
     confirmChangedSchool(email, newSchool, newGrade, password) {
       this.profile.changeSchool(email, newSchool, newGrade,  password);
-      // console.log('Going to Change School Confirm');
-      // this.router.navigate(['/home/profile/change-school/:school/confirm']);
+
     }
 
     cancel() {

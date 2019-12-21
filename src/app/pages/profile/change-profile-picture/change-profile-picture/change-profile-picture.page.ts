@@ -33,7 +33,7 @@ export class ChangeProfilePicturePage implements OnInit {
   }
 
     confirmChangeProfilePicture() {
-      
+
       // console.log('Going to Change Picture Confirm');
       // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
     }
@@ -58,6 +58,7 @@ export class ChangeProfilePicturePage implements OnInit {
         // imageData is either a base64 encoded string or a file URI
         // If it's base64 (DATA_URL):
         let base64Image = 'data:image/jpeg;base64,' + imageData;
+        // This is the actual picture
         this.activePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
        }, (err) => {
         alert('error ' + JSON.stringify(err));

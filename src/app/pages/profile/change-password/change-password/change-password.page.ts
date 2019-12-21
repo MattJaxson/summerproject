@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
-
+import { ProfileService } from '../../../../services/profile.service';
 
 @Component({
   selector: 'app-change-password',
@@ -17,6 +17,7 @@ export class ChangePasswordPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
+    private profile: ProfileService
     ) {
       this.activeEmail = this.auth.user.email;
      }
@@ -30,7 +31,7 @@ export class ChangePasswordPage implements OnInit {
   }
 
   confirmChangedPassword(oldPassword, newPassword,  reTypeNewPassword) {
-    this.auth.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
+    this.profile.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
   }
 
   cancel() {
