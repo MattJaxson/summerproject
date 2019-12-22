@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from '../../../../services/profile.service';
+
 
 @Component({
   selector: 'app-resume',
@@ -7,9 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./resume.page.scss'],
 })
 export class ResumePage implements OnInit {
+  activeResume = this.profile.resume.getValue();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private profile: ProfileService
   ) { }
 
   ngOnInit() {

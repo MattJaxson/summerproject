@@ -35,14 +35,10 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.registerUser().unsubscribe();
-    // console.log('Unsubscribed from Registered User Observable');
+
   }
 
   goToProfilePicturePage(data) {
-    // I need to collect all of the form info
-    // I need to pass this data to the Auth Service
-    // I need to go to the next page
     console.log(data);
     this.auth.getPersonalInfo(data);
     this.router.navigate(['/personal-info/profile-picture']);
@@ -53,20 +49,7 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
     this.auth.clearUserInfo();
     this.router.navigate(['']);
   }
-  // registerUser() {
-  //   this.auth.register(this.credentialsForm.value).subscribe(res => {
-  //     console.log('Values to be registered: ' + this.credentialsForm.value.toString());
-  //     // Call Login to automatically login the new user
-  //     // this.auth.login(this.credentialsForm.value).subscribe();
-  //   });
-  }
 
-  // registerUser() {
-  //   return this.auth.register('Tony', 'eddielacrosse2@gmail.com', '12345').subscribe(data => {
-  //     console.log('POST Request is sucessful', data);
-  //   }, error => {
-  //     console.log('Error', error);
-  //   });
-  // }
+}
 
 

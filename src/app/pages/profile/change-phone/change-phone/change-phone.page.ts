@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { ProfileService } from '../../../../services/profile.service';
 
@@ -11,11 +11,10 @@ import { ProfileService } from '../../../../services/profile.service';
 })
 export class ChangePhonePage implements OnInit {
   changePhone: FormGroup;
-  activeEmail = '';
+  activeEmail = this.profile.email.getValue();
   activePhone = this.profile.phone.getValue();
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
@@ -29,10 +28,6 @@ export class ChangePhonePage implements OnInit {
       newNumber: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    const phone  = this.activatedRoute.snapshot.paramMap.get('phone');
-
-    this.activePhone = phone;
   }
 
   confirmChangedPhoneNumber(newNumber, password) {

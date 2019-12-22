@@ -19,21 +19,21 @@ export class ProfilePicturePage implements OnInit {
   //  Maybe I need to notify the server that this user didnt upload a profile picture?
 
   // Image of camera that is compatible with HTML
-  profilePicture = '<image url>';
+  profilePicture = '';
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private auth: AuthService,
     private camera: Camera,
-    private location: Location) { }
+    private location: Location,
+    private file: File) { }
 
   ngOnInit() {
-    this.profilePicture = '';
+
   }
 
-  goToUploadResumePage(data) {
-    this.auth.getProfilePicture(data);
+  goToUploadResumePage() {
     console.log('Going to Resume Page >>');
     this.router.navigate(['/personal-info/profile-picture/upload-resume']);
   }
@@ -76,24 +76,35 @@ export class ProfilePicturePage implements OnInit {
     this.location.back();
   }
 
-  getPhotoFromCamera() {
-
-    let options: CameraOptions = {
+  async getPhotoFromCamera() {
+    // Options for Cordova Camera plugin
+    const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
+      saveToPhotoAlbum: true,
     };
 
     //  Get Picture from Camera
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.profilePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
        //  Add this profile picture to UserInfo in AuthService
-      this.auth.getProfilePicture(this.profilePicture);
+       this.profilePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
+
+      //  split the file and the path from the FILE_URL resu;t
+       const filename = this.
+       profilePicture.substring(imageData.lastIndexOf('/') + 1);
+       this.auth.getProfilePicture({profilePicture: imageData});
+       console.log('filename: ' + filename);
+
+       const path =  this.
+       profilePicture.substring(0, this.
+        profilePicture.lastIndexOf('/') + 1);
+       console.log('filename: ' + path);
+
+       // then use the method reasDataURL  btw. var_picture is ur image variable
+       this.file.readAsDataURL(path, filename).then(res => console.log(res) );
      }, (err) => {
       alert('error ' + JSON.stringify(err));
      });

@@ -16,6 +16,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
 
 
 // For JWT
@@ -54,6 +55,7 @@ export function jwtOptionsFactory(storage) {
     Vibration,
     Camera,
     File,
+    FilePath,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

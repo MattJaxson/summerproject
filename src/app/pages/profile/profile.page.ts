@@ -161,6 +161,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       console.log('Navigating to Change Address Page');
       // tslint:disable-next-line: max-line-length
       this.router.navigate(['/home/profile/change-address/', this.userObject.addressOne, this.userObject.addressTwo, this.userObject.city, this.userObject.state, this.userObject.city, ]);
+      // Delete params
 
     }
     changePassword() {

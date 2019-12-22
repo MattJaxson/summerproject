@@ -19,7 +19,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  REGISTER_URL = environment.registerUrl;
+  BACKEND_URL = environment.url;
   TOKEN_KEY = 'access_token';
   user = null;
   authenticationState = new BehaviorSubject(false);
@@ -144,24 +144,24 @@ async getEmailFromToken() {
 }
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
   sendEmailWithCode(code)  {
-    return this.http.post('http://10.0.1.8:3000/api/login-credentials', { code }, { responseType: 'text'}).subscribe();
+    return this.http.post(`${this.BACKEND_URL}/login-credentials`, { code }, { responseType: 'text'}).subscribe();
   }
 
   // Register User
   register() {
-      this.http.post('http://10.0.1.8:3000/api/signup', this.userInfo).subscribe();
+      this.http.post(`${this.BACKEND_URL}/api/signup`, this.userInfo).subscribe();
   }
 
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.http.post('http://10.0.1.8:3000/api/', {email: data.email, password: data.password})
+    return this.http.post(`${this.BACKEND_URL}/api/`, {email: data.email, password: data.password})
       .pipe(
         tap(res => {
           this.storage.set(this.TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken( res['token']);
-          this.authenticationState.next(true);
           this.activeEmail = this.user.email;
+          this.authenticationState.next(true);
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {

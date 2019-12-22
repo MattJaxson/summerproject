@@ -14,7 +14,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class ChangeProfilePicturePage implements OnInit {
   changePicture: FormGroup;
   activeEmail = '';
-  activePicture = '';
+  activePicture = this.profile.profilePicture.getValue();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,14 +26,11 @@ export class ChangeProfilePicturePage implements OnInit {
     ) { }
 
   ngOnInit() {
-
-    const picture  = this.activatedRoute.snapshot.paramMap.get('profilePicture');
-
-    this.activePicture = picture;
   }
 
-    confirmChangeProfilePicture() {
-
+  // ADD password input to profile picture
+    confirmChangeProfilePicture(newPicture, psssword) {
+      this.profile.changeProfilePicture(this.activeEmail, newPicture, psssword);
       // console.log('Going to Change Picture Confirm');
       // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
     }

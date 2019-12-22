@@ -164,6 +164,38 @@ export class ProfileService {
       });
     }
 
+    async changeProfilePicture(email, newPicture, password) {
+      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-school', {
+        email,
+        newPicture,
+        password
+      }).subscribe(data => {
+        if ( data === true ) {
+          console.log('Changing Resume...');
+          this.profilePicture.next(newPicture);
+          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
+         } else {
+          return console.log('Passwords dont match');
+        }
+      });
+    }
+
+    async changeResume(email, newResume, password) {
+      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-school', {
+        email,
+        newResume,
+        password
+      }).subscribe(data => {
+        if ( data === true ) {
+          console.log('Changing Resume...');
+          this.resume.next(newResume);
+          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
+         } else {
+          return console.log('Passwords dont match');
+        }
+      });
+    }
+
     // Delete User
   delete() {
     console.log('Deleted User');
