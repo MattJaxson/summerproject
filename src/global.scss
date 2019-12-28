@@ -25,39 +25,78 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+* {
+  font-family: "Arial";
+}
+
+ion-content {
+  margin-top: 20px;
+}
+
+ion-toolbar {
+  height: 100px;
+  --background: #005191;
+}
+
+ion-title {
+  --color: white;
+  margin-top: 10px;
+  font-size: 1em;
+}
+
 ion-button {
-  font-size: 0.6em;
+  font-size: 0.9em;
+  font-weight: 700;
   margin-bottom: 0px;
+  --border-radius: 5px;
   --box-shadow: none;
+}
+
+ion-item {
+  margin-bottom: 0px;
+  --padding-start: 20px;
+}
+
+ion-input {
+  --color: #005191;
+  --padding-start: 0px;
+  border: 2px solid #005191;
+  border-radius: 5px;
+  opacity: 0.3;
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+
+ion-input:focus {
+  border: 2px solid #005191;
+  opacity: 1;
 }
 
 ion-label {
   font-size: 0.6em;
 }
 
-.wrong-password{
-  --background:#FF4127;
-  --border-color:#852114;
-  --border-radius:1px;
-  --border-style:solid;
-  --border-width:2px;
-  --button-color:#FFDD00;
-  --color:#fff;
+.button-one {
+  width: 70%;
+  height: 50px;
 }
 
 #next-button{
   width: 100%;
   height: 60px;
-  background: lightgray;
+  color: #005191;
+  background: #FFB351;
   position: relative;
   bottom: 0;
   font-size: 1em;
+  font-weight: 700;
 }
 
 #cancel-button {
   --background: none;
   --color: red;
-  --opacity: 0.3;
+  --opacity: 0.9;
   --box-shadow:none;
   --color-activated: lightgray;
   --background-hover: none;
@@ -78,4 +117,10 @@ ion-label {
 
 p {
   font-size: 0.7em;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.7em;
+  margin-bottom: 20px;
 }

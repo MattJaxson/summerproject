@@ -15,9 +15,11 @@ import { Storage, IonicStorageModule } from '@ionic/storage';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 // For JWT
 export function jwtOptionsFactory(storage) {
@@ -56,6 +58,7 @@ export function jwtOptionsFactory(storage) {
     Camera,
     File,
     FilePath,
+    WebView,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

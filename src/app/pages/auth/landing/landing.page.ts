@@ -9,8 +9,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './landing.page.html',
   styleUrls: ['./landing.page.scss'],
 })
-export class LandingPage implements OnInit, OnDestroy {
+export class LandingPage implements OnInit {
   loginForm: FormGroup;
+
+  validationMessasges = {
+    email: [
+      { type: 'email', message: 'Must be a valid email address'}
+    ],
+    password: [
+      { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
+    ]
+  }
 
 
   constructor(
@@ -24,10 +33,15 @@ export class LandingPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['eddie@gmail.com', [Validators.required, Validators.email]],
-      password: ['eddie2', [Validators.required, Validators.minLength(5)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.compose([
+        Validators.minLength(6),
+        Validators.required,
+        // this is for the letters (both uppercase and lowercase) and numbers validation
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+     ])]
     });
-    this.wrongPasswordToast();
+    // this.wrongPasswordToast();
   }
 
   async presentLoading() {
@@ -50,13 +64,6 @@ export class LandingPage implements OnInit, OnDestroy {
       duration: 1500
     });
     toast.present();
-  }
-
-
-
-  ngOnDestroy() {
-    // this.auth.login().unsubscribe();
-    console.log('Unsubscribed from Registered User Observable');
   }
 
   login(data) {

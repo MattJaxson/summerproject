@@ -13,14 +13,11 @@
   </div>
   <p>Profile picture URL: </p>
   <p>{{profilePicture}}</p>
-  <ion-button (click)="getPhotoFromCamera()">
+  <ion-button (click)="selectImage()">
     Camera
-  </ion-button>
-  <ion-button (click)="getPhotoFromGallery()">
-    Gallery
   </ion-button>
   <ion-button class="skip-button" (click)="skip()">
       Skip
     </ion-button>
 </ion-content>
-<button (click)="goToUploadResumePage(profilePicture)" id="next-button">NEXT</button>
+<button (click)="goToUploadResumePage()" id="next-button">NEXT</button>

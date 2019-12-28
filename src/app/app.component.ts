@@ -32,7 +32,7 @@ export class AppComponent {
   initializeApp() {
     this.auth.checkToken();
     this.platform.ready().then(() => {
-      this.statusBar.backgroundColorByHexString('#319ecb');
+      this.statusBar.backgroundColorByHexString('#005191');
       // this.splashScreen.hide();
     });
 
