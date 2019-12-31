@@ -13,9 +13,6 @@ import 'zone.js/dist/zone-error';
 const ip = '10.0.1.8';
 const baseUrl = `http://${ip}:3000`;
 
-// const baseUrl = "http://192.168.0.18:3000";    //local host for DevApp
-// const baseUrl = "https://apidev.todoolie.com";    //local host for DevApp
-
 const url = baseUrl + '/api';    //local host
 
 export const environment = {

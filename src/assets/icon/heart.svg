@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>heart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Molecules-/-Job-Listing---Home-Page" transform="translate(-320.000000, -21.000000)" fill="#FF443B" fill-rule="nonzero" stroke="#FF443B" stroke-width="2">
+            <g id="Group-2">
+                <g id="Group">
+                    <g id="heart" transform="translate(321.000000, 22.000000)">
+                        <g id="InActive-Heart-Copy" transform="translate(0.038508, 0.037692)">
+                            <path d="M18.0238701,1.19427676 C15.8874179,-0.626386007 12.71003,-0.298900627 10.7490163,1.72449119 L9.98098514,2.51591419 L9.21295395,1.72449119 C7.25583894,-0.298900627 4.07455239,-0.626386007 1.93810015,1.19427676 C-0.510242928,3.28394538 -0.638897898,7.03443271 1.55213524,9.29953992 L9.09599489,17.0890136 C9.58332432,17.5919376 10.3747473,17.5919376 10.8620768,17.0890136 L18.4059364,9.29953992 C20.6008682,7.03443271 20.4722132,3.28394538 18.0238701,1.19427676 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

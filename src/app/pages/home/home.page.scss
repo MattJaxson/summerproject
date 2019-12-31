@@ -3,11 +3,19 @@
   overflow: hidden;
 }
 
-ion-header {
+ion-button {
+  color: white;
+  background: rgba(255,255,255, .5);
+  height: 45px;
+}
+
+ion-icon {
+  color: red;
+  font-size: 20px;
 }
 
 .job-section {
-  height: 100px;
+  height: 300px;
   background: none;
   color: #777;
   position: relative;
@@ -21,5 +29,4 @@ h6, p {
 
 --ion-buttons {
   --color: #888;
-  font-size:55px !important;
 }

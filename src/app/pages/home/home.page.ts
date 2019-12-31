@@ -1,95 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+
+import { JobsService } from '../../services/jobs.service';
+import { FavoritesService } from '../../services/favorites.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit {
-  private state: Observable<object>;
-  jobs = [
-    {
-      id: 1,
-      name: 'Web Developer Intern',
-      posted: '3 Days Ago',
-      companyName: 'Journi',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 2,
-      name: 'Teacher Assistant',
-      posted: '1 Days Ago',
-      companyName: 'DPS',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    },
-    {
-      id: 3,
-      name: 'Quicken Loans Event',
-      posted: 'Today',
-      companyName: 'Quicken Loans',
-      description: 'This is a description. I am putting a lot of text here just so that I know how much space I am working with for each description.'
-    }
-
-  ];
+export class HomePage implements OnInit, OnDestroy {
+  allJobs: any;
 
   constructor(
     private router: Router,
+    private jobServices: JobsService,
+    private favoritesServices: FavoritesService
   ) {}
 
   ngOnInit() {
+    this.jobServices.getJobs().subscribe( jobs => {
+      this.allJobs = Object.values(jobs);
+    });
+  }
+
+  ngOnDestroy() {
 
   }
 
@@ -102,6 +39,20 @@ export class HomePage implements OnInit {
 
   favoritesPage() {
     this.router.navigate(['/home/home/favorites']);
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.jobServices.getJobs().subscribe( jobs => {
+      this.allJobs = Object.values(jobs);
+      console.log(typeof this.allJobs);
+      console.log(this.allJobs);
+    });
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
 

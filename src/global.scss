@@ -29,6 +29,10 @@
   font-family: "Arial";
 }
 
+body {
+  background: white;
+}
+
 ion-content {
   margin-top: 20px;
 }
@@ -36,6 +40,10 @@ ion-content {
 ion-toolbar {
   height: 100px;
   --background: #005191;
+}
+
+ion-icon {
+  font-size: 20px;
 }
 
 ion-title {

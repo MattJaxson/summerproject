@@ -7,6 +7,8 @@ import { ToastController } from '@ionic/angular';
 import { Platform, AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
+
 
 
 
@@ -14,6 +16,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
+  BACKEND_URL = environment.url;
   activeEmail = '';
   user = {};
 
@@ -48,12 +51,12 @@ export class ProfileService {
 
     //  Gets User Details from Server to populate the Profile tab with User information.
    getUserDetails() {
-      return this.http.post('http://10.0.1.8:3000/api/home/profile', {email: this.activeEmail});
+      return this.http.post(`${this.BACKEND_URL}/api/home/profile`, {email: this.activeEmail});
   }
 
     changeEmail(activeEmail, newEmail, password) {
       // tslint:disable-next-line: max-line-length
-      return this.http.post('http://10.0.1.8:3000/api/home/profile/change-email', {
+      return this.http.post(`${this.BACKEND_URL}/api/home/profile/change-email`, {
         oldEmail: this.activeEmail,
         email: newEmail,
         password: password})
@@ -74,7 +77,7 @@ export class ProfileService {
     }
 
     async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {
-      return this.http.post('http://10.0.1.8:3000/api/home/profile/change-password', {
+      return this.http.post(`${this.BACKEND_URL}/api/home/profile/change-password`, {
         oldPassword,
         email: activeEmail,
         newPassword,
@@ -97,7 +100,7 @@ export class ProfileService {
     }
 
     async changePhone(email, newNumber, password) {
-      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-phone', {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-phone`, {
         newNumber,
         password,
         email
@@ -119,7 +122,7 @@ export class ProfileService {
     }
 
     async changeAddress(email, addressOne, addressTwo, city, state, zip, password) {
-      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-address', {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-address`, {
         email,
         addressOne,
         addressTwo,
@@ -148,7 +151,7 @@ export class ProfileService {
     }
 
     async changeSchool(email, newSchool, newGrade, password) {
-      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-school', {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
         email,
         newSchool,
         newGrade,
@@ -165,7 +168,7 @@ export class ProfileService {
     }
 
     async changeProfilePicture(email, newPicture, password) {
-      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-school', {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
         email,
         newPicture,
         password
@@ -173,7 +176,7 @@ export class ProfileService {
         if ( data === true ) {
           console.log('Changing Resume...');
           this.profilePicture.next(newPicture);
-          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
+          this.router.navigate([`/home/profile/change-school/:school/:grade/confirm`]);
          } else {
           return console.log('Passwords dont match');
         }
@@ -181,7 +184,7 @@ export class ProfileService {
     }
 
     async changeResume(email, newResume, password) {
-      return await this.http.post('http://10.0.1.8:3000/api/home/profile/change-school', {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
         email,
         newResume,
         password

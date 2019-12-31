@@ -144,7 +144,7 @@ async getEmailFromToken() {
 }
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
   sendEmailWithCode(code)  {
-    return this.http.post(`${this.BACKEND_URL}/login-credentials`, { code }, { responseType: 'text'}).subscribe();
+    return this.http.post(`${this.BACKEND_URL}/api/login-credentials`, { code }, { responseType: 'text'}).subscribe();
   }
 
   // Register User
