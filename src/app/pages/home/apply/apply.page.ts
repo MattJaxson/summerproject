@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { JobsService } from '../../../services/jobs.service';
+import { ProfileService } from '../../../services/profile.service';
+
+
 
 @Component({
   selector: 'app-apply',
@@ -7,15 +11,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./apply.page.scss'],
 })
 export class ApplyPage implements OnInit {
-  public jobId;
-  public jobName;
+
+  public jobTitle;
   public jobCompanyName;
-  public jobPosted;
-  public jobDescription;
+  public jobCompanyEmail;
+
+  user = null;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private jobs: JobsService,
+    private profile: ProfileService
   ) { }
 
   viewResume() {
@@ -33,31 +40,27 @@ export class ApplyPage implements OnInit {
   }
 
   finishApplication() {
-    // make into a asycn function
-    // post application to backend THEN
-    // sendConfirmationEmail() THEN
-    // navigate to confirmation page
+    this.jobs.sendEmailApplication(this.user).subscribe();
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/home/job-page/:id/:name/:posted/:companyName/:description/apply/:id/:name/:posted/:companyName/:description/apply-confirm', this.jobId, this.jobName, this.jobPosted, this.jobCompanyName, this.jobDescription ]);
+    this.router.navigate(['/home/home/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply/:title/:companyEmail/:companyName/apply-confirm/', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }
 
   ngOnInit() {
      // tslint:disable-next-line: radix
-     const id  = this.activatedRoute.snapshot.paramMap.get('id');
-     // tslint:disable-next-line: radix
-     const name  = this.activatedRoute.snapshot.paramMap.get('name');
-     // tslint:disable-next-line: radix
-     const posted  = this.activatedRoute.snapshot.paramMap.get('posted');
-     // tslint:disable-next-line: radix
+     const title  = this.activatedRoute.snapshot.paramMap.get('title');
      const companyName  = this.activatedRoute.snapshot.paramMap.get('companyName');
-      // tslint:disable-next-line: radix
-     const description  = this.activatedRoute.snapshot.paramMap.get('description');
+     const companyEmail  = this.activatedRoute.snapshot.paramMap.get('companyEmail');
 
-     this.jobId = id;
-     this.jobName = name;
-     this.jobPosted = posted;
+     this.jobTitle = title;
      this.jobCompanyName = companyName;
-     this.jobDescription = description;
+     this.jobCompanyEmail = companyEmail;
+
+     this.profile.getUserDetails().subscribe(data => {
+       this.user = data;
+       this.user.jobTitle = this.jobTitle;
+       this.user.jobCompanyName = this.jobCompanyName;
+       this.user.jobCompanyEmail = this.jobCompanyEmail;
+     });
 
   }
 

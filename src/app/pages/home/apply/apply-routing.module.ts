@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ApplyPage
   },
   {
-    path: 'apply-confirm/:id/:name/:posted/:companyName/:description',
+    path: 'apply-confirm/:title/:companyName/:companyEmail',
     loadChildren: () => import('../apply-confirm/apply-confirm.module').then( m => m.ApplyConfirmPageModule)
   }
 ];

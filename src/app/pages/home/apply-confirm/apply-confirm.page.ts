@@ -7,8 +7,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./apply-confirm.page.scss'],
 })
 export class ApplyConfirmPage implements OnInit {
-  public jobName;
+  public jobTitle;
   public jobCompanyName;
+  public jobCompanyEmail;
 
   constructor(
     private router: Router,
@@ -17,13 +18,16 @@ export class ApplyConfirmPage implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line: radix
-    const name  = this.activatedRoute.snapshot.paramMap.get('name');
+    const title  = this.activatedRoute.snapshot.paramMap.get('title');
     // tslint:disable-next-line: radix
     const companyName  = this.activatedRoute.snapshot.paramMap.get('companyName');
+    const companyEmail  = this.activatedRoute.snapshot.paramMap.get('companyEmail');
 
 
-    this.jobName = name;
+    this.jobTitle = title;
     this.jobCompanyName = companyName;
+    this.jobCompanyEmail = companyEmail;
+
   }
 
   backHome() {

@@ -31,9 +31,11 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   jobPage(job) {
+    console.log(job);
     console.log('Going to specific Job Page');
     // state object after url has to be an object for navigate()
-    this.router.navigate(['/home/home/job-page', job.id, job.name, job.posted, job.companyName, job.description]);
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate(['/home/home/job-page', job._id, job.title, job.companyName, job.companyEmail, job.summary, job.fullJobDescription, job.rateOfPay]);
     console.log(job.name);
   }
 

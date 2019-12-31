@@ -33,8 +33,8 @@ export class LandingPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.compose([
+      email: ['eddie@gmail.com', [Validators.required, Validators.email]],
+      password: ['eddie2', Validators.compose([
         Validators.minLength(6),
         Validators.required,
         // this is for the letters (both uppercase and lowercase) and numbers validation
@@ -47,7 +47,7 @@ export class LandingPage implements OnInit {
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Logging in...',
-      duration: 2000
+      duration: 1000
     });
     await loading.present();
 

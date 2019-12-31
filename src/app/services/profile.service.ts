@@ -51,12 +51,12 @@ export class ProfileService {
 
     //  Gets User Details from Server to populate the Profile tab with User information.
    getUserDetails() {
-      return this.http.post(`${this.BACKEND_URL}/api/home/profile`, {email: this.activeEmail});
+      return this.http.post(`${this.BACKEND_URL}/api/home/user`, {email: this.activeEmail});
   }
 
     changeEmail(activeEmail, newEmail, password) {
       // tslint:disable-next-line: max-line-length
-      return this.http.post(`${this.BACKEND_URL}/api/home/profile/change-email`, {
+      return this.http.post(`${this.BACKEND_URL}/api/home/user/change-email`, {
         oldEmail: this.activeEmail,
         email: newEmail,
         password: password})
@@ -64,7 +64,7 @@ export class ProfileService {
             if ( data === true ) {
               this.email.next(newEmail);
               this.activeEmail = newEmail;
-              this.router.navigate(['/home/profile']);
+              this.router.navigate(['/home/user']);
               let toast = this.toastController.create({
                 message: `You have changed your email address to ${this.activeEmail}.`,
                 duration: 3000
@@ -77,7 +77,7 @@ export class ProfileService {
     }
 
     async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {
-      return this.http.post(`${this.BACKEND_URL}/api/home/profile/change-password`, {
+      return this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
         oldPassword,
         email: activeEmail,
         newPassword,
@@ -100,7 +100,7 @@ export class ProfileService {
     }
 
     async changePhone(email, newNumber, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-phone`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-phone`, {
         newNumber,
         password,
         email
@@ -109,7 +109,7 @@ export class ProfileService {
         if ( data === true ) {
           console.log('Changing phone number...');
           this.phone.next(newNumber);
-          this.router.navigate(['/home/profile']);
+          this.router.navigate(['/home/user']);
           const toast = this.toastController.create({
             message: `Phone Number changed to ${newNumber}`,
             duration: 3000
@@ -122,7 +122,7 @@ export class ProfileService {
     }
 
     async changeAddress(email, addressOne, addressTwo, city, state, zip, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-address`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-address`, {
         email,
         addressOne,
         addressTwo,
@@ -137,7 +137,7 @@ export class ProfileService {
           this.city.next(city);
           this.state.next(state);
           this.zip.next(zip);
-          this.router.navigate(['/home/profile/change-address/:addressOne/:addressTwo/:city/:state/:zip/confirm']);
+          this.router.navigate(['/home/user/change-address/:addressOne/:addressTwo/:city/:state/:zip/confirm']);
           let toast = this.toastController.create({
             // tslint:disable-next-line: max-line-length
             message: `You have changed your address to ${addressOne} ${addressTwo} ,${city}, ${state}, ${zip}.`,
@@ -151,7 +151,7 @@ export class ProfileService {
     }
 
     async changeSchool(email, newSchool, newGrade, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
         email,
         newSchool,
         newGrade,
@@ -160,7 +160,7 @@ export class ProfileService {
         if ( data === true ) {
           this.school.next(newSchool);
           this.grade.next(newGrade);
-          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
+          this.router.navigate(['/home/user/change-school/:school/:grade/confirm']);
          } else {
           return console.log('Passwords dont match');
         }
@@ -168,7 +168,7 @@ export class ProfileService {
     }
 
     async changeProfilePicture(email, newPicture, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
         email,
         newPicture,
         password
@@ -176,7 +176,7 @@ export class ProfileService {
         if ( data === true ) {
           console.log('Changing Resume...');
           this.profilePicture.next(newPicture);
-          this.router.navigate([`/home/profile/change-school/:school/:grade/confirm`]);
+          this.router.navigate([`/home/user/change-school/:school/:grade/confirm`]);
          } else {
           return console.log('Passwords dont match');
         }
@@ -184,7 +184,7 @@ export class ProfileService {
     }
 
     async changeResume(email, newResume, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/profile/change-school`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
         email,
         newResume,
         password
@@ -192,7 +192,7 @@ export class ProfileService {
         if ( data === true ) {
           console.log('Changing Resume...');
           this.resume.next(newResume);
-          this.router.navigate(['/home/profile/change-school/:school/:grade/confirm']);
+          this.router.navigate(['/home/user/change-school/:school/:grade/confirm']);
          } else {
           return console.log('Passwords dont match');
         }

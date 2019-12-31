@@ -13,10 +13,13 @@ import { ToastController } from '@ionic/angular';
 export class JobPagePage implements OnInit {
   // The state of the job page with details from selecting a specific job from the home page.
   public jobId;
-  public jobName;
+  public jobTitle;
   public jobCompanyName;
-  public jobPosted;
-  public jobDescription;
+  public jobCompanyEmail;
+  // public jobPosted;
+  public jobSummary;
+  public jobFullJobDescription;
+  public jobRateOfPay;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,7 +29,7 @@ export class JobPagePage implements OnInit {
 
   applyForJob() {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/home/job-page/:id/:name/:posted/:companyName/:description/apply',  this.jobId, this.jobName, this.jobPosted, this.jobCompanyName, this.jobDescription ]);
+    this.router.navigate(['/home/home/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }
 
   favoriteThisJob() {
@@ -46,21 +49,26 @@ export class JobPagePage implements OnInit {
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
     // tslint:disable-next-line: radix
-    const name  = this.activatedRoute.snapshot.paramMap.get('name');
-    // tslint:disable-next-line: radix
-    const posted  = this.activatedRoute.snapshot.paramMap.get('posted');
+    const title  = this.activatedRoute.snapshot.paramMap.get('title');
     // tslint:disable-next-line: radix
     const companyName  = this.activatedRoute.snapshot.paramMap.get('companyName');
+    // tslint:disable-next-line: radix
+    const companyEmail  = this.activatedRoute.snapshot.paramMap.get('companyEmail');
      // tslint:disable-next-line: radix
-    const description  = this.activatedRoute.snapshot.paramMap.get('description');
+    const summary  = this.activatedRoute.snapshot.paramMap.get('summary');
+     // tslint:disable-next-line: radix
+    const fullJobDescription  = this.activatedRoute.snapshot.paramMap.get('fullJobDescription');
+      // tslint:disable-next-line: radix
+    const rateOfPay  = this.activatedRoute.snapshot.paramMap.get('rateOfPay');
 
     this.jobId = id;
-    this.jobName = name;
-    this.jobPosted = posted;
+    this.jobTitle = title;
+    // this.jobPosted = posted;
     this.jobCompanyName = companyName;
-    this.jobDescription = description;
-
-    console.log(this.jobName);
+    this.jobCompanyEmail = companyEmail;
+    this.jobSummary = summary;
+    this.jobFullJobDescription = fullJobDescription;
+    this.jobRateOfPay = rateOfPay;
   }
 
 
