@@ -77,14 +77,14 @@ export class ProfileService {
     }
 
     async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {
-      return this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
         oldPassword,
         email: activeEmail,
         newPassword,
         reTypeNewPassword
       })
         .subscribe( data => {
-          // if the passwords match, navigate back to landing page?>::,.,
+          // if the passwords match, navigate back to landing page
           if ( data === true ) {
             console.log('TRUE');
             this.router.navigate(['']);

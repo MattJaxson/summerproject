@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>enter-code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed>
+        <ion-row>
+          <ion-col size="10" offset="1">
+            <h6>Please enter code that was sent to {{userEmail}}</h6>
+            <form [formGroup]="enterCodeForm" (ngSubmit)="newPasswordPage(this.enterCodeForm.value)">
+              <ion-item>
+                <ion-input formControlName="code" type="text" placeholder="Enter Code"></ion-input>
+              </ion-item>
+
+              <button type="submit" id="next-button">ENTER CODE</button>
+
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-content>

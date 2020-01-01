@@ -13,21 +13,33 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class HomePage implements OnInit, OnDestroy {
   allJobs: any;
+  favsAmount;
 
   constructor(
     private router: Router,
     private jobServices: JobsService,
-    private favoritesServices: FavoritesService
+    private favorites: FavoritesService
   ) {}
 
   ngOnInit() {
     this.jobServices.getJobs().subscribe( jobs => {
       this.allJobs = Object.values(jobs);
     });
+
+    this.getFavoritesAmount();
   }
 
   ngOnDestroy() {
 
+  }
+
+  getFavoritesAmount() {
+    this.favorites.favoriteJobs$.subscribe(
+      favs => {
+        console.log(favs.length);
+        this.favsAmount = favs.length;
+      }
+    );
   }
 
   jobPage(job) {

@@ -109,11 +109,6 @@ getLoginCredentials(data) {
 
 }
 
-// When user hits Cancel, or when they complete the sign up.
-clearUserInfo() {
-
-}
-
  // looks up our storage for a valid JWT and if found, changes our authenticationState
  async checkToken() {
   this.storage.get(this.TOKEN_KEY).then(token => {
@@ -133,6 +128,11 @@ clearUserInfo() {
   });
 }
 
+async checkIfUserExits(email) {
+  return this.http.post(`${this.BACKEND_URL}/api/admin/students`, {email})
+    .subscribe();
+}
+
 async getEmailFromToken() {
   this.storage.get(this.TOKEN_KEY).then(token => {
     if (token) {
@@ -145,6 +145,10 @@ async getEmailFromToken() {
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
   sendEmailWithCode(code)  {
     return this.http.post(`${this.BACKEND_URL}/api/login-credentials`, { code }, { responseType: 'text'}).subscribe();
+  }
+
+  sendEmailWithCodeForgotPassword(code, email)  {
+    return this.http.post(`${this.BACKEND_URL}/api/login-credentials/forgot-password`, { code, email } ).subscribe();
   }
 
   // Register User

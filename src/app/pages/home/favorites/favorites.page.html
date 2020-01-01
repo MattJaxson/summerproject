@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>favorites</ion-title>
+    <ion-title>Favorite Jobs</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+      <ion-item *ngFor="let job of favoriteJobs" (click)="favoriteJobPage(job)">
+        <ion-row class="job-section">
+          <ion-col size="11" offset="0.5">
+              <ion-icon style="float: right;" src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+              <h5>{{job.title}}</h5>
+              <h6>{{job.companyName}}</h6>
+              <h6 style="font-size: 0.8em; opacity: 0.5;">{{job.summary}}</h6>
+          </ion-col>
+          <ion-col size="2">
+              <h6 style="font-size: 0.4em; opacity: 0.5; float: right;">{{job.posted}}</h6>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
 </ion-content>

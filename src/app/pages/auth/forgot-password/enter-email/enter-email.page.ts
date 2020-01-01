@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-enter-email',
@@ -8,22 +10,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./enter-email.page.scss'],
 })
 export class EnterEmailPage implements OnInit {
-  forgotPassword: FormGroup;
+  forgotPasswordForm: FormGroup;
+  code = '';
+
+  validationMessasges = {
+    email: [
+      { type: 'email', message: 'This email address doesnt exist'}
+    ]
+  };
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit() {
-    this.forgotPassword =  this.formBuilder.group({
-      email: ['', Validators.required]
+    this.forgotPasswordForm =  this.formBuilder.group({
+      email: ['eddielacrosse2@gmail.com', Validators.required]
     });
+
   }
 
-  goToNewPasswordPage() {
+  async goToEnterCodePage(email) {
     console.log('Going to Enter Code Page');
-    this.router.navigate(['/enter-email/new-password']);
-  }
+    // check if user exists, then navigate
+    await this.auth.checkIfUserExits(email);
+    await this.router.navigate(['/enter-email/enter-code/', email]);
+ }
 
   cancel() {
     console.log('Forgotten password cancelled');

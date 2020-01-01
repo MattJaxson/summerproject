@@ -12,8 +12,8 @@ const routes: Routes = [
 
   //  to new password page
   {
-    path: 'new-password',
-    loadChildren: () => import('../../forgot-password/new-password/new-password.module').then(m => m.NewPasswordPageModule)
+    path: 'enter-code/:email',
+    loadChildren: () => import('../../forgot-password/enter-code/enter-code.module').then(m => m.EnterCodePageModule)
   }
 ];
 

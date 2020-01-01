@@ -46,7 +46,6 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
 
   cancel() {
     console.log('Sign up cancelled');
-    this.auth.clearUserInfo();
     this.router.navigate(['']);
   }
 

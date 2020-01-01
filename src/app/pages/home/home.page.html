@@ -3,8 +3,8 @@
   <ion-toolbar>
       <ion-buttons slot="end">
         <ion-button (click)="favoritesPage()">
-            <ion-icon src="../../src/assets/icon/heart.svg"></ion-icon>
-          (0)</ion-button>
+            <ion-icon src="../../../assets/icon/heart.svg"></ion-icon>
+          {{favsAmount}}</ion-button>
       </ion-buttons>
     <ion-title>Home</ion-title>
 
@@ -21,15 +21,17 @@
         <!-- Searchbar with cancel button always shown -->
         <ion-searchbar showCancelButton="false"></ion-searchbar>
           <ion-list>
-              <ion-item *ngFor="let job of allJobs" (click)="jobPage(job)">
+              <ion-item *ngFor="let job of allJobs" >
                 <ion-row class="job-section">
-                  <ion-col size="10">
+                  <ion-col size="11" offset="0.5" (click)="jobPage(job)">
                       <h5>{{job.title}}</h5>
                       <h6>{{job.companyName}}</h6>
                       <h6 style="font-size: 0.8em; opacity: 0.5;">{{job.summary}}</h6>
-                  </ion-col>
-                  <ion-col size="2">
                       <h6 style="font-size: 0.4em; opacity: 0.5; float: right;">{{job.posted}}</h6>
+                  </ion-col>
+                  <ion-col size="11" style="height: 45px; margin-bottom: 20px;">
+                      <!-- Heart Icon Component holds the state for Favorites -->
+                      <app-heart-icon [job]="job"></app-heart-icon>
                   </ion-col>
                 </ion-row>
               </ion-item>

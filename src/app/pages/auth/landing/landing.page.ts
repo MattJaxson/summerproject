@@ -17,9 +17,10 @@ export class LandingPage implements OnInit {
       { type: 'email', message: 'Must be a valid email address'}
     ],
     password: [
+      // tslint:disable-next-line: max-line-length
       { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
     ]
-  }
+  };
 
 
   constructor(
@@ -33,7 +34,7 @@ export class LandingPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['eddie@gmail.com', [Validators.required, Validators.email]],
+      email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
       password: ['eddie2', Validators.compose([
         Validators.minLength(6),
         Validators.required,

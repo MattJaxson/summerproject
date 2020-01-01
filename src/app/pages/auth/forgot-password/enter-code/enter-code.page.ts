@@ -27,8 +27,7 @@ export class EnterCodePage implements OnInit {
     this.userEmail = this.activatedRoute.snapshot.paramMap.get('email');
 
     this.generateCode(6).then(code => {
-      console.log(`Sent Email to ${this.userEmail}`);
-      this.auth.sendEmailWithCode(code);
+      this.auth.sendEmailWithCodeForgotPassword(code, this.userEmail);
     });
 
   }
@@ -45,27 +44,25 @@ export class EnterCodePage implements OnInit {
     return this.code = result;
  }
 
- async sendNewCode() {
-  this.generateCode(6).then(code => {
-    console.log('Data: ' + code);
-    this.auth.sendEmailWithCode(code);
-  });
- }
+//  async sendNewCode() {
+//   this.generateCode(6).then(code => {
+//     console.log('Data: ' + code);
+//     this.auth.sendEmailWithCodeForgotPassword(code);
+//   });
+//  }
 
   newPasswordPage() {
     if (this.enterCodeForm.controls.code.value !== this.code) {
+      // Throw error here? Toast maybe?
       console.log('Codes do not match');
     } else {
-      // Save user to database
-      this.auth.register();
-      console.log('Going to thank you page');
-      this.router.navigate(['/enter-email/enter-code/new-password']);
+      console.log('Codes matched');
+      this.router.navigate(['/enter-email/enter-code/:email/new-password', this.userEmail]);
     }
   }
 
   cancel() {
-    console.log('Sign up cancelled');
-    this.auth.clearUserInfo();
+    console.log('Forgot password cancelled');
     this.router.navigate(['']);
   }
 

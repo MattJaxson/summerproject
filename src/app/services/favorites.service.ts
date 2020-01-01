@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class FavoritesService {
-  BACKEND_URL = environment.url;
+  favoriteJobs$ = new BehaviorSubject(['']);
 
   constructor(
     private http: HttpClient
@@ -15,7 +16,25 @@ export class FavoritesService {
 
   getFavorites() {
     console.log('Getting Favorites');
-    // return this.http.get(`${this.BACKEND_URL}/api/admin/jobs`);
+  }
+
+  favoriteThisJob(job) {
+    console.log('Favoriting this Job');
+    this.favoriteJobs$.next(job);
+    this.favoriteJobs$.subscribe(jobs => {
+      console.log(jobs);
+    });
+  }
+
+  unFavoriteThisJob(job) {
+    let value = this.favoriteJobs$.getValue();
+    if (value === job ) {
+      console.log('value = job');
+      job = Object.values(job);
+      console.log(job);
+    }
+    console.log(value);
+    console.log('Unfavoriting this Job');
   }
 }
 

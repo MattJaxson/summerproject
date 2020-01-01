@@ -3,8 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../../services/jobs.service';
 import { ProfileService } from '../../../services/profile.service';
 
-
-
 @Component({
   selector: 'app-apply',
   templateUrl: './apply.page.html',

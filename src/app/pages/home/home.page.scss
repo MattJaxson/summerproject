@@ -1,21 +1,24 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-header {
+  height: 80px;
 }
 
 ion-button {
   color: white;
   background: rgba(255,255,255, .5);
   height: 45px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 ion-icon {
   color: red;
   font-size: 20px;
+  position: relative;
+  right: 5px;
 }
 
 .job-section {
-  height: 300px;
+  height: 230px;
   background: none;
   color: #777;
   position: relative;
