@@ -79,6 +79,11 @@ ion-input {
   font-size: 1em;
 }
 
+ion-textarea {
+  --border-radius: 10px;
+  border: 2px solid #005191;
+}
+
 
 ion-input:focus {
   border: 2px solid #005191;

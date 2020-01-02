@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>Contact-Mentor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-text-center">
+      <ion-col size="11" offset="0.5">
+          <p style="font-size: 1em;">Have a question for a Mentor? Send them an email!</p>
+          <ion-item>
+              <ion-textarea
+              placeholder="Your message goes here"
+              rows="25"
+              autogrow="true"
+              required
+              spellcheck="true"></ion-textarea>
+            </ion-item></ion-col>
+      <ion-col size="6">
+          <ion-button (click)="confirm()">
+              Send
+            </ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

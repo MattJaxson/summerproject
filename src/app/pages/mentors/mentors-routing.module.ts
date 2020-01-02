@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MentorsPage
+  },
+  {
+    path: 'mentor-page',
+    loadChildren: () => import('./mentor-page/mentor-page.module').then( m => m.MentorPagePageModule)
   }
 ];
 
