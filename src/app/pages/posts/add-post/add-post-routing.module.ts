@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AddPostPage
+  },
+  {
+    path: 'verification',
+    loadChildren: () => import('./verification/verification.module').then( m => m.VerificationPageModule)
   }
 ];
 

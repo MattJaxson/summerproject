@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-post',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPostPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  post() {
+    this.router.navigate(['home/posts/add-post/verification']);
   }
 
 }
