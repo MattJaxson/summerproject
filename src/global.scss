@@ -51,12 +51,13 @@ ion-title {
   font-size: 1em;
 }
 
-ion-button {
+ion-buttons > ion-button {
   font-size: 0.9em;
   font-weight: 700;
   margin-bottom: 0px;
   --border-radius: 5px;
   --box-shadow: none;
+  --color: white;
 }
 
 ion-back-button {

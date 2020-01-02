@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-posts',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class PostsPage {
 
-  constructor() {}
+  constructor(
+  private router: Router
+  ) {}
+
+  addPost() {
+    this.router.navigate(['/home/posts/add-post']);
+  }
+
+  postPage() {
+    this.router.navigate(['/home/posts/post-page']);
+  }
+
+  following() {
+    this.router.navigate(['/home/posts/following']);
+  }
+
 
 }
