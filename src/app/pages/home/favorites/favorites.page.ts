@@ -16,7 +16,7 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit() {
     this.favorites.favoriteJobs$.subscribe(favorites => {
-      this.favoriteJobs = favorites;
+      this.favoriteJobs = Object.values(favorites);
     });
   }
 

@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'enter-code',
     loadChildren: () => import('./pages/auth/forgot-password/enter-code/enter-code.module').then( m => m.EnterCodePageModule)
   },
+  {
+    path: 'events',
+    loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+  },
+  {
+    path: 'mentors',
+    loadChildren: () => import('./pages/mentors/mentors.module').then( m => m.MentorsPageModule)
+  },
 ];
 @NgModule({
   imports: [

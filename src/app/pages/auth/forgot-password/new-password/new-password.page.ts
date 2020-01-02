@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ToastController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
@@ -25,7 +26,8 @@ export class NewPasswordPage implements OnInit {
     private router: Router,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private toast: ToastController) { }
 
   ngOnInit() {
     this.newPasswordForm =  this.formBuilder.group({
@@ -69,7 +71,7 @@ export class NewPasswordPage implements OnInit {
               if ( data === true ) {
                 console.log('TRUE');
                 this.router.navigate(['']);
-                let toast = this.toastController.create({
+                let toast = this.toast.create({
                   message: 'Please login with your new Password',
                   duration: 3000
                 });

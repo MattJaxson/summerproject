@@ -4,6 +4,8 @@ import { filter, map } from 'rxjs/operators';
 
 import { JobsService } from '../../services/jobs.service';
 import { FavoritesService } from '../../services/favorites.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -13,34 +15,49 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class HomePage implements OnInit, OnDestroy {
   allJobs: any;
-  favsAmount;
+  favoriteJobs;
+  favoriteJobsAmount;
+  favorited = 'favorited';
+  unfavorited = 'unfavorited';
 
   constructor(
     private router: Router,
     private jobServices: JobsService,
-    private favorites: FavoritesService
+    private favorites: FavoritesService,
+    private profile: ProfileService
   ) {}
 
   ngOnInit() {
+    // Get all the jobs t be viewed on the home page
     this.jobServices.getJobs().subscribe( jobs => {
       this.allJobs = Object.values(jobs);
     });
 
-    this.getFavoritesAmount();
+    // getting all the favorite jobs that the user has on their profile
+    this.profile.getUserDetails().subscribe(
+      data => {this.favoriteJobs = data.favoriteJobs });
+
+    this.favorites.favoriteJobs$.next(this.favoriteJobs);
+    this.favorites.favoriteJobs$.subscribe(
+      favs => {
+        this.favoriteJobs = favs;
+        // this.favoriteJobsAmount = Object.values(favs).length;
+      }
+    );
   }
 
   ngOnDestroy() {
 
   }
 
-  getFavoritesAmount() {
-    this.favorites.favoriteJobs$.subscribe(
-      favs => {
-        console.log(favs.length);
-        this.favsAmount = favs.length;
-      }
-    );
-  }
+  // getFavoritesAmount() {
+  //   this.favorites.favoriteJobs$.subscribe(
+  //     favs => {
+  //       console.log(favs.length);
+  //       this.favsAmount = favs.length;
+  //     }
+  //   );
+  // }
 
   jobPage(job) {
     console.log(job);

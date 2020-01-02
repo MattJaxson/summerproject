@@ -38,7 +38,6 @@ export class UploadResumePage implements OnInit {
   }
 
   cancel() {
-    this.auth.clearUserInfo();
     console.log('Sign up cancelled');
     this.router.navigate(['']);
   }

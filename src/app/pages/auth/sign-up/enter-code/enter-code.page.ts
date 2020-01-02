@@ -65,7 +65,6 @@ export class EnterCodePage implements OnInit {
 
   cancel() {
     console.log('Sign up cancelled');
-    this.auth.clearUserInfo();
     this.router.navigate(['']);
   }
 

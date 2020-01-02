@@ -28,12 +28,12 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class HeartIconComponent implements OnInit {
 
-  public favoriteState = 'unfavorited';
+  favoriteState = 'unfavorited';
   public iconName = 'heart-empty';
   @Input() job;
 
   constructor(
-    private favorite: FavoritesService
+    private favorites: FavoritesService
   ) { }
 
   ngOnInit() {}
@@ -44,13 +44,13 @@ export class HeartIconComponent implements OnInit {
 
       this.favoriteState = 'favorited';
       this.iconName = 'heart';
-      this.favorite.favoriteThisJob(this.job);
+      this.favorites.favoriteThisJob(this.job);
 
     } else {
 
       this.favoriteState = 'unfavorited';
       this.iconName = 'heart-empty';
-      this.favorite.unFavoriteThisJob(this.job);
+      this.favorites.unFavoriteThisJob(this.job);
 
     }
 
