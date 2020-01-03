@@ -29,7 +29,7 @@ export class JobPagePage implements OnInit {
 
   applyForJob() {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/home/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
+    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }
 
   favoriteThisJob() {

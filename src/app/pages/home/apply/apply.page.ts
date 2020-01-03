@@ -40,7 +40,7 @@ export class ApplyPage implements OnInit {
   finishApplication() {
     this.jobs.sendEmailApplication(this.user).subscribe();
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/home/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply/:title/:companyEmail/:companyName/apply-confirm/', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
+    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply/:title/:companyEmail/:companyName/apply-confirm/', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }
 
   ngOnInit() {
