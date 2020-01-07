@@ -9,7 +9,7 @@ const routes: Routes = [
     component: EventsPage
   },
   {
-    path: 'events-page',
+    path: 'events-page/:id/:title/:organizer/:location/:date/:description/:photo',
     loadChildren: () => import('./events-page/events-page.module').then( m => m.EventsPagePageModule)
   },
   {

@@ -11,15 +11,14 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./job-page.page.scss'],
 })
 export class JobPagePage implements OnInit {
-  // The state of the job page with details from selecting a specific job from the home page.
-  public jobId;
-  public jobTitle;
-  public jobCompanyName;
-  public jobCompanyEmail;
-  // public jobPosted;
-  public jobSummary;
-  public jobFullJobDescription;
-  public jobRateOfPay;
+
+  jobId;
+  jobTitle;
+  jobCompanyName;
+  jobCompanyEmail;
+  jobSummary;
+  jobFullJobDescription;
+  jobRateOfPay;
 
   constructor(
     private activatedRoute: ActivatedRoute,

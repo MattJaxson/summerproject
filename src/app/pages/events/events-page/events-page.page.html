@@ -21,12 +21,12 @@
             </ion-toolbar>
             <p>Pictures or Flyers</p>
           </ion-col>
-          <ion-col style= "background: lightgrey; height: 100px" size="12">
-            <p style="float: right">3 days ago</p>
-            <p>Title: </p>
-            <p>Datetime: </p>
-            <p>Location: </p>
-            <p>Who: </p>
+          <ion-col style= "background: lightgrey; height: auto; padding: 20px;" size="12">
+              <p style="float: right">posted _ days ago</p>
+              <p>Who: {{ eventOrganizer }} </p>
+              <p>Title: {{ eventTitle }} </p>
+              <p>Datetime: {{ eventDate }} </p>
+              <p>Location: {{ eventLocation }} </p>
           </ion-col>
         </ion-row>
       </ion-grid>
