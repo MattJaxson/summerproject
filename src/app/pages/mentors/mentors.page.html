@@ -6,18 +6,14 @@
 
 <ion-content>
   <ion-grid fixed>
-    <ion-row (click)="mentorPage()" style=" margin-top: 20px;">
+    <ion-row *ngFor="let mentor of allMentors" (click)="mentorPage(mentor)" style=" margin-top: 20px;">
         <ion-col size="2" offset="0.5">
             <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
               <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
           </ion-col>
           <ion-col size="7">
-              <h6>Name</h6>
-          </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col size="11" offset="0.5">
-            <p>Summary of Mentor</p>
+              <h6>{{mentor.name}}</h6>
+              <p>{{mentor.title}}</p>
           </ion-col>
     </ion-row>
   </ion-grid>

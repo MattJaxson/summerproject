@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MentorsService } from '../../services/mentor.service';
 
 @Component({
   selector: 'app-mentors',
@@ -8,15 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./mentors.page.scss'],
 })
 export class MentorsPage implements OnInit {
+  allMentors;
 
   constructor(
-    private router: Router) { }
+    private router: Router,
+    private mentors: MentorsService) { }
 
   ngOnInit() {
+    this.mentors.getMentors().subscribe(
+      mentors => {
+        this.allMentors = mentors;
+      }
+    );
   }
 
-  mentorPage() {
-    this.router.navigate(['/home/mentors/mentor-page']);
+  mentorPage(mentor) {
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate(['/home/mentors/mentor-page', mentor.name, mentor.title, mentor.email, mentor.description, mentor.photo, mentor.city, mentor.state]);
   }
 
 }

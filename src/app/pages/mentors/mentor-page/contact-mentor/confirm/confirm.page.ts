@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
 export class ConfirmPage implements OnInit {
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.router.navigate(['/home/mentors']);
-    }, 3000);
+    }, 5000);
   }
 
 }

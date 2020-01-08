@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-    <ion-title>Mentor Name</ion-title>
+    <ion-title>Mentor</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,15 +12,20 @@
         <ion-row style=" margin-top: 20px;">
             <ion-col size="2" offset="0.5">
                 <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
-                  <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
+                  <!-- <ion-img [src]="{{mentorPhoto}}" style="background: #999; border-radius: 100px;"></ion-img> -->
               </ion-col>
               <ion-col size="7">
-                  <h6>Name</h6>
+    <ion-title></ion-title>
+    <ion-title></ion-title>
+                  <h6>{{mentorName}}</h6>
+                  <p>{{mentorTitle}}</p>
+                  <p>{{mentorCity}}, {{mentorState}}</p>
+                  <p>{{mentorEmail}}</p>
               </ion-col>
         </ion-row>
         <ion-row>
             <ion-col size="11" offset="0.5">
-                <p>Summary of Mentor & Description of Mentor</p>
+                <p>{{mentorDescription}}</p>
               </ion-col>
         </ion-row>
 

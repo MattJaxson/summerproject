@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MentorPagePage
   },
   {
-    path: 'contact-mentor',
+    path: 'contact-mentor/:name/:email',
     loadChildren: () => import('./contact-mentor/contact-mentor.module').then( m => m.ContactMentorPageModule)
   }
 ];

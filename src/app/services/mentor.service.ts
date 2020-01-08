@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 
-export class JobsService {
+export class MentorsService {
   BACKEND_URL = environment.url;
 
   constructor(
@@ -15,13 +15,39 @@ export class JobsService {
 
   getMentors() {
     console.log('Getting Jobs');
-    return this.http.get(`${this.BACKEND_URL}/api/admin/mentors`);
+    return this.http.get(`${this.BACKEND_URL}/api/mentors`);
   }
 
-  sendMentorAnEmail(user) {
-    console.log(user);
-    console.log(`Sending email to ${user.jobCompanyEmail}`);
-    return this.http.post(`${this.BACKEND_URL}/api/mentors`, user);
+  sendMentorAnEmail(
+    message,
+    mentorName,
+    mentorEmail,
+    studentEmail,
+    studentName,
+    studentCity,
+    studentState,
+    studentAge,
+    studentGrade,
+    studentSchool,
+    studentProfilePic,
+    studentResume
+  ) {
+
+    console.log(`Sending email to ${mentorEmail}`);
+    return this.http.post(`${this.BACKEND_URL}/api/mentors/mentor-message`, {
+      message,
+      mentorName,
+      mentorEmail,
+      studentEmail,
+      studentName,
+      studentCity,
+      studentState,
+      studentAge,
+      studentGrade,
+      studentSchool,
+      studentProfilePic,
+      studentResume
+    });
   }
 }
 

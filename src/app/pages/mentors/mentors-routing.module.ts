@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MentorsPage
   },
   {
-    path: 'mentor-page',
+    path: 'mentor-page/:name/:title/:email/:description/:photo/:city/:state',
     loadChildren: () => import('./mentor-page/mentor-page.module').then( m => m.MentorPagePageModule)
   }
 ];
