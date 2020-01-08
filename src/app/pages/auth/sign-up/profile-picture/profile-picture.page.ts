@@ -27,7 +27,7 @@ export class ProfilePicturePage implements OnInit {
   //  Maybe I need to notify the server that this user didnt upload a profile picture?
 
   // Image of camera that is compatible with HTML
-  profilePicture = '';
+  profilePicture = {};
   BACKEND_URL = environment.url;
 
 

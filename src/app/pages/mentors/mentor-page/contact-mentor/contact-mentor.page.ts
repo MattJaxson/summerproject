@@ -69,14 +69,14 @@ export class ContactMentorPage implements OnInit {
   userDetails() {
     this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
-      this.userName = details.fullName;
-      this.userCity = details.city;
-      this.userState = details.state;
-      this.userAge = details.age;
-      this.userGrade = details.grade;
-      this.userSchool = details.school;
-      this.userProfilePicture = details.profilePicture;
-      this.userResume = details.resume;
+      this.userName = details['fullName'];
+      this.userCity = details['city'];
+      this.userState = details['state'];
+      this.userAge = details['age'];
+      this.userGrade = details['grade'];
+      this.userSchool = details['school'];
+      this.userProfilePicture = details['profilePicture'];
+      this.userResume = details['resume'];
     });
   }
 

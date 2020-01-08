@@ -11,7 +11,7 @@ import { AuthService } from '../../../../services/auth.service';
 export class LoginCredentialsPage implements OnInit {
   credentialsForm: FormGroup;
   code = '';
-  email = '';
+  email;
 
   constructor(
     private router: Router,
@@ -21,19 +21,18 @@ export class LoginCredentialsPage implements OnInit {
 
   ngOnInit() {
     this.credentialsForm = this.formBuilder.group({
-      email: ['eddielacrosse2@gmail.com', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
       reTypePassword: ['', Validators.required]
     });
 
-    this.email = this.credentialsForm.controls.email.value;
-    console.log('this email: ' + this.email);
   }
 
 
 
   enterCodePage(data) {
-    this.auth.getLoginCredentials(this.credentialsForm.value);
+    this.email = this.credentialsForm.controls.email.value;
+    this.auth.getLoginCredentials(data);
     console.log('Going to Enter Code Page');
     this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
   }

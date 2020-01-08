@@ -44,50 +44,21 @@ export class NewPasswordPage implements OnInit {
 
   async goToConfirmPage() {
     const email = this.userEmail;
-    let password;
     let newPassword = this.newPasswordForm.value.newPassword;
     let reTypeNewPassword = this.newPasswordForm.value.newPassword;
 
-    // check if passwords match
     if (newPassword !== reTypeNewPassword) {
-      console.log('Passwords do not match');
-
-    } else  {
-
-      // find user
-      await this.http.post(`${this.BACKEND_URL}/api/admin/students`, { email }).subscribe(
-        user => {
-          // tslint:disable-next-line: no-string-literal
-          password = user['password'];
-
-          this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
-            password,
-            email,
-            newPassword,
-            reTypeNewPassword
-          })
-            .subscribe( data => {
-              // if the passwords match, navigate back to landing page
-              if ( data === true ) {
-                console.log('TRUE');
-                this.router.navigate(['']);
-                let toast = this.toast.create({
-                  message: 'Please login with your new Password',
-                  duration: 3000
-                });
-                toast.then(t => t.present());
-               } else {
-                 console.log('Passwords dont match!');
-               }
-            });
-        });
-
-      await console.log('Going to Confirm Password Change Page');
-      await this.router.navigate(['/enter-email/enter-code/:email/new-password/:email/confirm']);
+      return console.log('passwords do not match');
+      // Show UI validation message
     }
-  }
 
-  cancel() {
+    await this.auth.forgotPassword(email, newPassword);
+
+    await console.log('Going to Confirm Password Change Page');
+    await this.router.navigate(['/enter-email/enter-code/:email/new-password/:email/confirm']);
+    }
+
+cancel() {
     console.log('Forgotten password cancelled');
     this.router.navigate(['']);
   }

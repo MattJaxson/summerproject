@@ -143,12 +143,13 @@ async getEmailFromToken() {
   });
 }
   //  Needs the Resonse Type to be text because I am sending the code, which isn't in JSON format
-  sendEmailWithCode(code)  {
-    return this.http.post(`${this.BACKEND_URL}/api/login-credentials`, { code }, { responseType: 'text'}).subscribe();
+  sendEmailWithCode(code, email)  {
+    console.log('almost there');
+    return this.http.post(`${this.BACKEND_URL}/api/login-credentials`, { code, email }).subscribe();
   }
 
   sendEmailWithCodeForgotPassword(code, email)  {
-    return this.http.post(`${this.BACKEND_URL}/api/login-credentials/forgot-password`, { code, email } ).subscribe();
+    return this.http.post(`${this.BACKEND_URL}/api/login-credentials/forgot-password-email-code`, { code, email } ).subscribe();
   }
 
   // Register User
@@ -172,6 +173,10 @@ async getEmailFromToken() {
           throw new Error(e);
         })
       ).subscribe();
+  }
+
+  forgotPassword(email, newPassword) {
+    return this.http.post(`${this.BACKEND_URL}/api/login-credentials/forgot-password`, { email, newPassword}).subscribe();
   }
 
   logout() {

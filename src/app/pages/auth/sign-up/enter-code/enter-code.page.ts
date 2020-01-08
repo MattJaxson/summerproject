@@ -28,7 +28,7 @@ export class EnterCodePage implements OnInit {
 
     this.generateCode(6).then(code => {
       console.log(`Sent Email to ${this.userEmail}`);
-      this.auth.sendEmailWithCode(code);
+      this.auth.sendEmailWithCode(code, this.userEmail);
     });
 
   }
@@ -48,20 +48,15 @@ export class EnterCodePage implements OnInit {
  async sendNewCode() {
   this.generateCode(6).then(code => {
     console.log('Data: ' + code);
-    this.auth.sendEmailWithCode(code);
+    this.auth.sendEmailWithCode(code, this.userEmail);
   });
  }
 
-  newPasswordPage() {
-    if (this.enterCodeForm.controls.code.value !== this.code) {
-      console.log('Codes do not match');
-    } else {
-      // Save user to database
-      this.auth.register();
-      console.log('Going to thank you page');
-      this.router.navigate(['/enter-email/enter-code/new-password']);
-    }
-  }
+  thankYouPage() {
+    console.log('Thank you page');
+    this.auth.register();
+    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
+  };
 
   cancel() {
     console.log('Sign up cancelled');
