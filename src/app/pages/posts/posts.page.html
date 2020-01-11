@@ -16,22 +16,24 @@
 
 <ion-content>
   <ion-grid no-padding>
-    <ion-row style="margin: 20px 0px 60px 0px;">
+
+    <!-- Post -->
+    <ion-row style="margin: 20px 0px 60px 0px;" *ngFor="let post of allPosts" (click)="postPage(post)">
         <ion-col size="2" offset="0.5">
           <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
             <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
         </ion-col>
         <ion-col size="7">
-            <h6>Name</h6>
+            <h6>{{post.creatorName}}</h6>
         </ion-col>
         <ion-col size="2" offset="0.5">
-            <h6 style="opacity: 0.4">Date</h6>
+            <h6 style="opacity: 0.4">{{post.date}}</h6>
         </ion-col>
 
       <!-- Post Content -->
       <ion-col style="margin-top: 20px; height: 200px;" size="11" offset="0.5">
 
-          <p style="font-size: 1em; line-height: 25px;">If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it……..</p>
+          <p style="font-size: 1em; line-height: 25px;">{{post.post}}</p>
       </ion-col>
 
       <!-- Post Actions -->
@@ -39,20 +41,38 @@
           <ion-toolbar style="--background: none;">
               <ion-buttons slot="end">
                 <ion-button style="font-size: 0.8em; color: #555;">
-                  Follow
+                  Followers ({{post.followers.length}})
                 </ion-button>
                 <ion-button (click)="postPage()" style="font-size: 0.8em; color: #555;">
-                  Comments (0)
+                  Comments ({{post.comments.length}})
                 </ion-button>
+                <hr style="color: red;">
                 </ion-buttons>
+                
           </ion-toolbar>
       </ion-col>
     </ion-row>
   </ion-grid>
-   <!-- fab placed to the top end -->
-   <ion-fab (click)="addPost()" vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
+
+  <!-- Floating Action Button -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" (click)="addTextPost()">
+        <p>Add Post</p>
       </ion-fab-button>
-    </ion-fab>
+      <ion-fab-button color="light">
+        <p>Add Photo</p>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <p>Add Video</p>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <p>Add Link</p>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>

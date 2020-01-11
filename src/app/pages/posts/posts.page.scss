@@ -4,3 +4,14 @@ ion-buttons > ion-button {
   border-radius: 5px;
   padding: 10px;
 }
+
+ion-fab-list {
+
+  ion-fab-button {
+    position: relative;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+  }
+}
