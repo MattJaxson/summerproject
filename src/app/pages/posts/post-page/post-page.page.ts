@@ -4,6 +4,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class PostPagePage implements OnInit {
     private router: Router,
     private posts: PostsService,
     private profile: ProfileService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private toast: ToastController) { }
 
   ngOnInit() {
 
@@ -43,6 +45,7 @@ export class PostPagePage implements OnInit {
         this.userFullName = details['fullName'];
       }
     );
+
 
     this.commentForm = this.formBuilder.group({
       comment: ['']
@@ -57,23 +60,40 @@ export class PostPagePage implements OnInit {
          this.creatorFullName = post['creatorFullName'];
          this.date = post['date'];
          this.followers = post['followers'];
-         this.comments = post['comments'];
+         this.commentsSubject$.next(post['comments']);
          this.post = post['post'];
       }
     );
+
+    this.commentsSubject$.subscribe(comments => {
+      this.comments = comments;
+    });
   }
 
-  comment(comment) {
+  async comment(comment) {
 
-    const date = Date.now();
+    const date = await Date.now();
     console.log('Posting comment');
-    this.posts.comment(
+
+    await this.posts.comment(
       this.postID,
       date,
       this.userFullName,
       this.userEmail,
       comment
     );
+
+    await this.posts.getPostInfo(this.postID).subscribe(
+      post => {
+        this.commentsSubject$.next(post['comments']);
+      }
+    )
+
+    const toast = this.toast.create({
+      message: 'Your comment has been added.',
+      duration: 1500
+    });
+    toast.then(toast => toast.present());
   }
 
 }
