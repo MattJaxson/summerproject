@@ -18,5 +18,20 @@ export class PostsService {
     return this.http.get(`${this.BACKEND_URL}/api/posts/`);
   }
 
+  getPostInfo(id) {
+    console.log(`Getting information for post id ${id}`);
+    return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, {_id: id});
+  }
+
+  comment(
+    postID,
+    date,
+    userFullName,
+    userEmail,
+    { comment: comment }
+  ) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } ).subscribe();
+  }
+
 }
 

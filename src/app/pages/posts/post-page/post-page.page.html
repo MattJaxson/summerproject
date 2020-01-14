@@ -14,16 +14,16 @@
                 <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
             </ion-col>
             <ion-col size="6">
-                <h6>Name</h6>
+                <h6>{{creatorName}}</h6>
             </ion-col>
             <ion-col size="2" offset="0.5">
-                <h6 style="opacity: 0.4">Date</h6>
+                <h6 style="opacity: 0.4">{{date}}</h6>
             </ion-col>
 
           <!-- Post Content -->
           <ion-col style="margin-top: 20px; height: 200px;" size="11" offset="0.5">
 
-              <p style="font-size: 1em; line-height: 25px;">If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it. If you study every single day, you will be rich before you know it……..</p>
+              <p style="font-size: 1em; line-height: 25px;">{{post}}</p>
           </ion-col>
 
           <!-- Post Actions -->
@@ -40,20 +40,27 @@
         <ion-row style="margin-bottom: 50px;">
           <ion-col size="11" offset="0.5">
             <ion-item>
-              <ion-input type="text" placeholder="Comment"></ion-input>
+              <form (ngSubmit)="comment(this.commentForm.value)" [formGroup]="commentForm">
+                  <ion-input type="text" placeholder="Comment" formControlName="comment"></ion-input>
+                  <ion-button type="submit">
+                    comment
+                  </ion-button>
+              </form>
             </ion-item>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row *ngFor="let comment of comments">
 ]         <ion-col size="3" offset="0.5">
             <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
-            <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
           </ion-col>
-          <ion-col size="8">
-            <h6>Name</h6>
+          <ion-col size="5">
+            <h6>{{comment.userFullName}}</h6>
           </ion-col>
+          <ion-col size="3">
+              <h6>{{comment.date}}</h6>
+            </ion-col>
           <ion-col size="11" offset="0.5">
-            <p>This is a comment</p>
+            <p>{{comment.comment}}</p>
           </ion-col>
          </ion-row>
       </ion-grid>
