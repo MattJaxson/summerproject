@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { formatDistance, subDays } from 'date-fns';
+
 
 
 @Component({
@@ -15,7 +16,6 @@ import { ToastController } from '@ionic/angular';
 export class PostPagePage implements OnInit {
 
   commentForm: FormGroup;
-  commentsSubject$ = new BehaviorSubject([]);
 
   userEmail;
   userFullName;
@@ -46,27 +46,39 @@ export class PostPagePage implements OnInit {
       }
     );
 
-
+    // To collect comment data
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
 
+    // Get Post ID from navigation params on the main posts tab
     const id  = this.activatedRoute.snapshot.paramMap.get('_id');
     this.postID = id;
 
+    // Get information about selected post.
+    // Format its date on the front end
+    // initiate this components post metadata from data in Posts Service
     this.posts.getPostInfo(this.postID).subscribe(
       post =>  {
         // tslint:disable-next-line: no-string-literal
          this.creatorFullName = post['creatorFullName'];
-         this.date = post['date'];
+         this.date = formatDistance(
+          new Date(),
+          new Date(post['date']),
+          { includeSeconds: true }
+        );
+
+         console.log('Date: ' + this.date);
+
          this.followers = post['followers'];
-         this.commentsSubject$.next(post['comments']);
+         this.posts.commentsSubject$.next(post['comments']);
          this.post = post['post'];
       }
     );
 
-    this.commentsSubject$.subscribe(comments => {
-      this.comments = comments;
+    // Subscribe to comments Behavior subject for live upates, specifically when the user posts a comment on the UI.
+    this.posts.commentsSubject$.subscribe(commentsFromSub => {
+      this.comments = commentsFromSub;
     });
   }
 
@@ -85,7 +97,7 @@ export class PostPagePage implements OnInit {
 
     await this.posts.getPostInfo(this.postID).subscribe(
       post => {
-        this.commentsSubject$.next(post['comments']);
+        this.posts.commentsSubject$.next(post['comments']);
       }
     )
 
@@ -94,6 +106,24 @@ export class PostPagePage implements OnInit {
       duration: 1500
     });
     toast.then(toast => toast.present());
+  }
+
+  async doRefresh(event) {
+    this.posts.getPostInfo(this.postID).subscribe(
+      post =>  {
+         this.posts.commentsSubject$.next(post['comments']);
+         this.post = post['post'];
+      }
+    );
+
+    await setTimeout(() => {
+      const toast = this.toast.create({
+        message: 'Page has been refreshed',
+        duration: 3000
+      });
+      event.target.complete();
+      toast.then(toast => toast.present());
+    }, 2000);
   }
 
 }

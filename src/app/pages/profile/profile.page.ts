@@ -144,7 +144,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       // ONLY FOR TESTING!
       this.storage.remove('access_token');
 
-      let toast = this.toastController.create({
+      const toast = this.toastController.create({
         message: 'JWT removed',
         duration: 3000
       });

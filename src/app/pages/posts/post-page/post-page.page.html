@@ -7,14 +7,20 @@
 </ion-header>
 
 <ion-content>
-    <ion-grid no-padding>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+  <ion-grid no-padding>
+
         <ion-row style="margin: 0px 0px 60px 0px; padding: 20px 0 20px 0;  background: rgba(245, 245, 245, 0.4)">
             <ion-col size="3" offset="0.5">
               <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
                 <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
             </ion-col>
             <ion-col size="6">
-                <h6>{{creatorName}}</h6>
+                <h6>{{creatorFullName}}</h6>
             </ion-col>
             <ion-col size="2" offset="0.5">
                 <h6 style="opacity: 0.4">{{date}}</h6>

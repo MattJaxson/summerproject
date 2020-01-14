@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ToastController } from '@ionic/angular';
+import { formatDistance, subDays } from 'date-fns';
 
 
 
@@ -15,39 +17,58 @@ export class PostsPage implements OnInit {
 
   constructor(
   private router: Router,
-  private posts: PostsService,
+  public posts: PostsService,
   private profile: ProfileService,
+  private toast: ToastController
   ) {}
 
   ngOnInit() {
+
+    // Get all for post for this section
     this.posts.getPosts().subscribe(
       posts => {
         this.allPosts =  Object.values(posts);
+        let date = this.allPosts[0].date;
+        date  = formatDistance(
+          new Date(),
+          new Date(date),
+          { includeSeconds: true }
+        );
+        console.log(date);
+        this.posts.commentsSubject$.subscribe(
+          comments => {
+            this.allPosts.comments = comments;
+          }
+        );
       }
     );
 
+
+    // Get the User's details
     this.profile.getUserDetails().subscribe(
       details => {
         console.log(details);
       });
   }
 
-  async postPage(page) {
+  postPage(post) {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/posts/post-page', page._id]);
+    this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
-  doRefresh(event) {
-    console.log('Begin async operation');
-    this.posts.getPosts().subscribe( jobs => {
+  async doRefresh(event) {
+    await this.posts.getPosts().subscribe( jobs => {
       this.allPosts = Object.values(jobs);
-      console.log(typeof this.allPosts);
       console.log(this.allPosts);
     });
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
+    await setTimeout(() => {
+      const toast = this.toast.create({
+        message: 'Inspiration Page has been refreshed',
+        duration: 3000
+      });
       event.target.complete();
+      toast.then(toast => toast.present());
     }, 2000);
   }
 

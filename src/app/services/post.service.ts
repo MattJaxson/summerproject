@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { environment } from '../../environments/environment';
 
 export class PostsService {
   BACKEND_URL = environment.url;
+  commentsSubject$ = new BehaviorSubject([]);
 
   constructor(
     private http: HttpClient

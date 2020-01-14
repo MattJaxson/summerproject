@@ -15,6 +15,11 @@
 </ion-header>
 
 <ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
   <ion-grid no-padding>
 
     <!-- Post -->
@@ -43,7 +48,7 @@
                 <ion-button style="font-size: 0.8em; color: #555;">
                   Followers ({{post.followers.length}})
                 </ion-button>
-                <ion-button (click)="postPage()" style="font-size: 0.8em; color: #555;">
+                <ion-button (click)="postPage(post)" style="font-size: 0.8em; color: #555;">
                   Comments ({{post.comments.length}})
                 </ion-button>
                 <hr style="color: red;">
