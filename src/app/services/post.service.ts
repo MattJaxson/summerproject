@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class PostsService {
   BACKEND_URL = environment.url;
   commentsSubject$ = new BehaviorSubject([]);
+  followersSubject$ = new BehaviorSubject([]);
 
   constructor(
     private http: HttpClient
@@ -34,6 +35,30 @@ export class PostsService {
     { comment: comment }
   ) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } ).subscribe();
+  }
+
+  followPost(postID, userEmail) {
+
+    return this.http.post(`${this.BACKEND_URL}/api/posts/follow`, {
+      _id: postID,
+      email: userEmail
+    }).subscribe();
+    console.log('Follow Post');
+  }
+
+  unFollowPost(postID, userEmail) {
+
+    return this.http.post(`${this.BACKEND_URL}/api/posts/unfollow`, {
+      _id: postID,
+      email: userEmail
+    }).subscribe();
+    console.log('Un Follow Post');
+  }
+
+  getFollowedPost(userId) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/get-followed-posts`, {
+      _id: userId
+    });
   }
 
 }

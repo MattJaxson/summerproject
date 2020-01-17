@@ -14,6 +14,7 @@ import { formatDistance, subDays } from 'date-fns';
 })
 export class PostsPage implements OnInit {
   allPosts;
+  userEmail;
 
   constructor(
   private router: Router,
@@ -47,7 +48,8 @@ export class PostsPage implements OnInit {
     // Get the User's details
     this.profile.getUserDetails().subscribe(
       details => {
-        console.log(details);
+        this.userEmail = details['email'];
+        console.log('User email: ' + this.userEmail);
       });
   }
 

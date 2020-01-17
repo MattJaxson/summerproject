@@ -3,10 +3,50 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-    <ion-title>following</ion-title>
+    <ion-title>Posts you are Following</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-grid no-padding>
+
+
+    <!-- Post -->
+    <ion-row style="margin: 20px 0px 60px 0px;" *ngFor="let post of allFollowedPosts">
+        <ion-col size="2" offset="0.5">
+          <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
+            <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
+        </ion-col>
+        <ion-col size="7">
+            <h6>{{post.postID}}</h6>
+        </ion-col>
+        <ion-col size="2" offset="0.5">
+            <h6 style="opacity: 0.4">{{post.date}}</h6>
+        </ion-col>
+
+      <!-- Post Content -->
+      <ion-col (click)="postPage(post)" style="margin-top: 20px; height: 200px;" size="11" offset="0.5">
+
+          <p style="font-size: 1em; line-height: 25px;">{{post.post}}</p>
+      </ion-col>
+
+      <!-- Post Actions -->
+      <ion-col style="margin-top: 10px; height: 50px;" size="11" offset="0.5">
+          <ion-toolbar style="--background: none;">
+              <ion-buttons slot="end">
+                <!-- <ion-button style="font-size: 0.8em; color: #555;">
+                  Followers ({{post.followers.length}})
+                </ion-button> -->
+                <!-- <app-follow-icon [post]="post" [userEmail]="userEmail"></app-follow-icon> -->
+                <ion-button (click)="postPage(post)" style="font-size: 0.8em; color: #555;">
+                  Comments ({{post.comments.length}})
+                </ion-button>
+                <hr style="color: red;">
+                </ion-buttons>
+          </ion-toolbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

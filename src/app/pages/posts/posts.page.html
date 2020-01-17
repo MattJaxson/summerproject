@@ -23,7 +23,7 @@
   <ion-grid no-padding>
 
     <!-- Post -->
-    <ion-row style="margin: 20px 0px 60px 0px;" *ngFor="let post of allPosts" (click)="postPage(post)">
+    <ion-row style="margin: 20px 0px 60px 0px;" *ngFor="let post of allPosts">
         <ion-col size="2" offset="0.5">
           <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
             <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
@@ -36,7 +36,7 @@
         </ion-col>
 
       <!-- Post Content -->
-      <ion-col style="margin-top: 20px; height: 200px;" size="11" offset="0.5">
+      <ion-col (click)="postPage(post)" style="margin-top: 20px; height: auto;" size="11" offset="0.5">
 
           <p style="font-size: 1em; line-height: 25px;">{{post.post}}</p>
       </ion-col>
@@ -45,9 +45,10 @@
       <ion-col style="margin-top: 10px; height: 50px;" size="11" offset="0.5">
           <ion-toolbar style="--background: none;">
               <ion-buttons slot="end">
-                <ion-button style="font-size: 0.8em; color: #555;">
+                <!-- <ion-button style="font-size: 0.8em; color: #555;">
                   Followers ({{post.followers.length}})
-                </ion-button>
+                </ion-button> -->
+                <app-follow-icon [post]="post" [userEmail]="userEmail"></app-follow-icon>
                 <ion-button (click)="postPage(post)" style="font-size: 0.8em; color: #555;">
                   Comments ({{post.comments.length}})
                 </ion-button>
