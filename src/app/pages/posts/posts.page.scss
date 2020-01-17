@@ -1,8 +1,39 @@
-ion-buttons > ion-button {
-  color: white;
+.toolbar > ion-buttons > ion-button {
   height: 45px;
   border-radius: 5px;
   padding: 10px;
+  --background: rgb(209,216,224,0.13);
+  --color: white;
+  width: 140px;
+  font-size: 0.6em;
+
+  ion-icon {
+    position: relative;
+    left: -10px;
+  }
+}
+
+.post-toolbar {
+  ion-buttons {
+    ion-button {
+      width: 140px;
+      font-size: 0.6em;
+    }
+  }
+}
+
+
+ion-fab-button {
+  --background: white;
+  --background-focused: #FFB351;
+  --background-hover: #FFB351;
+  --background-activated: #FFB351;
+  --color-focused: white;
+  --color-hover: white;
+  --color-activated: white;
+  --border-width: 2px;
+  --border-style: solid;
+  --padding-end: 50px;
 }
 
 ion-fab-list {
@@ -10,8 +41,20 @@ ion-fab-list {
   ion-fab-button {
     position: relative;
     right: 10px;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 100px;
+    --background: white;
+    --color: #555;
   }
 }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  opacity: 0.4;
+  border-top: 1px solid #ccc;
+  margin-bottom: 1em;
+  padding: 0; }
+

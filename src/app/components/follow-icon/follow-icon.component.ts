@@ -13,12 +13,12 @@ import { ToastController } from '@ionic/angular';
 
     trigger('follow', [
         state('not-followed', style({
-            color: '#FF443B',
+            color: '#d1d8e0',
             opacity: '0.4',
             transform: 'scale(0.9)'
         })),
         state('followed', style({
-            color: '#FF443B',
+            color: '#21ce99',
             opacity: '1',
             transform: 'scale(1)'
 

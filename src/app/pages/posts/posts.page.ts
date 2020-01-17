@@ -15,6 +15,7 @@ import { formatDistance, subDays } from 'date-fns';
 export class PostsPage implements OnInit {
   allPosts;
   userEmail;
+  date;
 
   constructor(
   private router: Router,
@@ -30,12 +31,13 @@ export class PostsPage implements OnInit {
       posts => {
         this.allPosts =  Object.values(posts);
         let date = this.allPosts[0].date;
-        date  = formatDistance(
+        date = formatDistance(
           new Date(),
           new Date(date),
           { includeSeconds: true }
         );
-        console.log(date);
+        this.date = date;
+        console.log(this.date);
         this.posts.commentsSubject$.subscribe(
           comments => {
             this.allPosts.comments = comments;

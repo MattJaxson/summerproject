@@ -1,13 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="toolbar">
     <ion-title>
       Posts
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        All
-      </ion-button>
       <ion-button (click)="following()">
+          <ion-icon name="chatboxes"></ion-icon>
         Followed
       </ion-button>
       </ion-buttons>
@@ -23,46 +21,50 @@
   <ion-grid no-padding>
 
     <!-- Post -->
-    <ion-row style="margin: 20px 0px 60px 0px;" *ngFor="let post of allPosts">
-        <ion-col size="2" offset="0.5">
-          <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
+    <ion-row style="margin: 20px 0px 50px 0px;" *ngFor="let post of allPosts">
+        <ion-col size="3" offset="0.5">
+          <div style="height: 45px; width: 45px; background: #222; border-radius: 50px;"></div>
             <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
         </ion-col>
-        <ion-col size="7">
-            <h6>{{post.creatorName}}</h6>
+        <ion-col size="6">
+            <h6 style="font-size: 0.8em;">{{post.creatorName}}</h6>
         </ion-col>
         <ion-col size="2" offset="0.5">
-            <h6 style="opacity: 0.4">{{post.date}}</h6>
+            <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
         </ion-col>
 
       <!-- Post Content -->
-      <ion-col (click)="postPage(post)" style="margin-top: 20px; height: auto;" size="11" offset="0.5">
+      <ion-col (click)="postPage(post)" style="margin-top: 20px; height: 40vh; padding: 20px; background: rgba(200,200,200,0.2)">
 
-          <p style="font-size: 1em; line-height: 25px;">{{post.post}}</p>
+          <p style="font-size: 0.65em; line-height: 25px;">{{post.post}}</p>
       </ion-col>
 
       <!-- Post Actions -->
-      <ion-col style="margin-top: 10px; height: 50px;" size="11" offset="0.5">
-          <ion-toolbar style="--background: none;">
+      <ion-col style="margin-top: 10px; height: 50px;" size="12">
+          <ion-toolbar class="post-toolbar" style="--background: none;">
               <ion-buttons slot="end">
-                <!-- <ion-button style="font-size: 0.8em; color: #555;">
-                  Followers ({{post.followers.length}})
-                </ion-button> -->
-                <app-follow-icon [post]="post" [userEmail]="userEmail"></app-follow-icon>
-                <ion-button (click)="postPage(post)" style="font-size: 0.8em; color: #555;">
-                  Comments ({{post.comments.length}})
+                <!-- Icons -->
+                <ion-button>
+                    <app-follow-icon [post]="post" [userEmail]="userEmail"></app-follow-icon>
+                  Follow
                 </ion-button>
-                <hr style="color: red;">
+                <ion-button (click)="postPage(post)">
+                <ion-icon style=" position: relative; left: -5px;"  name="chatboxes" ></ion-icon>
+                ({{post.comments.length}})
+                </ion-button>
                 </ion-buttons>
           </ion-toolbar>
+
+          <hr/>
+
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <!-- Floating Action Button -->
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="dark">
-      <ion-icon name="add"></ion-icon>
+    <ion-fab-button>
+      <ion-icon name="add" style="color: #FFB351"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button color="light" (click)="addTextPost()">
