@@ -12,32 +12,42 @@
       <ion-col size="11" offset="0.5">
           <form  [formGroup]="loginForm"
                  (ngSubmit)="login(this.loginForm.value)">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label>Email |</ion-label>
               <!-- Email -->
                 <ion-input
                   required
                   inputmode="email"
                   formControlName="email"
-                  type="email"
-                  placeholder="Email">
+                  type="email">
                 </ion-input>
-              <!-- Password Validation-->
-              <div class="validation-errors">
-                <ng-container *ngFor="let validation of validationMessasges.email">
-                  <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-                    {{ validation.message }}
-                  </div>
-                </ng-container>
-              </div>
+            </ion-item>
+                <!-- Password Validation-->
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.email">
+                    <div class="error-message"
+                    *ngIf="loginForm
+                      .get('email')
+                      .hasError(validation.type) && (loginForm.get('email')
+                      .dirty || loginForm.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
 
+          <!-- Password -->
+          <ion-item>
+            <ion-label>Password |</ion-label>
+              <ion-input
+                required
+                inputmode="text"
+                formControlName="password"
+                type="password">
+              </ion-input>
+          </ion-item>
 
-              <!-- Password -->
-                <ion-input
-                  required
-                  inputmode="text"
-                  formControlName="password"
-                  type="password"
-                  placeholder="Password">
-                </ion-input>
+          </ion-list>
 
               <!-- Password Validation-->
               <div class="validation-errors">
@@ -49,16 +59,19 @@
               </div>
 
               <!-- Login Button -->
-              <ion-button style="margin-bottom: 20px;" text-center class="button-one" type="submit">Login</ion-button>
+              <ion-button text-center class="orange-button" type="submit">Login</ion-button>
 
             </form>
       </ion-col>
     </ion-row>
 
     <!-- Forgot Password -->
-    <a [routerLink]="['enter-email']">Forgot Password</a>
+    <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
     <!-- Positioning Sign up Button outside of Ion Content for customization -->
-<button id="next-button" [routerLink]="['personal-info']">Sign Up</button>
   </ion-grid>
 </ion-content>
-
+<ion-footer class="text-center">
+  <ion-toolbar>
+    <ion-button style="--box-shadow: none;" expand="full" [routerLink]="['personal-info']">Sign Up</ion-button>
+  </ion-toolbar>
+</ion-footer>

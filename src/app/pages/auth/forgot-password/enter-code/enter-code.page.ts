@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-enter-code',
@@ -13,11 +15,18 @@ export class EnterCodePage implements OnInit {
   code = '';
   userEmail = '';
 
+  validationMessasges = {
+    code: [
+      { type: 'text', message: 'The codes do not match'}
+    ]
+  };
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private toast: ToastController) { }
 
   ngOnInit() {
     this.enterCodeForm =  this.formBuilder.group({
@@ -44,21 +53,22 @@ export class EnterCodePage implements OnInit {
     return this.code = result;
  }
 
-//  async sendNewCode() {
-//   this.generateCode(6).then(code => {
-//     console.log('Data: ' + code);
-//     this.auth.sendEmailWithCodeForgotPassword(code);
-//   });
-//  }
-
   newPasswordPage() {
     if (this.enterCodeForm.controls.code.value !== this.code) {
-      // Throw error here? Toast maybe?
+      this.presentToast();
       console.log('Codes do not match');
     } else {
       console.log('Codes matched');
       this.router.navigate(['/enter-email/enter-code/:email/new-password', this.userEmail]);
     }
+  }
+
+  async presentToast() {
+    const toast = await this.toast.create({
+      message: 'The codes do not match. Please try again.',
+      duration: 2000
+    });
+    toast.present();
   }
 
   cancel() {

@@ -11,11 +11,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class EnterEmailPage implements OnInit {
   forgotPasswordForm: FormGroup;
-  code = '';
 
   validationMessasges = {
     email: [
-      { type: 'email', message: 'This email address doesnt exist'}
+      { type: 'email', message: 'Please enter a valid email address'}
     ]
   };
 
@@ -26,7 +25,7 @@ export class EnterEmailPage implements OnInit {
 
   ngOnInit() {
     this.forgotPasswordForm =  this.formBuilder.group({
-      email: ['eddielacrosse2@gmail.com', Validators.required]
+      email: ['', [Validators.email, Validators.required]]
     });
 
   }

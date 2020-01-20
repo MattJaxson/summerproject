@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { logging } from 'protractor';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, IonInput } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './landing.page.html',
   styleUrls: ['./landing.page.scss'],
 })
-export class LandingPage implements OnInit {
+export class LandingPage implements OnInit, AfterViewInit {
+
   loginForm: FormGroup;
+  @ViewChild('ioninput', {static: false})  inputElement: IonInput;
 
   validationMessasges = {
     email: [
@@ -45,6 +47,13 @@ export class LandingPage implements OnInit {
     // this.wrongPasswordToast();
   }
 
+
+  ngAfterViewInit() {
+      setTimeout(() => {
+         this.inputElement.setFocus();
+    }, 1000);
+  }
+
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Logging in...',
@@ -55,16 +64,6 @@ export class LandingPage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
 
     console.log('Loading dismissed!');
-  }
-
-  async wrongPasswordToast() {
-    const toast = await this.toast.create({
-      message: 'Wrong password. Please enter correct password.',
-      position: 'bottom',
-      cssClass: 'wrong-password',
-      duration: 1500
-    });
-    toast.present();
   }
 
   login(data) {

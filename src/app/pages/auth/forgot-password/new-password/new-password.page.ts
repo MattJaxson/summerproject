@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
@@ -26,7 +25,6 @@ export class NewPasswordPage implements OnInit {
     private router: Router,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient,
     private toast: ToastController) { }
 
   ngOnInit() {
@@ -45,17 +43,25 @@ export class NewPasswordPage implements OnInit {
   async goToConfirmPage() {
     const email = this.userEmail;
     let newPassword = this.newPasswordForm.value.newPassword;
-    let reTypeNewPassword = this.newPasswordForm.value.newPassword;
+    let reTypeNewPassword = this.newPasswordForm.value.reTypeNewPassword;
 
     if (newPassword !== reTypeNewPassword) {
+      this.presentToast();
       return console.log('passwords do not match');
-      // Show UI validation message
     }
 
     await this.auth.forgotPassword(email, newPassword);
 
     await console.log('Going to Confirm Password Change Page');
     await this.router.navigate(['/enter-email/enter-code/:email/new-password/:email/confirm']);
+    }
+
+    async presentToast() {
+      const toast = await this.toast.create({
+        message: 'The two passwords you entered do not match. Please try again.',
+        duration: 2000
+      });
+      toast.present();
     }
 
 cancel() {

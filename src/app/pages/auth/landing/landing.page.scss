@@ -1,5 +1,13 @@
-#login-button {
-  margin: 40px 0 20px 0;
+ion-toolbar {
+--background: none;
+--background: #005191;
+}
+
+ion-footer {
+  opacity: 0;
+  position: fixed;
+  bottom: 0;
+  animation: slide-up 0.5s ease 3.5s forwards;
 }
 
 #sign-up-button {
@@ -8,13 +16,20 @@
   font-weight: 700;
   --color: #005191;
   background: #FFB351;
-
+  opacity: 0;
 }
 
-a {
-  text-decoration: none;
-  color: lightgrey;
-  opacity: 0.9;
+#forgot {
+  width: 70%;
+  height: 50px;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 40px 0 40px 0;
+  opacity: 0;
+  --background: #dedede;
+  --color: #777;
+  transition: 0.5s;
+  animation: slide-up 0.5s ease 1s forwards;
 }
 
 
