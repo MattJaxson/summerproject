@@ -1,27 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>enter-code</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Enter Code</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
       </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
+  <ion-grid fixed class="ion-text-center">
     <ion-row>
       <ion-col size="10" offset="1">
-        <p>Please enter the 6 character code that was sent to {{userEmail}}</p>
+        <h6 class="text-header">Please enter the 6 character code that was sent to {{userEmail}}</h6>
         <form (ngSubmit)="thankYouPage()" [formGroup]="enterCodeForm">
+          <ion-list class="line-input">
             <ion-item>
-              <ion-input formControlName="code" type="email"placeholder="enter code"></ion-input>
+              <ion-label>Code |</ion-label>
+              <ion-input
+              formControlName="code"
+              type="email"
+              placeholder="enter code"></ion-input>
             </ion-item>
-            <ion-button expand="full" (click)="sendNewCode()">
+            <ion-button class="send-new-code" (click)="sendNewCode()">
               Send new code
             </ion-button>
-            <ion-button expand="full" type="submit">
+            <ion-button [disabled]="disabled" class="orange-button" type="submit">
               ENTER CODE
             </ion-button>
+          </ion-list>
         </form>
       </ion-col>
     </ion-row>

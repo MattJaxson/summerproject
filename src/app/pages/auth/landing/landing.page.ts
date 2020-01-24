@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { logging } from 'protractor';
 import { ToastController, LoadingController, IonInput } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -12,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LandingPage implements OnInit, AfterViewInit {
 
   loginForm: FormGroup;
-  @ViewChild('ioninput', {static: false})  inputElement: IonInput;
+  @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
 
   validationMessasges = {
     email: [
@@ -37,7 +36,7 @@ export class LandingPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
-      password: ['eddie2', Validators.compose([
+      password: ['Lacrosse2', Validators.compose([
         Validators.minLength(6),
         Validators.required,
         // this is for the letters (both uppercase and lowercase) and numbers validation
@@ -46,7 +45,6 @@ export class LandingPage implements OnInit, AfterViewInit {
     });
     // this.wrongPasswordToast();
   }
-
 
   ngAfterViewInit() {
       setTimeout(() => {

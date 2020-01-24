@@ -39,6 +39,15 @@ export class EnterCodePage implements OnInit {
       this.auth.sendEmailWithCodeForgotPassword(code, this.userEmail);
     });
 
+    this.formOnChanges();
+
+  }
+
+  formOnChanges(): void {
+    console.log(this.enterCodeForm);
+    this.enterCodeForm.valueChanges.subscribe( data => {
+        console.log(data);
+      });
   }
 
   async generateCode(length) {

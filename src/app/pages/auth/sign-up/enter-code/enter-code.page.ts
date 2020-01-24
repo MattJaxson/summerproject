@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-enter-code',
@@ -10,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class EnterCodePage implements OnInit {
   enterCodeForm: FormGroup;
+
+  disabled = true;
   code = '';
   userEmail = '';
 
@@ -17,11 +21,12 @@ export class EnterCodePage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private toast: ToastController) { }
 
   ngOnInit() {
     this.enterCodeForm =  this.formBuilder.group({
-      code: ['', Validators.required],
+      code: ['', [Validators.required, Validators.maxLength(6)]]
     });
 
     this.userEmail = this.activatedRoute.snapshot.paramMap.get('email');
@@ -31,6 +36,24 @@ export class EnterCodePage implements OnInit {
       this.auth.sendEmailWithCode(code, this.userEmail);
     });
 
+    this.formOnChanges();
+
+  }
+
+  formOnChanges(): void {
+    console.log(this.enterCodeForm);
+    this.enterCodeForm.valueChanges.subscribe( data => {
+       console.log(data);
+
+       if (data.code === this.code) {
+          console.log('codes match');
+          this.disabled = false;
+        }
+
+       if (data.code !== this.code) {
+          this.disabled = true;
+        }
+      });
   }
 
   async generateCode(length) {
@@ -53,10 +76,22 @@ export class EnterCodePage implements OnInit {
  }
 
   thankYouPage() {
+    if (this.enterCodeForm.controls.code.value !== this.code) {
+      this.presentToast();
+      console.log('Codes do not match');
+    }
     console.log('Thank you page');
     this.auth.register();
     this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
   };
+
+  async presentToast() {
+    const toast = await this.toast.create({
+      message: 'The codes do not match. Please try again.',
+      duration: 2000
+    });
+    toast.present();
+  }
 
   cancel() {
     console.log('Sign up cancelled');

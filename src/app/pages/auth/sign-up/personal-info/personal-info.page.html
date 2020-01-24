@@ -1,33 +1,195 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Sign Up</ion-title>
-    <p style="font-size: 0.7em; margin-top: 10px; color: white; padding-left: 20px;">Please enter your profile information.</p>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
       </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed style="margin-top: 20px;">
+  <ion-grid fixed style="margin-top: 20px;" class="ion-text-center">
     <ion-row>
-      <ion-col size="11" offset="0.5"><form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
-             <ion-input formControlName="fullName" placeholder="first & last name"></ion-input>
-            <ion-input formControlName="addressOne" placeholder="address 1"></ion-input>
-              <ion-input formControlName="addressTwo"  placeholder="address 2"></ion-input>
-              <ion-input formControlName="phone"  placeholder="phone # e.i 7342237792"></ion-input>
+      <ion-col size="11" offset="0.5">
+          <h6 style="background: rgba(245,245,245,0.7); padding: 20px; margin: 30px 0 30px 0;">Please enter your profile information.</h6>
+        <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
+
+            <ion-list class="line-input">
+
+            <ion-item>
+              <ion-input
+              #ioninput
+              autocapitalize="on"
+              required
+              inputmode="text"
+              formControlName="fullName"
+              placeholder="first & last name"></ion-input>
+            </ion-item>
+            <!-- Password Validation-->
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validationMessasges.fullName">
+                <div class="error-message"
+                *ngIf="userInfoForm
+                  .get('fullName')
+                  .hasError(validation.type) && (userInfoForm.get('fullName')
+                  .dirty || userInfoForm.get('fullName').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+
+            <ion-item>
+              <ion-input formControlName="addressOne" placeholder="address 1"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input formControlName="addressTwo"  placeholder="apt/unit #"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input
+              required
+              inputmode="text"
+              formControlName="phone"
+              maxlength="10"
+              placeholder="phone # e.i (xxx) xxx - xxxx"></ion-input>
+            </ion-item>
+            <!-- Password Validation-->
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validationMessasges.phone">
+                <div class="error-message"
+                *ngIf="userInfoForm
+                  .get('phone')
+                  .hasError(validation.type) && (userInfoForm.get('phone')
+                  .dirty || userInfoForm.get('phone').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+
+            <ion-item>
               <ion-input formControlName="city"  placeholder="city"></ion-input>
-              <ion-input formControlName="state"  placeholder="state"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-select placeholder="State">
+                    <ion-select-option value="Alabama">Alabama</ion-select-option>
+                    <ion-select-option value="Alaska">Alaska</ion-select-option>
+                    <ion-select-option value="Arizona">Arizona</ion-select-option>
+                    <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                    <ion-select-option value="California">California</ion-select-option>
+                    <ion-select-option value="Colorado">Colorado</ion-select-option>
+                    <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                    <ion-select-option value="Delaware">Delaware</ion-select-option>
+                    <ion-select-option value="Florida">Florida</ion-select-option>
+                    <ion-select-option value="Georgia">Georgia</ion-select-option>
+                    <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                    <ion-select-option value="Idaho">Idaho</ion-select-option>
+                    <ion-select-option value="Illinois">Illinois</ion-select-option>
+                    <ion-select-option value="Indiana">Indiana</ion-select-option>
+                    <ion-select-option value="Iowa">Iowa</ion-select-option>
+                    <ion-select-option value="Kansas">Kansas</ion-select-option>
+                    <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                    <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                    <ion-select-option value="Maine">Maine</ion-select-option>
+                    <ion-select-option value="Maryland">Maryland</ion-select-option>
+                    <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                    <ion-select-option value="Michigan">Michigan</ion-select-option>
+                    <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                    <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                    <ion-select-option value="Montana">Montana</ion-select-option>
+                    <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                    <ion-select-option value="Nevada">Nevada</ion-select-option>
+                    <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                    <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                    <ion-select-option value="Michigan">Michigan</ion-select-option>
+                    <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                    <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                    <ion-select-option value="Montana">Montana</ion-select-option>
+                    <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                    <ion-select-option value="Nevada">Nevada</ion-select-option>
+                    <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                    <ion-select-option value="New Jersey">New Mexico</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                    <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                    <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                    <ion-select-option value="Texas">Texas</ion-select-option>
+                    <ion-select-option value="Utah">Utah</ion-select-option>
+                    <ion-select-option value="Vermont">Vermont</ion-select-option>
+                    <ion-select-option value="Virginia">Virginia</ion-select-option>
+                    <ion-select-option value="Washington">Washington</ion-select-option>
+                    <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                    <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                    <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                  </ion-select>
+            </ion-item>
+
+            <ion-item>
               <ion-input formControlName="zip"  placeholder="zip"></ion-input>
+            </ion-item>
 
-              <ion-input formControlName="gender"  placeholder="gender"></ion-input>
+            <ion-item>
+                <ion-select placeholder="Gender">
+                    <ion-select-option value="">Female</ion-select-option>
+                    <ion-select-option value="m">Male</ion-select-option>
+                  </ion-select>
+            </ion-item>
 
-              <ion-input formControlName="dob"  placeholder="date of birth"></ion-input>
+            <ion-item>
+                  <ion-label>Date of Birth</ion-label>
+                  <ion-datetime
+                  min="2000" max="2008"
+                  displayFormat="DDD. MMM DD, YY"
+                  placeholder="Select Date"
+                  formControlName="dob"
+                  monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
+            </ion-item>
 
+            <ion-item>
               <ion-input formControlName="school"  placeholder="school"></ion-input>
+            </ion-item>
 
-              <ion-input formControlName="grade"  placeholder="grade"></ion-input>
-              <button id="next-button"  type="submit" expand="full">NEXT</button>
+            <ion-item>
+                <ion-select placeholder="Grade">
+                    <ion-select-option value="7th Grade">Middle School - 7th Grade</ion-select-option>
+                    <ion-select-option value="8th Grade">Middle School - 8th Grade</ion-select-option>
+                    <ion-select-option value="8th Grade">High School - Freshmen</ion-select-option>
+                    <ion-select-option value="8th Grade">High School - Sophmore</ion-select-option>
+                    <ion-select-option value="8th Grade">High School - Junior</ion-select-option>
+                    <ion-select-option value="8th Grade">High School - Senior</ion-select-option>
+                    <ion-select-option value="8th Grade">College - Freshmen</ion-select-option>
+                    <ion-select-option value="8th Grade">College - Sophmore</ion-select-option>
+
+                  </ion-select>
+
+            </ion-item>
+            </ion-list>
+            <ion-button class="orange-button" type="submit">NEXT</ion-button>
         </form>
       </ion-col>
     </ion-row>

@@ -151,43 +151,8 @@ export class ProfilePage implements OnInit, OnDestroy {
       toast.then(toast => toast.present());
     }
 
-    changeEmail() {
-      console.log('Navigating to Change Email Page');
-      this.router.navigate(['/home/profile/change-email']);
-
-    }
-
-    changeAddress() {
-      console.log('Navigating to Change Address Page');
-      // tslint:disable-next-line: max-line-length
-      this.router.navigate(['/home/profile/change-address/', this.userObject.addressOne, this.userObject.addressTwo, this.userObject.city, this.userObject.state, this.userObject.city, ]);
-      // Delete params
-
-    }
-    changePassword() {
-      console.log('Navigating to Change Password Page');
-      this.router.navigate(['/home/profile/change-password']);
-
-    }
-    changePhoneNumber() {
-      console.log('Navigating to Change Phone Number Page');
-      this.router.navigate(['/home/profile/change-phone', this.userObject.phone]);
-
-    }
-    changeSchool() {
-      console.log('Navigating to Change School Page');
-      this.router.navigate(['/home/profile/change-school', this.userObject.school, this.userObject.grade]);
-
-    }
-    changeProfilePicture() {
-      console.log('Navigating to Change Profile Page');
-      this.router.navigate(['/home/profile/change-profile-picture', this.userObject.profilePicture]);
-
-    }
-    updateResume() {
-      console.log('Navigating to Change Resume Page');
-      this.router.navigate(['/home/profile/resume',  this.userObject.resume]);
-
+    editPage() {
+      this.router.navigate(['/home/profile/edit-profile-page']);
     }
     logout() {
       this.router.navigate(['/home/profile/logout']);

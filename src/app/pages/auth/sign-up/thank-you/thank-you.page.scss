@@ -1,18 +1,75 @@
-#next-button{
-  width: 100%;
-  height: 60px;
-  background: lightgray;
-  position: absolute;
-  bottom: 0;
-  font-size: 1em;
+.thank-you-button {
+  opacity: 0;
+  width: 70%;
+  height: 50px;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 40px 0 40px 0;
+  --background: white;
+  --color: green;
+  transition: 1s;
+  animation: slide-up 0.5s ease 3s forwards;
 }
 
-#cancel-button {
-  --background: none;
-  --color: red;
-  --opacity: 0.3;
-  --box-shadow:none;
-  --color-activated: lightgray;
-  --background-hover: none;
-  font-size: 0.7em;
+.background {
+  background: green;
+  height: 100vh;
+  width: 100%;
+  animation: background-slide-up 0.5s ease forwards;
+}
+
+h6 {
+  color: white;
+  margin-top: 100px;
+  opacity: 0;
+  animation: header-fade-in 0.5s ease-in-out 1s forwards;
+}
+
+.check-icon {
+  opacity: 0;
+  animation: check-slide-down 0.5s ease-out 1.5s forwards;
+}
+
+@keyframes background-slide-up {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes check-slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-300px) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(50px) scale(2);
+  }
+}
+
+@keyframes header-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

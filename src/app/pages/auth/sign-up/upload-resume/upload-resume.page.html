@@ -1,24 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>upload-resume</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Upload Resume</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
       </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p>Please upload your resume.</p>
-  <h1>no resume uploaded</h1>
-  <ion-button (click)="getFileFromPhone()">
+<ion-content class="ion-text-center">
+  <h6 class="text-header">Please upload your resume.</h6>
+  <h6 class="no-resume" *ngIf="!uploaded">No resume uploaded. Please upload your resume.</h6>
+  <h6 class="uploaded-resume" *ngIf="uploaded">filename.pdf</h6>
+  <ion-button class="get-file" (click)="getFileFromPhone()">
       Get file
     </ion-button>
-  <ion-button (click)="uploadResume()">
-      Upload
-  </ion-button>
-  <ion-button class="skip-button" (click)="skip()">
-      Skip
-    </ion-button>
+  <ion-button
+  [disabled]="!uploaded"
+  (click)="goToCredentialsPage()"
+  class="orange-button">NEXT</ion-button>
 </ion-content>
-<button (click)="goToCredentialsPage(resume)" id="next-button">NEXT</button>
 

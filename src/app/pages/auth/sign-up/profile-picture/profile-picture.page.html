@@ -1,23 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile picture</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Profile Picture</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
       </ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content text-center>
-  <p>Please select your profile picture.</p>
+<ion-content class="ion-text-center">
+  <h6 class="text-header">Please select your profile picture.</h6>
   <div id="img-wrapper">
     <img src="{{profilePicture}}" alt="">
   </div>
-  <p>Profile picture URL: </p>
-  <p>{{profilePicture}}</p>
-  <ion-button (click)="selectImage()">
+  <!-- <p>Profile picture URL: </p>
+  <p>{{profilePicture}}</p> -->
+  <ion-button class="camera-button"  (click)="selectImage()">
     Camera
   </ion-button>
-  <ion-button class="skip-button" (click)="skip()">
-      Skip
-    </ion-button>
+  <ion-button class="camera-button"  (click)="selectImage()">
+    Gallery
+  </ion-button>
+  <ion-button (click)="goToUploadResumePage()" class="orange-button">NEXT</ion-button>
 </ion-content>
-<button (click)="goToUploadResumePage()" id="next-button">NEXT</button>

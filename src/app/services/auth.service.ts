@@ -51,7 +51,7 @@ export class AuthService {
     private helper: JwtHelperService,
     private plt: Platform,
     private router: Router,
-    private toastController: ToastController) {
+    private toast: ToastController) {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
       this.plt.ready().then(() => {
@@ -163,6 +163,9 @@ async getEmailFromToken() {
     return this.http.post(`${this.BACKEND_URL}/api/`, {email: data.email, password: data.password})
       .pipe(
         tap(res => {
+          if (!res) {
+            console.log('There was no response. There might be a bad password');
+          }
           this.storage.set(this.TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken( res['token']);
           this.activeEmail = this.user.email;
@@ -170,9 +173,22 @@ async getEmailFromToken() {
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {
+          this.presentToast();
           throw new Error(e);
         })
       ).subscribe();
+  }
+
+  async presentToast() {
+    const toast = await this.toast.create({
+      message: 'There was an error with your password or email. Please try again.',
+      duration: 5000,
+      cssClass: 'wrong-password-toast',
+      keyboardClose: true,
+      position: 'top',
+
+    });
+    toast.present();
   }
 
   forgotPassword(email, newPassword) {

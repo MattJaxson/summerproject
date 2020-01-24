@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>change-email</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Change Email</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
     </ion-button>
   </ion-toolbar>
@@ -11,24 +11,60 @@
     <ion-grid fixed class="ion-text-center">
       <ion-row>
         <ion-col size="12">
-            <h4>{{activeEmail}}</h4>
+            <h6 class="text-header">Current Email: {{activeEmail}}</h6>
             <form (ngSubmit)="confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value)" [formGroup]="changeEmail">
+
+
+          <ion-list class="line-input">
+
                 <!-- Email -->
                 <ion-item>
                   <ion-input
+                    required
                     placeholder="new email"
                     formControlName="email"
                     type="email">
                   </ion-input>
                 </ion-item>
+
+                <!-- Email Validation-->
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.email">
+                    <div class="error-message"
+                    *ngIf="changeEmail
+                      .get('email')
+                      .hasError(validation.type) && (changeEmail.get('email')
+                      .dirty || changeEmail.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+
+
+
+
+
+
                 <ion-item>
                     <ion-input
+                      required
                       placeholder="password"
                       formControlName="password"
                       type="password">
                     </ion-input>
                 </ion-item>
-                <ion-button type="submit" id="next-button">CHANGE EMAIL</ion-button>
+
+                <!-- Password Validation-->
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.password">
+                    <div class="error-message" *ngIf="changeEmail.get('password').hasError(validation.type) && (changeEmail.get('password').dirty || changeEmail.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+
+          </ion-list>
+                <ion-button type="submit" class="orange-button">CHANGE EMAIL</ion-button>
               </form>
         </ion-col>
       </ion-row>

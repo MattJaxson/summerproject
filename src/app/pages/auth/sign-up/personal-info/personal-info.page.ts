@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild  } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { IonInput } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 
@@ -8,8 +9,27 @@ import { AuthService } from '../../../../services/auth.service';
   templateUrl: './personal-info.page.html',
   styleUrls: ['./personal-info.page.scss'],
 })
-export class PersonalInfoPage implements OnInit, OnDestroy {
+export class PersonalInfoPage implements OnInit, AfterViewInit {
+
+  @ViewChild('ioninput', {static: false})  inputElement: IonInput;
   userInfoForm: FormGroup;
+
+  validationMessasges = {
+    fullName: [
+      { type: 'pattern', message: 'There should not be any numbers in your name'}
+    ],
+    password: [
+      // tslint:disable-next-line: max-line-length
+      { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
+    ],
+    phone: [
+      // tslint:disable-next-line: max-line-length
+      { type: 'text', message: 'Phone Number has to be 10 digits (xxx) xxx - xxxx'}
+    ]
+  };
+
+  fullNamePattern = '/^([^0-9]*)$/';
+  phonePattern = '';
 
   constructor(
     // private auth: AuthService,
@@ -20,10 +40,16 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
-      fullName: ['', Validators.required],
+      fullName: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(this.fullNamePattern)
+     ])],
       addressOne: ['', Validators.required],
       addressTwo: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(10)
+     ])],
       city: ['', Validators.required],
       state: ['', Validators.required],
       zip: ['', Validators.required, Validators.minLength(5)],
@@ -34,9 +60,12 @@ export class PersonalInfoPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngAfterViewInit() {
+    setTimeout(() => {
+       this.inputElement.setFocus();
+  }, 1000);
+}
 
-  }
 
   goToProfilePicturePage(data) {
     console.log(data);

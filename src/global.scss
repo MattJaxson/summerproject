@@ -51,27 +51,31 @@ ion-title {
   font-size: 1em;
 }
 .line-input {
-  ion-input {
-    --background: rgba($color: #FFB351, $alpha: 1.0);
-  }
   ion-item {
       --border-color: transparent!important;
       --highlight-height: 0;
       border: 1px solid #dedede;
+      transition: 0.2s;
       border-radius: 4px;
       margin-bottom: 15px;
-      opacity: 0.5;
+      opacity: 1;
       &.item-has-focus {
           border: 1px solid var(--ion-color-primary);
-        --background: rgba(255,179,81,0.2);
+        // --background: rgba(255,179,81,0.1);
           opacity: 1;
-          box-shadow: 1px 1px 5px rgba(0,0,0,0.3)
+          font-weight: 400;
+          color: #005191;
+          box-shadow: 1px 3px 2px rgba(0,0,0,0.2)
       }
       ion-label {
-        opacity: 0.6;
+        opacity: 1;
         color: #005191;
       }
   }
+}
+
+ion-select-option {
+  --width: 200px;
 }
 
 .orange-button {
@@ -82,7 +86,7 @@ ion-title {
   margin: 40px 0 40px 0;
   --background: #FFB351;
   --color: #005191;
-  transition: 0.5s;
+  transition: 1s;
   animation: slide-up 0.5s ease forwards;
 }
 
@@ -93,9 +97,36 @@ ion-title {
   padding: 10px;
   background: rgba($color: #dedede, $alpha: 0.5);
   transition: 0.5s;
+  z-index: 999;
   opacity: 0;
   border-top: 3px solid red;
   animation: slide-down 0.5s ease 0.5s forwards;
+}
+
+.wrong-password-toast {
+  --border-color: #FF443B;
+  --border-style: solid;
+  --border-width: 2px;
+  font-weight: 600;
+  --background: #dedede;
+  --color: #222;
+}
+
+.success-toast {
+  --border-color: green;
+  --border-style: solid;
+  --border-width: 2px;
+  font-weight: 600;
+  --background: #dedede;
+  --color: #222;
+}
+
+.text-header {
+  background: rgba(245,245,245,1);
+  padding: 30px;
+  margin: 30px 0 30px 0;
+  line-height: 1.5em;
+
 }
 
 
@@ -120,8 +151,6 @@ ion-item {
   --padding-start: 20px;
 }
 
-
-
 ion-textarea {
   --border-radius: 10px;
   border: 2px solid #005191;
@@ -131,7 +160,7 @@ ion-label {
   font-size: 0.6em;
 }
 
-#cancel-button {
+.cancel-button {
   --background: none;
   --color: red;
   --opacity: 0.9;

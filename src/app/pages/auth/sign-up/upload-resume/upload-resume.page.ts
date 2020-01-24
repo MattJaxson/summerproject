@@ -12,6 +12,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 })
 export class UploadResumePage implements OnInit {
   resume = '<resume>';
+  uploaded = false;
 
   constructor(
     private router: Router,

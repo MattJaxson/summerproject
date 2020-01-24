@@ -7,6 +7,7 @@ import { ToastController } from '@ionic/angular';
 import { Platform, AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -57,20 +58,48 @@ export class ProfileService {
         oldEmail: this.activeEmail,
         email: newEmail,
         password: password})
+          .pipe(
+            catchError(e => {
+              this.presentFailToast(this.activeEmail);
+              throw new Error(e);
+            }))
           .subscribe( data => {
             if ( data === true ) {
               this.email.next(newEmail);
               this.activeEmail = newEmail;
-              this.router.navigate(['/home/user']);
-              let toast = this.toastController.create({
-                message: `You have changed your email address to ${this.activeEmail}.`,
-                duration: 3000
-              });
-              toast.then(t => t.present());
+              this.router.navigate(['/home/profile']);
+              this.presentSuccessToast();
+
              } else {
+              this.presentFailToast();
               return console.log('Passwords dont match');
             }
       });
+    }
+
+    // Toast for Successful Change
+    presentSuccessToast() {
+      const successToast = this.toastController.create({
+        message: `You have changed your email address to ${this.activeEmail}.`,
+        duration: 3000,
+        cssClass: 'success-toast',
+        keyboardClose: true,
+        position: 'top',
+      });
+      successToast.then(t => t.present());
+    }
+
+    presentFailToast(email) {
+      // Toast for Successful Change
+      const failToast = this.toastController.create({
+        // tslint:disable-next-line: max-line-length
+        message: `Password and Email combination do not work. Make sure your new email is different from your current email address of ${email}`,
+         duration: 9000,
+        cssClass: 'wrong-password-toast',
+        keyboardClose: true,
+        position: 'top'
+      });
+      failToast.then(t => t.present());
     }
 
     async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {

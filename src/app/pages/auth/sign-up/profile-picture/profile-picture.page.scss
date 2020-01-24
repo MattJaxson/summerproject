@@ -17,6 +17,18 @@
   font-size: 0.7em;
 }
 
+.camera-button{
+  display: block;
+  --background: none;
+  color: #005191;
+  --border-color: #005191;
+  --border-width : 1px;
+  --border-style: solid;
+  border: 1px;
+  width: 130px;
+  margin: 30px auto;
+}
+
 #img-wrapper {
   height: 140px;
   width: 140px;

@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/auth/landing/landing.module').then( m => m.LandingPageModule)
+    // loadChildren: () => import('./pages/profile/change-email/change-email/change-email.module').then( m => m.ChangeEmailPageModule)
   },
   {
     path: 'home',

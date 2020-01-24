@@ -1,17 +1,19 @@
-<ion-header>
+<ion-header style="display: none;">
   <ion-toolbar>
-    <ion-title>thank-you</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
+<div class="background">
+  <ion-grid fixed  class="ion-text-center">
     <ion-row>
       <ion-col size="10" offset="1">
-        <h2>Thank you for signing up with United Way! You can now login to your account</h2>
+        <ion-icon class="check-icon" src="../../../assets/icon/white-check.svg" ></ion-icon>
+        <h6>Thank you for signing up with United Way! You can now login to your account</h6>
       </ion-col>
     </ion-row>
+  <ion-button (click)="goToLogin()" class="thank-you-button">LOGIN</ion-button>
   </ion-grid>
+</div>
 </ion-content>
-<button (click)="goToLogin()" id="next-button">LOGIN</button>
 

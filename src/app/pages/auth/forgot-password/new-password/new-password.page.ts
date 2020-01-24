@@ -17,8 +17,16 @@ export class NewPasswordPage implements OnInit {
 
   BACKEND_URL = environment.url;
   newPasswordForm: FormGroup;
+
+  passwordsMatch = false;
   code: string;
   userEmail: string;
+
+  validationMessasges = {
+    password: [
+      { type: 'password', message: 'Please enter a valid password.'}
+    ]
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,6 +44,35 @@ export class NewPasswordPage implements OnInit {
     this.userEmail = this.activatedRoute.snapshot.paramMap.get('email');
 
     console.log('Email: ' + this.userEmail);
+
+    this.formOnChanges();
+  }
+
+  formOnChanges(): void {
+    console.log(this.newPasswordForm);
+    this.newPasswordForm.valueChanges
+    .subscribe(
+      data => {
+        console.log(data);
+        this.newPasswordForm.statusChanges.subscribe(status => {
+          console.log(status);
+          if ( status === 'VALID') {
+            console.log('you did it bruh');
+            this.passwordsMatch = true;
+          }
+        });
+
+        if (this.newPasswordForm.controls.newPassword.value === this.newPasswordForm.controls.reTypePassword.value &&
+          this.newPasswordForm.controls.newPassword.touched) {
+          console.log('Passwords Match');
+      }
+
+        if (this.newPasswordForm.controls.newPassword.value !== this.newPasswordForm.controls.reTypePassword.value) {
+        console.log('Passwords Match');
+        this.passwordsMatch = false;
+    }
+      }
+    );
   }
 
 
