@@ -154,6 +154,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     editPage() {
       this.router.navigate(['/home/profile/edit-profile-page']);
     }
+
     logout() {
       this.router.navigate(['/home/profile/logout']);
     }

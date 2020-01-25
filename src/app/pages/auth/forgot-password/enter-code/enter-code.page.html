@@ -15,8 +15,8 @@
             <form [formGroup]="enterCodeForm" (ngSubmit)="newPasswordPage(this.enterCodeForm.value)">
               <ion-list class="line-input">
               <ion-item>
-                  <ion-label>Code |</ion-label>
                 <ion-input
+                placeholder="Enter Code"
                 required
                 formControlName="code"
                 type="text"

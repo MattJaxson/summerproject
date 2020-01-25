@@ -55,13 +55,13 @@ export class LandingPage implements OnInit, AfterViewInit {
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Logging in...',
-      duration: 1000
+      duration: 1000,
+      cssClass: 'success-toast',
+      keyboardClose: true,
     });
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-
-    console.log('Loading dismissed!');
   }
 
   login(data) {

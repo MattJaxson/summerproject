@@ -71,7 +71,7 @@ export class ProfileService {
               this.presentSuccessToast();
 
              } else {
-              this.presentFailToast();
+              this.presentFailToast(this.activeEmail);
               return console.log('Passwords dont match');
             }
       });
@@ -93,7 +93,7 @@ export class ProfileService {
       // Toast for Successful Change
       const failToast = this.toastController.create({
         // tslint:disable-next-line: max-line-length
-        message: `Password and Email combination do not work. Make sure your new email is different from your current email address of ${email}`,
+        message: `Password and Email combination do not work. Make sure that your password is correct, and that your new email is different from your current email address of ${email}`,
          duration: 9000,
         cssClass: 'wrong-password-toast',
         keyboardClose: true,
@@ -135,14 +135,27 @@ export class ProfileService {
         if ( data === true ) {
           console.log('Changing phone number...');
           this.phone.next(newNumber);
-          this.router.navigate(['/home/user']);
-          const toast = this.toastController.create({
+          this.router.navigate(['/home/profile']);
+    
+          const successToast = this.toastController.create({
             message: `Phone Number changed to ${newNumber}`,
-            duration: 3000
+            duration: 3000,
+            cssClass: 'success-toast',
+            keyboardClose: true,
+            position: 'top'
           });
-          toast.then(t => t.present());
+          successToast.then(t => t.present());
          } else {
            console.log('Passwords dont match!');
+    
+           const failToast = this.toastController.create({
+             message: 'Password was incorrect',
+             duration: 3000,
+             cssClass: 'wrong-password-toast',
+             keyboardClose: true,
+             position: 'top'
+           });
+           failToast.then(t => t.present());
          }
       });
     }
@@ -156,21 +169,49 @@ export class ProfileService {
         state,
         zip,
         password
-      }).subscribe(data => {
+      })
+      .pipe(
+        tap( res => {
+
+          if (!res) {
+            console.log('There was no response. There might be a bad password');
+          }
+        }),
+        catchError(e => {
+          throw new Error(e);
+        })
+      )
+      .subscribe(data => {
         if ( data === true ) {
+
           this.addressOne.next(addressOne);
           this.addressTwo.next(addressTwo);
           this.city.next(city);
           this.state.next(state);
           this.zip.next(zip);
-          this.router.navigate(['/home/user/change-address/:addressOne/:addressTwo/:city/:state/:zip/confirm']);
-          let toast = this.toastController.create({
+          this.router.navigate(['/home/profile']);
+
+          let successToast = this.toastController.create({
             // tslint:disable-next-line: max-line-length
             message: `You have changed your address to ${addressOne} ${addressTwo} ,${city}, ${state}, ${zip}.`,
-            duration: 3000
+            duration: 3000,
+            cssClass: 'success-toast',
+            keyboardClose: true,
+            position: 'top'
           });
-          toast.then(t => t.present());
+
+          successToast.then(t => t.present());
          } else {
+
+          let failToast = this.toastController.create({
+            // tslint:disable-next-line: max-line-length
+            message: 'Please make sure your password is correct',
+            duration: 3000,
+            cssClass: 'wrong-password-toast',
+            keyboardClose: true,
+            position: 'top',
+          });
+          failToast.then(t => t.present());
           return console.log('Passwords dont match');
         }
   });
@@ -186,8 +227,29 @@ export class ProfileService {
         if ( data === true ) {
           this.school.next(newSchool);
           this.grade.next(newGrade);
-          this.router.navigate(['/home/user/change-school/:school/:grade/confirm']);
+          this.router.navigate(['/home/profile']);
+
+          let successToast = this.toastController.create({
+            // tslint:disable-next-line: max-line-length
+            message: `Your school and grade has been updated to ${newGrade}, ${newSchool}`,
+            duration: 5000,
+            cssClass: 'success-toast',
+            keyboardClose: true,
+            position: 'top'
+          });
+
+          successToast.then(t => t.present());
          } else {
+
+          let failToast = this.toastController.create({
+            // tslint:disable-next-line: max-line-length
+            message: 'Please make sure your password is correct',
+            duration: 3000,
+            cssClass: 'wrong-password-toast',
+            keyboardClose: true,
+            position: 'top',
+          });
+          failToast.then(t => t.present());
           return console.log('Passwords dont match');
         }
       });

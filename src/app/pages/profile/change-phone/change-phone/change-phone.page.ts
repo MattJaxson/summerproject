@@ -13,6 +13,13 @@ export class ChangePhonePage implements OnInit {
   changePhone: FormGroup;
   activeEmail = this.profile.email.getValue();
   activePhone = this.profile.phone.getValue();
+  disabled = true;
+
+  validationMessasges = {
+    phone: [
+      { type: 'text', message: 'Phone number has to be 10 digits long'}
+    ]
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,20 +32,35 @@ export class ChangePhonePage implements OnInit {
 
   ngOnInit() {
     this.changePhone =  this.formBuilder.group({
-      newNumber: ['', Validators.required],
+      newNumber: ['', Validators.compose([
+        Validators.maxLength(10),
+        Validators.minLength(10),
+        Validators.required])],
       password: ['', Validators.required]
     });
+
+    this.formOnChanges();
   }
 
   confirmChangedPhoneNumber(newNumber, password) {
     this.profile.changePhone(this.activeEmail, newNumber, password);
-    // console.log('Going to Change Phone Number Confirm');
-    // this.router.navigate(['/home/profile/change-phone/confirm']);
   }
 
   cancel() {
     console.log('change phone number cancelled');
     this.router.navigate(['/home/profile']);
+  }
+
+  formOnChanges(): void {
+    this.changePhone.statusChanges.subscribe(
+      status => {
+        console.log(status);
+
+        if (status === 'VALID') {
+          this.disabled = false;
+        }
+      }
+    )
   }
 
 }

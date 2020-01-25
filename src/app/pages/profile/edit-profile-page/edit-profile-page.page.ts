@@ -80,4 +80,8 @@ export class EditProfilePagePage implements OnInit {
 
   }
 
+  logout() {
+    this.router.navigate(['/home/profile/logout']);
+  }
+
 }

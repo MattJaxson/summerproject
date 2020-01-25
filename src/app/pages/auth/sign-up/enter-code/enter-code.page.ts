@@ -69,15 +69,17 @@ export class EnterCodePage implements OnInit {
  }
 
  async sendNewCode() {
-  this.generateCode(6).then(code => {
+  await this.generateCode(6).then(code => {
     console.log('Data: ' + code);
     this.auth.sendEmailWithCode(code, this.userEmail);
   });
+
+  await this.presentNewCodeToast(this.userEmail);
  }
 
   thankYouPage() {
     if (this.enterCodeForm.controls.code.value !== this.code) {
-      this.presentToast();
+      this.presentErrorToast();
       console.log('Codes do not match');
     }
     console.log('Thank you page');
@@ -85,10 +87,24 @@ export class EnterCodePage implements OnInit {
     this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
   };
 
-  async presentToast() {
+  async presentErrorToast() {
     const toast = await this.toast.create({
       message: 'The codes do not match. Please try again.',
-      duration: 2000
+      duration: 2000,
+      cssClass: 'wrong-password-toast',
+      keyboardClose: true,
+      position: 'top',
+    });
+    toast.present();
+  }
+
+  async presentNewCodeToast(email) {
+    const toast = await this.toast.create({
+      message: `New Code sent to ${email}`,
+      duration: 2000,
+      cssClass: 'success-toast',
+      keyboardClose: true,
+      position: 'top',
     });
     toast.present();
   }

@@ -15,9 +15,6 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
   userInfoForm: FormGroup;
 
   validationMessasges = {
-    fullName: [
-      { type: 'pattern', message: 'There should not be any numbers in your name'}
-    ],
     password: [
       // tslint:disable-next-line: max-line-length
       { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
@@ -41,9 +38,7 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
       fullName: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(this.fullNamePattern)
-     ])],
+        Validators.required ])],
       addressOne: ['', Validators.required],
       addressTwo: ['', Validators.required],
       phone: ['', Validators.compose([
@@ -52,7 +47,7 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
      ])],
       city: ['', Validators.required],
       state: ['', Validators.required],
-      zip: ['', Validators.required, Validators.minLength(5)],
+      zip: ['', Validators.required, Validators.maxLength(5)],
       gender: ['', Validators.required],
       dob: ['', [Validators.required, Validators.email]],
       school: ['', Validators.required],

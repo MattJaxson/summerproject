@@ -27,7 +27,7 @@ export class ChangeSchoolPage implements OnInit {
 
   ngOnInit() {
     this.changeSchool =  this.formBuilder.group({
-      newSchool: ['', Validators.required],
+      newSchool: [`${this.school}`, Validators.required],
       newGrade: ['', Validators.required],
       password: ['', Validators.required]
     });

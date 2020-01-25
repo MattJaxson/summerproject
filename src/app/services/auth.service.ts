@@ -160,7 +160,10 @@ async getEmailFromToken() {
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.http.post(`${this.BACKEND_URL}/api/`, {email: data.email, password: data.password})
+    return this.http.post(`${this.BACKEND_URL}/api/`, 
+    { email: data.email, 
+      password: data.password
+    })
       .pipe(
         tap(res => {
           if (!res) {

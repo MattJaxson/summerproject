@@ -23,23 +23,13 @@
               required
               inputmode="text"
               formControlName="fullName"
-              placeholder="first & last name"></ion-input>
+              placeholder="First & Last name"></ion-input>
             </ion-item>
-            <!-- Password Validation-->
-            <div class="validation-errors">
-              <ng-container *ngFor="let validation of validationMessasges.fullName">
-                <div class="error-message"
-                *ngIf="userInfoForm
-                  .get('fullName')
-                  .hasError(validation.type) && (userInfoForm.get('fullName')
-                  .dirty || userInfoForm.get('fullName').touched)">
-                  {{ validation.message }}
-                </div>
-              </ng-container>
-            </div>
 
             <ion-item>
-              <ion-input formControlName="addressOne" placeholder="address 1"></ion-input>
+              <ion-input
+                required 
+                formControlName="addressOne"  placeholder="address 1"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -68,11 +58,18 @@
             </div>
 
             <ion-item>
-              <ion-input formControlName="city"  placeholder="city"></ion-input>
+              <ion-input 
+              required
+              formControlName="city"  placeholder="city"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-select placeholder="State">
+                <ion-select
+                required
+                formControlName="state" 
+                interface="action-sheet"
+                placeholder="State"
+                value="">
                     <ion-select-option value="Alabama">Alabama</ion-select-option>
                     <ion-select-option value="Alaska">Alaska</ion-select-option>
                     <ion-select-option value="Arizona">Arizona</ion-select-option>
@@ -150,40 +147,50 @@
             </ion-item>
 
             <ion-item>
-              <ion-input formControlName="zip"  placeholder="zip"></ion-input>
+              <ion-input
+                required 
+                maxLength="6"
+                formControlName="zip"   placeholder="zip"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-select placeholder="Gender">
-                    <ion-select-option value="">Female</ion-select-option>
-                    <ion-select-option value="m">Male</ion-select-option>
+                <ion-select
+                  required 
+                  formControlName="gender"  placeholder="Gender">
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
                   </ion-select>
             </ion-item>
 
             <ion-item>
                   <ion-label>Date of Birth</ion-label>
                   <ion-datetime
-                  min="2000" max="2008"
-                  displayFormat="DDD. MMM DD, YY"
-                  placeholder="Select Date"
-                  formControlName="dob"
-                  monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
+                    required
+                    min="2000"
+                    displayFormat="DDD. MMM DD, YY"
+                    placeholder="Select Date"
+                    formControlName="dob"
+                    monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
             </ion-item>
 
             <ion-item>
-              <ion-input formControlName="school"  placeholder="school"></ion-input>
+              <ion-input
+                required
+                formControlName="school"    placeholder="school"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-select placeholder="Grade">
-                    <ion-select-option value="7th Grade">Middle School - 7th Grade</ion-select-option>
-                    <ion-select-option value="8th Grade">Middle School - 8th Grade</ion-select-option>
-                    <ion-select-option value="8th Grade">High School - Freshmen</ion-select-option>
-                    <ion-select-option value="8th Grade">High School - Sophmore</ion-select-option>
-                    <ion-select-option value="8th Grade">High School - Junior</ion-select-option>
-                    <ion-select-option value="8th Grade">High School - Senior</ion-select-option>
-                    <ion-select-option value="8th Grade">College - Freshmen</ion-select-option>
-                    <ion-select-option value="8th Grade">College - Sophmore</ion-select-option>
+                <ion-select
+                  required  
+                  formControlName="grade"   placeholder="Grade">
+                  <ion-select-option value="7th Grade">Middle School - 7th Grade</ion-select-option>
+                  <ion-select-option value="8th Grade">Middle School - 8th Grade</ion-select-option>
+                  <ion-select-option value="High School - Freshmen">High School - Freshmen</ion-select-option>
+                  <ion-select-option value="High School - Sophmore">High School - Sophmore</ion-select-option>
+                  <ion-select-option value="High School - Junior">High School - Junior</ion-select-option>
+                  <ion-select-option value="High School - Senior">High School - Senior</ion-select-option>
+                  <ion-select-option value="Collge - Freshmen">College - Freshmen</ion-select-option>
+                  <ion-select-option value="Collge - Sophmore">College - Sophmore</ion-select-option>
 
                   </ion-select>
 

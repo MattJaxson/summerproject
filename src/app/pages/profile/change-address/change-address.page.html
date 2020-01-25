@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>change-address</ion-title>
+    <ion-title>Change Address</ion-title>
     <ion-button (click)="cancel()" id="cancel-button" slot="end">
         cancel
     </ion-button>
@@ -8,18 +8,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
+  <ion-grid fixed class="ion-text-center">
     <ion-row>
       <ion-col size="11" offset="0.5">
-        <h4>Your Address</h4>
-        <p>Address 1: {{addressOne}}</p>
-        <p>Address 2: {{addressTwo}}</p>
-        <p>City: {{city}}</p>
-        <p>State: {{state}}</p>
-        <p>Zip: {{zip}}</p>
+        <h6 class="text-header">
+            {{addressOne}}, {{addressTwo}},
+            {{city}}, {{state}}, {{zip}}
+        </h6>
       </ion-col>
       <ion-col size="11" offset="0.5">
-        <h5>Please enter your new Address</h5>
+        <h6 style="">Please enter your new Address</h6>
           <form [formGroup]="changeAddress" (ngSubmit)="confirmChangeAddress(
             this.activeEmail,
             this.changeAddress.controls.addressOne.value,
@@ -29,43 +27,129 @@
             this.changeAddress.controls.zip.value,
             this.changeAddress.controls.password.value
           )">
+
+
+          <ion-list class="line-input">
+
             <ion-item>
                 <ion-input
-                  placeholder="address 1"
+                  placeholder="Address"
                   formControlName="addressOne">
                 </ion-input>
             </ion-item>
             <ion-item>
                 <ion-input
-                  placeholder="address 2"
+                  placeholder="Apt/Unit"
                   formControlName="addressTwo">
                 </ion-input>
             </ion-item>
             <ion-item>
                 <ion-input
-                  placeholder="city"
+                  placeholder="City"
                   formControlName="city">
                 </ion-input>
             </ion-item>
             <ion-item>
+                <ion-select
+                formControlName="state" 
+                interface="action-sheet"
+                placeholder="State"
+                value="">
+                    <ion-select-option value="Alabama">Alabama</ion-select-option>
+                    <ion-select-option value="Alaska">Alaska</ion-select-option>
+                    <ion-select-option value="Arizona">Arizona</ion-select-option>
+                    <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                    <ion-select-option value="California">California</ion-select-option>
+                    <ion-select-option value="Colorado">Colorado</ion-select-option>
+                    <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                    <ion-select-option value="Delaware">Delaware</ion-select-option>
+                    <ion-select-option value="Florida">Florida</ion-select-option>
+                    <ion-select-option value="Georgia">Georgia</ion-select-option>
+                    <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                    <ion-select-option value="Idaho">Idaho</ion-select-option>
+                    <ion-select-option value="Illinois">Illinois</ion-select-option>
+                    <ion-select-option value="Indiana">Indiana</ion-select-option>
+                    <ion-select-option value="Iowa">Iowa</ion-select-option>
+                    <ion-select-option value="Kansas">Kansas</ion-select-option>
+                    <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                    <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                    <ion-select-option value="Maine">Maine</ion-select-option>
+                    <ion-select-option value="Maryland">Maryland</ion-select-option>
+                    <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                    <ion-select-option value="Michigan">Michigan</ion-select-option>
+                    <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                    <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                    <ion-select-option value="Montana">Montana</ion-select-option>
+                    <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                    <ion-select-option value="Nevada">Nevada</ion-select-option>
+                    <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                    <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                    <ion-select-option value="Michigan">Michigan</ion-select-option>
+                    <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                    <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                    <ion-select-option value="Montana">Montana</ion-select-option>
+                    <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                    <ion-select-option value="Nevada">Nevada</ion-select-option>
+                    <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                    <ion-select-option value="New Jersey">New Mexico</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Caroloina">North Caroloina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                    <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                    <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                    <ion-select-option value="Texas">Texas</ion-select-option>
+                    <ion-select-option value="Utah">Utah</ion-select-option>
+                    <ion-select-option value="Vermont">Vermont</ion-select-option>
+                    <ion-select-option value="Virginia">Virginia</ion-select-option>
+                    <ion-select-option value="Washington">Washington</ion-select-option>
+                    <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                    <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                    <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                  </ion-select>
+            </ion-item>
+            <ion-item>
                 <ion-input
-                  placeholder="state"
-                  formControlName="state">
+                  maxLength="5"
+                  placeholder="Zip"
+                  formControlName="zip"
+                  required>
                 </ion-input>
             </ion-item>
             <ion-item>
                 <ion-input
-                  placeholder="zip"
-                  formControlName="zip">
-                </ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input
-                  placeholder="password"
+                  required
+                  type="password"
+                  placeholder="Password"
                   formControlName="password">
                 </ion-input>
             </ion-item>
-              <ion-button type="submit" id="next-button">CHANGE ADDRESS</ion-button>
+              <ion-button type="submit"class="orange-button">CHANGE ADDRESS</ion-button>
+
+            </ion-list>
+
           </form>
         </ion-col>
     </ion-row>

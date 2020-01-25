@@ -15,8 +15,8 @@
           <form [formGroup]="forgotPasswordForm" (ngSubmit)="goToEnterCodePage(this.forgotPasswordForm.value.email)">
             <ion-list class="line-input">
             <ion-item>
-              <ion-label>Email |</ion-label>
               <ion-input
+                placeholder="Enter Email Address"
                 required
                 formControlName="email"
                 inputmode="email"

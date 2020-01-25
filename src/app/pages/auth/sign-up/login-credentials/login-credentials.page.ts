@@ -65,6 +65,7 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
 ngOnDestroy() {
   
 }
+
 formOnChanges(): void {
   console.log(this.credentialsForm);
   this.credentialsForm.valueChanges
@@ -87,7 +88,7 @@ formOnChanges(): void {
     }
 
       if (this.credentialsForm.controls.password.value !== this.credentialsForm.controls.reTypePassword.value) {
-      console.log('Passwords Match');
+      console.log('Passwords dont match');
       this.passwordsMatch = false;
   }
     }
