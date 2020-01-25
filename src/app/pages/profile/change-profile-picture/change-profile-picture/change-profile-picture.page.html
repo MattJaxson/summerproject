@@ -1,17 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>change-profile-picture</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Change Profile Picture</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;">
-   <img src="{{ activePicture }}" alt="Profile Picture">
-  </div>
-  <p>Please upload a new photo from your gallery, or take a new one with your camera. </p>
+<ion-content class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+      <h6 class="text-header">Please upload a new photo from your gallery, or take a new one with your camera. </h6>
+      <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;">
+   <img src="" alt="Profile Picture">
+      </div>
+      <ion-button (click)="useCamera()" class="orange-button">CAMERA</ion-button>
+      <ion-button (click)="upload()" class="orange-button">UPLOAD</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>
-<button (click)="useCamera()" id="next-button">CAMERA</button>
-<button (click)="upload()" id="next-button">UPLOAD</button>

@@ -57,27 +57,22 @@ export class EditProfilePagePage implements OnInit {
   changePassword() {
     console.log('Navigating to Change Password Page');
     this.router.navigate(['/home/profile/change-password']);
-
   }
   changePhoneNumber() {
     console.log('Navigating to Change Phone Number Page');
     this.router.navigate(['/home/profile/change-phone', this.userObject.phone]);
-
   }
   changeSchool() {
     console.log('Navigating to Change School Page');
     this.router.navigate(['/home/profile/change-school', this.userObject.school, this.userObject.grade]);
-
   }
   changeProfilePicture() {
     console.log('Navigating to Change Profile Page');
     this.router.navigate(['/home/profile/change-profile-picture', this.userObject.profilePicture]);
-
   }
   updateResume() {
     console.log('Navigating to Change Resume Page');
     this.router.navigate(['/home/profile/resume',  this.userObject.resume]);
-
   }
 
   logout() {

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 import { ProfileService } from '../../services/profile.service';
 import { Router } from '@angular/router';
@@ -41,7 +41,9 @@ export class ProfilePage implements OnInit, OnDestroy {
     private profile: ProfileService,
     private storage: Storage,
     private router: Router,
-    private toastController: ToastController) {
+    private toast: ToastController,
+    private alert: AlertController,
+    private loading: LoadingController,) {
     }
 
     ngOnInit() {
@@ -144,7 +146,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       // ONLY FOR TESTING!
       this.storage.remove('access_token');
 
-      const toast = this.toastController.create({
+      const toast = this.toast.create({
         message: 'JWT removed',
         duration: 3000
       });
@@ -155,8 +157,52 @@ export class ProfilePage implements OnInit, OnDestroy {
       this.router.navigate(['/home/profile/edit-profile-page']);
     }
 
-    logout() {
-      this.router.navigate(['/home/profile/logout']);
+    changeProfilePicture() {
+      console.log('Navigating to Change Profile Page');
+      this.router.navigate(['/home/profile/change-profile-picture', this.userObject.profilePicture]);
+    }
+
+    updateResume() {
+      console.log('Navigating to Change Resume Page');
+      this.router.navigate(['/home/profile/resume',  this.userObject.resume]);
+    }
+
+    async confirmLogout() {
+      const toast = this.toast.create({
+        message: 'User has been logged out',
+        duration: 3000
+      });
+      
+      const loading = await this.loading.create({
+        message: 'Logging out...',
+        duration: 1000
+      })
+  
+      const alert = await this.alert.create({
+        header: 'Logout',
+        cssClass: 'alert',
+        message: 'Are you sure you want to logout?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancelling logout');
+              this.router.navigate(['/home/profile']);
+            }
+          },
+          {
+            text: 'Logout',
+            handler: () => {
+              console.log('Logging out');
+              this.auth.logout();
+              loading.present();
+              toast.then(t => t.present());
+            }}
+        ]
+      });
+  
+      await alert.present();
     }
 
 

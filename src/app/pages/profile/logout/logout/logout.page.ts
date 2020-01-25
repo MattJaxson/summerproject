@@ -23,7 +23,7 @@ export class LogoutPage implements OnInit {
 
   async presentLoading() {
     const loading = await this.loading.create({
-      message: 'Logging in...',
+      message: 'Logging out...',
       duration: 1000
     });
     await loading.present();

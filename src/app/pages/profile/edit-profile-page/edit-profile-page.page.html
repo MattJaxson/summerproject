@@ -10,28 +10,36 @@
 <ion-content>
     <ion-col size="11" offset="0.5">
         <ion-list>
-            <ion-item (click)="changeEmail()">
+            <ion-item detail="true" lines="none" (click)="changeEmail()">
+              <ion-icon name="mail" slot="start"></ion-icon>
               <ion-label>Change Email</ion-label>
             </ion-item>
-            <ion-item (click)="changeAddress()">
+            <ion-item detail="true" lines="none"   (click)="changeAddress()">
+              <ion-icon name="home" slot="start"></ion-icon>
               <ion-label>Change Address</ion-label>
             </ion-item>
-            <ion-item (click)="changePassword()">
+            <ion-item detail="true" lines="none"   (click)="changePassword()">
+              <ion-icon name="help" slot="start"></ion-icon>
               <ion-label>Change Password</ion-label>
             </ion-item>
-            <ion-item (click)="changePhoneNumber()">
+            <ion-item detail="true" lines="none"   (click)="changePhoneNumber()">
+              <ion-icon name="call" slot="start"></ion-icon>
               <ion-label>Change Phone Number</ion-label>
             </ion-item>
-            <ion-item (click)="changeSchool()">
+            <ion-item detail="true" lines="none"   (click)="changeSchool()">
+              <ion-icon name="school" slot="start"></ion-icon>
               <ion-label>Change School/Grade</ion-label>
             </ion-item>
-            <ion-item (click)="changeProfilePicture()">
+            <ion-item detail="true" lines="none"   (click)="changeProfilePicture()">
+              <ion-icon name="image" slot="start"></ion-icon>
               <ion-label>Change Profile Picture</ion-label>
             </ion-item>
-            <ion-item (click)="updateResume()">
+            <ion-item detail="true" lines="none"   (click)="updateResume()">
+              <ion-icon name="document" slot="start"></ion-icon>
               <ion-label>View/Update Resume</ion-label>
             </ion-item >
-            <ion-item (click)="logout()">
+            <ion-item detail="true" lines="none"   (click)="logout()">
+              <ion-icon name="arrow-round-back" slot="start"></ion-icon>
               <ion-label>Logout</ion-label>
             </ion-item>
           </ion-list>

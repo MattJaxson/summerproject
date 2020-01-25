@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>resume</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
+    <ion-title>Resume</ion-title>
+    <ion-button (click)="cancel()" class="cancel-button" slot="end">
         cancel
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p>Here, you can view your resume, or upload another one to your profile</p>
+<ion-content  class="ion-text-center">
+  <h6 class="text-header">Here, you can view your resume, or upload another one to your profile</h6>
+  <ion-button (click)="updateResume()" class="orange-button">UPDATE RESUME</ion-button>
+  <ion-button (click)="viewResume()" style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button">VIEW RESUME</ion-button>
 </ion-content>
-<button (click)="viewResume()" id="next-button">VIEW RESUME</button>
-<button (click)="updateResume()" id="next-button">UPDATE RESUME</button>
