@@ -1,12 +1,9 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
     <ion-title>
       Events
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        All
-      </ion-button>
       <ion-button style="opacity: 0.4" (click)="going()">
         Going
       </ion-button>
@@ -14,22 +11,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
+
+
   <ion-grid fixed>
     <ion-row *ngFor="let event of allEvents" (click)="eventPage(event)">
-      <ion-col style="background: lightgrey; height: 300px;" size="12">
-        <p>Pictures or Flyers</p>
-      </ion-col>
-      <ion-col style= "background: lightgrey; height: auto; padding: 20px;" size="12">
-        <p style="float: right">posted _ days ago</p>
-        <p>Who: {{ event.organizer }} </p>
-        <p>Title: {{ event.title }} </p>
-        <p>Datetime: {{ event.date }} </p>
-        <p>Location: {{ event.location }} </p>
-      </ion-col>
+        <ion-card>
+            <img src="../assets/Journi_flyer.jpg" />
+            <ion-card-header>
+              <ion-card-title>{{ event.title }}</ion-card-title>
+              <ion-card-subtitle>{{ event.addressOne }} {{ event.addressTwo}}, {{ event.city }}, {{ event.state }}, {{ event.zip }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <p style="float: right; opacity: 0.6; padding-bottom: 10px;">posted: {{ event.dateCreated }}</p>
+           </ion-card-content>
+          </ion-card>
     </ion-row>
   </ion-grid>
 </ion-content>

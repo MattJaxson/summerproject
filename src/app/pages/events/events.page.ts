@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
+import { format, formatRelative } from 'date-fns';
 
 @Component({
   selector: 'app-events',
@@ -16,8 +17,14 @@ export class EventsPage implements OnInit {
 
   ngOnInit() {
     this.events.getEvents().subscribe( events => {
-      this.allEvents = events;
-      console.log(this.allEvents);
+      this.allEvents = Object.values(events);
+      this.allEvents.reverse();
+
+      for (const event of this.allEvents) {
+        event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
+        event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+        event.time = format( new Date(event.date), 'hh:mm a');
+      }
     });
   }
 
@@ -37,7 +44,14 @@ export class EventsPage implements OnInit {
   doRefresh(event) {
     console.log('Begin async operation');
     this.events.getEvents().subscribe( events => {
-     return this.allEvents = events;
+      this.allEvents = Object.values(events);
+      this.allEvents.reverse();
+
+      for (const event of this.allEvents) {
+        event.date = format( new Date(event.date), 'MMMM dd, yyyy');
+        event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+        event.time = format( new Date(event.date), 'hh:mm a');
+      }
     });
     setTimeout(() => {
       console.log('Async operation has ended');
