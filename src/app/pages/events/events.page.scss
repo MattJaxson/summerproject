@@ -1,10 +1,31 @@
 ion-buttons > ion-button {
-  color: white;
   height: 45px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 0px;
 }
 
+ion-title {
+   color: #555;
+}
+
+ion-icon {
+  color: #faa71b;
+}
+
+ion-toolbar {
+  --background: none;
+
+  ion-icon {
+    color: #faa71b;
+    ;
+  }
+}
+
+ion-header::after {
+  background-image: none;
+}
+
+
 ion-row {
-  margin-bottom: 100px;
+  margin-top: 30px;
 }

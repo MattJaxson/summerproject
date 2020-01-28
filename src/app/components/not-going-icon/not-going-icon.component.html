@@ -1,0 +1,12 @@
+<ion-grid fixed>
+    <ion-row>
+        <ion-col size="10" style="padding-top: 10px;">
+            <p>No longer going to this Event?</p>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon style=" position: relative; left: -5px;" (click)="toggleGoingState(event)" tappable [@going]="goingState" size="large" [name]="iconName"></ion-icon>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  

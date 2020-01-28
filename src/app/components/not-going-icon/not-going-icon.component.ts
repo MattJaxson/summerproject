@@ -4,19 +4,19 @@ import { EventsService } from '../../services/events.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-going-icon',
-  templateUrl: './going-icon.component.html',
-  styleUrls: ['./going-icon.component.scss'],
+  selector: 'app-not-going-icon',
+  templateUrl: './not-going-icon.component.html',
+  styleUrls: ['./not-going-icon.component.scss'],
   animations: [
 
-    trigger('going', [
-        state('going', style({
+    trigger('notGoing', [
+        state('not-going', style({
             color: '#e4405f',
             opacity: '0.4',
             transition: '0.5s',
             transform: 'scale(0.9)'
         })),
-        state('not-going', style({
+        state('not-not-going', style({
             color: '#21ce99',
             opacity: '1',
             transition: '0.5s',
@@ -24,13 +24,13 @@ import { ToastController } from '@ionic/angular';
 
         })),
 
-        transition('not-going <=> going', animate('100ms ease-out'))
+        transition('not-going <=> ot-not-going', animate('100ms ease-out'))
     ])
   ]
 })
-export class GoingIconComponent implements OnInit {
 
-  going = false;
+export class NotGoingIconComponent implements OnInit {
+
   goingState = 'not-going';
   public iconName = 'add-circle';
   @Input() event;
@@ -57,7 +57,7 @@ export class GoingIconComponent implements OnInit {
 
     } else {
 
-      this.goingState = 'not-going';
+      this.goingState = 'not-not-going';
       this.iconName = 'add-circle-outline';
       this.going = false;
       this.notGoingToast();

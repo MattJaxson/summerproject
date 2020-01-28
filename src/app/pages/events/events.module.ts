@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { EventsPageRoutingModule } from './events-routing.module';
 
 import { EventsPage } from './events.page';
+import { GoingIconComponent } from '../../components/going-icon/going-icon.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EventsPageRoutingModule
-  ],
-  declarations: [EventsPage]
+    EventsPageRoutingModule  ],
+  declarations: [
+    EventsPage,
+    GoingIconComponent
+    ]
 })
 export class EventsPageModule {}

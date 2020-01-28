@@ -1,6 +1,20 @@
+span {
+  color: #005191;
+  font-weight: 600;
+}
+
+ion-header::after {
+  background-image: none;
+}
+
+.event-header {
+  height: 40vh;
+  background-attachment: fixed;
+}
+
+
 ion-buttons > ion-button {
-  color: white;
+  color: red;
   height: 45px;
   border-radius: 5px;
-  padding: 10px;
 }

@@ -13,8 +13,7 @@ import { GoingPage } from './going.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GoingPageRoutingModule
-  ],
+    GoingPageRoutingModule  ],
   declarations: [GoingPage]
 })
 export class GoingPageModule {}
