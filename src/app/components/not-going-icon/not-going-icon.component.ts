@@ -49,7 +49,6 @@ export class NotGoingIconComponent implements OnInit {
 
       this.goingState = 'going';
       this.iconName = 'close-circle-outline';
-      this.going = true;
       this.goingToast();
       console.log(`Going to event, ${event.title}`);
       this.events.goingToEvent(event._id, this.userEmail, this.id).subscribe();
@@ -59,7 +58,6 @@ export class NotGoingIconComponent implements OnInit {
 
       this.goingState = 'not-not-going';
       this.iconName = 'add-circle-outline';
-      this.going = false;
       this.notGoingToast();
       console.log('No longer going to Event');
       this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();

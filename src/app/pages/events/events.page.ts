@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { format, formatRelative } from 'date-fns';
@@ -13,6 +13,8 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
+  eventsGoing;
+  eventsGoingLength = 0;
   allEvents;
   userEmail;
   id;
@@ -29,8 +31,16 @@ export class EventsPage implements OnInit {
     // Get the User's details
     this.profile.getUserDetails().subscribe(
      details => {
+
        this.id = details['_id'];
        this.userEmail = details['email'];
+
+       this.events.eventsGoing$.next(details['eventsGoing']);
+       this.events.eventsGoing$.subscribe(
+         events => {
+           this.eventsGoingLength = Object.values(events).length;
+         }
+       );
        console.log('User id: ' + this.id);
        console.log('User email: ' + this.userEmail);
      });

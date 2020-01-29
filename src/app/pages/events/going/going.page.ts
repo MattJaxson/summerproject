@@ -28,19 +28,17 @@ export class GoingPage implements OnInit {
      details => {
        this.id = details['_id'];
        this.userEmail = details['email'];
-       console.log('User id: ' + this.id);
-       console.log('User email: ' + this.userEmail);
      });
 
-    this.events.getEvents().subscribe( events => {
+    this.events.getEventsGoing(this.id).subscribe( events => {
       this.goingToEvents = Object.values(events);
       this.goingToEvents.reverse();
 
-      for (const event of this.goingToEvents) {
-        event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
-        event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
-        event.time = format( new Date(event.date), 'hh:mm a');
-      }
+      // for (const event of this.goingToEvents) {
+      //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
+      //   event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+      //   event.time = format( new Date(event.date), 'hh:mm a');
+      // }
     });
   }
 

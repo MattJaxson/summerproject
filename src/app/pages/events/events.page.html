@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button style="opacity: 0.4" (click)="going()">
-        Going ( 0 )
+        Going ( {{ eventsGoingLength }} )
       </ion-button>
       </ion-buttons>
   </ion-toolbar>
@@ -20,9 +20,9 @@
             <img src="../assets/Journi_flyer.jpg" />
             <ion-card-header (click)="eventPage(event)">
               <ion-card-title>{{ event.title }}</ion-card-title>
-              <ion-card-subtitle>{{ event.addressOne }} {{ event.addressTwo}}, {{ event.city }}, {{ event.state }}, {{ event.zip }}</ion-card-subtitle>
-              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
               <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+              <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
               <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
             </ion-card-header>
             <ion-card-content>

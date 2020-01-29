@@ -14,7 +14,10 @@ ion-header::after {
 
 
 ion-buttons > ion-button {
-  color: red;
+  --padding: ;
+  color: white;
   height: 45px;
   border-radius: 5px;
+  font-size: 0.9em;
+  text-transform: none;
 }

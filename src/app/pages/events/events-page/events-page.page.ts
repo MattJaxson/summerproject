@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-
+import { EventsService } from '../../../services/events.service';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-events-page',
@@ -10,7 +11,9 @@ import { ToastController } from '@ionic/angular';
 })
 export class EventsPagePage implements OnInit {
 
+  id;
   userEmail;
+  going = false;
 
   eventId;
   eventTitle;
@@ -27,6 +30,8 @@ export class EventsPagePage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private events: EventsService,
+    private profile: ProfileService,
     private router: Router,
     private toastController: ToastController
     ) { }
@@ -70,11 +75,90 @@ export class EventsPagePage implements OnInit {
       this.eventTime = time;
       this.eventDescription = description;
       this.eventPhoto = photo;
+
+      this.profile.getUserDetails().subscribe(
+        details => {
+
+          // Get all the events that the user is going to.
+
+          this.id = details['_id'];
+          let eventsGoing = details['eventsGoing'];
+          console.log(eventsGoing);
+
+          if (eventsGoing.includes(this.eventId)) {
+            this.going = true;
+          } else {
+            this.going = false;
+          }
+
+          console.log();
+        }
+      )
   }
+
+
+
+
+
+
+
+  goingToEvent() {
+
+    this.going = true;
+    this.presentGoingToast();
+    console.log(`Adding ${this.eventId} to this Users eventsGoing property`);
+
+    this.events.goingToEvent(this.eventId, this.userEmail, this.id)
+      .subscribe(events => {
+
+        let updatedEvents = [...Object.values(events['eventsGoing']), this.eventId];
+        this.events.eventsGoing$.next(updatedEvents);
+        console.log(this.events.eventsGoing$.getValue());
+
+        // this.events.getEventsGoing(this.id).subscribe(
+        //   eventsGoing => {
+        //     console.log(eventsGoing);
+        //   }
+        // );
+    });
+  }
+
+  notGoingToEvent() {
+    this.going = false;
+    this.presentNotGoingToast();
+    console.log(`Removing ${this.eventId} from this Users eventsGoing property`);;
+    this.events.notGoingToEvent(this.eventId, this.userEmail, this.id).subscribe(
+      events => {
+        const eventsGoing = this.events.eventsGoing$.getValue();
+
+        for (let i = 0; i < eventsGoing.length; i++) {
+          if (eventsGoing[i] === this.eventId) {
+            eventsGoing.splice(i, 1);
+          }
+        }
+        console.log(eventsGoing);
+
+        this.events.eventsGoing$.next(eventsGoing);
+      }
+    );
+  }
+
+
+
+
+
 
   async presentGoingToast() {
     const toast = await this.toastController.create({
-      message: 'You have added this event to your "Going" list.',
+      message: 'You are going to this Event. It has been saved to your "Going" list',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async presentNotGoingToast() {
+    const toast = await this.toastController.create({
+      message: 'You are no longer going to event. It has been removed from your "Going" list',
       duration: 2000
     });
     toast.present();

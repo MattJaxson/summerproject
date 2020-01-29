@@ -4,8 +4,13 @@
         <ion-back-button></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button (click)="presentGoingToast()" style="--padding-end: 20px;">
-            <ion-icon name="add-circle" color="light" size="large"></ion-icon>
+        <ion-button *ngIf="going" (click)="notGoingToEvent()" style="--padding-end: 20px;">
+          No longer going to this Event?
+            <ion-icon  name="close-circle-outline" style="color: #e4405f" size="large"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="!going" (click)="goingToEvent()" style="--padding-end: 20px;">
+          Want to go to this Event?
+            <ion-icon name="add-circle" style="color: #21ce99" size="large"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
@@ -29,7 +34,7 @@
           <ion-button class="orange-button" (click)="googleMaps()">
               Google Maps
             </ion-button>
-            <p style="opacity: 0.3; padding-bottom: 10px; margin-top: 40px;">posted: {{ eventDateCreated }}</p>
+            <p style="opacity: 0.3; margin-top: 40px; background: rgba(205,205,205, 0.6); padding: 20px;">posted: {{ eventDateCreated }}</p>
           </ion-col>
         </ion-row>
       </ion-grid>

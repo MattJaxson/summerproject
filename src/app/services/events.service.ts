@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EventsService {
+  eventsGoing$ = new BehaviorSubject([]);
   BACKEND_URL = environment.url;
 
   constructor(
@@ -18,8 +20,8 @@ export class EventsService {
     return this.http.get(`${this.BACKEND_URL}/api/events`);
   }
 
-  getEventsGoing(userEmail) {
-    return this.http.post(`${this.BACKEND_URL}/api/events/events-going`, userEmail);
+  getEventsGoing(id) {
+    return this.http.post(`${this.BACKEND_URL}/api/events/events-going`, {id});
   }
 
   goingToEvent(eventID, userEmail, id) {
