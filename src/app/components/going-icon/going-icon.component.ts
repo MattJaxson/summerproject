@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { EventsService } from '../../services/events.service';
 import { ToastController } from '@ionic/angular';
+import { ProfileService } from 'src/app/services/profile.service';
+
 
 @Component({
   selector: 'app-going-icon',
@@ -39,9 +41,29 @@ export class GoingIconComponent implements OnInit {
 
   constructor(
     private events: EventsService,
-    private toast: ToastController) { }
+    private toast: ToastController,
+    private profile: ProfileService,) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    // Get the User's details
+    this.profile.getUserDetails().subscribe(
+     details => {
+
+       this.userEmail = details['email'];
+
+     });
+
+    console.log(this.id);
+    console.log(this.event['_id']);
+    this.events.getEventsGoing(this.id).subscribe(
+      data => {
+
+       this.events.eventsGoing$.next(data['eventsGoing']);
+       console.log(data);
+      }
+    );
+  }
 
   toggleGoingState(event) {
 

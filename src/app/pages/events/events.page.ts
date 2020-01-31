@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
-import { format, formatRelative } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -51,7 +51,10 @@ export class EventsPage implements OnInit {
 
       for (const event of this.allEvents) {
         event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
-        event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+        event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
+          includeSeconds: true,
+          addSuffix: true
+        });
         event.time = format( new Date(event.date), 'hh:mm a');
       }
     });
@@ -74,7 +77,10 @@ export class EventsPage implements OnInit {
 
       for (const event of this.allEvents) {
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
-        event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+        event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
+          includeSeconds: true,
+          addSuffix: true
+        });
         event.time = format( new Date(event.date), 'hh:mm a');
       }
     });

@@ -26,13 +26,13 @@ export class GoingPage implements OnInit {
     // Get the User's details
     this.profile.getUserDetails().subscribe(
      details => {
+
        this.id = details['_id'];
        this.userEmail = details['email'];
-     });
 
-    this.events.getEventsGoing(this.id).subscribe( events => {
-      this.goingToEvents = Object.values(events);
-      this.goingToEvents.reverse();
+       this.events.getEventsGoing(this.id).subscribe( events => {
+        this.goingToEvents = Object.values(events);
+        this.goingToEvents.reverse();
 
       // for (const event of this.goingToEvents) {
       //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
@@ -40,6 +40,7 @@ export class GoingPage implements OnInit {
       //   event.time = format( new Date(event.date), 'hh:mm a');
       // }
     });
+     });
   }
 
   eventPage(event) {

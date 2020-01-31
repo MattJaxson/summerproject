@@ -1,39 +1,40 @@
-<!-- ion-header is required -->
 <ion-header>
-    <ion-toolbar>
-        <ion-title>{{userObject.fullName}}</ion-title>
-        <ion-title style="font-size: 0.7em">{{userObject.email}}</ion-title>
-        <ion-buttons class="logout-button"  slot="end">
-          <ion-button class="cancel-button" (click)="logout()">
-            Logout
-          </ion-button>
-          </ion-buttons>
-      </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed class="ion-text-center">
-    <ion-row style="padding-top: 50px;">
 
-        <ion-col size="11" offset="0.5" class="header-half">
-          <div id="profile-picture">
+  <ion-grid style="--ion-grid-padding: 0px" fixed class="ion-text-center">
+
+    <ion-row class="header-half">
+        <ion-col size="12" fullscreen>
+          <div>
+              <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
               <button id="change-pro-pic-button" (click)="changeProfilePicture()">
                   +
                 </button>
           </div>
-
         </ion-col>
-        <ion-col size="11" offset="0.5" class="header-half">
+
+        <ion-col size="11" offset="0.5">
           <ion-button class="orange-button" (click)="editPage()">
             Edit Profile
           </ion-button>
         </ion-col>
-        <ion-col size="11" offset="0.5" class="header-half">
+
+        <ion-col size="11" offset="0.5">
           <ion-button style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button" (click)="updateResume()">
             View Resume
           </ion-button>
         </ion-col>
+
+    </ion-row>
+
+    <ion-row>
       <ion-col id="profile-info" size="12">
+
+        <h4>Profile Information: </h4>
+        <br>
+
         <p><span>Name</span>: {{userObject.fullName}}</p>
         <p><span>Email</span>: {{userObject.email}}</p>
         <p><span>Gender</span>: {{userObject.gender}}</p>
@@ -46,8 +47,8 @@
         <p><span>Grade</span>: {{userObject.grade}}</p>
       </ion-col>
 
-      <ion-col size="11" offset="0.5" class="header-half">
-        <ion-button style="--background: white; color: #d3d3d3; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
+      <ion-col size="11" offset="0.5">
+        <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
           Logout
         </ion-button>
       </ion-col>

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
-import { formatDistance, subDays } from 'date-fns';
+import { ToastController, IonContent } from '@ionic/angular';
+import { formatDistanceToNow } from 'date-fns';
 
 
 
@@ -15,18 +15,23 @@ import { formatDistance, subDays } from 'date-fns';
 })
 export class PostPagePage implements OnInit {
 
+  @ViewChild(IonContent, {static: true}) content: IonContent;
+  @ViewChild('ion-fab', {static: true})
   commentForm: FormGroup;
 
   userEmail;
   userFullName;
 
   postID;
-  creatorFullName;
+  creatorName;
   creatorEmail;
   date;
   followers;
   comments;
   post;
+
+  // debugging
+  scroll = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -51,6 +56,16 @@ export class PostPagePage implements OnInit {
       comment: ['']
     });
 
+    this.commentForm.controls.comment.valueChanges.subscribe(data => {
+
+      if (data === '') {
+      console.log('Value is empty');
+      this.commentForm.markAsPristine();
+      }
+
+      console.log(this.commentForm);
+    });
+
     // Get Post ID from navigation params on the main posts tab
     const id  = this.activatedRoute.snapshot.paramMap.get('_id');
     this.postID = id;
@@ -60,19 +75,29 @@ export class PostPagePage implements OnInit {
     // initiate this components post metadata from data in Posts Service
     this.posts.getPostInfo(this.postID).subscribe(
       post =>  {
+        console.log(post);
         // tslint:disable-next-line: no-string-literal
-         this.creatorFullName = post['creatorFullName'];
-         this.date = formatDistance(
-          new Date(),
-          new Date(post['date']),
-          { includeSeconds: true }
-        );
+        this.creatorName = post['creatorName'];
+        this.date = formatDistanceToNow(
+          new Date(post['date']), {
+            includeSeconds: true,
+            addSuffix: true
+          });
 
-         console.log('Date: ' + this.date);
+        console.log('Date: ' + this.date);
 
-         this.followers = post['followers'];
-         this.posts.commentsSubject$.next(post['comments']);
-         this.post = post['post'];
+        this.followers = post['followers'];
+        console.log(post['comments']);
+
+        for (const comment of post['comments']) {
+          comment.date = formatDistanceToNow( new Date(comment.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+         }
+
+        this.posts.commentsSubject$.next(post['comments'].reverse());
+        this.post = post['post'];
       }
     );
 
@@ -80,10 +105,31 @@ export class PostPagePage implements OnInit {
     this.posts.commentsSubject$.subscribe(commentsFromSub => {
       this.comments = commentsFromSub;
     });
+
+  }
+
+  logScrolling(event) {
+
+    // if (event.detail) {
+    //   console.log('ScrollTop: ' + event.detail.scrollTop);
+    //   console.log('Y: ' + event.detail.currentY);
+    //   console.log('Event Details: ' + event.detail);
+    // }
+
+    if (event.detail.currentY >= 480) {
+      console.log('YOU MADE IT to 480!!');
+      // this.ScrollToTop();
+    }
+
+  }
+  ScrollToTop() {
+    this.content.scrollToTop(1500);
   }
 
   async comment(comment) {
 
+    // Reset Comment Input
+    this.commentForm.reset();
     const date = await Date.now();
     console.log('Posting comment');
 
@@ -97,22 +143,40 @@ export class PostPagePage implements OnInit {
 
     await this.posts.getPostInfo(this.postID).subscribe(
       post => {
-        this.posts.commentsSubject$.next(post['comments']);
-      }
-    )
+        for (let postComments of post['comments']) {
+          postComments.date = formatDistanceToNow( new Date(postComments.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+         }
+        this.posts.commentsSubject$.next(post['comments'].reverse());
+      });
 
     const toast = this.toast.create({
       message: 'Your comment has been added.',
       duration: 1500
     });
+
     toast.then(toast => toast.present());
+  }
+
+  async report(comment) {
+    console.log('Attemtping to Report Comment');
   }
 
   async doRefresh(event) {
     this.posts.getPostInfo(this.postID).subscribe(
       post =>  {
-         this.posts.commentsSubject$.next(post['comments']);
-         this.post = post['post'];
+
+        for (const comment of post['comments']) {
+          comment.date = formatDistanceToNow( new Date(comment.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+         }
+
+        this.posts.commentsSubject$.next(post['comments'].reverse());
+        this.post = post['post'];
       }
     );
 
