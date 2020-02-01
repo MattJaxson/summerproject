@@ -3,7 +3,7 @@ import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, IonContent } from '@ionic/angular';
+import { ToastController, IonContent, IonFab } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 
 
@@ -16,11 +16,12 @@ import { formatDistanceToNow } from 'date-fns';
 export class PostPagePage implements OnInit {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
-  @ViewChild('ion-fab', {static: true})
+  @ViewChild('ion-fab', {static: true}) fab: IonFab;
   commentForm: FormGroup;
 
   userEmail;
   userFullName;
+  showFab = false;
 
   postID;
   creatorName;
@@ -117,8 +118,11 @@ export class PostPagePage implements OnInit {
     // }
 
     if (event.detail.currentY >= 480) {
-      console.log('YOU MADE IT to 480!!');
-      // this.ScrollToTop();
+      this.showFab = true;
+    }
+
+    if (event.detail.currentY <= 480) {
+      this.showFab = false;
     }
 
   }

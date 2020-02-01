@@ -13,19 +13,31 @@ ion-icon {
 }
 
 ion-toolbar {
-  --background: none;
+  --background: rgb(241, 241, 241);
 
   ion-icon {
     color: #faa71b;
-    ;
   }
 }
 
 ion-header::after {
-  background-image: none;
+  // background-image: none;
 }
 
 
 ion-row {
   margin-top: 30px;
+}
+
+ion-searchbar {
+  margin: 5px 0px 10px 0px;
+  // border: 1.5px solid #005191;
+  --background: rgb(230, 230, 230);
+  border-radius: 5px;
+  height: 40px;
+  --cancel-button-color: #005191;
+  --clear-button-color: #005191;
+  --placeholder-opacity: 0.5;
+  --icon-color: #005191;
+  transition: 0.5s;
 }

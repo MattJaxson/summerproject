@@ -1,11 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button style="opacity: 0.4" (click)="going()">
-        Going ( {{ eventsGoingLength }} )
-      </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
+
+    <ion-row>
+      <ion-col size="11" offset="0.5">
+          <ion-searchbar
+          debounce="800"
+          showCancelButton="focus"
+          placeholder="Search Events"
+          (ionChange)="filter($event)"
+          ></ion-searchbar>
+
+        </ion-col>
+    </ion-row>
+
 </ion-header>
 
 <ion-content>
@@ -13,10 +19,28 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
 
+      <ion-toolbar>
+        <ion-title style="font-weight: 800;" slot="start">Events ({{allEventsLength}})</ion-title>
+        <ion-buttons slot="end">
+          <ion-button style="opacity: 0.4" (click)="going()">
+            Going ( {{ eventsGoingLength }} )
+          </ion-button>
+          </ion-buttons>
+      </ion-toolbar>
 
-  <ion-grid fixed style="">
-    <ion-row *ngFor="let event of allEvents">
-        <ion-card>
+
+  <ion-grid fixed>
+    <ion-row *ngIf="noSearchInput" class="ion-text-center">
+      <ion-col size="11" offset="0.5">
+        <h6 class="text-header">There were no Search results with that name. Please Refresh the page</h6>
+        <ion-button class="orange-button" (click)="doRefresh()">
+          Refresh
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!noSearchInput" >
+        <ion-card *ngFor="let event of allEvents">
             <img src="../assets/Journi_flyer.jpg" />
             <ion-card-header (click)="eventPage(event)">
               <ion-card-title>{{ event.title }}</ion-card-title>

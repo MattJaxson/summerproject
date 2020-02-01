@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { format, formatDistanceToNow } from 'date-fns';
-import { ToastController } from '@ionic/angular';
+import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 
 
@@ -12,10 +12,16 @@ import { ProfileService } from 'src/app/services/profile.service';
   templateUrl: './events.page.html',
   styleUrls: ['./events.page.scss'],
 })
-export class EventsPage implements OnInit {
+export class EventsPage implements OnInit, AfterViewInit {
+
+  @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
+
   eventsGoing;
   eventsGoingLength = 0;
+  noSearchInput = false;
   allEvents;
+  allEventsLength;
+  loadedAllEvents;
   userEmail;
   id;
 
@@ -23,8 +29,15 @@ export class EventsPage implements OnInit {
     private router: Router,
     private events: EventsService,
     private profile: ProfileService,
-    private toast: ToastController
+    private toast: ToastController,
+    public loading: LoadingController
     ) { }
+
+  ngAfterViewInit() {
+        this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+         searchbarInputElement.style.boxShadow = "none";
+    });
+  }
 
   ngOnInit() {
 
@@ -46,8 +59,19 @@ export class EventsPage implements OnInit {
      });
 
     this.events.getEvents().subscribe( events => {
+
+      // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
+      // .
+
+      console.log('Events that are intially loaded: ');
+      console.log(events);
+
       this.allEvents = Object.values(events);
+      this.allEventsLength  = this.allEvents.length;
       this.allEvents.reverse();
+
+      this.loadedAllEvents = Object.values(events);
+      this.loadedAllEvents.reverse();
 
       for (const event of this.allEvents) {
         event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
@@ -69,12 +93,79 @@ export class EventsPage implements OnInit {
     this.router.navigate(['/home/events/going']);
   }
 
-  doRefresh(event) {
-    console.log('Begin async operation');
-    this.events.getEvents().subscribe( events => {
+  filter($event) {
+
+    this.initializeItems();
+    let searchTerm = $event.detail.value;
+
+    if (!searchTerm) {
+      console.log('No results returned from Search');
+      this.noSearchInput = true;
+    }
+
+    this.presentLoadingWithOptions();
+
+    this.allEvents = this.allEvents.filter( currentEvents => {
+      console.log(currentEvents);
+
+      if (!currentEvents || !searchTerm  ) {
+
+        console.log('No results from that search');
+        this.noSearchInput = true;
+
+      }
+
+      if ( currentEvents.title && searchTerm) {
+
+        if (currentEvents.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+
+          console.log(currentEvents.title);
+          console.log((currentEvents));
+
+          this.noSearchInput = false;
+          return true;
+      }
+        return false;
+    }
+      this.noSearchInput = true;
+
+  });
+
+    this.allEventsLength = this.allEvents.length;
+    if ( this.allEventsLength === 0 ) {
+
+      console.log('No results from that search');
+      this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+        searchbarInputElement.value = '';
+      });
+      this.noSearchInput = true;
+    }
+}
+
+    initializeItems(): void {
+    this.allEvents = this.loadedAllEvents;
+  }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loading.create({
+      duration: 1000,
+      message: 'Searching for Events...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
+
+    async doRefresh(event) {
+
+    this.allEvents = [];
+    await this.events.getEvents().subscribe( events => {
+
       this.allEvents = Object.values(events);
+      this.allEventsLength = this.allEvents.length;
       this.allEvents.reverse();
 
+      // Format Times
       for (const event of this.allEvents) {
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
@@ -84,10 +175,18 @@ export class EventsPage implements OnInit {
         event.time = format( new Date(event.date), 'hh:mm a');
       }
     });
+
     setTimeout(() => {
       event.target.complete();
       console.log('Events Refreshed');
     }, 2000);
+
+    await this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+      searchbarInputElement.value = '';
+      this.noSearchInput = false;
+    });
+
+    await console.log('Refreshing Events Page..');
   }
 
 }

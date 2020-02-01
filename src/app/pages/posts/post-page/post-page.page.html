@@ -14,9 +14,9 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
 
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab *ngIf="showFab" vertical="bottom" horizontal="end" slot="fixed">
           <ion-fab-button (click)="ScrollToTop()">
-            <ion-icon name="arrow-dropup" size="large"></ion-icon>
+            <ion-icon name="arrow-up" size="large"></ion-icon>
           </ion-fab-button>
         </ion-fab>
 
@@ -36,9 +36,9 @@
 
         <ion-row>
           <!-- Post Content -->
-          <ion-col style="margin: 20px 0px 20px 0;" size="11" offset="0.5">
+          <ion-col style="margin: 5px 0px 5px 0;" size="11" offset="0.5">
 
-              <p style="font-size: 1em; line-height: 25px;">{{post}}</p>
+              <p style="color: #333; font-size: 1em; line-height: 25px;">{{post}}</p>
           </ion-col>
         </ion-row>
 

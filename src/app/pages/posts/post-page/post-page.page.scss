@@ -9,6 +9,32 @@ ion-item {
   --inner-padding-start: 10px;
 }
 
+ion-fab {
+  opacity: 0;
+  animation: fab-slide-up 0.5s ease-out forwards;
+
+  ion-fab-button {
+    --color-activated: white;
+    --background-activated: #FFB351;
+    --background: white;
+
+    ion-icon {
+    color: #005191;
+    }
+  }
+}
+
+@keyframes fab-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+}
+
 ion-icon {
   color: white;
   transition: 0.5s;
@@ -28,9 +54,13 @@ ion-icon {
 }
 
 .comment-form{
-  background: #0d467b;
+  background: #005191;
   margin-bottom: 20px;
   padding: 20px 0 20px 0;
+}
+
+.comment-text {
+  color: #777;
 }
 
 .comment-avatar {
