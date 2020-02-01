@@ -22,11 +22,17 @@
       <ion-toolbar>
         <ion-title style="font-weight: 800;" slot="start">Events ({{allEventsLength}})</ion-title>
         <ion-buttons slot="end">
-          <ion-button style="opacity: 0.4" (click)="going()">
+          <ion-button (click)="going()">
             Going ( {{ eventsGoingLength }} )
           </ion-button>
           </ion-buttons>
       </ion-toolbar>
+
+      <ion-row *ngIf="searching" class="ion-text-center">
+        <ion-col size="12">
+          <ion-title style="background: rgba(230,230,230,1); padding: 20px;">{{allEventsLength}} search result(s) for '{{searchTerm}}'</ion-title>
+        </ion-col>
+      </ion-row>
 
 
   <ion-grid fixed>

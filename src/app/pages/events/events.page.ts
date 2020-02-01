@@ -18,7 +18,9 @@ export class EventsPage implements OnInit, AfterViewInit {
 
   eventsGoing;
   eventsGoingLength = 0;
+  searching = false;
   noSearchInput = false;
+  searchTerm;
   allEvents;
   allEventsLength;
   loadedAllEvents;
@@ -122,7 +124,11 @@ export class EventsPage implements OnInit, AfterViewInit {
           console.log(currentEvents.title);
           console.log((currentEvents));
 
+          this.searchTerm = searchTerm;
+
+          this.searching = true;
           this.noSearchInput = false;
+
           return true;
       }
         return false;
@@ -131,10 +137,16 @@ export class EventsPage implements OnInit, AfterViewInit {
 
   });
 
+
     this.allEventsLength = this.allEvents.length;
+
+    // If there are no matches with the searchTerm
     if ( this.allEventsLength === 0 ) {
 
       console.log('No results from that search');
+      this.searching = true;
+      this.searchTerm = searchTerm;
+
       this.searchbar.getInputElement().then(  (searchbarInputElement) => {
         searchbarInputElement.value = '';
       });
@@ -164,6 +176,7 @@ export class EventsPage implements OnInit, AfterViewInit {
       this.allEvents = Object.values(events);
       this.allEventsLength = this.allEvents.length;
       this.allEvents.reverse();
+      this.searching = false;
 
       // Format Times
       for (const event of this.allEvents) {
