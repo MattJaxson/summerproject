@@ -4,11 +4,11 @@ import { ToastController, LoadingController, IonInput } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LandingPage implements OnInit, AfterViewInit {
+export class LoginPage implements OnInit, AfterViewInit {
 
   loginForm: FormGroup;
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;

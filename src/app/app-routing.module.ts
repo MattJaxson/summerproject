@@ -5,8 +5,9 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/auth/landing/landing.module').then( m => m.LandingPageModule)
-    // loadChildren: () => import('./pages/profile/change-email/change-email/change-email.module').then( m => m.ChangeEmailPageModule)
+    loadChildren: () => import('./pages//landing/landing.module').then( m => m.LandingPageModule),
+    // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
+    // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
   },
   {
     path: 'home',
@@ -34,6 +35,14 @@ const routes: Routes = [
   {
     path: 'mentors',
     loadChildren: () => import('./pages/mentors/mentors.module').then( m => m.MentorsPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'fairs',
+    loadChildren: () => import('./pages/fairs/fairs.module').then( m => m.FairsPageModule)
   }
 ];
 @NgModule({

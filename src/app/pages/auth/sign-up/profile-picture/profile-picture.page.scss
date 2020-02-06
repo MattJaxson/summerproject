@@ -7,6 +7,10 @@
   font-size: 1em;
 }
 
+.text-header {
+  font-size: 0.8em;
+}
+
 #cancel-button {
   --background: none;
   --color: red;
@@ -19,21 +23,32 @@
 
 .camera-button{
   display: block;
-  --background: none;
-  color: #005191;
-  --border-color: #005191;
-  --border-width : 1px;
+  --background: white;
+  --color: #005191;
   --border-style: solid;
+  --border-width: 1px;
+  --border-color:#005191;
   border: 1px;
   width: 130px;
   margin: 30px auto;
 }
 
+input[type=file] {
+  color: #005191;
+  border: #005191 1px solid;
+  padding: 10px;
+}
+
+input[type=submit] {
+  background: #FFB351;
+  border-radius: 5px;
+  color: #005191;
+}
+
 #img-wrapper {
-  height: 140px;
-  width: 140px;
-  background: lightgrey;
-  margin: 40px auto;
+  height: 150px;
+  width: 150px;
+  margin: 50px auto;
 }
 
 .skip-button{

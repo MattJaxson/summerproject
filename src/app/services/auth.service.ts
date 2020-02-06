@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
@@ -15,6 +15,10 @@ import { BehaviorSubject } from 'rxjs';
 // import {  } from '';
 // import {  } from '';
 
+// const HttpUploadOptions = {
+//   headers: new HttpHeaders({ "Content-Type": 'multipart/form-data' })
+// };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +26,7 @@ export class AuthService {
   BACKEND_URL = environment.url;
   TOKEN_KEY = 'access_token';
   user = null;
+
   authenticationState = new BehaviorSubject(false);
   activeEmail = '';
 
@@ -87,18 +92,20 @@ getPersonalInfo(data) {
 }
 
 // Push the User's photo to the UserInfo Object
-getProfilePicture(data) {
-  console.log('Sent Profile Picture to Auth Service');
-  this.userInfo.profilePicture = data.profilePicture;
-  console.log(this.userInfo);
+modifyProfilePicture(pic) {
+  console.log('From AUTH Service: ');
+  console.log(pic);
+  let formData = new FormData();
+  formData.append('picture', pic );
 
+
+  return this.http.post(`${this.BACKEND_URL}/api/photo`, formData );
 }
 
 getResume(data) {
   console.log('Sent Resume to Auth Service');
   this.userInfo.resume = data;
   console.log(this.userInfo);
-
 }
 
 getLoginCredentials(data) {
@@ -128,12 +135,12 @@ getLoginCredentials(data) {
   });
 }
 
-async checkIfUserExits(email) {
+ checkIfUserExits(email) {
   return this.http.post(`${this.BACKEND_URL}/api/admin/students`, {email})
     .subscribe();
 }
 
-async getEmailFromToken() {
+ getEmailFromToken() {
   this.storage.get(this.TOKEN_KEY).then(token => {
     if (token) {
       const decoded = this.helper.decodeToken(token);

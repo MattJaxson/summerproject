@@ -6,18 +6,29 @@
       </ion-button>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-text-center">
-  <h6 class="text-header">Please select your profile picture.</h6>
+  <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
   <div id="img-wrapper">
     <img src="{{profilePicture}}" alt="">
   </div>
-  <!-- <p>Profile picture URL: </p>
-  <p>{{profilePicture}}</p> -->
+
+
   <ion-button class="camera-button"  (click)="selectImage()">
-    Camera
+    Get Picture
   </ion-button>
-  <ion-button class="camera-button"  (click)="selectImage()">
-    Gallery
+
+  <ion-button class="skip-button"  (click)="skip()">
+    Skip
   </ion-button>
-  <ion-button (click)="goToUploadResumePage()" class="orange-button">NEXT</ion-button>
+
+  <!-- <ion-input
+    (change)="onChange($event)"
+    class="camera-button"
+    type="file"
+    name="picture"
+    enctype="multipart/form-data"></ion-input> -->
+
+  <input (click)="goToUploadResumePage()" class="orange-button" type="submit" value="Upload Picture">
+
 </ion-content>

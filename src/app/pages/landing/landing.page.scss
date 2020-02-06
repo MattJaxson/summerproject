@@ -1,0 +1,74 @@
+ion-toolbar {
+  --background: none;
+}
+
+.login-button {
+  --color: #005191;
+  border: 1px solid #005191;
+  width: 120px;
+  font-size: 0.7em;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+#logo {
+  height: 45px;
+  padding-left: 10px;
+}
+
+
+ion-grid {
+  --ion-grid-padding: 0;
+}
+
+.landing-header {
+  height: 100vh;
+  // background: lightblue;
+}
+
+ion-slide {
+  height: 60vh;
+  // background: lightblue;
+}
+
+.header-content {
+  height: 60vh;
+  background: lightgray;
+}
+
+.fairs-button {
+ 
+}
+
+.about {
+  height: 100vh;
+  background: lightgray;
+}
+
+.past-fairs {
+  height: 100vh;
+  background: lightgreen;
+}
+
+.student-app {
+  height: 100vh;
+  background: lightgoldenrodyellow;
+}
+
+.footer {
+  height: 50vh;
+  --background: lightgray;
+}
+
+.footer-toolbar {
+  height: 100px;
+  --background: ;
+
+  ion-button {
+    --background: none;
+  }
+
+  ion-icon {
+    color: #005191;
+  }
+}

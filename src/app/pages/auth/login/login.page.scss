@@ -1,10 +1,18 @@
-ion-toolbar {
---background: none;
---background: #005191;
+.login-toolbar {
+--background: white;
+--color: #005191;
+box-shadow: none;
+
+  ion-back-button{
+      --color: #005191 !important;
+  }
 }
+
+
 
 ion-footer {
   opacity: 0;
+  --ion-padding-grid: 0;
   position: fixed;
   bottom: 0;
   animation: slide-up 0.5s ease 3.5s forwards;

@@ -22,11 +22,11 @@ export class PhotoService {
   async getSingleFile(filePath: string): Promise<File> {
     // Get FileEntry from image path
     const fileEntry: FileEntry = await this.ionicFileService.resolveLocalFilesystemUrl(filePath) as FileEntry;
-    console.log('This is the fileEntry path: ' + JSON.stringify(fileEntry));
+    // console.log('This is the fileEntry path: ' + JSON.stringify(fileEntry));
 
     // Get File from FileEntry. Again note that this file does not contain the actual file data yet.
     const cordovaFile: IFile = await this.convertFileEntryToCordovaFile(fileEntry);
-    console.log('This is the cordova file: ' + JSON.stringify(cordovaFile));
+    // console.log('This is the cordova file: ' + JSON.stringify(cordovaFile));
 
     // Use FileReader on the File object to populate it with the true file contents.
     return this.convertCordovaFileToJavascriptFile(cordovaFile);
@@ -35,7 +35,8 @@ export class PhotoService {
   private convertFileEntryToCordovaFile(fileEntry: FileEntry): Promise<IFile> {
     return new Promise<IFile>((resolve, reject) => {
       fileEntry.file(resolve, reject);
-    })
+    });
+
   }
 
   private convertCordovaFileToJavascriptFile(cordovaFile: IFile): Promise<File> {
@@ -48,12 +49,12 @@ export class PhotoService {
           const blob: any = new Blob([reader.result], { type: cordovaFile.type });
           blob.lastModifiedDate = new Date();
           blob.name = cordovaFile.name;
-          console.log('blob: ' + JSON.stringify(blob));
+          // console.log('blob: ' + JSON.stringify(blob));
           resolve(blob as File);
         }
       };
       reader.readAsArrayBuffer(cordovaFile);
-      console.log(JSON.stringify('reader: ' + JSON.stringify(reader)));
+      // console.log(JSON.stringify('reader: ' + JSON.stringify(reader)));
     });
   }
 

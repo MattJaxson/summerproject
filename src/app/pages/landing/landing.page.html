@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+      <img id="logo" src="../../assets/uwse_logo.png" />
+      <ion-buttons slot="secondary">
+        <ion-button class="login-button" [routerLink]="['login']">
+          Student Login
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="ion-text-center">
+      <ion-row  class="landing-header">
+          <ion-col class="header-content" size="12">
+              <ion-slides pager="" [options]="slideOpts">
+                  <ion-slide>
+                    <h1>Slide 1</h1>
+                  </ion-slide>
+                  <ion-slide>
+                    <h1>Slide 2</h1>
+                  </ion-slide>
+                  <ion-slide>
+                    <h1>Slide 3</h1>
+                  </ion-slide>
+                </ion-slides>
+          </ion-col>
+        <ion-col size="12">
+          <ion-button class="orange-button fairs-button" (click)="fairsPage()">
+              View Fairs
+          </ion-button>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="about" size="12">
+          <p>About </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="past-fairs" size="12">
+          <p>Past Fairs </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="student-app" size="12">
+          <p>Abuot Student App </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+            <ion-col size="6" style="background: #999; opacity: 0.4; height: 70vh;">
+              
+            </ion-col>
+            <ion-col size="6" style="background: #888; opacity: 0.4; height: 70vh;">
+              
+            </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+
+
+            <ion-toolbar class="footer-toolbar">
+              <h6 style="color: #005191; font-weight: 600;">Please follow us on social media</h6>
+              <ion-button>
+                <ion-icon slot="icon-only" name="logo-facebook" routerLink="['https://www.facebook.com/UnitedWaySEM/']"></ion-icon>
+              </ion-button>
+              <ion-button>
+                <ion-icon slot="icon-only" name="logo-instagram" routerLink="['https://www.instagram.com/unitedwaysem/?hl=en']"></ion-icon>
+              </ion-button>
+              <ion-button>
+                <ion-icon slot="icon-only" name="logo-twitter" routerLink="['https://twitter.com/UnitedWaySEM?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor']"></ion-icon>
+              </ion-button>
+            </ion-toolbar>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
