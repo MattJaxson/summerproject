@@ -10,13 +10,15 @@ export class StudentsPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit() {
-
-
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
+  }
+
+  register() {
+    this.router.navigate(['/fairs/fair/:id/students/register']);
   }
 
 

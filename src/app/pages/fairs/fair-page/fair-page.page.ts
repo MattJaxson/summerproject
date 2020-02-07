@@ -13,8 +13,12 @@ export class FairPagePage implements OnInit {
 
   id;
   title;
+  address;
   date;
   time;
+  city;
+  state;
+  zip;
   summary;
   description;
   dateCreated;
@@ -39,11 +43,15 @@ export class FairPagePage implements OnInit {
       data => {
        console.log(data);
        this.title = data['title'];
+       this.address = data['address'];
        this.date = data['date'];
+       this.city = data['city'];
+       this.state = data['state'];
+       this.zip = data['zip'];
        this.time = data['time'];
        this.summary = data['summary'];
        this.description = data['description'];
-       this.photo = data['summary'];
+       this.photo = data['photo'];
        this.dateCreated = data['dateCreated'];
 
        this.date = format( new Date(this.date), 'MMMM dd, yyyy');

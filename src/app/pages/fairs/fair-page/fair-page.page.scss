@@ -1,8 +1,9 @@
 ion-item {
-  --padding-top: 20px;
-  --padding-start: 20px;
-  --padding-end: 20px;
-  --padding-bottom: 20px;
+  --padding-top: 10px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-bottom: 10px;
+  --height: 100px;
 }
 
 ion-grid {
@@ -10,13 +11,23 @@ ion-grid {
 }
 
 .fair-button {
+  height: 50px;
+  width: 70%;
   --background: none;
   --color: #005191;
   --border-color: #005191;
-  --border-width: 1px;
+  --border-width: 1.5px;
   --border-style: solid;
   --padding-top: 20px;
   --padding-start: 20px;
   --padding-end: 20px;
   --padding-bottom: 20px;
+}
+
+.fair-info{
+  margin-top: 100px;
+
+  p {
+    opacity: 0.5;
+  }
 }

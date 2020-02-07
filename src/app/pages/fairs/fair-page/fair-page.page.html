@@ -9,22 +9,23 @@
 
 <ion-content>
   <ion-grid fixed>
-    <ion-row>
-      <ion-col size="11" offset="0.5">
-        <p>Date: {{date}}</p>
-        <p>Time: {{time}}</p>
-        <p>{{title}}</p>
 
+    <ion-row>
+      <ion-col size="12" style="height: 200px; background: lightblue;">
+          <p style="position: relative; top: 30%; left: 30%;">Photo to show for Fair</p>
+      </ion-col>
+      <ion-col class="fair-info" size="11" offset="0.5">
+        <h4>{{title}}</h4>
+        <p>Date: {{date}}</p>
+        <p>Start Time: {{time}}</p>
+        <p>{{summary}}</p>
         <p>{{description}}
         </p>
-        <div style="width: 100%; height: 200px; background: lightblue;">
-          <p style="position: relative; top: 30%; left: 30%;">Photo to show for Fair</p>
-        </div>
       </ion-col>
     </ion-row>
 
 
-    <ion-row style="margin: 100px 0 100px 0">
+    <ion-row style="margin: 100px 0 100px 0;">
       <ion-col size="11" offset="0.5">
         <p>Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
         <h3>I am a: </h3>
@@ -40,7 +41,7 @@
         </ion-item>
         <ion-item lines="none">
           <ion-button class="fair-button" (click)="volunteers()">
-            Volunteers
+            Volunteer
           </ion-button>
         </ion-item>
         <ion-item lines="none">
@@ -52,9 +53,11 @@
     </ion-row>
 
 
-    <ion-row class="ion-text-center" style="background: lightgrey; --ion-grid-padding: 0px;">
+    <ion-row class="ion-text-center" style="background: rgba(200,200,200,0.3);">
       <ion-col size="12" class="ion-text-center">
-        <h3>Need directions? </h3>
+        <h2 style="color: #005191; font-weight: 800;">Need directions? </h2>
+        <p>Use Google Maps to get directions for:</p>
+        <p style="background: rgba(230,230,230,0.7); padding: 8px">{{address}}, {{city}} {{state}}, {{zip}}</p>
         <ion-item lines="none" style="--background: none;">
           <ion-button class="orange-button" (click)="partners()">
             Google Maps
