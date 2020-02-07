@@ -21,18 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./partners/partners.module').then( m => m.PartnersPageModule)
   },
   {
-    path: 'volunteer',
-    loadChildren: () => import('./volunteer/volunteer.module').then( m => m.VolunteerPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./volunteers/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'agenda',
-    loadChildren: () => import('./volunteers/agenda/agenda.module').then( m => m.AgendaPageModule)
-  },
-  {
     path: 'volunteers',
     loadChildren: () => import('./volunteers/volunteers.module').then( m => m.VolunteersPageModule)
   }

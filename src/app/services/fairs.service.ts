@@ -20,6 +20,12 @@ export class FairsService {
     return this.http.get(`${this.BACKEND_URL}/api/fairs`);
   }
 
+  getFair(id) {
+    console.log(id);
+    console.log('id from fairs service');
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/fair`, {id});
+  }
+
 
 
 }

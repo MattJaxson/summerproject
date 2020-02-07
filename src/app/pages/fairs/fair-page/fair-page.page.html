@@ -1,9 +1,67 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>fair-page</ion-title>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="11" offset="0.5">
+        <p>Date: {{date}}</p>
+        <p>Time: {{time}}</p>
+        <p>{{title}}</p>
 
+        <p>{{description}}
+        </p>
+        <div style="width: 100%; height: 200px; background: lightblue;">
+          <p style="position: relative; top: 30%; left: 30%;">Photo to show for Fair</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row style="margin: 100px 0 100px 0">
+      <ion-col size="11" offset="0.5">
+        <p>Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
+        <h3>I am a: </h3>
+        <ion-item lines="none">
+          <ion-button class="fair-button" (click)="students()">
+            Student
+          </ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button class="fair-button" (click)="chaperones()">
+            Chaperone
+          </ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button class="fair-button" (click)="volunteers()">
+            Volunteers
+          </ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button class="fair-button" (click)="partners()">
+            Partner
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="ion-text-center" style="background: lightgrey; --ion-grid-padding: 0px;">
+      <ion-col size="12" class="ion-text-center">
+        <h3>Need directions? </h3>
+        <ion-item lines="none" style="--background: none;">
+          <ion-button class="orange-button" (click)="partners()">
+            Google Maps
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

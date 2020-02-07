@@ -37,6 +37,7 @@ export class EventsPagePage implements OnInit {
     ) { }
 
   ngOnInit() {
+
       // tslint:disable-next-line: radix
       const id  = this.activatedRoute.snapshot.paramMap.get('id');
       // tslint:disable-next-line: radix

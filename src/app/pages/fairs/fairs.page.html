@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let fair of allFairs" (click)="fairPage(fair)">
+  <ion-card *ngFor="let fair of allFairs" (click)="fairPage(fair._id)">
     <ion-card-header>
       <ion-card-subtitle>Date: {{fair.date}}</ion-card-subtitle>
       <ion-card-subtitle>Time: {{fair.time}}</ion-card-subtitle>

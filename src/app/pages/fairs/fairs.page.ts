@@ -36,9 +36,9 @@ export class FairsPage implements OnInit {
     );
   }
 
-  fairPage(fair) {
+  fairPage(id) {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/fairs/fairs-page', fair._id, fair.title, fair.addressOne,  fair.addressOne,  fair.city,  fair.state, fair.zip, fair.dateCreated, fair.date, fair.time, fair.photo, fair.description]);
+    this.router.navigate(['/fairs/fair', id]);
   }
 
 }

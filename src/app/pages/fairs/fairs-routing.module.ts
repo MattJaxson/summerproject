@@ -9,7 +9,7 @@ const routes: Routes = [
     component: FairsPage
   },
   {
-    path: 'fair-page',
+    path: 'fair/:id',
     loadChildren: () => import('./fair-page/fair-page.module').then( m => m.FairPagePageModule)
   }
 ];

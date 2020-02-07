@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./parking/parking.module').then( m => m.ParkingPageModule)
   },
   {
-    path: 'parking-faq',
-    loadChildren: () => import('./parking-faq/parking-faq.module').then( m => m.ParkingFaqPageModule)
-  },
-  {
     path: 'survey',
     loadChildren: () => import('./survey/survey.module').then( m => m.SurveyPageModule)
   },
