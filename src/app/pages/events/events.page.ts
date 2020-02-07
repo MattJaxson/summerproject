@@ -76,12 +76,12 @@ export class EventsPage implements OnInit, AfterViewInit {
       this.loadedAllEvents.reverse();
 
       for (const event of this.allEvents) {
-        event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
+        event.date = format( new Date(event.date), 'MMMM dd, yyyy');
+        event.time = format( new Date(event.date), 'hh:mm a');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
           includeSeconds: true,
           addSuffix: true
         });
-        event.time = format( new Date(event.date), 'hh:mm a');
       }
     });
   }
