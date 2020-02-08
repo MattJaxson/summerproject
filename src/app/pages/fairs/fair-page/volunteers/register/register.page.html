@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register for {{fair}} as Volunteer</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-grid no-padding class="ion-text-center">
+      <ion-row>
+          <ion-col size="11" offset="0.5">
+            <p class="text-header">
+              Information about signing up as a volunteer
+            </p>
+          </ion-col>
+        <ion-col size="11" offset="0.5">
+            <ion-button class="orange-button" type="submit">Register</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

@@ -16,7 +16,7 @@ export class PartnersPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/students/register']);
+    this.router.navigate(['/fairs/fair/:id/partners/register']);
   }
 
 }

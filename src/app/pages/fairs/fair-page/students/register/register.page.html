@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Register for {{fair}} Fair as Student</ion-title>
+    <ion-title>Register for {{fair}} as Student</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,236 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid fixed class="ion-text-center">
+    <ion-row>
+      <ion-col size="11" offset="0.5">
+        <p class="text-header">
+          Information about signing up as a student
+        </p>
+      </ion-col>
+      <ion-col size="11" offset="0.5">
+       <form  [formGroup]="registerForm"
+       (ngSubmit)="register(this.registerForm.value)">
+         <ion-list class="line-input">
+           <ion-item>
+             <ion-input
+              #autoFucousInput
+              required
+              inputmode="email"
+              formControlName="email"
+              type="text"
+              placeholder="First & Last Name"></ion-input>
+           </ion-item>
 
+
+                <!-- Email Validation-->
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validationMessasges.email">
+                      <div class="error-message"
+                      *ngIf="registerForm
+                        .get('email')
+                        .hasError(validation.type) && (registerForm.get('email')
+                        .dirty || registerForm.get('email').touched)">
+                        {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
+
+
+           <ion-item>
+              <ion-select
+                interfaceOptions="customAlertOptions"   interface="alert"
+                placeholder="School"
+                formControlName="school">
+                <ion-select-option
+                  *ngFor="let school of schoolList"
+                  value="{{school}}">{{school}}</ion-select-option>
+              </ion-select>
+           </ion-item>
+           <ion-item>
+              <ion-select
+                interfaceOptions="customAlertOptions"   interface="alert"
+                placeholder="Grade">
+                <ion-select-option
+                  *ngFor="let grade of gradeList"
+                  value="{{grade}}">{{grade}}</ion-select-option>
+              </ion-select>
+           </ion-item>
+           <ion-item>
+             <ion-input
+              required
+              inputmode="phone"
+              formControlName="phone"
+              type="text"
+              maxlength='10'
+              placeholder="Phone (xxx) xxx - xxxxx"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-select
+                interfaceOptions="customAlertOptions"   interface="alert"
+                placeholder="Gender"
+                formControlName="gender">
+                <ion-select-option
+                  value="Male">Male</ion-select-option>
+                  <ion-select-option
+                  value="Female">Female</ion-select-option>
+              </ion-select>
+           </ion-item>
+           <ion-item>
+              <ion-radio-group
+              required>
+                  <ion-list-header>
+                    <ion-label>Lunch</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Apple</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Grape</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Cherry</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+
+
+
+
+
+           <ion-item>
+              <ion-radio-group
+              required
+              formControlName="questionOne">
+                  <ion-list-header>
+                    <ion-label>Pre Survey Question</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+           <ion-item>
+              <ion-radio-group
+              required
+              formControlName="questionTwo">
+                  <ion-list-header>
+                    <ion-label>Pre Survey Question</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+           <ion-item>
+              <ion-radio-group
+              required
+              formControlName="questionThree">
+                  <ion-list-header>
+                    <ion-label>Pre Survey Question</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+           <ion-item>
+              <ion-radio-group
+              required
+              formControlName="questionFour">
+                  <ion-list-header>
+                    <ion-label>Pre Survey Question</ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+           <ion-item>
+              <ion-radio-group
+                required
+                formControlName="questionFive">
+                  <ion-list-header>
+                    <ion-label>Pre Survey Question </ion-label>
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Answer</ion-label>
+                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+           </ion-item>
+         </ion-list>
+
+         <ion-col size="12" class="ion-text-center">
+          <ion-button class="orange-button" type="submit">Register</ion-button>
+         </ion-col>
+
+       </form>
+      </ion-col>
+      <ion-col size="11" offset="0.5">
+        <!-- <ion-button (click)="register()">
+          Register
+        </ion-button> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
