@@ -9,18 +9,14 @@
 
 <ion-content>
   <ion-card *ngFor="let fair of allFairs" (click)="fairPage(fair._id)">
+
     <ion-card-header>
       <ion-card-subtitle>Date: {{fair.date}}</ion-card-subtitle>
       <ion-card-subtitle>Time: {{fair.time}}</ion-card-subtitle>
       <ion-card-title>{{fair.title}}</ion-card-title>
     </ion-card-header>
 
-   <ion-card-content>
-      <p>{{fair.description}}
-      </p>
-      <div style="width: 100%; height: 200px; background: lightblue;">
-        <p style="position: relative; top: 30%; left: 30%;">Photo to show for Fair</p>
-      </div>
-    </ion-card-content>
+   <ion-card-content class="fair-photo">
+  </ion-card-content>
   </ion-card>
 </ion-content>

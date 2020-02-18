@@ -66,22 +66,22 @@ export class FairPagePage implements OnInit {
 
   students() {
     console.log('going to students page');
-    this.router.navigate(['/fairs/fair/:id/students']);
+    this.router.navigate(['/fairs/fair/:id/students', this.id]);
   }
 
   chaperones() {
     console.log('going to chaperones page');
-    this.router.navigate(['/fairs/fair/:id/chaperones']);
+    this.router.navigate(['/fairs/fair/:id/chaperones', this.id]);
   }
 
   volunteers() {
     console.log('going to volunteers page');
-    this.router.navigate(['/fairs/fair/:id/volunteers']);
+    this.router.navigate(['/fairs/fair/:id/volunteers', this.id]);
   }
 
   partners() {
     console.log('going to partners page');
-    this.router.navigate(['/fairs/fair/:id/partners']);
+    this.router.navigate(['/fairs/fair/:id/partners', this.id]);
   }
 
 }

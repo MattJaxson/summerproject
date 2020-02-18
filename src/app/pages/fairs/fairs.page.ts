@@ -36,9 +36,10 @@ export class FairsPage implements OnInit {
     );
   }
 
-  fairPage(id) {
+  fairPage(id: string) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/fairs/fair', id]);
+    console.log('ID: ' + id );
   }
 
 }

@@ -9,19 +9,19 @@ const routes: Routes = [
     component: FairPagePage
   },
   {
-    path: 'students',
+    path: 'students/:id',
     loadChildren: () => import('./students/students.module').then( m => m.StudentsPageModule)
   },
   {
-    path: 'chaperones',
+    path: 'chaperones/:id',
     loadChildren: () => import('./chaperones/chaperones.module').then( m => m.ChaperonesPageModule)
   },
   {
-    path: 'partners',
+    path: 'partners/:id',
     loadChildren: () => import('./partners/partners.module').then( m => m.PartnersPageModule)
   },
   {
-    path: 'volunteers',
+    path: 'volunteers/:id',
     loadChildren: () => import('./volunteers/volunteers.module').then( m => m.VolunteersPageModule)
   }
 ];

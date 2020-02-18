@@ -9,12 +9,8 @@ const routes: Routes = [
     component: ChaperonesPage
   },
   {
-    path: 'register',
+    path: 'register/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
   },
   {
     path: 'booth-partners',

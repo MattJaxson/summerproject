@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class StudentsPage implements OnInit {
 
+  id: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
@@ -18,7 +20,7 @@ export class StudentsPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/students/register']);
+    this.router.navigate(['/fairs/fair/:id/students/:id/register', this.id]);
   }
 
 
