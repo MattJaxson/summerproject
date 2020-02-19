@@ -9,11 +9,11 @@ const routes: Routes = [
     component: StudentsPage
   },
   {
-    path: 'register',
+    path: 'register/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'booth-partners',
+    path: 'booth-partners/:id',
     loadChildren: () => import('./booth-partners/booth-partners.module').then( m => m.BoothPartnersPageModule)
   },
   {

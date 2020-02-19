@@ -1,0 +1,42 @@
+ion-row {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-weight: 900;
+  font-size: 1.3em;
+}
+
+.fair-page-toolbar-lg {
+  --background: #f9fafc;
+  --padding-end: 30px;
+}
+
+.schedule {
+  background: #f9fafc;
+  overflow-y: scroll;
+  height: 60vh;
+
+  ion-item {
+    --background: #f9fafc;
+  }
+}
+
+
+.schedule::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.schedule::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.schedule::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.schedule::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, .5);
+}

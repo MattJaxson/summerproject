@@ -33,11 +33,16 @@ ion-slide {
 
 .header-content {
   height: 60vh;
-  background: lightgray;
+  background: lightblue;
+}
+
+.fair-page-toolbar-lg {
+  --background: #f9fafc;
+  --padding-end: 30px;
 }
 
 .fairs-button {
- 
+ width: 250px;
 }
 
 .about {

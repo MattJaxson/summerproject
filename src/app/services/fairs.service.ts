@@ -26,6 +26,34 @@ export class FairsService {
     return this.http.post(`${this.BACKEND_URL}/api/fairs/fair`, {id});
   }
 
+  registerStudent(student) {
+  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student).subscribe(
+    data => {
+      console.log('registering student to fair');
+      console.log(data);
+    }
+  );
+  }
+
+
+  registerPartner(partner) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner).subscribe(
+      data => {
+        console.log('registering partner to fair');
+        console.log(data);
+      }
+    );
+  }
+
+
+  registerChaperone() {
+    
+  }
+
+  registerVolunteer() {
+    
+  }
+
 
 
 }

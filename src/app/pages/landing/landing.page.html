@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="ion-hide-md-up">
       <img id="logo" src="../../assets/uwse_logo.png" />
       <ion-buttons slot="secondary">
         <ion-button class="login-button" [routerLink]="['login']">
@@ -7,13 +7,19 @@
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
+
+
+  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+      <ion-button [routerLink]="['login']" class="orange-button" style="width: 150px; --background: #005191; --color: white;" slot="end">Student Login
+      </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed class="ion-text-center">
-      <ion-row  class="landing-header">
-          <ion-col class="header-content" size="12">
-              <ion-slides pager="" [options]="slideOpts">
+  <ion-grid class="ion-text-center">
+      <ion-row  class="landing-header ion-justify-content-center">
+          <ion-col class="header-content" size-lg="8" size-md="12" size="12">
+              <ion-slides size="12" pager="" [options]="slideOpts">
                   <ion-slide>
                     <h1>Slide 1</h1>
                   </ion-slide>
@@ -25,7 +31,7 @@
                   </ion-slide>
                 </ion-slides>
           </ion-col>
-        <ion-col size="12">
+        <ion-col  size-lg="8" size-md="10" size="12">
           <ion-button class="orange-button fairs-button" (click)="fairsPage()">
               View Fairs
           </ion-button>

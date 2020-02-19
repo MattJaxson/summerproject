@@ -64,6 +64,11 @@ export class FairPagePage implements OnInit {
     );
   }
 
+  goBack() {
+    console.log('going back');
+    this.router.navigate(['/fairs']);
+  }
+
   students() {
     console.log('going to students page');
     this.router.navigate(['/fairs/fair/:id/students', this.id]);

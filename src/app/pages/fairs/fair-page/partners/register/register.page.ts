@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, LoadingController, IonInput } from '@ionic/angular';
+import { ToastController, LoadingController, IonInput, NavController } from '@ionic/angular';
 import { FairsService } from '../../../../../services/fairs.service';
 
 
@@ -40,6 +40,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
     // private auth: AuthService,
     private formBuilder: FormBuilder,
     private fairs: FairsService,
+    private navCtrl: NavController,
     private loading: LoadingController,
     private toast: ToastController) { }
 
@@ -47,7 +48,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.email]],
       email: ['', [Validators.required, Validators.email]],
-      organization: ['', [Validators.required, Validators.required]],
+      company: ['', [Validators.required, Validators.required]],
       logo: ['', [Validators.required, Validators.required]],
       phone: ['', [Validators.required, Validators.required]],
       lunch: ['', [Validators.required, Validators.required]],
@@ -61,9 +62,14 @@ export class RegisterPage implements OnInit, AfterViewInit {
     }, 1000);
   }
 
-  register(student) {
-    console.log(student);
+  goBack() {
+    console.log('going back');
+    this.navCtrl.back();
+  }
+
+  register(partner) {
     console.log('Registering');
+    this.fairs.registerPartner(partner);
   }
 
   // Send Email to Student

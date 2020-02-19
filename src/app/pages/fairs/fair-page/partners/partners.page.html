@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="ion-hide-md-up">
         <ion-title>Partners</ion-title>
         <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
@@ -10,72 +10,80 @@
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
+
+      <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+          <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
+            Home
+          </ion-button>
+
+          <ion-button class="orange-button" style="width: 100px; --background: #00c400; --color: white; margin-right: 30px;" (click)="register()" slot="end">
+            Register
+          </ion-button>
+          <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
+          </ion-button>
+        </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-grid fixed>
-        <h2>Agenda</h2>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3">
-            <p>9 am</p>
-          </ion-col>
-          <ion-col size="9">
-            <h3>Welcome</h3>
-            <p>Description of timeslot</p>
+
+    <ion-grid>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="11">
+            <h1 class="agenda-header">Agenda</h1>
+            <!-- <p style="width: 300px; color: #888; line-height: 2em;">View the .</p> -->
           </ion-col>
         </ion-row>
 
-        <ion-row>
-          <ion-col size="11" offset="0.5">
-            <h2>Welcome</h2>
-            <p>Description of timeslot</p>
-          </ion-col>
+        <ion-row class="ion-justify-content-center">
+            <ion-col class="schedule" size="5">
+
+             <ion-item *ngFor="let slot of slots">
+               <ion-label class="ion-text-wrap">
+               <ion-text color="primary">
+                 <h2>{{slot.time}}</h2>
+                </ion-text>
+                <ion-text color="secondary">
+                  <p style="font-weight: 900; font-size: 1.em;">{{slot.title}}</p>
+                 </ion-text>
+                 <p>{{slot.description}}</p>
+                </ion-label>
+             </ion-item>
+
+            </ion-col>
+
+      <ion-col class="options" size="5" offset="1">
+        <div>
+            <h2>Partner FAQ.</h2>
+            <p style="width: 300px; color: #888; line-height: 2em;">Have any questions? Visit this page to view Frequently Asked Questions for Partners.</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="viewFAQs()">
+              View FAQ
+            </ion-button>
+        </div>
+        <div>
+            <h2>Where is the Fair?</h2>
+            <p style="width: 300px; color: #888; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+              View Fair Location
+            </ion-button>
+        </div>
+        <div>
+            <h2>Parking.</h2>
+            <p style="width: 300px; color: #888; line-height: 2em;">Need help with parking? Get parking information here</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+              Parking
+            </ion-button>
+        </div>
+        <div>
+            <h2>Partner Survey</h2>
+            <p style="width: 300px; color: #888; line-height: 2em;">description</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+              Survey
+            </ion-button>
+        </div>
+      </ion-col>
         </ion-row>
-    </ion-grid>
+
+      </ion-grid>
 
 </ion-content>

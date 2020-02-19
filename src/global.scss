@@ -92,11 +92,25 @@ ion-select-option {
 
 .register {
   color: white;
+  background: #00c400;
   border: 1px solid white;
   width: 120px;
   font-size: 0.7em;
-  font-weight: 700;
+  font-weight: 900;
   border-radius: 5px;
+  opacity: 0;
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
 .error-message {
@@ -165,9 +179,12 @@ ion-item {
   --padding-start: 20px;
 }
 
-ion-textarea {
-  --border-radius: 10px;
-  border: 2px solid #005191;
+ion-radio-group {
+  ion-list-header {
+    ion-label {
+      font-size: 1.3em;
+    }
+  }
 }
 
 ion-label {

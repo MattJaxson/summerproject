@@ -10,6 +10,16 @@ ion-grid {
   --ion-grid-padding: 0px;
 }
 
+h1{
+  color: #005191;
+  font-weight: 900;
+}
+
+p {
+  color: #999;
+  font-weight: 800;
+}
+
 .fair-button {
   height: 50px;
   width: 70%;
@@ -25,9 +35,79 @@ ion-grid {
 }
 
 .fair-info{
-  margin-top: 100px;
+  margin-top: 20px;
 
   p {
     opacity: 0.5;
+  }
+}
+
+.fair-page-toolbar-lg {
+  --background: #f9fafc;
+  --padding-end: 30px;
+
+  ion-buttons {
+    color: #faa71b;
+    font-weight: 900;
+    // border: 2px solid white;
+    border-radius: 50px;
+    width: auto;
+    padding: 4px;
+    text-align: center;
+  }
+}
+
+.fair-photo {
+  height: 300px;
+  background: url('/../../assets/Journi_flyer-500x357.png') no-repeat top center fixed;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+.fair-photo-lg {
+  background-image: linear-gradient(#f3f3f3, #ffffff);
+  height: 100vh;
+
+  .info-section {
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid #005191;
+    height: 30vh;
+    padding: 30px;
+    background: white;
+  }
+
+  .button-wrapper {
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #005191;
+    padding: 30px;
+    height: auto;
+    text-align: center;
+    position: relative;
+    top: -100px;
+    opacity: 0;
+    animation: btn-wrapper-slide-up 0.5s ease-out 1s forwards;
+  }
+
+  @keyframes btn-wrapper-slide-up {
+    0%{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  .fair-page-btn {
+    width: 120px;
+    margin: 7px;
+    --background: #faa71b;
+    --color: #005191;
+    font-weight: 900;
   }
 }

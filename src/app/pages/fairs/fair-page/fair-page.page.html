@@ -1,30 +1,91 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="ion-hide-md-up">
     <ion-title>{{title}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
+
+
+  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+      <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
+      </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
+  <ion-grid>
 
-    <ion-row class="fair-photo">
+    <ion-row class="fair-photo-lg ion-hide-sm-down ion-justify-content-center">
+
+        <ion-col class="info-section ion-align-self-center" size="9">
+          <h1>{{title}}</h1>
+          <p>{{date}}</p>
+          <p>{{time}}</p>
+          <p>{{description}}</p>
+        </ion-col>
+
+        <ion-col class="button-wrapper ion-align-self-center" size="9">
+            <h2>I am a: </h2>
+            <ion-button class="fair-page-btn" (click)="students()">
+              Student
+            </ion-button>
+
+            <ion-button class="fair-page-btn" (click)="partners()">
+              Partner
+            </ion-button>
+
+              <ion-button class="fair-page-btn" (click)="volunteers()">
+                Volunteer
+              </ion-button>
+
+             <ion-button class="fair-page-btn" (click)="chaperones()">
+              Chaperone
+            </ion-button>
+        </ion-col>
+
+      </ion-row>
+
+      <!-- <ion-row class="fair-photo-lg ion-hide-sm-down ion-justify-content-center">
+          <ion-col class="info-section" size="4" offset="1">
+            <p>LOL</p>
+          </ion-col>
+          <ion-col class="info-section" size="4" offset="1">
+            <ion-button (click)="students()">
+              Student
+            </ion-button>
+            <ion-button (click)="partners()">
+              Partner
+            </ion-button>
+            <ion-button (click)="volunteers()">
+              Volunteer
+            </ion-button>
+            <ion-button (click)="chaperones()">
+              Chaperone
+            </ion-button>
+          </ion-col>
+        </ion-row> -->
+
+    <!-- <ion-row >
       <ion-col size="12">
       </ion-col>
-      <div class="fair-info"2`  >
-        <h4>{{title}}</h4>
-        <p>Date: {{date}}</p>
-        <p>Start Time: {{time}}</p>
-        <p>{{summary}}</p>
-        <p>{{description}}
-        </p>
-      </div>
+      <ion-col size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3">
+      <div class="fair-info">
+          <h4>{{title}}</h4>
+          <p>Date: {{date}}</p>
+          <p>Start Time: {{time}}</p>
+          <p>{{summary}}</p>
+          <p>{{description}}
+          </p>
+        </div>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row class="fair-photo ion-hide-md-up">
+      <ion-col size="12"></ion-col>
     </ion-row>
 
-
-    <ion-row style="margin: 100px 0 100px 0;">
+    <ion-row class="ion-hide-md-up" style="margin: 100px 0 100px 0;">
       <ion-col size="11" offset="0.5">
         <p>Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
         <h3>I am a: </h3>
@@ -52,7 +113,7 @@
     </ion-row>
 
 
-    <ion-row class="ion-text-center" style="background: rgba(200,200,200,0.3);">
+    <!-- <ion-row class="ion-text-center" style="background: rgba(200,200,200,0.3);">
       <ion-col size="12" class="ion-text-center">
         <h2 style="color: #005191; font-weight: 800;">Need directions? </h2>
         <p>Use Google Maps to get directions for:</p>
@@ -63,7 +124,7 @@
           </ion-button>
         </ion-item>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 
   </ion-grid>
 </ion-content>

@@ -3,11 +3,62 @@ ion-card {
   margin-bottom: 40px;
 }
 
-.fair-photo {
-  height: 200px;
-  background-image: url('/../../assets/Journi_flyer-500x357.png');
-  background-size: contain;
+.fair-page-toolbar-lg {
+  --background: #f9fafc;
+  --padding-end: 30px;
+}
 
+.fair-photo {
+  height: 300px;
+  background-image: url('/../../assets/Journi_flyer-500x357.png');
+  background-size: cover;
+}
+
+h1, ion-card-title {
+  color: #005191;
+  font-weight: 900;
+}
+
+p, ion-card-subtitle {
+  color: #999;
+  font-weight: 800;
+}
+
+.fair-lg{
+  margin-top: 50px;
+}
+
+.fair-info-lg{
+  border:  1px solid #fafafa;
+  background: #f9fafc;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 1px 2px 4px #999;
+}
+
+
+
+.fair-photo-lg {
+  height: auto;
+  background-image: url('/../../assets/Journi_flyer-800x571.png');
+  background-size: contain;
+  box-shadow: 1px 2px 4px #999;
+}
+
+.fair-button{
+  position: absolute;
+  bottom: 20px;
+  width: 200px;
+}
+
+.fair-button-sm {
+  width: 100px;
+}
+
+.card-toolbar {
+  --background: #f9fafc;
+  --padding-end: 30px;
+  height: 80px;
 }
 
 ion-card-header {
