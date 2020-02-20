@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 
@@ -32,15 +33,27 @@ export class FairsService {
   }
 
   registerStudent(student) {
-  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student).subscribe(
-   async data => {
-      await console.log('registering student to fair');
-      await console.log(data);
-      await this.presentLoadingWithOptions(student.name, student.email);
-      await this.router.navigate(['']);
-      await console.log('REGISTERED STUDENT TO FAIR!');
-    }
-  );
+  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+
+        if ( error.error === 'A Student already has that email address' ) {
+          console.log('A Student already has that email address');
+
+          this.emailAlreadyExistAlert();
+          return throwError;
+        }
+      })
+    )
+    .subscribe(
+      async data => {
+         await console.log('registering student to fair');
+         await console.log(data);
+         await this.presentLoadingWithOptions(student.name, student.email);
+         await this.router.navigate(['']);
+         await console.log('REGISTERED STUDENT TO FAIR!');
+       }
+     );;
   }
 
 
@@ -70,7 +83,31 @@ export class FairsService {
   }
 
 
+  // Errors
 
+  async handleError(error: HttpErrorResponse) {
+
+    if ( error.error === 'A Student already has that email address' ) {
+      console.log('A Student already has that email address');
+
+      return this.emailAlreadyExistAlert();
+    }
+
+    return throwError(error);
+   }
+
+  async emailAlreadyExistAlert() {
+    const alert = await this.alert.create({
+      header: 'Email already in use.',
+      message: 'This email already exists. Please enter another email address',
+      buttons: ['Ok']
+    });
+
+    return await alert.present();
+  }
+
+
+  // Loading
   async presentLoadingWithOptions(chaperoneName, chaperoneEmail) {
     const loading = await this.loading.create({
       duration: 3000,
@@ -86,15 +123,8 @@ export class FairsService {
 
 }
 
+// Alerts
 
-async presentAlert() {
-  const alert = await this.alert.create({
-    header: 'Alert',
-    subHeader: 'Subtitle',
-    message: 'You have been Registered.',
-  });
 
-  await alert.present();
-}
 
 }

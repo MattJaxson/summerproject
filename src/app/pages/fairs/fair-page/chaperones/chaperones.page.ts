@@ -85,6 +85,8 @@ export class ChaperonesPage implements OnInit {
     this.router.navigate(['']);
   }
 
+  
+
   goBack() {
     console.log('going back');
     this.navCtrl.back();
