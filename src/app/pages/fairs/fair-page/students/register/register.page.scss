@@ -1,6 +1,6 @@
 .fair-page-toolbar-lg {
   --background: #f9fafc;
-  --padding-end: 30px;
+  --padding-end: 25%;
 }
 
 ion-item {
@@ -16,8 +16,16 @@ ion-item {
 }
 
 ion-radio-group {
+  padding: 10px;
   ion-item {
     border: none;
+  }
+}
+
+ion-list-header {
+  ion-label {
+    font-size: 1.4em;
+    font-weight: 800;
   }
 }
 

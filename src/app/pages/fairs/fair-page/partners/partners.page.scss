@@ -2,6 +2,16 @@ ion-row {
   margin-bottom: 50px;
 }
 
+ion-title {
+  font-size: 2em;
+}
+
+
+.sub-title {
+  font-size: 1em;
+  color: #999;
+}
+
 h2 {
   font-weight: 900;
   font-size: 1.3em;
@@ -9,7 +19,7 @@ h2 {
 
 .fair-page-toolbar-lg {
   --background: #f9fafc;
-  --padding-end: 30px;
+  --padding-end: 25%;
 }
 
 .schedule {

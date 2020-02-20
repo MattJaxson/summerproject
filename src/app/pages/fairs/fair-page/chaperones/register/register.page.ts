@@ -78,6 +78,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
   }
 
   register(chaperone) {
+    chaperone.id = this.id;
     console.log('Registering');
     this.fairs.registerChaperone(chaperone);
   }

@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
+  // Volunteer Register Classx
+
   id;
   title;
 

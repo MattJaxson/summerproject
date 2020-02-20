@@ -15,7 +15,9 @@
         <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
           Home
         </ion-button>
-  
+        <ion-title color="primary">Volunteers</ion-title>
+        <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
+
         <ion-button class="orange-button" style="width: 100px; --background: #00c400; --color: white; margin-right: 30px;" (click)="register()" slot="end">
           Register
         </ion-button>
@@ -26,7 +28,7 @@
 
 <ion-content>
 
-    <ion-grid fixed>
+    <ion-grid>
 
         <ion-row class="ion-justify-content-center">
             <ion-col size="11">

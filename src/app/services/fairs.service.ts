@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,10 @@ export class FairsService {
   BACKEND_URL = environment.url;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
+    private loading: LoadingController,
+    private alert: AlertController
   ) {}
 
   getFairs() {
@@ -28,9 +33,12 @@ export class FairsService {
 
   registerStudent(student) {
   return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student).subscribe(
-    data => {
-      console.log('registering student to fair');
-      console.log(data);
+   async data => {
+      await console.log('registering student to fair');
+      await console.log(data);
+      await this.presentLoadingWithOptions(student.name, student.email);
+      await this.router.navigate(['']);
+      await console.log('REGISTERED STUDENT TO FAIR!');
     }
   );
   }
@@ -38,28 +46,55 @@ export class FairsService {
 
   registerPartner(partner) {
     return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner).subscribe(
-      data => {
-        console.log('registering partner to fair');
-        console.log(data);
+      async data => {
+        await console.log('registering partner to fair...');
+        await console.log(data);
+        await this.presentLoadingWithOptions(partner.name, partner.email);
+        await this.router.navigate(['']);
+        await console.log('REGISTERED PARTNER TO FAIR!');
       }
     );
   }
 
 
-  registerChaperone(chaperone) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, chaperone).subscribe(
-      data => {
-        console.log('registering chaperone to fair');
-        console.log(data);
+  async registerChaperone(chaperone) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-chaperone`, chaperone).subscribe(
+      async data => {
+        await console.log('registering chaperone to fair');
+        await console.log(data);
+        await this.presentLoadingWithOptions(chaperone.name, chaperone.email);
+        await this.router.navigate(['']);
+        await console.log('REGISTERED CHAPERONE TO FAIR!');
       }
     );
   }
 
-  registerVolunteer() {
-    
-  }
 
 
+  async presentLoadingWithOptions(chaperoneName, chaperoneEmail) {
+    const loading = await this.loading.create({
+      duration: 3000,
+      message: `Registering you as a Chaperone ${chaperoneName}. Sending an email to ${chaperoneEmail}`,
+      translucent: true,
+      cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
 
 }
 
+
+async presentAlert() {
+  const alert = await this.alert.create({
+    header: 'Alert',
+    subHeader: 'Subtitle',
+    message: 'You have been Registered.',
+  });
+
+  await alert.present();
+}
+
+}

@@ -1,5 +1,15 @@
-ion-grid {
-  --ion-grid-padding: 0px;
+ion-row {
+  margin-bottom: 50px;
+}
+
+ion-title {
+  font-size: 2em;
+}
+
+
+.sub-title {
+  font-size: 1em;
+  color: #999;
 }
 
 h2 {
@@ -7,36 +17,9 @@ h2 {
   font-size: 1.3em;
 }
 
-p {
-
-}
-
-ion-text, p, h3 {
-  margin: 3px;
-}
-
-ion-row {
-  margin: 50px 0px 50px 0;
-}
-
 .fair-page-toolbar-lg {
   --background: #f9fafc;
-  --padding-end: 30px;
-
-  ion-buttons {
-    color: #faa71b;
-    font-weight: 900;
-    // border: 2px solid white;
-    border-radius: 50px;
-    width: auto;
-    padding: 4px;
-    text-align: center;
-  }
-}
-
-.agenda-header{
-  color: #005191;
-  font-weight: 800;
+  --padding-end: 25%;
 }
 
 .schedule {
@@ -48,7 +31,6 @@ ion-row {
     --background: #f9fafc;
   }
 }
-
 
 
 .schedule::-webkit-scrollbar {
@@ -67,15 +49,4 @@ ion-row {
   border-radius: 8px;
   border: 2px solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, .5);
-}
-
-
-.options {
-  // background: green;
-}
-
-.booth-partners {
-  background: lightgray;
-  margin: 0;
-  --ion-grid-padding: 0px;
 }

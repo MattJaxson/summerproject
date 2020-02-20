@@ -25,8 +25,8 @@ export class FairsPage implements OnInit {
         console.log(this.allFairs);
 
         for (const fair of this.allFairs) {
-          fair.date = format( new Date(fair.date), 'MMMM dd, yyyy');
-          fair.time = format( new Date(fair.date), 'hh:mm a');
+          fair.date = format( new Date(fair['date']), 'MMMM dd, yyyy');
+          fair.time = format( new Date(fair['date']), 'hh:mm a');
           fair.dateCreated = formatDistanceToNow( new Date(fair.dateCreated), {
             includeSeconds: true,
             addSuffix: true

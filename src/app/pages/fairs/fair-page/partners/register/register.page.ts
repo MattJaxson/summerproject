@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RegisterPage implements OnInit, AfterViewInit {
 
+  // Partner Register Class
+
   registerForm: FormGroup;
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
   id;
@@ -75,8 +77,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
     this.navCtrl.back();
   }
 
-  register(id, partner) {
-    partner.id = id;
+  register(partner) {
+    partner.id = this.id;
     console.log('Registering');
     this.fairs.registerPartner(partner);
   }

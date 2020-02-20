@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { FairsService } from 'src/app/services/fairs.service';
+import { format } from 'date-fns';
+
 
 @Component({
   selector: 'app-chaperones',
@@ -72,8 +74,8 @@ export class ChaperonesPage implements OnInit {
         console.log('Fair ID: ' + this.id);
         console.log(fair);
         this.title = fair['title'];
-        this.time = fair['time'];
-        this.date = fair['date'];
+        this.time = format( new Date(fair['date']), 'hh:mm a');
+        this.date = format( new Date(fair['date']), 'MMMM dd, yyyy');
       }
     );
   }
