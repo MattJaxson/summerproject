@@ -50,6 +50,8 @@ ion-title {
   margin-top: 10px;
   font-size: 1em;
 }
+
+
 .line-input {
   ion-item {
       --border-color: transparent!important;
@@ -79,7 +81,7 @@ ion-select-option {
 }
 
 .orange-button {
-  width: 70%;
+  width: 150px;
   height: 50px;
   font-size: 0.8em;
   font-weight: 700;
@@ -179,13 +181,6 @@ ion-item {
   --padding-start: 20px;
 }
 
-ion-radio-group {
-  ion-list-header {
-    ion-label {
-      font-size: 1.3em;
-    }
-  }
-}
 
 ion-label {
   font-size: 0.6em;

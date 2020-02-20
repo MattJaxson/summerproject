@@ -46,8 +46,13 @@ export class FairsService {
   }
 
 
-  registerChaperone() {
-    
+  registerChaperone(chaperone) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, chaperone).subscribe(
+      data => {
+        console.log('registering chaperone to fair');
+        console.log(data);
+      }
+    );
   }
 
   registerVolunteer() {

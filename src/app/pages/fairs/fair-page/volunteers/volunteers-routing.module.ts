@@ -9,7 +9,7 @@ const routes: Routes = [
     component: VolunteersPage
   },
   {
-    path: 'register',
+    path: 'register/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {

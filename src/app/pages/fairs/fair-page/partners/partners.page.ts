@@ -77,7 +77,7 @@ export class PartnersPage implements OnInit {
   }
 
   viewFAQs() {
-    this.router.navigate(['/fairs/fair/:id/students/:id/faq', this.id]);
+    this.router.navigate(['/fairs/fair/:id/partners/:id/faq', this.id]);
   }
 
   findFair() {

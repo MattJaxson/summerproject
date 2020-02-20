@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
-  },
-  {
     path: 'parking',
     loadChildren: () => import('./parking/parking.module').then( m => m.ParkingPageModule)
   },
@@ -25,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./survey/survey.module').then( m => m.SurveyPageModule)
   },
   {
-    path: 'faq',
+    path: 'faq/:id',
     loadChildren: () => import('./faq/faq.module').then( m => m.FaqPageModule)
   }
 ];

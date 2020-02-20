@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController, LoadingController, IonInput, NavController } from '@ionic/angular';
 import { FairsService } from '../../../../../services/fairs.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
 
   registerForm: FormGroup;
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
-  fair = 'Tech Fair';
+  id;
+  title;
 
   schoolList =  ['School 1', 'School 2', 'School 3'];
   gradeList =  ['7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'];
@@ -37,7 +39,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
 
 
   constructor(
-    // private auth: AuthService,
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private fairs: FairsService,
     private navCtrl: NavController,
@@ -54,6 +56,12 @@ export class RegisterPage implements OnInit, AfterViewInit {
       lunch: ['', [Validators.required, Validators.required]],
       colleagues: ['', [Validators.required, Validators.required]],
     });
+
+
+    // tslint:disable-next-line: radix
+    const id  = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.id = id;
   }
 
   ngAfterViewInit() {
@@ -67,7 +75,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
     this.navCtrl.back();
   }
 
-  register(partner) {
+  register(id, partner) {
+    partner.id = id;
     console.log('Registering');
     this.fairs.registerPartner(partner);
   }

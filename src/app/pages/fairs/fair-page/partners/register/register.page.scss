@@ -16,8 +16,16 @@ ion-item {
 }
 
 ion-radio-group {
+  padding: 10px;
   ion-item {
     border: none;
+  }
+}
+
+ion-list-header {
+  ion-label {
+    font-size: 1.4em;
+    font-weight: 800;
   }
 }
 
