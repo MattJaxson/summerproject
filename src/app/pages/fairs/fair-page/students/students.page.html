@@ -33,18 +33,16 @@
 <ion-content>
 
   <!-- Mobile & Tablet -->
-  <ion-grid class="ion-text-center ion-hide-md-up">
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="11">
-        <h1 class="agenda-header">Agenda</h1>
-        <!-- <p style="width: 300px; color: #888; line-height: 2em;">View the .</p> -->
-      </ion-col>
-    </ion-row>
+  <ion-grid class="ion-hide-md-up">
 
     <ion-row class="ion-justify-content-center">
-      <ion-col class="schedule" size="5">
+      <ion-col class="schedule-mobile" size="12">
 
-       <ion-item *ngFor="let slot of slots">
+          <div margin>
+              <h1 class="agenda-header-mobile">Agenda</h1>
+          </div>
+
+       <ion-item padding *ngFor="let slot of slots">
          <ion-label class="ion-text-wrap">
          <ion-text color="primary">
            <h2>{{slot.time}}</h2>
@@ -58,7 +56,7 @@
 
       </ion-col>
 
-      <ion-col class="options" size="5" offset="1">
+      <ion-col class="options-mobile ion-text-center" size="6">
         <div>
             <h2>Booth Partners</h2>
             <p style="width: 300px; color: #888; line-height: 2em;">These are all the booth partners that will be involved with this fair.</p>

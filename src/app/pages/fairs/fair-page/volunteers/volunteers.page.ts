@@ -16,45 +16,7 @@ export class VolunteersPage implements OnInit {
   title: string;
   time: string;
   date: string;
-
-  slots = [
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-    {
-      time: '9: 00am',
-      title: 'Title',
-      // tslint:disable-next-line: max-line-length
-      description: 'This is a description. I am putting random stuff here just so I can see what it looks like when a certain amount of words are in this area.   Gotta make sure things look right, and I have to get a better references for a certain amount of characters.'
-    },
-];
+  slots: object[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -75,6 +37,8 @@ export class VolunteersPage implements OnInit {
         this.title = fair['title'];
         this.time = format( new Date(fair['date']), 'hh:mm a');
         this.date = format( new Date(fair['date']), 'MMMM dd, yyyy');
+        this.slots =  fair['agenda'];
+        console.log(this.slots);
       }
     );
   }

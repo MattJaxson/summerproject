@@ -2,11 +2,6 @@ ion-row {
   margin-bottom: 50px;
 }
 
-ion-title {
-  font-size: 2em;
-}
-
-
 .sub-title {
   font-size: 1em;
   color: #999;
@@ -20,6 +15,18 @@ h2 {
 .fair-page-toolbar-lg {
   --background: #f9fafc;
   --padding-end: 25%;
+
+  ion-title {
+    font-size: 2em;
+  }
+}
+
+.agenda-header {
+  margin: 30px 0 30px 0;
+}
+
+.agenda-header-mobile {
+
 }
 
 .schedule {
@@ -31,6 +38,16 @@ h2 {
 
   ion-item {
     --background: #f9fafc;
+  }
+}
+
+.schedule-mobile {
+  opacity: 1;
+  animation: 1s fade-right 0.5s ease-in forwards;
+
+  ion-item {
+    --background: #f9fafc;
+    margin-bottom: 30px;
   }
 }
 
@@ -57,6 +74,11 @@ h2 {
   animation: fade-down 1s ease-in 0.5s forwards;
 }
 
+.options-mobile {
+  opacity: 0;
+  animation: fade-left 1s ease-in 0.5s forwards;
+}
+
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -78,5 +100,17 @@ h2 {
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
