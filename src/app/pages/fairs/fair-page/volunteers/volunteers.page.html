@@ -1,4 +1,6 @@
 <ion-header>
+
+    <!-- Mobile & Tablet Toolbar -->
     <ion-toolbar class="ion-hide-md-up">
       <ion-title>Volunteers</ion-title>
       <ion-buttons slot="start">
@@ -11,6 +13,7 @@
       </ion-buttons>
     </ion-toolbar>
 
+    <!-- Desktop Toolbar -->
     <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
         <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
           Home
@@ -23,12 +26,14 @@
         </ion-button>
         <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
         </ion-button>
-      </ion-toolbar>
+    </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
 
-    <ion-grid>
+    <!-- Mobile & Tablet -->
+    <ion-grid class="ion-text-center ion-hide-md-up">
 
         <ion-row class="ion-justify-content-center">
             <ion-col size="11">
@@ -39,6 +44,64 @@
 
           <ion-row class="ion-justify-content-center">
               <ion-col class="schedule" size="5">
+
+               <ion-item *ngFor="let slot of slots">
+                 <ion-label class="ion-text-wrap">
+                 <ion-text color="primary">
+                   <h2>{{slot.time}}</h2>
+                  </ion-text>
+                  <ion-text color="secondary">
+                    <p style="font-weight: 900; font-size: 1.em;">{{slot.title}}</p>
+                   </ion-text>
+                   <p>{{slot.description}}</p>
+                  </ion-label>
+               </ion-item>
+
+              </ion-col>
+
+        <ion-col class="options" size="5" offset="1">
+          <div>
+              <h2>Volunteer FAQ.</h2>
+              <p style="width: 300px; color: #888; line-height: 2em;">Have any questions? Visit this page to view Frequently Asked Questions for Partners.</p>
+              <ion-button disabled class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="viewFAQs()">
+                View FAQ
+              </ion-button>
+          </div>
+          <div>
+              <h2>Where is the Fair?</h2>
+              <p style="width: 300px; color: #888; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
+              <ion-button disabled class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+                View Fair Location
+              </ion-button>
+          </div>
+          <div>
+              <h2>Parking.</h2>
+              <p style="width: 300px; color: #888; line-height: 2em;">Need help with parking? Get parking information here</p>
+              <ion-button disabled class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+                Parking
+              </ion-button>
+          </div>
+          <!-- <div>
+              <h2>Volunteer Survey</h2>
+              <p style="width: 300px; color: #888; line-height: 2em;">description</p>
+              <ion-button disabled class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
+                Survey
+              </ion-button>
+          </div> -->
+        </ion-col>
+          </ion-row>
+
+    </ion-grid>
+
+    <!-- Desktop -->
+    <ion-grid style="margin-top: 75px" class="ion-hide-sm-down">
+
+          <ion-row class="ion-justify-content-center">
+              <ion-col class="schedule" size="5">
+
+                  <div margin>
+                      <h1 class="agenda-header">Agenda</h1>
+                  </div>
 
                <ion-item *ngFor="let slot of slots">
                  <ion-label class="ion-text-wrap">

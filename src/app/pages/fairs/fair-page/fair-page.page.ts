@@ -56,10 +56,6 @@ export class FairPagePage implements OnInit {
 
        this.date = format( new Date(this.date), 'MMMM dd, yyyy');
        this.time = format( new Date(this.date), 'hh:mm a');
-       this.dateCreated = formatDistanceToNow( new Date(this.dateCreated), {
-          includeSeconds: true,
-          addSuffix: true
-        });
       }
     );
   }
