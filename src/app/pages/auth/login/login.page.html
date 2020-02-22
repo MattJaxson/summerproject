@@ -10,19 +10,19 @@
 
 <!-- Desktop -->
 <ion-header class="ion-hide-sm-down">
-    <ion-toolbar class="login-toolbar">
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-          Back to home page
-        </ion-buttons>
+    <ion-toolbar class="login-toolbar ion-padding-horizontal">
+      <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
+      </ion-button>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-grid fixed class="ion-text-center">
-    <ion-row>
-      <ion-col size="8" offset="2">
+
+  <!-- Mobile & Tablet -->
+  <ion-grid class="ion-hide-md-up ion-text-center">
+    <ion-row size-xs="8" size-sm="10">
+      <ion-col>
         <!-- Refactor Logo Section -->
         <img src="./assets/logo.png" style="background: lightgray; height: 70px; margin: 35px 0 30px 0;"/>
         <!--  -->
@@ -90,8 +90,95 @@
     <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
     <!-- Positioning Sign up Button outside of Ion Content for customization -->
   </ion-grid>
+
+  <!-- Desktop -->
+  <ion-grid class="ion-text-center ion-hide-sm-down">
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="6">
+          <!-- Refactor Logo Section -->
+          <img src="./assets/logo.png" style="background: lightgray; height: 70px; margin: 35px 0 30px 0;"/>
+          <!--  -->
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="6">
+            <form  [formGroup]="loginForm"
+                   (ngSubmit)="login(this.loginForm.value)">
+            <ion-list class="line-input">
+              <ion-item>
+                <!-- Email -->
+                  <ion-input
+                    #autoFucousInput
+                    required
+                    placeholder="Email"
+                    inputmode="email"
+                    formControlName="email"
+                    type="email">
+                  </ion-input>
+              </ion-item>
+                  <!-- Password Validation-->
+                  <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validationMessasges.email">
+                      <div class="error-message"
+                      *ngIf="loginForm
+                        .get('email')
+                        .hasError(validation.type) && (loginForm.get('email')
+                        .dirty || loginForm.get('email').touched)">
+                        {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>
+  
+            <!-- Password -->
+            <ion-item>
+                <ion-input
+                  required
+                  placeholder="Password"
+                  inputmode="text"
+                  formControlName="password"
+                  type="password">
+                </ion-input>
+            </ion-item>
+  
+            </ion-list>
+  
+                <!-- Password Validation-->
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.password">
+                    <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+
+                <!-- Login Button -->
+                <ion-button style="width: 200px;" class="orange-button" type="submit">Login</ion-button>
+
+              </form>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-hide-sm-down" size="6">
+          <ion-button id="sign-up-button" style="--box-shadow: none;" [routerLink]="      ['personal-info']">Sign Up
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="6">
+          <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
 </ion-content>
-<ion-footer class="text-center">
+
+
+<ion-footer class="text-center ion-hide-md-up">
   <ion-toolbar>
     <ion-button style="--box-shadow: none;" expand="full" [routerLink]="['personal-info']">Sign Up</ion-button>
   </ion-toolbar>

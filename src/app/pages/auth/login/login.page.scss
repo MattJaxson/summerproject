@@ -1,7 +1,7 @@
 .login-toolbar {
 --background: white;
 --color: #005191;
-box-shadow: none;
+--box-shadow: none;
 
   ion-back-button{
       --color: #005191 !important;
@@ -19,25 +19,30 @@ ion-footer {
 }
 
 #sign-up-button {
-  height: 60px;
+  width: 200px;
+  height: 50px;
   font-size: 1em;
   font-weight: 700;
-  --color: #005191;
+  --color: white;
   background: #FFB351;
   opacity: 0;
+  animation: slide-up 0.5s ease 1s forwards;
 }
 
 #forgot {
-  width: 70%;
+  width: 200px;
   height: 50px;
   font-size: 0.8em;
   font-weight: 700;
-  margin: 40px 0 40px 0;
+  margin-top: 120px;
   opacity: 0;
-  --background: #dedede;
+  --border-color: #777;
+  --border-width: 1.5px;
+  --border-style: solid;
+  --background:white;
   --color: #777;
   transition: 0.5s;
-  animation: slide-up 0.5s ease 1s forwards;
+  animation: slide-up 0.5s ease 1.5s forwards;
 }
 
 

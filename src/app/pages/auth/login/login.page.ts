@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular
 import { AuthService } from '../../../services/auth.service';
 import { ToastController, LoadingController, IonInput } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class LoginPage implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private loading: LoadingController,
-    private toast: ToastController
+    private toast: ToastController,
+    private router: Router
   ) {
   }
 
@@ -67,6 +69,10 @@ export class LoginPage implements OnInit, AfterViewInit {
   login(data) {
     this.presentLoading();
     this.auth.login(data);
+  }
+
+  goBack() {
+    this.router.navigate(['']);
   }
 
 
