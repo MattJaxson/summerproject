@@ -55,16 +55,16 @@ p, ion-card-subtitle {
 .fair-button{
   position: absolute;
   bottom: 20px;
-  width: 200px;
+  width: 100px;
 }
 
 .fair-button-sm {
-  width: 100px;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .card-toolbar {
   --background: #f9fafc;
-  --padding-end: 30px;
   height: 80px;
 }
 

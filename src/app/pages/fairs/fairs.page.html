@@ -1,4 +1,5 @@
 <ion-header>
+  <!-- Mobile & Tablet Header -->
   <ion-toolbar class="ion-hide-md-up">
     <ion-title>United Way Southast Michigan Fairs</ion-title>
     <ion-buttons slot="start">
@@ -6,7 +7,7 @@
     </ion-buttons>
   </ion-toolbar>
 
-
+  <!-- Desktop Header -->
   <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
       <ion-title color="primary">United Way Southast Michigan Fairs</ion-title>
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
@@ -17,8 +18,9 @@
 <ion-content>
   <ion-grid>
 
-    <ion-row>
-      <ion-col class="ion-hide-md-up" size-sm="11" offset-sm="0.5">
+    <!-- Mobile & Tablet -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-hide-md-up" size-xs="10" size-sm="8">
           <ion-card *ngFor="let fair of allFairs">
 
               <ion-card-content class="fair-photo"></ion-card-content>
@@ -27,8 +29,8 @@
                  <ion-card-subtitle>Date: {{fair.date}}</ion-card-subtitle>
                  <ion-card-subtitle>Time: {{fair.time}}</ion-card-subtitle>
                </ion-card-header>
-               <ion-toolbar class="card-toolbar">
-                  <ion-button slot="end" class="fair-button-sm orange-button" (click)="fairPage(fair._id)">
+               <ion-toolbar class="card-toolbar ion-text-center">
+                  <ion-button class="fair-button-sm orange-button" (click)="fairPage(fair._id)">
                       View Fair
                     </ion-button>
                </ion-toolbar>
@@ -36,6 +38,7 @@
       </ion-col>
     </ion-row>
 
+    <!-- Desktop -->
     <ion-row *ngFor="let fair of allFairs" class="ion-justify-content-center fair-lg">
         <ion-col class="ion-hide-sm-down fair-info-lg" size-md="4">
           <h1>{{fair.title}}</h1>

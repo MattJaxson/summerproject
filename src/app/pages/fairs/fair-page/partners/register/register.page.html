@@ -19,29 +19,34 @@
     <ion-grid  class="ion-text-center ion-hide-md-up">
 
       <!-- Mobile & Tablet -->
-        <ion-row class="ion-justify-content-right register-wrapper">
+        <ion-row class="ion-justify-content-center register-wrapper">
+            <ion-col size-sm="8" size-xs="10">
 
-          <ion-col size="5" offset="2">
-           <form [formGroup]="registerForm" (ngSubmit)="register(this.registerForm.value)">
-             <ion-list class="line-input">
-               <ion-item>
-                 <ion-input
-                  #autoFucousInput
-                  required
-                  inputmode="text"
-                  formControlName="name"
-                  type="text"
-                  placeholder="Contact First & Last Name"></ion-input>
-               </ion-item>
-               <ion-item>
-                 <ion-input
-                  #autoFucousInput
-                  required
-                  inputmode="email"
-                  formControlName="email"
-                  type="text"
-                  placeholder="Contact Email"></ion-input>
-               </ion-item>
+            <p class="text-header">After you have successfully registered, you will be sent a confirmation email. If your school has more than 30 students r    registered, you will be notified and waitlisted.
+            </p>
+            </ion-col>
+
+            <ion-col size-sm="8" size-xs="10">
+              <form [formGroup]="registerForm" (ngSubmit)="register(this.registerForm.value)">
+                <ion-list class="line-input">
+                  <ion-item>
+                     <ion-input
+                     #autoFucousInput
+                     required
+                     inputmode="text"
+                     formControlName="name"
+                      type="text"
+                      placeholder="Contact First & Last Name"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                     <ion-input
+                      #autoFucousInput
+                      required
+                      inputmode="email"
+                      formControlName="email"
+                      type="text"
+                      placeholder="Contact Email"></ion-input>
+                  </ion-item>
 
                     <!-- Email Validation-->
                     <div class="validation-errors">
@@ -122,12 +127,6 @@
         </ion-row>
 
     </ion-grid>
-
-
-
-
-
-
 
 
 

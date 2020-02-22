@@ -1,27 +1,31 @@
-<ion-header>
+<!-- Mobile & Tablet Header -->
+<ion-header class="ion-hide-md-up">
 
-    <!-- Mobile & Tablet Toolbar -->
-  <ion-toolbar class="ion-hide-md-up">
-    <ion-title>Students</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button class="register" (click)="register()">
-        Register
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar class="ion-padding-horizontal">
+        <ion-title>Students</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button class="register" (click)="register()">
+            Register
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
 
-  <!-- Desktop Toolbar -->
-  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+</ion-header>
+
+  <!-- Desktop Header -->
+<ion-header class="ion-hide-sm-down">
+
+  <ion-toolbar class="ion-padding-horizontal fair-page-toolbar-lg">
       <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
         Home
       </ion-button>
       <ion-title color="primary">Students</ion-title>
       <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
 
-      <ion-button class="orange-button" style="width: 100px; --background: #00c400; --color: white; margin-right: 30px;" (click)="register()" slot="end">
+      <ion-button color="success" class="orange-button" style="width: 100px; --color: white; margin-right: 30px;" (click)="register()" slot="end">
         Register
       </ion-button>
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
@@ -30,19 +34,21 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content
+  [scrollEvents]="true"
+  (ionScroll)="logScrolling($event)">
 
   <!-- Mobile & Tablet -->
   <ion-grid class="ion-hide-md-up">
 
     <ion-row class="ion-justify-content-center">
-      <ion-col class="schedule-mobile" size="12">
+      <ion-col class="schedule-mobile" size-xs="8" size-sm="8" size-md="10">
 
           <div margin>
               <h1 class="agenda-header-mobile">Agenda</h1>
           </div>
 
-       <ion-item padding *ngFor="let slot of slots">
+       <ion-item lines="none" padding *ngFor="let slot of slots">
          <ion-label class="ion-text-wrap">
          <ion-text color="primary">
            <h2>{{slot.time}}</h2>
@@ -56,29 +62,23 @@
 
       </ion-col>
 
-      <ion-col class="options-mobile ion-text-center" size="6">
-        <div>
+      <ion-col class="booth-partners-mobile" size-xs="8" size-sm="8" size-md="10">
+        <div #boothPartners>
             <h2>Booth Partners</h2>
-            <p style="width: 300px; color: #888; line-height: 2em;">These are all the booth partners that will be involved with this fair.</p>
-            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="boothPartners()">
+            <p style="color: #888; line-height: 2em;">These are all the booth partners that will be involved with this fair.</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="boothPartnersPage()">
               View Booth Partners
             </ion-button>
         </div>
-        <div>
+        <div #findFind class="find-fair-mobile">
             <h2>Where is the Fair?</h2>
-            <p style="width: 300px; color: #888; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
-            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="boothPartners()">
+            <p style="color: #888; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
+            <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFairLocation()">
               View Fair Location
             </ion-button>
         </div>
       </ion-col>
     </ion-row>
-
-    <!-- <ion-row class="ion-text-center booth-partners">
-      <ion-col size="11" offset="0.5">
-        
-      </ion-col>
-    </ion-row> -->
 
   </ion-grid>
 
@@ -106,21 +106,18 @@
 
           </ion-col>
 
-          <ion-col class="options" size="5" offset="1">
-            <div>
+          <ion-col class="options" push="1" size="3">
                 <h2>Booth Partners</h2>
                 <p style="width: 300px; color: #888; line-height: 2em;">These are all the booth partners that will be involved with this fair.</p>
                 <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="boothPartners()">
                   View Booth Partners
                 </ion-button>
-            </div>
-            <div>
+
                 <h2>Where is the Fair?</h2>
                 <p style="width: 300px; color: #888; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
                 <ion-button class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="boothPartners()">
                   View Fair Location
                 </ion-button>
-            </div>
           </ion-col>
         </ion-row>
         <!-- <ion-row class="ion-text-center booth-partners">

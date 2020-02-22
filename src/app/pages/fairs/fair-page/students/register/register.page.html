@@ -19,9 +19,16 @@
     <!-- Mobile and Tablet -->
   <ion-grid class="ion-text-center ion-hide-md-up">
 
-    <ion-row class="ion-justify-content-right register-wrapper ion-hide-md-up">
+    <ion-row class="ion-justify-content-center register-wrapper ion-hide-md-up">
 
-      <ion-col size="5" offset="2">
+      <ion-col size-sm="8" size-xs="10">
+
+            <p class="text-header">After you have successfully registered, you will be sent a confirmation email. If your school has more than 30 students registered, you will be notified and waitlisted.
+            </p>
+
+      </ion-col>
+      <ion-col size-sm="8" size-xs="10">
+        
        <form  [formGroup]="registerForm"
        (ngSubmit)="register(this.registerForm.value)">
          <ion-list class="line-input">

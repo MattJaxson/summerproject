@@ -1,9 +1,10 @@
 ion-item {
-  --padding-top: 10px;
+  --padding-top: 20px;
   --padding-start: 10px;
   --padding-end: 10px;
-  --padding-bottom: 10px;
+  --padding-bottom: 20px;
   --height: 100px;
+  --background: none;
 }
 
 ion-grid {
@@ -20,13 +21,20 @@ p {
   font-weight: 800;
 }
 
+.button-wrapper{
+  background: #f9fafc;
+  padding: 20px;
+}
+
 .fair-button {
   height: 50px;
-  width: 70%;
+  width: 200px;
+  margin: 0 auto;
+  font-weight: 900;
   --background: none;
   --color: #005191;
   --border-color: #005191;
-  --border-width: 1.5px;
+  --border-width: 2.5px;
   --border-style: solid;
   --padding-top: 20px;
   --padding-start: 20px;

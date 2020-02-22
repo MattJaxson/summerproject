@@ -2,11 +2,6 @@ ion-row {
   margin-bottom: 50px;
 }
 
-ion-title {
-  font-size: 2em;
-}
-
-
 .sub-title {
   font-size: 1em;
   color: #999;
@@ -19,7 +14,25 @@ h2 {
 
 .fair-page-toolbar-lg {
   --background: #f9fafc;
-  --padding-end: 25%;
+
+  ion-title {
+    padding-left: 75px;
+    font-size: 1.5em;
+  }
+
+  .sub-title {
+    padding-left: 75px;
+    font-size: 1em;
+    color: #999;
+  }
+}
+
+.agenda-header {
+  margin: 30px 0 30px 0;
+}
+
+.agenda-header-mobile {
+
 }
 
 .schedule {
@@ -34,6 +47,15 @@ h2 {
   }
 }
 
+.schedule-mobile {
+  opacity: 1;
+  animation: 1s fade-right 0.5s ease-in forwards;
+
+  ion-item {
+    --background: #f9fafc;
+    margin-bottom: 35px;
+  }
+}
 
 .schedule::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -58,6 +80,17 @@ h2 {
   animation: fade-down 1s ease-in 0.5s forwards;
 }
 
+.booth-partners-mobile {
+  opacity: 0;
+  margin-bottom: 50px;
+  animation: fade-left 1s ease-in 0.5s forwards;
+}
+
+.find-fair-mobile {
+  opacity: 0;
+  animation: fade-left 1s ease-in 0.5s forwards;
+}
+
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -79,5 +112,17 @@ h2 {
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }

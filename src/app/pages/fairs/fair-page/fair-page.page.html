@@ -1,4 +1,5 @@
 <ion-header>
+  <!-- Mobile & Tablet Header -->
   <ion-toolbar class="ion-hide-md-up">
     <ion-title>{{title}}</ion-title>
     <ion-buttons slot="start">
@@ -7,6 +8,7 @@
   </ion-toolbar>
 
 
+  <!-- Desktop Header -->
   <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
       </ion-button>
@@ -16,6 +18,7 @@
 <ion-content>
   <ion-grid>
 
+    <!-- Desktop -->
     <ion-row class="fair-photo-lg ion-hide-sm-down ion-justify-content-center">
 
         <ion-col class="info-section ion-align-self-center" size="9">
@@ -46,49 +49,24 @@
 
       </ion-row>
 
-      <!-- <ion-row class="fair-photo-lg ion-hide-sm-down ion-justify-content-center">
-          <ion-col class="info-section" size="4" offset="1">
-            <p>LOL</p>
-          </ion-col>
-          <ion-col class="info-section" size="4" offset="1">
-            <ion-button (click)="students()">
-              Student
-            </ion-button>
-            <ion-button (click)="partners()">
-              Partner
-            </ion-button>
-            <ion-button (click)="volunteers()">
-              Volunteer
-            </ion-button>
-            <ion-button (click)="chaperones()">
-              Chaperone
-            </ion-button>
-          </ion-col>
-        </ion-row> -->
+    <!-- Mobile -->
+    <ion-row class="ion-hide-md-up ion-justify-content-center" style="margin: 50px 0 0 0;">
 
-    <!-- <ion-row >
-      <ion-col size="12">
+      <ion-col class="info-section" size-xs="8" size-sm="8">
+       <h1>{{title}}</h1>
+       <p>{{date}}</p>
+       <p>{{time}}</p>
+       <p>{{description}}</p>
       </ion-col>
-      <ion-col size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3">
-      <div class="fair-info">
-          <h4>{{title}}</h4>
-          <p>Date: {{date}}</p>
-          <p>Start Time: {{time}}</p>
-          <p>{{summary}}</p>
-          <p>{{description}}
-          </p>
-        </div>
+
+      <ion-col size-xs="8" size-sm="8">
+        <p style="line-height: 2em; font-weight: 400;">Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
       </ion-col>
-    </ion-row> -->
 
-    <ion-row class="fair-photo ion-hide-md-up">
-      <ion-col size="12"></ion-col>
-    </ion-row>
+      <ion-col class="ion-text-center button-wrapper" size-xs="12" size-sm="12" style="margin-top: 70px;
+      box-shadow: inset 1px 4px 20px 3px #666;">
 
-    <ion-row class="ion-hide-md-up" style="margin: 100px 0 100px 0;">
-      <ion-col size="11" offset="0.5">
-        <p>Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
-        <h3>I am a: </h3>
+        <h2>I am a: </h2>
         <ion-item lines="none">
           <ion-button class="fair-button" (click)="students()">
             Student
@@ -112,19 +90,6 @@
       </ion-col>
     </ion-row>
 
-
-    <!-- <ion-row class="ion-text-center" style="background: rgba(200,200,200,0.3);">
-      <ion-col size="12" class="ion-text-center">
-        <h2 style="color: #005191; font-weight: 800;">Need directions? </h2>
-        <p>Use Google Maps to get directions for:</p>
-        <p style="background: rgba(230,230,230,0.7); padding: 8px">{{address}}, {{city}} {{state}}, {{zip}}</p>
-        <ion-item lines="none" style="--background: none;">
-          <ion-button class="orange-button" (click)="partners()">
-            Google Maps
-          </ion-button>
-        </ion-item>
-      </ion-col>
-    </ion-row> -->
 
   </ion-grid>
 </ion-content>
