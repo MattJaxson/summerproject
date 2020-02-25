@@ -27,18 +27,54 @@ ion-slide {
 
 ion-slides{
   --bullet-background: rgba(220,220,220, 1);
+  --bullet-background-active: #faa71b;
+}
+
+.fairs-button {
+ width: 250px;
+ position: absolute;
+ bottom: 100px;
+}
+
+.slider-text {
+  background: rgba(220,220, 220, 0);
+  padding: 5px;
+  width: 40%;
+  display: inline-block;
+  margin-top: 15%;
+  color: white;
+  border-bottom: solid white 10px;
+  animation: slide-up 0.5s ease-in forwards;
+
+    h1 {
+      font-weight: 900;
+      font-size: 4em;
+      line-height: 1.3em;
+      opacity: 0;
+      animation: slide-up 0.5s ease-in 0.5s forwards;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1em;
+      line-height: 1.3em;
+      color: white;
+      opacity: 0;
+      animation: slide-up 0.5s ease-in 1s forwards;
+    }
 }
 
 #slide_1 {
-  background-image: url('../../../assets/Students_Pic_1.png');
+  text-align: center;
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1)), url('../../../assets/Students_Pic_1.png');
   background-size: cover;
   // animation: header-slow-slide 24s ease-in forwards;
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }
 
 #slide_2 {
-  background-image: url('../../../assets/Fair_Agenda.jpg');
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1)),  url('../../../assets/Fair_Agenda.jpg');
   background-size: cover;
   // animation: header-slow-slide 24s ease-in forwards;
   width: 100%;
@@ -85,13 +121,6 @@ ion-grid {
   --background: #f9fafc;
   --padding-end: 30px;
   height: 9vh;
-}
-
-.fairs-button {
- width: 250px;
- margin: 0 auto;
- position: absolute;
- bottom: 100px;
 }
 
 .about {

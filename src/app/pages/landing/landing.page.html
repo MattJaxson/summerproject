@@ -21,15 +21,19 @@
   <ion-grid class="ion-text-center">
       <ion-row  class="landing-header ion-justify-content-center">
           <ion-col class="header-content" size-lg="12" size-md="12" size="12">
-              <ion-slides #slider size="12" pager="true" [options]="slideOpts">
+              <ion-slides #slider size="12" pager="true" [options]="slideOpts" (ionSlideReachEnd)="endSlide()">
 
                   <!-- Mobile & Tablet Slide 1 -->
                   <ion-slide>
                     <div id="slide_1">
-                          <ion-button class="orange-button fairs-button" (click)="fairsPage()">
-                              View Fairs
-                          </ion-button>
+                      <div class="slider-text">
+                        <h1> Find your Future.</h1>
+                        <p>Vist United Way Fairs to help find a career for your future.</p>
+                      </div>
                     </div>
+                    <ion-button class="orange-button fairs-button" (click)="fairsPage()">
+                      View Fairs
+                    </ion-button>
                   </ion-slide>
 
                   <!-- Desktop Slide 1 -->
@@ -46,8 +50,14 @@
                    <!-- Mobile & Tablet Slide 2 -->
                   <ion-slide>
                     <div id="slide_2">
-
+                      <div class="slider-text">
+                        <h1>Connect.</h1>
+                        <p>Connect with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
+                      </div>
                     </div>
+                    <ion-button class="orange-button fairs-button" [routerLink]="['login']">
+                      Student App
+                    </ion-button>
                   </ion-slide>
                 </ion-slides>
           </ion-col>

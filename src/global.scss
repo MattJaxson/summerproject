@@ -51,6 +51,12 @@ ion-title {
   font-size: 1em;
 }
 
+
+.swiper-pagination {
+  bottom: 20px !important;
+  bottom: calc(env(safe-area-inset-bottom) + 60px) !important;
+  }
+
 .disabled {
   opacity: 0;
 }

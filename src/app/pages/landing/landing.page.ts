@@ -14,7 +14,11 @@ export class LandingPage implements OnInit {
   // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 1000,
+    autoplay: {
+    delay: 7000
+    },
+    loop: true
   };
 
   constructor(
@@ -22,17 +26,16 @@ export class LandingPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sliderInit();
+    this.slider.getActiveIndex();
   }
 
   fairsPage() {
     this.router.navigate(['fairs']);
   }
 
-  sliderInit() {
-    setTimeout(() => {
-      this.slider.slideNext(500);
-    }, 7000);
+
+  endSlide() {
+    console.log('slide ended');
   }
 
 }
