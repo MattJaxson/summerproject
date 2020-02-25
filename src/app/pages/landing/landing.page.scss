@@ -11,38 +11,87 @@ ion-toolbar {
   border-radius: 5px;
 }
 
+#slide_1, #slide_2, #slide_3 {
+
+}
+
+h1 {
+  color: white;
+  font-size: 3em;
+}
+
+ion-slide {
+  height: 91vh;
+  width: 100%;
+}
+
+ion-slides{
+  --bullet-background: rgba(220,220,220, 1);
+}
+
+#slide_1 {
+  background-image: url('../../../assets/Students_Pic_1.png');
+  background-size: cover;
+  // animation: header-slow-slide 24s ease-in forwards;
+  width: 100%;
+  height: 100%;
+}
+
+#slide_2 {
+  background-image: url('../../../assets/Fair_Agenda.jpg');
+  background-size: cover;
+  // animation: header-slow-slide 24s ease-in forwards;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes header-slow-slide {
+  0% {
+    opacity: 1;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100px);
+  }
+}
+
 #logo {
   height: 45px;
   padding-left: 10px;
 }
 
+.view-fairs {
+  position: absolute;
+  bottom: 100px;
+}
 
 ion-grid {
   --ion-grid-padding: 0;
 }
 
 .landing-header {
-  height: 100vh;
-  // background: lightblue;
-}
-
-ion-slide {
-  height: 60vh;
-  // background: lightblue;
+  height: 50vh;
 }
 
 .header-content {
-  height: 60vh;
-  background: lightblue;
+  height: 30vh;
+  padding: 0;
+  margin: 0;
+  background: #111;
 }
 
 .fair-page-toolbar-lg {
   --background: #f9fafc;
   --padding-end: 30px;
+  height: 9vh;
 }
 
 .fairs-button {
  width: 250px;
+ margin: 0 auto;
+ position: absolute;
+ bottom: 100px;
 }
 
 .about {

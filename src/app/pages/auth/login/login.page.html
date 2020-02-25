@@ -95,18 +95,18 @@
   <ion-grid class="ion-text-center ion-hide-sm-down">
 
       <ion-row class="ion-justify-content-center">
-        <ion-col size="6">
-          <!-- Refactor Logo Section -->
-          <img src="./assets/logo.png" style="background: lightgray; height: 70px; margin: 35px 0 30px 0;"/>
-          <!--  -->
-        </ion-col>
       </ion-row>
 
       <ion-row class="ion-justify-content-center">
-        <ion-col size="6">
+        <ion-col size="4">
+
             <form  [formGroup]="loginForm"
                    (ngSubmit)="login(this.loginForm.value)">
-            <ion-list class="line-input">
+            <ion-list class="inputs line-input">
+
+                <!-- Refactor Logo Section -->
+                <img src="./assets/United_Way_Logo_2.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
+
               <ion-item>
                 <!-- Email -->
                   <ion-input

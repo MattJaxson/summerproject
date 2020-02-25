@@ -1,15 +1,17 @@
 <ion-header>
-  <ion-toolbar class="ion-hide-md-up">
-      <img id="logo" src="../../assets/uwse_logo.png" />
+  <!-- Mobile & Tablet -->
+  <ion-toolbar class="ion-hide-md-up ion-padding-horizontal">
+      <img id="logo" src="../../assets/United_Way_Logo_2.svg" />
       <ion-buttons slot="secondary">
-        <ion-button class="login-button" [routerLink]="['login']">
+        <ion-button class="orange-button" style="width: 150px; --color: #005191;" [routerLink]="['login']">
           Student Login
         </ion-button>
       </ion-buttons>
   </ion-toolbar>
 
-
-  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+  <!-- Desktop -->
+  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
+      <img id="logo" src="../../assets/United_Way_Logo_2.svg" />
       <ion-button [routerLink]="['login']" class="orange-button" style="width: 150px; --background: #005191; --color: white;" slot="end">Student Login
       </ion-button>
     </ion-toolbar>
@@ -18,24 +20,37 @@
 <ion-content>
   <ion-grid class="ion-text-center">
       <ion-row  class="landing-header ion-justify-content-center">
-          <ion-col class="header-content" size-lg="8" size-md="12" size="12">
-              <ion-slides size="12" pager="" [options]="slideOpts">
+          <ion-col class="header-content" size-lg="12" size-md="12" size="12">
+              <ion-slides #slider size="12" pager="true" [options]="slideOpts">
+
+                  <!-- Mobile & Tablet Slide 1 -->
                   <ion-slide>
-                    <h1>Slide 1</h1>
+                    <div id="slide_1">
+                          <ion-button class="orange-button fairs-button" (click)="fairsPage()">
+                              View Fairs
+                          </ion-button>
+                    </div>
                   </ion-slide>
+
+                  <!-- Desktop Slide 1 -->
+                  <!-- <ion-slide>
+                      <div id="slide_1">
+                          <ion-col  size-lg="8" size-md="10" size="12">
+                            <ion-button class="orange-button fairs-button" (click)="fairsPage()">
+                                View Fairs
+                            </ion-button>
+                           </ion-col>
+                      </div>
+                    </ion-slide> -->
+
+                   <!-- Mobile & Tablet Slide 2 -->
                   <ion-slide>
-                    <h1>Slide 2</h1>
-                  </ion-slide>
-                  <ion-slide>
-                    <h1>Slide 3</h1>
+                    <div id="slide_2">
+
+                    </div>
                   </ion-slide>
                 </ion-slides>
           </ion-col>
-        <ion-col  size-lg="8" size-md="10" size="12">
-          <ion-button class="orange-button fairs-button" (click)="fairsPage()">
-              View Fairs
-          </ion-button>
-         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="about" size="12">

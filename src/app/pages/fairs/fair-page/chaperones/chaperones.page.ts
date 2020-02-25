@@ -67,34 +67,34 @@ export class ChaperonesPage implements OnInit {
     this.router.navigate(['/fairs/fair/:id/students/:id/booth-partners', this.id]);
   }
 
-  logScrolling(event) {
+  // logScrolling(event) {
 
-    let boothPartners = this.boothPartners.nativeElement.getBoundingClientRect();
-    let findFair = this.findFair.nativeElement.getBoundingClientRect();
+  //   let boothPartners = this.boothPartners.nativeElement.getBoundingClientRect();
+  //   let findFair = this.findFair.nativeElement.getBoundingClientRect();
 
-    if (
-      boothPartners.top >= 0 &&
-      boothPartners.left >= 0 &&
-      boothPartners.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-      boothPartners.bottom <= (window.innerHeight + 150 || document.documentElement.clientHeight + 150)
-    ) {
-      console.log('In the viewport!');
-      this.boothPartners.nativeElement.className = 'booth-partners-mobile';
-    } else {
-      console.log('Not in the viewport... whomp whomp');
-    }
+  //   if (
+  //     boothPartners.top >= 0 &&
+  //     boothPartners.left >= 0 &&
+  //     boothPartners.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+  //     boothPartners.bottom <= (window.innerHeight + 150 || document.documentElement.clientHeight + 150)
+  //   ) {
+  //     console.log('In the viewport!');
+  //     this.boothPartners.nativeElement.className = 'booth-partners-mobile';
+  //   } else {
+  //     console.log('Not in the viewport... whomp whomp');
+  //   }
 
-    if (
-      findFair.top >= 0 &&
-      findFair.left >= 0 &&
-      findFair.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-      findFair.bottom <= (window.innerHeight + 150 || document.documentElement.clientHeight + 150)
-    ) {
-      console.log('In the viewport!');
-      this.findFair.nativeElement.className = 'find-fair-mobile';
-    } else {
-      console.log('Not in the viewport... whomp whomp');
-    }
-  }
+  //   if (
+  //     findFair.top >= 0 &&
+  //     findFair.left >= 0 &&
+  //     findFair.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+  //     findFair.bottom <= (window.innerHeight + 150 || document.documentElement.clientHeight + 150)
+  //   ) {
+  //     console.log('In the viewport!');
+  //     this.findFair.nativeElement.className = 'find-fair-mobile';
+  //   } else {
+  //     console.log('Not in the viewport... whomp whomp');
+  //   }
+  // }
 
 }
