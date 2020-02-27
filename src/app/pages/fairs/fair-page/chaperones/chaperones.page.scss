@@ -9,11 +9,11 @@ ion-row {
 
 h2 {
   font-weight: 900;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 .fair-page-toolbar-lg {
-  --background: #f9fafc;
+  --background: rgba(245,245,245,1);
 
   ion-title {
     padding-left: 75px;
@@ -38,14 +38,14 @@ h2 {
 }
 
 .schedule {
-  background: #f9fafc;
+  background: rgba(245,245,245,1);
   overflow-y: scroll;
   height: 60vh;
   opacity: 0;
   animation: 1s fade-up 0.5s ease-in forwards;
 
   ion-item {
-    --background: #f9fafc;
+    --background: rgba(245,245,245,1);;
   }
 }
 
@@ -53,7 +53,7 @@ h2 {
   opacity: 1;
 
   ion-item {
-    --background: lightgrey;
+    --background: rgba(245,245,245,1);
     margin-bottom: 10px;
     width: 100%;
 
@@ -74,25 +74,27 @@ h2 {
   }
 }
 
-.schedule::-webkit-scrollbar {
+.schedule::-webkit-scrollbar, .options::-webkit-scrollbar {
   -webkit-appearance: none;
 }
 
-.schedule::-webkit-scrollbar:vertical {
+.schedule::-webkit-scrollbar:vertical, .options::-webkit-scrollbar:vertical {
   width: 11px;
 }
 
-.schedule::-webkit-scrollbar:horizontal {
+.schedule::-webkit-scrollbar:horizontal, .options::-webkit-scrollbar:horizontal {
   height: 11px;
 }
 
-.schedule::-webkit-scrollbar-thumb {
+.schedule::-webkit-scrollbar-thumb, .options::-webkit-scrollbar-thumb  {
   border-radius: 8px;
   border: 2px solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, .5);
 }
 
 .options {
+  padding: 30px;
+  background: #005191;
   opacity: 0;
   animation: fade-down 1s ease-in 0.5s forwards;
 }

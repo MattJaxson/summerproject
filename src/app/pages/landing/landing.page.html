@@ -1,6 +1,6 @@
-<ion-header no-border style="padding-top: 20px">
+<ion-header no-border>
   <!-- Mobile & Tablet -->
-  <ion-toolbar class="ion-hide-md-up ion-padding-horizontal">
+  <ion-toolbar style="padding-top: 20px" class="ion-hide-md-up ion-padding-horizontal">
       <img id="logo-small" src="../../assets/United_Way_Logo_2-small-white.svg" />
       <ion-buttons slot="secondary">
         <ion-button class="student-login-mobile" [routerLink]="['login']">
@@ -11,7 +11,7 @@
 
   <!-- Desktop -->
   <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
-      <img id="logo" src="../../assets/United_Way_Logo_2.svg" />
+      <img id="logo" src="../../assets/United_Way_Logo_3.svg" />
       <ion-button [routerLink]="['login']" class="orange-button" style="width: 150px; --background: #005191; --color: white;" slot="end">Student Login
       </ion-button>
     </ion-toolbar>
@@ -30,10 +30,14 @@
 
                     <ion-row id="slide_1" class="ion-hide-sm-down">
                       <ion-col class="slider-text" push="1" size="4">
-                        <h1> Find your Future.</h1>
-                        <p>Attend United Way Fair to help find a career for your <span style="color: rgba(250,167,27, 1); font-weight: 900;">future</span>.</p>
+                          <h1>Attend United Way Fair as a </h1>
+                          <p>Student. </p>
+                          <p>Chaperone.</p>
+                          <p>Volunteer. </p>
+                          <p>Partner. </p>
+                          <p></p>
                         <div style="text-align: center">
-                          <ion-button style="animation-delay: 2s; opacity: 0;" class="orange-button fairs-button" (click)="fairsPage()">
+                          <ion-button style="opacity: 0;" class="orange-button fairs-button" (click)="fairsPage()">
                             View Fairs
                           </ion-button>
                         </div>
@@ -44,10 +48,11 @@
                   <ion-row id="slide-1-mobile" class="ion-hide-md-up">
                       <ion-col class="slider-text-mobile" push="1" size="10">
                           <h1>Attend United Way Fair as a </h1>
-                          <p style="animation-delay: 1s">Student. </p>
-                          <p style="animation-delay: 1.5s">Chaperone.</p>
-                          <p style="animation-delay: 2s">Volunteer. </p>
-                          <p style="animation-delay: 2.5s">Partner. </p>
+                          <p>Student. </p>
+                          <p>Chaperone.</p>
+                          <p>Volunteer. </p>
+                          <p>Partner. </p>
+                          <p></p>
                           <ion-button class="orange-button fairs-button-mobile" (click)="fairsPage()">
                             View Fairs
                           </ion-button>

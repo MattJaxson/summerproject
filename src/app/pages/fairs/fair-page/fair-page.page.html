@@ -8,8 +8,9 @@
   </ion-toolbar>
 
 
-  <!-- Desktop Header -->
-  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+   <!-- Desktop Header -->
+   <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
+      <ion-title color="primary">United Way Southast Michigan Fairs</ion-title>
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
       </ion-button>
     </ion-toolbar>
@@ -58,14 +59,14 @@
        <p>{{time}}</p>
        <p style="
        margin-bottom: 50px;">{{description}}</p>
-
-       <p style="line-height: 2em; font-weight: 400; font-size: 1.2em;">Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
       </ion-col>
 
 
-      <ion-col class="ion-text-center button-wrapper" size-xs="12" size-sm="12" style="margin-top: 70px;">
+      <ion-col class="button-wrapper" size-xs="12" size-sm="12" style="margin-top: 30px;">
 
         <h2>I am a </h2>
+
+        <p style="line-height: 2em; font-weight: 400; font-size: 1.2em;">Register, view agendas, view FAQs, get parking information, and complete surveys. </p>
         <ion-item lines="none">
           <ion-button class="orange-button" (click)="students()">
             Student

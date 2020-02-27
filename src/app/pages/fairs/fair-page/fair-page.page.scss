@@ -14,26 +14,31 @@ ion-grid {
 h1{
   color: #005191;
   font-weight: 900;
-  font-size: 2em;
+  font-size: 1.75em;
   margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: #005191 2px solid;
 }
 
 h2{
   color: #005191;
   font-weight: 900;
-  font-size: 2em;
-  margin-bottom: 100px;
-}
-
-p {
-  color: #222;
-  font-weight: 800;
-  font-size: 1.4em;
+  font-size: 1.75em;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  width: 100%;
+  border-bottom: #005191 2px solid;
 }
 
 .info-section {
-  background: #f3f3f3;
-  padding: 50px;
+  padding: 20px;
+
+  p {
+    line-height: 0.5em;
+    color: #222;
+    font-weight: 500;
+    font-size: 1.4em;
+  }
 }
 
 .button-wrapper{
@@ -62,18 +67,8 @@ p {
 }
 
 .fair-page-toolbar-lg {
-  --background: #f9fafc;
-  --padding-end: 30px;
-
-  ion-buttons {
-    color: #faa71b;
-    font-weight: 900;
-    // border: 2px solid white;
-    border-radius: 50px;
-    width: auto;
-    padding: 4px;
-    text-align: center;
-  }
+  --background: rgba(245,245,245,1);
+  height: 100px;
 }
 
 .fair-photo {
