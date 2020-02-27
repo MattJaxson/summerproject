@@ -1,3 +1,5 @@
+// Volunteers
+
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController, LoadingController, IonInput, NavController } from '@ionic/angular';
@@ -11,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  // Volunteer Register Classx
+  // Volunteer Register Class
 
   id;
   title;

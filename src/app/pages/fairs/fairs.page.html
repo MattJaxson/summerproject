@@ -8,7 +8,7 @@
   </ion-toolbar>
 
   <!-- Desktop Header -->
-  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg">
+  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
       <ion-title color="primary">United Way Southast Michigan Fairs</ion-title>
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
       </ion-button>
@@ -20,7 +20,7 @@
 
     <!-- Mobile & Tablet -->
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-hide-md-up" size-xs="10" size-sm="8">
+      <ion-col class="ion-hide-md-up" size-xs="12" size-sm="8">
           <ion-card *ngFor="let fair of allFairs">
 
               <ion-card-content class="fair-photo"></ion-card-content>

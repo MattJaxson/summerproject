@@ -51,6 +51,7 @@ export class FairsService {
          await console.log(data);
          await this.presentLoadingWithOptions(student.name, student.email);
          await this.router.navigate(['']);
+         await this.presentAlert();
          await console.log('REGISTERED STUDENT TO FAIR!');
        }
      );;
@@ -124,7 +125,16 @@ export class FairsService {
 }
 
 // Alerts
+async presentAlert() {
+  const alert = await this.alert.create({
+    header: 'Alert',
+    cssClass: 'registered',
+    message: 'This is an alert message.',
+    buttons: ['OK']
+  });
 
+  await alert.present();
+}
 
 
 }

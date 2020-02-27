@@ -1,9 +1,9 @@
-<ion-header>
+<ion-header no-border style="padding-top: 20px">
   <!-- Mobile & Tablet -->
   <ion-toolbar class="ion-hide-md-up ion-padding-horizontal">
-      <img id="logo" src="../../assets/United_Way_Logo_2.svg" />
+      <img id="logo-small" src="../../assets/United_Way_Logo_2-small-white.svg" />
       <ion-buttons slot="secondary">
-        <ion-button class="orange-button" style="width: 150px; --color: #005191;" [routerLink]="['login']">
+        <ion-button class="student-login-mobile" [routerLink]="['login']">
           Student Login
         </ion-button>
       </ion-buttons>
@@ -20,45 +20,67 @@
 <ion-content>
   <ion-grid class="ion-text-center">
       <ion-row  class="landing-header ion-justify-content-center">
-          <ion-col class="header-content" size-lg="12" size-md="12" size="12">
-              <ion-slides #slider size="12" pager="true" [options]="slideOpts" (ionSlideReachEnd)="endSlide()">
 
-                  <!-- Mobile & Tablet Slide 1 -->
-                  <ion-slide>
-                    <div id="slide_1">
-                      <div class="slider-text">
-                        <h1> Find your Future.</h1>
-                        <p>Vist United Way Fairs to help find a career for your future.</p>
-                      </div>
-                    </div>
-                    <ion-button class="orange-button fairs-button" (click)="fairsPage()">
-                      View Fairs
-                    </ion-button>
-                  </ion-slide>
+          <ion-col class="header-content" size-lg="12" size-md="12" size="12">
+
+              <ion-slides #slider size="12" pager="true" [options]="slideOpts">
 
                   <!-- Desktop Slide 1 -->
-                  <!-- <ion-slide>
-                      <div id="slide_1">
-                          <ion-col  size-lg="8" size-md="10" size="12">
-                            <ion-button class="orange-button fairs-button" (click)="fairsPage()">
-                                View Fairs
-                            </ion-button>
-                           </ion-col>
-                      </div>
-                    </ion-slide> -->
-
-                   <!-- Mobile & Tablet Slide 2 -->
                   <ion-slide>
-                    <div id="slide_2">
-                      <div class="slider-text">
-                        <h1>Connect.</h1>
-                        <p>Connect with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
-                      </div>
-                    </div>
-                    <ion-button class="orange-button fairs-button" [routerLink]="['login']">
-                      Student App
-                    </ion-button>
+
+                    <ion-row id="slide_1" class="ion-hide-sm-down">
+                      <ion-col class="slider-text" push="1" size="4">
+                        <h1> Find your Future.</h1>
+                        <p>Attend United Way Fair to help find a career for your <span style="color: rgba(250,167,27, 1); font-weight: 900;">future</span>.</p>
+                        <div style="text-align: center">
+                          <ion-button style="animation-delay: 2s; opacity: 0;" class="orange-button fairs-button" (click)="fairsPage()">
+                            View Fairs
+                          </ion-button>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+
+                  <!-- Mobile Slide 1 -->
+                  <ion-row id="slide-1-mobile" class="ion-hide-md-up">
+                      <ion-col class="slider-text-mobile" push="1" size="10">
+                          <h1>Attend United Way Fair as a </h1>
+                          <p style="animation-delay: 1s">Student. </p>
+                          <p style="animation-delay: 1.5s">Chaperone.</p>
+                          <p style="animation-delay: 2s">Volunteer. </p>
+                          <p style="animation-delay: 2.5s">Partner. </p>
+                          <ion-button class="orange-button fairs-button-mobile" (click)="fairsPage()">
+                            View Fairs
+                          </ion-button>
+                      </ion-col>
+                    </ion-row>
+
                   </ion-slide>
+
+
+                   <!-- Desktop Slide 2 -->
+                  <ion-slide>
+
+                      <ion-row id="slide_2"  class="ion-hide-sm-down">
+                        <ion-col class="slider-text">
+                        <h1>Connect.</h1>
+                        <p><span style="color: rgba(250,167,27, 1); font-weight: 900;">Connect</span> with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
+                        <ion-button class="orange-button fairs-button" [routerLink]="['login']">
+                          Student App
+                        </ion-button>
+                       </ion-col>
+                     </ion-row>
+
+                      <ion-row id="slide_2" class="ion-hide-md-up">
+                        <ion-col class="slider-text" push="1"     size="4">
+                        <h1>Connect.</h1>
+                         <p><span style="color: rgba(250,167,27, 1); font-weight: 900;">Connect</span> with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
+                          <ion-button class="orange-button fairs-button" [routerLink]="['login']">
+                        Student App
+                       </ion-button>
+                      </ion-col>
+                 </ion-row>
+                  </ion-slide>
+
                 </ion-slides>
           </ion-col>
       </ion-row>

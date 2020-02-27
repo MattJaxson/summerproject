@@ -14,28 +14,39 @@ ion-grid {
 h1{
   color: #005191;
   font-weight: 900;
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+h2{
+  color: #005191;
+  font-weight: 900;
+  font-size: 2em;
+  margin-bottom: 100px;
 }
 
 p {
-  color: #999;
+  color: #222;
   font-weight: 800;
+  font-size: 1.4em;
+}
+
+.info-section {
+  background: #f3f3f3;
+  padding: 50px;
 }
 
 .button-wrapper{
-  background: #f3f3f3;
   padding: 20px;
 }
 
-.fair-button {
+.orange-button {
   height: 50px;
   width: 200px;
   margin: 0 auto;
   font-weight: 900;
-  --background: none;
+  --background: #faa71b;
   --color: #005191;
-  --border-color: #005191;
-  --border-width: 2.5px;
-  --border-style: solid;
   --padding-top: 20px;
   --padding-start: 20px;
   --padding-end: 20px;

@@ -1,5 +1,5 @@
 ion-row {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .sub-title {
@@ -32,7 +32,9 @@ h2 {
 }
 
 .agenda-header-mobile {
-
+  font-weight: 400;
+  font-size: 3em;
+  color: #005191;
 }
 
 .schedule {
@@ -49,11 +51,26 @@ h2 {
 
 .schedule-mobile {
   opacity: 1;
-  animation: 1s fade-right 0.5s ease-in forwards;
 
   ion-item {
-    --background: #f9fafc;
-    margin-bottom: 35px;
+    --background: lightgrey;
+    margin-bottom: 10px;
+    width: 100%;
+
+    h2 {
+      color: #005191;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      color: #222;
+      font-size: 1.2em;
+    }
+
+    p {
+      color: #555;
+    }
   }
 }
 

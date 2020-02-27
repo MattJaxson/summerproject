@@ -1,5 +1,5 @@
 ion-toolbar {
-  --background: none;
+  --background: #005191;
 }
 
 .login-button {
@@ -11,8 +11,12 @@ ion-toolbar {
   border-radius: 5px;
 }
 
-#slide_1, #slide_2, #slide_3 {
-
+.student-login-mobile{
+  color: white;
+  border: solid 1.8px white;
+  font-weight: 800;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
 h1 {
@@ -31,24 +35,30 @@ ion-slides{
 }
 
 .fairs-button {
- width: 250px;
- position: absolute;
- bottom: 100px;
+ width: 60%;
+ margin-top: 200px;
 }
 
+.fairs-button-mobile {
+  width: 100%;
+  margin-top: 50px;
+ }
+
 .slider-text {
-  background: rgba(220,220, 220, 0);
-  padding: 5px;
+  background: rgba(0,81,145, 0.5);
+  padding: 30px;
   width: 40%;
   display: inline-block;
-  margin-top: 15%;
+  margin-top: 12%;
   color: white;
+  border-radius: 5px;
   border-bottom: solid white 10px;
   animation: slide-up 0.5s ease-in forwards;
+  animation: background-fill 1s cubic-bezier(1,-0.21,.39,1.05) forwards;
 
     h1 {
       font-weight: 900;
-      font-size: 4em;
+      font-size: 2.5em;
       line-height: 1.3em;
       opacity: 0;
       animation: slide-up 0.5s ease-in 0.5s forwards;
@@ -64,13 +74,122 @@ ion-slides{
     }
 }
 
+.slider-text-2 {
+  background: rgba(220,220, 220, 0.3);
+  padding: 20px;
+  width: 70%;
+  display: inline-block;
+  margin-top: 12%;
+  opacity: 0;
+  color: white;
+  border-bottom: solid white 10px;
+  animation: slide-up 0.5s ease-in forwards;
+  animation: background-fill 1s cubic-bezier(1,-0.21,.39,1.05) 8s forwards;
+
+    h1 {
+      font-weight: 900;
+      font-size: 4em;
+      line-height: 1.3em;
+      opacity: 0;
+      animation: slide-up 0.5s ease-in 8.5s forwards;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1em;
+      line-height: 1.3em;
+      color: white;
+      opacity: 0;
+      animation: slide-up 0.5s ease-in 9s forwards;
+    }
+}
+
+.slider-text-mobile {
+  padding: 0px;
+  width: 80%;
+  display: inline-block;
+  margin-top: 50px;
+  color: white;
+  animation: slide-up 0.5s ease-in forwards;
+  animation: background-fill 1s cubic-bezier(1,-0.21,.39,1.05) forwards;
+
+    h1 {
+      font-weight: 400;
+      font-size: 1em;
+      line-height: 1.5em;
+      opacity: 0;
+      animation: slide-up 0.5s ease-in 0.5s forwards;
+      margin-bottom: 50px;
+    }
+
+    p {
+      font-weight: 800;
+      font-size: 1.85em;
+      line-height: 1.3em;
+      color: white;
+      opacity: 0;
+      margin-bottom: 10px;
+      animation: slide-up 0.5s ease-in 1s forwards;
+    }
+
+    // p:nth-child(2) {
+    //   font-weight: 800;
+    //   font-size: 1.3em;
+    //   line-height: 1.3em;
+    //   color: white;
+    //   opacity: 0;
+    //   margin-bottom: 10px;
+    //   animation: slide-up 0.5s ease-in 1.5s forwards;
+    // }
+
+    // p:nth-child(3) {
+    //   font-weight: 800;
+    //   font-size: 1.3em;
+    //   line-height: 1.3em;
+    //   color: white;
+    //   opacity: 0;
+    //   margin-bottom: 10px;
+    //   animation: slide-up 0.5s ease-in 2s forwards;
+    // }
+
+    // p:nth-child(4) {
+    //   font-weight: 800;
+    //   font-size: 1.3em;
+    //   line-height: 1.3em;
+    //   color: white;
+    //   opacity: 0;
+    //   margin-bottom: 10px;
+    //   animation: slide-up 0.5s ease-in 2.5s forwards;
+    // }
+
+}
+
+@keyframes background-fill {
+  0% {
+    opacity: 0;
+    height: 10px;
+  }
+  100% {
+    opacity: 1;
+    height: 280px;
+  }
+}
+
 #slide_1 {
-  text-align: center;
+  text-align: left;
   background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1)), url('../../../assets/Students_Pic_1.png');
   background-size: cover;
   // animation: header-slow-slide 24s ease-in forwards;
   width: 100vw;
   height: 100%;
+}
+
+#slide-1-mobile {
+  text-align: left;
+  background: rgba(0,81,145, 1);
+  // animation: header-slow-slide 24s ease-in forwards;
+  width: 100vw;
+  height: 100vh;
 }
 
 #slide_2 {
@@ -97,6 +216,10 @@ ion-slides{
   padding-left: 10px;
 }
 
+#logo-small {
+  height: 35px;
+}
+
 .view-fairs {
   position: absolute;
   bottom: 100px;
@@ -107,11 +230,11 @@ ion-grid {
 }
 
 .landing-header {
-  height: 50vh;
+  // height: 50vh;
 }
 
 .header-content {
-  height: 30vh;
+  // height: 30vh;
   padding: 0;
   margin: 0;
   background: #111;

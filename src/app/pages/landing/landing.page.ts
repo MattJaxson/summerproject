@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild,  } from '@angular/core';
-import { IonSlide, IonSlides } from '@ionic/angular';
+import { IonSlide, IonSlides, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,14 +15,15 @@ export class LandingPage implements OnInit {
   slideOpts = {
     initialSlide: 0,
     speed: 1000,
-    autoplay: {
-    delay: 7000
-    },
+    // autoplay: {
+    // delay: 7000
+    // },
     loop: true
   };
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alert: AlertController
   ) { }
 
   ngOnInit() {
@@ -31,11 +32,21 @@ export class LandingPage implements OnInit {
 
   fairsPage() {
     this.router.navigate(['fairs']);
+    // this.presentAlert();
   }
 
 
-  endSlide() {
-    console.log('slide ended');
-  }
+
+// Alerts
+async presentAlert() {
+  const alert = await this.alert.create({
+    header: 'Registered!',
+    cssClass: 'registered',
+    message: `You have been Registered. Please check your email (email) for details. `,
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 
 }
