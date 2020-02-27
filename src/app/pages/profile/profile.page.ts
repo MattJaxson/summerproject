@@ -153,6 +153,10 @@ export class ProfilePage implements OnInit, OnDestroy {
       toast.then(toast => toast.present());
     }
 
+    viewFairs() {
+      this.router.navigate(['/fairs']);
+    }
+
     editPage() {
       this.router.navigate(['/home/profile/edit-profile-page']);
     }
