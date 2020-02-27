@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FairsService } from 'src/app/services/fairs.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class FairsPage implements OnInit {
 
   constructor(
     private router: Router,
-    private fairs: FairsService
+    private fairs: FairsService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class FairsPage implements OnInit {
 
   goBack() {
     console.log('going back');
-    this.router.navigate(['']);
+    this.navCtrl.back();
   }
 
   fairPage(id) {

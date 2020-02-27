@@ -3,7 +3,8 @@
 
 <ion-content>
 
-  <ion-grid style="--ion-grid-padding: 0px" fixed class="ion-text-center">
+  <!-- Mobile -->
+  <ion-grid style="--ion-grid-padding: 0px" class="ion-text-center ion-hide-md-up">
 
     <ion-row class="header-half">
         <ion-col size="12" fullscreen>
@@ -60,5 +61,65 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!-- Desktop -->
+  <ion-grid style="--ion-grid-padding: 0px" class="ion-hide-sm-down" size="2">
+
+      <ion-row class="header-half">
+          <ion-col size="12" fullscreen>
+            <div>
+                <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
+                <button id="change-pro-pic-button" (click)="changeProfilePicture()">
+                    +
+                  </button>
+            </div>
+          </ion-col>
+
+          <ion-col size="11" offset="0.5">
+            <ion-button class="orange-button" (click)="viewFairs()">
+              View Fairs
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="11" offset="0.5">
+            <ion-button class="orange-button" (click)="editPage()">
+              Edit Profile
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="11" offset="0.5">
+            <ion-button style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button" (click)="updateResume()">
+              View Resume
+            </ion-button>
+          </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col id="profile-info" size="12">
+
+          <h4>Profile Information: </h4>
+          <br>
+
+          <p><span>Name</span>: {{userObject.fullName}}</p>
+          <p><span>Email</span>: {{userObject.email}}</p>
+          <p><span>Gender</span>: {{userObject.gender}}</p>
+          <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>
+          <p><span>Phone</span>: {{userObject.phone}}</p>
+          <p><span>City</span>: {{userObject.city}}</p>
+          <p><span>State</span>: {{userObject.state}}</p>
+          <p><span>Zip</span>: {{userObject.zip}}</p>
+          <p><span>School</span>: {{userObject.school}}</p>
+          <p><span>Grade</span>: {{userObject.grade}}</p>
+        </ion-col>
+
+        <ion-col size="11" offset="0.5">
+          <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
+            Logout
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 
 </ion-content>

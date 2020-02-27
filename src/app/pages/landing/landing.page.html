@@ -67,7 +67,7 @@
                   <ion-slide>
 
                       <ion-row id="slide_2"  class="ion-hide-sm-down">
-                        <ion-col class="slider-text">
+                        <ion-col class="slider-text" push="1" size="4">
                         <h1>Connect.</h1>
                         <p><span style="color: rgba(250,167,27, 1); font-weight: 900;">Connect</span> with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
                         <ion-button class="orange-button fairs-button" [routerLink]="['login']">
@@ -76,14 +76,18 @@
                        </ion-col>
                      </ion-row>
 
-                      <ion-row id="slide_2" class="ion-hide-md-up">
-                        <ion-col class="slider-text" push="1"     size="4">
-                        <h1>Connect.</h1>
-                         <p><span style="color: rgba(250,167,27, 1); font-weight: 900;">Connect</span> with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
-                          <ion-button class="orange-button fairs-button" [routerLink]="['login']">
-                        Student App
-                       </ion-button>
-                      </ion-col>
+                      <ion-row id="slide-2-mobile" class="ion-hide-md-up">
+                          <ion-col class="slider-text-mobile" push="1" size="10">
+                              <h1>Connect </h1>
+                              <p>Student. </p>
+                              <p>Chaperone.</p>
+                              <p>Volunteer. </p>
+                              <p>Partner. </p>
+                              <p></p>
+                              <ion-button class="orange-button fairs-button-mobile" [routerLink]="['login']">
+                                Student App
+                              </ion-button>
+                        </ion-col>
                  </ion-row>
                   </ion-slide>
 
