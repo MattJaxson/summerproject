@@ -2,7 +2,7 @@
 
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, LoadingController, IonInput, NavController } from '@ionic/angular';
+import { ToastController, LoadingController, IonInput, NavController, AlertController } from '@ionic/angular';
 import { FairsService } from '../../../../../services/fairs.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
   id;
   title;
+  disabled = true;
 
   schoolList =  ['School 1', 'School 2', 'School 3'];
   gradeList =  ['7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'];
@@ -46,7 +47,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
     private fairs: FairsService,
     private navCtrl: NavController,
     private loading: LoadingController,
-    private toast: ToastController) { }
+    private toast: ToastController,
+    private alert: AlertController) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -57,6 +59,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
       gender: ['', [Validators.required, Validators.required]],
       lunch: ['', [Validators.required, Validators.required]]
     });
+
+    this.formOnChanges();
 
 
     // tslint:disable-next-line: radix
@@ -88,6 +92,30 @@ export class RegisterPage implements OnInit, AfterViewInit {
   goBack() {
     console.log('going back');
     this.navCtrl.back();
+  }
+
+  formOnChanges(): void {
+    this.registerForm.statusChanges.subscribe(
+      status => {
+        console.log(status);
+
+        if (status === 'VALID') {
+          this.disabled = false;
+        }
+      }
+    );
+  }
+
+  // Alerts
+  async presentAlert() {
+    const alert = await this.alert.create({
+      header: 'Registered!',
+      cssClass: 'registered',
+      message: `You have been Registered. Please check your email (email) for details. `,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 

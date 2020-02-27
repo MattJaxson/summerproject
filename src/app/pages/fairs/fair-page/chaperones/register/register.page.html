@@ -92,7 +92,8 @@
              </ion-item>
              <ion-item>
                 <ion-radio-group
-                required>
+                required
+                formControlName="lunch">
                     <ion-list-header>
                       <ion-label>Lunch</ion-label>
                     </ion-list-header>
@@ -115,7 +116,7 @@
            </ion-list>
 
            <ion-col size="12" class="ion-text-center">
-            <ion-button class="orange-button" type="submit">Register</ion-button>
+            <ion-button [disabled]="disabled" class="orange-button" type="submit">Register</ion-button>
            </ion-col>
 
          </form>
