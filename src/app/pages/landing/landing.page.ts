@@ -36,17 +36,4 @@ export class LandingPage implements OnInit {
   }
 
 
-
-// Alerts
-async presentAlert() {
-  const alert = await this.alert.create({
-    header: 'Registered!',
-    cssClass: 'registered',
-    message: `You have been Registered. Please check your email (email) for details. `,
-    buttons: ['OK']
-  });
-
-  await alert.present();
-}
-
 }

@@ -60,7 +60,7 @@ export class ChangePhonePage implements OnInit {
           this.disabled = false;
         }
       }
-    )
+    );
   }
 
 }
