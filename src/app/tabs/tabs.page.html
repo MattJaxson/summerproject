@@ -1,6 +1,6 @@
-<ion-tabs class=" ion-hide-md-down">
+<ion-tabs >
 
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" class="ion-hide-md-up">
     <ion-tab-button tab="jobs">
       <ion-icon src="../assets/icon/suitcase-inactive.svg"></ion-icon>
       <ion-label>JOBS</ion-label>
@@ -26,6 +26,27 @@
       <ion-label>PROFILE</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
+
+  <ion-toolbar slot="top" class="ion-hide-md-down ion-padding-horizontal">
+      <img id="logo" src="../../assets/United_Way_Logo_4.svg" />
+      <ion-buttons slot="end">
+        <ion-button routerLink="/home/jobs">
+          Jobs
+        </ion-button>
+        <ion-button routerLink="/home/events">
+          Events
+        </ion-button>
+        <ion-button routerLink="/home/posts">
+          Posts
+        </ion-button>
+        <ion-button routerLink="/home/mentors">
+          Mentors
+        </ion-button>
+        <ion-button routerLink="/home/profile/logout">
+          Logout
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
 
 </ion-tabs>
 <!--
