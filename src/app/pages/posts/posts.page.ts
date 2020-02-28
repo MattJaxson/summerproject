@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
-import { formatDistance, subDays } from 'date-fns';
-
+import { formatDistance, subDays, formatDistanceToNow } from 'date-fns';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,15 +13,19 @@ import { formatDistance, subDays } from 'date-fns';
   styleUrls: ['posts.page.scss']
 })
 export class PostsPage implements OnInit {
+
+  commentForm: FormGroup;
   allPosts;
   userEmail;
+  userFullName;
   date;
 
   constructor(
   private router: Router,
   public posts: PostsService,
   private profile: ProfileService,
-  private toast: ToastController
+  private toast: ToastController,
+  private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -46,11 +50,27 @@ export class PostsPage implements OnInit {
       }
     );
 
+     // To collect comment data
+    this.commentForm = this.formBuilder.group({
+      comment: ['']
+    });
+
+    this.commentForm.controls.comment.valueChanges.subscribe(data => {
+
+      if (data === '') {
+      console.log('Value is empty');
+      this.commentForm.markAsPristine();
+      }
+
+      console.log(this.commentForm);
+    });
+
 
     // Get the User's details
     this.profile.getUserDetails().subscribe(
       details => {
         this.userEmail = details['email'];
+        this.userFullName = details['fullName'];
         console.log('User email: ' + this.userEmail);
       });
   }
@@ -83,6 +103,41 @@ export class PostsPage implements OnInit {
 
   following() {
     this.router.navigate(['/home/posts/following']);
+  }
+
+  async comment(comment, postID) {
+
+    // Reset Comment Input
+    this.commentForm.reset();
+    const date = await Date.now();
+    console.log('Posting comment');
+    console.log('Post ID: ' + postID);
+
+    await this.posts.comment(
+      postID,
+      date,
+      this.userFullName,
+      this.userEmail,
+      comment
+    );
+
+    await this.posts.getPostInfo(postID).subscribe(
+      post => {
+        for (let postComments of post['comments']) {
+          postComments.date = formatDistanceToNow( new Date(postComments.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+         }
+        this.posts.commentsSubject$.next(post['comments'].reverse());
+      });
+
+    const toast = this.toast.create({
+      message: 'Your comment has been added.',
+      duration: 1500
+    });
+
+    toast.then(toast => toast.present());
   }
 
 

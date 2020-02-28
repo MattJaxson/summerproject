@@ -1,4 +1,32 @@
 p {
   transition: 0.5s;
-  opacity: 0.3;
+  opacity: 1;
 }
+
+ion-button {
+  font-size: 1em;
+  font-weight: 800;
+  height: 50px;
+  width: 90%;
+  margin: 5px;
+  --background: none;
+  --color: #21ce99;
+  --border-style: solid;
+  --border-color: #21ce99;
+  --border-width: 2px;
+}
+
+.not-going {
+  --color: #e4405f;
+  --border-style: solid;
+  --border-color: #e4405f;
+  --border-width: 2px;
+}
+
+.event-details{
+  --color: #999;
+  --border-style: solid;
+  --border-color: #999;
+  --border-width: 2px;
+}
+

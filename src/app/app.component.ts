@@ -15,6 +15,10 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  tabsPlacement: string = 'bottom';
+  tabsLayout: string = 'icon-top';
+
   constructor(
     // Ionic Native Plugins
     private platform: Platform,

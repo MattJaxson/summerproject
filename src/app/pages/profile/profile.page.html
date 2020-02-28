@@ -63,31 +63,40 @@
   </ion-grid>
 
   <!-- Desktop -->
-  <ion-grid style="--ion-grid-padding: 0px" class="ion-hide-sm-down" size="2">
+  <ion-grid style="--ion-grid-padding: 0px" class="ion-hide-sm-down" size="8" push="2">
 
-      <ion-row class="header-half">
-          <ion-col size="12" fullscreen>
+    <ion-row>
+      <ion-col size="6" style="background: ">
+        left
+      </ion-col>
+      <ion-col size="6" style="background: ">
+        right
+      </ion-col>
+    </ion-row>
+
+      <!-- <ion-row size="12">
+          <ion-col>
             <div>
                 <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
                 <button id="change-pro-pic-button" (click)="changeProfilePicture()">
                     +
                   </button>
-            </div>
-          </ion-col>
-
-          <ion-col size="11" offset="0.5">
             <ion-button class="orange-button" (click)="viewFairs()">
               View Fairs
             </ion-button>
+            </div>
           </ion-col>
 
-          <ion-col size="11" offset="0.5">
+          <ion-col size="11">
+          </ion-col>
+
+          <ion-col size="11">
             <ion-button class="orange-button" (click)="editPage()">
               Edit Profile
             </ion-button>
           </ion-col>
 
-          <ion-col size="11" offset="0.5">
+          <ion-col size="11">
             <ion-button style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button" (click)="updateResume()">
               View Resume
             </ion-button>
@@ -118,7 +127,7 @@
             Logout
           </ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
 
 

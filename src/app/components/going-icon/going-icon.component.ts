@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { EventsService } from '../../services/events.service';
 import { ToastController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class GoingIconComponent implements OnInit {
 
   going = false;
   goingState = 'not-going';
-  public iconName = 'add-circle';
+  public iconName = 'add-circle-outline';
   @Input() event;
   @Input() userEmail;
   @Input() id;
@@ -42,6 +43,7 @@ export class GoingIconComponent implements OnInit {
   constructor(
     private events: EventsService,
     private toast: ToastController,
+    private router: Router,
     private profile: ProfileService,) { }
 
   ngOnInit() {
@@ -54,15 +56,15 @@ export class GoingIconComponent implements OnInit {
 
      });
 
-    console.log(this.id);
-    console.log(this.event['_id']);
-    this.events.getEventsGoing(this.id).subscribe(
-      data => {
+    // console.log(this.id);
+    // console.log(this.event['_id']);
+    // this.events.getEventsGoing(this.id).subscribe(
+    //   data => {
 
-       this.events.eventsGoing$.next(data['eventsGoing']);
-       console.log(data);
-      }
-    );
+    //    this.events.eventsGoing$.next(data['eventsGoing']);
+    //    console.log(data);
+    //   }
+    // );
   }
 
   toggleGoingState(event) {
@@ -104,6 +106,11 @@ export class GoingIconComponent implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  eventPage(event) {
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne,  event.addressOne,  event.city,  event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
   }
 
 }

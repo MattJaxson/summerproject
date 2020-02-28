@@ -1,3 +1,4 @@
+// Tab-Bar
 ion-tab-bar  {
   height: 70px;
   box-shadow: 2px 1px 5px #555;
@@ -28,3 +29,19 @@ ion-tab-button{
       --background-color: white;
       transition: 0.5s;
   }}
+
+
+  // Toolbar
+
+  #logo {
+    height: 40px;
+  }
+
+  ion-toolbar {
+    padding: 10px;
+
+    ion-button {
+      --color: white;
+      font-weight: 700;
+    }
+  }
