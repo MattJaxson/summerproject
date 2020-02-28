@@ -38,23 +38,23 @@
 
           <!-- Profile Picture -->
           <ion-col size="3">
-                      <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
+            <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
           </ion-col>
 
           <!-- Post Creator's Name -->
           <ion-col size="7">
-                      <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{post.creatorName}}</h6>
+            <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{post.creatorName}}</h6>
           </ion-col>
 
           <!-- Date -->
           <ion-col size="2">
-                      <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}} ago</h6>
+              <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}} ago</h6>
           </ion-col>
 
            <!-- Post Content -->
           <ion-col size="12" (click)="postPage(post)" style="height: 40vh; padding: 20px; background: white">
 
-                <p style="font-size: 1em; line-height: 25px; width: 100%;">{{post.post}}</p>
+             <p style="font-size: 1em; line-height: 25px; width: 100%;">{{post.post}}</p>
 
           </ion-col>
 

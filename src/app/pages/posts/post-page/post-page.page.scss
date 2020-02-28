@@ -54,7 +54,7 @@ ion-icon {
 }
 
 .comment-form{
-  background: #005191;
+  background: none;
   margin-bottom: 20px;
   padding: 20px 0 20px 0;
 }
@@ -90,9 +90,13 @@ ion-icon {
     }
 }
 
-ion-input {
-  --background:  none;
-  --color: white;
+// ion-input {
+//   --background:  none;
+//   --color: white;
+// }
+
+form {
+  width: 100%;
 }
 
 @keyframes send-icon-slide-in {

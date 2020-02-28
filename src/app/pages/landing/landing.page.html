@@ -12,7 +12,10 @@
   <!-- Desktop -->
   <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
       <img id="logo" src="../../assets/United_Way_Logo_3.svg" />
-      <ion-button [routerLink]="['login']" class="orange-button" style="width: 150px; --background: #005191; --color: white;" slot="end">Student Login
+      <ion-button class="orange-button" style="width: 150px;" slot="end" [routerLink]="['fairs']">
+        View Fairs
+      </ion-button>
+      <ion-button [routerLink]="['login']" class="orange-button" style="width: 150px; --background: #005191; --color: white; margin-left: 20px;" slot="end">Student Login
       </ion-button>
     </ion-toolbar>
 </ion-header>

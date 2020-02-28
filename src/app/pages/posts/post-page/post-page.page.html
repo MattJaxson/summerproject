@@ -35,11 +35,11 @@
             <ion-row>
 
             <!-- Post Header -->
-            <ion-col size="3">
+            <ion-col size="2">
                 <img style="background: #999; border-radius: 100px; height: 65px; width: 65px;" src="../../assets/batman-pro-pic.png" />
             </ion-col>
 
-            <ion-col size="7">
+            <ion-col size="8">
               <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{creatorName}}</h6>
             </ion-col>
 
@@ -54,8 +54,8 @@
 
             <!-- Comment -->
             <ion-col size="12">
-              <ion-item>
-                <form (ngSubmit)="comment(this.commentForm.value)" [formGroup]="commentForm">
+              <ion-item lines="none">
+                <form style="border-top: 1px solid #999; padding-top: 20px;"  (ngSubmit)="comment(this.commentForm.value)" [formGroup]="commentForm">
                     <ion-input type="text" placeholder="Comment" formControlName="comment">
                     </ion-input>
                     <!-- <ion-button type="submit">
