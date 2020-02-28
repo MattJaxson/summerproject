@@ -26,6 +26,10 @@
 
           <ion-col class="header-content" size-lg="12" size-md="12" size="12">
 
+
+              <video autoplay muted loop id="myVideo">
+                  <source src="../../../assets/drone_shot_1.mp4" type="video/mp4">
+              </video>
               <ion-slides style="
               box-shadow: 1px 4px 10px #555;" #slider size="12" pager="true" [options]="slideOpts">
 
@@ -33,23 +37,24 @@
                   <ion-slide>
 
                     <ion-row id="slide_1" class="ion-hide-sm-down">
-                      <ion-col class="slider-text" push="1" size="8">
+
+                      <ion-col class="slider-text" push="2" size="6">
                           <h1>Attend United Way Fair as a </h1>
                           <p>Student. </p>
                           <p>Chaperone.</p>
                           <p>Volunteer. </p>
                           <p>Partner. </p>
                           <p></p>
-                        <div style="text-align: center">
-                          <ion-button style="opacity: 0;" class="orange-button fairs-button" (click)="fairsPage()">
+
+                        <ion-button style="opacity: 0;" class="orange-button fairs-button" (click)="fairsPage()">
                             View Fairs
-                          </ion-button>
-                        </div>
+                        </ion-button>
+
                       </ion-col>
                     </ion-row>
 
-                  <!-- Mobile Slide 1 -->
-                  <ion-row id="slide-1-mobile" class="ion-hide-md-up">
+                    <!-- Mobile Slide 1 -->
+                     <ion-row id="slide-1-mobile" class="ion-hide-md-up">
                       <ion-col class="slider-text-mobile" push="1" size="10">
                           <h1>Attend United Way Fair as a </h1>
                           <p>Student. </p>
@@ -69,16 +74,17 @@
                    <!-- Desktop Slide 2 -->
                   <ion-slide>
 
-                      <ion-row id="slide_2"  class="ion-hide-sm-down">
-                        <ion-col class="slider-text" push="1" size="4">
-                        <h1>Connect.</h1>
-                        <p><span style="color: rgba(250,167,27, 1); font-weight: 900;">Connect</span> with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
-                        <ion-button class="orange-button fairs-button" [routerLink]="['login']">
-                          Student App
-                        </ion-button>
-                       </ion-col>
-                     </ion-row>
+                      <ion-row id="slide_2" class="ion-hide-sm-down">
+                          <ion-col class="slider-text" push="2" size="6">
+                              <h1>Connect.</h1>
+                              <p>Connect with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
+                            <ion-button style="opacity: 0;" class="orange-button fairs-button" routerLink="['login']">
+                              Student App
+                            </ion-button>
+                          </ion-col>
+                        </ion-row>
 
+                      <!-- Mobile Slide 2 -->
                       <ion-row id="slide-2-mobile" class="ion-hide-md-up">
                           <ion-col class="slider-text-mobile" push="1" size="10">
                               <h1>Connect </h1>
@@ -91,7 +97,11 @@
                                 Student App
                               </ion-button>
                         </ion-col>
-                 </ion-row>
+                 
+                      
+                      
+                      
+                      </ion-row>
                   </ion-slide>
 
                 </ion-slides>

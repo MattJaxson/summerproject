@@ -1,14 +1,17 @@
-<ion-header>
+<ion-header class="ion-hide-md-up">
   <!-- Mobile & Tablet Header -->
-  <ion-toolbar class="ion-hide-md-up">
+  <ion-toolbar>
     <ion-title>United Way Southast Michigan Fairs</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 
-  <!-- Desktop Header -->
-  <ion-toolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
+</ion-header>
+
+<ion-header class="ion-hide-sm-down">
+   <!-- Desktop Header -->
+  <ion-toolbar class="fair-page-toolbar-lg ion-padding-horizontal">
       <ion-title color="primary">United Way Southast Michigan Fairs</ion-title>
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
       </ion-button>

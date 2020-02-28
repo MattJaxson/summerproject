@@ -1,15 +1,15 @@
-ion-item {
-  --padding-top: 20px;
-  --padding-start: 10px;
-  --padding-end: 10px;
-  --padding-bottom: 20px;
-  --height: 100px;
-  --background: none;
-}
+// ion-item {
+//   --padding-top: 20px;
+//   --padding-start: 10px;
+//   --padding-end: 10px;
+//   --padding-bottom: 20px;
+//   --height: 100px;
+//   --background: none;
+// }
 
-ion-grid {
-  --ion-grid-padding: 0px;
-}
+// ion-grid {
+//   --ion-grid-padding: 0px;
+// }
 
 h1{
   color: #005191;
@@ -27,7 +27,6 @@ h2{
   margin-bottom: 50px;
   padding-bottom: 20px;
   width: 100%;
-  border-bottom: #005191 2px solid;
 }
 
 .info-section {
@@ -45,18 +44,6 @@ h2{
   padding: 20px;
 }
 
-.orange-button {
-  height: 50px;
-  width: 200px;
-  margin: 0 auto;
-  font-weight: 900;
-  --background: #faa71b;
-  --color: #005191;
-  --padding-top: 20px;
-  --padding-start: 20px;
-  --padding-end: 20px;
-  --padding-bottom: 20px;
-}
 
 .fair-info{
   margin-top: 20px;
@@ -66,9 +53,20 @@ h2{
   }
 }
 
+
+
+ion-title {
+  font-size: 1.5em;
+}
+
 .fair-page-toolbar-lg {
   --background: rgba(245,245,245,1);
-  height: 100px;
+  height: 9vh;
+
+  ion-item {
+  font-size: 1.4em;
+  font-weight: 900;
+  }
 }
 
 .fair-photo {
