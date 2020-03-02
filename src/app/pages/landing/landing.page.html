@@ -4,9 +4,9 @@
   <ion-toolbar style="padding-top: 20px;" class="ion-hide-md-up ion-padding-horizontal">
       <img id="logo-small" src="../../assets/United_Way_Logo_2-small-white.svg" />
       <ion-buttons slot="secondary">
-        <ion-button class="student-login-mobile" [routerLink]="['login']">
+        <!-- <ion-button class="student-login-mobile" [routerLink]="['login']">
           Student Login
-        </ion-button>
+        </ion-button> -->
       </ion-buttons>
   </ion-toolbar>
 
@@ -16,9 +16,9 @@
       <ion-button class="orange-button" style="font-weight: 900; width: 150px;" slot="end" [routerLink]="['fairs']">
         View Fair
       </ion-button>
-
+<!-- 
       <ion-button [routerLink]="['login']" class="orange-button" style="font-weight: 900; width: 150px; --background: #005191; --color: white; margin-left: 20px;" slot="end">Student Login
-      </ion-button>
+      </ion-button> -->
     </ion-toolbar>
 </ion-header>
 
@@ -49,10 +49,11 @@
                       <ion-col class="slide-text" push="1" size="8">
                           <h1>Innovation Tech Day </h1>
                           <p id="i-am-a-header">I am a :<br><br>
+                            <!-- Manually get the ID of the Fair -->
                             <a [routerLink]="['fairs/fair-page/students/5e4dfde5239236ffa852a4e3']" id="student-link">Student.</a>
-                            <a [routerLink]="['fairs']" id="chaperone-link">Chaperone.</a>
-                            <a [routerLink]="['fairs']" id="volunteer-link">Volunteer.</a>
-                            <a [routerLink]="['fairs']" id="partner-link">Partner.</a>
+                            <a [routerLink]="['fairs/fair-page/chaperones/5e4dfde5239236ffa852a4e3']" id="chaperone-link">Chaperone.</a>
+                            <a [routerLink]="['fairs/fair-page/volunteers/5e4dfde5239236ffa852a4e3']" id="volunteer-link">Volunteer.</a>
+                            <a [routerLink]="['fairs/fair-page/partners/5e4dfde5239236ffa852a4e3']" id="partner-link">Partner.</a>
                       </ion-col>
                     </ion-row>
 

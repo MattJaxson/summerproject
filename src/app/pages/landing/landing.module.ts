@@ -8,8 +8,10 @@ import { LandingPageRoutingModule } from './landing-routing.module';
 
 import { LandingPage } from './landing.page';
 
-import { FairsPage } from '../fairs/fairs.page';
 import { StudentsPageModule } from '../fairs/fair-page/students/students.module';
+import { ChaperonesPageModule } from '../fairs/fair-page/chaperones/chaperones.module';
+import { VolunteersPageModule } from '../fairs/fair-page/volunteers/volunteers.module';
+import { PartnersPageModule } from '../fairs/fair-page/partners/partners.module';
 
 @NgModule({
   imports: [
@@ -17,6 +19,9 @@ import { StudentsPageModule } from '../fairs/fair-page/students/students.module'
     FormsModule,
     IonicModule,
     StudentsPageModule,
+    ChaperonesPageModule,
+    VolunteersPageModule,
+    PartnersPageModule,
     LandingPageRoutingModule
   ],
   declarations: [LandingPage]

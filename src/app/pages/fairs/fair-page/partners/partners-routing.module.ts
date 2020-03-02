@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PartnersPage } from './partners.page';
+import { LandingPage } from 'src/app/pages/landing/landing.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: PartnersPage
+    path: 'landing',
+    component: LandingPage
   },
   {
     path: 'register/:id',
