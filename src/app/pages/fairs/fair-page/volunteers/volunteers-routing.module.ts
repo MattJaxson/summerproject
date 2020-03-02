@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LandingPage
   },
   {
-    path: 'register/:id',
+    path: 'rfairs/fair-page/volunteers/:id/egister/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
