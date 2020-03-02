@@ -205,36 +205,29 @@ ion-slides{
       font-size: 2em;
     }
 
-    #student-link {
-      opacity: 0;
-      animation: student-link 0.5s ease 2s forwards;
+    .header-link {
       font-size: 1em;
-      display: block;
+      opacity: 0;
+      display: inline-block;
       padding-top: 15px;
+      transition: 0.5s;
+      text-decoration-line: none;
+    }
+
+    #student-link {
+      animation: student-link 0.5s ease 2s forwards;
     }
 
     #chaperone-link {
-      opacity: 0;
       animation: chaperone-link 0.5s ease 2.5s forwards;
-      font-size: 1em;
-      display: block;
-      padding-top: 15px;
     }
 
     #volunteer-link {
-      opacity: 0;
       animation: volunteer-link 0.5s ease 3s forwards;
-      font-size: 1em;
-      display: block;
-      padding-top: 15px;
     }
 
     #partner-link {
-      opacity: 0;
       animation: partner-link 0.5s ease 3.5s forwards;
-      font-size: 1em;
-      display: block;
-      padding-top: 15px;
     }
 
     @keyframes i-am-a-header {
