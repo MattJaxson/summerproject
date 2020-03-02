@@ -19,9 +19,6 @@
   <ion-header class="ion-hide-sm-down">
 
     <ion-toolbar class="ion-padding-horizontal fair-page-toolbar-lg">
-          <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
-            Home
-          </ion-button>
           <ion-title color="primary">Partners</ion-title>
           <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
 
@@ -93,8 +90,17 @@
   <!-- Desktop -->
   <ion-grid style="margin-top: 75px"  class="ion-hide-sm-down">
 
-      <ion-row class="ion-justify-content-center">
-          <ion-col class="schedule" size="5">
+    <ion-row>
+
+          <ion-col class="overview" style="background: white; padding: 20px;" size="6" push="3">
+           <h1>Partner Overview</h1>
+            <p>Volunteers will welcome the students to the fair and assist them during their time in exploration by building relationships and encouraging participation. Volunteers are welcome to bring their own business cards to network with students. Volunteers will attend a workshop session    with a group of students (assisting facilitators as needed).</p>
+            <p>After the session, volunteers will help students find their school’s lunch area. Once lunch concludes, volunteers will escort students by school to their buses.</p>
+          </ion-col>
+    </ion-row>
+
+    <ion-row>
+          <ion-col class="schedule" size="6" push="3">
 
               <div margin>
                   <h1 class="agenda-header">Agenda</h1>
@@ -113,38 +119,20 @@
            </ion-item>
 
           </ion-col>
+    </ion-row>
 
-    <ion-col class="options" push="1" size="3">
-      <div>
-          <h2 style="color: white;">Partner FAQ.</h2>
-          <p style="width: 300px; color: white; line-height: 2em;">Have any questions? Visit this page to view Frequently Asked Questions for Partners.</p>
-          <ion-button disabled class="orange-button" style="color: white;--background: none; border: 2px solid white; border-radius: 5px; width: 200px;" (click)="viewFAQs()">
-            View FAQ
-          </ion-button>
-      </div>
-      <div>
-          <h2 style="color: white;">Where is the Fair?</h2>
-          <p style="width: 300px; color: white; line-height: 2em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
-          <ion-button disabled class="orange-button" style="color: white;--background: none; border: 2px solid white; border-radius: 5px; width: 200px;" (click)="findFair()">
-            View Fair Location
-          </ion-button>
-      </div>
-      <div>
-          <h2 style="color: white;">Parking.</h2>
-          <p style="width: 300px; color: white; line-height: 2em;">Need help with parking? Get parking information here</p>
-          <ion-button disabled class="orange-button" style="color: white;--background: none; border: 2px solid white; border-radius: 5px; width: 200px;" (click)="findFair()">
-            Parking
-          </ion-button>
-      </div>
-      <!-- <div>
-          <h2>Partner Survey</h2>
-          <p style="width: 300px; color: #888; line-height: 2em;">description</p>
-          <ion-button disabled class="orange-button" style="--background: none; border: 2px solid #005191; border-radius: 5px; width: 200px;" (click)="findFair()">
-            Survey
-          </ion-button>
-      </div> -->
-    </ion-col>
-  </ion-row>
+    <ion-row class="options ion-justify-content-center">
+        <ion-col style="background: white; padding: 20px;" size="6">
+         <ion-col size="3">
+            <h1>Partners FAQ.</h1>
+            <p>Have any questions? <a  (click)="viewFAQs()">Visit this page</a> to view Frequently Asked Questions for Partners.</p>
+          </ion-col>
+          <ion-col size="3">
+                <h1>Parking.</h1>
+                <p>Need help with parking? Get parking information <a (click)="findFair()" >here</a></p>
+            </ion-col>
+        </ion-col>
+    </ion-row>
 
   </ion-grid>
 

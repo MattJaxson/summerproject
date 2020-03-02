@@ -16,6 +16,14 @@ p {
   font-size: 1.3em;
 }
 
+.list-header {
+  font-size: 2.3em;
+
+  .list-text {
+    font-size: 1em;
+  }
+}
+
 h2 {
   font-weight: 900;
   color: #222;

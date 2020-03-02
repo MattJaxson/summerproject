@@ -12,12 +12,16 @@ h1 {
   color: #005191;
 }
 
-p, li, .list-header {
+p {
   font-size: 1.3em;
 }
 
 .list-header {
-  font-weight: 1em;
+  font-size: 2.3em;
+
+  .list-text {
+    font-size: 1em;
+  }
 }
 
 h2 {
