@@ -54,8 +54,15 @@ ion-title {
 
 
 .swiper-pagination {
+  position: relative;
   bottom: 20px !important;
+  left: 45%;
   bottom: calc(env(safe-area-inset-bottom) + 60px) !important;
+  background: rgba(200, 200, 200, 0.5);
+  border-radius: 50px;
+  padding: 5px;
+  width: 100px !important;
+  margin: 0 auto !important;
   }
 
 .disabled {
@@ -63,7 +70,10 @@ ion-title {
 }
 
 .line-input {
+  background: none;
+
   ion-item {
+    --background: white;
       --border-color: transparent!important;
       --highlight-height: 0;
       border: 1px solid #dedede;
@@ -82,6 +92,9 @@ ion-title {
       ion-label {
         opacity: 1;
         color: #005191;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: inline;
       }
   }
 }
@@ -223,10 +236,10 @@ ion-buttons > ion-button {
 ion-back-button {
   --color: white !important;
 }
-
 ion-item {
   margin-bottom: 0px;
   --padding-start: 20px;
+  --background: none;
 }
 
 

@@ -19,9 +19,6 @@
 <ion-header class="ion-hide-sm-down">
 
   <ion-toolbar class="ion-padding-horizontal fair-page-toolbar-lg">
-      <ion-button class="orange-button" style="width: 100px; --background: lightgray; --color: #005191; margin-left: 30px;" (click)="goHome()" slot="start">
-        Home
-      </ion-button>
       <ion-title color="primary">Students</ion-title>
       <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
 
@@ -86,46 +83,81 @@
     <!-- Desktop -->
     <ion-grid style="margin-top: 75px" class="ion-hide-sm-down">
 
-        <ion-row class="ion-justify-content-center">
-          <ion-col class="schedule" size="5">
+          <ion-row>
+          <!-- Overview -->
+            <ion-col class="overview" style="background: white; padding: 20px;" size="6" push="1">
+              <h1>Exploration Area Overview</h1>
+              <ul>
+                <li class="list-header">Career Exploration Booths
+                  <ul>
+                    <li>Engage in hands-on activities connected to career pathways </li>
+                    <li>Walk away with resources and swag connected to a career you’re interested in
+                    </li>
+                    <li>Learn what a “day in the life” is like in a career
+                    </li>
+                    <li>Walk away with resources to share with parents/family
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-header">College Campus Corner
+                  <ul>
+                    <li>Walk away with resources and swag connected to a college you’re interested in
+                    </li>
+                    <li>Learn what a “day in the life” is like in college
+                    </li>
+                    <li>Walk away with resources to share with parents/family
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-header">Life and Dream Supports
+                  <ul>
+                    <li>Learn about resources, supports, and organizations that can help you in your future
+                    </li>
+                    <li>Walk away with resources and swag for local organizations
+                    </li>
+                    <li>Walk away with resources to share with parents/family
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </ion-col>
+            </ion-row>
+            
+            <ion-row>
+            <ion-col class="schedule" style="background: white; padding: 20px;" size="6" push="3">
 
-          <div margin>
-              <h1 class="agenda-header">Agenda</h1>
-          </div>
+              <div margin>
+                 <h1 class="agenda-header">Agenda</h1>
+              </div>
 
-           <ion-item *ngFor="let slot of slots">
-             <ion-label class="ion-text-wrap">
-             <ion-text color="primary">
-               <h2>{{slot.time}}</h2>
-              </ion-text>
-              <ion-text color="secondary">
-                <p style="font-weight: 900; font-size: 1.em;">{{slot.title}}</p>
-               </ion-text>
-               <p>{{slot.description}}</p>
-              </ion-label>
-           </ion-item>
+              <ion-item *ngFor="let slot of slots">
+                <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h2>{{slot.time}}</h2>
+                  </ion-text>
+                  <ion-text color="secondary">
+                    <p style="font-weight: 900; font-size: 1.em;">{{slot.title}}</p>
+                  </ion-text>
+                  <p>{{slot.description}}</p>
+                  </ion-label>
+              </ion-item>
 
-          </ion-col>
+            </ion-col>
+            </ion-row>
 
-          <ion-col class="options" push="1" size="3">
-                <h2 style="color: white;">Booth Partners</h2>
-                <p style="width: 300px; color: white; line-height: 2em; font-size: 1em;">These are all the booth partners that will be involved with this fair.</p>
-                <ion-button class="orange-button" style="color: white;--background: none; border: 2px solid white; border-radius: 5px; width: 200px;" (click)="boothPartners()">
-                  View Booth Partners
-                </ion-button>
+            <ion-row class="options">
+                <ion-col style="background: white; padding: 20px;" size="6" push="3">
+                 <ion-col size="3">
+                    <h1>Volunteer FAQ.</h1>
+                    <p>Have any questions? <a  (click)="viewFAQs()">Visit this page</a> to view Frequently Asked Questions for Partners.</p>
+                  </ion-col>
+                  <ion-col size="3">
+                        <h1>Parking.</h1>
+                        <p>Need help with parking? Get parking information <a (click)="findFair()" >here</a></p>
+                    </ion-col>
+                </ion-col>
+            </ion-row>
 
-                <h2 style="color: white;">Where is the Fair?</h2>
-                <p style="width: 300px; color: white; line-height: 2em; font-size: 1em;">Need help finding the location of the far? Use Google maps to find the best route.</p>
-                <ion-button class="orange-button" style="color: white;--background: none; border: 2px solid white; border-radius: 5px; width: 200px;" (click)="boothPartners()">
-                  View Fair Location
-                </ion-button>
-          </ion-col>
-        </ion-row>
-        <!-- <ion-row class="ion-text-center booth-partners">
-          <ion-col size="11" offset="0.5">
-
-          </ion-col>
-        </ion-row> -->
     </ion-grid>
 
 </ion-content>

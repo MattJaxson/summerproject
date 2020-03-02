@@ -25,7 +25,7 @@ h1 {
 }
 
 ion-slide {
-  height: 91vh;
+  height: 100vh;
   width: 100%;
 }
 
@@ -45,31 +45,33 @@ ion-slides{
   opacity: 0;
  }
 
-.slider-text {
-  background: rgba(0,81,145, 0.5);
+
+
+.slide-text {
+  background: rgba(0,81,145, 0.0);
   position: relative;
   z-index: 999;
   padding: 30px;
   height: auto;
   display: inline-block;
-  margin-top: 5%;
+  margin-top: 4%;
   color: white;
   border-radius: 5px;
-  border-bottom: solid white 10px;
+  // border-bottom: solid white 5px;
   animation: slide-up 0.5s ease-in forwards;
   animation: background-fill 1s cubic-bezier(1,-0.21,.39,1.05) forwards;
 
     h1 {
-      font-weight: 700;
-      font-size: 2em;
+      font-weight: 900;
+      font-size: 4em;
       line-height: 1.3em;
       opacity: 0;
       animation: slide-up 0.5s ease-in 0.5s forwards;
     }
 
     p {
-      font-weight: 500;
-      font-size: 1.3em;
+      font-weight: 900;
+      font-size: 2em;
       line-height: 1.3em;
       color: white;
       opacity: 0;
@@ -77,7 +79,7 @@ ion-slides{
     }
 }
 
-.slider-text-2 {
+.slide-text-2 {
   background: rgba(220,220, 220, 0.3);
   padding: 20px;
   width: 70%;
@@ -107,7 +109,7 @@ ion-slides{
     }
 }
 
-.slider-text-mobile {
+.slide-text-mobile {
   padding: 0px;
   width: 80%;
   display: inline-block;
@@ -189,13 +191,106 @@ ion-slides{
   }
 }
 
-#slide_1 {
+#slide-1 {
   text-align: left;
-  // background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1)), url('../../../assets/Students_Pic_1.png');
+  background-image: linear-gradient(to bottom left, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1));
   // background-size: cover;
   // animation: header-slow-slide 24s ease-in forwards;
   width: 100vw;
   height: 100%;
+
+    #i-am-a-header {
+      color: white;
+      animation: i-am-a-header 0.5s ease 1.5s forwards;
+      font-size: 2em;
+    }
+
+    #student-link {
+      opacity: 0;
+      animation: student-link 0.5s ease 2s forwards;
+      font-size: 1em;
+      display: block;
+      padding-top: 15px;
+    }
+
+    #chaperone-link {
+      opacity: 0;
+      animation: chaperone-link 0.5s ease 2.5s forwards;
+      font-size: 1em;
+      display: block;
+      padding-top: 15px;
+    }
+
+    #volunteer-link {
+      opacity: 0;
+      animation: volunteer-link 0.5s ease 3s forwards;
+      font-size: 1em;
+      display: block;
+      padding-top: 15px;
+    }
+
+    #partner-link {
+      opacity: 0;
+      animation: partner-link 0.5s ease 3.5s forwards;
+      font-size: 1em;
+      display: block;
+      padding-top: 15px;
+    }
+
+    @keyframes i-am-a-header {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        color: #faa71b;
+      }
+    }
+
+    @keyframes student-link {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        color: red;
+      }
+    }
+
+    @keyframes chaperone-link {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        color: blue;
+      }
+    }
+
+    @keyframes volunteer-link {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        color: green;
+      }
+    }
+
+    @keyframes partner-link {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        color: orange;
+      }
+    }
 }
 
 #myVideo {
@@ -224,7 +319,7 @@ ion-slides{
   height: 100vh;
 }
 
-#slide_2 {
+#slide-2 {
   text-align: left;
   background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 1)),  url('../../../assets/Fair_Agenda.jpg');
   background-size: cover;
@@ -282,8 +377,7 @@ ion-grid {
 }
 
 .fair-page-toolbar-lg {
-  --background: #f9fafc;
-  --padding-end: 30px;
+  --background: white;
   height: 9vh;
 }
 

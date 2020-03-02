@@ -8,11 +8,15 @@ import { LandingPageRoutingModule } from './landing-routing.module';
 
 import { LandingPage } from './landing.page';
 
+import { FairsPage } from '../fairs/fairs.page';
+import { StudentsPageModule } from '../fairs/fair-page/students/students.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    StudentsPageModule,
     LandingPageRoutingModule
   ],
   declarations: [LandingPage]

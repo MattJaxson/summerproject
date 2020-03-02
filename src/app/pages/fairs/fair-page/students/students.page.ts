@@ -47,7 +47,7 @@ export class StudentsPage implements OnInit {
 
   goHome() {
     console.log('going home');
-    this.router.navigate(['']);
+    this.router.navigate(['landing']);
   }
 
   goBack() {
