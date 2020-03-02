@@ -1,5 +1,5 @@
 ion-row {
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .sub-title {
@@ -7,13 +7,22 @@ ion-row {
   color: #999;
 }
 
-h2 {
+h1 {
   font-weight: 900;
+  color: #005191;
+}
+
+p {
   font-size: 1.3em;
 }
 
+h2 {
+  font-weight: 900;
+  color: #222;
+}
+
 .fair-page-toolbar-lg {
-  --background: #f9fafc;
+  --background: rgba(245,245,245,1);
 
   ion-title {
     padding-left: 75px;
@@ -38,14 +47,14 @@ h2 {
 }
 
 .schedule {
-  background: #f9fafc;
+  background: white;
   overflow-y: scroll;
-  height: 60vh;
-  opacity: 0;
-  animation: 1s fade-up 0.5s ease-in forwards;
+  height: auto;
+  opacity: 1;
+  border-radius: 5px;
 
   ion-item {
-    --background: #f9fafc;
+    --background: white;;
   }
 }
 
@@ -53,7 +62,7 @@ h2 {
   opacity: 1;
 
   ion-item {
-    --background: lightgrey;
+    --background: rgba(245,245,245,1);
     margin-bottom: 10px;
     width: 100%;
 
@@ -74,72 +83,57 @@ h2 {
   }
 }
 
-.schedule::-webkit-scrollbar {
+.overview {
+  border-radius: 5px;
+
+  p {
+    line-height: 1.5em;
+    color: #666;
+  }
+}
+
+.schedule::-webkit-scrollbar, .options::-webkit-scrollbar {
   -webkit-appearance: none;
 }
 
-.schedule::-webkit-scrollbar:vertical {
+.schedule::-webkit-scrollbar:vertical, .options::-webkit-scrollbar:vertical {
   width: 11px;
 }
 
-.schedule::-webkit-scrollbar:horizontal {
+.schedule::-webkit-scrollbar:horizontal, .options::-webkit-scrollbar:horizontal {
   height: 11px;
 }
 
-.schedule::-webkit-scrollbar-thumb {
+.schedule::-webkit-scrollbar-thumb, .options::-webkit-scrollbar-thumb  {
   border-radius: 8px;
   border: 2px solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, .5);
 }
 
 .options {
-  opacity: 0;
-  animation: fade-down 1s ease-in 0.5s forwards;
+  padding: 30px;
+  opacity: 1;
+  border-radius: 5px;
+
+  p {
+    color: #666;
+  }
+}
+
+a {
+  transition: 0.5s;
+}
+
+a:hover {
+  color: #faa71b;
+  font-weight: 800;
 }
 
 .booth-partners-mobile {
-  opacity: 0;
+  opacity: 1;
   margin-bottom: 50px;
-  animation: fade-left 1s ease-in 0.5s forwards;
 }
 
 .find-fair-mobile {
-  opacity: 0;
-  animation: fade-left 1s ease-in 0.5s forwards;
-}
-
-@keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-@keyframes fade-down {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-@keyframes fade-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+  opacity: 1;
 }

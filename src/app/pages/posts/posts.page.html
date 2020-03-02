@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-hide-md-up">
   <ion-toolbar class="toolbar">
     <ion-title>
       Posts
@@ -14,55 +14,132 @@
 
 <ion-content>
 
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
+  </ion-refresher>
 
-  <ion-grid no-padding>
+  <ion-grid>
 
-    <!-- Post -->
-    <ion-row style="margin: 20px 0px 50px 0px;" *ngFor="let post of allPosts">
-        <ion-col size="3" offset="0.5">
-          <div style="height: 45px; width: 45px; background: #222; border-radius: 50px;"></div>
-            <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
-        </ion-col>
-        <ion-col size="6">
-            <h6 style="font-size: 0.8em;">{{post.creatorName}}</h6>
-        </ion-col>
-        <ion-col size="2" offset="0.5">
-            <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
-        </ion-col>
+    <ion-row class="ion-justify-content-center">
 
-      <!-- Post Content -->
-      <ion-col (click)="postPage(post)" style="margin-top: 20px; height: 40vh; padding: 20px; background: rgba(200,200,200,0.2)">
+      <!-- Posts -->
+      <ion-col
+        size-xs="12" push-xs="0"
+        size-sm="10" push-sm=""
+        size-md="8"  push-md=""
+        size-lg="6"  push-lg=""
+        size-xl="6"  push-xl="">
 
-          <p style="font-size: 0.65em; line-height: 25px;">{{post.post}}</p>
-      </ion-col>
+        <!-- Post -->
+        <ion-row *ngFor="let post of allPosts" style="margin-bottom: 90px; background: white; border-radius: 5px; border: 1px solid #999;" class="ion-justify-content-center" padding>
 
-      <!-- Post Actions -->
-      <ion-col style="margin-top: 10px; height: 50px;" size="12">
-          <ion-toolbar class="post-toolbar" style="--background: none;">
+          <ion-row>
+              <!-- Post Header -->
+
+          <!-- Profile Picture -->
+          <ion-col size="3">
+            <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
+          </ion-col>
+
+          <!-- Post Creator's Name -->
+          <ion-col size="7">
+            <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{post.creatorName}}</h6>
+          </ion-col>
+
+          <!-- Date -->
+          <ion-col size="2">
+              <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}} ago</h6>
+          </ion-col>
+
+           <!-- Post Content -->
+          <ion-col size="12" (click)="postPage(post)" style="height: 40vh; padding: 20px; background: white">
+
+             <p style="font-size: 1em; line-height: 25px; width: 100%;">{{post.post}}</p>
+
+          </ion-col>
+
+          <!-- Post Actions -->
+          <ion-col style="margin-top: 10px; height: 50px;" size="12">
+            <ion-toolbar class="post-toolbar" style="--background: none;">
               <ion-buttons slot="end">
-                <!-- Icons -->
-                <ion-button>
+                  <!-- Icons -->
+                 <ion-button>
                     <app-follow-icon [post]="post" [userEmail]="userEmail"></app-follow-icon>
                   Follow
                 </ion-button>
+
                 <ion-button (click)="postPage(post)">
                 <ion-icon style=" position: relative; left: -5px;"  name="chatboxes" ></ion-icon>
                 ({{post.comments.length}})
                 </ion-button>
-                </ion-buttons>
-          </ion-toolbar>
 
-          <hr/>
+              </ion-buttons>
+           </ion-toolbar>
+
+                <hr/>
+
+          </ion-col>
+
+          <!-- Comment -->
+          <ion-col size="12">
+            <ion-item lines="none">
+              <form style="border-top: 1px solid #999; padding-top: 20px;" (ngSubmit)="comment(this.commentForm.value, this .post._id)" [formGroup]="commentForm">
+                <ion-input type="text" placeholder="Comment" formControlName="comment">
+                </ion-input>
+             </form>
+             <ion-icon
+              *ngIf="!commentForm
+              .get('comment')
+              .pristine"
+              slot="end"
+              name="send"></ion-icon>
+
+            </ion-item>
+          </ion-col>
+
+          </ion-row>
+
+        </ion-row>
 
       </ion-col>
+
+      <!-- User Info -->
+      <ion-col
+        size-xs="0" push-xs="0"
+        size-sm="0" push-sm="0"
+        size-md="0" push-md="0"
+        size-lg="2" push-lg="0"
+        size-xl="2" push-xl="0">
+
+          <ion-row style="position: fixed; background: none; height: 200px; width: 300px; padding: 25px 0 0 40px;">
+
+            <ion-col size="4">
+              <img src="../../assets/goku-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
+            </ion-col>
+            <ion-col size="8">
+              <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">Son Goku
+              </h6>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-button class="followed-button" (click)="following()">
+                Followed (X)
+              </ion-button>
+              <ion-button class="add-button"  (click)="addTextPost()">
+                Add Post
+              </ion-button>
+            </ion-col>
+
+          </ion-row>
+
+      </ion-col>
+
     </ion-row>
+
   </ion-grid>
 
   <!-- Floating Action Button -->
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <!-- <ion-fab class="ion-hide-md-up" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button>
       <ion-icon name="add" style="color: #FFB351"></ion-icon>
     </ion-fab-button>
@@ -80,6 +157,6 @@
         <p>Add Link</p>
       </ion-fab-button>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab> -->
 
 </ion-content>

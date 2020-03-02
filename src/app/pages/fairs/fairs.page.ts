@@ -40,7 +40,7 @@ export class FairsPage implements OnInit {
 
   goBack() {
     console.log('going back');
-    this.navCtrl.back();
+    this.router.navigate(['']);
   }
 
   fairPage(id) {

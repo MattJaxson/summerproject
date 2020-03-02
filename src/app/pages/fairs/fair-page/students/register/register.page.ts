@@ -22,8 +22,10 @@ export class RegisterPage implements OnInit, AfterViewInit {
   time: string;
   date: string;
 
-  schoolList =  ['School 1', 'School 2', 'School 3'];
-  gradeList =  ['7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'];
+  // tslint:disable-next-line: max-line-length
+  schoolList =  ['Central High School', 'Communications Media Arts High School', 'Davis Aerospace Technical High School', 'Henry Ford High School', 'Martin Luther King Jr. Senior High School', 'Mumford High School', 'Pershing High School', 'Western International High School', 'West Side Academy of Technology and Cyber Security', 'University High School Academy', 'Southfield Regional Academic Campus', 'Southfield High School For The Arts And Technology', 'Hazel Park High School', 'Pontiac High', 'Pontiac International Technology Academy' ];
+
+  gradeList =  ['10th Grade', '11th Grade', '12th Grade'];
 
   validationMessasges = {
     email: [
@@ -53,6 +55,8 @@ export class RegisterPage implements OnInit, AfterViewInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.schoolList.sort();
+
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],

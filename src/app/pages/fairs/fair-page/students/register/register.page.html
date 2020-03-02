@@ -28,7 +28,7 @@
 
       </ion-col>
       <ion-col size-sm="8" size-xs="10">
-        
+
        <form  [formGroup]="registerForm"
        (ngSubmit)="register(this.registerForm.value)">
          <ion-list class="line-input">
@@ -115,18 +115,18 @@
                     <ion-label>Lunch</ion-label>
                   </ion-list-header>
                   <ion-item>
-                    <ion-label>Apple</ion-label>
-                    <ion-radio slot="start" color="success" value="apple"></ion-radio>
+                    <ion-label>Turkey BLT & provolone (Turkey, Smokehouse Bacon, Lettuce, Tomato, Provolone, Pesto Mayo)</ion-label>
+                    <ion-radio slot="start" color="success" value="Turkey"></ion-radio>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Grape</ion-label>
-                    <ion-radio slot="start" color="tertiary" value="grape" checked></ion-radio>
+                    <ion-label>Southwest Chicken Wrap (Crispy Chicken Tenders, Smoked Pepper Aioli, Roasted Corn & Peppers, Pico de Gallo)</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="Chicken"></ion-radio>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Cherry</ion-label>
-                    <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
+                    <ion-label>Grilled Vegetable & Goat Cheese (Seasonal Marinated Grilled Vegetables, Balsamic Syrup, Local Goat Cheese)</ion-label>
+                    <ion-radio slot="start" color="danger" value="Veggie"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
            </ion-item>
@@ -273,7 +273,7 @@
       </ion-row>
 
       <ion-row>
-      <ion-col size="5" offset="2">
+      <ion-col size="6" offset="2">
        <form  [formGroup]="registerForm"
        (ngSubmit)="register(this.registerForm.value)">
          <ion-list class="line-input">
@@ -359,18 +359,18 @@
                   <ion-list-header>
                     <ion-label>Lunch</ion-label>
                   </ion-list-header>
-                  <ion-item>
-                    <ion-label>Turkey</ion-label>
+                  <ion-item class="ion-text-wrap">
+                    <ion-label>Turkey BLT & provolone (Turkey, Smokehouse Bacon, Lettuce, Tomato, Provolone, Pesto Mayo)</ion-label>
                     <ion-radio slot="start" color="success" value="Turkey"></ion-radio>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Ham</ion-label>
-                    <ion-radio slot="start" color="tertiary" value="Ham" checked></ion-radio>
+                    <ion-label>Southwest Chicken Wrap (Crispy Chicken Tenders, Smoked Pepper Aioli, Roasted Corn & Peppers, Pico de Gallo)</ion-label>
+                    <ion-radio slot="start" color="tertiary" value="Ham" ></ion-radio>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Veggie</ion-label>
+                    <ion-label>Grilled Vegetable & Goat Cheese (Seasonal Marinated Grilled Vegetables, Balsamic Syrup, Local Goat Cheese)</ion-label>
                     <ion-radio slot="start" color="danger" value="Veggie"></ion-radio>
                   </ion-item>
                 </ion-radio-group>

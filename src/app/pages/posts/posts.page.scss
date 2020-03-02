@@ -1,3 +1,11 @@
+ion-row {
+  margin: 20px 0 0 0;
+}
+
+form {
+  width: 100%;
+}
+
 .toolbar > ion-buttons > ion-button {
   height: 45px;
   border-radius: 5px;
@@ -20,6 +28,30 @@
       font-size: 0.6em;
     }
   }
+}
+
+.followed-button {
+  --color: #999;
+  --background: none;
+  --border-style: solid;
+  --border-color: #999;
+  --border-width: 2px;
+  font-weight: 800;
+  display: block;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.add-button {
+  --color: #21ce99;
+  --background: none;
+  --border-style: solid;
+  --border-color: #21ce99;
+  --border-width: 2px;
+  font-weight: 800;
+  display: block;
+  width: 200px;
+  margin-top: 20px;
 }
 
 
@@ -48,13 +80,4 @@ ion-fab-list {
     --color: #555;
   }
 }
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  opacity: 0.4;
-  border-top: 1px solid #ccc;
-  margin-bottom: 1em;
-  padding: 0; }
 
