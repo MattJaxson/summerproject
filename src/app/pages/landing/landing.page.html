@@ -51,13 +51,18 @@
                           <p id="i-am-a-header">I am a :<br><br>
 
                             <!-- Manually get the ID of the Fair -->
-                            <a [routerLink]="['fairs/fair-page/students/5e4dfde5239236ffa852a4e3']" class="header-link" id="student-link">Student.</a><br>
+                            <a class="header-link"
+                            (click)="students()"  id="student-link">Student.</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/chaperones/5e4dfde5239236ffa852a4e3']" class="header-link" id="chaperone-link">Chaperone.</a><br>
+                            <a class="header-link"
+                            (click)=" chaperones()"  id="chaperone-link">Chaperone.</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/volunteers/5e4dfde5239236ffa852a4e3']" class="header-link" id="volunteer-link">Volunteer.</a><br>
+                            <a
+                              class="header-link"
+                              (click)="volunteers()" id="volunteer-link">Volunteer.</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/partners/5e4dfde5239236ffa852a4e3']" class="header-link" id="partner-link">Partner.</a><br>
+                            <a class="header-link"
+                            (click)="partners()"  id="partner-link">Partner.</a><br>
                       </ion-col>
                     </ion-row>
 

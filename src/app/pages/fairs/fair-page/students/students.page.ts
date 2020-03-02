@@ -56,7 +56,7 @@ export class StudentsPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/students/:id/register', this.id]);
+    this.router.navigate(['/fairs/fair-page/students/:id/register', this.id]);
   }
 
   boothPartnersPage() {

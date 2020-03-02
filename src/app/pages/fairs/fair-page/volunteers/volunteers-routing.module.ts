@@ -10,7 +10,11 @@ const routes: Routes = [
     component: LandingPage
   },
   {
+<<<<<<< Updated upstream
     path: 'register/:id',
+=======
+    path: 'fairs/fair-page/volunteers/:id/register/:id',
+>>>>>>> Stashed changes
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
