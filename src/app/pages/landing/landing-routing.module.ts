@@ -23,11 +23,11 @@ const routes: Routes = [
   },
   {
     path: 'fairs/fair-page/partners/:id',
-    component: VolunteersPage
+    component: PartnersPage
   },
   {
     path: 'fairs/fair-page/volunteers/:id',
-    component: PartnersPage
+    component: VolunteersPage
   }
 ];
 
