@@ -1,9 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>faq</ion-title>
-  </ion-toolbar>
+<!-- Mobile & Tablet Header -->
+<ion-header class="ion-hide-md-up">
+
+    <ion-toolbar>
+        <ion-title>Volunteers FAQ</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
+<!-- Desktop Header -->
+<ion-header class="ion-hide-sm-down">
 
+    <ion-toolbar class="ion-padding-horizontal fair-page-toolbar-lg">
+        <ion-title color="primary">Volunteers FAQ</ion-title>
+        <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
+
+        <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
+        </ion-button>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content style="
+--background: rgba(245,245,245,1);">
+
+  <ion-row class="ion-justify-content-center" style="margin-top: 50px;">
+    <ion-col size="6">
+      <h2>Some Frequently asked questions for Volunteers</h2>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="question" *ngFor="let question of faq" class="ion-justify-content-center">
+    <ion-col size="6">
+      <h1>{{question.question}}</h1>
+      <p>{{question.answer}}</p>
+    </ion-col>
+  </ion-row>
 </ion-content>

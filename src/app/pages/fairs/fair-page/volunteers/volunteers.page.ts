@@ -54,15 +54,16 @@ export class VolunteersPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/volunteers/:id/register', this.id]);
+    this.router.navigate(['/fairs/fair-page/volunteers/:id/register', this.id]);
   }
 
   viewFAQs() {
-    this.router.navigate(['/fairs/fair/:id/volunteers/:id/faq', this.id]);
+    this.router.navigate(['/fairs/fair-page/volunteers/:id/faq', this.id]);
   }
 
-  findFair() {
-    console.log('finding fair via google maps');
+  viewParking() {
+    this.router.navigate(['/fairs/fair-page/volunteers/:id/parking', this.id]);
   }
+
 
 }

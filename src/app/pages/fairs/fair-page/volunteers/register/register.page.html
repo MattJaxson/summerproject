@@ -22,9 +22,29 @@
               Information goes here about letting the user know they are being redirected to another page to sign up as a volunteer.
             </p>
           </ion-col>
-        <ion-col size-sm="8" size-xs="10">
-            <ion-button class="orange-button" type="submit">Register</ion-button>
-        </ion-col>
+          <form  [formGroup]="registerForm"
+          (ngSubmit)="register(this.registerForm.value)">
+            <ion-list class="line-input">
+                <ion-item>
+                  <ion-input
+                   #autoFucousInput
+                   required
+                   inputmode="text"
+                   formControlName="name"
+                   type="text"
+                   placeholder="First & Last Name"></ion-input>
+                </ion-item>
+    
+               <ion-item>
+                 <ion-input
+                  required
+                  inputmode="email"
+                  formControlName="email"
+                  type="text"
+                  placeholder="Email"></ion-input>
+               </ion-item>
+            </ion-list>
+          </form>
       </ion-row>
     </ion-grid>
 
@@ -40,16 +60,58 @@
 
     <ion-grid class="ion-text-center ion-hide-sm-down">
 
-        <ion-row class="ion-align-items-center" style="margin-top: 100px;">
-            <ion-col push="4" size="4">
+        <ion-row class="ion-justify-content-center" style="margin-top: 100px;">
+            <ion-col size="4">
               <p class="text-header">
-                Information goes here about letting the user know they are being redirected to another page to sign up as a volunteer.
+                Please enter your name and email address. You will be sent an email with further registration instructions.
               </p>
             </ion-col>
         </ion-row>
-        <ion-row class="ion-align-items-center ion-text-center">
-          <ion-col push="3" size="6">
-              <ion-button class="orange-button" type="submit">Register</ion-button>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="4">
+              <form  [formGroup]="registerForm"
+              (ngSubmit)="register(this.registerForm.value)">
+                <ion-list class="line-input">
+                    <ion-item>
+                      <ion-input
+                       #autoFucousInput
+                       required
+                       inputmode="text"
+                       formControlName="name"
+                       type="text"
+                       placeholder="First & Last Name"></ion-input>
+                    </ion-item>
+
+                   <ion-item>
+                     <ion-input
+                      required
+                      inputmode="email"
+                      formControlName="email"
+                      type="text"
+                      placeholder="Email"></ion-input>
+                   </ion-item>
+
+
+                   <!-- Email Validation-->
+                   <div class="validation-errors">
+                       <ng-container *ngFor="let validation of validationMessasges.email">
+                         <div class="error-message"
+                         *ngIf="registerForm
+                           .get('email')
+                           .hasError(validation.type) && (registerForm.get('email')
+                           .dirty || registerForm.get('email').touched)">
+                           {{ validation.message }}
+                         </div>
+                       </ng-container>
+                     </div>
+                </ion-list>
+
+                <ion-col size="12" class="ion-text-center">
+                 <ion-button class="orange-button" type="submit">Continue</ion-button>
+                </ion-col>
+
+              </form>
           </ion-col>
         </ion-row>
       </ion-grid>

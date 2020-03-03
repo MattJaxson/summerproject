@@ -84,6 +84,19 @@ export class FairsService {
   }
 
 
+  async registerVolunteer(volunteer) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-volunteer`, volunteer).subscribe(
+      async data => {
+        await console.log('registering volunteer to fair');
+        await console.log(data);
+        await this.presentLoadingWithOptions(volunteer.name, volunteer.email);
+        await this.router.navigate(['']);
+        await console.log('REGISTERED VOLUNTEER TO FAIR!');
+      }
+    );
+  }
+
+
   // Errors
 
   async handleError(error: HttpErrorResponse) {

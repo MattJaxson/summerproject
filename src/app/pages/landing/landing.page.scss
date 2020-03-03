@@ -25,7 +25,7 @@ h1 {
 }
 
 ion-slide {
-  height: 100vh;
+  height: 91vh;
   width: 100%;
 }
 
@@ -66,7 +66,8 @@ ion-slides{
       font-size: 4em;
       line-height: 1.3em;
       opacity: 0;
-      animation: slide-up 0.5s ease-in 0.5s forwards;
+      border-bottom: solid 2px white;
+      animation: slide-up 0.5s ease-in 0.25s forwards;
     }
 
     p {
@@ -199,9 +200,13 @@ ion-slides{
   width: 100vw;
   height: 100%;
 
+    #fair-name-header {
+
+    }
+
     #i-am-a-header {
       color: white;
-      animation: i-am-a-header 0.5s ease 1.5s forwards;
+      animation: i-am-a-header 0.5s ease 0.45s forwards;
       font-size: 2em;
     }
 
@@ -209,25 +214,35 @@ ion-slides{
       font-size: 1em;
       opacity: 0;
       display: inline-block;
-      padding-top: 15px;
+      padding: 10px;
+      margin: 10px;
       transition: 0.5s;
       text-decoration-line: none;
+      border: 1px solid #faa71b;
+      border-radius: 5px;
+      color: white;
+      background: rgba(13,70,123,0.6);
+    }
+
+    .header-link:hover {
+      transform: scale(1.2);
+      background: rgba(250,167,27,0.3);
     }
 
     #student-link {
-      animation: student-link 0.5s ease 2s forwards;
+      animation: student-link 0.5s ease 0.5s forwards;
     }
 
     #chaperone-link {
-      animation: chaperone-link 0.5s ease 2.5s forwards;
+      animation: chaperone-link 0.5s ease 1s forwards;
     }
 
     #volunteer-link {
-      animation: volunteer-link 0.5s ease 3s forwards;
+      animation: volunteer-link 0.5s ease 1.5s forwards;
     }
 
     #partner-link {
-      animation: partner-link 0.5s ease 3.5s forwards;
+      animation: partner-link 0.5s ease 2s forwards;
     }
 
     @keyframes i-am-a-header {
@@ -237,7 +252,6 @@ ion-slides{
 
       100% {
         opacity: 1;
-        color: #faa71b;
       }
     }
 
@@ -248,7 +262,6 @@ ion-slides{
 
       100% {
         opacity: 1;
-        color: red;
       }
     }
 
@@ -259,7 +272,6 @@ ion-slides{
 
       100% {
         opacity: 1;
-        color: blue;
       }
     }
 
@@ -270,7 +282,6 @@ ion-slides{
 
       100% {
         opacity: 1;
-        color: green;
       }
     }
 
@@ -281,7 +292,6 @@ ion-slides{
 
       100% {
         opacity: 1;
-        color: orange;
       }
     }
 }

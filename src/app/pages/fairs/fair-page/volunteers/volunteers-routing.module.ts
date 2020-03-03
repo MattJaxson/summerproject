@@ -10,20 +10,16 @@ const routes: Routes = [
     component: LandingPage
   },
   {
-    path: 'register/:id',
+    path: 'fairs/fair-page/volunteers/:id/register/:id',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'parking',
+    path: 'fairs/fair-page/volunteers/:id/parking/:id',
     loadChildren: () => import('./parking/parking.module').then( m => m.ParkingPageModule)
   },
   {
-    path: 'faq',
+    path: 'fairs/fair-page/volunteers/:id/faq/:id',
     loadChildren: () => import('./faq/faq.module').then( m => m.FaqPageModule)
-  },
-  {
-    path: 'survey',
-    loadChildren: () => import('./survey/survey.module').then( m => m.SurveyPageModule)
   }
 ];
 

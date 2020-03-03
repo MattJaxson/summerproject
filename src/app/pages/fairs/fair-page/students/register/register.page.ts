@@ -22,10 +22,27 @@ export class RegisterPage implements OnInit, AfterViewInit {
   time: string;
   date: string;
 
+  // For Checkbox
+  interests = [];
+
   // tslint:disable-next-line: max-line-length
   schoolList =  ['Central High School', 'Communications Media Arts High School', 'Davis Aerospace Technical High School', 'Henry Ford High School', 'Martin Luther King Jr. Senior High School', 'Mumford High School', 'Pershing High School', 'Western International High School', 'West Side Academy of Technology and Cyber Security', 'University High School Academy', 'Southfield Regional Academic Campus', 'Southfield High School For The Arts And Technology', 'Hazel Park High School', 'Pontiac High', 'Pontiac International Technology Academy' ];
 
   gradeList =  ['10th Grade', '11th Grade', '12th Grade'];
+
+  studentInterests = [
+    { name: 'Automotive Mobility', isChecked: false },
+    { name: 'Artificial Intelligence', isChecked: false },
+    { name: 'Coding', isChecked: false },
+    { name: 'Computer Science', isChecked: false },
+    { name: 'Cyber Security', isChecked: false },
+    { name: 'Digital Media', isChecked: false },
+    { name: 'Engineering', isChecked: false },
+    { name: 'Graphic Design', isChecked: false },
+    { name: 'Robotics', isChecked: false },
+    { name: 'Software Development', isChecked: false },
+    { name: 'Video Game Design', isChecked: false },
+  ]
 
   validationMessasges = {
     email: [
@@ -36,14 +53,6 @@ export class RegisterPage implements OnInit, AfterViewInit {
       { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
     ]
   };
-
-  customAlertOptions: any = {
-    header: 'Pizza Toppings',
-    subHeader: 'Select your toppings',
-    message: '$1.00 per topping',
-    translucent: true
-  };
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -65,6 +74,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
       phone: ['', [Validators.required, Validators.required]],
       gender: ['', [Validators.required, Validators.required]],
       lunch: ['', [Validators.required, Validators.required]],
+      interests: ['', [Validators.required, Validators.required]],
       questionOne: ['', [Validators.required, Validators.required]],
       questionTwo: ['', [Validators.required, Validators.required]],
       questionThree: ['', [Validators.required, Validators.required]],
@@ -96,7 +106,16 @@ export class RegisterPage implements OnInit, AfterViewInit {
     this.fairs.registerStudent(student);
   }
 
-  // Send Email to Student
-  // SMS to phones
+  selectMember(data) {
+    if (data.isChecked === true) {
+       this.interests.push(data);
+     } else {
+      let newArray = this.interests.filter( (el) => {
+        return el.testID !== data.testID;
+     });
+      this.interests = newArray;
+    }
+    console.log(this.interests);
+   }
 
 }
