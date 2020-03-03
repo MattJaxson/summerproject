@@ -54,6 +54,9 @@ ion-title {
 
 
 .swiper-pagination {
+  // Swiper disabled before student app launch
+
+  display: none;
   position: relative;
   bottom: 20px !important;
   left: 45%;

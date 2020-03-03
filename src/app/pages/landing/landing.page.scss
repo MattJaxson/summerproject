@@ -25,7 +25,7 @@ h1 {
 }
 
 ion-slide {
-  height: 91vh;
+  height: 80vh;
   width: 100%;
 }
 
@@ -54,7 +54,7 @@ ion-slides{
   padding: 30px;
   height: auto;
   display: inline-block;
-  margin-top: 4%;
+  margin-top: 1%;
   color: white;
   border-radius: 5px;
   // border-bottom: solid white 5px;
@@ -63,7 +63,7 @@ ion-slides{
 
     h1 {
       font-weight: 900;
-      font-size: 4em;
+      font-size: 3em;
       line-height: 1.3em;
       opacity: 0;
       border-bottom: solid 2px white;
@@ -214,7 +214,7 @@ ion-slides{
       font-size: 1em;
       opacity: 0;
       display: inline-block;
-      padding: 10px;
+      padding: 15px;
       margin: 10px;
       transition: 0.5s;
       text-decoration-line: none;
