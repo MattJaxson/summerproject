@@ -26,9 +26,8 @@ export class VolunteersPage implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line: radix
-    const id  = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.id = id;
+    this.id = '5e4dfde5239236ffa852a4e3';
 
     this.fairs.getFair(this.id).subscribe(
       fair => {
@@ -41,11 +40,6 @@ export class VolunteersPage implements OnInit {
         console.log(this.slots);
       }
     );
-  }
-
-  goHome() {
-    console.log('going home');
-    this.router.navigate(['']);
   }
 
   goBack() {
