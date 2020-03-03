@@ -139,6 +139,13 @@ ion-select-option {
   font-weight: 900;
 }
 
+.loading {
+  min-width: 300px;
+  min-height: 400px;
+  background: #005191;
+  border-radius: 5px;
+}
+
 @keyframes slide-in-right {
   0% {
     opacity: 0;

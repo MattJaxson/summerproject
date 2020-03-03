@@ -127,7 +127,7 @@ export class FairsService {
       duration: 3000,
       message: `Registering you as a Chaperone ${chaperoneName}. Sending an email to ${chaperoneEmail}`,
       translucent: true,
-      cssClass: 'custom-class custom-loading',
+      cssClass: 'loading',
       backdropDismiss: true
     });
     await loading.present();
