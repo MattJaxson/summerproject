@@ -11,15 +11,14 @@
   </ion-toolbar>
 
   <!-- Desktop -->
-  <ion-toolbar #desktopToolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
-      <img id="logo" src="../../assets/United_Way_Logo_3.svg" />
+  <!-- <ion-toolbar #desktopToolbar class="ion-hide-sm-down fair-page-toolbar-lg ion-padding-horizontal">
       <ion-button class="orange-button" style="font-weight: 900; width: 150px;" slot="end" [routerLink]="['fairs']">
         View Fair
       </ion-button>
-<!-- 
+
       <ion-button [routerLink]="['login']" class="orange-button" style="font-weight: 900; width: 150px; --background: #005191; --color: white; margin-left: 20px;" slot="end">Student Login
-      </ion-button> -->
-    </ion-toolbar>
+      </ion-button>
+    </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
@@ -36,8 +35,7 @@
               </video>
 
               <!-- Slides -->
-              <ion-slides style="
-              box-shadow: 1px 4px 10px #555;" #slider size="12" pager="true" [options]="slideOpts">
+              <ion-slides #slider size="12" pager="true" [options]="slideOpts">
 
                   <!-- Slider -->
                   <ion-slide>
@@ -46,18 +44,24 @@
                     <ion-row id="slide-1" class="ion-hide-sm-down">
 
                       <!-- Wrap buttons or links for each user in a dark wrapper with half opacity -->
-                      <ion-col class="slide-text" push="1" size="8">
-                          <h1>Innovation Tech Day TEST </h1>
+                      <ion-col class="slide-text" push="1" size="6">
+                          <img style="display: inline-block;" id="logo" src="../../assets/United_Way_Logo_4.svg" />
+                          <h1>Innovation Tech Day. </h1>
                           <p id="i-am-a-header">I am a :<br><br>
 
                             <!-- Manually get the ID of the Fair -->
-                            <a [routerLink]="['fairs/fair-page/students/5e4dfde5239236ffa852a4e3']" class="header-link" id="student-link">Student.</a><br>
+                            <a class="header-link"
+                            (click)="students()"  id="student-link">Student</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/chaperones/5e4dfde5239236ffa852a4e3']" class="header-link" id="chaperone-link">Chaperone.</a><br>
+                            <a class="header-link"
+                            (click)=" chaperones()"  id="chaperone-link">Chaperone</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/volunteers/5e4dfde5239236ffa852a4e3']" class="header-link" id="volunteer-link">Volunteer.</a><br>
+                            <a
+                              class="header-link"
+                              (click)="volunteers()" id="volunteer-link">Volunteer</a><br>
 
-                            <a [routerLink]="['fairs/fair-page/partners/5e4dfde5239236ffa852a4e3']" class="header-link" id="partner-link">Partner.</a><br>
+                            <a class="header-link"
+                            (click)="partners()"  id="partner-link">Partner</a><br>
                       </ion-col>
                     </ion-row>
 
@@ -80,9 +84,9 @@
 
 
                   <!-- Desktop Slide 2 -->
-                  <ion-slide>
+                  <!-- <ion-slide> -->
 
-                      <ion-row id="slide-2" class="ion-hide-sm-down">
+                      <!-- <ion-row id="slide-2" class="ion-hide-sm-down">
                           <ion-col class="slider-text" push="2" size="6">
                               <h1>Connect.</h1>
                               <p>Connect with other Students, Mentors, Events, and Jobs outside of United Way Fairs.</p>
@@ -90,10 +94,10 @@
                               Student App
                             </ion-button>
                           </ion-col>
-                        </ion-row>
+                        </ion-row> -->
 
                       <!-- Mobile Slide 2 -->
-                      <ion-row id="slide-2-mobile" class="ion-hide-md-up">
+                      <!-- <ion-row id="slide-2-mobile" class="ion-hide-md-up">
                           <ion-col class="slider-text-mobile" push="1" size="10">
                               <h1>Connect </h1>
                               <p>Student. </p>
@@ -106,8 +110,8 @@
                               </ion-button>
                         </ion-col>
 
-                      </ion-row>
-                  </ion-slide>
+                      </ion-row> -->
+                  <!-- </ion-slide> -->
 
                   <ion-button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</ion-button>
                   <ion-button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">Next</ion-button>

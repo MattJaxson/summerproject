@@ -54,6 +54,9 @@ ion-title {
 
 
 .swiper-pagination {
+  // Swiper disabled before student app launch
+
+  display: none;
   position: relative;
   bottom: 20px !important;
   left: 45%;
@@ -126,6 +129,21 @@ ion-select-option {
   border-radius: 5px;
   opacity: 0;
   animation: slide-in-right 0.5s ease-out forwards;
+}
+
+.fair-register-button{
+  width: 200px;
+  --color: #00c400;
+  height: 70px;
+  font-size: 1em;
+  font-weight: 900;
+}
+
+.loading {
+  min-width: 300px;
+  min-height: 400px;
+  background: #005191;
+  border-radius: 5px;
 }
 
 @keyframes slide-in-right {

@@ -44,19 +44,13 @@ export class ChaperonesPage implements OnInit {
     );
   }
 
-  goHome() {
-    console.log('going home');
-    this.router.navigate(['']);
-  }
-
-
   goBack() {
     console.log('going back');
     this.navCtrl.back();
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/chaperones/:id/register', this.id]);
+    this.router.navigate(['/fairs/fair-page/chaperones/:id/register', this.id]);
   }
 
   boothPartnersPage() {

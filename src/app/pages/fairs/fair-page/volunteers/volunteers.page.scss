@@ -16,6 +16,14 @@ p {
   font-size: 1.3em;
 }
 
+.list-header {
+  font-size: 2.3em;
+
+  .list-text {
+    font-size: 1em;
+  }
+}
+
 h2 {
   font-weight: 900;
   color: #222;
@@ -27,12 +35,13 @@ h2 {
   ion-title {
     padding-left: 75px;
     font-size: 1.5em;
+    font-weight: 900;
   }
 
   .sub-title {
     padding-left: 75px;
-    font-size: 1em;
-    color: #999;
+    font-size: 1.2em;
+    color: #666;
   }
 }
 

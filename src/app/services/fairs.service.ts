@@ -84,6 +84,19 @@ export class FairsService {
   }
 
 
+  async registerVolunteer(volunteer) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-volunteer`, volunteer).subscribe(
+      async data => {
+        await console.log('registering volunteer to fair');
+        await console.log(data);
+        await this.presentLoadingWithOptions(volunteer.name, volunteer.email);
+        await this.router.navigate(['']);
+        await console.log('REGISTERED VOLUNTEER TO FAIR!');
+      }
+    );
+  }
+
+
   // Errors
 
   async handleError(error: HttpErrorResponse) {
@@ -114,7 +127,7 @@ export class FairsService {
       duration: 3000,
       message: `Registering you as a Chaperone ${chaperoneName}. Sending an email to ${chaperoneEmail}`,
       translucent: true,
-      cssClass: 'custom-class custom-loading',
+      cssClass: 'loading',
       backdropDismiss: true
     });
     await loading.present();

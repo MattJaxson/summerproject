@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class LandingPage implements OnInit {
 
+  id = '5e4dfde5239236ffa852a4e3';
+
   @ViewChild('slider', {static: true}) slider: IonSlides;
   @ViewChild('desktopToolbar', {static: true}) desktopToolbar: IonToolbar;
 
@@ -32,8 +34,7 @@ export class LandingPage implements OnInit {
 
   fairsPage() {
     this.router.navigate(['fairs']);
-    // this.presentAlert();
-  }
+   }
 
   next() {
     this.slider.slideNext();
@@ -45,6 +46,22 @@ export class LandingPage implements OnInit {
 
   toolbarWatcher() {
     this.desktopToolbar.color = 'light';
+  }
+
+  students() {
+    this.router.navigate(['fairs/fair-page/students/', this.id]);
+  }
+
+  chaperones() {
+    this.router.navigate(['fairs/fair-page/chaperones/', this.id]);
+  }
+
+  volunteers() {
+    this.router.navigate(['fairs/fair-page/volunteers/', this.id]);
+  }
+
+  partners() {
+    this.router.navigate(['fairs/fair-page/partners/', this.id]);
   }
 
 

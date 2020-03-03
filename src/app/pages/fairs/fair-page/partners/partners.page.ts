@@ -53,7 +53,7 @@ export class PartnersPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/fairs/fair/:id/partners/:id/register', this.id]);
+    this.router.navigate(['/fairs/fair-page/partners/:id/register', this.id]);
   }
 
   viewFAQs() {
