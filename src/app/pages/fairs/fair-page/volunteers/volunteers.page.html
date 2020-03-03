@@ -23,9 +23,6 @@
         <ion-title color="primary">Volunteers</ion-title>
         <ion-title class="sub-title" color="primary">{{title}}, {{time}}, {{date}}</ion-title>
 
-        <ion-button color="success" class class="orange-button" style="width: 100px; --color: white; margin-right: 30px;" (click)="register()" slot="end">
-          Register
-        </ion-button>
         <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
         </ion-button>
     </ion-toolbar>
@@ -88,6 +85,17 @@
 
     <!-- Desktop -->
     <ion-grid style="margin-top: 75px" class="ion-hide-sm-down">
+
+        <!-- Register Button -->
+        <ion-row>
+          <ion-col size="6" push="3">
+          <ion-button color="success" class="fair-register-button" (click)="register()">
+              Register
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+          <!-- Overview -->
           <ion-row>
 
             <ion-col class="overview" style="background: white; padding: 20px;" size="6" push="3">
