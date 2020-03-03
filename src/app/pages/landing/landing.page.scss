@@ -377,14 +377,27 @@ ion-grid {
 .about {
   padding: 20px 5px 10px 5px;
   background: #f5f5f5;
+
+  p {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .past-fairs {
-  background: #00519155;
+  color: white;
+  background: #005191;
 }
 
 .student-app {
-  background: #ffb35144;
+  background: #ffb351;
+
+  p {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .footer {
