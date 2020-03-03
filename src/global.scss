@@ -131,6 +131,14 @@ ion-select-option {
   animation: slide-in-right 0.5s ease-out forwards;
 }
 
+.fair-register-button{
+  width: 200px;
+  --color: #00c400;
+  height: 70px;
+  font-size: 1em;
+  font-weight: 900;
+}
+
 @keyframes slide-in-right {
   0% {
     opacity: 0;
