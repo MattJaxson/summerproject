@@ -167,8 +167,8 @@ getLoginCredentials(data) {
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.http.post(`${this.BACKEND_URL}/api/`, 
-    { email: data.email, 
+    return this.http.post(`${this.BACKEND_URL}/api/`,
+    { email: data.email,
       password: data.password
     })
       .pipe(

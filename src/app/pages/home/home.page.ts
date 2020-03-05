@@ -34,16 +34,20 @@ export class HomePage implements OnInit, OnDestroy {
     });
 
     // getting all the favorite jobs that the user has on their profile
-    // this.profile.getUserDetails().subscribe(
-    //   data => {this.favoriteJobs = data.favoriteJobs });
+    this.profile.getUserDetails().subscribe(
+      data => {
+        this.favoriteJobs = data['favoriteJobs']
+        console.log('Favorite Jobs');
+        console.log(this.favoriteJobs);
 
-    // this.favorites.favoriteJobs$.next(this.favoriteJobs);
-    // this.favorites.favoriteJobs$.subscribe(
-    //   favs => {
-    //     this.favoriteJobs = favs;
-    //     // this.favoriteJobsAmount = Object.values(favs).length;
-    //   }
-    // );
+        this.favorites.favoriteJobs$.next(this.favoriteJobs);
+        this.favorites.favoriteJobs$.subscribe(
+          favs => {
+            console.log('Favorite Jobs in Service');
+            this.favoriteJobsAmount = favs.length;
+          }
+        );
+      });
   }
 
   ngOnDestroy() {

@@ -30,6 +30,8 @@ export class FavoritesService {
     const email = this.profile.activeEmail;
 
     job.userEmail = email;
+    console.log('job: ' );
+    console.log(job);
 
     // post to database
     this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(

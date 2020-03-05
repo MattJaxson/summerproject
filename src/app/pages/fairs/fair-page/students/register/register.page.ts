@@ -106,16 +106,4 @@ export class RegisterPage implements OnInit, AfterViewInit {
     this.fairs.registerStudent(student);
   }
 
-  selectMember(data) {
-    if (data.isChecked === true) {
-       this.interests.push(data);
-     } else {
-      let newArray = this.interests.filter( (el) => {
-        return el.testID !== data.testID;
-     });
-      this.interests = newArray;
-    }
-    console.log(this.interests);
-   }
-
 }

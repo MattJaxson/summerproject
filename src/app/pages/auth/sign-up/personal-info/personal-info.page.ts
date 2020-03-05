@@ -49,6 +49,7 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
       state: ['', Validators.required],
       zip: ['', Validators.required, Validators.maxLength(5)],
       gender: ['', Validators.required],
+      // Date of Birth
       dob: ['', [Validators.required, Validators.email]],
       school: ['', Validators.required],
       grade: ['', Validators.required],
