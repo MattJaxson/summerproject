@@ -29,17 +29,18 @@ export class FavoritesService {
     // get user's email for database query
     const email = this.profile.activeEmail;
 
+    // put this job's id into this user's favoriteJobs property
     job.userEmail = email;
-    console.log('job: ' );
-    console.log(job);
 
-    // post to database
-    this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(
+    this.favoriteJobs$.next(job._id);
+
+    return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(
       data => {
-        this.favoriteJobs$.next(job);
+        console.log('Posting Favorite Job to Database..');
+        console.log(data['favoriteJobs']);
       }
     );
-    console.log('Favoriting this Job');
+
   }
 
   unFavoriteThisJob(job) {
@@ -49,8 +50,11 @@ export class FavoritesService {
     job.userEmail = email;
 
     // post to database
-    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, job).subscribe(
+    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, job)
+      .subscribe(
       data => {
+        console.log(data['favoriteJobs']);
+        this.favoriteJobs$.next(data['favoriteJobs']);
       }
     );
     // update favoriteJobsSubject
