@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,  } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 import { IonicModule } from '@ionic/angular';
 
@@ -14,7 +16,8 @@ import { GoingIconComponent } from '../../components/going-icon/going-icon.compo
     CommonModule,
     FormsModule,
     IonicModule,
-    EventsPageRoutingModule  ],
+    EventsPageRoutingModule,
+    RouterModule.forChild([{ path: '', component: EventsPage }])  ],
   declarations: [
     EventsPage,
     GoingIconComponent

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
+import { JobsPage } from './jobs.page';
 import { FavoritesPage } from './favorites/favorites.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
+    component: JobsPage
   },
   {
     path: 'job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay',
@@ -23,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class JobsPageRoutingModule {}

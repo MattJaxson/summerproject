@@ -9,11 +9,11 @@ import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  selector: 'app-jobs',
+  templateUrl: 'jobs.page.html',
+  styleUrls: ['jobs.page.scss']
 })
-export class HomePage implements OnInit, OnDestroy {
+export class JobsPage implements OnInit, OnDestroy {
   allJobs: any;
   favoriteJobs;
   favoriteJobsAmount;

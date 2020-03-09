@@ -4,8 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from 'src/app/services/profile.service';
 import { environment } from '../../environments/environment';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +11,15 @@ import { environment } from '../../environments/environment';
 export class FavoritesService {
   BACKEND_URL = environment.url;
   favoriteJobs$ = new BehaviorSubject([]);
-  favoriteJobs;
 
   constructor(
     private http: HttpClient,
     private profile: ProfileService
   ) {}
 
-  getFavorites() {
+  getFavorites(email) {
     console.log('Getting Favorites');
+    return this.http.get(`${this.BACKEND_URL}/api/favorites`, email);
   }
 
   favoriteThisJob(job) {
@@ -31,6 +29,7 @@ export class FavoritesService {
 
     // put this job's id into this user's favoriteJobs property
     job.userEmail = email;
+    let id = job._id;
 
     this.favoriteJobs$.next(job._id);
 
