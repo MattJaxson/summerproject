@@ -168,7 +168,7 @@ export class EventsPage implements OnInit, AfterViewInit {
     return await loading.present();
   }
 
-    async doRefresh(event) {
+  async doRefresh(event) {
 
     this.allEvents = [];
     await this.events.getEvents().subscribe( events => {

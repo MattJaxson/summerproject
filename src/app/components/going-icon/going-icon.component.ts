@@ -4,6 +4,7 @@ import { EventsService } from '../../services/events.service';
 import { ToastController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 
     trigger('going', [
         state('going', style({
-            color: '#e4405f',
+            color: 'blue',
             opacity: '0.4',
             transition: '0.5s',
             transform: 'scale(0.9)'
@@ -42,9 +43,10 @@ export class GoingIconComponent implements OnInit {
 
   constructor(
     private events: EventsService,
+    private favs: FavoritesService,
     private toast: ToastController,
     private router: Router,
-    private profile: ProfileService,) { }
+    private profile: ProfileService) { }
 
   ngOnInit() {
 
@@ -53,18 +55,9 @@ export class GoingIconComponent implements OnInit {
      details => {
 
        this.userEmail = details['email'];
+       this.events = details['eventsGoing'];
 
      });
-
-    // console.log(this.id);
-    // console.log(this.event['_id']);
-    // this.events.getEventsGoing(this.id).subscribe(
-    //   data => {
-
-    //    this.events.eventsGoing$.next(data['eventsGoing']);
-    //    console.log(data);
-    //   }
-    // );
   }
 
   toggleGoingState(event) {
@@ -76,7 +69,9 @@ export class GoingIconComponent implements OnInit {
       this.going = true;
       this.goingToast();
       console.log(`Going to event, ${event.title}`);
-      this.events.goingToEvent(event._id, this.userEmail, this.id).subscribe();
+
+
+      this.events.getEvents();
 
 
     } else {
@@ -86,7 +81,7 @@ export class GoingIconComponent implements OnInit {
       this.going = false;
       this.notGoingToast();
       console.log('No longer going to Event');
-      this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();
+      // this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();
 
     }
 

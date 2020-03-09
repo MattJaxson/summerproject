@@ -4,8 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from 'src/app/services/profile.service';
 import { environment } from '../../environments/environment';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +11,15 @@ import { environment } from '../../environments/environment';
 export class FavoritesService {
   BACKEND_URL = environment.url;
   favoriteJobs$ = new BehaviorSubject([]);
-  favoriteJobs;
 
   constructor(
     private http: HttpClient,
     private profile: ProfileService
   ) {}
 
-  getFavorites() {
+  getFavorites(email) {
     console.log('Getting Favorites');
+    return this.http.get(`${this.BACKEND_URL}/api/favorites`, email);
   }
 
   favoriteThisJob(job) {
@@ -29,17 +27,19 @@ export class FavoritesService {
     // get user's email for database query
     const email = this.profile.activeEmail;
 
+    // put this job's id into this user's favoriteJobs property
     job.userEmail = email;
-    console.log('job: ' );
-    console.log(job);
+    let id = job._id;
 
-    // post to database
-    this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(
+    this.favoriteJobs$.next(job._id);
+
+    return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(
       data => {
-        this.favoriteJobs$.next(job);
+        console.log('Posting Favorite Job to Database..');
+        console.log(data['favoriteJobs']);
       }
     );
-    console.log('Favoriting this Job');
+
   }
 
   unFavoriteThisJob(job) {
@@ -49,8 +49,11 @@ export class FavoritesService {
     job.userEmail = email;
 
     // post to database
-    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, job).subscribe(
+    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, job)
+      .subscribe(
       data => {
+        console.log(data['favoriteJobs']);
+        this.favoriteJobs$.next(data['favoriteJobs']);
       }
     );
     // update favoriteJobsSubject
