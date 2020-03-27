@@ -30,7 +30,10 @@
 }
 
 body {
-  background-color: white;
+}
+
+ion-list {
+  --background: blue;
 }
 
 ion-content {
@@ -76,7 +79,7 @@ ion-title {
   background: none;
 
   ion-item {
-    --background: white;
+    // --background: white;
       --border-color: transparent!important;
       --highlight-height: 0;
       border: 1px solid #dedede;
