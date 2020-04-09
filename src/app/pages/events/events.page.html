@@ -41,7 +41,7 @@
     <ion-row *ngIf="noSearchInput" class="ion-text-center">
       <ion-col size="11" offset="0.5">
         <h6 class="text-header">There were no Search results with that name. Please Refresh the page</h6>
-        <ion-button class="orange-button" (click)="doRefresh()">
+        <ion-button class="orange-button" (click)="doRefresh($event)">
           Refresh
         </ion-button>
       </ion-col>

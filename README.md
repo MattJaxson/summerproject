@@ -5,3 +5,7 @@
 
   ++ Running on Phone
   ionic serve --address {ip address} > Type ip address on Mobile browser
+
+  ++ Connecting to AWS EC2 (Bitnami MEAN)
+    -- navigate to Express folder
+    -- sudo ssh -i "fyf.pem" bitnami@ec2-54-161-192-223.compute-1.amazonaws.com
