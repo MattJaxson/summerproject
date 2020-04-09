@@ -31,7 +31,7 @@ import { ToastController } from '@ionic/angular';
 
 export class NotGoingIconComponent implements OnInit {
 
-  goingState = 'not-going';
+  notGoingState = 'not-going';
   public iconName = 'add-circle';
   @Input() event;
   @Input() userEmail;
@@ -43,11 +43,11 @@ export class NotGoingIconComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleGoingState(event) {
+  toggleNotGoingState(event) {
 
-    if (this.goingState === 'not-going') {
+    if (this.notGoingState === 'not-going') {
 
-      this.goingState = 'going';
+      this.notGoingState = 'going';
       this.iconName = 'close-circle-outline';
       this.goingToast();
       console.log(`Going to event, ${event.title}`);
@@ -56,7 +56,7 @@ export class NotGoingIconComponent implements OnInit {
 
     } else {
 
-      this.goingState = 'not-not-going';
+      this.notGoingState = 'not-not-going';
       this.iconName = 'add-circle-outline';
       this.notGoingToast();
       console.log('No longer going to Event');
