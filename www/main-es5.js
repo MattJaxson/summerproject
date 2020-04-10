@@ -1579,7 +1579,7 @@
     //local host is for local machine and 10.0.1.8 is for android testing
 
 
-    const ip = '10.0.1.14';
+    const ip = '18.218.236.99';
     const baseUrl = "http://".concat(ip, ":3000");
     const url = baseUrl + '/api'; //local host
 
