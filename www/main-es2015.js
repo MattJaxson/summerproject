@@ -1257,7 +1257,7 @@ __webpack_require__.r(__webpack_exports__);
 // const url is commented out depending on which you are testing with.
 //local host is for local machine and 10.0.1.8 is for android testing
 
-const ip = '10.0.1.14';
+const ip = '18.218.236.99';
 const baseUrl = `http://${ip}:3000`;
 const url = baseUrl + '/api'; //local host
 const environment = {
