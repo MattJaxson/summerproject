@@ -15,8 +15,6 @@ import { FairsPage } from './fairs.page';
     IonicModule,
     FairsPageRoutingModule
   ],
-  declarations: [
-    FairsPage
-  ]
+  declarations: [FairsPage]
 })
 export class FairsPageModule {}

@@ -63,7 +63,7 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
 }
 
 ngOnDestroy() {
-  
+
 }
 
 formOnChanges(): void {

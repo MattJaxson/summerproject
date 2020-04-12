@@ -62,6 +62,7 @@ export class EnterCodePage implements OnInit {
     return this.code = result;
  }
 
+
   newPasswordPage(newPassword) {
     console.log('New Password: ');
     console.log(newPassword);

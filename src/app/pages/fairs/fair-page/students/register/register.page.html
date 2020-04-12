@@ -387,11 +387,12 @@
 
 
           <!-- Interests -->
-          <ion-item *ngFor="let interest of studentInterests">
+          <!-- <ion-item *ngFor="let interest of studentInterests">
               <ion-label>{{interest.name}}</ion-label>
               <ion-checkbox
               formControlName="interests" slot="end" [(ngModel)]="interest.isChecked"
-              ></ion-checkbox>
+              (IonChange)="selectMember(interest.name)">
+            </ion-checkbox>
             </ion-item>
 
           <!-- Survey Questions -->
