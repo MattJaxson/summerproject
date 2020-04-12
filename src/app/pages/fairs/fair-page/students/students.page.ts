@@ -67,30 +67,4 @@ export class StudentsPage implements OnInit {
     this.router.navigate(['/fairs/fair/:id/students/:id/booth-partners', this.id]);
   }
 
-  // logScrolling(event) {
-
-  //   let boothPartners = this.boothPartners.nativeElement.getBoundingClientRect();
-  //   let findFair = this.findFair.nativeElement.getBoundingClientRect();
-
-  //   if (
-  //     boothPartners.top >= 0 &&
-  //     boothPartners.left >= 0 &&
-  //     boothPartners.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-  //     boothPartners.bottom <= (window.innerHeight + 150 || document.documentElement.clientHeight + 150)
-  //   ) {
-  //     console.log('In the viewport! Booth');
-  //     this.boothPartners.nativeElement.className = 'booth-partners-mobile';
-  //   }
-
-  //   if (
-  //     findFair.top >= 0 &&
-  //     findFair.left >= 0 &&
-  //     findFair.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-  //     findFair.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-  //   ) {
-  //     console.log('In the viewport! Find');
-  //     this.findFair.nativeElement.className = 'find-fair-mobile';
-  //   }
-  // }
-
 }

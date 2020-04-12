@@ -10,6 +10,8 @@ import { EventsPageRoutingModule } from './events-routing.module';
 
 import { EventsPage } from './events.page';
 import { GoingIconComponent } from '../../components/going-icon/going-icon.component';
+import { NotGoingIconComponent } from '../../components/not-going-icon/not-going-icon.component';
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { GoingIconComponent } from '../../components/going-icon/going-icon.compo
     RouterModule.forChild([{ path: '', component: EventsPage }])  ],
   declarations: [
     EventsPage,
-    GoingIconComponent
+    GoingIconComponent,
+    NotGoingIconComponent
     ]
 })
 export class EventsPageModule {}

@@ -60,7 +60,7 @@ export class ContactMentorPage implements OnInit {
 
   }
 
-  async confirm() {
+  async confirm(value) {
     await this.sendMessage();
     // tslint:disable-next-line: max-line-length
     await this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor/:name/:email/confirm', this.mentorName, this.mentorEmail]);
