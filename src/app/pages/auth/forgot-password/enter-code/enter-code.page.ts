@@ -62,7 +62,11 @@ export class EnterCodePage implements OnInit {
     return this.code = result;
  }
 
-  newPasswordPage(code) {
+
+  newPasswordPage(newPassword) {
+    console.log('New Password: ');
+    console.log(newPassword);
+
     if (this.enterCodeForm.controls.code.value !== this.code) {
       this.presentToast();
       console.log('Codes do not match');

@@ -16,6 +16,9 @@ import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
 
+// Amazon Web Services
+import * as AWS from 'aws-sdk';
+
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.page.html',
@@ -29,6 +32,17 @@ export class ProfilePicturePage implements OnInit {
   // Image of camera that is compatible with HTML
   profilePictureWebView;
   profilePicture;
+
+    // Options for Cordova Camera plugin
+  private options: CameraOptions = {
+   targetWidth: 384,
+   targetHeight: 384,
+   quality: 100,
+   destinationType: this.camera.DestinationType.FILE_URI,
+   encodingType: this.camera.EncodingType.JPEG,
+   mediaType: this.camera.MediaType.PICTURE,
+   correctOrientation: true,
+  };
 
   BACKEND_URL = environment.url;
 
@@ -51,6 +65,21 @@ export class ProfilePicturePage implements OnInit {
 
   ngOnInit() {
     }
+    // setProfilePhoto(name, sourceType): Promise<any> {
+
+      // return new Promise((resolve, reject) => {
+
+        // this.options.sourceType = sourceType;
+        // this.camera.getPicture(this.options)
+          // .then((res) => {
+            // let base64Image = 'data:image/jpeg;base64,' + res;
+            // resolve(base64Image);
+          // })
+          // .catch((err) => {
+            // reject(err);
+          // });
+        // });
+      // }
 
 async selectImage() {
     const actionSheet = await this.actionSheet.create({
@@ -77,18 +106,11 @@ async selectImage() {
 }
 
 async takePicture(sourceType: PictureSourceType) {
-    // Options for Cordova Camera plugin
-    const options: CameraOptions = {
-      quality: 100,
-      sourceType,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-    };
+
+  
 
     // Get IMAGE PATH from Camera
-    const imagePath: string = await this.camera.getPicture(options);
+    const imagePath: string = await this.camera.getPicture(this.options);
 
     // tslint:disable-next-line: max-line-length
     // Given the IMAGE PATH from the Camera, find the path, get the file from the FileEntry, and use the FileReader on the file object to get raw data from the file.
