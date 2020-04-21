@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PostsService } from '../../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
+import { format } from 'date-fns';
 import { formatDistance, subDays } from 'date-fns';
 import { FollowIconComponent } from '../../../components/follow-icon/follow-icon.component';
 
@@ -29,6 +30,10 @@ export class FollowingPage implements OnInit {
         this.posts.getFollowedPost(this.userID).subscribe(
           posts => {
             this.allFollowedPosts = posts;
+
+            for (const post of this.allFollowedPosts) {
+              post.date = format( new Date(post.date), 'MMMM do, yyyy');
+            }
             console.log(this.allFollowedPosts);
           }
         );
