@@ -1,0 +1,32 @@
+.send-new-code {
+  display: block;
+  --background: none;
+  color: #005191;
+  --border-color: #005191;
+  --border-width : 1px;
+  --border-style: solid;
+  border: 1px;
+  width: 150px;
+  margin: 50px auto;
+  opacity: 0;
+  animation: slide-from-right 1s ease-out 5s forwards;
+}
+
+span {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #005191;
+}
+
+@keyframes slide-from-right {
+
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

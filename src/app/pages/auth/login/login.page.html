@@ -9,12 +9,12 @@
 </ion-header> -->
 
 <!-- Desktop -->
-<ion-header class="ion-hide-sm-down">
+<!-- <ion-header class="ion-hide-sm-down">
     <ion-toolbar class="login-toolbar ion-padding-horizontal">
       <ion-button (click)="goBack()" class="orange-button" style="width: 100px; --background: #005191; --color: white;" slot="end">Go Back
       </ion-button>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
@@ -95,11 +95,11 @@
   <ion-grid class="ion-text-center ion-hide-sm-down">
 
       <ion-row class="ion-justify-content-center">
-        <ion-col size="4">
+        <ion-col size="4"  style="margin-top: 5%">
 
             <form  [formGroup]="loginForm"
                    (ngSubmit)="login(this.loginForm.value)">
-            <ion-list class="inputs line-input">
+            <ion-list class="line-input">
 
                 <!-- Refactor Logo Section -->
                 <img src="./assets/United_Way_Logo_3.svg" style="height: 70px; margin: 35px 0 30px 0;"/>

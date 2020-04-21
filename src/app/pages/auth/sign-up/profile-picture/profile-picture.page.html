@@ -1,26 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Profile Picture</ion-title>
-    <ion-button (click)="cancel()" class="cancel-button" slot="end">
-        cancel
-      </ion-button>
-  </ion-toolbar>
+<ion-header style="display: none;">
 </ion-header>
 
 <ion-content class="ion-text-center">
-  <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
-  <div id="img-wrapper">
-    <img src="{{profilePicture}}" alt="">
-  </div>
+  <ion-grid style="margin-top: 10%;">
+    <ion-row>
 
+      <!-- Inputs for Phone -->
+      <ion-col class="ion-hide-md-up" size-md="6" offset-md="3">
+        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
 
-  <ion-button class="camera-button"  (click)="selectImage()">
-    Get Picture
-  </ion-button>
+        <div id="img-wrapper">
+          <img src="{{profilePicture}}" alt="">
+        </div>
 
-  <ion-button class="skip-button"  (click)="skip()">
-    Skip
-  </ion-button>
+        <ion-button class="camera-button"  (click)="selectImage()">
+          Get Picture
+        </ion-button>
+
+        <ion-button class="skip-button"  (click)="skip()">
+          Skip
+        </ion-button>
+
+        <input (click)="goToUploadResumePage()" class="orange-button" type="submit" value="Upload Picture"><br>
+        <ion-button (click)="cancel()" class="cancel-button" slot="end">
+            cancel
+          </ion-button>
+      </ion-col>
+
+      <!-- Inputs for Web Browser -->
+      <ion-col class="ion-hide-md-down" size-lg="6" offset-lg="3">
+        <p>For Web Browser</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
   <!-- <ion-input
     (change)="onChange($event)"
@@ -29,6 +42,7 @@
     name="picture"
     enctype="multipart/form-data"></ion-input> -->
 
-  <input (click)="goToUploadResumePage()" class="orange-button" type="submit" value="Upload Picture">
+
+
 
 </ion-content>

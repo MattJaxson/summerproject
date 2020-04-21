@@ -1,16 +1,16 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header style="display: none;">
+  <!-- <ion-toolbar>
     <ion-title>Forgot Password</ion-title>
-    <ion-button (click)="cancel()" class="cancel-button" slot="end">
+    <ion-button  slot="end">
         cancel
     </ion-button>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
-    <ion-grid fixed class="ion-text-center">
+    <ion-grid class="ion-text-center" style="margin-top: 10%;">
       <ion-row>
-        <ion-col size="10" offset="1">
+        <ion-col size-sm="10" size-lg="6" offset-lg="3" offset-sm="1">
           <h6 class="text-header">Please enter your email address. An email will be sent to you with a <span style="font-weight: 700;">6 character code</span>. </h6>
           <form [formGroup]="forgotPasswordForm" (ngSubmit)="goToEnterCodePage(this.forgotPasswordForm.value.email)">
             <ion-list class="line-input">
@@ -40,7 +40,9 @@
 
           </ion-list>
 
-          <ion-button type="submit" class="orange-button">GET CODE</ion-button>
+          <ion-button type="submit" class="orange-button">GET CODE</ion-button><br>
+
+          <ion-button (click)="cancel()" class="cancel-button">CANCEL</ion-button>
 
           </form>
         </ion-col>

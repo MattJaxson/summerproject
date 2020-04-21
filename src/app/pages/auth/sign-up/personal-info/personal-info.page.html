@@ -1,17 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Sign Up</ion-title>
-    <ion-button (click)="cancel()" class="cancel-button" slot="end">
-        cancel
-      </ion-button>
-  </ion-toolbar>
+<ion-header style="display: none;">
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed style="margin-top: 20px;" class="ion-text-center">
+  <ion-grid style="margin-top: 10%;" class="ion-text-center">
     <ion-row>
-      <ion-col size="11" offset="0.5">
-          <h6 style="background: rgba(245,245,245,0.7); padding: 20px; margin: 30px 0 30px 0;">Please enter your profile information.</h6>
+      <ion-col size-lg="4" size-md="6" size-sm="10" size-xs="10" offset-lg="2" offset-sm="1" offset-xs="1">
+          <h6 class="text-header">Please enter your profile information.</h6>
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -196,7 +190,10 @@
 
             </ion-item>
             </ion-list>
-            <ion-button class="orange-button" type="submit">NEXT</ion-button>
+            <ion-button class="orange-button" type="submit">NEXT</ion-button><br>
+            <ion-button (click)="cancel()" class="cancel-button" slot="end">
+                cancel
+              </ion-button>
         </form>
       </ion-col>
     </ion-row>

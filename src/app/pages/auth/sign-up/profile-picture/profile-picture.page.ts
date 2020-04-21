@@ -9,9 +9,6 @@ import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-
-import { finalize } from 'rxjs/operators';
 import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';

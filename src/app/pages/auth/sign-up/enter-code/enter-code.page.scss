@@ -12,6 +12,12 @@
   animation: slide-from-right 1s ease-out 5s forwards;
 }
 
+span {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #005191;
+}
+
 @keyframes slide-from-right {
 
   0% {

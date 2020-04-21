@@ -8,13 +8,6 @@
   }
 }
 
-.inputs {
-  background: rgba(220,220,220, 0.2);
-  padding: 30px;
-  border-radius: 5px;
-  margin: 50px 0 50px 0;
-}
-
 ion-footer {
   opacity: 0;
   --ion-padding-grid: 0;
@@ -45,7 +38,7 @@ ion-footer {
   --border-width: 2px;
   --border-style: solid;
   --background:white;
-  --color: rgba(220,220,220, 0.7);
+  --color: rgba(130,130,130, 1);
   transition: 0.5s;
   animation: slide-up 0.5s ease 1.5s forwards;
 }

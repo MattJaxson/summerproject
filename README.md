@@ -8,4 +8,4 @@
 
   ++ Connecting to AWS EC2 (Bitnami MEAN)
     -- navigate to Express folder
-    -- sudo ssh -i "fyf.pem" bitnami@ec2-54-161-192-223.compute-1.amazonaws.com
+    -- sudo ssh -i "fyf-app.pem" bitnami@ec2-13-58-123-255.us-east-2.compute.amazonaws.com

@@ -76,10 +76,31 @@ export class EnterCodePage implements OnInit {
     }
   }
 
+  async sendNewCode() {
+    await this.generateCode(6).then(code => {
+      console.log('Data: ' + code);
+      this.auth.sendEmailWithCode(code, this.userEmail);
+    });
+
+    await this.presentNewCodeToast(this.userEmail);
+   }
+
+
   async presentToast() {
     const toast = await this.toast.create({
       message: 'The codes do not match. Please try again.',
       duration: 2000
+    });
+    toast.present();
+  }
+
+  async presentNewCodeToast(email) {
+    const toast = await this.toast.create({
+      message: `New Code sent to ${email}`,
+      duration: 2000,
+      cssClass: 'success-toast',
+      keyboardClose: true,
+      position: 'top',
     });
     toast.present();
   }
