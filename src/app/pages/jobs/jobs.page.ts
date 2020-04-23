@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { IonSearchbar, LoadingController } from '@ionic/angular';
 import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 
@@ -6,6 +7,8 @@ import { JobsService } from '../../services/jobs.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BehaviorSubject } from 'rxjs';
+import { format, formatDistanceToNow } from 'date-fns';
+
 
 
 @Component({
@@ -14,22 +17,32 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['jobs.page.scss']
 })
 export class JobsPage implements OnInit, OnDestroy {
-  allJobs: any;
+
+  @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
+
+  allJobs;
+  allJobsLength;
+  jobsGoingLength = 0;
   favoriteJobs;
   favoriteJobsAmount;
+  searching = false;
+  searchTerm;
+  noSearchInput = false;
+  loadedAllJobs;
   favorited = 'favorited';
   unfavorited = 'unfavorited';
 
   constructor(
     private router: Router,
-    private jobServices: JobsService,
+    private jobs: JobsService,
     private favorites: FavoritesService,
-    private profile: ProfileService
+    private profile: ProfileService,
+    public loading: LoadingController
   ) {}
 
   ngOnInit() {
     // Get all the jobs t be viewed on the home page
-    this.jobServices.getJobs().subscribe( jobs => {
+    this.jobs.getJobs().subscribe( jobs => {
       this.allJobs = Object.values(jobs);
     });
 
@@ -47,6 +60,26 @@ export class JobsPage implements OnInit, OnDestroy {
             this.favoriteJobsAmount = favs.length;
           }
         );
+      });
+
+    this.jobs.getJobs().subscribe( jobs => {
+
+        // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list jobs,
+        // .
+
+        console.log('jobs that are intially loaded: ');
+        console.log(jobs);
+
+        this.allJobs = Object.values(jobs);
+        this.allJobsLength  = this.allJobs.length;
+        this.allJobs.reverse();
+
+        this.loadedAllJobs = Object.values(jobs);
+        this.loadedAllJobs.reverse();
+
+        for (const job of this.allJobs) {
+          job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: true });
+        }
       });
   }
 
@@ -76,19 +109,107 @@ export class JobsPage implements OnInit, OnDestroy {
     this.router.navigate(['/home/jobs/favorites']);
   }
 
-  doRefresh(event) {
-    console.log('Begin async operation');
-    this.jobServices.getJobs().subscribe( jobs => {
+  async doRefresh(job) {
+
+    this.allJobs = [];
+    await this.jobs.getJobs().subscribe( jobs => {
+
       this.allJobs = Object.values(jobs);
-      console.log(typeof this.allJobs);
-      console.log(this.allJobs);
+      this.allJobsLength = this.allJobs.length;
+      this.allJobs.reverse();
+      this.searching = false;
+
+      // Format Times
+      for (const job of this.allJobs) {
+        job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: false });
+      }
     });
 
     setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
+      job.target.complete();
+      console.log('jobs Refreshed');
     }, 2000);
+
+    await this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+      searchbarInputElement.value = '';
+      this.noSearchInput = false;
+    });
+
+    await console.log('Refreshing jobs Page..');
   }
+
+  filter($job) {
+
+    this.initializeItems();
+    let searchTerm = $job.detail.value;
+
+    if (!searchTerm) {
+      console.log('No results returned from Search');
+      this.noSearchInput = true;
+    }
+
+    this.presentLoadingWithOptions();
+
+    this.allJobs = this.allJobs.filter( currentJobs => {
+      console.log(currentJobs);
+
+      if (!currentJobs || !searchTerm  ) {
+
+        console.log('No results from that search');
+        this.noSearchInput = true;
+
+      }
+
+      if ( currentJobs.title && searchTerm) {
+
+        if (currentJobs.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+
+          console.log(currentJobs.title);
+          console.log((currentJobs));
+
+          this.searchTerm = searchTerm;
+
+          this.searching = true;
+          this.noSearchInput = false;
+
+          return true;
+      }
+        return false;
+    }
+      this.noSearchInput = true;
+
+  });
+
+
+    this.allJobsLength = this.allJobs.length;
+
+    // If there are no matches with the searchTerm
+    if ( this.allJobsLength === 0 ) {
+
+      console.log('No results from that search');
+      this.searching = true;
+      this.searchTerm = searchTerm;
+
+      this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+        searchbarInputElement.value = '';
+      });
+      this.noSearchInput = true;
+    }
+}
+
+initializeItems(): void {
+  this.allJobs = this.loadedAllJobs;
+}
+
+async presentLoadingWithOptions() {
+  const loading = await this.loading.create({
+    duration: 1000,
+    message: 'Searching for jobs...',
+    translucent: true,
+    cssClass: 'custom-class custom-loading'
+  });
+  return await loading.present();
+}
 
 
 }

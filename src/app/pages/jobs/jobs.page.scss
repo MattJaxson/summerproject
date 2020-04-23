@@ -1,26 +1,38 @@
-
 ion-header {
-  height: 80px;
 }
 
 ion-button {
-  color: white;
-  background: rgba(255,255,255, .5);
+  color: #005191;
+  --background: none;
+  font-size: 15px;
   height: 45px;
   border-radius: 5px;
-  padding: 10px;
 }
 
 ion-icon {
   color: red;
-  font-size: 20px;
+  font-size: 25px;
   position: relative;
   right: 5px;
 }
 
+ion-searchbar {
+  --background: white;
+  border-radius: 5px;
+  --height: 60px;
+  --box-shadow: none;
+  --cancel-button-color: #005191;
+  --clear-button-color: #005191;
+  --placeholder-opacity: 0.5;
+  --icon-color: #005191;
+  transition: 0.5s;
+  padding: 5px;
+
+
+}
+
 .job-section {
   height: 230px;
-  background: none;
   color: #777;
   position: relative;
   top: 20px;

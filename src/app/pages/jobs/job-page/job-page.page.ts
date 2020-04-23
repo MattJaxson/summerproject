@@ -19,6 +19,7 @@ export class JobPagePage implements OnInit {
   jobSummary;
   jobFullJobDescription;
   jobRateOfPay;
+  jobDatePosted;
 
   constructor(
     private activatedRoute: ActivatedRoute,

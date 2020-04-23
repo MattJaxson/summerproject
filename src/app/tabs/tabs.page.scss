@@ -31,6 +31,8 @@ ion-tab-button{
   }}
 
 
+
+
   // Toolbar
 
   #logo {
@@ -38,10 +40,13 @@ ion-tab-button{
   }
 
   ion-toolbar {
-    padding: 10px;
+    --padding-end: 17%;
+    --padding-start: 17%;
+    --min-height: 80px;
+    --background: white;
 
     ion-button {
-      --color: white;
+      --color: #005191;
       font-weight: 700;
     }
   }

@@ -1,13 +1,29 @@
-<!-- No Header, ion header's display: none -->
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button (click)="favoritesPage()">
-            <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
-          {{favoriteJobsAmount}}</ion-button>
-      </ion-buttons>
-    <ion-title>Jobs</ion-title>
-
+  <!-- Mobile & Tablet -->
+  <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        Logo
+      </ion-col>
+      <ion-col size="5">
+        <ion-searchbar
+        class="searchbar"
+        showCancelButton="true"
+        placeholder="Search Job Titles"
+        (ionChange)="filter($event)"
+        ></ion-searchbar>
+      </ion-col>
+      <ion-col class="ion-align-items-center" size="5">
+          <ion-button (click)="onClick()">
+            Filter
+          </ion-button>
+          <ion-button (click)="favoritesPage()">
+              <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+            {{favoriteJobsAmount}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   </ion-toolbar>
 </ion-header>
 
@@ -17,29 +33,88 @@
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-  <ion-grid fixed>
+  <ion-grid>
 
-    <!-- Job -->
-    <ion-row>
-      <ion-col size="12">
-        <!-- Searchbar with cancel button always shown -->
-        <ion-searchbar showCancelButton="false"></ion-searchbar>
-          <ion-list>
-              <ion-item *ngFor="let job of allJobs" >
-                <ion-row class="job-section">
-                  <ion-col size="11" offset="0.5" (click)="jobPage(job)">
-                      <h5>{{job.title}}</h5>
-                      <h6>{{job.companyName}}</h6>
-                      <h6 style="font-size: 0.8em; opacity: 0.5;">{{job.summary}}</h6>
-                      <h6 style="font-size: 0.4em; opacity: 0.5; float: right;">{{job.posted}}</h6>
+    <ion-row class="ion-justify-content-center ion-hide-md-down" style="margin-top: 50px;">
+      <ion-col size="8">
+        <ion-searchbar
+        class="searchbar"
+        showCancelButton="true"
+        placeholder="Search"
+        debounce="1500"
+        (ionChange)="filter($event)"
+        ></ion-searchbar>
+
+
+        <ion-button style="float: right; position: relative; top: -40px;" (click)="favoritesPage()">
+          <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+        {{favoriteJobsAmount}}</ion-button>
+
+        <ion-button style="float: right; position: relative; top: -40px;">
+          filter by: title
+          <ion-icon style="margin-left: 20px;" src="../../../assets/icon/filter-outline.svg"></ion-icon>
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
+      <ion-col size="6">
+        <h6 class="text-header">There were no Search results with that name. Please Refresh the page</h6>
+        <ion-button class="orange-button" (click)="doRefresh($event)">
+          Refresh
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!noSearchInput" class="ion-justify-content-center">
+
+      <ion-col size-lg="8" size-md="8" size-sm="10" size-xs="12">
+
+          <ion-list inset="true" lines="none" style="background: #f4f5f8;">
+
+              <ion-item *ngFor="let job of allJobs" style="margin-bottom: 20px;">
+                <ion-row class="job-section" (click)="jobPage(job)">
+
+                  <!-- First Row w/ Job Tile, Date posted, and Logo -->
+                  <ion-col size="2">
+                    <div style="height: 40px; width: 40px; background: lightblue;"></div>
                   </ion-col>
-                  <ion-col size="11" style="height: 45px; margin-bottom: 20px;">
+                  <ion-col size="7">
+                    <h5 style="font-weight: 900;">{{job.title}}</h5>
+                  </ion-col>
+                  <ion-col size="3">
+                    <h5 style="font-size: 10px; opacity: 0.7;">Posted: {{job.dateCreated}}</h5>
+                  </ion-col>
+
+                  <!-- Second Row w/ Company Name -->
+                  <ion-col style="position: relative; top: -20px" size="2">
+                  </ion-col>
+                  <ion-col style="position: relative; top: -20px" size="7">
+                    {{job.companyName}}
+                  </ion-col>
+                  <ion-col style="position: relative; top: -20px" size="3">
+                  </ion-col>
+
+                  <!-- Third Row w/ Job Summary -->
+                  <ion-col style="position: relative; top: -30px" size="2">
+                  </ion-col>
+                  <ion-col style="position: relative; top: -30px" size="7">
+                    {{job.summary}}
+                  </ion-col>
+                  <ion-col style="position: relative; top: -30px" size="3">
+                  </ion-col>
+
+                  <!-- Fourth Row w/ Favorite Button -->
+                  <ion-col size="12" style="height: 45px; margin-bottom: 20px;">
                       <!-- Heart Icon Component holds the state for Favorites -->
                       <app-heart-icon [job]="job"></app-heart-icon>
                   </ion-col>
                 </ion-row>
+
               </ion-item>
             </ion-list>
+
       </ion-col>
     </ion-row>
   </ion-grid>

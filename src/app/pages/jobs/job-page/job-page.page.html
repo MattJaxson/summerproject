@@ -1,24 +1,26 @@
-<ion-header>
+<ion-header class="ion-hide-md-up">
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button>
-          </ion-back-button>
-        </ion-buttons>
-        <ion-title>Job Page</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  <ion-title style="color: white;">Job Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row>
-        <ion-col size="10">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="description" size-xs="10" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+
+          <ion-button  class="ion-hide-sm-down" style="float: right; position: relative; top: -40px;" (click)="favoritesPage()">
+            <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+            {{favoriteJobsAmount}}</ion-button>
+
+            <div style="height: 100px; width: 100px; background: lightblue;"></div>
             <h3 style="color: #005191; font-weight: 600;">{{jobTitle}}</h3>
-            <h6><span>Company </span>{{jobCompanyName}}</h6>
-            <h6><span>Email:</span> {{jobCompanyEmail}}</h6>
-            <h6><span>Description:</span> {{jobSummary}}</h6>
-
+            <h6><span>Company Name: </span>{{jobCompanyName}}</h6>
+            <h6><span>Company Email: </span> {{jobCompanyEmail}}</h6>
             <h6>{{jobFullJobDescription}}</h6>
-
         </ion-col>
     </ion-row>
 
@@ -30,7 +32,7 @@
 
 
   </ion-grid>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab class="ion-hide-md-up" vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="favoriteThisJob()">
         <ion-icon name="heart"></ion-icon>
       </ion-fab-button>

@@ -33,12 +33,11 @@ body {
 }
 
 ion-list {
-  --background: blue;
+  --background: none;
 }
 
 ion-content {
-  margin-top: 20px;
-  --background: rgba(245,245,245,1);
+  --background: #f4f5f8;
 }
 
 ion-toolbar {
@@ -50,9 +49,19 @@ ion-icon {
 }
 
 ion-title {
-  --color: white;
+  --color: --ion-color-primary;
   margin-top: 10px;
   font-size: 1em;
+}
+
+.searchbar-input {
+  background: #FFF !important;
+  border-radius: 5px !important;
+  height: 50px !important;
+  max-width: 400px;
+  font-size: 1.25em !important;
+  border: 1px solid #005191 !important;
+  box-shadow: none !important;
 }
 
 
@@ -257,10 +266,15 @@ ion-buttons > ion-button {
 ion-back-button {
   --color: white !important;
 }
+
+ion-list {
+
+}
+
 ion-item {
-  margin-bottom: 0px;
+  margin-bottom: 100px;
   --padding-start: 20px;
-  --background: none;
+  --background: white;
 }
 
 
