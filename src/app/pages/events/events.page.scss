@@ -1,76 +1,24 @@
-ion-buttons > ion-button {
-  height: 35px;
-  border-radius: 5px;
-  padding: 0px;
-  --color: #ffffff;
-  font-size: 0.7em;
-  opacity: 1;
-}
-
-a {
-color: #005191;
-padding-bottom: 15px;
-font-size: 1.2em;
-font-weight: 800;
-transition: 0.5s;
-}
-
-a:hover {
-  color: #faa71b;
-}
-
-#logo {
-  height: 40px;
-}
-
-ion-title {
-   color: #555;
-   font-size: 1.2em;
-}
-
-ion-icon {
-  color: #faa71b;
+ion-toolbar {
+  --background: none;
 }
 
 ion-card {
-  background: white;
+  margin-bottom: 100px;
 }
 
-ion-toolbar {
-  padding: 10px;
-  --background: none;
-
-  ion-button {
-    --color: #999;
-    font-weight: 700;
-    font-size: 1.2em;
-  }
-}
-
-.events-toolbar {
+ion-button {
+  color: #005191;
   --background: white;
+  font-size: 15px;
+  height: 45px;
+  border-radius: 5px;
 }
 
-ion-header::after {
-  // background-image: none;
-}
-
-.going {
-  font-size: 1em;
-  font-weight: 800;
-  height: 50px;
-  width: 90%;
-  margin: 5px;
-  --background: none;
-  --color: #999;
-  --border-style: solid;
-  --border-color: #999;
-  --border-width: 2px;
-}
-
-
-ion-row {
-  margin-top: 10px;
+ion-icon {
+  color: red;
+  font-size: 25px;
+  position: relative;
+  right: 5px;
 }
 
 ion-searchbar {
@@ -84,9 +32,22 @@ ion-searchbar {
   --icon-color: #005191;
   transition: 0.5s;
   padding: 5px;
+
+
 }
 
-.searchbar-input.sc-ion-searchbar-md {
-  padding-top: 12px;
-  padding-bottom: 12px;
+.job-section {
+  height: 230px;
+  color: #777;
+  position: relative;
+  top: 20px;
+  width: 100%;
+}
+
+h6, p {
+  display: block;
+}
+
+--ion-buttons {
+  --color: #888;
 }

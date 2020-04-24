@@ -1,14 +1,32 @@
-<ion-header class="ion-hide-md-up">
+<ion-header>
 
-      <ion-col size="11" offset="0.5">
+  <!-- Mobile & Tablet -->
+  <ion-toolbar style="--background: white;" class="ion-hide-md-up">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          Logo
+        </ion-col>
+        <ion-col size="5">
           <ion-searchbar
-          debounce="800"
-          showCancelButton="focus"
+          debounce="2000"
+          class="searchbar"
+          showCancelButton="true"
           placeholder="Search Events"
           (ionChange)="filter($event)"
           ></ion-searchbar>
-
         </ion-col>
+        <ion-col class="ion-align-items-center" size="5">
+            <ion-button (click)="onClick()">
+              <ion-icon style="margin-left: 20px;" src="../../../assets/icon/filter-outline.svg"></ion-icon>
+            </ion-button>
+            <ion-button (click)="favoritesPage()">
+                <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+              {{favoriteJobsAmount}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-toolbar>
 
 </ion-header>
 
@@ -19,15 +37,6 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
 
-      <!-- Mobile -->
-      <ion-toolbar class="ion-hide-md-up">
-        <ion-title style="font-weight: 800;" slot="start">Events ({{allEventsLength}})</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="going()">
-            Going ( {{ eventsGoingLength }} )
-          </ion-button>
-          </ion-buttons>
-      </ion-toolbar>
 
       <!-- Search Results -->
       <ion-row *ngIf="searching" class="ion-text-center">
@@ -47,22 +56,25 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="!noSearchInput" >
+    <!-- Mobile Events Cards -->
+    <ion-row class="ion-justify-content-center" *ngIf="!noSearchInput" >
+      <ion-col size-xs="10" size-sm="8" size-md="8">
         <ion-card *ngFor="let event of allEvents">
-            <img src="../assets/Journi_flyer.jpg" />
-            <ion-card-header (click)="eventPage(event)">
-              <ion-card-title>{{ event.title }}</ion-card-title>
-              <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
-              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
-              <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
-              <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
-            </ion-card-header>
-            <ion-card-content style="--ion-grid-padding: 0;">
-              <ion-toolbar>
-                <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
-              </ion-toolbar>
-           </ion-card-content>
-          </ion-card>
+          <img src="../assets/Journi_flyer.jpg" />
+          <ion-card-header (click)="eventPage(event)">
+            <ion-card-title>{{ event.title }}</ion-card-title>
+            <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+            <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+            <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
+            <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
+          </ion-card-header>
+          <ion-card-content style="--ion-grid-padding: 0;">
+            <ion-toolbar>
+              <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
+            </ion-toolbar>
+         </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
 
