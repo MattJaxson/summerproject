@@ -157,10 +157,8 @@ let ContactMentorPage = class ContactMentorPage {
         // Get User details
         this.userDetails();
     }
-    confirm(formData) {
+    confirm(value) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            console.log('Formdata: ');
-            console.log(formData);
             yield this.sendMessage();
             // tslint:disable-next-line: max-line-length
             yield this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor/:name/:email/confirm', this.mentorName, this.mentorEmail]);

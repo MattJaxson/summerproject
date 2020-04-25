@@ -142,8 +142,8 @@ let UploadResumePage = class UploadResumePage {
     }
     ngOnInit() {
     }
-    goToCredentialsPage(data) {
-        this.auth.getResume(data);
+    goToCredentialsPage(resume) {
+        this.auth.getResume(resume);
         console.log('Going to Credentials Page');
         this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials']);
     }

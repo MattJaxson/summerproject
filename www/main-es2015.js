@@ -697,11 +697,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-        // loadChildren: () => import('./pages/fairs/fair-page/students/students.module').then( m => m.StudentsPageModule),
-        // loadChildren: () => import('./pages/fairs/fair-page/chaperones/chaperones.module').then( m => m.ChaperonesPageModule),
-        // loadChildren: () => import('./pages/fairs/fair-page/volunteers/volunteers.module').then( m => m.VolunteersPageModule),
-        // loadChildren: () => import('./pages/fairs/fair-page/partners/partners.module').then( m => m.PartnersPageModule),
+        // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
         loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-login-login-module */ "pages-auth-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/auth/login/login.module */ "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
         // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
     },
@@ -726,7 +722,7 @@ const routes = [
     },
     {
         path: 'events',
-        loadChildren: () => Promise.all(/*! import() | pages-events-events-module */[__webpack_require__.e("default~contact-mentor-contact-mentor-module~pages-events-events-module~pages-jobs-jobs-module~pages~382bb8e7"), __webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-posts-posts-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null, /*! ./pages/events/events.module */ "./src/app/pages/events/events.module.ts")).then(m => m.EventsPageModule)
+        loadChildren: () => Promise.all(/*! import() | pages-events-events-module */[__webpack_require__.e("default~contact-mentor-contact-mentor-module~pages-events-events-module~pages-jobs-jobs-module~pages~382bb8e7"), __webpack_require__.e("default~pages-events-events-module~pages-jobs-jobs-module~pages-posts-posts-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null, /*! ./pages/events/events.module */ "./src/app/pages/events/events.module.ts")).then(m => m.EventsPageModule)
     },
     {
         path: 'mentors',
@@ -735,10 +731,6 @@ const routes = [
     {
         path: 'login',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-login-login-module */ "pages-auth-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/auth/login/login.module */ "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
-    },
-    {
-        path: 'fairs',
-        loadChildren: () => Promise.all(/*! import() | pages-fairs-fairs-module */[__webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-posts-posts-module"), __webpack_require__.e("pages-fairs-fairs-module")]).then(__webpack_require__.bind(null, /*! ./pages/fairs/fairs.module */ "./src/app/pages/fairs/fairs.module.ts")).then(m => m.FairsPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -1257,9 +1249,8 @@ __webpack_require__.r(__webpack_exports__);
 // const url is commented out depending on which you are testing with.
 //local host is for local machine and 10.0.1.8 is for android testing
 
-const ip = '18.218.236.99';
+const ip = '10.0.1.16';
 const baseUrl = `http://${ip}:3000`;
-const url = baseUrl + '/api'; //local host
 const environment = {
     production: false,
     url: baseUrl,

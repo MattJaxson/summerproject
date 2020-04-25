@@ -121,6 +121,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_post_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/post.service */ "./src/app/services/post.service.ts");
 /* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
+
 
 
 
@@ -140,6 +142,9 @@ let FollowingPage = class FollowingPage {
             this.userID = details['_id'];
             this.posts.getFollowedPost(this.userID).subscribe(posts => {
                 this.allFollowedPosts = posts;
+                for (const post of this.allFollowedPosts) {
+                    post.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["format"])(new Date(post.date), 'MMMM do, yyyy');
+                }
                 console.log(this.allFollowedPosts);
             });
         });

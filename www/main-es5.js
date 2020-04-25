@@ -745,11 +745,7 @@
 
     const routes = [{
       path: '',
-      // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-      // loadChildren: () => import('./pages/fairs/fair-page/students/students.module').then( m => m.StudentsPageModule),
-      // loadChildren: () => import('./pages/fairs/fair-page/chaperones/chaperones.module').then( m => m.ChaperonesPageModule),
-      // loadChildren: () => import('./pages/fairs/fair-page/volunteers/volunteers.module').then( m => m.VolunteersPageModule),
-      // loadChildren: () => import('./pages/fairs/fair-page/partners/partners.module').then( m => m.PartnersPageModule),
+      // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
       loadChildren: () => __webpack_require__.e(
       /*! import() | pages-auth-login-login-module */
       "pages-auth-login-login-module").then(__webpack_require__.bind(null,
@@ -791,7 +787,7 @@
       path: 'events',
       loadChildren: () => Promise.all(
       /*! import() | pages-events-events-module */
-      [__webpack_require__.e("default~contact-mentor-contact-mentor-module~pages-events-events-module~pages-jobs-jobs-module~pages~382bb8e7"), __webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-posts-posts-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null,
+      [__webpack_require__.e("default~contact-mentor-contact-mentor-module~pages-events-events-module~pages-jobs-jobs-module~pages~382bb8e7"), __webpack_require__.e("default~pages-events-events-module~pages-jobs-jobs-module~pages-posts-posts-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null,
       /*! ./pages/events/events.module */
       "./src/app/pages/events/events.module.ts")).then(m => m.EventsPageModule)
     }, {
@@ -808,13 +804,6 @@
       "pages-auth-login-login-module").then(__webpack_require__.bind(null,
       /*! ./pages/auth/login/login.module */
       "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
-    }, {
-      path: 'fairs',
-      loadChildren: () => Promise.all(
-      /*! import() | pages-fairs-fairs-module */
-      [__webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-posts-posts-module"), __webpack_require__.e("pages-fairs-fairs-module")]).then(__webpack_require__.bind(null,
-      /*! ./pages/fairs/fairs.module */
-      "./src/app/pages/fairs/fairs.module.ts")).then(m => m.FairsPageModule)
     }];
     let AppRoutingModule = class AppRoutingModule {};
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
@@ -1579,10 +1568,8 @@
     //local host is for local machine and 10.0.1.8 is for android testing
 
 
-    const ip = '18.218.236.99';
+    const ip = '10.0.1.16';
     const baseUrl = "http://".concat(ip, ":3000");
-    const url = baseUrl + '/api'; //local host
-
     const environment = {
       production: false,
       url: baseUrl
