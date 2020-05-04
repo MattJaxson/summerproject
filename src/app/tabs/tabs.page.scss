@@ -40,13 +40,27 @@ ion-tab-button{
   }
 
   ion-toolbar {
-    --padding-end: 17%;
-    --padding-start: 17%;
-    --min-height: 80px;
+    --min-height: 10vh;
     --background: white;
+    font-size: 1em;
+
+    a {
+      margin: 0 10px 0 10px;
+      text-decoration: none;
+      color: #888888;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      float: right;
+    }
+
+    .active-link {
+      color: #FA6400;
+      font-weight: 900;
+    }
 
     ion-button {
-      --color: #005191;
+      --color: #D0D4D8;
+      opacity: 0.6;
       font-weight: 700;
     }
   }

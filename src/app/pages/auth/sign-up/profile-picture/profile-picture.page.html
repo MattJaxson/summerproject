@@ -5,7 +5,7 @@
   <ion-grid style="margin-top: 10%;">
     <ion-row>
 
-      <!-- Inputs for Phone -->
+      <!-- Mobile -->
       <ion-col class="ion-hide-md-up" size-md="6" offset-md="3">
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
 
@@ -13,7 +13,7 @@
           <img src="{{profilePicture}}" alt="">
         </div>
 
-        <ion-button class="camera-button"  (click)="selectImage()">
+        <ion-button type="file" class="camera-button"  (click)="selectImage()">
           Get Picture
         </ion-button>
 
@@ -27,9 +27,20 @@
           </ion-button>
       </ion-col>
 
-      <!-- Inputs for Web Browser -->
+      <!-- Desktop -->
       <ion-col class="ion-hide-md-down" size-lg="6" offset-lg="3">
-        <p>For Web Browser</p>
+        <input (change)="onImagePicked($event)" placeholder="Upload Image"
+        type="file" /><br>
+        <button (click)="onImageUpload()">Upload Image</button>
+
+         <div *ngIf="imageUrl">
+          Preview Image from AWS
+          <br />
+          <img width="200px" src="https://YOUR S3 BUCKET
+          NAME.s3.amazonaws.com/{{
+          imageUrl }}"
+          />
+         </div>
       </ion-col>
     </ion-row>
   </ion-grid>

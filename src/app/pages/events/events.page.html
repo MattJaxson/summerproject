@@ -1,11 +1,11 @@
 <ion-header>
 
-  <!-- Mobile & Tablet -->
+  <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar style="--background: white;" class="ion-hide-md-up">
     <ion-grid>
       <ion-row>
-        <ion-col size="2">
-          Logo
+        <ion-col size="3">
+          <img id="logo" src="../../assets/fyf-logo-1.svg" />
         </ion-col>
         <ion-col size="5">
           <ion-searchbar
@@ -16,7 +16,7 @@
           (ionChange)="filter($event)"
           ></ion-searchbar>
         </ion-col>
-        <ion-col class="ion-align-items-center" size="5">
+        <ion-col class="ion-align-items-center" size="4">
             <ion-button (click)="onClick()">
               <ion-icon style="margin-left: 20px;" src="../../../assets/icon/filter-outline.svg"></ion-icon>
             </ion-button>
@@ -47,8 +47,8 @@
 
   <!-- Mobile -->
   <ion-grid class="ion-hide-md-up">
-    <ion-row *ngIf="noSearchInput" class="ion-text-center">
-      <ion-col size="11" offset="0.5">
+    <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
+      <ion-col size="6">
         <h6 class="text-header">There were no Search results with that name. Please Refresh the page</h6>
         <ion-button class="orange-button" (click)="doRefresh($event)">
           Refresh
@@ -79,10 +79,13 @@
   </ion-grid>
 
   <!-- Desktop -->
-  <ion-grid class="ion-hide-md-down" style="--ion-grid-padding: 5%; --ion-grid-column-padding:        25px;">
+  <ion-grid class="ion-hide-md-down">
 
-     <ion-row>
-        <ion-col size="5">
+    <ion-row style="margin-top: 50px;">
+
+      <!-- Search Bar -->
+      <ion-col size="1"></ion-col>
+      <ion-col size="5">
             <ion-searchbar
             no-border
             debounce="800"
@@ -90,19 +93,18 @@
             placeholder="Search Events"
             (ionChange)="filter($event)"
             ></ion-searchbar>
-        </ion-col>
-        <ion-col size="6">
-      <ion-toolbar class="ion-hide-md-down" style="--ion-grid-padding: 5%;">
-          <!-- <ion-title style="font-weight: 800; color: #999" slot="start">Events ({{allEventsLength}})</ion-title> -->
-          <a slot="end" (click)="going()">
-              View Events you are going to ( {{ eventsGoingLength }} )
-          </a>
-        </ion-toolbar>
-        </ion-col>
-     </ion-row>
+      </ion-col>
+      <ion-col size=4>
+          <ion-button class="blue-button ion-float-right" style="width: 200px;" (click)="going()">
+              Your Events ( {{ eventsGoingLength }} )
+          </ion-button>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
 
+    <!-- Cards -->
     <ion-row>
-      <ion-col size="4" *ngFor="let event of allEvents">
+      <ion-col offset-lg="1" size-lg="4" *ngFor="let event of allEvents">
           <ion-card>
               <img src="../assets/Journi_flyer.jpg" />
               <ion-card-header (click)="eventPage(event)">
@@ -117,7 +119,8 @@
                   <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
                 </ion-toolbar>
              </ion-card-content>
-            </ion-card></ion-col>
+          </ion-card>
+        </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

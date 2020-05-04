@@ -5,9 +5,9 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
+    // loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
-    // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
+    // loadChildren: () => import('./pages/mentors/mentors.module').then( m => m.MentorsPageModule)
   },
   {
     path: 'home',

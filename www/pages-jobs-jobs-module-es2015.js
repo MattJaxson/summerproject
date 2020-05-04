@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- No Header, ion header's display: none -->\n<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"favoritesPage()\">\n            <ion-icon src=\"../../../assets/icon/heart-inactive.svg\"></ion-icon>\n          {{favoriteJobsAmount}}</ion-button>\n      </ion-buttons>\n    <ion-title>Jobs</ion-title>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n  <ion-grid fixed>\n\n    <!-- Job -->\n    <ion-row>\n      <ion-col size=\"12\">\n        <!-- Searchbar with cancel button always shown -->\n        <ion-searchbar showCancelButton=\"false\"></ion-searchbar>\n          <ion-list>\n              <ion-item *ngFor=\"let job of allJobs\" >\n                <ion-row class=\"job-section\">\n                  <ion-col size=\"11\" offset=\"0.5\" (click)=\"jobPage(job)\">\n                      <h5>{{job.title}}</h5>\n                      <h6>{{job.companyName}}</h6>\n                      <h6 style=\"font-size: 0.8em; opacity: 0.5;\">{{job.summary}}</h6>\n                      <h6 style=\"font-size: 0.4em; opacity: 0.5; float: right;\">{{job.posted}}</h6>\n                  </ion-col>\n                  <ion-col size=\"11\" style=\"height: 45px; margin-bottom: 20px;\">\n                      <!-- Heart Icon Component holds the state for Favorites -->\n                      <app-heart-icon [job]=\"job\"></app-heart-icon>\n                  </ion-col>\n                </ion-row>\n              </ion-item>\n            </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <!-- Mobile & Tablet -->\n  <ion-toolbar style=\"--background: white;\" class=\"ion-hide-lg-up\">\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"2\">\n        Logo\n      </ion-col>\n      <ion-col size=\"5\">\n        <ion-searchbar\n        class=\"searchbar\"\n        showCancelButton=\"true\"\n        placeholder=\"Search Job Titles\"\n        (ionChange)=\"filter($event)\"\n        ></ion-searchbar>\n      </ion-col>\n      <ion-col class=\"ion-align-items-center\" size=\"5\">\n          <ion-button (click)=\"onClick()\">\n            <ion-icon style=\"margin-left: 20px;\" src=\"../../../assets/icon/filter-outline.svg\"></ion-icon>\n          </ion-button>\n          <ion-button (click)=\"favoritesPage()\">\n              <ion-icon src=\"../../../assets/icon/heart-inactive.svg\"></ion-icon>\n            {{favoriteJobsAmount}}</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n  <ion-grid>\n\n    <ion-row class=\"ion-justify-content-center ion-hide-md-down\" style=\"margin-top: 50px;\">\n      <ion-col size=\"8\">\n        <ion-searchbar\n        class=\"searchbar\"\n        showCancelButton=\"true\"\n        placeholder=\"Search\"\n        debounce=\"1500\"\n        (ionChange)=\"filter($event)\"\n        ></ion-searchbar>\n\n\n        <ion-button style=\"float: right; position: relative; top: -40px;\" (click)=\"favoritesPage()\">\n          <ion-icon src=\"../../../assets/icon/heart-inactive.svg\"></ion-icon>\n        {{favoriteJobsAmount}}</ion-button>\n\n        <ion-button style=\"float: right; position: relative; top: -40px;\">\n          filter by: title\n          <ion-icon style=\"margin-left: 20px;\" src=\"../../../assets/icon/filter-outline.svg\"></ion-icon>\n        </ion-button>\n\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf=\"noSearchInput\" class=\"ion-justify-content-center\">\n      <ion-col size=\"6\">\n        <h6 class=\"text-header\">There were no Search results with that name. Please Refresh the page</h6>\n        <ion-button class=\"orange-button\" (click)=\"doRefresh($event)\">\n          Refresh\n        </ion-button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf=\"!noSearchInput\" class=\"ion-justify-content-center\">\n\n      <ion-col size-lg=\"8\" size-md=\"8\" size-sm=\"10\" size-xs=\"12\">\n\n          <ion-list inset=\"true\" lines=\"none\" style=\"background: #f4f5f8;\">\n\n              <ion-item *ngFor=\"let job of allJobs\" style=\"margin-bottom: 20px;\">\n                <ion-row class=\"job-section\" (click)=\"jobPage(job)\">\n\n                  <!-- First Row w/ Job Tile, Date posted, and Logo -->\n                  <ion-col size=\"2\">\n                    <div style=\"height: 40px; width: 40px; background: lightblue;\"></div>\n                  </ion-col>\n                  <ion-col size=\"7\">\n                    <h5 style=\"font-weight: 900;\">{{job.title}}</h5>\n                  </ion-col>\n                  <ion-col size=\"3\">\n                    <h5 style=\"font-size: 10px; opacity: 0.7;\">Posted: {{job.dateCreated}}</h5>\n                  </ion-col>\n\n                  <!-- Second Row w/ Company Name -->\n                  <ion-col style=\"position: relative; top: -20px\" size=\"2\">\n                  </ion-col>\n                  <ion-col style=\"position: relative; top: -20px\" size=\"7\">\n                    {{job.companyName}}\n                  </ion-col>\n                  <ion-col style=\"position: relative; top: -20px\" size=\"3\">\n                  </ion-col>\n\n                  <!-- Third Row w/ Job Summary -->\n                  <ion-col style=\"position: relative; top: -30px\" size=\"2\">\n                  </ion-col>\n                  <ion-col style=\"position: relative; top: -30px\" size=\"7\">\n                    {{job.summary}}\n                  </ion-col>\n                  <ion-col style=\"position: relative; top: -30px\" size=\"3\">\n                  </ion-col>\n\n                  <!-- Fourth Row w/ Favorite Button -->\n                  <ion-col size=\"12\" style=\"height: 45px; margin-bottom: 20px;\">\n                      <!-- Heart Icon Component holds the state for Favorites -->\n                      <app-heart-icon [job]=\"job\"></app-heart-icon>\n                  </ion-col>\n                </ion-row>\n\n              </ion-item>\n            </ion-list>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ HomePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-header {\n  height: 80px;\n}\n\nion-button {\n  color: white;\n  background: rgba(255, 255, 255, 0.5);\n  height: 45px;\n  border-radius: 5px;\n  padding: 10px;\n}\n\nion-icon {\n  color: red;\n  font-size: 20px;\n  position: relative;\n  right: 5px;\n}\n\n.job-section {\n  height: 230px;\n  background: none;\n  color: #777;\n  position: relative;\n  top: 20px;\n  width: 100%;\n}\n\nh6, p {\n  display: block;\n}\n\n--ion-buttons {\n  --color: #888;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvam9icy9qb2JzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvam9icy9qb2JzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLFlBQUE7QUNBRjs7QURHQTtFQUNFLFlBQUE7RUFDQSxvQ0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7QUNBRjs7QURHQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0FDQUY7O0FER0E7RUFDRSxhQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EsV0FBQTtBQ0FGOztBREdBO0VBQ0UsY0FBQTtBQ0FGOztBREdBO0VBQ0UsYUFBQTtBQ0FGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvam9icy9qb2JzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuaW9uLWhlYWRlciB7XG4gIGhlaWdodDogODBweDtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgYmFja2dyb3VuZDogcmdiYSgyNTUsMjU1LDI1NSwgLjUpO1xuICBoZWlnaHQ6IDQ1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuaW9uLWljb24ge1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDIwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDVweDtcbn1cblxuLmpvYi1zZWN0aW9uIHtcbiAgaGVpZ2h0OiAyMzBweDtcbiAgYmFja2dyb3VuZDogbm9uZTtcbiAgY29sb3I6ICM3Nzc7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAyMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuaDYsIHAge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLS1pb24tYnV0dG9ucyB7XG4gIC0tY29sb3I6ICM4ODg7XG59IiwiaW9uLWhlYWRlciB7XG4gIGhlaWdodDogODBweDtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjUpO1xuICBoZWlnaHQ6IDQ1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuaW9uLWljb24ge1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDIwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDVweDtcbn1cblxuLmpvYi1zZWN0aW9uIHtcbiAgaGVpZ2h0OiAyMzBweDtcbiAgYmFja2dyb3VuZDogbm9uZTtcbiAgY29sb3I6ICM3Nzc7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAyMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuaDYsIHAge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLS1pb24tYnV0dG9ucyB7XG4gIC0tY29sb3I6ICM4ODg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-button {\n  color: #005191;\n  --background: none;\n  font-size: 15px;\n  height: 45px;\n  border-radius: 5px;\n}\n\nion-icon {\n  color: red;\n  font-size: 25px;\n  position: relative;\n  right: 5px;\n}\n\nion-searchbar {\n  --background: white;\n  border-radius: 5px;\n  --height: 60px;\n  --box-shadow: none;\n  --cancel-button-color: #005191;\n  --clear-button-color: #005191;\n  --placeholder-opacity: 0.5;\n  --icon-color: #005191;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  padding: 5px;\n}\n\n.job-section {\n  height: 230px;\n  color: #777;\n  position: relative;\n  top: 20px;\n  width: 100%;\n}\n\nh6, p {\n  display: block;\n}\n\n--ion-buttons {\n  --color: #888;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvam9icy9qb2JzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvam9icy9qb2JzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUNGRjs7QURLQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0FDRkY7O0FES0E7RUFDRSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsOEJBQUE7RUFDQSw2QkFBQTtFQUNBLDBCQUFBO0VBQ0EscUJBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsWUFBQTtBQ0ZGOztBRE9BO0VBQ0UsYUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0FDSkY7O0FET0E7RUFDRSxjQUFBO0FDSkY7O0FET0E7RUFDRSxhQUFBO0FDSkYiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9qb2JzL2pvYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlciB7XG59XG5cbmlvbi1idXR0b24ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICBmb250LXNpemU6IDE1cHg7XG4gIGhlaWdodDogNDVweDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG5pb24taWNvbiB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtc2l6ZTogMjVweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICByaWdodDogNXB4O1xufVxuXG5pb24tc2VhcmNoYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAtLWhlaWdodDogNjBweDtcbiAgLS1ib3gtc2hhZG93OiBub25lO1xuICAtLWNhbmNlbC1idXR0b24tY29sb3I6ICMwMDUxOTE7XG4gIC0tY2xlYXItYnV0dG9uLWNvbG9yOiAjMDA1MTkxO1xuICAtLXBsYWNlaG9sZGVyLW9wYWNpdHk6IDAuNTtcbiAgLS1pY29uLWNvbG9yOiAjMDA1MTkxO1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBwYWRkaW5nOiA1cHg7XG5cblxufVxuXG4uam9iLXNlY3Rpb24ge1xuICBoZWlnaHQ6IDIzMHB4O1xuICBjb2xvcjogIzc3NztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDIwcHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG5oNiwgcCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4tLWlvbi1idXR0b25zIHtcbiAgLS1jb2xvcjogIzg4ODtcbn0iLCJpb24tYnV0dG9uIHtcbiAgY29sb3I6ICMwMDUxOTE7XG4gIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBoZWlnaHQ6IDQ1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuaW9uLWljb24ge1xuICBjb2xvcjogcmVkO1xuICBmb250LXNpemU6IDI1cHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDVweDtcbn1cblxuaW9uLXNlYXJjaGJhciB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgLS1oZWlnaHQ6IDYwcHg7XG4gIC0tYm94LXNoYWRvdzogbm9uZTtcbiAgLS1jYW5jZWwtYnV0dG9uLWNvbG9yOiAjMDA1MTkxO1xuICAtLWNsZWFyLWJ1dHRvbi1jb2xvcjogIzAwNTE5MTtcbiAgLS1wbGFjZWhvbGRlci1vcGFjaXR5OiAwLjU7XG4gIC0taWNvbi1jb2xvcjogIzAwNTE5MTtcbiAgdHJhbnNpdGlvbjogMC41cztcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uam9iLXNlY3Rpb24ge1xuICBoZWlnaHQ6IDIzMHB4O1xuICBjb2xvcjogIzc3NztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDIwcHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG5oNiwgcCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4tLWlvbi1idXR0b25zIHtcbiAgLS1jb2xvcjogIzg4ODtcbn0iXX0= */");
 
 /***/ }),
 
@@ -233,10 +233,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JobsPage", function() { return JobsPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _services_jobs_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/jobs.service */ "./src/app/services/jobs.service.ts");
-/* harmony import */ var _services_favorites_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/favorites.service */ "./src/app/services/favorites.service.ts");
-/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_jobs_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/jobs.service */ "./src/app/services/jobs.service.ts");
+/* harmony import */ var _services_favorites_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/favorites.service */ "./src/app/services/favorites.service.ts");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
+
+
 
 
 
@@ -244,17 +248,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let JobsPage = class JobsPage {
-    constructor(router, jobServices, favorites, profile) {
+    constructor(router, jobs, favorites, profile, loading) {
         this.router = router;
-        this.jobServices = jobServices;
+        this.jobs = jobs;
         this.favorites = favorites;
         this.profile = profile;
+        this.loading = loading;
+        this.jobsGoingLength = 0;
+        this.searching = false;
+        this.noSearchInput = false;
         this.favorited = 'favorited';
         this.unfavorited = 'unfavorited';
     }
     ngOnInit() {
         // Get all the jobs t be viewed on the home page
-        this.jobServices.getJobs().subscribe(jobs => {
+        this.jobs.getJobs().subscribe(jobs => {
             this.allJobs = Object.values(jobs);
         });
         // getting all the favorite jobs that the user has on their profile
@@ -267,6 +275,20 @@ let JobsPage = class JobsPage {
                 console.log('Favorite Jobs in Service');
                 this.favoriteJobsAmount = favs.length;
             });
+        });
+        this.jobs.getJobs().subscribe(jobs => {
+            // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list jobs,
+            // .
+            console.log('jobs that are intially loaded: ');
+            console.log(jobs);
+            this.allJobs = Object.values(jobs);
+            this.allJobsLength = this.allJobs.length;
+            this.allJobs.reverse();
+            this.loadedAllJobs = Object.values(jobs);
+            this.loadedAllJobs.reverse();
+            for (const job of this.allJobs) {
+                job.dateCreated = Object(date_fns__WEBPACK_IMPORTED_MODULE_7__["formatDistanceToNow"])(new Date(job.dateCreated), { addSuffix: true });
+            }
         });
     }
     ngOnDestroy() {
@@ -290,35 +312,106 @@ let JobsPage = class JobsPage {
     favoritesPage() {
         this.router.navigate(['/home/jobs/favorites']);
     }
-    doRefresh(event) {
-        console.log('Begin async operation');
-        this.jobServices.getJobs().subscribe(jobs => {
-            this.allJobs = Object.values(jobs);
-            console.log(typeof this.allJobs);
-            console.log(this.allJobs);
+    doRefresh(job) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.allJobs = [];
+            yield this.jobs.getJobs().subscribe(jobs => {
+                this.allJobs = Object.values(jobs);
+                this.allJobsLength = this.allJobs.length;
+                this.allJobs.reverse();
+                this.searching = false;
+                // Format Times
+                for (const job of this.allJobs) {
+                    job.dateCreated = Object(date_fns__WEBPACK_IMPORTED_MODULE_7__["formatDistanceToNow"])(new Date(job.dateCreated), { addSuffix: false });
+                }
+            });
+            setTimeout(() => {
+                job.target.complete();
+                console.log('jobs Refreshed');
+            }, 2000);
+            yield this.searchbar.getInputElement().then((searchbarInputElement) => {
+                searchbarInputElement.value = '';
+                this.noSearchInput = false;
+            });
+            yield console.log('Refreshing jobs Page..');
         });
-        setTimeout(() => {
-            console.log('Async operation has ended');
-            event.target.complete();
-        }, 2000);
+    }
+    filter($job) {
+        this.initializeItems();
+        let searchTerm = $job.detail.value;
+        if (!searchTerm) {
+            console.log('No results returned from Search');
+            this.noSearchInput = true;
+        }
+        this.presentLoadingWithOptions();
+        this.allJobs = this.allJobs.filter(currentJobs => {
+            console.log(currentJobs);
+            if (!currentJobs || !searchTerm) {
+                console.log('No results from that search');
+                this.noSearchInput = true;
+            }
+            if (currentJobs.title && searchTerm) {
+                if (currentJobs.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+                    console.log(currentJobs.title);
+                    console.log((currentJobs));
+                    this.searchTerm = searchTerm;
+                    this.searching = true;
+                    this.noSearchInput = false;
+                    return true;
+                }
+                return false;
+            }
+            this.noSearchInput = true;
+        });
+        this.allJobsLength = this.allJobs.length;
+        // If there are no matches with the searchTerm
+        if (this.allJobsLength === 0) {
+            console.log('No results from that search');
+            this.searching = true;
+            this.searchTerm = searchTerm;
+            this.searchbar.getInputElement().then((searchbarInputElement) => {
+                searchbarInputElement.value = '';
+            });
+            this.noSearchInput = true;
+        }
+    }
+    initializeItems() {
+        this.allJobs = this.loadedAllJobs;
+    }
+    presentLoadingWithOptions() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const loading = yield this.loading.create({
+                duration: 1000,
+                message: 'Searching for jobs...',
+                translucent: true,
+                cssClass: 'custom-class custom-loading'
+            });
+            return yield loading.present();
+        });
     }
 };
 JobsPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _services_jobs_service__WEBPACK_IMPORTED_MODULE_3__["JobsService"] },
-    { type: _services_favorites_service__WEBPACK_IMPORTED_MODULE_4__["FavoritesService"] },
-    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _services_jobs_service__WEBPACK_IMPORTED_MODULE_4__["JobsService"] },
+    { type: _services_favorites_service__WEBPACK_IMPORTED_MODULE_5__["FavoritesService"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_6__["ProfileService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonSearchbar"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonSearchbar"])
+], JobsPage.prototype, "searchbar", void 0);
 JobsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-jobs',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./jobs.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/jobs/jobs.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./jobs.page.scss */ "./src/app/pages/jobs/jobs.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-        _services_jobs_service__WEBPACK_IMPORTED_MODULE_3__["JobsService"],
-        _services_favorites_service__WEBPACK_IMPORTED_MODULE_4__["FavoritesService"],
-        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+        _services_jobs_service__WEBPACK_IMPORTED_MODULE_4__["JobsService"],
+        _services_favorites_service__WEBPACK_IMPORTED_MODULE_5__["FavoritesService"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_6__["ProfileService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
 ], JobsPage);
 
 
