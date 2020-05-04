@@ -20,16 +20,14 @@
 <ion-content>
 
   <!-- Mobile & Tablet -->
-  <ion-grid class="ion-hide-md-up ion-text-center">
-    <ion-row size-xs="8" size-sm="10">
-      <ion-col>
-        <!-- Refactor Logo Section -->
-        <img src="./assets/United_Way_Logo_3.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
-        <!--  -->
+  <ion-grid class="ion-hide-md-up">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="8" size-sm="8" size-md="8" style="margin-top: 10%;" class="ion-text-center">
+        <img src="../../assets/fyf-logo-1.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="11" offset="0.5">
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-xs="10" size-sm="8" size-md="8">
           <form  [formGroup]="loginForm"
                  (ngSubmit)="login(this.loginForm.value)">
           <ion-list class="line-input">
@@ -83,11 +81,13 @@
               <ion-button text-center class="orange-button" type="submit">Login</ion-button>
 
             </form>
+
+            <!-- Forgot Password -->
+            <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
       </ion-col>
     </ion-row>
 
-    <!-- Forgot Password -->
-    <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+    
     <!-- Positioning Sign up Button outside of Ion Content for customization -->
   </ion-grid>
 
@@ -95,14 +95,14 @@
   <ion-grid class="ion-text-center ion-hide-sm-down">
 
       <ion-row class="ion-justify-content-center">
-        <ion-col size="4"  style="margin-top: 5%">
+        <ion-col size-md="4" size-lg="4" size-xl="4"  style="margin-top: 5%">
 
             <form  [formGroup]="loginForm"
                    (ngSubmit)="login(this.loginForm.value)">
             <ion-list class="line-input">
 
                 <!-- Refactor Logo Section -->
-                <img src="./assets/United_Way_Logo_3.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
+                <img src="../../assets/fyf-logo-1.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
  
               <ion-item>
                 <!-- Email -->
@@ -159,7 +159,7 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col class="ion-hide-sm-down" size="6">
-          <ion-button id="sign-up-button" style="--box-shadow: none;" [routerLink]="['personal-info']">Sign Up
+          <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
           </ion-button>
         </ion-col>
       </ion-row>

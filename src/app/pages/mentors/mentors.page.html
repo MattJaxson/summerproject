@@ -1,20 +1,68 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Mentors</ion-title>
-  </ion-toolbar>
+  <!-- Mobile & Tablet Toolbar -->
+  <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="1"></ion-col>
+        <ion-col size="3">
+          <img id="logo" src="../../assets/fyf-logo-1.svg" />
+        </ion-col>
+        <ion-col size="7">
+          <ion-searchbar
+          debounce="2000"
+          class="searchbar"
+          showCancelButton="true"
+          placeholder="Search Mentors"
+          (ionChange)="filter($event)"
+          ></ion-searchbar>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row *ngFor="let mentor of allMentors" (click)="mentorPage(mentor)" style=" margin-top: 20px;">
-        <ion-col size="2" offset="0.5">
-            <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
-              <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
+
+  <!-- Mobile -->
+  <ion-grid class="ion-hide-lg-up">
+    <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" (click)="mentorPage(mentor)" style=" margin-top: 20px;">
+     <ion-col class="white-background" size-xs="11" size-sm="8" size-md="8">
+      <ion-row>
+        <ion-col size="2">
+          <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
+        </ion-col>
+        <ion-col size="10">
+            <h6>{{mentor.name}}</h6>
+            <p>{{mentor.title}}</p>
+        </ion-col>
+      </ion-row>
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Desktop -->
+  <ion-grid  class="ion-hide-lg-down">
+    <ion-row class="ion-justisfy-content-center" *ngFor="let mentor of allMentors" (click)="mentorPage(mentor)" style=" margin-top: 20px;">
+      <ion-col size="2"></ion-col>
+      <ion-col size="8">
+        <ion-row class="white-background">
+          <ion-col size="1">
+              <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
+                <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
+            </ion-col>
+            <ion-col size="8">
+                <h6>{{mentor.name}}</h6>
+                <p>{{mentor.title}}</p>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button class="blue-button" (click)="contact()">
+                Contact
+              </ion-button>
           </ion-col>
-          <ion-col size="7">
-              <h6>{{mentor.name}}</h6>
-              <p>{{mentor.title}}</p>
-          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="2"></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

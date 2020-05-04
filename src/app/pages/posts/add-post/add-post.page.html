@@ -8,9 +8,32 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid no-padding>
+
+  <!-- Mobile -->
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10">
+          <h2>Please keep your content clean. (Refactor message)</h2>
+          <!-- Textarea in an item with a placeholder -->
+        <ion-item>
+            <ion-textarea
+            rows="15"
+            spellcheck="true"
+            wrap="soft"
+            style="border: 2px solid #005191;"placeholder="What do you have to say?"></ion-textarea>
+          </ion-item>
+        <ion-button
+          (click)="post()"
+          >
+          Add Post
+        </ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Desktop -->
+  <ion-grid>
     <ion-row>
-      <ion-col size="11" offset="0.5">
+      <ion-col size="6">
           <h2>Please keep your content clean. (Refactor message)</h2>
           <!-- Textarea in an item with a placeholder -->
         <ion-item>

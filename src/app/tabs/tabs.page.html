@@ -1,5 +1,40 @@
-<ion-tabs >
+<ion-tabs>
 
+  <!-- Toolbar for Desktop -->
+  <ion-toolbar slot="top" class="ion-hide-lg-down">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="1"></ion-col>
+        <ion-col size="2">
+          <img id="logo" src="../../assets/fyf-logo-1.svg" />
+        </ion-col>
+        <ion-col class="ion-float-end" size="8">
+          <a routerLink="/home/profile/logout">
+            LOGOUT
+          </a>
+          <a routerLink="/home/profile/" routerLinkActive="active-link">
+            PROFILE
+          </a>
+          <a routerLink="/home/mentors" routerLinkActive="active-link">
+            MENTORS
+          </a>
+          <a routerLink="/home/posts" routerLinkActive="active-link">
+            POSTS
+          </a>
+          <a routerLink="/home/events" routerLinkActive="active-link">
+           EVENTS
+          </a>
+          <a routerLink="/home/jobs" routerLinkActive="active-link">
+            JOBS
+          </a>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+
+  <!-- Tab Bar for Mobile -->
   <ion-tab-bar slot="bottom" class="ion-hide-lg-up">
     <ion-tab-button tab="jobs">
       <ion-icon src="../assets/icon/suitcase-inactive.svg"></ion-icon>
@@ -27,59 +62,5 @@
     </ion-tab-button>
   </ion-tab-bar>
 
-  <ion-toolbar slot="top" class="ion-hide-md-down">
-      <img id="logo" src="../../assets/United_Way_Logo_3.svg" />
-      <ion-buttons slot="end">
-        <ion-button routerLink="/home/jobs">
-          <ion-icon size="large" src="../assets/icon/suitcase-inactive.svg"></ion-icon>
-        </ion-button>
-        <ion-button routerLink="/home/events">
-          <ion-icon size="large" src="../assets/icon/calendar-inactive.svg"></ion-icon>
-        </ion-button>
-        <ion-button routerLink="/home/posts">
-          <ion-icon size="large" src="../assets/icon/post-inactive.svg"></ion-icon>
-        </ion-button>
-        <ion-button routerLink="/home/mentors">
-          <ion-icon size="large" src="../assets/icon/question-inactive.svg"></ion-icon>
-        </ion-button>
-        <ion-button routerLink="/home/profile/">
-          <ion-icon size="large" src="../assets/icon/profile-inactive.svg"></ion-icon>
-        </ion-button>
-        <ion-button routerLink="/home/profile/logout">
-          <ion-icon size="large" color="primary" src="../assets/icon/log-out-outline.svg"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
-
 </ion-tabs>
-<!--
-<ion-tabs class=" ion-hide-md-down">
 
-    <ion-tab-bar slot="top">
-      <ion-tab-button tab="jobs">
-        <ion-icon src="../assets/icon/suitcase-inactive.svg"></ion-icon>
-        <ion-label>JOBS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="events">
-        <ion-icon src="../assets/icon/calendar-inactive.svg"></ion-icon>
-        <ion-label>EVENTS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="posts">
-        <ion-icon src="../assets/icon/post-inactive.svg"></ion-icon>
-        <ion-label>POSTS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="mentors">
-        <ion-icon src="../assets/icon/question-inactive.svg"></ion-icon>
-        <ion-label>MENTORS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="profile">
-        <ion-icon src="../assets/icon/profile-inactive.svg"></ion-icon>
-        <ion-label>PROFILE</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-
-  </ion-tabs> -->

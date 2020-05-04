@@ -1,6 +1,7 @@
 span {
   color: #005191;
   font-weight: 600;
+  font-size: 1.5em;
 }
 
 ion-header::after {
@@ -8,8 +9,12 @@ ion-header::after {
 }
 
 .event-header {
-  height: 40vh;
+  height: 20vh;
   background-attachment: fixed;
+}
+
+p {
+  font-size: 1.3em;
 }
 
 

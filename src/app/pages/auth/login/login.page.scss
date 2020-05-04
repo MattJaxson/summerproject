@@ -1,11 +1,9 @@
-.login-toolbar {
---background: white;
---color: #005191;
---box-shadow: none;
-
-  ion-back-button{
-      --color: #005191 !important;
-  }
+ion-content {
+--background: none;
+background-image: url('../../../../assets/Backgrounds/Login_Background.svg');
+background-repeat: no-repeat;
+background-size: cover;
+text-align: center;
 }
 
 ion-footer {
@@ -22,7 +20,7 @@ ion-footer {
   font-size: 1em;
   font-weight: 700;
   --color: white;
-  background: #FFB351;
+  --background: linear-gradient(#005191, #000000);
   opacity: 0;
   animation: slide-up 0.5s ease 1s forwards;
 }
@@ -30,14 +28,11 @@ ion-footer {
 #forgot {
   width: 200px;
   height: 50px;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: 700;
   margin-top: 60px;
   opacity: 0;
-  --border-color: rgba(220,220,220, 0.9);
-  --border-width: 2px;
-  --border-style: solid;
-  --background:white;
+  --background:none;
   --color: rgba(130,130,130, 1);
   transition: 0.5s;
   animation: slide-up 0.5s ease 1.5s forwards;

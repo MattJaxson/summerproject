@@ -6,13 +6,6 @@ ion-card {
   margin-bottom: 100px;
 }
 
-ion-button {
-  color: #005191;
-  --background: white;
-  font-size: 15px;
-  height: 45px;
-  border-radius: 5px;
-}
 
 ion-icon {
   color: red;
@@ -50,4 +43,13 @@ h6, p {
 
 --ion-buttons {
   --color: #888;
+}
+
+ion-card-title {
+  font-weight: 900;
+}
+
+ion-card-subtitle {
+  font-weight: 400;
+  font-size: 1.3em;
 }
