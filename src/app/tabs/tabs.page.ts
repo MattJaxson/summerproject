@@ -13,8 +13,4 @@ export class TabsPage {
   ) {}
 
 
-  jobs() {
-    this.router.navigate(['/home/jobs']);
-  }
-
 }

@@ -1,13 +1,20 @@
-<ion-header>
+<ion-header class="ion-hide-md-up">
   <ion-toolbar>
     <ion-title>Logout</ion-title>
-    <ion-button (click)="cancel()" id="cancel-button" slot="end">
-        cancel
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-text-center">
-  <ion-button (click)="confirmLogout()" class="orange-button" style="position: relative; top: 40%">Logout</ion-button>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center full-page">
+      <ion-col size="6" class="white-background padding">
+        <p class="ion-hide-md-down text-header">Are you sure you want to logout?</p>
+        <ion-button (click)="confirmLogout()" class="orange-button" style="position: relative; top: 40%">Logout</ion-button>
+        <br><br>
+        <ion-button (click)="cancel()" class="cancel-button">cancel</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 

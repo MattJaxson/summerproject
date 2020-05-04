@@ -95,7 +95,7 @@
   <ion-grid class="ion-text-center ion-hide-sm-down">
 
       <ion-row class="ion-justify-content-center">
-        <ion-col size-lg="6" size-xl="6"  style="margin-top: 5%">
+        <ion-col size-md="4" size-lg="4" size-xl="4"  style="margin-top: 5%">
 
             <form  [formGroup]="loginForm"
                    (ngSubmit)="login(this.loginForm.value)">
@@ -159,7 +159,7 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col class="ion-hide-sm-down" size="6">
-          <ion-button id="sign-up-button" style="--box-shadow: none;" [routerLink]="['personal-info']">Sign Up
+          <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
           </ion-button>
         </ion-col>
       </ion-row>

@@ -1,4 +1,5 @@
-<ion-header>
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
@@ -16,26 +17,25 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true">
+<ion-content>
 
-    <ion-grid fixed>
-        <ion-row>
-          <ion-col size="12" class="event-header">
+    <ion-grid class="ion-hide-lg-down">
+        <ion-row style="margin-top: 5%;">
+          <ion-col size="3"></ion-col>
+          <ion-col size-lg="6" class="event-header">
               <img src="../assets/Journi_flyer.jpg" />
           </ion-col>
-          <ion-col size="12" style="--ion-grid-column-padding: 20px;">
-              <p> <span>Title:</span><br> {{ eventTitle }}</p>
-              <p> <span>Address: </span><br>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
-              <p> <span>Date:</span><br> {{ eventDate }}</p>
-              <p> <span>Time:</span><br> {{ eventTime }}</p>
-              <p> <span>Description:</span><br> {{ eventDescription }}</p>
-          </ion-col>
-          <ion-col size="12" class="ion-text-center">
-          <ion-button class="orange-button" (click)="googleMaps()">
-              Google Maps
-            </ion-button>
-            <p style="opacity: 0.3; margin-top: 40px; background: rgba(205,205,205, 0.6); padding: 20px;">posted: {{ eventDateCreated }}</p>
-          </ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col offset-lg="1" size-lg="5" style="--ion-grid-column-padding: 20px;">
+            <p> <span>Title</span><br> {{ eventTitle }}</p>
+            <p> <span>Address </span><br>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
+            <p> <span>Date</span><br> {{ eventDate }}</p>
+            <p> <span>Time</span><br> {{ eventTime }}</p>
+            <p> <span>Description</span><br> {{ eventDescription }}</p>
+        </ion-col>
         </ion-row>
       </ion-grid>
 </ion-content>

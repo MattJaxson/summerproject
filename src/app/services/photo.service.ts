@@ -14,7 +14,8 @@ import { File as IonicFileService, FileEntry, IFile } from '@ionic-native/file/n
 
 export class PhotoService {
   constructor(
-    private ionicFileService: IonicFileService
+    private ionicFileService: IonicFileService,
+    private http: HttpClient
   ) {
 
   }
@@ -57,5 +58,12 @@ export class PhotoService {
       // console.log(JSON.stringify('reader: ' + JSON.stringify(reader)));
     });
   }
+
+  // Testing
+  imageUpload(imageForm: FormData) {
+    console.log('image uploading');
+    return this.http.post('http://10.0.1.16:3000/api/photo/upload-profile-picture',
+    imageForm);
+   }
 
 }

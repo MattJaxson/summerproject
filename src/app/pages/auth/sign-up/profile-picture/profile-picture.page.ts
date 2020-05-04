@@ -26,6 +26,10 @@ export class ProfilePicturePage implements OnInit {
   //  +++ Brainstorm +++
   //  Maybe I need to notify the server that this user didnt upload a profile picture?
 
+  imageObj: any;
+  imageUrl: string;
+
+
   // Image of camera that is compatible with HTML
   profilePictureWebView;
   profilePicture;
@@ -62,6 +66,19 @@ export class ProfilePicturePage implements OnInit {
 
   ngOnInit() {
     }
+
+   onImagePicked(event: Event): void {
+    const FILE = (event.target as HTMLInputElement).files[0];
+    this.imageObj = FILE;
+   }
+
+   onImageUpload() {
+    const imageForm = new FormData();
+    imageForm.append('image', this.imageObj);
+    this.photo.imageUpload(imageForm).subscribe(res => {
+      this.imageUrl = res['image'];
+    });
+   }
     // setProfilePhoto(name, sourceType): Promise<any> {
 
       // return new Promise((resolve, reject) => {
@@ -190,4 +207,17 @@ if (img === null) {
     console.log('Sign up cancelled');
     this.router.navigate(['']);
   }
+
+
+// Testing
+// tslint:disable-next-line: member-ordering
+
+
+
+
+
+
+
+
+
 }
