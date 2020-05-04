@@ -1,0 +1,56 @@
+<!-- Mobile version -->
+<ion-header class="ion-hide-md-up">
+  <ion-toolbar>
+    <ion-img [src]="../../../assets/logos/fyf-logo-1.svg"></ion-img>
+    <ion-button color="dark" fill="outline" slot="end">Login/Signup</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Web version -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-img [src]="../../../assets/logos/fyf-logo-1.svg"></ion-img>
+    <ion-button color="dark" fill="outline" slot="end">Login/Signup</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <!-- Mobile version -->
+    <ion-row class="ion-hide-md-up">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+          <h1>Mobile slide</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 2</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 3</h1>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+    
+    <!-- Web version -->
+    <ion-row class="ion-hide-md-down">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+          <h1>Web slide</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 2</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 3</h1>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6" style="text-align: center; background-color: greenyellow;">
+        <h1>This is a flexible column.</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

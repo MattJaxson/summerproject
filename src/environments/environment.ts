@@ -6,11 +6,11 @@
 
 // const url is commented out depending on which you are testing with.
 
-//local host is for local machine and 10.0.1.8 is for android testing
+// local host is for local machine and 10.0.1.8 is for android testing
 
 import 'zone.js/dist/zone-error';
 
-const ip = '10.0.1.16';
+const ip = '192.168.86.108';
 const baseUrl = `http://${ip}:3000`;
 
 export const environment = {

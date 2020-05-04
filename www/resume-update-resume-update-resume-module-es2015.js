@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>update-resume</ion-title>\n    <ion-button (click)=\"cancel()\" id=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!-- Need to express to User formats that are acceptable -->\n  <!-- pdf, ect -->\n  <p>Please upload a resume from your phone</p>\n  <ion-item>\n    <ion-label>file</ion-label>\n    <p>resume.pdf</p>\n  </ion-item>\n</ion-content>\n<button (click)=\"updateResume()\" id=\"next-button\">UPLOAD</button>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>update-resume</ion-title>\r\n    <ion-button (click)=\"cancel()\" id=\"cancel-button\" slot=\"end\">\r\n        cancel\r\n    </ion-button>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <!-- Need to express to User formats that are acceptable -->\r\n  <!-- pdf, ect -->\r\n  <p>Please upload a resume from your phone</p>\r\n  <ion-item>\r\n    <ion-label>file</ion-label>\r\n    <p>resume.pdf</p>\r\n  </ion-item>\r\n</ion-content>\r\n<button (click)=\"updateResume()\" id=\"next-button\">UPLOAD</button>\r\n");
 
 /***/ }),
 

@@ -5,8 +5,9 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
+    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
     // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
-    loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
+    // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
     // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
   },
   {
@@ -39,7 +40,12 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'landing',
+    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   }
+
 ];
 @NgModule({
   imports: [

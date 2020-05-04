@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Mentors</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid fixed>\n    <ion-row *ngFor=\"let mentor of allMentors\" (click)=\"mentorPage(mentor)\" style=\" margin-top: 20px;\">\n        <ion-col size=\"2\" offset=\"0.5\">\n            <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\n              <!-- <ion-img [src]=\"image\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\n          </ion-col>\n          <ion-col size=\"7\">\n              <h6>{{mentor.name}}</h6>\n              <p>{{mentor.title}}</p>\n          </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Mentors</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed>\r\n    <ion-row *ngFor=\"let mentor of allMentors\" (click)=\"mentorPage(mentor)\" style=\" margin-top: 20px;\">\r\n        <ion-col size=\"2\" offset=\"0.5\">\r\n            <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\r\n              <!-- <ion-img [src]=\"image\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\r\n          </ion-col>\r\n          <ion-col size=\"7\">\r\n              <h6>{{mentor.name}}</h6>\r\n              <p>{{mentor.title}}</p>\r\n          </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n");
 
 /***/ }),
 
