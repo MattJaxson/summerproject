@@ -1,6 +1,6 @@
-<ion-header class="ion-hide-md-up">
+<ion-header class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
-  <ion-toolbar style="--background: white;" class="ion-hide-md-up">
+  <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
     <ion-grid>
       <ion-row>
         <ion-col size="3">
@@ -48,18 +48,18 @@
         size-xl="6"  push-xl="">
 
         <!-- Post -->
-        <ion-row *ngFor="let post of allPosts" style="margin-bottom: 90px; background: white; border-radius: 5px; border: 1px solid #999;" class="ion-justify-content-center" padding>
+        <ion-row *ngFor="let post of allPosts" style="margin-bottom: 90px; background: white; border-radius: 5px; border: 1px solid #999;" class="ion-justify-content-center">
 
           <ion-row>
               <!-- Post Header -->
 
           <!-- Profile Picture -->
-          <ion-col size="3">
+          <ion-col size="2">
             <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
           </ion-col>
 
           <!-- Post Creator's Name -->
-          <ion-col size="7">
+          <ion-col size="8">
             <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{post.creatorName}}</h6>
           </ion-col>
 

@@ -1,29 +1,73 @@
-<ion-header>
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Events you are going to</ion-title>
+    <ion-title>Back</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-grid>
-        <ion-row *ngFor="let event of goingToEvents">
-            <ion-card>
-                <img src="../assets/Journi_flyer.jpg" />
-                <ion-card-header (click)="eventPage(event)">
-                  <ion-card-title>{{ event.title }}</ion-card-title>
-                  <ion-card-subtitle>{{ event.addressOne }} {{ event.addressTwo}}, {{ event.city }}, {{ event.state }}, {{ event.zip }}</ion-card-subtitle>
-                  <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
-                  <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
-                  <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-toolbar>
-                  </ion-toolbar>
-               </ion-card-content>
-              </ion-card>
-        </ion-row>
-      </ion-grid>
+
+    <!-- Desktop -->
+    <ion-grid class="ion-hide-lg-down">
+
+      <!-- Back Button -->
+      <ion-row class="ion-justify-content-center ion-align-items-center" style="margin-top: 5%;">
+        <ion-col class="ion-align-self-center" size="10">
+          <div><h1>My Events</h1></div>
+          <ion-button class="ion-float-right blue-button" style="position: relative; top: -40px;" (click)="goBack()">
+            Go Back
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- Events -->
+      <ion-row style="margin-top: 5%;" *ngFor="let event of goingToEvents">
+        <ion-col size="1"></ion-col>
+        <ion-col size="2">
+         <img class="thumbnail" src="../assets/Journi_flyer.jpg" />
+        </ion-col>
+        <ion-col size="4">
+          <p>{{ event.title }}</p>
+          <p>{{ event.time }}</p>
+          <p>{{ event.date }}</p>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button class="orange-button" style="--background: #999; --color: white;" (click)="eventPage(event)">
+            Details
+          </ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button class="orange-button" (click)="cancel()">
+            Cancel
+          </ion-button>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+        <hr>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Mobile -->
+    <ion-grid class="ion-hide-lg-up">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="10" size-sm="8" size-md="8">
+          <ion-card *ngFor="let event of goingToEvents">
+            <img src="../assets/Journi_flyer.jpg" />
+            <ion-card-header (click)="eventPage(event)">
+              <ion-card-title>{{ event.title }}</ion-card-title>
+              <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+              <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
+              <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
+            </ion-card-header>
+            <ion-card-content style="--ion-grid-padding: 0;" class="ion-text-center">
+              <ion-button class="orange-button" (click)="cancel()">
+                Cancel
+              </ion-button>
+           </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

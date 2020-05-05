@@ -1,6 +1,16 @@
-ion-buttons > ion-button {
-  color: white;
-  height: 45px;
-  border-radius: 5px;
-  padding: 10px;
+.thumbnail {
+  width: 200px;
+}
+
+p {
+  font-size: 1.2em;
+  color: #999;
+}
+
+hr {
+  border: 1px solid #999;
+}
+
+ion-card {
+  margin-top: 5%;
 }

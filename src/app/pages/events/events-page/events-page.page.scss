@@ -4,17 +4,103 @@ span {
   font-size: 1.5em;
 }
 
-ion-header::after {
-  background-image: none;
-}
-
-.event-header {
-  height: 20vh;
-  background-attachment: fixed;
-}
-
 p {
   font-size: 1.3em;
+  color: #999;
+}
+
+.going-link:link {
+  color: #1baf88;
+}
+
+.going-link:visited {
+  color: #1baf88;
+}
+
+.not-going-link:link {
+  color: #FA6400;
+}
+
+.not-going-link:visited {
+  color: #FA6400;
+}
+
+.going-text {
+  font-size: 1.5em;
+  color: #999;
+  margin-top: 10%;
+}
+
+.header {
+  background-color: none;
+  height: 70vh;
+}
+
+.event-image {
+  height: 500px;
+  background: lightgrey;
+  background: url('../../../../assets/Journi_flyer-500x357.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  animation: slide-up 1s cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards;
+}
+
+.details {
+  padding: 100px 0 100px;
+  height: auto;
+  background: white;
+}
+
+.going {
+  height: 60vh;
+  width: 100%;
+  background: url('../../../../assets/Backgrounds/Event_Page_Bottom_Background_Green.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.not-going {
+  height: 60vh;
+  width: 100%;
+  background: url('../../../../assets/Backgrounds/Event_Page_Bottom_Background_Orange.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.going-button {
+  width: 200px;
+  font-size: 1.2em;
+  font-weight: 800;
+  --background: #1baf88;
+  --background-hover: #1baf88;
+  --color: white;
+}
+
+.not-going-button {
+  width: 200px;
+  font-size: 1.2em;
+  --background: #FA6400;
+  --background-hover: #FA6400;
+  --color: white;
+}
+
+.going-button:hover, .not-going-button:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.going-button:not(:hover), .not-going-button:not(:hover) {
+  transform: scale(1);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 
@@ -25,4 +111,17 @@ ion-buttons > ion-button {
   border-radius: 5px;
   font-size: 0.9em;
   text-transform: none;
+}
+
+@keyframes slide-up {
+  0% {
+    width: 0px;
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }

@@ -5,7 +5,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="3">
-          <img id="logo" src="../../assets/fyf-logo-1.svg" />
+          <img id="logo" src="../../assets/fyf-logo.png" />
         </ion-col>
         <ion-col size="5">
           <ion-searchbar
@@ -81,11 +81,11 @@
   <!-- Desktop -->
   <ion-grid class="ion-hide-md-down">
 
-    <ion-row style="margin-top: 50px;">
+    <ion-row class="ion-align-items-center" style="margin-top: 50px;">
 
       <!-- Search Bar -->
       <ion-col size="1"></ion-col>
-      <ion-col size="5">
+      <ion-col size="7">
             <ion-searchbar
             no-border
             debounce="800"
@@ -94,9 +94,9 @@
             (ionChange)="filter($event)"
             ></ion-searchbar>
       </ion-col>
-      <ion-col size=4>
+      <ion-col size="2">
           <ion-button class="blue-button ion-float-right" style="width: 200px;" (click)="going()">
-              Your Events ( {{ eventsGoingLength }} )
+              My Events ( {{ eventsGoingLength }} )
           </ion-button>
       </ion-col>
       <ion-col size="2"></ion-col>
