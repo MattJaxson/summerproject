@@ -23,7 +23,7 @@ export class EventsService {
   }
 
   getEventsGoing(id) {
-    return this.http.post(`${this.BACKEND_URL}/api/events/events-going`, {id});
+    return this.http.post(`${this.BACKEND_URL}/api/events/events-going`, {_id: id});
   }
 
   goingToEvent(eventID, userEmail, id) {

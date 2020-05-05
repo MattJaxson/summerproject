@@ -165,8 +165,5 @@ export class EventsPagePage implements OnInit {
     toast.present();
   }
 
-  googleMaps() {
-    console.log('Google Maps');
-  }
 
 }

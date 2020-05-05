@@ -26,15 +26,17 @@ ion-footer {
 }
 
 #forgot {
-  width: 200px;
+  width: 220px;
   height: 50px;
   font-size: 1em;
   font-weight: 700;
   margin-top: 60px;
   opacity: 0;
   --background:none;
-  --color: rgba(130,130,130, 1);
-  transition: 0.5s;
+  --background-hover: #474444;
+  --color: rgba(130,130,130, 0.5);
+  --color-hover: white;
+  --transition: 0.5s;
   animation: slide-up 0.5s ease 1.5s forwards;
 }
 

@@ -21,11 +21,15 @@
 
   <!-- Mobile & Tablet -->
   <ion-grid class="ion-hide-md-up">
+
+    <!-- Logo -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="8" size-sm="8" size-md="8" style="margin-top: 10%;" class="ion-text-center">
-        <img src="../../assets/fyf-logo-1.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
+        <img src="../../assets/fyf-logo.png" style="height: 70px; margin: 35px 0 30px 0;"/>
       </ion-col>
     </ion-row>
+
+    <!-- Form -->
     <ion-row class="ion-justify-content-center">
       <ion-col class="ion-text-center" size-xs="10" size-sm="8" size-md="8">
           <form  [formGroup]="loginForm"
@@ -77,18 +81,32 @@
                 </ng-container>
               </div>
 
-              <!-- Login Button -->
-              <ion-button text-center class="orange-button" type="submit">Login</ion-button>
 
             </form>
 
-            <!-- Forgot Password -->
-            <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+            
       </ion-col>
     </ion-row>
 
-    
-    <!-- Positioning Sign up Button outside of Ion Content for customization -->
+    <ion-row class="ion-justify-content-center">
+
+      <!-- Login Button -->
+      <ion-col size="12">
+        <ion-button text-center class="orange-button" type="submit">Login</ion-button>
+      </ion-col>
+
+      <!-- Sign Up -->
+      <ion-col size="12">
+        <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
+        </ion-button>
+      </ion-col>
+
+      <!-- Forgot Password -->
+      <ion-col size="12">
+        <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
   <!-- Desktop -->
@@ -170,13 +188,7 @@
         </ion-col>
       </ion-row>
 
-    </ion-grid>
+  </ion-grid>
 
 </ion-content>
 
-
-<ion-footer class="text-center ion-hide-md-up">
-  <ion-toolbar>
-    <ion-button style="--box-shadow: none;" expand="full" [routerLink]="['personal-info']">Sign Up</ion-button>
-  </ion-toolbar>
-</ion-footer>

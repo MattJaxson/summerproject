@@ -4,6 +4,7 @@ ion-toolbar {
 
 ion-card {
   margin-bottom: 100px;
+  --background: white;
 }
 
 
@@ -18,6 +19,7 @@ ion-searchbar {
   --background: white;
   border-radius: 5px;
   --height: 60px;
+  width: 100%;
   --box-shadow: none;
   --cancel-button-color: #005191;
   --clear-button-color: #005191;

@@ -20,22 +20,59 @@
 <ion-content>
 
     <ion-grid class="ion-hide-lg-down">
-        <ion-row style="margin-top: 5%;">
-          <ion-col size="3"></ion-col>
-          <ion-col size-lg="6" class="event-header">
-              <img src="../assets/Journi_flyer.jpg" />
+
+        <!-- Picture Header -->
+        <ion-row class="ion-justify-content-center header ion-align-items-center">
+          <ion-col size-lg="6">
+            <!-- Image needs to be 500x357, 800x571, or 1050x750 -->
+              <div class="event-image"></div>
           </ion-col>
-          <ion-col size="3"></ion-col>
         </ion-row>
-  
-        <ion-row>
-          <ion-col offset-lg="1" size-lg="5" style="--ion-grid-column-padding: 20px;">
-            <p> <span>Title</span><br> {{ eventTitle }}</p>
-            <p> <span>Address </span><br>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
-            <p> <span>Date</span><br> {{ eventDate }}</p>
-            <p> <span>Time</span><br> {{ eventTime }}</p>
-            <p> <span>Description</span><br> {{ eventDescription }}</p>
+
+        <!-- Event Details -->
+        <ion-row class="details ion-justify-content-center ion-align-items-center">
+          <ion-col size-lg="6">
+            <p> <span>Title</span><br> {{ eventTitle }}</p><br>
+            <p> <span>Address </span><br>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p><br>
+            <p> <span>Date</span><br> {{ eventDate }}</p><br>
+            <p> <span>Time</span><br> {{ eventTime }}</p><br>
+            <p> <span>Description</span><br> {{ eventDescription }}</p><br>
         </ion-col>
         </ion-row>
+
+        <!-- Going or Not Going sections? -->
+
+        <!-- GOING? -->
+        <ion-row *ngIf="!going" class="going ion-justify-content-center">
+            <ion-col class="going" size="12">
+              <ion-row class="going ion-justify-content-center">
+                <ion-col class="ion-text-center" size="6">
+                  <p class="going-text">Do you want to go to this event?<br> By clicking 'Yes', this event will be added to your Your Events.</p>
+                  <ion-button class="going-button" (click)="goingToEvent()">
+                   Yes.
+                  </ion-button><br><br>
+                  <a class="going-link" routerLink="/home/events">Go back to Events Page</a><br><br>
+                  <a class="going-link" routerLink="/home/events/going">View My Events</a>
+                 </ion-col>
+              </ion-row>
+            </ion-col>
+        </ion-row>
+
+        <!-- NOT GOING -->
+        <ion-row *ngIf="going" class="ion-justify-content-center">
+          <ion-col class="not-going" size="12">
+            <ion-row class="not-going ion-justify-content-center">
+              <ion-col class="ion-text-center" size="6">
+                <p class="going-text">Do you want to go to this event?<br> By clicking 'No', this event will be deleted to your Your Events.</p>
+                <ion-button class="not-going-button" (click)="notGoingToEvent()">
+                 No.
+                </ion-button><br><br>
+                <a class="not-going-link" routerLink="/home/events">Go back to Events Page</a><br><br>
+                <a class="not-going-link" routerLink="/home/events/going">View My Events</a>
+               </ion-col>
+            </ion-row>
+          </ion-col>
+      </ion-row>
+
       </ion-grid>
 </ion-content>
