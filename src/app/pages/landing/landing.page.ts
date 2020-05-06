@@ -6,11 +6,17 @@ import { Router } from '@angular/router';
   templateUrl: './landing.page.html',
   styleUrls: ['./landing.page.scss'],
 })
+
 export class LandingPage implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  slideOptions = {
+    autoplay: {
+      delay: 5000
+    },
+    speed: 500
+  };
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

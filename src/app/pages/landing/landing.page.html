@@ -1,15 +1,20 @@
 <!-- Mobile version -->
-<ion-header class="ion-hide-md-up">
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <!-- <ion-img [src]="../../../assets/logos/fyf-logo-1.svg"></ion-img> -->
+    <img id="logo" src="../../../assets/fyf-logo.png" />
     <ion-button color="dark" fill="outline" slot="end" (click)="loginSignup()">Login/Signup</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <!-- Web version -->
 <ion-header class="ion-hide-md-down">
-  <ion-toolbar>
-    <!-- <ion-img [src]="../../../assets/logos/fyf-logo-1.svg"></ion-img> -->
+  <ion-toolbar class="ion-justify-content-center">
+    <img id="logo" src="../../../assets/fyf-logo.png" />
+    <div class="button-row ion-hide-lg-down">
+      <ion-button fill="clear"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
+    </div>
     <ion-button color="dark" fill="outline" slot="end" (click)="loginSignup()">Login/Signup</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -17,9 +22,9 @@
 <ion-content>
   <ion-grid>
 
-    <!-- Mobile version -->
-    <ion-row class="ion-hide-md-up">
-      <ion-slides pager="true" [options]="slideOpts">
+    <!-- Mobile version slides -->
+    <ion-row class="ion-hide-lg-up">
+      <ion-slides [options]="slideOptions">
         <ion-slide>
           <h1>Mobile slide</h1>
         </ion-slide>
@@ -32,9 +37,9 @@
       </ion-slides>
     </ion-row>
     
-    <!-- Web version -->
+    <!-- Web version slides -->
     <ion-row class="ion-hide-md-down">
-      <ion-slides pager="true" [options]="slideOpts">
+      <ion-slides [options]="slideOptions">
         <ion-slide>
           <h1>Web slide</h1>
         </ion-slide>
@@ -47,10 +52,45 @@
       </ion-slides>
     </ion-row>
 
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6" style="text-align: center; background-color: greenyellow;">
-        <h1>This is a flexible column.</h1>
+    <!-- App description -->
+    <ion-row class="ion-justify-content-center detail-section">
+      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6" style="font-size: 1.3em; padding-top: 15px; padding-bottom: 15px">
+        <img src="../../../assets/United-Way-symbol.svg" />
+        <p>
+          Lorem ipsum dolor sit amet. This is a paragraph that introduces the app.
+          It educates the user about the features of this app.
+        </p>
       </ion-col>
     </ion-row>
+
+    <!-- Who is United Way? -->
+    <ion-row class="ion-justify-content-center detail-section" style="background-color: #FFB351;">
+      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <h3 style="text-transform: uppercase;">Who is United Way?</h3>
+        <p>
+          Lorem ipsum dolor sit amet. This paragraph talks about United Way. It describes to the user what the
+          organization does. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Tristique nulla aliquet enim tortor at auctor urna. Massa ultricies mi quis
+          hendrerit dolor magna eget est. Venenatis cras sed felis eget velit aliquet. Enim praesent elementum
+          facilisis leo.
+        </p>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar class="ion-hide-lg-up">
+      <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-button fill="clear" color="light" size="small">About</ion-button>
+      <span class="floating-dot">&#9679;</span>
+      <ion-button fill="clear" color="light" size="small">Terms of Use</ion-button>
+      <span class="floating-dot">&#9679;</span>
+      <ion-button fill="clear" color="light" size="small">Privacy Policy</ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
