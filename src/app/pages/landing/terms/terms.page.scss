@@ -1,0 +1,17 @@
+ion-toolbar {
+    height: 100%;
+    --background: #fff;
+}
+
+ion-back-button {
+    color: #000 !important;
+}
+
+ion-title {
+    margin: 0;
+}
+
+ion-content {
+    --padding-start: 15px;
+    --padding-end: 15px;
+}

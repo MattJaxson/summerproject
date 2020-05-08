@@ -1,3 +1,86 @@
+ion-grid {
+    padding: 0;
+}
+
 ion-toolbar {
+    height: 100%;
     --background: #fff;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+}
+
+ion-header > ion-toolbar {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.button-row {
+    position: absolute;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ion-slides {
+    width: 100%;
+    height: 75vh;
+    min-height: 400px;
+    background-color: #bbb; // placeholder background
+}
+
+ion-slide {
+    display: block;
+    padding-top: 25vh;
+
+    h1 {
+        color: white;
+        font-size: 3em;
+        font-weight: bolder;
+        text-shadow: 3px 2px 8px #000;
+    }
+}
+
+.detail-section {
+    height: 60vh;
+    min-height: 300px;
+}
+
+#who-is {
+    background-color: #ffb35166;
+
+    ion-col {
+        font-size: 1.2em;
+    }
+}
+
+ion-col {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+}
+
+ion-footer > ion-toolbar {
+    color: #fff;
+    text-align: center;
+}
+ion-footer > ion-toolbar:first-child {
+    --background: #676767;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+ion-footer > ion-toolbar:first-child > ion-button {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+ion-footer > ion-toolbar:nth-child(2) {
+    --background: #555;
+}
+ion-footer ion-button {
+    text-transform: capitalize;
+}
+
+.floating-dot {
+    position: relative;
+    top: 0.3em;
 }
