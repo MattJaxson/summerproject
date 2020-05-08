@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
-import { formatDistance, subDays, formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -16,6 +17,7 @@ export class PostsPage implements OnInit {
 
   commentForm: FormGroup;
   allPosts;
+  followedPostLength;
   userEmail;
   userFullName;
   date;
@@ -33,15 +35,14 @@ export class PostsPage implements OnInit {
     // Get all for post for this section
     this.posts.getPosts().subscribe(
       posts => {
-        this.allPosts =  Object.values(posts);
-        let date = this.allPosts[0].date;
-        date = formatDistance(
-          new Date(),
-          new Date(date),
-          { includeSeconds: true }
-        );
-        this.date = date;
-        console.log(this.date);
+        this.allPosts =  Object.values(posts).reverse();
+
+        for (const post of this.allPosts) {
+          post.date = formatDistanceToNow( new Date(post.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+        }
         this.posts.commentsSubject$.subscribe(
           comments => {
             this.allPosts.comments = comments;
@@ -71,6 +72,7 @@ export class PostsPage implements OnInit {
       details => {
         this.userEmail = details['email'];
         this.userFullName = details['fullName'];
+        this.followedPostLength = Object.values(details['followedPost']).length;
         console.log('User email: ' + this.userEmail);
       });
   }
@@ -80,10 +82,70 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
+  async follow() {
+    await console.log('Upvoting');
+    await this.followToast();
+  }
+
+  async followToast() {
+    const followToast = await this.toast.create({
+      cssClass: 'followed-toast',
+      message: 'You are FOLLOWING this post',
+      duration: 2000
+    });
+    followToast.present();
+  }
+
+  async unFollowToast() {
+    const unFollowToast = await this.toast.create({
+      cssClass: 'unfollowed-toast',
+      message: 'You are UNFOLLOWING this post',
+      duration: 2000
+    });
+    unFollowToast.present();
+  }
+
+  async upVotePost(postID) {
+    await console.log('Upvoting');
+    await this.posts.upVotePost(postID, this.userEmail);
+    await this.upVotePostToast();
+  }
+
+  async upVotePostToast() {
+    const upVotePostToast = await this.toast.create({
+      cssClass: 'upvoted-toast',
+      message: 'You have UPVOTED this post.',
+      duration: 2000
+    });
+    upVotePostToast.present();
+  }
+
+  async downVotePost(postID) {
+    await console.log('Downvoting');
+    await this.posts.downVotePost(postID, this.userEmail);
+    await this.downVoteToast();
+  }
+
+  async downVoteToast() {
+    const upVoteToast = await this.toast.create({
+      cssClass: 'downvoted-toast',
+      message: 'You have DOWNVOTED this post.',
+      duration: 2000
+    });
+    upVoteToast.present();
+  }
+
   async doRefresh(event) {
     await this.posts.getPosts().subscribe( jobs => {
-      this.allPosts = Object.values(jobs);
+      this.allPosts = Object.values(jobs).reverse();
       console.log(this.allPosts);
+
+      for (const post of this.allPosts) {
+        post.date = formatDistanceToNow( new Date(post.date), {
+          includeSeconds: true,
+          addSuffix: true
+        });
+      }
     });
 
     await setTimeout(() => {
@@ -97,7 +159,7 @@ export class PostsPage implements OnInit {
   }
 
 
-  addTextPost() {
+  addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
 
@@ -138,6 +200,8 @@ export class PostsPage implements OnInit {
     });
 
     toast.then(toast => toast.present());
+
+    await this.router.navigate(['/home/posts/post-page', postID]);
   }
 
 

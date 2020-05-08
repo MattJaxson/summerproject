@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm-photo</ion-title>\r\n    <ion-button (click)=\"cancel()\" id=\"cancel-button\" slot=\"end\">\r\n        cancel\r\n    </ion-button>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <div style=\"width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;\">\r\n        new picture goes here\r\n      </div>\r\n      <p>Are you sure you want to use this photo? </p>\r\n</ion-content>\r\n<button (click)=\"uploadPhoto()\" id=\"next-button\">YES</button>\r\n<button (click)=\"takeAnotherPhoto()\" id=\"next-button\">TAKE ANOTHER PHOTO</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm-photo</ion-title>\n    <ion-button (click)=\"cancel()\" id=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <div style=\"width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;\">\n        new picture goes here\n      </div>\n      <p>Are you sure you want to use this photo? </p>\n</ion-content>\n<button (click)=\"uploadPhoto()\" id=\"next-button\">YES</button>\n<button (click)=\"takeAnotherPhoto()\" id=\"next-button\">TAKE ANOTHER PHOTO</button>\n";
     /***/
   },
 

@@ -443,7 +443,59 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/follow-icon/follow-icon.component.html":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/follow-icon/follow-icon.component.html ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleLikeState(post)\" tappable [@follow]=\"followState\" size=\"medium\" [name]=\"iconName\"></ion-icon>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/going-icon/going-icon.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/going-icon/going-icon.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-button class=\"event-details\" (click)=\"eventPage(event)\">\n    Details\n</ion-button>\n\n<ion-button *ngIf='!going' (click)=\"toggleGoingState(event)\">\n    Go\n</ion-button>\n\n<ion-button class=\"not-going\" *ngIf='going' (click)=\"toggleGoingState(event)\">\n    Cancel\n</ion-button>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/heart-icon/heart-icon.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/heart-icon/heart-icon.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon (click)=\"toggleLikeState()\" tappable [@heart]=\"favoriteState\" size=\"large\" [name]=\"iconName\"></ion-icon>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/not-going-icon/not-going-icon.component.html":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/not-going-icon/not-going-icon.component.html ***!
+  \***************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-grid fixed>\n    <ion-row>\n        <ion-col size=\"10\" style=\"padding-top: 10px;\">\n            <p>No longer going to this Event?</p>\n        </ion-col>\n        <ion-col size=\"2\">\n          <ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleGoingState(event)\" tappable [@notGoing]=\"goingState\" size=\"large\" [name]=\"iconName\"></ion-icon>\n        </ion-col>\n    </ion-row>\n  </ion-grid>");
 
 /***/ }),
 
@@ -697,6 +749,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
+        // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
         // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
         loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-login-login-module */ "pages-auth-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/auth/login/login.module */ "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
         // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
@@ -722,7 +775,7 @@ const routes = [
     },
     {
         path: 'events',
-        loadChildren: () => Promise.all(/*! import() | pages-events-events-module */[__webpack_require__.e("default~contact-mentor-contact-mentor-module~pages-events-events-module~pages-jobs-jobs-module~pages~382bb8e7"), __webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-jobs-jobs-module~pages-posts-posts-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null, /*! ./pages/events/events.module */ "./src/app/pages/events/events.module.ts")).then(m => m.EventsPageModule)
+        loadChildren: () => Promise.all(/*! import() | pages-events-events-module */[__webpack_require__.e("default~pages-events-events-module~pages-jobs-jobs-module~pages-posts-posts-module"), __webpack_require__.e("pages-events-events-module")]).then(__webpack_require__.bind(null, /*! ./pages/events/events.module */ "./src/app/pages/events/events.module.ts")).then(m => m.EventsPageModule)
     },
     {
         path: 'mentors',
@@ -733,8 +786,8 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-login-login-module */ "pages-auth-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/auth/login/login.module */ "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
     },
     {
-        path: 'fairs',
-        loadChildren: () => Promise.all(/*! import() | pages-fairs-fairs-module */[__webpack_require__.e("default~pages-events-events-module~pages-fairs-fairs-module~pages-jobs-jobs-module~pages-posts-posts-module"), __webpack_require__.e("pages-fairs-fairs-module")]).then(__webpack_require__.bind(null, /*! ./pages/fairs/fairs.module */ "./src/app/pages/fairs/fairs.module.ts")).then(m => m.FairsPageModule)
+        path: 'landing',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-landing-landing-module */ "pages-landing-landing-module").then(__webpack_require__.bind(null, /*! ./pages/landing/landing.module */ "./src/app/pages/landing/landing.module.ts")).then(m => m.LandingPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -874,18 +927,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ "./node_modules/@ionic-native/vibration/ngx/index.js");
-/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
-/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
-/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
-/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
-/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/fesm2015/service-worker.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _components_shared_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/shared.module */ "./src/app/components/shared.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ "./node_modules/@ionic-native/vibration/ngx/index.js");
+/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
+/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/fesm2015/service-worker.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -925,37 +980,543 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
         entryComponents: [],
         imports: [
+            _components_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["IonicModule"].forRoot(),
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonicModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_13__["IonicStorageModule"].forRoot(),
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
             _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__["JwtModule"].forRoot({
                 jwtOptionsProvider: {
                     provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__["JWT_OPTIONS"],
                     useFactory: jwtOptionsFactory,
-                    deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_13__["Storage"]],
+                    deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_14__["Storage"]],
                 }
             }),
-            _angular_service_worker__WEBPACK_IMPORTED_MODULE_20__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_21__["environment"].production }),
+            _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_22__["environment"].production }),
         ],
         providers: [
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_12__["StatusBar"],
-            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_11__["SplashScreen"],
-            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_15__["Keyboard"],
-            _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_14__["Vibration"],
-            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_16__["Camera"],
-            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_17__["File"],
-            _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_18__["FilePath"],
-            _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_19__["WebView"],
-            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["IonicRouteStrategy"] }
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__["StatusBar"],
+            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__["SplashScreen"],
+            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_16__["Keyboard"],
+            _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_15__["Vibration"],
+            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_17__["Camera"],
+            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_18__["File"],
+            _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_19__["FilePath"],
+            _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_20__["WebView"],
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonicRouteStrategy"] }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/follow-icon/follow-icon.component.scss":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/follow-icon/follow-icon.component.scss ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  --color: lightgrey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9mb2xsb3ctaWNvbi9mb2xsb3ctaWNvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9mb2xsb3ctaWNvbi9mb2xsb3ctaWNvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2ZvbGxvdy1pY29uL2ZvbGxvdy1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWljb24ge1xuICAtLWNvbG9yOiBsaWdodGdyZXk7XG59IiwiaW9uLWljb24ge1xuICAtLWNvbG9yOiBsaWdodGdyZXk7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/follow-icon/follow-icon.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/follow-icon/follow-icon.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: FollowIconComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FollowIconComponent", function() { return FollowIconComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
+/* harmony import */ var _services_post_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/post.service */ "./src/app/services/post.service.ts");
+
+
+
+
+let FollowIconComponent = class FollowIconComponent {
+    constructor(posts) {
+        this.posts = posts;
+        this.followState = 'not-followed';
+        this.iconName = 'checkbox-outline';
+    }
+    ngOnInit() { }
+    toggleLikeState(post) {
+        if (this.followState === 'not-followed') {
+            this.followState = 'followed';
+            this.iconName = 'checkbox';
+            console.log('Followed: ' + post._id + '\n' + this.userEmail);
+            this.posts.followPost(post._id, this.userEmail);
+        }
+        else {
+            this.followState = 'not-followed';
+            this.iconName = 'checkbox-outline';
+            console.log('Un-Followed');
+            this.posts.unFollowPost(post._id, this.userEmail);
+        }
+    }
+};
+FollowIconComponent.ctorParameters = () => [
+    { type: _services_post_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], FollowIconComponent.prototype, "post", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], FollowIconComponent.prototype, "userEmail", void 0);
+FollowIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-follow-icon',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./follow-icon.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/follow-icon/follow-icon.component.html")).default,
+        animations: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('follow', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('not-followed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#d1d8e0',
+                    opacity: '0.4',
+                    transform: 'scale(0.9)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('followed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#21ce99',
+                    opacity: '1',
+                    transform: 'scale(1)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('not-followed <=> followed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('100ms ease-out'))
+            ])
+        ],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./follow-icon.component.scss */ "./src/app/components/follow-icon/follow-icon.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_post_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"]])
+], FollowIconComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/going-icon/going-icon.component.scss":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/going-icon/going-icon.component.scss ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 1;\n}\n\nion-button {\n  font-size: 1em;\n  font-weight: 800;\n  height: 50px;\n  width: 100px;\n  margin: 5px;\n  --background: none;\n  --color: #21ce99;\n  --border-style: solid;\n  --border-color: #21ce99;\n  --border-width: 2px;\n}\n\n.not-going {\n  --color: #e4405f;\n  --border-style: solid;\n  --border-color: #e4405f;\n  --border-width: 2px;\n}\n\n.event-details {\n  --color: #999;\n  --border-style: solid;\n  --border-color: #999;\n  --border-width: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL2dvaW5nLWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvZ29pbmctaWNvbi9nb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQUE7RUFBQSxnQkFBQTtFQUNBLFVBQUE7QUNDRjs7QURFQTtFQUNFLGNBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxxQkFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0VBQ0EscUJBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDQ0Y7O0FERUE7RUFDRSxhQUFBO0VBQ0EscUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2dvaW5nLWljb24vZ29pbmctaWNvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDVweDtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufVxuXG4ubm90LWdvaW5nIHtcbiAgLS1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICAtLWJvcmRlci1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmV2ZW50LWRldGFpbHN7XG4gIC0tY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXdpZHRoOiAycHg7XG59XG5cbiIsInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDVweDtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufVxuXG4ubm90LWdvaW5nIHtcbiAgLS1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICAtLWJvcmRlci1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmV2ZW50LWRldGFpbHMge1xuICAtLWNvbG9yOiAjOTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjOTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/components/going-icon/going-icon.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/going-icon/going-icon.component.ts ***!
+  \***************************************************************/
+/*! exports provided: GoingIconComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GoingIconComponent", function() { return GoingIconComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
+/* harmony import */ var _services_events_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/events.service */ "./src/app/services/events.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_favorites_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/favorites.service */ "./src/app/services/favorites.service.ts");
+
+
+
+
+
+
+
+
+let GoingIconComponent = class GoingIconComponent {
+    constructor(events, favs, toast, router, profile) {
+        this.events = events;
+        this.favs = favs;
+        this.toast = toast;
+        this.router = router;
+        this.profile = profile;
+        this.going = false;
+        this.goingState = 'not-going';
+        this.iconName = 'add-circle-outline';
+    }
+    ngOnInit() {
+        // Get the User's details
+        this.profile.getUserDetails().subscribe(details => {
+            this.userEmail = details['email'];
+            this.events = details['eventsGoing'];
+        });
+    }
+    toggleGoingState(event) {
+        if (this.goingState === 'not-going') {
+            this.goingState = 'going';
+            this.iconName = 'close-circle-outline';
+            this.going = true;
+            this.goingToast();
+            console.log(`Going to event, ${event.title}`);
+            this.events.getEvents();
+        }
+        else {
+            this.goingState = 'not-going';
+            this.iconName = 'add-circle-outline';
+            this.going = false;
+            this.notGoingToast();
+            console.log('No longer going to Event');
+            // this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();
+        }
+    }
+    goingToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toast.create({
+                message: 'You are going to this event.',
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    notGoingToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toast.create({
+                message: 'You are no longer going to this event.',
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    eventPage(event) {
+        // tslint:disable-next-line: max-line-length
+        this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne, event.addressOne, event.city, event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
+    }
+};
+GoingIconComponent.ctorParameters = () => [
+    { type: _services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"] },
+    { type: src_app_services_favorites_service__WEBPACK_IMPORTED_MODULE_7__["FavoritesService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], GoingIconComponent.prototype, "event", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], GoingIconComponent.prototype, "userEmail", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], GoingIconComponent.prototype, "id", void 0);
+GoingIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-going-icon',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./going-icon.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/going-icon/going-icon.component.html")).default,
+        animations: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('going', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: 'blue',
+                    opacity: '0.4',
+                    transition: '0.5s',
+                    transform: 'scale(0.9)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('not-going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#21ce99',
+                    opacity: '1',
+                    transition: '0.5s',
+                    transform: 'scale(1)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('not-going <=> going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('100ms ease-out'))
+            ])
+        ],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./going-icon.component.scss */ "./src/app/components/going-icon/going-icon.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"],
+        src_app_services_favorites_service__WEBPACK_IMPORTED_MODULE_7__["FavoritesService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+], GoingIconComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/heart-icon/heart-icon.component.scss":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/heart-icon/heart-icon.component.scss ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  float: right;\n  z-index: 9999;\n  position: relative;\n  right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9oZWFydC1pY29uL2hlYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59IiwiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/heart-icon/heart-icon.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/heart-icon/heart-icon.component.ts ***!
+  \***************************************************************/
+/*! exports provided: HeartIconComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeartIconComponent", function() { return HeartIconComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
+/* harmony import */ var _services_favorites_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/favorites.service */ "./src/app/services/favorites.service.ts");
+
+
+
+
+let HeartIconComponent = class HeartIconComponent {
+    constructor(favorites) {
+        this.favorites = favorites;
+        this.favoriteState = 'unfavorited';
+        this.iconName = 'heart-empty';
+    }
+    ngOnInit() { }
+    toggleLikeState() {
+        if (this.favoriteState === 'unfavorited') {
+            this.favoriteState = 'favorited';
+            this.iconName = 'heart';
+            this.favorites.favoriteThisJob(this.job);
+        }
+        else {
+            this.favoriteState = 'unfavorited';
+            this.iconName = 'heart-empty';
+            this.favorites.unFavoriteThisJob(this.job);
+        }
+    }
+};
+HeartIconComponent.ctorParameters = () => [
+    { type: _services_favorites_service__WEBPACK_IMPORTED_MODULE_3__["FavoritesService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], HeartIconComponent.prototype, "job", void 0);
+HeartIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-heart-icon',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./heart-icon.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/heart-icon/heart-icon.component.html")).default,
+        animations: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('heart', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('unfavorited', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#FF443B',
+                    opacity: '0.4',
+                    transform: 'scale(0.9)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('favorited', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#FF443B',
+                    opacity: '1',
+                    transform: 'scale(1)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('unfavorited <=> favorited', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('100ms ease-out'))
+            ])
+        ],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./heart-icon.component.scss */ "./src/app/components/heart-icon/heart-icon.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_favorites_service__WEBPACK_IMPORTED_MODULE_3__["FavoritesService"]])
+], HeartIconComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/not-going-icon/not-going-icon.component.scss":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/not-going-icon/not-going-icon.component.scss ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbm90LWdvaW5nLWljb24vbm90LWdvaW5nLWljb24uY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/components/not-going-icon/not-going-icon.component.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/not-going-icon/not-going-icon.component.ts ***!
+  \***********************************************************************/
+/*! exports provided: NotGoingIconComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotGoingIconComponent", function() { return NotGoingIconComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
+/* harmony import */ var _services_events_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/events.service */ "./src/app/services/events.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+let NotGoingIconComponent = class NotGoingIconComponent {
+    constructor(events, toast) {
+        this.events = events;
+        this.toast = toast;
+        this.notGoingState = 'not-going';
+        this.iconName = 'add-circle';
+    }
+    ngOnInit() { }
+    toggleNotGoingState(event) {
+        if (this.notGoingState === 'not-going') {
+            this.notGoingState = 'going';
+            this.iconName = 'close-circle-outline';
+            this.goingToast();
+            console.log(`Going to event, ${event.title}`);
+            this.events.goingToEvent(event._id, this.userEmail, this.id).subscribe();
+        }
+        else {
+            this.notGoingState = 'not-not-going';
+            this.iconName = 'add-circle-outline';
+            this.notGoingToast();
+            console.log('No longer going to Event');
+            this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();
+        }
+    }
+    goingToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toast.create({
+                message: 'You are going to this event.',
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    notGoingToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toast.create({
+                message: 'You are no longer going to this event.',
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+};
+NotGoingIconComponent.ctorParameters = () => [
+    { type: _services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], NotGoingIconComponent.prototype, "event", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], NotGoingIconComponent.prototype, "userEmail", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], NotGoingIconComponent.prototype, "id", void 0);
+NotGoingIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-not-going-icon',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./not-going-icon.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/not-going-icon/not-going-icon.component.html")).default,
+        animations: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('notGoing', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('not-going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#e4405f',
+                    opacity: '0.4',
+                    transition: '0.5s',
+                    transform: 'scale(0.9)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('not-not-going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                    color: '#21ce99',
+                    opacity: '1',
+                    transition: '0.5s',
+                    transform: 'scale(1)'
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('not-going <=> ot-not-going', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('100ms ease-out'))
+            ])
+        ],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./not-going-icon.component.scss */ "./src/app/components/not-going-icon/not-going-icon.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
+], NotGoingIconComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/shared.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/components/shared.module.ts ***!
+  \*********************************************/
+/*! exports provided: SharedModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SharedModule", function() { return SharedModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _heart_icon_heart_icon_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./heart-icon/heart-icon.component */ "./src/app/components/heart-icon/heart-icon.component.ts");
+/* harmony import */ var _going_icon_going_icon_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./going-icon/going-icon.component */ "./src/app/components/going-icon/going-icon.component.ts");
+/* harmony import */ var _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./not-going-icon/not-going-icon.component */ "./src/app/components/not-going-icon/not-going-icon.component.ts");
+/* harmony import */ var _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./follow-icon/follow-icon.component */ "./src/app/components/follow-icon/follow-icon.component.ts");
+
+
+
+
+
+
+
+
+let SharedModule = class SharedModule {
+};
+SharedModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot()
+        ],
+        declarations: [
+            _heart_icon_heart_icon_component__WEBPACK_IMPORTED_MODULE_4__["HeartIconComponent"],
+            _going_icon_going_icon_component__WEBPACK_IMPORTED_MODULE_5__["GoingIconComponent"],
+            _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__["NotGoingIconComponent"],
+            _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__["FollowIconComponent"]
+        ],
+        exports: [
+            _heart_icon_heart_icon_component__WEBPACK_IMPORTED_MODULE_4__["HeartIconComponent"],
+            _going_icon_going_icon_component__WEBPACK_IMPORTED_MODULE_5__["GoingIconComponent"],
+            _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__["NotGoingIconComponent"],
+            _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__["FollowIconComponent"]
+        ]
+    })
+], SharedModule);
 
 
 
@@ -1233,6 +1794,545 @@ AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/services/events.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/events.service.ts ***!
+  \********************************************/
+/*! exports provided: EventsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsService", function() { return EventsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+
+
+
+
+
+
+let EventsService = class EventsService {
+    constructor(http, profile) {
+        this.http = http;
+        this.profile = profile;
+        this.eventsGoing$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
+        this.BACKEND_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
+    }
+    getEvents() {
+        console.log('Getting Events');
+        return this.http.get(`${this.BACKEND_URL}/api/events`);
+    }
+    getEventsGoing(id) {
+        return this.http.post(`${this.BACKEND_URL}/api/events/events-going`, { _id: id });
+    }
+    goingToEvent(eventID, userEmail, id) {
+        console.log(this.profile);
+        return this.http.post(`${this.BACKEND_URL}/api/events/go-to-event`, { eventID, userEmail, id });
+    }
+    notGoingToEvent(eventID, userEmail, id) {
+        return this.http.post(`${this.BACKEND_URL}/api/events/dont-go-to-event`, {
+            userEmail,
+            eventID,
+            id
+        });
+    }
+};
+EventsService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
+];
+EventsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+], EventsService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/favorites.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/favorites.service.ts ***!
+  \***********************************************/
+/*! exports provided: FavoritesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoritesService", function() { return FavoritesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+let FavoritesService = class FavoritesService {
+    constructor(http, profile) {
+        this.http = http;
+        this.profile = profile;
+        this.BACKEND_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].url;
+        this.favoriteJobs$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
+    }
+    getFavorites(email) {
+        console.log('Getting Favorites');
+        return this.http.get(`${this.BACKEND_URL}/api/favorites`, email);
+    }
+    favoriteThisJob(job) {
+        // get user's email for database query
+        const email = this.profile.activeEmail;
+        // put this job's id into this user's favoriteJobs property
+        job.userEmail = email;
+        let id = job._id;
+        this.favoriteJobs$.next(job._id);
+        return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, job).subscribe(data => {
+            console.log('Posting Favorite Job to Database..');
+            console.log(data['favoriteJobs']);
+        });
+    }
+    unFavoriteThisJob(job) {
+        // get user's email for database query
+        const email = this.profile.activeEmail;
+        job.userEmail = email;
+        // post to database
+        this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, job)
+            .subscribe(data => {
+            console.log(data['favoriteJobs']);
+            this.favoriteJobs$.next(data['favoriteJobs']);
+        });
+        // update favoriteJobsSubject
+        console.log('Unfavoriting this Job');
+    }
+};
+FavoritesService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"] }
+];
+FavoritesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"]])
+], FavoritesService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/post.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/post.service.ts ***!
+  \******************************************/
+/*! exports provided: PostsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsService", function() { return PostsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
+
+
+
+let PostsService = class PostsService {
+    constructor(http) {
+        this.http = http;
+        this.BACKEND_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
+        this.commentsSubject$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
+        this.followersSubject$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
+    }
+    getPosts() {
+        console.log('Getting Posts');
+        return this.http.get(`${this.BACKEND_URL}/api/posts/`);
+    }
+    getPostInfo(id) {
+        console.log(`Getting information for post id ${id}`);
+        return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, { _id: id });
+    }
+    comment(postID, date, userFullName, userEmail, { comment: comment }) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment }).subscribe();
+    }
+    followPost(postID, userEmail) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/follow`, {
+            _id: postID,
+            email: userEmail
+        }).subscribe();
+        console.log('Follow Post');
+    }
+    unFollowPost(postID, userEmail) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/unfollow`, {
+            _id: postID,
+            email: userEmail
+        }).subscribe();
+        console.log('Un Follow Post');
+    }
+    getFollowedPost(userId) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/get-followed-posts`, {
+            _id: userId
+        });
+    }
+};
+PostsService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], PostsService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/profile.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/profile.service.ts ***!
+  \*********************************************/
+/*! exports provided: ProfileService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileService", function() { return ProfileService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+let ProfileService = class ProfileService {
+    constructor(http, storage, alertController, helper, auth, router, toastController) {
+        this.http = http;
+        this.storage = storage;
+        this.alertController = alertController;
+        this.helper = helper;
+        this.auth = auth;
+        this.router = router;
+        this.toastController = toastController;
+        this.BACKEND_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].url;
+        this.activeEmail = '';
+        this.user = {};
+        this.fullName = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.addressOne = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.addressTwo = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.phone = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.city = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.state = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.zip = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.gender = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.dob = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.school = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.grade = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.profilePicture = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.resume = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        this.email = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"]('');
+        // Needs the User's email address from the JSON Web Token stored on device.
+        this.activeEmail = this.auth.user.email;
+    }
+    //  Gets User Details from Server to populate the Profile tab with User information.
+    getUserDetails() {
+        return this.http.post(`${this.BACKEND_URL}/api/home/user`, { email: this.activeEmail });
+    }
+    changeEmail(activeEmail, newEmail, password) {
+        // tslint:disable-next-line: max-line-length
+        return this.http.post(`${this.BACKEND_URL}/api/home/user/change-email`, {
+            oldEmail: this.activeEmail,
+            email: newEmail,
+            password: password
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["catchError"])(e => {
+            this.presentFailToast(this.activeEmail);
+            throw new Error(e);
+        }))
+            .subscribe(data => {
+            if (data === true) {
+                this.email.next(newEmail);
+                this.activeEmail = newEmail;
+                this.router.navigate(['/home/profile']);
+                this.presentSuccessToast();
+            }
+            else {
+                this.presentFailToast(this.activeEmail);
+                return console.log('Passwords dont match');
+            }
+        });
+    }
+    // Toast for Successful Change
+    presentSuccessToast() {
+        const successToast = this.toastController.create({
+            message: `You have changed your email address to ${this.activeEmail}.`,
+            duration: 3000,
+            cssClass: 'success-toast',
+            keyboardClose: true,
+            position: 'top',
+        });
+        successToast.then(t => t.present());
+    }
+    presentFailToast(email) {
+        // Toast for Successful Change
+        const failToast = this.toastController.create({
+            // tslint:disable-next-line: max-line-length
+            message: `Password and Email combination do not work. Make sure that your password is correct, and that your new email is different from your current email address of ${email}`,
+            duration: 9000,
+            cssClass: 'wrong-password-toast',
+            keyboardClose: true,
+            position: 'top'
+        });
+        failToast.then(t => t.present());
+    }
+    changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
+                oldPassword,
+                email: activeEmail,
+                newPassword,
+                reTypeNewPassword
+            })
+                .subscribe(data => {
+                // if the passwords match, navigate back to landing page
+                if (data === true) {
+                    console.log('TRUE');
+                    this.router.navigate(['']);
+                    let toast = this.toastController.create({
+                        message: 'Please login with your new Password',
+                        duration: 3000
+                    });
+                    toast.then(t => t.present());
+                }
+                else {
+                    console.log('Passwords dont match!');
+                }
+            });
+        });
+    }
+    changePhone(email, newNumber, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-phone`, {
+                newNumber,
+                password,
+                email
+            })
+                .subscribe(data => {
+                if (data === true) {
+                    console.log('Changing phone number...');
+                    this.phone.next(newNumber);
+                    this.router.navigate(['/home/profile']);
+                    const successToast = this.toastController.create({
+                        message: `Phone Number changed to ${newNumber}`,
+                        duration: 3000,
+                        cssClass: 'success-toast',
+                        keyboardClose: true,
+                        position: 'top'
+                    });
+                    successToast.then(t => t.present());
+                }
+                else {
+                    console.log('Passwords dont match!');
+                    const failToast = this.toastController.create({
+                        message: 'Password was incorrect',
+                        duration: 3000,
+                        cssClass: 'wrong-password-toast',
+                        keyboardClose: true,
+                        position: 'top'
+                    });
+                    failToast.then(t => t.present());
+                }
+            });
+        });
+    }
+    changeAddress(email, addressOne, addressTwo, city, state, zip, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-address`, {
+                email,
+                addressOne,
+                addressTwo,
+                city,
+                state,
+                zip,
+                password
+            })
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["tap"])(res => {
+                if (!res) {
+                    console.log('There was no response. There might be a bad password');
+                }
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["catchError"])(e => {
+                throw new Error(e);
+            }))
+                .subscribe(data => {
+                if (data === true) {
+                    this.addressOne.next(addressOne);
+                    this.addressTwo.next(addressTwo);
+                    this.city.next(city);
+                    this.state.next(state);
+                    this.zip.next(zip);
+                    this.router.navigate(['/home/profile']);
+                    let successToast = this.toastController.create({
+                        // tslint:disable-next-line: max-line-length
+                        message: `You have changed your address to ${addressOne} ${addressTwo} ,${city}, ${state}, ${zip}.`,
+                        duration: 3000,
+                        cssClass: 'success-toast',
+                        keyboardClose: true,
+                        position: 'top'
+                    });
+                    successToast.then(t => t.present());
+                }
+                else {
+                    let failToast = this.toastController.create({
+                        // tslint:disable-next-line: max-line-length
+                        message: 'Please make sure your password is correct',
+                        duration: 3000,
+                        cssClass: 'wrong-password-toast',
+                        keyboardClose: true,
+                        position: 'top',
+                    });
+                    failToast.then(t => t.present());
+                    return console.log('Passwords dont match');
+                }
+            });
+        });
+    }
+    changeSchool(email, newSchool, newGrade, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
+                email,
+                newSchool,
+                newGrade,
+                password
+            }).subscribe(data => {
+                if (data === true) {
+                    this.school.next(newSchool);
+                    this.grade.next(newGrade);
+                    this.router.navigate(['/home/profile']);
+                    let successToast = this.toastController.create({
+                        // tslint:disable-next-line: max-line-length
+                        message: `Your school and grade has been updated to ${newGrade}, ${newSchool}`,
+                        duration: 5000,
+                        cssClass: 'success-toast',
+                        keyboardClose: true,
+                        position: 'top'
+                    });
+                    successToast.then(t => t.present());
+                }
+                else {
+                    let failToast = this.toastController.create({
+                        // tslint:disable-next-line: max-line-length
+                        message: 'Please make sure your password is correct',
+                        duration: 3000,
+                        cssClass: 'wrong-password-toast',
+                        keyboardClose: true,
+                        position: 'top',
+                    });
+                    failToast.then(t => t.present());
+                    return console.log('Passwords dont match');
+                }
+            });
+        });
+    }
+    changeProfilePicture(email, newPicture, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
+                email,
+                newPicture,
+                password
+            }).subscribe(data => {
+                if (data === true) {
+                    console.log('Changing Resume...');
+                    this.profilePicture.next(newPicture);
+                    this.router.navigate([`/home/user/change-school/:school/:grade/confirm`]);
+                }
+                else {
+                    return console.log('Passwords dont match');
+                }
+            });
+        });
+    }
+    changeResume(email, newResume, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
+                email,
+                newResume,
+                password
+            }).subscribe(data => {
+                if (data === true) {
+                    console.log('Changing Resume...');
+                    this.resume.next(newResume);
+                    this.router.navigate(['/home/user/change-school/:school/:grade/confirm']);
+                }
+                else {
+                    return console.log('Passwords dont match');
+                }
+            });
+        });
+    }
+    // Delete User
+    delete() {
+        console.log('Deleted User');
+    }
+};
+ProfileService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
+    { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"] },
+    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"] }
+];
+ProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"],
+        _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"],
+        _services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]])
+], ProfileService);
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -1251,7 +2351,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 // const url is commented out depending on which you are testing with.
-//local host is for local machine and 10.0.1.8 is for android testing
+// local host is for local machine and 10.0.1.8 is for android testing
 
 const ip = '10.0.1.16';
 const baseUrl = `http://${ip}:3000`;
@@ -1306,7 +2406,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\agood\Software Dev Projects\JOURNi\United Way\Mobile\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/ferro/Desktop/United-Way/Mobile/src/main.ts */"./src/main.ts");
 
 
 /***/ })

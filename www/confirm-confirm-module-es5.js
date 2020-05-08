@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-grid class=\"ion-text-center\" style=\"margin-top: 10%;\">\r\n      <ion-row>\r\n        <ion-col size-lg=\"6\" offset-lg=\"3\">\r\n          <ion-icon class=\"check-icon\" src=\"../../../assets/icon/green-check.svg\" ></ion-icon>\r\n          <h6 class=\"text-header\">Your password has been changed. Please log in with your new password</h6>\r\n          <ion-button (click)=\"goToLogin()\" class=\"orange-button\" >LOGIN</ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n</ion-content>\r\n\r\n";
+    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\n</ion-header>\n\n<ion-content>\n    <ion-grid class=\"ion-text-center\" style=\"margin-top: 10%;\">\n      <ion-row>\n        <ion-col size-lg=\"6\" offset-lg=\"3\">\n          <ion-icon class=\"check-icon\" src=\"../../../assets/icon/green-check.svg\" ></ion-icon>\n          <h6 class=\"text-header\">Your password has been changed. Please log in with your new password</h6>\n          <ion-button (click)=\"goToLogin()\" class=\"orange-button\" >LOGIN</ion-button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n</ion-content>\n\n";
     /***/
   },
 
@@ -35,7 +35,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed>\r\n    <ion-row style=\"margin-top: 150px;\">\r\n      <ion-col size=\"11\" offset=\"0.5\">\r\n        <p>some sort of animated icon</p>\r\n      </ion-col>\r\n      <ion-col size=\"11\" offset=\"0.5\">\r\n        <p>An email has been sent to the mentor with your message. They will contact you in their earliest convenience.</p>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\n</ion-header>\n\n<ion-content>\n  <ion-grid fixed>\n    <ion-row style=\"margin-top: 150px;\">\n      <ion-col size=\"11\" offset=\"0.5\">\n        <p>some sort of animated icon</p>\n      </ion-col>\n      <ion-col size=\"11\" offset=\"0.5\">\n        <p>An email has been sent to the mentor with your message. They will contact you in their earliest convenience.</p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n";
     /***/
   },
 
@@ -55,7 +55,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm address change</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-button (click)=\"backToProfile()\">\r\n    BACK TO PROFILE\r\n  </ion-button>\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm address change</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-button (click)=\"backToProfile()\">\n    BACK TO PROFILE\n  </ion-button>\n</ion-content>\n";
     /***/
   },
 
@@ -75,7 +75,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <h5>You email has been changed.</h5>\r\n</ion-content>\r\n<button (click)=\"backToProfilePage()\" id=\"next-button\">BACK TO PROFILE</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <h5>You email has been changed.</h5>\n</ion-content>\n<button (click)=\"backToProfilePage()\" id=\"next-button\">BACK TO PROFILE</button>\n";
     /***/
   },
 
@@ -95,7 +95,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <p>Your profile's pass been has been changed./p>\r\n</ion-content>\r\n<button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p>Your profile's pass been has been changed./p>\n</ion-content>\n<button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\n";
     /***/
   },
 
@@ -115,7 +115,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <p>Your password has been changed. The next time you log in, you will need to use your new password</p>\r\n  </ion-content>\r\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\r\n  \r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <p>Your password has been changed. The next time you log in, you will need to use your new password</p>\n  </ion-content>\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\n  \n";
     /***/
   },
 
@@ -135,7 +135,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <p>Your profile's picture has been changed.</p>\r\n  </ion-content>\r\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <p>Your profile's picture has been changed.</p>\n  </ion-content>\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\n";
     /***/
   },
 
@@ -155,7 +155,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <p>Your profile's picture has been changed.</p>\r\n  </ion-content>\r\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <p>Your profile's picture has been changed.</p>\n  </ion-content>\n  <button (click)=\"backToProfile()\" id=\"next-button\">BACK TO PROFILE</button>";
     /***/
   },
 
@@ -175,7 +175,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>confirm</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <p>Your Resume has been uploaded.</p>\r\n</ion-content>\r\n<button (click)=\"goBackToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>confirm</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p>Your Resume has been uploaded.</p>\n</ion-content>\n<button (click)=\"goBackToProfile()\" id=\"next-button\">BACK TO PROFILE</button>\n";
     /***/
   },
 
@@ -322,7 +322,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".check-icon {\n  width: 80px;\n  height: 80px;\n  margin-top: 30px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 0;\n  -webkit-animation: slide-up 0.5s ease 0.5s forwards;\n          animation: slide-up 0.5s ease 0.5s forwards;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheVxcTW9iaWxlL3NyY1xcYXBwXFxwYWdlc1xcYXV0aFxcZm9yZ290LXBhc3N3b3JkXFxjb25maXJtXFxjb25maXJtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsVUFBQTtFQUNBLG1EQUFBO1VBQUEsMkNBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2F1dGgvZm9yZ290LXBhc3N3b3JkL2NvbmZpcm0vY29uZmlybS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2hlY2staWNvbiB7XHJcbiAgd2lkdGg6IDgwcHg7XHJcbiAgaGVpZ2h0OiA4MHB4O1xyXG4gIG1hcmdpbi10b3A6IDMwcHg7XHJcbiAgdHJhbnNpdGlvbjogMC41cztcclxuICBvcGFjaXR5OiAwO1xyXG4gIGFuaW1hdGlvbjogc2xpZGUtdXAgMC41cyBlYXNlIDAuNXMgZm9yd2FyZHM7XHJcbn0iLCIuY2hlY2staWNvbiB7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG4gIG1hcmdpbi10b3A6IDMwcHg7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIG9wYWNpdHk6IDA7XG4gIGFuaW1hdGlvbjogc2xpZGUtdXAgMC41cyBlYXNlIDAuNXMgZm9yd2FyZHM7XG59Il19 */";
+    __webpack_exports__["default"] = ".check-icon {\n  width: 80px;\n  height: 80px;\n  margin-top: 30px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 0;\n  -webkit-animation: slide-up 0.5s ease 0.5s forwards;\n          animation: slide-up 0.5s ease 0.5s forwards;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsVUFBQTtFQUNBLG1EQUFBO1VBQUEsMkNBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2F1dGgvZm9yZ290LXBhc3N3b3JkL2NvbmZpcm0vY29uZmlybS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2hlY2staWNvbiB7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG4gIG1hcmdpbi10b3A6IDMwcHg7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIG9wYWNpdHk6IDA7XG4gIGFuaW1hdGlvbjogc2xpZGUtdXAgMC41cyBlYXNlIDAuNXMgZm9yd2FyZHM7XG59IiwiLmNoZWNrLWljb24ge1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xuICBtYXJnaW4tdG9wOiAzMHB4O1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLXVwIDAuNXMgZWFzZSAwLjVzIGZvcndhcmRzO1xufSJdfQ== */";
     /***/
   },
 

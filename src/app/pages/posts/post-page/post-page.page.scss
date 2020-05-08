@@ -1,16 +1,125 @@
-ion-item {
-  height: auto;
-  margin: 20px 0 20px 0;
-  --background: none;
-  --border-radius: 5px;
-  --border-color: white;
+.post {
+  transform: scale(1);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 90px;
+  background: white;
+  box-shadow: none;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: rgba(255, 179, 81, 0.2);
+  border-style: solid;
+}
+
+.post:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 120px;
+  background: white;
+  box-shadow: 1px 1px 3px #999;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: rgba(255, 179, 81, 0.7);
+  border-style: solid;
+}
+
+.profile-picture {
+  border-radius: 100px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  left: 10px;
+  top: 4px;
+}
+
+.post-content{
+  // color: #222;
+  // font-weight: 500;
+}
+
+.back-button {
+  --color: white;
+  --background: linear-gradient(#0672c4, #005191);
+  font-weight: 800;
+  display: block;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.follow-button {
+  --color: white;
+  --background: linear-gradient(#24d8a8, #1baf88);
+  font-weight: 800;
+  display: block;
+  width: 100px;
+  margin-top: 20px;
+}
+
+// Change color
+.unfollow-button {
+  --color: white;
+  --background: linear-gradient(red, orange);
+  font-weight: 800;
+  display: block;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.upvote{
+  border-radius: 5px;
+  width: 60px;
+  padding-left: 10px;
+  --color: #005191;
+
+  ion-icon {
+    color: #005191;
+    font-size: 30px;
+  }
+}
+.downvote {
+  border-radius: 5px;
+  width: 60px;
+  padding-left: 10px;
+  --color: #005191;
+
+  ion-icon {
+    color: #005191;
+    --font-size: 30px;
+  }
+}
+.reply{
+  width: 60px;
+  --border-width: 1px;
+  --border-color: #005191;
   --border-style: solid;
-  --border-width: 1.5px;
-  --inner-padding-start: 10px;
+  border-radius: 5px;
+  --color: #005191;
+  font-size: 0.6em;
+  margin-right: 25px;
+}
+.report{
+  --border-width: 1px;
+  width: 60px;
+  --border-color: #888;
+  --border-style: solid;
+  border-radius: 5px;
+  --color: #888;
+  font-size: 0.6em;
+  margin-right: 50px;
+}
+
+ion-toolbar {
+  --background: none;
+}
+
+ion-item {
+  --background: none;
 }
 
 ion-fab {
   opacity: 0;
+  padding-right: 2%;
   animation: fab-slide-up 0.5s ease-out forwards;
 
   ion-fab-button {
@@ -35,13 +144,6 @@ ion-fab {
   }
 }
 
-ion-icon {
-  color: white;
-  transition: 0.5s;
-  opacity: 0;
-  animation: send-icon-slide-in 0.25s ease-in forwards;
-}
-
 .post-header {
   background: rgba(244, 244, 244, 0.8);
   padding: 10px 0 10px 0;
@@ -60,7 +162,8 @@ ion-icon {
 }
 
 .comment-text {
-  color: #777;
+  color: #222;
+  // font-weight: 500;
 }
 
 .comment-avatar {
@@ -69,34 +172,57 @@ ion-icon {
 }
 
 .comment {
+  background: white;
   height: auto;
-  margin-bottom: 20px;
-  padding-top: 20px;
-  border-top: 2px solid rgba(244, 244, 244, 0.8);
-
-    ion-item {
-      padding: 0px;
-    }
-
-    ion-toolbar {
-      --background: rgba(244, 244, 244, 0.5);
-      --border-radius: 5px;
-    }
-
-    ion-button {
-      ion-icon {
-        --color: blue;
-      }
-    }
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  // border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transform: scale(1);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-// ion-input {
-//   --background:  none;
-//   --color: white;
-// }
+.comment:hover {
+  background: white;
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transform: scale(1.1);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input:hover {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 50px 0 80px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 form {
-  width: 100%;
+  width: 98%;
 }
 
 @keyframes send-icon-slide-in {

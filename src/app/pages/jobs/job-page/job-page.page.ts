@@ -3,6 +3,8 @@ import { Observable} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
+import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.component';
+
 
 
 @Component({
@@ -26,25 +28,6 @@ export class JobPagePage implements OnInit {
     private router: Router,
     private toastController: ToastController
   ) { }
-
-  applyForJob() {
-    // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
-  }
-
-  favoriteThisJob() {
-    console.log('Favoriting this Job');
-    // Check for error before we present the toast
-    this.presentToast();
-  }
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'This job has been favorited.',
-      duration: 2000
-    });
-    toast.present();
-  }
   ngOnInit() {
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
@@ -69,6 +52,29 @@ export class JobPagePage implements OnInit {
     this.jobSummary = summary;
     this.jobFullJobDescription = fullJobDescription;
     this.jobRateOfPay = rateOfPay;
+  }
+
+  applyForJob() {
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
+  }
+
+  favoriteThisJob() {
+    console.log('Favoriting this Job');
+    // Check for error before we present the toast
+    this.presentToast();
+  }
+
+  goBack() {
+    this.router.navigate(['/home/jobs']);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'This job has been favorited.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 

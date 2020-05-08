@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>view-resume</ion-title>\r\n    <ion-button (click)=\"goBack()\" id=\"cancel-button\" slot=\"end\">\r\n        back\r\n    </ion-button>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <p>This is your resume</p>\r\n</ion-content>\r\n<button (click)=\"updateResume()\" id=\"next-button\">UPDATE RESUME</button>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>view-resume</ion-title>\n    <ion-button (click)=\"goBack()\" id=\"cancel-button\" slot=\"end\">\n        back\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p>This is your resume</p>\n</ion-content>\n<button (click)=\"updateResume()\" id=\"next-button\">UPDATE RESUME</button>\n";
     /***/
   },
 

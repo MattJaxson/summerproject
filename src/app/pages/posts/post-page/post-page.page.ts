@@ -3,9 +3,9 @@ import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, IonContent, IonFab } from '@ionic/angular';
+import { ToastController, AlertController, ModalController, IonContent, IonFab } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
-
+import { ReportModalPage} from './post-page-modals/report-modal/report-modal.page';
 
 
 @Component({
@@ -22,6 +22,7 @@ export class PostPagePage implements OnInit {
   userEmail;
   userFullName;
   showFab = false;
+  following = false;
 
   postID;
   creatorName;
@@ -40,7 +41,9 @@ export class PostPagePage implements OnInit {
     private posts: PostsService,
     private profile: ProfileService,
     private formBuilder: FormBuilder,
-    private toast: ToastController) { }
+    private toast: ToastController,
+    private modal: ModalController
+    ) { }
 
   ngOnInit() {
 
@@ -79,6 +82,7 @@ export class PostPagePage implements OnInit {
         console.log(post);
         // tslint:disable-next-line: no-string-literal
         this.creatorName = post['creatorName'];
+        this.post = post['post'];
         this.date = formatDistanceToNow(
           new Date(post['date']), {
             includeSeconds: true,
@@ -107,6 +111,20 @@ export class PostPagePage implements OnInit {
       this.comments = commentsFromSub;
     });
 
+  }
+
+  back() {
+    this.router.navigate(['/home/posts']);
+  }
+
+  async follow() {
+    this.following = true;
+    console.log('Following Post');
+  }
+
+  async unFollow() {
+    this.following = false;
+    console.log('Following Post');
   }
 
   logScrolling(event) {
@@ -164,9 +182,100 @@ export class PostPagePage implements OnInit {
     toast.then(toast => toast.present());
   }
 
-  async report(comment) {
-    console.log('Attemtping to Report Comment');
+  async upVotePost() {
+    await console.log('Upvoting Post');
+    await this.upVotePostToast();
   }
+
+  async upVotePostToast() {
+    const upVotePostToast = await this.toast.create({
+      cssClass: 'upvoted-toast',
+      message: 'You have UPVOTED this post.',
+      duration: 2000
+    });
+    upVotePostToast.present();
+  }
+
+  async downVotePost() {
+    await console.log('Downvoting');
+    await this.downVotePostToast();
+  }
+
+  async downVotePostToast() {
+    const downVotePostToast = await this.toast.create({
+      cssClass: 'downvoted-toast',
+      message: 'You have DOWNVOTED this post.',
+      duration: 2000
+    });
+    downVotePostToast.present();
+  }
+
+  async upVoteComment() {
+    await console.log('Upvoting Comment');
+    await this.upVoteCommentToast();
+  }
+
+  async upVoteCommentToast() {
+    const upVoteCommentToast = await this.toast.create({
+      cssClass: 'upvoted-toast',
+      message: 'You have UPVOTED this comment.',
+      duration: 2000
+    });
+    upVoteCommentToast.present();
+  }
+
+  async downVoteComment() {
+    await console.log('Downvoting Comment');
+    await this.downVoteCommentToast();
+  }
+
+  async downVoteCommentToast() {
+    const upVoteCommentToast = await this.toast.create({
+      cssClass: 'downvoted-toast',
+      message: 'You have DOWNVOTED this comment.',
+      duration: 2000
+    });
+    upVoteCommentToast.present();
+  }
+
+
+  async report(commentID) {
+    await console.log(commentID);
+    await console.log('Attemping to report comment');
+    await this.reportModal();
+  }
+
+  async reportModal() {
+    const reportAlertConfig = await this.modal.create({
+    component: ReportModalPage,
+    componentProps: {
+      reportedName: 'Tracy Liu',
+      reportedComment: 'This is a reported Comment',
+      commentDate: 'December 10th, 2019'
+    }
+    });
+
+    await reportAlertConfig.present();
+  }
+
+  // async reply(commentID) {
+  //   await console.log(commentID);
+  //   await console.log('Attemping to reply to comment');
+  //   await this.replyModal();
+  // }
+
+  // async replyModal() {
+  //   const replayAlertConfig = await this.modal.create({
+  //   component: ReplyModalPage,
+  //   componentProps: {
+  //     'firstName': 'Douglas',
+  //     'lastName': 'Adams',
+  //     'middleInitial': 'N'
+  //   }
+  //   });
+
+  //   await replayAlertConfig.present();
+  // }
 
   async doRefresh(event) {
     this.posts.getPostInfo(this.postID).subscribe(

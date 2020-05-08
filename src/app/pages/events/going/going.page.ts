@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { EventsService } from '../../../services/events.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { format, formatDistanceToNow } from 'date-fns';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-going',
@@ -11,7 +11,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./going.page.scss'],
 })
 export class GoingPage implements OnInit {
-  goingToEvents;
+  goingToEvents = [];
   userEmail;
   id;
 
@@ -19,9 +19,14 @@ export class GoingPage implements OnInit {
     private router: Router,
     private events: EventsService,
     private profile: ProfileService,
-    private toast: ToastController) { }
+    private toast: ToastController,
+    private alert: AlertController
+    ) { }
 
   ngOnInit() {
+
+    console.log('going to events: ');
+    console.log(this.goingToEvents.length);
 
     // Get the User's details
     this.profile.getUserDetails().subscribe(
@@ -63,7 +68,8 @@ export class GoingPage implements OnInit {
   }
 
   cancel(eventID) {
-    this.presentNotGoingToast();
+    this.presentAlertMultipleButtons(eventID);
+    console.log(eventID);
     console.log(`Removing ${eventID} from this Users eventsGoing property`);;
     this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(
       events => {
@@ -75,6 +81,7 @@ export class GoingPage implements OnInit {
           }
         }
         console.log(eventsGoing);
+        this.presentNotGoingToast();
 
         this.events.eventsGoing$.next(eventsGoing);
       }
@@ -87,6 +94,30 @@ export class GoingPage implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+
+  async presentAlertMultipleButtons(eventID) {
+    const alert = await this.alert.create({
+      header: 'Are you sure you want to delete this from My Events?',
+      buttons: [{
+        text: 'Yes',
+        handler: () => {
+          this.cancel(eventID);
+          return true;
+        }
+      },
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('confirm cancel');
+        }
+      }]
+    });
+
+    await alert.present();
+
   }
 
 }

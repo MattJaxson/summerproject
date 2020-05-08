@@ -1,3 +1,4 @@
+// Angular Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,6 +8,10 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// Custom Modules
+import { SharedModule } from './components/shared.module';
+import { PostPageModalsModule } from './pages/posts/post-page/post-page-modals/post-page-modals.module';
 
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -40,6 +45,8 @@ export function jwtOptionsFactory(storage) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    SharedModule,
+    PostPageModalsModule,
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),

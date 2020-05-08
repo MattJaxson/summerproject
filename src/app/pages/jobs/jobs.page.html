@@ -1,37 +1,28 @@
+<!-- Mobile Toolbar -->
 <ion-header>
-
-  <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
-  <ion-grid>
+    <ion-grid>
+      <!-- Searchbar & Favorites Icon -->
+      <ion-row>
+        <ion-col offset-xs="0" offset-sm="1" offset-md="1" size-xs="9" size-sm="8" size-md="8">
+          <ion-searchbar
+          class="searchbar"
+          debounce="2000"
+          showCancelButton="true"
+          placeholder="Search Jobs"
+          (ionChange)="filter($event)"
+          ></ion-searchbar>
+        </ion-col>
 
-    <ion-row>
-      <ion-col size="3">
-        <img id="logo" src="../../assets/fyf-logo-1.svg" />
-      </ion-col>
-      <ion-col class="ion-float-right" push="1" size="8">
-        <ion-searchbar
-        class="searchbar"
-        debounce="2000"
-        showCancelButton="true"
-        placeholder="Search Jobs"
-        (ionChange)="filter($event)"
-        ></ion-searchbar>
-      </ion-col>
-    </ion-row>
 
-    <ion-row>
-      <ion-col push="8" size="2">
+      <ion-col offset-xs="0" offset-sm="1" offset-md="1" size-xs="1" size-sm="1" size-md="1">
         <ion-button (click)="favoritesPage()">
             <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
           {{favoriteJobsAmount}}</ion-button>
       </ion-col>
-      <ion-col push="8" size="2">
-        <ion-button (click)="onClick()">
-          <ion-icon style="margin-left: 20px;" src="../../../assets/icon/filter-outline.svg"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
+      </ion-row>
   </ion-grid>
+
   </ion-toolbar>
 </ion-header>
 
@@ -45,8 +36,8 @@
   <ion-grid>
 
     <!-- Desktop Searchbar / Toolbar -->
-    <ion-row class="ion-justify-content-center ion-hide-md-down" style="margin-top: 50px;">
-      <ion-col size="8">
+    <ion-row class="ion-hide-md-down" style="margin-top: 50px;">
+      <ion-col offset="2" size="6">
         <ion-searchbar
         class="searchbar"
         showCancelButton="true"
@@ -55,16 +46,11 @@
         (ionChange)="filter($event)"
         ></ion-searchbar>
 
-
-        <ion-button style="float: right; position: relative; top: -40px;" (click)="favoritesPage()">
+      </ion-col>
+      <ion-col size="2">
+        <ion-button class="ion-float-right" (click)="favoritesPage()">
           <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
         {{favoriteJobsAmount}}</ion-button>
-
-        <ion-button style="float: right; position: relative; top: -40px;">
-          filter by: title
-          <ion-icon style="margin-left: 20px;" src="../../../assets/icon/filter-outline.svg"></ion-icon>
-        </ion-button>
-
       </ion-col>
     </ion-row>
 
@@ -78,9 +64,9 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="!noSearchInput" class="ion-justify-content-center">
+    <ion-row *ngIf="!noSearchInput">
 
-      <ion-col size-lg="8" size-md="8" size-sm="10" size-xs="12">
+      <ion-col offset-lg="2" offset-md="1" offset-sm="1" offset-xs="0" size-lg="6" size-md="8" size-sm="10" size-xs="12">
 
           <ion-list inset="true" lines="none" style="background: #f4f5f8;">
 
@@ -88,38 +74,54 @@
                 <ion-row class="job-section" (click)="jobPage(job)">
 
                   <!-- First Row w/ Job Tile, Date posted, and Logo -->
-                  <ion-col size="2">
-                    <div style="height: 40px; width: 40px; background: lightblue;"></div>
-                  </ion-col>
-                  <ion-col size="7">
-                    <h5 style="font-weight: 900;">{{job.title}}</h5>
-                  </ion-col>
-                  <ion-col size="3">
-                    <h5 style="font-size: 10px; opacity: 0.7;">Posted: {{job.dateCreated}}</h5>
-                  </ion-col>
-
-                  <!-- Second Row w/ Company Name -->
-                  <ion-col style="position: relative; top: -20px" size="2">
-                  </ion-col>
-                  <ion-col style="position: relative; top: -20px" size="7">
-                    {{job.companyName}}
-                  </ion-col>
-                  <ion-col style="position: relative; top: -20px" size="3">
+                  <ion-col size="12">
+                    <ion-row>
+                      <ion-col size="2">
+                        <div style="height: 40px; width: 40px; background: lightblue;"></div>
+                      </ion-col>
+                      <ion-col size="6">
+                        <h5 style="font-weight: 900;">{{job.title}}</h5>
+                      </ion-col>
+                      <ion-col size="3">
+                        <h5 style="font-size: 10px; opacity: 0.7;">Posted: {{job.dateCreated}}</h5>
+                      </ion-col>
+                    </ion-row>
                   </ion-col>
 
-                  <!-- Third Row w/ Job Summary -->
-                  <ion-col style="position: relative; top: -30px" size="2">
+                  <ion-col size="12">
+                    <ion-row>
+                      <!-- Second Row w/ Company Name -->
+                      <ion-col style="position: relative; top: -20px" size="2">
+                      </ion-col>
+                      <ion-col style="position: relative; top: -20px" size="7">
+                        {{job.companyName}}
+                      </ion-col>
+                      <ion-col style="position: relative; top: -20px" size="3">
+                      </ion-col>
+                    </ion-row>
                   </ion-col>
-                  <ion-col style="position: relative; top: -30px" size="7">
-                    {{job.summary}}
-                  </ion-col>
-                  <ion-col style="position: relative; top: -30px" size="3">
+
+                  <ion-col size="12">
+                    <ion-row>
+                      <!-- Third Row w/ Job Summary -->
+                      <ion-col style="position: relative; top: -30px" size="2">
+                      </ion-col>
+                      <ion-col style="position: relative; top: -30px" size="7">
+                        {{job.summary}}
+                      </ion-col>
+                      <ion-col style="position: relative; top: -30px" size="3">
+                      </ion-col>
+                    </ion-row>
                   </ion-col>
 
                   <!-- Fourth Row w/ Favorite Button -->
-                  <ion-col size="12" style="height: 45px; margin-bottom: 20px;">
-                      <!-- Heart Icon Component holds the state for Favorites -->
-                      <app-heart-icon [job]="job"></app-heart-icon>
+                  <ion-col size="12">
+                    <ion-row>
+                      <ion-col size="12" style="height: 45px; margin-bottom: 20px;">
+                          <!-- Heart Icon Component holds the state for Favorites -->
+                          <app-heart-icon [job]="job"></app-heart-icon>
+                      </ion-col>
+                    </ion-row>
                   </ion-col>
                 </ion-row>
 

@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home/events',
+    redirectTo: '/home/posts',
     pathMatch: 'full'
   },
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/jobs/jobs.module').then(m => m.HomePageModule)
+              import('../pages/jobs/jobs.module').then(m => m.JobsPageModule)
           }
         ]
       },
