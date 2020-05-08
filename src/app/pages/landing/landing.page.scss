@@ -3,8 +3,8 @@ ion-grid {
 }
 
 ion-toolbar {
-    --background: #fff;
     height: 100%;
+    --background: #fff;
     --padding-start: 15px;
     --padding-end: 15px;
     --padding-top: 15px;
@@ -27,10 +27,18 @@ ion-slides {
     height: 75vh;
     min-height: 400px;
     background-color: #bbb; // placeholder background
-    --bullet-background: #ffffffaa;
-    --bullet-background-active: #fff;
-    --scroll-bar-background: #3880ff;
-    --scroll-bar-background-active: #3880ff;
+}
+
+ion-slide {
+    display: block;
+    padding-top: 25vh;
+
+    h1 {
+        color: white;
+        font-size: 3em;
+        font-weight: bolder;
+        text-shadow: 3px 2px 8px #000;
+    }
 }
 
 .detail-section {
@@ -38,7 +46,17 @@ ion-slides {
     min-height: 300px;
 }
 
+#who-is {
+    background-color: #ffb35166;
+
+    ion-col {
+        font-size: 1.2em;
+    }
+}
+
 ion-col {
+    padding-left: 8px;
+    padding-right: 8px;
     text-align: center;
 }
 
@@ -65,8 +83,4 @@ ion-footer ion-button {
 .floating-dot {
     position: relative;
     top: 0.3em;
-}
-
-@media screen and (max-width: 391px) {
-    .floating-dot:nth-child(4) { display:none; }
 }
