@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Resume</ion-title>\r\n    <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\r\n        cancel\r\n    </ion-button>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content  class=\"ion-text-center\">\r\n  <h6 class=\"text-header\">Here, you can view your resume, or upload another one to your profile</h6>\r\n  <ion-button (click)=\"updateResume()\" class=\"orange-button\">UPDATE RESUME</ion-button>\r\n  <ion-button (click)=\"viewResume()\" style=\"--background: white; border: 1px solid #005191; border-radius: 5px;\" class=\"orange-button\">VIEW RESUME</ion-button>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Resume</ion-title>\n    <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  class=\"ion-text-center\">\n  <h6 class=\"text-header\">Here, you can view your resume, or upload another one to your profile</h6>\n  <ion-button (click)=\"updateResume()\" class=\"orange-button\">UPDATE RESUME</ion-button>\n  <ion-button (click)=\"viewResume()\" style=\"--background: white; border: 1px solid #005191; border-radius: 5px;\" class=\"orange-button\">VIEW RESUME</ion-button>\n</ion-content>\n");
 
 /***/ }),
 

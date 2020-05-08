@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../../components/shared.module';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -12,6 +13,8 @@ import { FollowingPage } from './following.page';
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
     IonicModule,
     FollowingPageRoutingModule
   ],

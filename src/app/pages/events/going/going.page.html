@@ -1,9 +1,9 @@
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button>Back</ion-back-button>
     </ion-buttons>
-    <ion-title>Back</ion-title>
+    <ion-title slot="end">My Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,8 +22,15 @@
         </ion-col>
       </ion-row>
 
+      <ion-row *ngIf="goingToEvents.length === 0" class="ion-justify-content-center">
+        <ion-col offset="1" size="10" class="ion-text-center" style="margin-top: 3%;">
+          <p>You have no events saved in My Events list.</p>
+        </ion-col>
+      </ion-row>
+
       <!-- Events -->
       <ion-row style="margin-top: 5%;" *ngFor="let event of goingToEvents">
+
         <ion-col size="1"></ion-col>
         <ion-col size="2">
          <img class="thumbnail" src="../assets/Journi_flyer.jpg" />
@@ -39,7 +46,7 @@
           </ion-button>
         </ion-col>
         <ion-col size="2">
-          <ion-button class="orange-button" (click)="cancel()">
+          <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">
             Cancel
           </ion-button>
         </ion-col>
@@ -61,8 +68,8 @@
               <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
               <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
             </ion-card-header>
-            <ion-card-content style="--ion-grid-padding: 0;" class="ion-text-center">
-              <ion-button class="orange-button" (click)="cancel()">
+            <ion-card-content class="ion-text-center">
+              <ion-button class="orange-button">
                 Cancel
               </ion-button>
            </ion-card-content>

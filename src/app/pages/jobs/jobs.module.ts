@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsPage } from './jobs.page';
 import { JobsPageRoutingModule } from './jobs-routing.module';
-import { HeartIconComponent } from '../../components/heart-icon/heart-icon.component';
-
+import { SharedModule } from '../../components/shared.module';
 
 
 @NgModule({
   imports: [
     IonicModule,
+    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -20,7 +20,6 @@ import { HeartIconComponent } from '../../components/heart-icon/heart-icon.compo
     RouterModule.forChild([{ path: '', component: JobsPage }])
   ],
   declarations: [
-    JobsPage,
-    HeartIconComponent]
+    JobsPage]
 })
-export class HomePageModule {}
+export class JobsPageModule {}

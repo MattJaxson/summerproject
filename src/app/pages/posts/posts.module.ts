@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsPage } from './posts.page';
 import { PostRoutingModule } from './post-routing.module';
-import { FollowIconComponent } from '../../components/follow-icon/follow-icon.component';
+import { SharedModule } from '../../components/shared.module';
+
 
 @NgModule({
   imports: [
     IonicModule,
+    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -17,7 +19,6 @@ import { FollowIconComponent } from '../../components/follow-icon/follow-icon.co
     RouterModule.forChild([{ path: '', component: PostsPage }])
   ],
   declarations: [
-    PostsPage,
-    FollowIconComponent]
+    PostsPage]
 })
 export class PostPageModule {}

@@ -10,133 +10,206 @@
   [scrollEvents]="true"
   (ionScroll)="logScrolling($event)">
 
+  <!-- Refresher -->
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+   <!-- fab placed to the bottom end; Going back to the top of the page on the mobile view. -->
   <ion-fab *ngIf="showFab" vertical="bottom" horizontal="end" slot="fixed">
           <ion-fab-button (click)="ScrollToTop()">
             <ion-icon name="arrow-up" size="large"></ion-icon>
           </ion-fab-button>
   </ion-fab>
 
+  <!-- Desktop -->
   <ion-grid>
 
-        <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
+    <!-- Header -->
+    <ion-row style="margin: 2% 0% 3% 0%;">
+      <ion-col push="7" size="2">
+        <ion-button *ngIf="!following" class="follow-button"  (click)="follow()">
+          Follow
+        </ion-button>
+        <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow()">
+          UnFollow
+        </ion-button>
+      </ion-col>
+      <ion-col push="6" size="2">
+        <ion-button class="back-button"  (click)="back()">
+           Back
+        </ion-button>
+      </ion-col>
+    </ion-row>
 
-          <ion-col
-            size-xs="12" push-xs="0"
-            size-sm="10" push-sm=""
-            size-md="8"  push-md=""
-            size-lg="6"  push-lg=""
-            size-xl="6"  push-xl=""
-            style="margin-bottom: 90px; background: white; border-radius: 5px; border: 1px solid #999; padding: 50px" >
+    <!-- Post -->
+    <ion-row class="ion-justify-content-center" style="margin-top: 2%;">
+      <ion-col size="6">
+        <ion-row class="post">
 
-            <ion-row>
-
-            <!-- Post Header -->
-            <ion-col size="2">
-                <img style="background: #999; border-radius: 100px; height: 65px; width: 65px;" src="../../assets/batman-pro-pic.png" />
+          <!-- Profile Header -->
+          <ion-col size="12">
+            <ion-row style="position: relative; left: 5px; top: 4px;" >
+            <!-- Profile Picture -->
+            <ion-col size="1">
+              <img class="profile-picture" src="../../assets/batman-pro-pic.png">
             </ion-col>
 
+            <!-- Post Creator's Name -->
             <ion-col size="8">
-              <h6 style="font-size: 1.2em; font-weight: 700; padding-left: 0px;">{{creatorName}}</h6>
+              <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}}</h6>
             </ion-col>
 
+            <!-- Date -->
             <ion-col size="2">
-              <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
-            </ion-col>
-
-            <!-- Post Content -->
-            <ion-col style="height: 40vh; padding: 20px; background: white" size="12">
-              <p style="color: #333; font-size: 1em; line-height: 25px;">{{post}}</p>
-            </ion-col>
-
-            <!-- Comment -->
-            <ion-col size="12">
-              <ion-item lines="none">
-                <form style="border-top: 1px solid #999; padding-top: 20px;"  (ngSubmit)="comment(this.commentForm.value)" [formGroup]="commentForm">
-                    <ion-input type="text" placeholder="Comment" formControlName="comment">
-                    </ion-input>
-                    <!-- <ion-button type="submit">
-                      comment
-                    </ion-button> -->
-                </form>
-                <ion-icon
-                *ngIf="!commentForm
-                  .get('comment')
-                  .pristine"
-                slot="end"
-                name="send"
-                (click)="comment(this.commentForm.value)"></ion-icon>
-              </ion-item>
+                <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
             </ion-col>
 
           </ion-row>
+          </ion-col>
 
-             <!-- Post Actions -->
-           <ion-col style="margin-top: 0px; height: 50px;" size="12">
-              <ion-toolbar style="--background: none;">
-                  <ion-buttons slot="end">
-                    <ion-button style="font-size: 0.8em; color: white;">
-                      <ion-icon slot="start" name="checkbox-outline"></ion-icon>
-                      Follow
+          <!-- Post Content -->
+          <ion-col offset="1" size="9">
+            <ion-row>
+              <!-- 1080x1350 -->
+              <ion-col size="12">
+               <p class="post-content">{{post}}</p>
+              </ion-col>
+           </ion-row>
+          </ion-col>
+
+          <!-- Comment Bar -->
+          <ion-col size="12">
+            <ion-row style="position: relative; right: 6px; top: -4px;" >
+              <ion-col offset="1" size="10">
+                <ion-item lines="none">
+                 <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
+                    <ion-textarea
+                      class="comment-input"
+                      autogrow="true"
+                      autocapitalize="true"
+                      rows="5"
+                      spellcheck="true"
+                      wrap="soft"
+                      type="text"
+                      placeholder="Add a Comment" formControlName="comment">
+                    </ion-textarea>
+                    <ion-button
+                      style="float: right;"
+                      class="comment-post-button"
+                      type="submit"
+                      *ngIf="!commentForm
+                              .get('comment')
+                              .pristine && commentForm.value.comment.length >= 3"
+                        name="send">Post
+                      </ion-button>
+                 </form>
+                </ion-item>
+
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <!-- Upvote and Downvote Post -->
+          <ion-col size="12">
+            <ion-row>
+              <ion-col offset="1" size="4">
+                <ion-toolbar>
+                  <ion-buttons slot="start">
+                    <ion-button class="upvote" (click)="upVotePost()">
+                      <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
+                      {{post}}
                     </ion-button>
-                    <ion-button style="font-size: 0.8em; color: white;">
-                      <ion-icon slot="start" name="share"></ion-icon>
-                      Share
+                    <ion-button class="downvote" (click)="downVotePost()">
+                      <ion-icon size="large" src="../../../assets/icon/caret-down-outline.svg"></ion-icon>
+                      0
                     </ion-button>
-                    </ion-buttons>
-              </ion-toolbar>
-           </ion-col>
+                  </ion-buttons>
+                </ion-toolbar>
+            </ion-col>
+            </ion-row>
+          </ion-col>
 
-           <!-- If No Comments -->
-           <ion-col *ngIf="comments.length === 0" size="12">
-             <h4>This post has no comments</h4>
-           </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
 
-           <!-- Comments -->
-           <ion-col *ngFor="let comment of comments" class="comment"  size="12">
+    <!-- Comments -->
+    <ion-row class="ion-justify-content-center">
+
+      <!-- If No Comments -->
+      <ion-col *ngIf="comments.length === 0" size="6">
+      <h4>This post has no comments</h4>
+      </ion-col>
+
+        <!-- Comment Wrapper -->
+        <ion-col *ngFor="let comment of comments" class="comment" size="6">
+
+          <!-- Comment Header -->
+          <ion-row>
+            <ion-col size="12">
               <ion-item>
                 <ion-avatar class="comment-avatar" slot="start">
                   <img src="../../assets/goku-pro-pic.png">
                 </ion-avatar>
                 <ion-label>
-                 <h6 style="opacity: 0.5">{{ comment.userFullName}} - {{ comment.date }} </h6>
-                 </ion-label>
-               </ion-item>
+                  <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} </h6>
+                  </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
 
-               <ion-col size="12">
-                  <ion-item>
-                    <ion-label class="comment-text ion-text-wrap">{{ comment.comment}}.</ion-label>
-                  </ion-item>
-                </ion-col>
+          <!-- Comment -->
+          <ion-row>
+            <ion-col offset="1" size="10">
+                <p class="comment-text ion-text-wrap">  {{comment.comment}}.
+                </p>
+            </ion-col>
+          </ion-row>
 
-                <ion-col size="12">
-                    <ion-toolbar>
-                      <ion-buttons slot="secondary">
-                          {{comment.likes}}
-                       <ion-button>
-                          <ion-icon color="primary" slot="icon-only" name="thumbs-up"></ion-icon>
-                       </ion-button>
-                       <ion-button>
-                         <ion-icon color="primary" slot="icon-only" name="share-alt"></ion-icon>
-                       </ion-button>
-                       <ion-button>
-                         <ion-icon color="primary" slot="icon-only" name="document"></ion-icon>
-                       </ion-button>
-                      </ion-buttons>
-                    </ion-toolbar>
-                  </ion-col>
-           </ion-col>
+          <!-- Comment Buttons -->
+          <ion-row>
+            <!-- Upvote & Downvote Comments-->
+            <ion-col offset="1" size="4">
+                <ion-toolbar>
+                  <ion-buttons slot="start">
+                    <ion-button class="upvote" (click)="upVoteComment()">
+                      <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
+                      0
+                    </ion-button>
+                    <ion-button class="downvote" (click)="downVoteComment()">
+                      <ion-icon size="large" src="../../../assets/icon/caret-down-outline.svg"></ion-icon>
+                      0
+                    </ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+            </ion-col>
+            <!-- Report & Reply -->
+            <ion-col offset="1" size="4">
+              <ion-toolbar>
+                <ion-buttons slot="end">
+                  <ion-button (click)="reply(comment._id)" class="reply ion-float-right">
+                    Reply
+                  </ion-button>
+                  <ion-button (click)="report(comment._id)"  class="report ion-float-right">
+                    Report
+                  </ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-col>
+          </ion-row>
 
+        </ion-col>
 
-          </ion-col>
+    </ion-row>
 
-        </ion-row>
+  </ion-grid>
 
-
-
-
-      </ion-grid>
+  <!-- Mobile -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6"></ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

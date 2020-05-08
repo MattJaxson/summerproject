@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { ProfileService } from '../services/profile.service';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class PostsService {
   followersSubject$ = new BehaviorSubject([]);
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private profile: ProfileService
   ) {}
 
   getPosts() {
@@ -27,6 +29,11 @@ export class PostsService {
     return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, {_id: id});
   }
 
+  addPost(creatorName, creatorEmail, post) {
+    console.log('Adding post to post que...');
+    return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, post });
+  }
+
   comment(
     postID,
     date,
@@ -35,6 +42,67 @@ export class PostsService {
     { comment: comment }
   ) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } ).subscribe();
+  }
+
+  canEditPost(postID, userEmail) {
+    // Get userEmail
+    // See if it matches each and every postID in the feed
+    // Display to UI that this post can be editted.
+
+  }
+
+  canEditComment(postID, userEmail) {
+    // Get userEmail
+    // See if it matches each and every postID in the feed
+    // Display to UI that this post can be editted.
+
+  }
+
+  editPost(postID, userEmail) {
+    // 
+
+  }
+
+  editComment(postID, userEmail) {
+    // 
+
+  }
+
+  // Upvote Post
+  upVotePost(postID, userEmail) {
+    this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-post`, { postID, userEmail }).subscribe(
+      details => {
+        console.log('upvote post details');
+        console.log(details);
+      }
+    );
+    console.log(userEmail);
+
+  }
+
+   // Downvote Post
+   downVotePost(postID, userEmail) {
+    this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-post`, { postID, userEmail }).subscribe(
+      details => {
+        console.log('downvote post details');
+        console.log(details);
+      }
+    );
+    console.log(userEmail);
+
+
+  }
+
+   // Upvote
+   upVoteComment(postID) {
+    console.log(postID);
+
+  }
+
+   // Downvote
+   downVoteComment(postID) {
+    console.log(postID);
+
   }
 
   followPost(postID, userEmail) {

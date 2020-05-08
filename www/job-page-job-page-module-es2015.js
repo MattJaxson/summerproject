@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-hide-md-up\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n  <ion-title style=\"color: white;\">Job Page</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid>\r\n    <ion-row class=\"ion-justify-content-center\">\r\n        <ion-col class=\"description\" size-xs=\"10\" size-sm=\"8\" size-md=\"8\" size-lg=\"6\" size-xl=\"6\">\r\n\r\n          <ion-button  class=\"ion-hide-sm-down\" style=\"float: right; position: relative; top: -40px;\" (click)=\"favoritesPage()\">\r\n            <ion-icon src=\"../../../assets/icon/heart-inactive.svg\"></ion-icon>\r\n            {{favoriteJobsAmount}}</ion-button>\r\n\r\n            <div style=\"height: 100px; width: 100px; background: lightblue;\"></div>\r\n            <h3 style=\"color: #005191; font-weight: 600;\">{{jobTitle}}</h3>\r\n            <h6><span>Company Name: </span>{{jobCompanyName}}</h6>\r\n            <h6><span>Company Email: </span> {{jobCompanyEmail}}</h6>\r\n            <h6>{{jobFullJobDescription}}</h6>\r\n        </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"11\" offset=\"0.5\"  class=\"ion-text-center\">\r\n        <ion-button (click)=\"applyForJob()\" class=\"orange-button\">Apply for Job</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n\r\n  </ion-grid>\r\n  <ion-fab class=\"ion-hide-md-up\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n      <ion-fab-button (click)=\"favoriteThisJob()\">\r\n        <ion-icon name=\"heart\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-hide-md-up\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n  <ion-title style=\"color: white;\">Job Page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class=\"ion-justify-content-center\">\n        <ion-col class=\"description\" size-xs=\"10\" size-sm=\"8\" size-md=\"8\" size-lg=\"6\" size-xl=\"6\">\n          <ion-col size=\"12\">\n            <!-- Back and Favorite Buttons (Desktop) -->\n            <ion-row class=\"ion-align-items-end\">\n              <ion-col size=\"7\">\n                <div style=\"height: 100px; width: 100px; background: lightblue;\"></div>\n              </ion-col>\n              <ion-col size=\"2\">\n                <app-heart-icon [job]=\"jobId\"></app-heart-icon>\n              </ion-col>\n              <ion-col size=\"2\">\n                <ion-button  class=\"ion-hide-sm-down back-button\" style=\"float: right; position: relative; top: -40px;\" (click)=\"goBack()\">\n                  Go Back</ion-button>\n              </ion-col>\n            </ion-row>\n          </ion-col>\n\n            \n            <h3 style=\"color: #005191; font-weight: 600;\">{{jobTitle}}</h3>\n            <h6>{{jobCompanyName}}</h6>\n            <h6>{{jobCompanyEmail}}</h6>\n            <h6>{{jobFullJobDescription}}</h6>\n        </ion-col>\n    </ion-row>\n\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col size=\"6\"  class=\"ion-text-center\">\n        <ion-button (click)=\"applyForJob()\" class=\"orange-button\">Apply for Job</ion-button>\n      </ion-col>\n    </ion-row>\n\n\n  </ion-grid>\n  <ion-fab class=\"ion-hide-md-up\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n      <ion-fab-button (click)=\"favoriteThisJob()\">\n        <ion-icon name=\"heart\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab>\n</ion-content>");
 
 /***/ }),
 
@@ -68,9 +68,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _job_page_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./job-page-routing.module */ "./src/app/pages/jobs/job-page/job-page-routing.module.ts");
-/* harmony import */ var _job_page_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./job-page.page */ "./src/app/pages/jobs/job-page/job-page.page.ts");
+/* harmony import */ var _components_shared_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/shared.module */ "./src/app/components/shared.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _job_page_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./job-page-routing.module */ "./src/app/pages/jobs/job-page/job-page-routing.module.ts");
+/* harmony import */ var _job_page_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./job-page.page */ "./src/app/pages/jobs/job-page/job-page.page.ts");
+
 
 
 
@@ -84,12 +86,13 @@ JobPagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _components_shared_module__WEBPACK_IMPORTED_MODULE_4__["SharedModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _job_page_routing_module__WEBPACK_IMPORTED_MODULE_5__["JobPagePageRoutingModule"]
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _job_page_routing_module__WEBPACK_IMPORTED_MODULE_6__["JobPagePageRoutingModule"]
         ],
-        declarations: [_job_page_page__WEBPACK_IMPORTED_MODULE_6__["JobPagePage"]]
+        declarations: [_job_page_page__WEBPACK_IMPORTED_MODULE_7__["JobPagePage"]]
     })
 ], JobPagePageModule);
 
@@ -106,7 +109,7 @@ JobPagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("span {\n  font-weight: 700;\n}\n\n.description {\n  margin-top: 5%;\n  background: white;\n  padding: 5%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvam9icy9qb2ItcGFnZS9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheVxcTW9iaWxlL3NyY1xcYXBwXFxwYWdlc1xcam9ic1xcam9iLXBhZ2VcXGpvYi1wYWdlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvam9icy9qb2ItcGFnZS9qb2ItcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvam9icy9qb2ItcGFnZS9qb2ItcGFnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzcGFuIHtcclxuICBmb250LXdlaWdodDogNzAwO1xyXG59XHJcblxyXG4uZGVzY3JpcHRpb24ge1xyXG4gIG1hcmdpbi10b3A6IDUlO1xyXG4gIGJhY2tncm91bmQ6IHdoaXRlO1xyXG4gIHBhZGRpbmc6IDUlO1xyXG59Iiwic3BhbiB7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG59XG5cbi5kZXNjcmlwdGlvbiB7XG4gIG1hcmdpbi10b3A6IDUlO1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgcGFkZGluZzogNSU7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("span {\n  font-weight: 700;\n}\n\n.description {\n  margin-top: 5%;\n  background: white;\n  padding: 2%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvam9icy9qb2ItcGFnZS9qb2ItcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2pvYnMvam9iLXBhZ2Uvam9iLXBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7QUNDRjs7QURFQTtFQUNFLGNBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2pvYnMvam9iLXBhZ2Uvam9iLXBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsic3BhbiB7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG59XG5cbi5kZXNjcmlwdGlvbiB7XG4gIG1hcmdpbi10b3A6IDUlO1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgcGFkZGluZzogMiU7XG59Iiwic3BhbiB7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG59XG5cbi5kZXNjcmlwdGlvbiB7XG4gIG1hcmdpbi10b3A6IDUlO1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgcGFkZGluZzogMiU7XG59Il19 */");
 
 /***/ }),
 
@@ -134,24 +137,6 @@ let JobPagePage = class JobPagePage {
         this.router = router;
         this.toastController = toastController;
     }
-    applyForJob() {
-        // tslint:disable-next-line: max-line-length
-        this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail]);
-    }
-    favoriteThisJob() {
-        console.log('Favoriting this Job');
-        // Check for error before we present the toast
-        this.presentToast();
-    }
-    presentToast() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const toast = yield this.toastController.create({
-                message: 'This job has been favorited.',
-                duration: 2000
-            });
-            toast.present();
-        });
-    }
     ngOnInit() {
         // tslint:disable-next-line: radix
         const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -175,6 +160,27 @@ let JobPagePage = class JobPagePage {
         this.jobSummary = summary;
         this.jobFullJobDescription = fullJobDescription;
         this.jobRateOfPay = rateOfPay;
+    }
+    applyForJob() {
+        // tslint:disable-next-line: max-line-length
+        this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail]);
+    }
+    favoriteThisJob() {
+        console.log('Favoriting this Job');
+        // Check for error before we present the toast
+        this.presentToast();
+    }
+    goBack() {
+        this.router.navigate(['/home/jobs']);
+    }
+    presentToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: 'This job has been favorited.',
+                duration: 2000
+            });
+            toast.present();
+        });
     }
 };
 JobPagePage.ctorParameters = () => [

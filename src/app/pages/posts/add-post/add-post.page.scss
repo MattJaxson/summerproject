@@ -1,0 +1,107 @@
+.header{
+  background: #005191;
+
+  h1 {
+    color: white;
+    font-size: 2em;
+  }
+}
+
+.message {
+
+  p {
+    padding: 10px;
+  }
+}
+
+ion-item {
+  --background: none;
+  --border-color: none;
+  --border-radius: 5px;
+
+}
+
+ion-textarea {
+  --background: white;
+  --border-color: none;
+  padding: 10px 0 0 20px;
+}
+
+.item-interactive {
+  --border-width: 0px;
+  --show-full-highlight: 0;
+}
+
+h6 {
+  padding: 15px;
+  line-height: 35px;
+  font-weight: 400;
+}
+
+.green {
+  animation: green 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 2s forwards;
+  font-size: 1.6em;
+
+}
+
+.blue {
+  animation: blue 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 1s forwards;
+  font-size: 1.6em;
+
+}
+
+.green-mobile {
+  animation: green 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 2s forwards;
+  font-size: 1em;
+
+}
+
+.blue-mobile {
+  animation: blue 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 1s forwards;
+  font-size: 1em;
+
+}
+
+@keyframes green {
+  0% {
+    color: black
+  }
+
+  100% {
+    color: #1baf88;
+    font-weight: 800;
+  }
+}
+
+@keyframes blue {
+  0% {
+    color: black
+  }
+
+  100% {
+    color: #005191;
+    font-weight: 800;
+  }
+}
+
+@keyframes green-mobile {
+  0% {
+    color: black
+  }
+
+  100% {
+    color: #1baf88;
+  }
+}
+
+@keyframes blue-mobile {
+  0% {
+    color: black
+  }
+
+  100% {
+    color: #005191;
+    font-weight: 800;
+    font-size: 1em;
+  }
+}
