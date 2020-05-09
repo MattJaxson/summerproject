@@ -40,6 +40,10 @@ export class ChangeAddressPage implements OnInit {
 
   }
 
+  back() {
+    this.router.navigate(['/home/profile/edit-profile-page']);
+  }
+
   async confirmChangeAddress(email, addressOne, addressTwo, city, state, zip, password) {
     this.profile.changeAddress(
       email,
@@ -50,11 +54,6 @@ export class ChangeAddressPage implements OnInit {
       zip,
       password
     );
-  }
-
-  cancel() {
-    console.log('change email password cancelled');
-    this.router.navigate(['/home/profile']);
   }
 
 }

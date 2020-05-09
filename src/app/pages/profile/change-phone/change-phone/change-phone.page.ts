@@ -42,13 +42,13 @@ export class ChangePhonePage implements OnInit {
     this.formOnChanges();
   }
 
-  confirmChangedPhoneNumber(newNumber, password) {
-    this.profile.changePhone(this.activeEmail, newNumber, password);
+  back() {
+    console.log('change phone number cancelled');
+    this.router.navigate(['/home/profile/edit-profile-page']);
   }
 
-  cancel() {
-    console.log('change phone number cancelled');
-    this.router.navigate(['/home/profile']);
+  confirmChangedPhoneNumber(newNumber, password) {
+    this.profile.changePhone(this.activeEmail, newNumber, password);
   }
 
   formOnChanges(): void {

@@ -28,46 +28,47 @@ export class ChangeProfilePicturePage implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    this.router.navigate(['/home/profile/edit-profile-page']);
+  }
+
   // ADD password input to profile picture
-    confirmChangeProfilePicture(newPicture, psssword) {
-      this.profile.changeProfilePicture(this.activeEmail, newPicture, psssword);
-      // console.log('Going to Change Picture Confirm');
-      // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
-    }
+  confirmChangeProfilePicture(newPicture, psssword) {
+    this.profile.changeProfilePicture(this.activeEmail, newPicture, psssword);
+    // console.log('Going to Change Picture Confirm');
+    // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
+  }
 
-    cancel() {
-      console.log('change phone number cancelled');
-      this.router.navigate(['/home/profile']);
-    }
 
-    // Not finished
-    useCamera() {
 
-      let options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        correctOrientation: true,
-      };
+  // Not finished
+  useCamera() {
 
-      this.camera.getPicture(options).then((imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        // If it's base64 (DATA_URL):
-        let base64Image = 'data:image/jpeg;base64,' + imageData;
-        // This is the actual picture
-        this.activePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
-       }, (err) => {
-        alert('error ' + JSON.stringify(err));
-       });
-      console.log("Accessing Phone's Camera to gather Photo");
+    let options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+    };
 
-      // this.router.navigate(['/home/profile/confirm-photo']);
-    }
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      // This is the actual picture
+      this.activePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
+      }, (err) => {
+      alert('error ' + JSON.stringify(err));
+    });
+    console.log("Accessing Phone's Camera to gather Photo");
 
-    // Not finished
-    upload() {
-      console.log("Accessing Phone's File System to gather Photo");
-      this.router.navigate(['/home/profile/confirm-photo']);
-    }
+    // this.router.navigate(['/home/profile/confirm-photo']);
+  }
+
+  // Not finished
+  upload() {
+    console.log("Accessing Phone's File System to gather Photo");
+    this.router.navigate(['/home/profile/confirm-photo']);
+  }
 }

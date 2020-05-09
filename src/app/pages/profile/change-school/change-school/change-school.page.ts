@@ -33,13 +33,13 @@ export class ChangeSchoolPage implements OnInit {
     });
   }
 
+    back() {
+      this.router.navigate(['/home/profile/edit-profile-page']);
+    }
+
     confirmChangedSchool(email, newSchool, newGrade, password) {
       this.profile.changeSchool(email, newSchool, newGrade,  password);
 
     }
 
-    cancel() {
-      console.log('change school cancelled');
-      this.router.navigate(['/home/profile']);
-    }
 }

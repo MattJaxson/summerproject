@@ -29,7 +29,7 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button" (click)="updateResume()">
+          <ion-button class="orange-button" (click)="updateResume()">
             View Resume
           </ion-button>
         </ion-col>
@@ -65,7 +65,7 @@
   </ion-grid>
 
   <!-- Desktop -->
-  <ion-grid style="--ion-grid-padding: 0px" class="ion-hide-sm-down">
+  <ion-grid style="--ion-grid-padding: 0px; max-width: 1024px;" class="ion-hide-sm-down">
 
       <ion-row style="margin-top: 5%;">
 
@@ -74,15 +74,15 @@
                 <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
                 <button id="change-pro-pic-button" (click)="changeProfilePicture()">
                     +
-                  </button>
+                </button>
             </div>
           </ion-col>
 
           <ion-col size="4">
-            <ion-button class="orange-button" (click)="editPage()">
+            <ion-button class="orange-button" (click)="editPage()" style="margin-right: 16px">
               Edit Profile
             </ion-button>
-            <ion-button style="--background: white; border: 1px solid #005191; border-radius: 5px;" class="orange-button" (click)="updateResume()">
+            <ion-button class="orange-button" (click)="updateResume()">
               View Resume
             </ion-button>
           </ion-col>
@@ -111,9 +111,9 @@
         </ion-col>
 
         <ion-col size="11" offset="0.5">
-          <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
+          <!-- <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
             Logout
-          </ion-button>
+          </ion-button> -->
         </ion-col>
       </ion-row>
     </ion-grid>
