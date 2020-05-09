@@ -34,9 +34,11 @@ export class FollowingPage implements OnInit {
      // Get the User's Followed Posts
      this.profile.getUserDetails().subscribe(
       details => {
+        console.log(details);
         this.userID = details['_id'];
         this.posts.getFollowedPost(this.userID).subscribe(
           posts => {
+            console.log(posts)
             this.allFollowedPosts = Object.values(posts).reverse();
 
             for (const post of this.allFollowedPosts) {

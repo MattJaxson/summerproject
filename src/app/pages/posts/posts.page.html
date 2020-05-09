@@ -110,37 +110,12 @@
             <ion-row>
               <!-- Upvote & Downvote-->
               <ion-col size="4">
-                  <ion-toolbar>
-                    <ion-buttons slot="start">
-                      <ion-button class="upvote" (click)="upVotePost(post._id)">
-                        <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
-                        {{post.upvotes}}
-                      </ion-button>
-                      <ion-button class="downvote" (click)="downVotePost(post._id)">
-                        <ion-icon size="large" src="../../../assets/icon/caret-down-outline.svg"></ion-icon>
-                        0
-                      </ion-button>
-                    </ion-buttons>
-                  </ion-toolbar>
+                <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
               </ion-col>
 
               <!-- Follow & Comment -->
               <ion-col push="1" size="6">
-                <ion-toolbar style="--background: none;">
-                  <ion-buttons slot="end">
-                    <ion-button class="follow" (click)="follow()">
-                      Follow
-                    </ion-button>
-                    <!-- <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow()">
-                      Unfollow
-                    </ion-button> -->
-                    <ion-button
-                    class="comment-button"
-                    (click)="postPage(post)">
-                    Comments ({{post.comments.length}})
-                    </ion-button>
-                  </ion-buttons>
-               </ion-toolbar>
+                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>
           </ion-col>

@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsPage } from './jobs.page';
 import { JobsPageRoutingModule } from './jobs-routing.module';
-import { SharedModule } from '../../components/shared.module';
+import { CustomComponentsModule } from '../../components/custom-component.module';
 
 
 @NgModule({
   imports: [
     IonicModule,
-    SharedModule,
+    CustomComponentsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

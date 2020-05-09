@@ -16,43 +16,6 @@ ion-toolbar {
   --background: none;
 }
 
-.upvote{
-  border-radius: 5px;
-  width: 60px;
-  position: relative;
-  --color: #005191;
-
-  ion-icon {
-    color: #005191;
-    font-size: 30px;
-  }
-}
-
-.downvote {
-  border-radius: 5px;
-  width: 60px;
-  padding-left: 0px;
-  --color: #005191;
-
-  ion-icon {
-    color: #005191;
-    --font-size: 30px;
-  }
-}
-.upvoted-toast {
-  --background: #005191;
-}
-.downvoted-toast {
-  --background: #FFB351;
-}
-
-.followed-toast {
-  --background: #24d8a8;
-}
-.unfollowed-toast {
-  --background: #FFB351;
-}
-
 form {
   width: 100%;
   border-top: 1px solid rgba(50, 50, 50, 0.2);
@@ -83,28 +46,6 @@ form {
   transform: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.comment-button{
-  width: 100px;
-  --border-width: 1px;
-  --border-color: #005191;
-  --border-style: solid;
-  border-radius: 5px;
-  --color: #005191;
-  font-size: 0.6em;
-  margin-right: 25px;
-}
-
-.follow{
-  --border-width: 1px;
-  width: 100px;
-  --border-color: #1baf88;
-  --border-style: solid;
-  border-radius: 5px;
-  color: #1baf88;
-  font-size: 0.7em;
-  margin-right: 10px;
 }
 
 ion-item {

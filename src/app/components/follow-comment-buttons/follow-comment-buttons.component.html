@@ -1,0 +1,15 @@
+<ion-toolbar style="--background: none;">
+  <ion-buttons slot="end">
+    <ion-button class="follow-button" (click)="follow()">
+      Follow ({{followers.length}})
+    </ion-button>
+    <!-- <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow()">
+      Unfollow
+    </ion-button> -->
+    <ion-button
+    class="comment-button"
+    (click)="postPage()">
+    Comments ({{comments.length}})
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

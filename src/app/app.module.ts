@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Custom Modules
-import { SharedModule } from './components/shared.module';
+import { CustomComponentsModule } from './components/custom-component.module';
 import { PostPageModalsModule } from './pages/posts/post-page/post-page-modals/post-page-modals.module';
 
 //  Ionic Modules
@@ -45,7 +45,7 @@ export function jwtOptionsFactory(storage) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    SharedModule,
+    CustomComponentsModule,
     PostPageModalsModule,
     BrowserModule,
     BrowserAnimationsModule,

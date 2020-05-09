@@ -82,59 +82,6 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
-  async follow() {
-    await console.log('Upvoting');
-    await this.followToast();
-  }
-
-  async followToast() {
-    const followToast = await this.toast.create({
-      cssClass: 'followed-toast',
-      message: 'You are FOLLOWING this post',
-      duration: 2000
-    });
-    followToast.present();
-  }
-
-  async unFollowToast() {
-    const unFollowToast = await this.toast.create({
-      cssClass: 'unfollowed-toast',
-      message: 'You are UNFOLLOWING this post',
-      duration: 2000
-    });
-    unFollowToast.present();
-  }
-
-  async upVotePost(postID) {
-    await console.log('Upvoting');
-    await this.posts.upVotePost(postID, this.userEmail);
-    await this.upVotePostToast();
-  }
-
-  async upVotePostToast() {
-    const upVotePostToast = await this.toast.create({
-      cssClass: 'upvoted-toast',
-      message: 'You have UPVOTED this post.',
-      duration: 2000
-    });
-    upVotePostToast.present();
-  }
-
-  async downVotePost(postID) {
-    await console.log('Downvoting');
-    await this.posts.downVotePost(postID, this.userEmail);
-    await this.downVoteToast();
-  }
-
-  async downVoteToast() {
-    const upVoteToast = await this.toast.create({
-      cssClass: 'downvoted-toast',
-      message: 'You have DOWNVOTED this post.',
-      duration: 2000
-    });
-    upVoteToast.present();
-  }
-
   async doRefresh(event) {
     await this.posts.getPosts().subscribe( jobs => {
       this.allPosts = Object.values(jobs).reverse();

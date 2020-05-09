@@ -1,0 +1,21 @@
+.comment-button{
+  width: 100px;
+  --border-width: 1px;
+  --border-color: #005191;
+  --border-style: solid;
+  border-radius: 5px;
+  --color: #005191;
+  font-size: 0.6em;
+  margin-right: 25px;
+}
+
+.follow-button{
+  --border-width: 1px;
+  width: 100px;
+  --border-color: #1baf88;
+  --border-style: solid;
+  border-radius: 5px;
+  color: #1baf88;
+  font-size: 0.7em;
+  margin-right: 10px;
+}
