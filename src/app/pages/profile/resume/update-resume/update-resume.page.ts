@@ -14,14 +14,13 @@ export class UpdateResumePage implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    this.router.navigate(['/home/profile/resume/<resume>']);
+  }
+
   updateResume() {
     console.log('Going to Update Resume Confirm');
     this.router.navigate(['/home/profile/resume/confirm']);
-  }
-
-  cancel() {
-    console.log('change email password cancelled');
-    this.router.navigate(['/home/profile']);
   }
 
 }

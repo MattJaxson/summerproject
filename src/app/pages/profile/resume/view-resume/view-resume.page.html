@@ -1,13 +1,34 @@
-<ion-header>
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-title>view-resume</ion-title>
-    <ion-button (click)="goBack()" id="cancel-button" slot="end">
-        back
-    </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Resume</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>This is your resume</p>
+  <ion-grid>
+    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+      <ion-col offset="3" size="2">
+        <h1>View Resume</h1>
+      </ion-col>
+      <ion-col push="2.5" size="2">
+        <ion-button class="back-button" (click)="back()">
+          Back
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-hide-md-down">
+      <ion-col size="10">
+        <hr style="background-color: #00000044;" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6">
+        <p>This is your resume</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 <button (click)="updateResume()" id="next-button">UPDATE RESUME</button>

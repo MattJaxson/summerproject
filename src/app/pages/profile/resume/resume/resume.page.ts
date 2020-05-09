@@ -19,6 +19,10 @@ export class ResumePage implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    this.router.navigate(['/home/profile']);
+  }
+
   viewResume() {
     console.log('Going to View Resume Page');
     this.router.navigate(['/home/profile/view-resume']);
@@ -27,11 +31,6 @@ export class ResumePage implements OnInit {
   updateResume() {
     console.log('Going to Update Resume Page');
     this.router.navigate(['/home/profile/update-resume']);
-  }
-
-  cancel() {
-    console.log('change phone number cancelled');
-    this.router.navigate(['/home/profile']);
   }
 
 }

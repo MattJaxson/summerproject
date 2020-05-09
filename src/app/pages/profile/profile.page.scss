@@ -74,3 +74,10 @@ span {
   color: red;
 }
 
+@media screen and (min-width: 768px) {
+  #change-pro-pic-button {
+    position: absolute;
+    top: 75px;
+    left: 188px;
+  }
+} 

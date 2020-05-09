@@ -49,25 +49,29 @@ export class ChangePasswordPage implements OnInit {
     this.formOnChanges();
   }
 
+  back() {
+    this.router.navigate(['/home/profile/edit-profile-page']);
+  }
+
   formOnChanges(): void {
     console.log(this.changePassword);
     this.changePassword.valueChanges
     .subscribe(
       data => {
         console.log(data);
-  
+
         this.changePassword.statusChanges.subscribe(status => {
           console.log(status);
           if ( status === 'VALID') {
             this.passwordsMatch = true;
           }
         });
-  
+
         if (this.changePassword.controls.newPassword.value === this.changePassword.controls.reTypeNewPassword.value &&
           this.changePassword.controls.newPassword.touched ) {
           console.log('Passwords Match');
       }
-  
+
         if (this.changePassword.controls.newPassword.value !== this.changePassword.controls.reTypeNewPassword.value) {
         console.log('Passwords dont match');
         this.passwordsMatch = false;
@@ -78,11 +82,6 @@ export class ChangePasswordPage implements OnInit {
 
   confirmChangedPassword(oldPassword, newPassword,  reTypeNewPassword) {
     this.profile.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
-  }
-
-  cancel() {
-    console.log('change password cancelled');
-    this.router.navigate(['/home/profile']);
   }
 
 }

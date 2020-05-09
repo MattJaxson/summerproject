@@ -41,6 +41,10 @@ export class EditProfilePagePage implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    this.router.navigate(['/home/profile']);
+  }
+
   changeEmail() {
     console.log('Navigating to Change Email Page');
     this.router.navigate(['/home/profile/change-email']);

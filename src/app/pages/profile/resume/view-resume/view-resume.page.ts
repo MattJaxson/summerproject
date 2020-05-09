@@ -14,14 +14,14 @@ export class ViewResumePage implements OnInit {
 
   ngOnInit() {
   }
+
+  back() {
+    this.router.navigate(['/home/profile/resume/<resume>']);
+  }
+
   updateResume() {
     console.log('Updating Resume from View Resume page');
     this.router.navigate(['/home/profile/update-resume']);
-  }
-
-  goBack() {
-    console.log('<< going back from view resumne page');
-    this.router.navigate(['/home/profile']);
   }
 
 }

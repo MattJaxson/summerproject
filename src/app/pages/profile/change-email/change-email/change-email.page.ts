@@ -40,7 +40,7 @@ export class ChangeEmailPage implements OnInit {
   ngOnInit() {
     this.changeEmail =  this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['Lacrosse2', Validators.compose([
+      password: ['', Validators.compose([
         Validators.minLength(6),
         Validators.required,
         // this is for the letters (both uppercase and lowercase) and numbers validation
@@ -48,6 +48,10 @@ export class ChangeEmailPage implements OnInit {
      ])]
     });
 
+  }
+
+  back() {
+    this.router.navigate(['/home/profile/edit-profile-page']);
   }
 
   async presentToast() {
@@ -64,11 +68,6 @@ export class ChangeEmailPage implements OnInit {
 
   confirmChangedEmail(newEmail, password) {
     this.profile.changeEmail('eddie@gmail.com', newEmail, password);
-  }
-
-  cancel() {
-    console.log('change email password cancelled');
-    this.router.navigate(['/home/profile/edit-profile-page']);
   }
 
 }
