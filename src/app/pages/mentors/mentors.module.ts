@@ -16,6 +16,6 @@ import { MentorsPage } from './mentors.page';
     IonicModule,
     MentorsPageRoutingModule
   ],
-  declarations: [MentorsPage]
+  declarations: [MentorsPage, CustomComponentsModule]
 })
 export class MentorsPageModule {}

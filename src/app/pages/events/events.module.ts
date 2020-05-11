@@ -17,7 +17,8 @@ import { EventsPage } from './events.page';
     EventsPageRoutingModule,
     RouterModule.forChild([{ path: '', component: EventsPage }])  ],
   declarations: [
-    EventsPage
+    EventsPage,
+    CustomComponentsModule
     ]
 })
 export class EventsPageModule {}
