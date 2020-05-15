@@ -13,13 +13,22 @@ import { BehaviorSubject } from 'rxjs';
 export class UpDownVoteButtonsComponent implements OnInit {
 
   userEmail;
-  upvotes$;
-  downvotes$;
 
   @Input() postID;
-  upvote$Subject = new BehaviorSubject(null);
-  downvote$Subject = new BehaviorSubject(null);
+  upVotes$ = new BehaviorSubject(null);
+  downVotes$ = new BehaviorSubject(null);
 
+  upVoteLength;
+  downVoteLength;
+
+  upVotes;
+  downVotes;
+
+  upVoters = [];
+  downVoters = [];
+
+  upVoted = false;
+  downVoted = false;
 
   constructor(
     public posts: PostsService,
@@ -29,43 +38,84 @@ export class UpDownVoteButtonsComponent implements OnInit {
 
   async ngOnInit() {
 
-    // Get Users Email
-    await this.profile.getUserDetails()
-      .subscribe( details => {
-        this.userEmail = details['email'];
-      });
-
     // Get information about post
     await this.posts.getPostInfo(this.postID)
-      .subscribe( details => {
-        let upvotes = details['upvotes'];
-        let downvotes = details['downvotes'];
-        this.upvote$Subject.next(upvotes);
-        this.downvote$Subject.next(downvotes);
+      .subscribe( postInfo => {
+
+        this.upVotes = postInfo['upvotes'];
+        this.downVotes = postInfo['downvotes'];
+
+        this.upVoters = postInfo['upvoters'];
+        this.downVoters = postInfo['downvoters'];
+
+        this.upVotes$.next(this.upVotes);
+        this.downVotes$.next(this.downVotes);
+
+        this.upVoteLength = this.upVotes$.getValue();
+        this.downVoteLength = this.downVotes$.getValue();
+
+        // Get User Email
+        this.profile.getUserDetails()
+          .subscribe( userDetails => {
+          let userEmail = userDetails['email'];
+          let upVoted = false;
+          let downVoted = false;
+
+          this.upVoters.find(findUpVoter);
+          this.downVoters.find(findDownVoter);
+
+          function findUpVoter(upVoter) {
+            if (!upVoter) {
+            }
+
+            if (upVoter === userEmail) {
+              return upVoted = true;
+            }
+
+            console.log(upVoter);
+        }
+
+          function findDownVoter(downVoter) {
+            if (!downVoter) {
+            }
+
+            if (downVoter === userEmail) {
+              return downVoted = true;
+            }
+        }
+
+          this.userEmail = userEmail;
+          this.upVoted = upVoted;
+          this.downVoted = downVoted;
+        });
       });
-
-    // subscribe to upvote and downvote bsubjects
-    await this.upvote$Subject
-      .subscribe(data => {
-        this.upvotes$ = data;
-      });
-
-      // subscribe to upvote and downvote bsubjects
-    await this.downvote$Subject
-    .subscribe(data => {
-      this.downvotes$ = data;
-    });
-
-
-
-
   }
 
-  async upVotePost() {
-    await console.log('Upvoting');
-    await this.posts.upVotePost(this.postID, this.userEmail);
-    await this.upvote$Subject.next(this.upvotes$);
-    await this.upVotePostToast();
+   async upVotePost() {
+
+    await this.posts.upVotePost(this.postID, this.userEmail)
+      .subscribe(data => {
+       const upvotes = (data['upvotes']);
+       const downvotes = (data['downvotes']);
+       console.log(data);
+       this.upVotes$.next(upvotes);
+       this.downVotes$.next(downvotes);
+       this.upVoted = true;
+       this.upVoteLength = this.upVotes$.getValue();
+       this.downVoteLength = this.downVotes$.getValue();
+
+       if (this.upVoted === true) {
+
+         return this.downVoted = false;
+      }
+    }
+     );
+
+
+    console.log(this.upVoteLength);
+    console.log(this.downVoteLength);
+
+    this.upVotePostToast();
   }
 
   async upVotePostToast() {
@@ -78,10 +128,26 @@ export class UpDownVoteButtonsComponent implements OnInit {
   }
 
   async downVotePost() {
-    await console.log('Downvoting');
-    await this.posts.downVotePost(this.postID, this.userEmail);
-    await this.downvote$Subject.next(this.downvotes$);
-    await this.downVoteToast();
+
+    await this.posts.downVotePost(this.postID, this.userEmail)
+    .subscribe(data => {
+      const upvotes = (data['upvotes']);
+      const downvotes = (data['downvotes']);
+      console.log(data);
+      this.upVotes$.next(upvotes);
+      this.downVotes$.next(downvotes);
+      this.downVoted = true;
+      this.upVoteLength = this.upVotes$.getValue();
+      this.downVoteLength = this.downVotes$.getValue();
+
+      if (this.downVoted === true) {
+
+        return this.upVoted = false;
+      }
+    }
+   );
+
+    this.downVoteToast();
   }
 
   async downVoteToast() {

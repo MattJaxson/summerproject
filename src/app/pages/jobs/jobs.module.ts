@@ -20,6 +20,6 @@ import { CustomComponentsModule } from '../../components/custom-component.module
     RouterModule.forChild([{ path: '', component: JobsPage }])
   ],
   declarations: [
-    JobsPage, CustomComponentsModule]
+    JobsPage]
 })
 export class JobsPageModule {}

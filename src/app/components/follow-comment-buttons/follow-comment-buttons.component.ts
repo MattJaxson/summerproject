@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PostsService } from 'src/app/services/post.service';
 import { ToastController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-follow-comment-buttons',
@@ -14,8 +16,11 @@ export class FollowCommentButtonsComponent implements OnInit {
   userEmail;
   comments = [];
   followers = [];
+  following = false;
 
   @Input() postID;
+  followingLength$ = new BehaviorSubject(null);
+  followingLength = null;
 
   constructor(
     private router: Router,
@@ -24,26 +29,52 @@ export class FollowCommentButtonsComponent implements OnInit {
     private toast: ToastController
   )  { }
 
-  async ngOnInit() {
-    // Get Users Email
-    await this.profile.getUserDetails()
-      .subscribe( details => {
-        this.userEmail = details['email'];
-      });
-
+   ngOnInit() {
       // Get information about post
-    await this.posts.getPostInfo(this.postID)
-        .subscribe( details => {
-          this.comments = details['comments'];
-          this.followers = details['followers'];
+     this.posts.getPostInfo(this.postID)
+          .subscribe( postDetails => {
+           let comments = postDetails['comments'];
+           let followers = postDetails['followers'];
+           let following = false;
+
+           this.profile.getUserDetails().subscribe( userDetails => {
+            let userEmail = userDetails['email'];
+
+            followers.find(findFollower);
+
+            function findFollower(follower) {
+              if (!follower) {
+                // User is not following post
+              }
+
+              if (follower === userEmail) {
+                following = true;
+              }
+          }
+
+            this.followers = followers;
+            this.comments = comments;
+            this.userEmail = userEmail;
+            this.following = following;
+            this.followingLength$.next(followers.length);
+            this.followingLength$.subscribe(data => {
+              this.followingLength = data;
+            });
         });
 
+      })
   }
 
-  async follow() {
-    await console.log('Upvoting');
+
+  async follow(postID) {
+    await console.log('Following Post');
+    await console.log(postID);
+    await this.posts.followPost(postID, this.userEmail).subscribe();
+    this.following = true;
+    this.followingLength$.next(this.followingLength + 1);
     await this.followToast();
   }
+
   async followToast() {
     const followToast = await this.toast.create({
       cssClass: 'followed-toast',
@@ -51,6 +82,15 @@ export class FollowCommentButtonsComponent implements OnInit {
       duration: 2000
     });
     followToast.present();
+  }
+
+  async unFollow(postID) {
+    await console.log('Unfollowing Post');
+    await console.log(postID);
+    await this.posts.unFollowPost(postID, this.userEmail).subscribe();
+    this.following = false;
+    this.followingLength$.next(this.followingLength - 1);
+    await this.unFollowToast();
   }
 
   async unFollowToast() {
@@ -62,7 +102,7 @@ export class FollowCommentButtonsComponent implements OnInit {
     unFollowToast.present();
   }
 
-  postPage() {
+postPage() {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', this.postID]);
   }

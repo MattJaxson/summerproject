@@ -1,12 +1,23 @@
 <ion-toolbar style="--background: none">
   <ion-buttons slot="start">
-    <ion-button class="upvote" (click)="upVotePost(this.postID)">
+    <ion-button *ngIf="!upVoted" class="upvote" (click)="upVotePost(this.postID)">
       <ion-icon size="large" src="../assets/icon/caret-up-outline.svg"></ion-icon>
-      {{upvotes$}}
+      {{upVoteLength}}
     </ion-button>
-    <ion-button class="downvote" (click)="downVotePost(this.postID)">
-      <ion-icon size="large" src="../assets/icon/caret-down-outline.svg"></ion-icon>
-      {{downvotes$}}
+    <ion-button *ngIf="upVoted" class="upvote" (click)="upVotePost(this.postID)">
+      <ion-icon  size="large" src="../assets/icon/caret-up-outline-active.svg"></ion-icon>
+      {{upVoteLength}}
     </ion-button>
+
+    <!-- Downvotes -->
+    <ion-button *ngIf="!downVoted" class="downvote" (click)="downVotePost(this.postID)">
+      <ion-icon size="large" src="../assets/icon/caret-down-outline.svg">
+      </ion-icon>
+      {{downVoteLength}}
+    </ion-button>
+      <ion-button *ngIf="downVoted" class="downvote" (click)="downVotePost(this.postID)">
+        <ion-icon size="large" src="../assets/icon/caret-down-outline-active.svg"></ion-icon>
+        {{downVoteLength}}
+      </ion-button>
   </ion-buttons>
 </ion-toolbar>

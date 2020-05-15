@@ -9,13 +9,21 @@
   margin-right: 25px;
 }
 
-.follow-button{
-  --border-width: 1px;
+.follow-button {
+  --color: white;
+  --background: linear-gradient(#24d8a8, #1baf88);
+  font-weight: 800;
+  font-size: 0.5em;
+  display: block;
   width: 100px;
-  --border-color: #1baf88;
-  --border-style: solid;
-  border-radius: 5px;
-  color: #1baf88;
-  font-size: 0.7em;
-  margin-right: 10px;
+}
+
+// Change color
+.unfollow-button {
+  --color: white;
+  --background: linear-gradient(red, orange);
+  font-weight: 800;
+  font-size: 0.5em;
+  display: block;
+  width: 100px;
 }

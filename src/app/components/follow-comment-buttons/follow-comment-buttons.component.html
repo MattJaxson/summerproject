@@ -1,7 +1,10 @@
 <ion-toolbar style="--background: none;">
   <ion-buttons slot="end">
-    <ion-button class="follow-button" (click)="follow()">
-      Follow ({{followers.length}})
+    <ion-button *ngIf="!following" class="follow-button" (click)="follow(postID)">
+      Follow ({{followingLength}})
+    </ion-button>
+    <ion-button *ngIf="following" class="unfollow-button" (click)="unFollow(postID)">
+      Unfollow ({{followingLength}})
     </ion-button>
     <!-- <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow()">
       Unfollow

@@ -10,7 +10,7 @@
 
 <ion-content>
     <!-- fab placed to the bottom end -->
-    <ion-fab class="ion-hide-lg-up" vertical="bottom"               horizontal="end" slot="fixed">
+    <ion-fab class="ion-hide-lg-up" vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="addPost()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
@@ -35,17 +35,22 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
 
-      <!-- Posts -->
-      <ion-col offset="3" size="6">
+     <!-- Posts -->
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col *ngIf="allFollowedPosts.length === 0" size="6">
+        <p style="font-size: 1.4em;">You are currently not following any posts. Please click the follow button on any Post to add it to this page.</p>
+      </ion-col>
+
+      <ion-col size="6">
         <ion-row *ngFor="let post of allFollowedPosts" class="post">
 
           <!-- Profile Header -->
           <ion-col size="12">
             <ion-row style="position: relative; left: 5px; top: 4px;" >
             <!-- Profile Picture -->
-            <ion-col size="1">
+            <ion-col offset="0.5" size="1">
               <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
@@ -66,7 +71,7 @@
           <ion-col size="12">
             <ion-row>
               <!-- 1080x1350 -->
-              <ion-col size="12" (click)="postPage(post)">
+              <ion-col offset="0.5" size="11" (click)="postPage(post)">
                <p class="post-content">{{post.post}}</p>
               </ion-col>
            </ion-row>
@@ -75,22 +80,29 @@
           <!-- Comment -->
           <ion-col size="12">
             <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col size="12">
+              <ion-col offset="0.5" size="11">
                 <ion-item lines="none">
                  <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
-                    <ion-input
-                      class="comment"
+                   <ion-textarea
+                      class="comment-input"
+                      autogrow="true"
+                      autocapitalize="true"
+                      rows="5"
+                      spellcheck="true"
+                      wrap="soft"
                       type="text"
                       placeholder="Add a Comment" formControlName="comment">
-                    </ion-input>
+                    </ion-textarea>
+                    <!-- Comment Post Button -->
                     <ion-button
                       style="float: right;"
                       class="comment-post-button"
                       *ngIf="!commentForm
                               .get('comment')
                               .pristine && commentForm.value.comment.length >= 3"
-                        name="send">Post
-                      </ion-button>
+                        name="send"
+                        type="submit">Post
+                    </ion-button>
                  </form>
 
         </ion-item>
@@ -101,19 +113,14 @@
           <!-- Post Buttons -->
           <ion-col size="12">
             <ion-row>
-              <ion-col push="1" size="10">
-                <ion-toolbar class="post-toolbar" style="--background: none;">
-                  <ion-buttons slot="end">
-                      <!-- Icons -->
-                        <app-follow-icon [post]="post" [userEmail]="userEmail">Follow</app-follow-icon>
+              <!-- Upvote & Downvote-->
+              <ion-col offset="0.5"  size="4">
+                <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
+              </ion-col>
 
-
-                    <ion-button (click)="postPage(post)">
-                    <ion-icon style=" position: relative; left: -5px;"  name="chatboxes" ></ion-icon>
-                    </ion-button>
-
-                  </ion-buttons>
-               </ion-toolbar>
+              <!-- Follow & Comment -->
+              <ion-col push="1" size="6">
+                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -122,7 +129,6 @@
         </ion-row>
       </ion-col>
 
-      <ion-col size="1"></ion-col>
     </ion-row>
     </ion-grid>
 

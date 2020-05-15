@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
@@ -6,6 +6,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,11 +14,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: 'posts.page.html',
   styleUrls: ['posts.page.scss']
 })
-export class PostsPage implements OnInit {
-
+export class PostsPage implements OnInit, OnDestroy {
+  postsSub: Subscription;
+  // postsSub: Subscription;
   commentForm: FormGroup;
   allPosts;
-  followedPostLength;
+  followedPost;
   userEmail;
   userFullName;
   date;
@@ -33,7 +35,7 @@ export class PostsPage implements OnInit {
   ngOnInit() {
 
     // Get all for post for this section
-    this.posts.getPosts().subscribe(
+    this.postsSub = this.posts.getPosts().subscribe(
       posts => {
         this.allPosts =  Object.values(posts).reverse();
 
@@ -43,6 +45,7 @@ export class PostsPage implements OnInit {
             addSuffix: true
           });
         }
+        this.posts.commentsSubject$.next(this.allPosts);
         this.posts.commentsSubject$.subscribe(
           comments => {
             this.allPosts.comments = comments;
@@ -72,9 +75,16 @@ export class PostsPage implements OnInit {
       details => {
         this.userEmail = details['email'];
         this.userFullName = details['fullName'];
-        this.followedPostLength = Object.values(details['followedPost']).length;
+        this.followedPost = Object.values(details['followedPost']).length;
         console.log('User email: ' + this.userEmail);
       });
+  }
+
+  ngOnDestroy() {
+    console.log('Page Destroyed?');
+    if (this.postsSub) {
+      this.postsSub.unsubscribe();
+    }
   }
 
   postPage(post) {
@@ -93,8 +103,9 @@ export class PostsPage implements OnInit {
           addSuffix: true
         });
       }
-    });
+    }).unsubscribe();
 
+    // Present Toast
     await setTimeout(() => {
       const toast = this.toast.create({
         message: 'Inspiration Page has been refreshed',

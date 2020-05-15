@@ -20,12 +20,12 @@ export class PostsService {
   ) {}
 
   getPosts() {
-    console.log('Getting Posts');
+    // console.log('Getting Posts');
     return this.http.get(`${this.BACKEND_URL}/api/posts/`);
   }
 
   getPostInfo(id) {
-    console.log(`Getting information for post id ${id}`);
+    // console.log(`Getting information for post id ${id}`);
     return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, {_id: id});
   }
 
@@ -70,38 +70,24 @@ export class PostsService {
 
   // Upvote Post
   upVotePost(postID, userEmail) {
-    this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-post`, { postID, userEmail }).subscribe(
-      details => {
-        console.log('upvote post details');
-        console.log(details);
-      }
-    );
-    console.log(userEmail);
+    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-post`, { postID, userEmail });
 
   }
 
    // Downvote Post
    downVotePost(postID, userEmail) {
-    this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-post`, { postID, userEmail }).subscribe(
-      details => {
-        console.log('downvote post details');
-        console.log(details);
-      }
-    );
-    console.log(userEmail);
-
-
+    return this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-post`, { postID, userEmail });
   }
 
    // Upvote
-   upVoteComment(postID) {
-    console.log(postID);
+   upVoteComment(postID, commentID, userEmail) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
 
   }
 
    // Downvote
-   downVoteComment(postID) {
-    console.log(postID);
+   downVoteComment(postID, commentID, userEmail) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
 
   }
 
@@ -110,8 +96,7 @@ export class PostsService {
     return this.http.post(`${this.BACKEND_URL}/api/posts/follow`, {
       _id: postID,
       email: userEmail
-    }).subscribe();
-    console.log('Follow Post');
+    });
   }
 
   unFollowPost(postID, userEmail) {
@@ -119,15 +104,10 @@ export class PostsService {
     return this.http.post(`${this.BACKEND_URL}/api/posts/unfollow`, {
       _id: postID,
       email: userEmail
-    }).subscribe();
-    console.log('Un Follow Post');
-  }
-
-  getFollowedPost(userId) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/get-followed-posts`, {
-      _id: userId
     });
   }
 
+  getFollowedPost(userId) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/get-followed-posts`, {_id: userId});
+  }
 }
-
