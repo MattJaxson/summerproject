@@ -46,6 +46,10 @@ export class MentorPagePage implements OnInit {
      this.mentorState = state;
   }
 
+  back() {
+    this.router.navigate(['/home/mentors']);
+  }
+
   contactMentor() {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor', this.mentorName, this.mentorEmail]);

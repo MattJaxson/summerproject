@@ -1,34 +1,45 @@
-<ion-header>
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-    <ion-title>Contact-Mentor</ion-title>
+    <ion-title>Contact Mentor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row class="ion-text-center">
-      <ion-col size="11" offset="0.5" style="margin-top: 80px;">
-          <div style="width: 100px; height: 100px; border-radius: 100px; background: lightgrey; margin: 0 auto;"></div>
-          <p style="font-size: 1em;">Have a question for a {{mentorName}}? Send them an email!</p>
-          <form [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)">
-              <ion-item>
-                  <ion-textarea
-                  formControlName="message"
-                  placeholder="Your message goes here"
-                  rows="25"
-                  autogrow="true"
-                  required
-                  spellcheck="true"></ion-textarea>
-                </ion-item>
-                <ion-button type="submit" expand="full">
-                    Send
-                  </ion-button>
+  <ion-grid>
+    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+      <ion-col offset="2.8" size="2.5">
+        <h1>Contact Mentor</h1>
+      </ion-col>
+      <ion-col push="2.6" size="2">
+        <ion-back-button class="back-button" text="Back" style="--icon-font-size: 0px;"></ion-back-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-hide-md-down">
+      <ion-col size="10">
+        <hr style="background-color: #00000044;" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+        <div style="width: 100px; height: 100px; border-radius: 100px; background: lightgrey; margin: 15px auto 0;"></div>
+        <form [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)" style="margin: 25px auto;">
+            <ion-item style="margin-bottom: 25px">
+                <ion-textarea
+                formControlName="message"
+                placeholder="Have a question for a {{mentorName}}? Send them an email here!"
+                rows="20"
+                autogrow="true"
+                required
+                spellcheck="true"></ion-textarea>
+            </ion-item>
+            <ion-button type="submit" class="orange-button" expand="block">
+                Send
+            </ion-button>
           </form>
         </ion-col>
-      <ion-col size="6"></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

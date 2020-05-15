@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
@@ -8,29 +8,47 @@
 </ion-header>
 
 <ion-content>
-    <ion-grid fixed>
-        <ion-row style=" margin-top: 20px;">
-            <ion-col size="2" offset="0.5">
-                <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
-                  <!-- <ion-img [src]="{{mentorPhoto}}" style="background: #999; border-radius: 100px;"></ion-img> -->
-              </ion-col>
-              <ion-col size="7">
-    <ion-title></ion-title>
-    <ion-title></ion-title>
-                  <h6>{{mentorName}}</h6>
-                  <p>{{mentorTitle}}</p>
-                  <p>{{mentorCity}}, {{mentorState}}</p>
-                  <p>{{mentorEmail}}</p>
-              </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col size="11" offset="0.5">
-                <p>{{mentorDescription}}</p>
-              </ion-col>
-        </ion-row>
-
-        <ion-button (click)="contactMentor()">
+  <ion-grid>
+    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+      <ion-col offset="3" size="2">
+        <h1>Mentor</h1>
+      </ion-col>
+      <ion-col push="2.6" size="2">
+        <ion-button class="back-button" (click)="back()">
+           Back
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-hide-md-down">
+      <ion-col size="10">
+        <hr style="background-color: #00000044;" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center" style=" margin-top: 20px;">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+        <div style="height: 50px; width: 50px; background: #222; border-radius: 50px;"></div>
+        <!-- <ion-img [src]="{{mentorPhoto}}" style="background: #999; border-radius: 100px;"></ion-img> -->
+      </ion-col>
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+        <ion-title></ion-title>
+        <ion-title></ion-title>
+        <h6>{{mentorName}}</h6>
+        <p>{{mentorTitle}}</p>
+        <p>{{mentorCity}}, {{mentorState}}</p>
+        <p>{{mentorEmail}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+        <p>{{mentorDescription}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-md="2">
+        <ion-button (click)="contactMentor()" expand="block">
           Contact
         </ion-button>
-      </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home/profile', // placeholder value (change back to Posts)
+    redirectTo: '/home/jobs', // placeholder value (change back to Posts)
     pathMatch: 'full'
   },
   {

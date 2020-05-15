@@ -30,16 +30,6 @@ npm-debug.log*
 /plugins
 /www
 
-cluster-qmyfbvlzy2z_ClusterCsr.csr
-cluster-qmyfbvlzy2z_CustomerHsmCertificate.crt
-cluster-qmyfbvlzy2z_HsmCertificate.crt
-
-fyf.crt
-fyf.key
-fyf.sri
-fyf-app.pem
-rds-combined-ca-bundle.pem
-rootkey.csv
-
 src/environments/environment.ts
 src/assets/Ionic Lab_files/main.js
+src/app/app-routing.module.ts
