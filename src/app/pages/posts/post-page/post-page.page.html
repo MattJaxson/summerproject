@@ -28,10 +28,10 @@
     <!-- Header -->
     <ion-row style="margin: 2% 0% 3% 0%;">
       <ion-col push="7" size="2">
-        <ion-button *ngIf="!following" class="follow-button"  (click)="follow()">
+        <ion-button *ngIf="!following" class="follow-button"  (click)="follow(postID)">
           Follow
         </ion-button>
-        <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow()">
+        <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow(postID)">
           UnFollow
         </ion-button>
       </ion-col>
@@ -83,7 +83,7 @@
             <ion-row style="position: relative; right: 6px; top: -4px;" >
               <ion-col offset="1" size="10">
                 <ion-item lines="none">
-                 <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
+                 <form (ngSubmit)="comment(this.commentForm.value, this.postID)" [formGroup]="commentForm">
                     <ion-textarea
                       class="comment-input"
                       autogrow="true"
@@ -114,18 +114,7 @@
           <ion-col size="12">
             <ion-row>
               <ion-col offset="1" size="4">
-                <ion-toolbar>
-                  <ion-buttons slot="start">
-                    <ion-button class="upvote" (click)="upVotePost()">
-                      <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
-                      0
-                    </ion-button>
-                    <ion-button class="downvote" (click)="downVotePost()">
-                      <ion-icon size="large" src="../../../assets/icon/caret-down-outline.svg"></ion-icon>
-                      0
-                    </ion-button>
-                  </ion-buttons>
-                </ion-toolbar>
+                <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
             </ion-col>
             </ion-row>
           </ion-col>
@@ -173,7 +162,7 @@
             <ion-col offset="1" size="4">
                 <ion-toolbar>
                   <ion-buttons slot="start">
-                    <ion-button class="upvote" (click)="upVoteComment()">
+                    <ion-button class="upvote" (click)="upVoteComment(comment)">
                       <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
                       0
                     </ion-button>

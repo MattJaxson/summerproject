@@ -20,7 +20,7 @@ export class FollowingPage implements OnInit {
   userEmail;
   userFullName;
   date;
-  allFollowedPosts;
+  allFollowedPosts = [];
   userID;
 
   constructor(
@@ -34,15 +34,18 @@ export class FollowingPage implements OnInit {
      // Get the User's Followed Posts
      this.profile.getUserDetails().subscribe(
       details => {
+        console.log('User ID from Following Page OnInit');
         this.userID = details['_id'];
         this.posts.getFollowedPost(this.userID).subscribe(
-          posts => {
-            this.allFollowedPosts = Object.values(posts).reverse();
+          data => {
+            this.allFollowedPosts = Object.values(data).reverse();
+            console.log(data);
 
             for (const post of this.allFollowedPosts) {
               post.date = format( new Date(post.date), 'MMMM do, yyyy');
             }
-            console.log(this.allFollowedPosts);
+
+            return this.allFollowedPosts;
           }
         );
       });
