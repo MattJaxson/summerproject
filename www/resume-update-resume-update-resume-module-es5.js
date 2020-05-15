@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>update-resume</ion-title>\n    <ion-button (click)=\"cancel()\" id=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!-- Need to express to User formats that are acceptable -->\n  <!-- pdf, ect -->\n  <p>Please upload a resume from your phone</p>\n  <ion-item>\n    <ion-label>file</ion-label>\n    <p>resume.pdf</p>\n  </ion-item>\n</ion-content>\n<button (click)=\"updateResume()\" id=\"next-button\">UPLOAD</button>\n";
+    __webpack_exports__["default"] = "<ion-header class=\"ion-hide-lg-up\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Update Resume</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid>\r\n    <ion-row class=\"ion-hide-md-down\" style=\"margin: 5% 0% 3% 0%;\">\r\n      <ion-col offset=\"2.8\" size=\"2.5\">\r\n        <h1>Update Resume</h1>\r\n      </ion-col>\r\n      <ion-col push=\"2.5\" size=\"2\">\r\n        <ion-button class=\"back-button\" (click)=\"back()\">\r\n           Back\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center ion-hide-md-down\">\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color: #00000044;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center\">\r\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\r\n        <!-- Need to express to User formats that are acceptable -->\r\n        <!-- pdf, ect -->\r\n        <p>Please upload a resume from your phone</p>\r\n        <ion-item>\r\n          <ion-label>file</ion-label>\r\n          <p>resume.pdf</p>\r\n        </ion-item>\r\n        <ion-button (click)=\"updateResume()\" class=\"orange-button\" style=\"width: unset;\">UPLOAD</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -161,7 +161,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvcmVzdW1lL3VwZGF0ZS1yZXN1bWUvdXBkYXRlLXJlc3VtZS5wYWdlLnNjc3MifQ== */";
+    __webpack_exports__["default"] = "ion-title {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9yZXN1bWUvdXBkYXRlLXJlc3VtZS9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheSBGWUZcXE1vYmlsZS9zcmNcXGFwcFxccGFnZXNcXHByb2ZpbGVcXHJlc3VtZVxcdXBkYXRlLXJlc3VtZVxcdXBkYXRlLXJlc3VtZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvcmVzdW1lL3VwZGF0ZS1yZXN1bWUvdXBkYXRlLXJlc3VtZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlL3Jlc3VtZS91cGRhdGUtcmVzdW1lL3VwZGF0ZS1yZXN1bWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRpdGxlIHtcclxuICAgIG1hcmdpbjogMDtcclxufSIsImlvbi10aXRsZSB7XG4gIG1hcmdpbjogMDtcbn0iXX0= */";
     /***/
   },
 
@@ -210,14 +210,13 @@
 
       ngOnInit() {}
 
+      back() {
+        this.router.navigate(['/home/profile/resume/<resume>']);
+      }
+
       updateResume() {
         console.log('Going to Update Resume Confirm');
         this.router.navigate(['/home/profile/resume/confirm']);
-      }
-
-      cancel() {
-        console.log('change email password cancelled');
-        this.router.navigate(['/home/profile']);
       }
 
     };

@@ -39,7 +39,7 @@ export class ContactMentorPage implements OnInit {
   ngOnInit() {
 
     this.contactMenorForm = this.formBuilder.group({
-      message: ['This is a message', Validators.required]
+      message: ['', Validators.required]
     });
 
     this.message = this.contactMenorForm.value.message;

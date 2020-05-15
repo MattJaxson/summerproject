@@ -1,3 +1,7 @@
+ion-title {
+  margin: 0;
+}
+
 span {
   font-weight: 700;
 }
@@ -6,4 +10,8 @@ span {
   margin-top: 5%;
   background: white;
   padding: 2%;
+}
+
+.orange-button {
+  width: unset;
 }

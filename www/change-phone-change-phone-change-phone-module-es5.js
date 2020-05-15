@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Change Phone Number</ion-title>\n    <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid fixed class=\"ion-text-center\">\n      <ion-row>\n        <ion-col size=\"12\">\n            <h6 class=\"text-header\">Current Phone Number: {{activePhone}}</h6>\n            <form (ngSubmit)=\"confirmChangedPhoneNumber(\n              this.changePhone.controls.newNumber.value,\n              this.changePhone.controls.password.value\n            )\" [formGroup]=\"changePhone\">\n\n\n            <ion-list class=\"line-input\">\n                <!-- Email -->\n                <ion-item>\n                  <ion-input\n                    maxLength=\"10\"\n                    placeholder=\"New Number  - xxx - xxx - xxxx\"\n                    formControlName=\"newNumber\"\n                    type=\"text\">\n                  </ion-input>\n                </ion-item>\n\n                <!-- Number Validation-->\n                <div class=\"validation-errors\">\n                    <ng-container *ngFor=\"let validation of validationMessasges.phone\">\n                      <div class=\"error-message\"\n                        *ngIf=\"changePhone\n                          .get('newNumber')\n                          .hasError(validation.text) && (changePhone.get('newNumber')\n                          .dirty || changePhone.get('newNumber').touched)\">\n                        {{ validation.message }}\n                      </div>\n                    </ng-container>\n                  </div>\n                <ion-item>\n                    <ion-input\n                      placeholder=\"Password\"\n                      formControlName=\"password\"\n                      type=\"password\">\n                    </ion-input>\n                </ion-item>\n              </ion-list>\n                <ion-button\n                  [disabled]=\"disabled\"\n                  type=\"submit\"\n                  class=\"orange-button\">CHANGE NUMBER</ion-button>\n              </form>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header class=\"ion-hide-lg-up\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Change Phone Number</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid fixed class=\"ion-text-center\">\r\n    <ion-row class=\"ion-hide-md-down\" style=\"margin: 5% 0% 3% 0%;\">\r\n      <ion-col offset=\"1.8\" size=\"4\">\r\n        <h1>Change Phone Number</h1>\r\n      </ion-col>\r\n      <ion-col push=\"2.5\" size=\"2\">\r\n        <ion-button class=\"back-button\" (click)=\"back()\">\r\n           Back\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center ion-hide-md-down\">\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color: #00000044;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center\">\r\n        <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\r\n            <h6 class=\"text-header\" style=\"width: unset;\">Current Phone Number: {{activePhone}}</h6>\r\n            <form (ngSubmit)=\"confirmChangedPhoneNumber(\r\n              this.changePhone.controls.newNumber.value,\r\n              this.changePhone.controls.password.value\r\n            )\" [formGroup]=\"changePhone\">\r\n\r\n\r\n            <ion-list class=\"line-input\">\r\n                <!-- Email -->\r\n                <ion-item>\r\n                  <ion-input\r\n                    maxLength=\"10\"\r\n                    placeholder=\"New Number  - xxx - xxx - xxxx\"\r\n                    formControlName=\"newNumber\"\r\n                    type=\"text\">\r\n                  </ion-input>\r\n                </ion-item>\r\n\r\n                <!-- Number Validation-->\r\n                <div class=\"validation-errors\">\r\n                    <ng-container *ngFor=\"let validation of validationMessasges.phone\">\r\n                      <div class=\"error-message\"\r\n                        *ngIf=\"changePhone\r\n                          .get('newNumber')\r\n                          .hasError(validation.text) && (changePhone.get('newNumber')\r\n                          .dirty || changePhone.get('newNumber').touched)\">\r\n                        {{ validation.message }}\r\n                      </div>\r\n                    </ng-container>\r\n                  </div>\r\n                <ion-item>\r\n                    <ion-input\r\n                      placeholder=\"Password\"\r\n                      formControlName=\"password\"\r\n                      type=\"password\">\r\n                    </ion-input>\r\n                </ion-item>\r\n              </ion-list>\r\n                <ion-button\r\n                  [disabled]=\"disabled\"\r\n                  type=\"submit\"\r\n                  class=\"orange-button\" style=\"width: unset;\">CHANGE NUMBER</ion-button>\r\n              </form>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-content>\r\n\r\n";
     /***/
   },
 
@@ -168,7 +168,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLXBob25lL2NoYW5nZS1waG9uZS9jaGFuZ2UtcGhvbmUucGFnZS5zY3NzIn0= */";
+    __webpack_exports__["default"] = "ion-title {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtcGhvbmUvY2hhbmdlLXBob25lL0M6XFxVc2Vyc1xcYWdvb2RcXFNvZnR3YXJlIERldiBQcm9qZWN0c1xcSk9VUk5pXFxVbml0ZWQgV2F5IEZZRlxcTW9iaWxlL3NyY1xcYXBwXFxwYWdlc1xccHJvZmlsZVxcY2hhbmdlLXBob25lXFxjaGFuZ2UtcGhvbmVcXGNoYW5nZS1waG9uZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLXBob25lL2NoYW5nZS1waG9uZS9jaGFuZ2UtcGhvbmUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtcGhvbmUvY2hhbmdlLXBob25lL2NoYW5nZS1waG9uZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGUge1xyXG4gICAgbWFyZ2luOiAwO1xyXG59IiwiaW9uLXRpdGxlIHtcbiAgbWFyZ2luOiAwO1xufSJdfQ== */";
     /***/
   },
 
@@ -254,13 +254,13 @@
         this.formOnChanges();
       }
 
-      confirmChangedPhoneNumber(newNumber, password) {
-        this.profile.changePhone(this.activeEmail, newNumber, password);
+      back() {
+        console.log('change phone number cancelled');
+        this.router.navigate(['/home/profile/edit-profile-page']);
       }
 
-      cancel() {
-        console.log('change phone number cancelled');
-        this.router.navigate(['/home/profile']);
+      confirmChangedPhoneNumber(newNumber, password) {
+        this.profile.changePhone(this.activeEmail, newNumber, password);
       }
 
       formOnChanges() {

@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n\r\n");
 
 /***/ }),
 
@@ -456,7 +456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleLikeState(post)\" tappable [@follow]=\"followState\" size=\"medium\" [name]=\"iconName\"></ion-icon>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleLikeState(post)\" tappable [@follow]=\"followState\" size=\"medium\" [name]=\"iconName\"></ion-icon>\r\n");
 
 /***/ }),
 
@@ -469,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-button class=\"event-details\" (click)=\"eventPage(event)\">\n    Details\n</ion-button>\n\n<ion-button *ngIf='!going' (click)=\"toggleGoingState(event)\">\n    Go\n</ion-button>\n\n<ion-button class=\"not-going\" *ngIf='going' (click)=\"toggleGoingState(event)\">\n    Cancel\n</ion-button>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-button class=\"event-details\" (click)=\"eventPage(event)\">\r\n    Details\r\n</ion-button>\r\n\r\n<ion-button *ngIf='!going' (click)=\"toggleGoingState(event)\">\r\n    Go\r\n</ion-button>\r\n\r\n<ion-button class=\"not-going\" *ngIf='going' (click)=\"toggleGoingState(event)\">\r\n    Cancel\r\n</ion-button>\r\n");
 
 /***/ }),
 
@@ -482,7 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon (click)=\"toggleLikeState()\" tappable [@heart]=\"favoriteState\" size=\"large\" [name]=\"iconName\"></ion-icon>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-icon (click)=\"toggleLikeState()\" tappable [@heart]=\"favoriteState\" size=\"large\" [name]=\"iconName\"></ion-icon>\r\n");
 
 /***/ }),
 
@@ -495,7 +495,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-grid fixed>\n    <ion-row>\n        <ion-col size=\"10\" style=\"padding-top: 10px;\">\n            <p>No longer going to this Event?</p>\n        </ion-col>\n        <ion-col size=\"2\">\n          <ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleGoingState(event)\" tappable [@notGoing]=\"goingState\" size=\"large\" [name]=\"iconName\"></ion-icon>\n        </ion-col>\n    </ion-row>\n  </ion-grid>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-grid fixed>\r\n    <ion-row>\r\n        <ion-col size=\"10\" style=\"padding-top: 10px;\">\r\n            <p>No longer going to this Event?</p>\r\n        </ion-col>\r\n        <ion-col size=\"2\">\r\n          <ion-icon style=\" position: relative; left: -5px;\" (click)=\"toggleGoingState(event)\" tappable [@notGoing]=\"goingState\" size=\"large\" [name]=\"iconName\"></ion-icon>\r\n        </ion-col>\r\n    </ion-row>\r\n  </ion-grid>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.html":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.html ***!
+  \*****************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- Mobile Header -->\r\n<ion-header class=\"ion-hide-lg-down\">\r\n  <ion-toolbar>\r\n    <ion-title slot=\"end\">Report Comment</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-buttons slot=\"start\">\r\n        <ion-back-button></ion-back-button>\r\n      </ion-buttons>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<p>{{reportedName}}</p>\r\n<p>{{reportedComment}}</p>\r\n<p>{{commentDate}}</p>\r\n</ion-content>");
 
 /***/ }),
 
@@ -928,18 +941,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _components_shared_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/shared.module */ "./src/app/components/shared.module.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ "./node_modules/@ionic-native/vibration/ngx/index.js");
-/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
-/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
-/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
-/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
-/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/fesm2015/service-worker.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _pages_posts_post_page_post_page_modals_post_page_modals_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/posts/post-page/post-page-modals/post-page-modals.module */ "./src/app/pages/posts/post-page/post-page-modals/post-page-modals.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ "./node_modules/@ionic-native/vibration/ngx/index.js");
+/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
+/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/fesm2015/service-worker.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+// Angular Modules
 
 
 
@@ -949,6 +965,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Custom Modules
 
 
 //  Ionic Modules
@@ -981,33 +998,34 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         entryComponents: [],
         imports: [
             _components_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"],
+            _pages_posts_post_page_post_page_modals_post_page_modals_module__WEBPACK_IMPORTED_MODULE_11__["PostPageModalsModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonicModule"].forRoot(),
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_12__["IonicModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_15__["IonicStorageModule"].forRoot(),
             _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__["JwtModule"].forRoot({
                 jwtOptionsProvider: {
                     provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_6__["JWT_OPTIONS"],
                     useFactory: jwtOptionsFactory,
-                    deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_14__["Storage"]],
+                    deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_15__["Storage"]],
                 }
             }),
-            _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_22__["environment"].production }),
+            _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_23__["environment"].production }),
         ],
         providers: [
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__["StatusBar"],
-            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__["SplashScreen"],
-            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_16__["Keyboard"],
-            _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_15__["Vibration"],
-            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_17__["Camera"],
-            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_18__["File"],
-            _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_19__["FilePath"],
-            _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_20__["WebView"],
-            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonicRouteStrategy"] }
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_14__["StatusBar"],
+            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_13__["SplashScreen"],
+            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__["Keyboard"],
+            _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_16__["Vibration"],
+            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_18__["Camera"],
+            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_19__["File"],
+            _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_20__["FilePath"],
+            _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_21__["WebView"],
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__["IonicRouteStrategy"] }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
     })
@@ -1026,7 +1044,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  --color: lightgrey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9mb2xsb3ctaWNvbi9mb2xsb3ctaWNvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9mb2xsb3ctaWNvbi9mb2xsb3ctaWNvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2ZvbGxvdy1pY29uL2ZvbGxvdy1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWljb24ge1xuICAtLWNvbG9yOiBsaWdodGdyZXk7XG59IiwiaW9uLWljb24ge1xuICAtLWNvbG9yOiBsaWdodGdyZXk7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  --color: lightgrey;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9mb2xsb3ctaWNvbi9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheSBGWUZcXE1vYmlsZS9zcmNcXGFwcFxcY29tcG9uZW50c1xcZm9sbG93LWljb25cXGZvbGxvdy1pY29uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2ZvbGxvdy1pY29uL2ZvbGxvdy1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZm9sbG93LWljb24vZm9sbG93LWljb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taWNvbiB7XHJcbiAgLS1jb2xvcjogbGlnaHRncmV5O1xyXG59IiwiaW9uLWljb24ge1xuICAtLWNvbG9yOiBsaWdodGdyZXk7XG59Il19 */");
 
 /***/ }),
 
@@ -1118,7 +1136,7 @@ FollowIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("p {\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 1;\n}\n\nion-button {\n  font-size: 1em;\n  font-weight: 800;\n  height: 50px;\n  width: 100px;\n  margin: 5px;\n  --background: none;\n  --color: #21ce99;\n  --border-style: solid;\n  --border-color: #21ce99;\n  --border-width: 2px;\n}\n\n.not-going {\n  --color: #e4405f;\n  --border-style: solid;\n  --border-color: #e4405f;\n  --border-width: 2px;\n}\n\n.event-details {\n  --color: #999;\n  --border-style: solid;\n  --border-color: #999;\n  --border-width: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL2dvaW5nLWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvZ29pbmctaWNvbi9nb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQUE7RUFBQSxnQkFBQTtFQUNBLFVBQUE7QUNDRjs7QURFQTtFQUNFLGNBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxxQkFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0VBQ0EscUJBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDQ0Y7O0FERUE7RUFDRSxhQUFBO0VBQ0EscUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2dvaW5nLWljb24vZ29pbmctaWNvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDVweDtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufVxuXG4ubm90LWdvaW5nIHtcbiAgLS1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICAtLWJvcmRlci1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmV2ZW50LWRldGFpbHN7XG4gIC0tY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXdpZHRoOiAycHg7XG59XG5cbiIsInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDVweDtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjMjFjZTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufVxuXG4ubm90LWdvaW5nIHtcbiAgLS1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICAtLWJvcmRlci1jb2xvcjogI2U0NDA1ZjtcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmV2ZW50LWRldGFpbHMge1xuICAtLWNvbG9yOiAjOTk5O1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjOTk5O1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 1;\n}\n\nion-button {\n  font-size: 1em;\n  font-weight: 800;\n  height: 50px;\n  width: 100px;\n  margin: 5px;\n  --background: none;\n  --color: #21ce99;\n  --border-style: solid;\n  --border-color: #21ce99;\n  --border-width: 2px;\n}\n\n.not-going {\n  --color: #e4405f;\n  --border-style: solid;\n  --border-color: #e4405f;\n  --border-width: 2px;\n}\n\n.event-details {\n  --color: #999;\n  --border-style: solid;\n  --border-color: #999;\n  --border-width: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL0M6XFxVc2Vyc1xcYWdvb2RcXFNvZnR3YXJlIERldiBQcm9qZWN0c1xcSk9VUk5pXFxVbml0ZWQgV2F5IEZZRlxcTW9iaWxlL3NyY1xcYXBwXFxjb21wb25lbnRzXFxnb2luZy1pY29uXFxnb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2dvaW5nLWljb24vZ29pbmctaWNvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUFBO0VBQUEsZ0JBQUE7RUFDQSxVQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EscUJBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtFQUNBLHFCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLHFCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL2dvaW5nLWljb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJwIHtcclxuICB0cmFuc2l0aW9uOiAwLjVzO1xyXG4gIG9wYWNpdHk6IDE7XHJcbn1cclxuXHJcbmlvbi1idXR0b24ge1xyXG4gIGZvbnQtc2l6ZTogMWVtO1xyXG4gIGZvbnQtd2VpZ2h0OiA4MDA7XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIHdpZHRoOiAxMDBweDtcclxuICBtYXJnaW46IDVweDtcclxuICAtLWJhY2tncm91bmQ6IG5vbmU7XHJcbiAgLS1jb2xvcjogIzIxY2U5OTtcclxuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgLS1ib3JkZXItY29sb3I6ICMyMWNlOTk7XHJcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcclxufVxyXG5cclxuLm5vdC1nb2luZyB7XHJcbiAgLS1jb2xvcjogI2U0NDA1ZjtcclxuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgLS1ib3JkZXItY29sb3I6ICNlNDQwNWY7XHJcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcclxufVxyXG5cclxuLmV2ZW50LWRldGFpbHN7XHJcbiAgLS1jb2xvcjogIzk5OTtcclxuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgLS1ib3JkZXItY29sb3I6ICM5OTk7XHJcbiAgLS1ib3JkZXItd2lkdGg6IDJweDtcclxufVxyXG5cclxuIiwicCB7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIG9wYWNpdHk6IDE7XG59XG5cbmlvbi1idXR0b24ge1xuICBmb250LXNpemU6IDFlbTtcbiAgZm9udC13ZWlnaHQ6IDgwMDtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogMTAwcHg7XG4gIG1hcmdpbjogNXB4O1xuICAtLWJhY2tncm91bmQ6IG5vbmU7XG4gIC0tY29sb3I6ICMyMWNlOTk7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItY29sb3I6ICMyMWNlOTk7XG4gIC0tYm9yZGVyLXdpZHRoOiAycHg7XG59XG5cbi5ub3QtZ29pbmcge1xuICAtLWNvbG9yOiAjZTQ0MDVmO1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLWNvbG9yOiAjZTQ0MDVmO1xuICAtLWJvcmRlci13aWR0aDogMnB4O1xufVxuXG4uZXZlbnQtZGV0YWlscyB7XG4gIC0tY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItY29sb3I6ICM5OTk7XG4gIC0tYm9yZGVyLXdpZHRoOiAycHg7XG59Il19 */");
 
 /***/ }),
 
@@ -1269,7 +1287,7 @@ GoingIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  float: right;\n  z-index: 9999;\n  position: relative;\n  right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9oZWFydC1pY29uL2hlYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59IiwiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  float: right;\n  z-index: 9999;\n  position: relative;\n  right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9oZWFydC1pY29uL0M6XFxVc2Vyc1xcYWdvb2RcXFNvZnR3YXJlIERldiBQcm9qZWN0c1xcSk9VUk5pXFxVbml0ZWQgV2F5IEZZRlxcTW9iaWxlL3NyY1xcYXBwXFxjb21wb25lbnRzXFxoZWFydC1pY29uXFxoZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2hlYXJ0LWljb24vaGVhcnQtaWNvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYXJ0LWljb24vaGVhcnQtaWNvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pY29uIHtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgei1pbmRleDogOTk5OTtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgcmlnaHQ6IDEwcHg7XHJcbn0iLCJpb24taWNvbiB7XG4gIGZsb2F0OiByaWdodDtcbiAgei1pbmRleDogOTk5OTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICByaWdodDogMTBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1519,6 +1537,102 @@ SharedModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 ], SharedModule);
 
 
+
+/***/ }),
+
+/***/ "./src/app/pages/posts/post-page/post-page-modals/post-page-modals.module.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/pages/posts/post-page/post-page-modals/post-page-modals.module.ts ***!
+  \***********************************************************************************/
+/*! exports provided: PostPageModalsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostPageModalsModule", function() { return PostPageModalsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _report_modal_report_modal_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./report-modal/report-modal.page */ "./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.page.ts");
+
+
+
+
+
+let PostPageModalsModule = class PostPageModalsModule {
+};
+PostPageModalsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot()
+        ],
+        declarations: [
+            _report_modal_report_modal_page__WEBPACK_IMPORTED_MODULE_4__["ReportModalPage"]
+        ],
+        exports: [
+            _report_modal_report_modal_page__WEBPACK_IMPORTED_MODULE_4__["ReportModalPage"]
+        ]
+    })
+], PostPageModalsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.page.ts":
+/*!******************************************************************************************!*\
+  !*** ./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.page.ts ***!
+  \******************************************************************************************/
+/*! exports provided: ReportModalPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportModalPage", function() { return ReportModalPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ReportModalPage = class ReportModalPage {
+    constructor() { }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], ReportModalPage.prototype, "reportedName", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], ReportModalPage.prototype, "reportedComment", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], ReportModalPage.prototype, "commentDate", void 0);
+ReportModalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'report-modal-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./report-modal.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./report-modal.scss */ "./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], ReportModalPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.scss":
+/*!***************************************************************************************!*\
+  !*** ./src/app/pages/posts/post-page/post-page-modals/report-modal/report-modal.scss ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  color: blue;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcG9zdHMvcG9zdC1wYWdlL3Bvc3QtcGFnZS1tb2RhbHMvcmVwb3J0LW1vZGFsL0M6XFxVc2Vyc1xcYWdvb2RcXFNvZnR3YXJlIERldiBQcm9qZWN0c1xcSk9VUk5pXFxVbml0ZWQgV2F5IEZZRlxcTW9iaWxlL3NyY1xcYXBwXFxwYWdlc1xccG9zdHNcXHBvc3QtcGFnZVxccG9zdC1wYWdlLW1vZGFsc1xccmVwb3J0LW1vZGFsXFxyZXBvcnQtbW9kYWwuc2NzcyIsInNyYy9hcHAvcGFnZXMvcG9zdHMvcG9zdC1wYWdlL3Bvc3QtcGFnZS1tb2RhbHMvcmVwb3J0LW1vZGFsL3JlcG9ydC1tb2RhbC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9zdHMvcG9zdC1wYWdlL3Bvc3QtcGFnZS1tb2RhbHMvcmVwb3J0LW1vZGFsL3JlcG9ydC1tb2RhbC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsicCB7XHJcbiAgY29sb3I6IGJsdWVcclxufSIsInAge1xuICBjb2xvcjogYmx1ZTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1948,14 +2062,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/profile.service */ "./src/app/services/profile.service.ts");
+
 
 
 
 
 
 let PostsService = class PostsService {
-    constructor(http) {
+    constructor(http, profile) {
         this.http = http;
+        this.profile = profile;
         this.BACKEND_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
         this.commentsSubject$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
         this.followersSubject$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
@@ -1968,8 +2085,52 @@ let PostsService = class PostsService {
         console.log(`Getting information for post id ${id}`);
         return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, { _id: id });
     }
+    addPost(creatorName, creatorEmail, post) {
+        console.log('Adding post to post que...');
+        return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, { creatorName, creatorEmail, post });
+    }
     comment(postID, date, userFullName, userEmail, { comment: comment }) {
         return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment }).subscribe();
+    }
+    canEditPost(postID, userEmail) {
+        // Get userEmail
+        // See if it matches each and every postID in the feed
+        // Display to UI that this post can be editted.
+    }
+    canEditComment(postID, userEmail) {
+        // Get userEmail
+        // See if it matches each and every postID in the feed
+        // Display to UI that this post can be editted.
+    }
+    editPost(postID, userEmail) {
+        // 
+    }
+    editComment(postID, userEmail) {
+        // 
+    }
+    // Upvote Post
+    upVotePost(postID, userEmail) {
+        this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-post`, { postID, userEmail }).subscribe(details => {
+            console.log('upvote post details');
+            console.log(details);
+        });
+        console.log(userEmail);
+    }
+    // Downvote Post
+    downVotePost(postID, userEmail) {
+        this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-post`, { postID, userEmail }).subscribe(details => {
+            console.log('downvote post details');
+            console.log(details);
+        });
+        console.log(userEmail);
+    }
+    // Upvote
+    upVoteComment(postID) {
+        console.log(postID);
+    }
+    // Downvote
+    downVoteComment(postID) {
+        console.log(postID);
     }
     followPost(postID, userEmail) {
         return this.http.post(`${this.BACKEND_URL}/api/posts/follow`, {
@@ -1992,13 +2153,15 @@ let PostsService = class PostsService {
     }
 };
 PostsService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
 ];
 PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+        _services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
 ], PostsService);
 
 
@@ -2353,7 +2516,7 @@ __webpack_require__.r(__webpack_exports__);
 // const url is commented out depending on which you are testing with.
 // local host is for local machine and 10.0.1.8 is for android testing
 
-const ip = '10.0.1.16';
+const ip = '127.0.0.1';
 const baseUrl = `http://${ip}:3000`;
 const environment = {
     production: false,
@@ -2406,7 +2569,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ferro/Desktop/United-Way/Mobile/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\agood\Software Dev Projects\JOURNi\United Way FYF\Mobile\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Change Email</ion-title>\n    <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid fixed class=\"ion-text-center\">\n      <ion-row>\n        <ion-col size=\"12\">\n            <h6 class=\"text-header\">{{activeEmail}}</h6>\n            <form (ngSubmit)=\"confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value)\" [formGroup]=\"changeEmail\">\n\n\n            <ion-list class=\"line-input\">\n\n                <!-- Email -->\n                <ion-item>\n                  <ion-input\n                    required\n                    placeholder=\"new email\"\n                    formControlName=\"email\"\n                    type=\"email\">\n                  </ion-input>\n                </ion-item>\n\n                <!-- Email Validation-->\n                <div class=\"validation-errors\">\n                  <ng-container *ngFor=\"let validation of validationMessasges.email\">\n                    <div class=\"error-message\"\n                    *ngIf=\"changeEmail\n                      .get('email')\n                      .hasError(validation.type) && (changeEmail.get('email')\n                      .dirty || changeEmail.get('email').touched)\">\n                      {{ validation.message }}\n                    </div>\n                  </ng-container>\n                </div>\n\n                <ion-item>\n                    <ion-input\n                      required\n                      placeholder=\"password\"\n                      formControlName=\"password\"\n                      type=\"password\">\n                    </ion-input>\n                </ion-item>\n          </ion-list>\n                <ion-button\n                type=\"submit\" \n                class=\"orange-button\">CHANGE EMAIL</ion-button>\n              </form>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header class=\"ion-hide-lg-up\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Change Email</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-grid fixed class=\"ion-text-center\">\r\n      <ion-row class=\"ion-hide-md-down\" style=\"margin: 5% 0% 3% 0%;\">\r\n        <ion-col offset=\"2.5\" size=\"2.5\">\r\n          <h1>Change Email</h1>\r\n        </ion-col>\r\n        <ion-col push=\"2.5\" size=\"2\">\r\n          <ion-button class=\"back-button\" (click)=\"back()\">\r\n             Back\r\n          </ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row class=\"ion-justify-content-center ion-hide-md-down\">\r\n        <ion-col size=\"10\">\r\n          <hr style=\"background-color: #00000044;\" />\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row class=\"ion-justify-content-center\">\r\n        <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\r\n            <h6 class=\"text-header\" style=\"width: unset;\">{{activeEmail}}</h6>\r\n            <form (ngSubmit)=\"confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value)\" [formGroup]=\"changeEmail\">\r\n\r\n\r\n            <ion-list class=\"line-input\">\r\n\r\n                <!-- Email -->\r\n                <ion-item>\r\n                  <ion-input\r\n                    required\r\n                    placeholder=\"new email\"\r\n                    formControlName=\"email\"\r\n                    type=\"email\">\r\n                  </ion-input>\r\n                </ion-item>\r\n\r\n                <!-- Email Validation-->\r\n                <div class=\"validation-errors\">\r\n                  <ng-container *ngFor=\"let validation of validationMessasges.email\">\r\n                    <div class=\"error-message\"\r\n                    *ngIf=\"changeEmail\r\n                      .get('email')\r\n                      .hasError(validation.type) && (changeEmail.get('email')\r\n                      .dirty || changeEmail.get('email').touched)\">\r\n                      {{ validation.message }}\r\n                    </div>\r\n                  </ng-container>\r\n                </div>\r\n\r\n                <ion-item>\r\n                    <ion-input\r\n                      required\r\n                      placeholder=\"password\"\r\n                      formControlName=\"password\"\r\n                      type=\"password\">\r\n                    </ion-input>\r\n                </ion-item>\r\n          </ion-list>\r\n                <ion-button type=\"submit\" class=\"orange-button\" style=\"width: unset;\">CHANGE EMAIL</ion-button>\r\n              </form>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-content>\r\n\r\n";
     /***/
   },
 
@@ -168,7 +168,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC9jaGFuZ2UtZW1haWwucGFnZS5zY3NzIn0= */";
+    __webpack_exports__["default"] = "ion-title {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtZW1haWwvY2hhbmdlLWVtYWlsL0M6XFxVc2Vyc1xcYWdvb2RcXFNvZnR3YXJlIERldiBQcm9qZWN0c1xcSk9VUk5pXFxVbml0ZWQgV2F5IEZZRlxcTW9iaWxlL3NyY1xcYXBwXFxwYWdlc1xccHJvZmlsZVxcY2hhbmdlLWVtYWlsXFxjaGFuZ2UtZW1haWxcXGNoYW5nZS1lbWFpbC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC9jaGFuZ2UtZW1haWwucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtZW1haWwvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGUge1xyXG4gICAgbWFyZ2luOiAwO1xyXG59IiwiaW9uLXRpdGxlIHtcbiAgbWFyZ2luOiAwO1xufSJdfQ== */";
     /***/
   },
 
@@ -260,9 +260,13 @@
       ngOnInit() {
         this.changeEmail = this.formBuilder.group({
           email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]],
-          password: ['Lacrosse2', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, // this is for the letters (both uppercase and lowercase) and numbers validation
+          password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, // this is for the letters (both uppercase and lowercase) and numbers validation
           _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')])]
         });
+      }
+
+      back() {
+        this.router.navigate(['/home/profile/edit-profile-page']);
       }
 
       presentToast() {
@@ -280,11 +284,6 @@
 
       confirmChangedEmail(newEmail, password) {
         this.profile.changeEmail('eddie@gmail.com', newEmail, password);
-      }
-
-      cancel() {
-        console.log('change email password cancelled');
-        this.router.navigate(['/home/profile/edit-profile-page']);
       }
 
     };

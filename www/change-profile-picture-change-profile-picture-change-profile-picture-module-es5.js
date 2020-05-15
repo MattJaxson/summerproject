@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Change Profile Picture</ion-title>\n    <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\n        cancel\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-text-center\">\n    <ion-row>\n      <ion-col size=\"12\">\n      <h6 class=\"text-header\">Please upload a new photo from your gallery, or take a new one with your camera. </h6>\n      <div style=\"width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;\">\n   <img src=\"\" alt=\"Profile Picture\">\n      </div>\n      <ion-button (click)=\"useCamera()\" class=\"orange-button\">CAMERA</ion-button>\n      <ion-button (click)=\"upload()\" class=\"orange-button\">UPLOAD</ion-button>\n    </ion-col>\n  </ion-row>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header class=\"ion-hide-lg-up\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Change Profile Picture</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content class=\"ion-text-center\">\r\n  <ion-grid>\r\n    <ion-row class=\"ion-hide-md-down\" style=\"margin: 5% 0% 3% 0%;\">\r\n      <ion-col offset=\"2\" size=\"3.5\">\r\n        <h1>Change Profile Picture</h1>\r\n      </ion-col>\r\n      <ion-col push=\"2.5\" size=\"2\">\r\n        <ion-button class=\"back-button\" (click)=\"back()\">\r\n           Back\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center ion-hide-md-down\">\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color: #00000044;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row class=\"ion-justify-content-center\">\r\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\r\n        <h6 class=\"text-header\" style=\"width: unset;\">Please upload a new photo from your gallery, or take a new one with your camera. </h6>\r\n        <div style=\"width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 30px auto;\">\r\n          <img src=\"\" alt=\"Profile Picture\">\r\n        </div>\r\n        <ion-button (click)=\"useCamera()\" class=\"orange-button\" style=\"margin-right: 16px;\">CAMERA</ion-button>\r\n        <ion-button (click)=\"upload()\" class=\"orange-button\">UPLOAD</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -168,7 +168,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLXByb2ZpbGUtcGljdHVyZS9jaGFuZ2UtcHJvZmlsZS1waWN0dXJlL2NoYW5nZS1wcm9maWxlLXBpY3R1cmUucGFnZS5zY3NzIn0= */";
+    __webpack_exports__["default"] = "ion-title {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtcHJvZmlsZS1waWN0dXJlL2NoYW5nZS1wcm9maWxlLXBpY3R1cmUvQzpcXFVzZXJzXFxhZ29vZFxcU29mdHdhcmUgRGV2IFByb2plY3RzXFxKT1VSTmlcXFVuaXRlZCBXYXkgRllGXFxNb2JpbGUvc3JjXFxhcHBcXHBhZ2VzXFxwcm9maWxlXFxjaGFuZ2UtcHJvZmlsZS1waWN0dXJlXFxjaGFuZ2UtcHJvZmlsZS1waWN0dXJlXFxjaGFuZ2UtcHJvZmlsZS1waWN0dXJlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtcHJvZmlsZS1waWN0dXJlL2NoYW5nZS1wcm9maWxlLXBpY3R1cmUvY2hhbmdlLXByb2ZpbGUtcGljdHVyZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlL2NoYW5nZS1wcm9maWxlLXBpY3R1cmUvY2hhbmdlLXByb2ZpbGUtcGljdHVyZS9jaGFuZ2UtcHJvZmlsZS1waWN0dXJlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZSB7XHJcbiAgICBtYXJnaW46IDA7XHJcbn0iLCJpb24tdGl0bGUge1xuICBtYXJnaW46IDA7XG59Il19 */";
     /***/
   },
 
@@ -246,17 +246,16 @@
         this.activePicture = this.profile.profilePicture.getValue();
       }
 
-      ngOnInit() {} // ADD password input to profile picture
+      ngOnInit() {}
+
+      back() {
+        this.router.navigate(['/home/profile/edit-profile-page']);
+      } // ADD password input to profile picture
 
 
       confirmChangeProfilePicture(newPicture, psssword) {
         this.profile.changeProfilePicture(this.activeEmail, newPicture, psssword); // console.log('Going to Change Picture Confirm');
         // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
-      }
-
-      cancel() {
-        console.log('change phone number cancelled');
-        this.router.navigate(['/home/profile']);
       } // Not finished
 
 
