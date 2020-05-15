@@ -25,6 +25,7 @@ export class PostPagePage implements OnInit {
   following = false;
 
   postID;
+  commentID;
   creatorName;
   creatorEmail;
   date;
@@ -47,11 +48,65 @@ export class PostPagePage implements OnInit {
 
   ngOnInit() {
 
+    // Get Post ID from navigation params on the main posts tab
+    const id  = this.activatedRoute.snapshot.paramMap.get('_id');
+    this.postID = id;
+
     // Get the user's information to insert into the comment metadata
     this.profile.getUserDetails().subscribe(
       details => {
-        this.userEmail = details['email'];
-        this.userFullName = details['fullName'];
+        let userEmail = details['email'];
+        let userFullName = details['fullName'];
+
+        // Get information about selected post.
+        // Format its date on the front end
+        // initiate this components post metadata from data in Posts Service
+        this.posts.getPostInfo(this.postID).subscribe(
+          postInfo =>  {
+            const comments = postInfo['comments'];
+            const creatorEmail = postInfo['creatorEmail'];
+            const creatorName = postInfo['creatorName'];
+            const post = postInfo['post'];
+            const followers = postInfo['followers'];
+            let following = false;
+            let date = formatDistanceToNow(
+              new Date(postInfo['date']), {
+                includeSeconds: true,
+                addSuffix: true
+              });
+
+            followers.find(findFollower);
+
+            function findFollower(follower) {
+              if (!follower) {
+              }
+
+              if (follower === userEmail) {
+                following = true;
+              }
+          }
+
+            for (const comment of comments) {
+              comment.date = formatDistanceToNow( new Date(comment.date), {
+                includeSeconds: true,
+                addSuffix: true
+              });
+             }
+
+            this.creatorName = creatorName;
+            this.creatorEmail = creatorEmail;
+            this.date = date;
+            this.followers = followers;
+            this.comments = comments;
+            this.following = following;
+            this.userEmail = userEmail;
+            this.userFullName = userFullName;
+            this.post = post;
+
+            this.posts.commentsSubject$.next(comments.reverse());
+
+          }
+        );
       }
     );
 
@@ -70,61 +125,49 @@ export class PostPagePage implements OnInit {
       console.log(this.commentForm);
     });
 
-    // Get Post ID from navigation params on the main posts tab
-    const id  = this.activatedRoute.snapshot.paramMap.get('_id');
-    this.postID = id;
-
-    // Get information about selected post.
-    // Format its date on the front end
-    // initiate this components post metadata from data in Posts Service
-    this.posts.getPostInfo(this.postID).subscribe(
-      post =>  {
-        console.log(post);
-        // tslint:disable-next-line: no-string-literal
-        this.creatorName = post['creatorName'];
-        this.post = post['post'];
-        this.date = formatDistanceToNow(
-          new Date(post['date']), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-
-        console.log('Date: ' + this.date);
-
-        this.followers = post['followers'];
-        console.log(post['comments']);
-
-        for (const comment of post['comments']) {
-          comment.date = formatDistanceToNow( new Date(comment.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-         }
-
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-        this.post = post['post'];
-      }
-    );
 
     // Subscribe to comments Behavior subject for live upates, specifically when the user posts a comment on the UI.
     this.posts.commentsSubject$.subscribe(commentsFromSub => {
       this.comments = commentsFromSub;
     });
-
   }
 
   back() {
     this.router.navigate(['/home/posts']);
   }
 
-  async follow() {
+  async follow(postID) {
+    await console.log('Following Post');
+    await console.log(postID);
+    await this.posts.followPost(postID, this.userEmail).subscribe();
     this.following = true;
-    console.log('Following Post');
+    await this.followToast();
   }
 
-  async unFollow() {
+  async followToast() {
+    const followToast = await this.toast.create({
+      cssClass: 'followed-toast',
+      message: 'You are FOLLOWING this post',
+      duration: 2000
+    });
+    followToast.present();
+  }
+
+  async unFollow(postID) {
+    await console.log('Unfollowing Post');
+    await console.log(postID);
+    await this.posts.unFollowPost(postID, this.userEmail).subscribe();
     this.following = false;
-    console.log('Following Post');
+    await this.unFollowToast();
+  }
+
+  async unFollowToast() {
+    const unFollowToast = await this.toast.create({
+      cssClass: 'unfollowed-toast',
+      message: 'You are UNFOLLOWING this post',
+      duration: 2000
+    });
+    unFollowToast.present();
   }
 
   logScrolling(event) {
@@ -210,8 +253,9 @@ export class PostPagePage implements OnInit {
     downVotePostToast.present();
   }
 
-  async upVoteComment() {
+  async upVoteComment(comment) {
     await console.log('Upvoting Comment');
+    await console.log(comment);
     await this.upVoteCommentToast();
   }
 

@@ -5,13 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsPage } from './posts.page';
 import { PostRoutingModule } from './post-routing.module';
-import { SharedModule } from '../../components/shared.module';
+import { CustomComponentsModule } from '../../components/custom-component.module';
 
 
 @NgModule({
   imports: [
     IonicModule,
-    SharedModule,
+    CustomComponentsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

@@ -5,6 +5,8 @@ import { HeartIconComponent } from './heart-icon/heart-icon.component';
 import { GoingIconComponent } from './going-icon/going-icon.component';
 import { NotGoingIconComponent } from './not-going-icon/not-going-icon.component';
 import { FollowIconComponent } from './follow-icon/follow-icon.component';
+import { UpDownVoteButtonsComponent } from './up-down-vote-buttons/up-down-vote-buttons.component';
+import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-comment-buttons.component';
 
 @NgModule({
     imports: [
@@ -15,13 +17,17 @@ import { FollowIconComponent } from './follow-icon/follow-icon.component';
         HeartIconComponent,
         GoingIconComponent,
         NotGoingIconComponent,
-        FollowIconComponent
+        FollowIconComponent,
+        UpDownVoteButtonsComponent,
+        FollowCommentButtonsComponent
     ],
     exports: [
         HeartIconComponent,
         GoingIconComponent,
         NotGoingIconComponent,
-        FollowIconComponent
+        FollowIconComponent,
+        UpDownVoteButtonsComponent,
+        FollowCommentButtonsComponent
     ]
 })
-export class SharedModule {}
+export class CustomComponentsModule {}

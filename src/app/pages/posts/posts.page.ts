@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
@@ -6,6 +6,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,11 +14,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: 'posts.page.html',
   styleUrls: ['posts.page.scss']
 })
-export class PostsPage implements OnInit {
-
+export class PostsPage implements OnInit, OnDestroy {
+  postsSub: Subscription;
+  // postsSub: Subscription;
   commentForm: FormGroup;
   allPosts;
-  followedPostLength;
+  followedPost;
   userEmail;
   userFullName;
   date;
@@ -33,7 +35,7 @@ export class PostsPage implements OnInit {
   ngOnInit() {
 
     // Get all for post for this section
-    this.posts.getPosts().subscribe(
+    this.postsSub = this.posts.getPosts().subscribe(
       posts => {
         this.allPosts =  Object.values(posts).reverse();
 
@@ -43,6 +45,7 @@ export class PostsPage implements OnInit {
             addSuffix: true
           });
         }
+        this.posts.commentsSubject$.next(this.allPosts);
         this.posts.commentsSubject$.subscribe(
           comments => {
             this.allPosts.comments = comments;
@@ -72,67 +75,21 @@ export class PostsPage implements OnInit {
       details => {
         this.userEmail = details['email'];
         this.userFullName = details['fullName'];
-        this.followedPostLength = Object.values(details['followedPost']).length;
+        this.followedPost = Object.values(details['followedPost']).length;
         console.log('User email: ' + this.userEmail);
       });
+  }
+
+  ngOnDestroy() {
+    console.log('Page Destroyed?');
+    if (this.postsSub) {
+      this.postsSub.unsubscribe();
+    }
   }
 
   postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
-  }
-
-  async follow() {
-    await console.log('Upvoting');
-    await this.followToast();
-  }
-
-  async followToast() {
-    const followToast = await this.toast.create({
-      cssClass: 'followed-toast',
-      message: 'You are FOLLOWING this post',
-      duration: 2000
-    });
-    followToast.present();
-  }
-
-  async unFollowToast() {
-    const unFollowToast = await this.toast.create({
-      cssClass: 'unfollowed-toast',
-      message: 'You are UNFOLLOWING this post',
-      duration: 2000
-    });
-    unFollowToast.present();
-  }
-
-  async upVotePost(postID) {
-    await console.log('Upvoting');
-    await this.posts.upVotePost(postID, this.userEmail);
-    await this.upVotePostToast();
-  }
-
-  async upVotePostToast() {
-    const upVotePostToast = await this.toast.create({
-      cssClass: 'upvoted-toast',
-      message: 'You have UPVOTED this post.',
-      duration: 2000
-    });
-    upVotePostToast.present();
-  }
-
-  async downVotePost(postID) {
-    await console.log('Downvoting');
-    await this.posts.downVotePost(postID, this.userEmail);
-    await this.downVoteToast();
-  }
-
-  async downVoteToast() {
-    const upVoteToast = await this.toast.create({
-      cssClass: 'downvoted-toast',
-      message: 'You have DOWNVOTED this post.',
-      duration: 2000
-    });
-    upVoteToast.present();
   }
 
   async doRefresh(event) {
@@ -146,8 +103,9 @@ export class PostsPage implements OnInit {
           addSuffix: true
         });
       }
-    });
+    }).unsubscribe();
 
+    // Present Toast
     await setTimeout(() => {
       const toast = this.toast.create({
         message: 'Inspiration Page has been refreshed',
