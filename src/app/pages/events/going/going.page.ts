@@ -68,7 +68,6 @@ export class GoingPage implements OnInit {
   }
 
   cancel(eventID) {
-    this.presentAlertMultipleButtons(eventID);
     console.log(eventID);
     console.log(`Removing ${eventID} from this Users eventsGoing property`);;
     this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(
