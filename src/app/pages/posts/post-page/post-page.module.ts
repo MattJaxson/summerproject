@@ -6,14 +6,17 @@ import { CustomComponentsModule } from '../../../components/custom-component.mod
 import { IonicModule } from '@ionic/angular';
 
 import { PostPagePage } from './post-page.page';
+import { PostPagePageRoutingModule } from './post-page-routing.module';
 
 @NgModule({
   imports: [
     CustomComponentsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    ReactiveFormsModule  ],
+    PostPagePageRoutingModule
+      ],
   declarations: [PostPagePage]
 })
 export class PostPagePageModule {}
