@@ -16,120 +16,119 @@
       </ion-fab-button>
     </ion-fab>
 
-    <!-- Desktop -->
-    <ion-grid class="ion-hide-md-down">
+    <ion-grid>
 
-    <!-- Header -->
-    <ion-row style="margin: 5% 0% 3% 0%;">
-      <ion-col offset="3" size="2">
-        <h1>Followed Posts</h1>
-      </ion-col>
-      <ion-col push="2" size="2">
-        <ion-button class="add-button"  (click)="addPost()">
-          Add Post
-        </ion-button>
-      </ion-col>
-      <ion-col push="1" size="2">
-        <ion-button class="back-button"  (click)="back()">
-           Back
-        </ion-button>
-      </ion-col>
-    </ion-row>
+      <!-- Desktop Header -->
+      <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+        <ion-col offset="3" size="2">
+          <h1>Followed Posts</h1>
+        </ion-col>
+        <ion-col push="2" size="2">
+          <ion-button class="add-button"  (click)="addPost()">
+            Add Post
+          </ion-button>
+        </ion-col>
+        <ion-col push="1" size="2">
+          <ion-button class="back-button"  (click)="back()">
+            Back
+          </ion-button>
+        </ion-col>
+      </ion-row>
 
-     <!-- Posts -->
-    <ion-row class="ion-justify-content-center">
+      <!-- Posts -->
+      <ion-row class="ion-justify-content-center">
 
-      <ion-col *ngIf="allFollowedPosts.length === 0" size="6">
-        <p style="font-size: 1.4em;">You are currently not following any posts. Please click the follow button on any Post to add it to this page.</p>
-      </ion-col>
+        <ion-col *ngIf="allFollowedPosts.length === 0" size="6">
+          <p style="font-size: 1.4em;">You are currently not following any posts. Please click the follow button on any Post to add it to this page.</p>
+        </ion-col>
 
-      <ion-col size="6">
-        <ion-row *ngFor="let post of allFollowedPosts" class="post">
+        <ion-col size-xs="11" size-sm="8" size="6">
+          <ion-row *ngFor="let post of allFollowedPosts" class="post">
 
-          <!-- Profile Header -->
-          <ion-col size="12">
-            <ion-row style="position: relative; left: 5px; top: 4px;" >
-            <!-- Profile Picture -->
-            <ion-col offset="0.5" size="1">
-              <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
+            <!-- Profile Header -->
+            <ion-col size="12">
+              <ion-row style="position: relative; left: 5px; top: 4px;" >
+              <!-- Profile Picture -->
+              <ion-col offset="0.5" size="1">
+                <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
+              </ion-col>
+
+              <!-- Post Creator's Name -->
+              <ion-col size="8">
+                <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
+              </ion-col>
+
+              <!-- Date -->
+              <ion-col size="2">
+                  <h6 style="opacity: 0.4; font-size: 0.8em;">{{post.date}}</h6>
+              </ion-col>
+
+            </ion-row>
             </ion-col>
 
-            <!-- Post Creator's Name -->
-            <ion-col size="8">
-              <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
+            <!-- Post Content -->
+            <ion-col size="12">
+              <ion-row>
+                <!-- 1080x1350 -->
+                <ion-col offset="0.5" size="11" (click)="postPage(post)">
+                <p class="post-content">{{post.post}}</p>
+                </ion-col>
+            </ion-row>
             </ion-col>
 
-            <!-- Date -->
-            <ion-col size="2">
-                <h6 style="opacity: 0.4; font-size: 0.8em;">{{post.date}}</h6>
+            <!-- Comment -->
+            <ion-col size="12">
+              <ion-row style="position: relative; right: 6px; top: -4px;" >
+                <ion-col offset="0.5" size="11">
+                  <ion-item lines="none">
+                  <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
+                    <ion-textarea
+                        class="comment-input"
+                        autogrow="true"
+                        autocapitalize="true"
+                        rows="5"
+                        spellcheck="true"
+                        wrap="soft"
+                        type="text"
+                        placeholder="Add a Comment" formControlName="comment">
+                      </ion-textarea>
+                      <!-- Comment Post Button -->
+                      <ion-button
+                        style="float: right;"
+                        class="comment-post-button"
+                        *ngIf="!commentForm
+                                .get('comment')
+                                .pristine && commentForm.value.comment.length >= 3"
+                          name="send"
+                          type="submit">Post
+                      </ion-button>
+                  </form>
+
+          </ion-item>
+                </ion-col>
+              </ion-row>
             </ion-col>
+
+            <!-- Post Buttons -->
+            <ion-col size="12">
+              <ion-row>
+                <!-- Upvote & Downvote-->
+                <ion-col offset="0.5"  size="4">
+                  <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
+                </ion-col>
+
+                <!-- Follow & Comment -->
+                <ion-col push="1" size="6">
+                  <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
 
           </ion-row>
-          </ion-col>
+        </ion-col>
 
-          <!-- Post Content -->
-          <ion-col size="12">
-            <ion-row>
-              <!-- 1080x1350 -->
-              <ion-col offset="0.5" size="11" (click)="postPage(post)">
-               <p class="post-content">{{post.post}}</p>
-              </ion-col>
-           </ion-row>
-          </ion-col>
-
-          <!-- Comment -->
-          <ion-col size="12">
-            <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col offset="0.5" size="11">
-                <ion-item lines="none">
-                 <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
-                   <ion-textarea
-                      class="comment-input"
-                      autogrow="true"
-                      autocapitalize="true"
-                      rows="5"
-                      spellcheck="true"
-                      wrap="soft"
-                      type="text"
-                      placeholder="Add a Comment" formControlName="comment">
-                    </ion-textarea>
-                    <!-- Comment Post Button -->
-                    <ion-button
-                      style="float: right;"
-                      class="comment-post-button"
-                      *ngIf="!commentForm
-                              .get('comment')
-                              .pristine && commentForm.value.comment.length >= 3"
-                        name="send"
-                        type="submit">Post
-                    </ion-button>
-                 </form>
-
-        </ion-item>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-
-          <!-- Post Buttons -->
-          <ion-col size="12">
-            <ion-row>
-              <!-- Upvote & Downvote-->
-              <ion-col offset="0.5"  size="4">
-                <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
-              </ion-col>
-
-              <!-- Follow & Comment -->
-              <ion-col push="1" size="6">
-                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-
-
-        </ion-row>
-      </ion-col>
-
-    </ion-row>
+      </ion-row>
     </ion-grid>
 
 </ion-content>
