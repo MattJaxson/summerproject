@@ -1,18 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>verification</ion-title>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Verification</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="11" offset="0.5">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="11" size-md="8" size-lg="7" size-xl="6">
         <p>Thank you for adding a post! Please allow for up to 1 day for your post to be verified. You will recieve a notifcation soon. (Refactor message)</p>
-
-        <ion-button (click)="backToPosts()">
-          Back
-        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="11" size-md="3" size-lg="2" size-xl="1">
+          <ion-button (click)="backToPosts()" expand="block">
+            Back
+          </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

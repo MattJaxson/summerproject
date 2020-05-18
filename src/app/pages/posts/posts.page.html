@@ -1,6 +1,6 @@
  <!-- Mobile Toolbar -->
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
+  <ion-toolbar style="--background: white;">
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col size="1">
@@ -35,9 +35,9 @@
 
   <!-- Desktop -->
   <ion-grid class="ion-hide-md-down">
-    <ion-row style="margin-top: 5%;">
+    <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
       <!-- Posts -->
-      <ion-col offset="2" size="5">
+      <ion-col size="5">
         <ion-row *ngFor="let post of allPosts" class="post">
 
           <!-- Profile Header -->
@@ -132,8 +132,7 @@
                 <img src="../../assets/goku-pro-pic.png" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
               </ion-col>
               <ion-col size="6">
-                <h6 style="font-size: 1.2em; font-weight: 700; position: relative; left: 10px;">Son Goku
-                </h6>
+                <h6 style="font-size: 1.2em; font-weight: 700; position: relative; left: 10px;">{{userFullName}}</h6>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -146,12 +145,12 @@
             </ion-button></ion-col>
         </ion-row>
       </ion-col>
-      <ion-col size="1"></ion-col>
     </ion-row>
   </ion-grid>
 
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
+
     <ion-row class="ion-justfiy-content-center" style="margin-top: 5%;">
 
       <!-- Posts -->
@@ -167,13 +166,13 @@
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="6">
-              <h6 style="font-size: 0.7em; font-weight: 700;">{{post.creatorName}}</h6>
+            <ion-col size="5">
+              <h6 style="font-size: 0.9em; font-weight: 700; margin: 10px 0 10px 5px;">{{post.creatorName}}</h6>
             </ion-col>
 
             <!-- Date -->
-            <ion-col size="2">
-                <h6 style="opacity: 0.4; font-size: 0.5em;">{{post.date}}</h6>
+            <ion-col class="ion-text-right" size="3">
+                <h6 style="opacity: 0.4; font-size: 0.7em; margin: 10px 0;">{{post.date}}</h6>
             </ion-col>
 
           </ion-row>

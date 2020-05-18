@@ -4,20 +4,18 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-    <ion-title slot="end">Add Post</ion-title>
+    <ion-title>Add Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <!-- Mobile -->
   <ion-grid>
-    <!-- Header -->
-    <ion-row class="header" style="padding: 5% 0% 3% 0%;">
-      <ion-col offset="3" size="2">
-        <h1>Make a Post</h1>
+    <!-- Desktop Header -->
+    <ion-row class="header ion-hide-md-down ion-justify-content-center ion-text-center" style="padding: 3% 0%;">
+      <ion-col size="5">
+        <h1 style="margin: 10px 0">New Post</h1>
       </ion-col>
-      <ion-col push="3" size="2">
+      <ion-col size="5">
         <ion-button class="orange-button"  (click)="back()">
            Back
         </ion-button>
@@ -25,31 +23,46 @@
     </ion-row>
 
     <ion-row class="ion-justify-content-center" style="margin-top: 3%;">
-      <ion-col  size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
         <!-- Mobile Text Header -->
-        <p class="message ion-hide-md-up"><span class="blue-mobile">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green-mobile">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
+        <p class="message ion-hide-lg-up"><span class="blue-mobile">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green-mobile">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
 
-        <p class="message ion-hide-lg-down"><span class="blue">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
+        <!-- Desktop Text Header -->
+        <p class="message ion-hide-md-down"><span class="blue">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
       </ion-col>
 
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+    </ion-row>
+    
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
         <form [formGroup]="textPostForm" (ngSubmit)="post(this.creatorName, this.creatorEmail, this.textPostForm.value.textPost)">
-          <ion-item>
-              <ion-textarea
-              rows="15"
-              auto-grow="true"
-              spellcheck="true"
-              wrap="soft"
-              formControlName="textPost"
-              placeholder="What do you have to say?"></ion-textarea>
-              <ion-button
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-textarea
+                  rows="15"
+                  auto-grow="true"
+                  spellcheck="true"
+                  wrap="soft"
+                  formControlName="textPost"
+                  placeholder="What do you have to say?">
+                </ion-textarea>
+              </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item style="margin: 15px 0 20px;" lines="none">
+                  <ion-button
                   class="orange-button"
                   type="submit">
-                 Add Post
-                </ion-button>
-            </ion-item>
-          </form>
-        </ion-col>
+                    New Post
+                  </ion-button>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+        </form>
+      </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
