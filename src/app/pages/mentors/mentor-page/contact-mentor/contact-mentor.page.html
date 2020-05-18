@@ -1,3 +1,4 @@
+<!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
       <ion-buttons slot="start">
@@ -8,7 +9,11 @@
 </ion-header>
 
 <ion-content>
+
+
   <ion-grid>
+
+    <!-- Desktop Header -->
     <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
       <ion-col offset="2.8" size="2.5">
         <h1>Contact Mentor</h1>
@@ -17,20 +22,26 @@
         <ion-back-button class="back-button" text="Back" style="--icon-font-size: 0px;"></ion-back-button>
       </ion-col>
     </ion-row>
+
+    <!-- Horizontal Line for Desktop Header -->
     <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="10">
-        <hr style="background-color: #00000044;" />
+      <ion-col size="6">
+        <hr style="background-color: #999;" />
       </ion-col>
     </ion-row>
+
+    <!-- Contact Form -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-        <div style="width: 100px; height: 100px; border-radius: 100px; background: lightgrey; margin: 15px auto 0;"></div>
-        <form [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)" style="margin: 25px auto;">
-            <ion-item style="margin-bottom: 25px">
+        <!-- Mentor Photo -->
+        <div id="mentor-photo"></div>
+        <!-- Form -->
+        <form id="mentor-form" [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)">
+            <ion-item style="margin: 55px 0 55px 0">
                 <ion-textarea
                 formControlName="message"
-                placeholder="Have a question for a {{mentorName}}? Send them an email here!"
-                rows="20"
+                placeholder="Have a question for a {{mentorName}}? Send them an email!"
+                rows="10"
                 autogrow="true"
                 required
                 spellcheck="true"></ion-textarea>

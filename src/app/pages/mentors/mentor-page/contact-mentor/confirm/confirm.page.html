@@ -1,14 +1,12 @@
 <ion-header style="display: none;">
 </ion-header>
 
-<ion-content>
-  <ion-grid fixed>
-    <ion-row style="margin-top: 150px;">
-      <ion-col size="11" offset="0.5">
-        <p>some sort of animated icon</p>
-      </ion-col>
-      <ion-col size="11" offset="0.5">
-        <p>An email has been sent to the mentor with your message. They will contact you in their earliest convenience.</p>
+<ion-content id="background">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center full-page" style="margin: 5% 0% 3% 0%;">
+      <ion-col class="ion-align-self-center ion-text-center" size="10">
+        <img id="mentor-photo" src="../../../assets/icon/white-check.svg">
+        <p id="confirm-text">An email has been sent to <span style="font-weight: 800;">{{mentorName}}</span> with your message. They will contact you at their earliest convenience.</p>
       </ion-col>
     </ion-row>
   </ion-grid>

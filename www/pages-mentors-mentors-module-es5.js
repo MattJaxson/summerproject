@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <!-- Mobile & Tablet Toolbar -->\r\n  <ion-toolbar style=\"--background: white;\" class=\"ion-hide-lg-up\">\r\n    <ion-grid>\r\n      <ion-row class=\"ion-justify-content-center\">\r\n        <ion-col offset-xs=\"0\" offset-sm=\"1\" offset-md=\"1\" size-xs=\"12\" size-sm=\"8\" size-md=\"8\">\r\n          <ion-searchbar\r\n          debounce=\"2000\"\r\n          class=\"searchbar\"\r\n          showCancelButton=\"true\"\r\n          placeholder=\"Search Mentors\"\r\n          (ionChange)=\"filter($event)\"\r\n          ></ion-searchbar>\r\n        </ion-col>\r\n        <ion-col size=\"1\"></ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <!-- Mobile -->\r\n  <ion-grid class=\"ion-hide-lg-up\">\r\n    <ion-row class=\"ion-justify-content-center\" *ngFor=\"let mentor of allMentors\" (click)=\"mentorPage(mentor)\" style=\" margin-top: 20px;\">\r\n     <ion-col class=\"white-background\" size-xs=\"11\" size-sm=\"8\" size-md=\"8\">\r\n      <ion-row>\r\n        <ion-col size=\"2\">\r\n          <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\r\n        </ion-col>\r\n        <ion-col size=\"10\">\r\n            <h6>{{mentor.name}}</h6>\r\n            <p>{{mentor.title}}</p>\r\n        </ion-col>\r\n      </ion-row>\r\n     </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n  <!-- Desktop -->\r\n  <ion-grid  class=\"ion-hide-lg-down\">\r\n    <ion-row class=\"ion-justisfy-content-center\" *ngFor=\"let mentor of allMentors\" (click)=\"mentorPage(mentor)\" style=\" margin-top: 20px;\">\r\n      <ion-col size=\"2\"></ion-col>\r\n      <ion-col size=\"8\">\r\n        <ion-row class=\"white-background\">\r\n          <ion-col size=\"1\">\r\n              <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\r\n                <!-- <ion-img [src]=\"image\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\r\n            </ion-col>\r\n            <ion-col size=\"8\">\r\n                <h6>{{mentor.name}}</h6>\r\n                <p>{{mentor.title}}</p>\r\n            </ion-col>\r\n            <ion-col size=\"2\">\r\n              <ion-button class=\"blue-button\" (click)=\"contact()\">\r\n                Contact\r\n              </ion-button>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-col>\r\n      <ion-col size=\"2\"></ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <!-- Mobile & Tablet Toolbar -->\n  <ion-toolbar style=\"--background: white;\" class=\"ion-hide-lg-up\">\n    <ion-grid>\n      <ion-row class=\"ion-justify-content-center\">\n        <ion-col size-xs=\"11\" size-sm=\"8\" size-md=\"8\">\n          <ion-searchbar\n          debounce=\"2000\"\n          class=\"searchbar\"\n          showCancelButton=\"true\"\n          placeholder=\"Search Mentors\"\n          (ionChange)=\"filter($event)\"\n          ></ion-searchbar>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class=\"ion-justify-content-center\" *ngFor=\"let mentor of allMentors\" style=\" margin-top: 20px;\">\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"7\" size-xl=\"5\">\n        <ion-row class=\"white-background\">\n          <ion-col size=\"1\">\n            <div class=\"mentor-thumbnail\"></div>\n            <!-- <ion-img [src]=\"image\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\n          </ion-col>\n          <ion-col size=\"6\" push-xs=\"1\">\n            <h6>{{mentor.name}}</h6>\n            <p>{{mentor.title}}</p>\n          </ion-col>\n          <ion-col class=\"ion-align-self-center\" id=\"button-col\" size-md=\"4\" size-xs=\"12\" push-md=\"1\">\n            <ion-button class=\"blue-button ion-hide-md-up\" expand=\"full\" (click)=\"mentorPage(mentor)\">\n              Contact\n            </ion-button>\n            <ion-button class=\"blue-button ion-hide-sm-down\" (click)=\"mentorPage(mentor)\">\n              Contact\n            </ion-button>\n          </ion-col>\n        </ion-row>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n";
     /***/
   },
 
@@ -128,26 +128,32 @@
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _components_custom_component_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../components/custom-component.module */
+    "./src/app/components/custom-component.module.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _mentors_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _mentors_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./mentors-routing.module */
     "./src/app/pages/mentors/mentors-routing.module.ts");
     /* harmony import */
 
 
-    var _mentors_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _mentors_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ./mentors.page */
     "./src/app/pages/mentors/mentors.page.ts");
 
     let MentorsPageModule = class MentorsPageModule {};
     MentorsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _mentors_routing_module__WEBPACK_IMPORTED_MODULE_5__["MentorsPageRoutingModule"]],
-      declarations: [_mentors_page__WEBPACK_IMPORTED_MODULE_6__["MentorsPage"]]
+      imports: [_components_custom_component_module__WEBPACK_IMPORTED_MODULE_4__["CustomComponentsModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _mentors_routing_module__WEBPACK_IMPORTED_MODULE_6__["MentorsPageRoutingModule"]],
+      declarations: [_mentors_page__WEBPACK_IMPORTED_MODULE_7__["MentorsPage"]]
     })], MentorsPageModule);
     /***/
   },
@@ -168,7 +174,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-toolbar {\n  --min-height: 10vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWVudG9ycy9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheSBGWUZcXE1vYmlsZS9zcmNcXGFwcFxccGFnZXNcXG1lbnRvcnNcXG1lbnRvcnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZW50b3JzL21lbnRvcnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21lbnRvcnMvbWVudG9ycy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdG9vbGJhciB7XHJcbiAgLS1taW4taGVpZ2h0OiAxMHZoO1xyXG59IiwiaW9uLXRvb2xiYXIge1xuICAtLW1pbi1oZWlnaHQ6IDEwdmg7XG59Il19 */";
+    __webpack_exports__["default"] = "ion-toolbar {\n  --min-height: 10vh;\n}\n\n.blue-button {\n  position: static;\n  width: unset;\n  height: 36px;\n}\n\n.mentor-thumbnail {\n  position: absolute;\n  top: 25px;\n  height: 50px;\n  width: 50px;\n  background: #222;\n  border-radius: 50px;\n}\n\n#button-col {\n  --ion-grid-column-padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3JzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3JzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0FDQ0Y7O0FERUE7RUFDRSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7QUNDRjs7QURFQTtFQUNFLDRCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9tZW50b3JzL21lbnRvcnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRvb2xiYXIge1xuICAtLW1pbi1oZWlnaHQ6IDEwdmg7XG59XG5cbi5ibHVlLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBzdGF0aWM7XG4gIHdpZHRoOiB1bnNldDtcbiAgaGVpZ2h0OiAzNnB4O1xufVxuXG4ubWVudG9yLXRodW1ibmFpbCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAyNXB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiA1MHB4O1xuICBiYWNrZ3JvdW5kOiAjMjIyO1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xufVxuXG4jYnV0dG9uLWNvbCB7XG4gIC0taW9uLWdyaWQtY29sdW1uLXBhZGRpbmc6IDA7XG59IiwiaW9uLXRvb2xiYXIge1xuICAtLW1pbi1oZWlnaHQ6IDEwdmg7XG59XG5cbi5ibHVlLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBzdGF0aWM7XG4gIHdpZHRoOiB1bnNldDtcbiAgaGVpZ2h0OiAzNnB4O1xufVxuXG4ubWVudG9yLXRodW1ibmFpbCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAyNXB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiA1MHB4O1xuICBiYWNrZ3JvdW5kOiAjMjIyO1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xufVxuXG4jYnV0dG9uLWNvbCB7XG4gIC0taW9uLWdyaWQtY29sdW1uLXBhZGRpbmc6IDA7XG59Il19 */";
     /***/
   },
 

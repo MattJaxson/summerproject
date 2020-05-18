@@ -2,15 +2,15 @@
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar style="--background: white;">
     <ion-grid>
-      <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-text-center" size-xs="2" size-sm="1">
-          <img src="../../assets/goku-pro-pic.png" style="background: #999; border-radius: 100px; height: 45px; width: 45px;">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="1">
+          <img src="../../assets/goku-pro-pic.png" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
-        <ion-col size="4">
-          <p>{{userFullName}}</p>
+        <ion-col size="7">
+          <p class="username">{{userFullName}}</p>
         </ion-col>
-        <ion-col class="ion-text-center" size-xs="4" size-sm="2">
-          <ion-button fill="clear" style="animation: none; height: 40px; opacity: 1;" (click)="following()">
+        <ion-col offset="0.5" size="2">
+          <ion-button style="font-size: 0.7em; width: 50px" class="back-button" style="animation: none; opacity: 1; width: 80px; height: 40px; font-size: 0.6em; position: relative; top: -10px;" (click)="following()">
             Following
         </ion-button>
         </ion-col>
@@ -60,12 +60,12 @@
 
           </ion-row>
           </ion-col>
-
+          <!-- (click)="postPage(post)" -->
           <!-- Post Content -->
           <ion-col size="12">
             <ion-row>
               <!-- 1080x1350 -->
-              <ion-col offset="0.5" size="11" (click)="postPage(post)">
+              <ion-col offset="0.5" size="11" >
                <p class="post-content">{{post.post}}</p>
               </ion-col>
            </ion-row>
@@ -150,17 +150,18 @@
 
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
-    <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
+
+    <ion-row class="ion-justfiy-content-center" style="margin-top: 5%;">
 
       <!-- Posts -->
-      <ion-col size-xs="12" size-sm="8" size-md="8">
+      <ion-col offset="0.35" size="11">
         <ion-row *ngFor="let post of allPosts" style="margin-top: 3%;" class="post">
 
           <!-- Profile Header -->
-          <ion-col size="12">
+          <ion-col  offset="0.35" size="11">
             <ion-row style="position: relative; right: 5px; top: -4px;" >
             <!-- Profile Picture -->
-            <ion-col push="1" size="2">
+            <ion-col size="2">
               <img src="../../assets/batman-pro-pic.png" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
@@ -178,10 +179,11 @@
           </ion-col>
 
           <!-- Post Content -->
-          <ion-col size="12">
+          <ion-col  offset="0.35" size="11">
             <ion-row>
+              <!-- (click)="postPage(post)"  -->
               <!-- 1080x1350 -->
-              <ion-col push="1" size="10" (click)="postPage(post)" style="height: auto; background: white">
+              <ion-col offset="0.35" size="11" style="height: auto; background: white">
               <p style="font-size: 1em; line-height: 25px; width: 100%;">{{post.post}}</p>
               </ion-col>
           </ion-row>
@@ -190,18 +192,30 @@
           <!-- Comment -->
           <ion-col size="12">
             <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col push="1" size="10">
-                <ion-item style="height: auto;" lines="none">
+              <ion-col offset="0.35" size="11">
+                <ion-item  style="height: auto;" lines="none">
                 <form style="border-top: 1px solid #999; padding-top: 20px;" (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
-                    <ion-input type="text" placeholder="Add a Comment" formControlName="comment">
-                    </ion-input>
+                  <ion-textarea
+                  class="comment-input-mobile"
+                  autogrow="true"
+                  autocapitalize="true"
+                  rows="5"
+                  spellcheck="true"
+                  wrap="soft"
+                  type="text"
+                  placeholder="Add a Comment" formControlName="comment">
+                </ion-textarea>
+                <!-- Comment Post Button -->
+                <ion-button
+                  style="float: right;"
+                  class="comment-post-button"
+                  *ngIf="!commentForm
+                          .get('comment')
+                          .pristine && commentForm.value.comment.length >= 3"
+                    name="send"
+                    type="submit">Post
+                </ion-button>
                 </form>
-                <ion-icon
-                *ngIf="!commentForm
-                .get('comment')
-                .pristine"
-                slot="end"
-                name="send"></ion-icon>
 
         </ion-item>
               </ion-col>
@@ -230,7 +244,8 @@
           </ion-col>
 
         </ion-row>
-       </ion-col>
+      </ion-col>
+
     </ion-row>
   </ion-grid>
 

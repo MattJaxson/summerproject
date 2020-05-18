@@ -52,7 +52,7 @@ export class MentorPagePage implements OnInit {
 
   contactMentor() {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor', this.mentorName, this.mentorEmail]);
+    this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor', this.mentorName, this.mentorEmail, this.mentorPhoto ]);
   }
 
 }

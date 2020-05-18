@@ -1,8 +1,9 @@
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar>
+  <ion-toolbar class="toolbar">
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
+      <ion-title slot="end">{{creatorName}}'s Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,7 +27,7 @@
   <ion-grid>
 
     <!-- Header -->
-    <ion-row style="margin: 2% 0% 3% 0%;">
+    <ion-row class="ion-hide-md-down" style="margin: 2% 0% 3% 0%;">
       <ion-col push="7" size="2">
         <ion-button *ngIf="!following" class="follow-button"  (click)="follow(postID)">
           Follow
@@ -43,8 +44,8 @@
     </ion-row>
 
     <!-- Post -->
-    <ion-row class="ion-justify-content-center" style="margin-top: 2%;">
-      <ion-col size="6">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
         <ion-row class="post">
 
           <!-- Profile Header -->
@@ -69,7 +70,7 @@
           </ion-col>
 
           <!-- Post Content -->
-          <ion-col offset="1" size="9">
+          <ion-col offset="1" size="10">
             <ion-row>
               <!-- 1080x1350 -->
               <ion-col size="12">
@@ -132,7 +133,7 @@
       </ion-col>
 
         <!-- Comment Wrapper -->
-        <ion-col *ngFor="let comment of comments" class="comment" size="6">
+        <ion-col *ngFor="let comment of comments" class="comment" size="11">
 
           <!-- Comment Header -->
           <ion-row>

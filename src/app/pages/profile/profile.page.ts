@@ -154,10 +154,6 @@ export class ProfilePage implements OnInit, OnDestroy {
       toast.then(toast => toast.present());
     }
 
-    viewFairs() {
-      this.router.navigate(['/fairs']);
-    }
-
     editPage() {
       this.router.navigate(['/home/profile/edit-profile-page']);
     }
@@ -177,12 +173,12 @@ export class ProfilePage implements OnInit, OnDestroy {
         message: 'User has been logged out',
         duration: 3000
       });
-      
+
       const loading = await this.loading.create({
         message: 'Logging out...',
         duration: 1000
-      })
-  
+      });
+
       const alert = await this.alert.create({
         header: 'Logout',
         cssClass: 'alert',
@@ -206,7 +202,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             }}
         ]
       });
-  
+
       await alert.present();
     }
 

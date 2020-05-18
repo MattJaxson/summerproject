@@ -37,8 +37,8 @@ export class LoginPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['agoodson582@gmail.com', [Validators.required, Validators.email]],
-      password: ['Password123', Validators.compose([
+      email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
+      password: ['Lacrosse2', Validators.compose([
         Validators.minLength(6),
         Validators.required,
         // this is for the letters (both uppercase and lowercase) and numbers validation
