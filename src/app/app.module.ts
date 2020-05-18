@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 
 // Custom Modules
 import { CustomComponentsModule } from './components/custom-component.module';
-import { PostPageModalsModule } from './pages/posts/post-page/post-page-modals/post-page-modals.module';
 
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -46,7 +45,6 @@ export function jwtOptionsFactory(storage) {
   entryComponents: [],
   imports: [
     CustomComponentsModule,
-    PostPageModalsModule,
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
