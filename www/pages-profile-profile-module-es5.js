@@ -15,149 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <!-- Mobile -->\r\n  <ion-grid style=\"--ion-grid-padding: 0px\" class=\"ion-text-center ion-hide-md-up\">\r\n\r\n    <ion-row class=\"header-half ion-justify-content-center\">\r\n        <ion-col size=\"12\">\r\n          <div>\r\n              <img id=\"profile-picture\" src=\"../../assets/batman-pro-pic.png\" alt=\"User Profile Picture\">\r\n              <button id=\"change-pro-pic-button\" (click)=\"changeProfilePicture()\">\r\n                  +\r\n                </button>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <!-- <ion-col size=\"11\" offset=\"0.5\">\r\n          <ion-button class=\"orange-button\" (click)=\"viewFairs()\">\r\n            View Fairs\r\n          </ion-button>\r\n        </ion-col> -->\r\n\r\n        <ion-col size=\"6\">\r\n          <ion-button class=\"orange-button\" (click)=\"editPage()\">\r\n            Edit Profile\r\n          </ion-button>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"6\">\r\n          <ion-button class=\"orange-button\" (click)=\"updateResume()\">\r\n            View Resume\r\n          </ion-button>\r\n        </ion-col>\r\n\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col id=\"profile-info\" size=\"6\">\r\n\r\n        <h4>Profile Information: </h4>\r\n        <br>\r\n\r\n        <p><span>Name</span>: {{userObject.fullName}}</p>\r\n        <p><span>Email</span>: {{userObject.email}}</p>\r\n        <p><span>Gender</span>: {{userObject.gender}}</p>\r\n        <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>\r\n        <p><span>Phone</span>: {{userObject.phone}}</p>\r\n        <p><span>City</span>: {{userObject.city}}</p>\r\n        <p><span>State</span>: {{userObject.state}}</p>\r\n        <p><span>Zip</span>: {{userObject.zip}}</p>\r\n        <p><span>School</span>: {{userObject.school}}</p>\r\n        <p><span>Grade</span>: {{userObject.grade}}</p>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row class=\"ion-justify-content-center\">\r\n      <ion-col size=\"6\">\r\n        <ion-button style=\"--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;\" class=\"orange-button\"  (click)=\"confirmLogout()\">\r\n          Logout\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n  <!-- Desktop -->\r\n  <ion-grid style=\"--ion-grid-padding: 0px; max-width: 1024px;\" class=\"ion-hide-sm-down\">\r\n\r\n      <ion-row style=\"margin-top: 5%;\">\r\n\r\n          <ion-col size=\"4\">\r\n            <div>\r\n                <img id=\"profile-picture\" src=\"../../assets/batman-pro-pic.png\" alt=\"User Profile Picture\">\r\n                <button id=\"change-pro-pic-button\" (click)=\"changeProfilePicture()\">\r\n                    +\r\n                </button>\r\n            </div>\r\n          </ion-col>\r\n\r\n          <ion-col size=\"4\">\r\n            <ion-button class=\"orange-button\" (click)=\"editPage()\" style=\"margin-right: 16px\">\r\n              Edit Profile\r\n            </ion-button>\r\n            <ion-button class=\"orange-button\" (click)=\"updateResume()\">\r\n              View Resume\r\n            </ion-button>\r\n          </ion-col>\r\n\r\n          <ion-col size=\"4\">\r\n          </ion-col>\r\n\r\n      </ion-row>\r\n\r\n      <ion-row>\r\n        <ion-col id=\"profile-info\" size=\"12\">\r\n\r\n          <h4>Profile Information: </h4>\r\n          <br>\r\n\r\n          <p><span>Name</span>: {{userObject.fullName}}</p>\r\n          <p><span>Email</span>: {{userObject.email}}</p>\r\n          <p><span>Gender</span>: {{userObject.gender}}</p>\r\n          <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>\r\n          <p><span>Phone</span>: {{userObject.phone}}</p>\r\n          <p><span>City</span>: {{userObject.city}}</p>\r\n          <p><span>State</span>: {{userObject.state}}</p>\r\n          <p><span>Zip</span>: {{userObject.zip}}</p>\r\n          <p><span>School</span>: {{userObject.school}}</p>\r\n          <p><span>Grade</span>: {{userObject.grade}}</p>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"11\" offset=\"0.5\">\r\n          <!-- <ion-button style=\"--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;\" class=\"orange-button\"  (click)=\"confirmLogout()\">\r\n            Logout\r\n          </ion-button> -->\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n\r\n\r\n</ion-content>";
-    /***/
-  },
-
-  /***/
-  "./src/app/pages/profile/profile-routing.module.ts":
-  /*!*********************************************************!*\
-    !*** ./src/app/pages/profile/profile-routing.module.ts ***!
-    \*********************************************************/
-
-  /*! exports provided: ProfilePageRoutingModule */
-
-  /***/
-  function srcAppPagesProfileProfileRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ProfilePageRoutingModule", function () {
-      return ProfilePageRoutingModule;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
-    /* harmony import */
-
-
-    var _profile_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./profile.page */
-    "./src/app/pages/profile/profile.page.ts");
-
-    const routes = [{
-      path: '',
-      component: _profile_page__WEBPACK_IMPORTED_MODULE_3__["ProfilePage"]
-    }, {
-      path: 'change-email',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-email-change-email-change-email-module */
-      "change-email-change-email-change-email-module").then(__webpack_require__.bind(null,
-      /*! ./change-email/change-email/change-email.module */
-      "./src/app/pages/profile/change-email/change-email/change-email.module.ts")).then(m => m.ChangeEmailPageModule)
-    }, {
-      path: 'change-password',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-password-change-password-change-password-module */
-      "change-password-change-password-change-password-module").then(__webpack_require__.bind(null,
-      /*! ./change-password/change-password/change-password.module */
-      "./src/app/pages/profile/change-password/change-password/change-password.module.ts")).then(m => m.ChangePasswordPageModule)
-    }, {
-      path: 'change-phone/:phone',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-phone-change-phone-change-phone-module */
-      "change-phone-change-phone-change-phone-module").then(__webpack_require__.bind(null,
-      /*! ./change-phone/change-phone/change-phone.module */
-      "./src/app/pages/profile/change-phone/change-phone/change-phone.module.ts")).then(m => m.ChangePhonePageModule)
-    }, {
-      path: 'change-school/:school/:grade',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-school-change-school-change-school-module */
-      "change-school-change-school-change-school-module").then(__webpack_require__.bind(null,
-      /*! ./change-school/change-school/change-school.module */
-      "./src/app/pages/profile/change-school/change-school/change-school.module.ts")).then(m => m.ChangeSchoolPageModule)
-    }, {
-      path: 'change-profile-picture/:profilePicture',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-profile-picture-change-profile-picture-change-profile-picture-module */
-      "change-profile-picture-change-profile-picture-change-profile-picture-module").then(__webpack_require__.bind(null,
-      /*! ./change-profile-picture/change-profile-picture/change-profile-picture.module */
-      "./src/app/pages/profile/change-profile-picture/change-profile-picture/change-profile-picture.module.ts")).then(m => m.ChangeProfilePicturePageModule)
-    }, {
-      path: 'resume/:resume',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | resume-resume-resume-module */
-      "resume-resume-resume-module").then(__webpack_require__.bind(null,
-      /*! ./resume/resume/resume.module */
-      "./src/app/pages/profile/resume/resume/resume.module.ts")).then(m => m.ResumePageModule)
-    }, {
-      path: 'logout',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | logout-logout-logout-module */
-      "logout-logout-logout-module").then(__webpack_require__.bind(null,
-      /*! ./logout/logout/logout.module */
-      "./src/app/pages/profile/logout/logout/logout.module.ts")).then(m => m.LogoutPageModule)
-    }, // Keep Resume pages seperate?
-    {
-      path: 'view-resume',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | resume-view-resume-view-resume-module */
-      "resume-view-resume-view-resume-module").then(__webpack_require__.bind(null,
-      /*! ./resume/view-resume/view-resume.module */
-      "./src/app/pages/profile/resume/view-resume/view-resume.module.ts")).then(m => m.ViewResumePageModule)
-    }, {
-      path: 'update-resume',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | resume-update-resume-update-resume-module */
-      "resume-update-resume-update-resume-module").then(__webpack_require__.bind(null,
-      /*! ./resume/update-resume/update-resume.module */
-      "./src/app/pages/profile/resume/update-resume/update-resume.module.ts")).then(m => m.UpdateResumePageModule)
-    }, // Combine with profile pictures directory?
-    {
-      path: 'confirm-photo',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-profile-picture-confirm-photo-confirm-photo-module */
-      "change-profile-picture-confirm-photo-confirm-photo-module").then(__webpack_require__.bind(null,
-      /*! ./change-profile-picture/confirm-photo/confirm-photo.module */
-      "./src/app/pages/profile/change-profile-picture/confirm-photo/confirm-photo.module.ts")).then(m => m.ConfirmPhotoPageModule)
-    }, {
-      path: 'change-address/:addressOne/:addressTwo/:city/:state/:zip',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | change-address-change-address-module */
-      "change-address-change-address-module").then(__webpack_require__.bind(null,
-      /*! ./change-address/change-address.module */
-      "./src/app/pages/profile/change-address/change-address.module.ts")).then(m => m.ChangeAddressPageModule)
-    }, {
-      path: 'edit-profile-page',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | edit-profile-page-edit-profile-page-module */
-      "edit-profile-page-edit-profile-page-module").then(__webpack_require__.bind(null,
-      /*! ./edit-profile-page/edit-profile-page.module */
-      "./src/app/pages/profile/edit-profile-page/edit-profile-page.module.ts")).then(m => m.EditProfilePagePageModule)
-    }];
-    let ProfilePageRoutingModule = class ProfilePageRoutingModule {};
-    ProfilePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], ProfilePageRoutingModule);
+    __webpack_exports__["default"] = "<ion-header>\n</ion-header>\n\n<ion-content>\n\n  <!-- Mobile -->\n  <ion-grid style=\"--ion-grid-padding: 0px\" class=\"ion-text-center ion-hide-md-up\">\n\n    <ion-row class=\"header-half ion-justify-content-center\">\n        <ion-col size=\"12\">\n          <div>\n              <img id=\"profile-picture\" src=\"../../assets/batman-pro-pic.png\" alt=\"User Profile Picture\">\n              <button id=\"change-pro-pic-button\" (click)=\"changeProfilePicture()\">\n                  +\n                </button>\n          </div>\n        </ion-col>\n\n        <!-- <ion-col size=\"11\" offset=\"0.5\">\n          <ion-button class=\"orange-button\" (click)=\"viewFairs()\">\n            View Fairs\n          </ion-button>\n        </ion-col> -->\n\n        <ion-col size=\"6\">\n          <ion-button class=\"orange-button\" (click)=\"editPage()\">\n            Edit Profile\n          </ion-button>\n        </ion-col>\n\n        <ion-col size=\"6\">\n          <ion-button class=\"orange-button\" (click)=\"updateResume()\">\n            View Resume\n          </ion-button>\n        </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n      <ion-col id=\"profile-info\" size=\"6\">\n\n        <h4>Profile Information: </h4>\n        <br>\n\n        <p><span>Name</span>: {{userObject.fullName}}</p>\n        <p><span>Email</span>: {{userObject.email}}</p>\n        <p><span>Gender</span>: {{userObject.gender}}</p>\n        <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>\n        <p><span>Phone</span>: {{userObject.phone}}</p>\n        <p><span>City</span>: {{userObject.city}}</p>\n        <p><span>State</span>: {{userObject.state}}</p>\n        <p><span>Zip</span>: {{userObject.zip}}</p>\n        <p><span>School</span>: {{userObject.school}}</p>\n        <p><span>Grade</span>: {{userObject.grade}}</p>\n      </ion-col>\n    </ion-row>\n\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col size=\"6\">\n        <ion-button style=\"--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;\" class=\"orange-button\"  (click)=\"confirmLogout()\">\n          Logout\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <!-- Desktop -->\n  <ion-grid style=\"--ion-grid-padding: 0px; max-width: 1024px;\" class=\"ion-hide-sm-down\">\n\n      <ion-row style=\"margin-top: 5%;\">\n\n          <ion-col size=\"4\">\n            <div>\n                <img id=\"profile-picture\" src=\"../../assets/batman-pro-pic.png\" alt=\"User Profile Picture\">\n                <button id=\"change-pro-pic-button\" (click)=\"changeProfilePicture()\">\n                    +\n                </button>\n            </div>\n          </ion-col>\n\n          <ion-col size=\"4\">\n            <ion-button class=\"orange-button\" (click)=\"editPage()\" style=\"margin-right: 16px\">\n              Edit Profile\n            </ion-button>\n            <ion-button class=\"orange-button\" (click)=\"updateResume()\">\n              View Resume\n            </ion-button>\n          </ion-col>\n\n          <ion-col size=\"4\">\n          </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n        <ion-col id=\"profile-info\" size=\"12\">\n\n          <h4>Profile Information: </h4>\n          <br>\n\n          <p><span>Name</span>: {{userObject.fullName}}</p>\n          <p><span>Email</span>: {{userObject.email}}</p>\n          <p><span>Gender</span>: {{userObject.gender}}</p>\n          <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>\n          <p><span>Phone</span>: {{userObject.phone}}</p>\n          <p><span>City</span>: {{userObject.city}}</p>\n          <p><span>State</span>: {{userObject.state}}</p>\n          <p><span>Zip</span>: {{userObject.zip}}</p>\n          <p><span>School</span>: {{userObject.school}}</p>\n          <p><span>Grade</span>: {{userObject.grade}}</p>\n        </ion-col>\n\n        <ion-col size=\"11\" offset=\"0.5\">\n          <!-- <ion-button style=\"--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;\" class=\"orange-button\"  (click)=\"confirmLogout()\">\n            Logout\n          </ion-button> -->\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n\n</ion-content>";
     /***/
   },
 
@@ -225,13 +83,13 @@
     /* harmony import */
 
 
-    var _profile_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./profile-routing.module */
-    "./src/app/pages/profile/profile-routing.module.ts");
+    var _components_custom_component_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../components/custom-component.module */
+    "./src/app/components/custom-component.module.ts");
 
     let ProfilePageModule = class ProfilePageModule {};
     ProfilePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
-      imports: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _profile_routing_module__WEBPACK_IMPORTED_MODULE_7__["ProfilePageRoutingModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
+      imports: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _components_custom_component_module__WEBPACK_IMPORTED_MODULE_7__["CustomComponentsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
         path: '',
         component: _profile_page__WEBPACK_IMPORTED_MODULE_6__["ProfilePage"]
       }])],
@@ -256,7 +114,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-header {\n  display: none;\n}\nion-header ion-buttons ion-button {\n  color: white;\n}\nion-toolbar {\n  --color: #005191;\n}\nion-alert {\n  --background: #e4405f;\n}\n#profile-info {\n  height: auto;\n  margin-top: 20px;\n  text-align: left;\n  padding: 25px;\n}\nh4 {\n  color: #777;\n}\n.header-half {\n  height: auto;\n  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(230, 230, 230, 0.4)), to(rgba(200, 200, 200, 0.9)));\n  background-image: linear-gradient(to bottom right, rgba(230, 230, 230, 0.4), rgba(200, 200, 200, 0.9));\n  background-attachment: fixed;\n  padding: 50px 0 50px 0;\n}\nspan {\n  color: #005191;\n  font-weight: 600;\n}\n#profile-picture {\n  height: 100px;\n  width: 100px;\n  border-radius: 100px;\n  margin: 0 auto;\n  display: block;\n}\n#change-pro-pic-button {\n  width: 30px;\n  height: 30px;\n  background: #0d467b;\n  color: white;\n  font-size: 1.5em;\n  font-weight: 400;\n  border-radius: 100px;\n  display: inline-block;\n  position: relative;\n  top: -20px;\n  left: 25px;\n}\n#edit-profile-button {\n  --background: #d3d3d3;\n  --color: #333;\n  font-size: 0.6em;\n}\n.logout-button {\n  color: red;\n}\n@media screen and (min-width: 768px) {\n  #change-pro-pic-button {\n    position: absolute;\n    top: 75px;\n    left: 188px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9DOlxcVXNlcnNcXGFnb29kXFxTb2Z0d2FyZSBEZXYgUHJvamVjdHNcXEpPVVJOaVxcVW5pdGVkIFdheSBGWUZcXE1vYmlsZS9zcmNcXGFwcFxccGFnZXNcXHByb2ZpbGVcXHByb2ZpbGUucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9wcm9maWxlL3Byb2ZpbGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQ0NGO0FEQ0k7RUFDRSxZQUFBO0FDQ047QURJQTtFQUNFLGdCQUFBO0FDREY7QURJQTtFQUNFLHFCQUFBO0FDREY7QURJQTtFQUNFLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsYUFBQTtBQ0RGO0FESUE7RUFDRSxXQUFBO0FDREY7QURJQTtFQUNFLFlBQUE7RUFDQSxnSUFBQTtFQUFBLHNHQUFBO0VBSUEsNEJBQUE7RUFDQSxzQkFBQTtBQ0pGO0FEUUE7RUFDRSxjQUFBO0VBQ0EsZ0JBQUE7QUNMRjtBRFFBO0VBQ0UsYUFBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0FDTEY7QURRQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0FDTEY7QURRQTtFQUNFLHFCQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0FDTEY7QURRQTtFQUNFLFVBQUE7QUNMRjtBRFFBO0VBQ0U7SUFDRSxrQkFBQTtJQUNBLFNBQUE7SUFDQSxXQUFBO0VDTEY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVyIHtcclxuICBkaXNwbGF5OiBub25lO1xyXG4gIGlvbi1idXR0b25zIHtcclxuICAgIGlvbi1idXR0b24ge1xyXG4gICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG5pb24tdG9vbGJhciB7XHJcbiAgLS1jb2xvcjogIzAwNTE5MTtcclxufVxyXG5cclxuaW9uLWFsZXJ0IHtcclxuICAtLWJhY2tncm91bmQ6ICNlNDQwNWY7XHJcbn1cclxuXHJcbiNwcm9maWxlLWluZm8ge1xyXG4gIGhlaWdodDogYXV0bztcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAgcGFkZGluZzogMjVweDtcclxufVxyXG5cclxuaDQge1xyXG4gIGNvbG9yOiAjNzc3O1xyXG59XHJcblxyXG4uaGVhZGVyLWhhbGYge1xyXG4gIGhlaWdodDogYXV0bztcclxuICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQoXHJcbiAgICB0byBib3R0b20gcmlnaHQsIFxyXG4gICAgcmdiYSgyMzAsMjMwLDIzMCwwLjQpLCBcclxuICAgIHJnYmEoMjAwLDIwMCwyMDAsMC45KSk7XHJcbiAgYmFja2dyb3VuZC1hdHRhY2htZW50OiBmaXhlZDtcclxuICBwYWRkaW5nOiA1MHB4IDAgNTBweCAwO1xyXG59XHJcblxyXG5cclxuc3BhbiB7XHJcbiAgY29sb3I6ICMwMDUxOTE7XHJcbiAgZm9udC13ZWlnaHQ6IDYwMDtcclxufVxyXG5cclxuI3Byb2ZpbGUtcGljdHVyZSB7XHJcbiAgaGVpZ2h0OiAxMDBweDtcclxuICB3aWR0aDogMTAwcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuXHJcbiNjaGFuZ2UtcHJvLXBpYy1idXR0b24ge1xyXG4gIHdpZHRoOiAzMHB4O1xyXG4gIGhlaWdodDogMzBweDtcclxuICBiYWNrZ3JvdW5kOiAjMGQ0NjdiO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBmb250LXNpemU6IDEuNWVtO1xyXG4gIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0b3A6IC0yMHB4O1xyXG4gIGxlZnQ6IDI1cHg7XHJcbn1cclxuXHJcbiNlZGl0LXByb2ZpbGUtYnV0dG9uIHtcclxuICAtLWJhY2tncm91bmQ6ICNkM2QzZDM7XHJcbiAgLS1jb2xvcjogIzMzMztcclxuICBmb250LXNpemU6IDAuNmVtO1xyXG59XHJcblxyXG4ubG9nb3V0LWJ1dHRvbiB7XHJcbiAgY29sb3I6IHJlZDtcclxufVxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNzY4cHgpIHtcclxuICAjY2hhbmdlLXByby1waWMtYnV0dG9uIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogNzVweDtcclxuICAgIGxlZnQ6IDE4OHB4O1xyXG4gIH1cclxufSAiLCJpb24taGVhZGVyIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cbmlvbi1oZWFkZXIgaW9uLWJ1dHRvbnMgaW9uLWJ1dHRvbiB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuXG5pb24tYWxlcnQge1xuICAtLWJhY2tncm91bmQ6ICNlNDQwNWY7XG59XG5cbiNwcm9maWxlLWluZm8ge1xuICBoZWlnaHQ6IGF1dG87XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIHBhZGRpbmc6IDI1cHg7XG59XG5cbmg0IHtcbiAgY29sb3I6ICM3Nzc7XG59XG5cbi5oZWFkZXItaGFsZiB7XG4gIGhlaWdodDogYXV0bztcbiAgYmFja2dyb3VuZC1pbWFnZTogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSByaWdodCwgcmdiYSgyMzAsIDIzMCwgMjMwLCAwLjQpLCByZ2JhKDIwMCwgMjAwLCAyMDAsIDAuOSkpO1xuICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xuICBwYWRkaW5nOiA1MHB4IDAgNTBweCAwO1xufVxuXG5zcGFuIHtcbiAgY29sb3I6ICMwMDUxOTE7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbiNwcm9maWxlLXBpY3R1cmUge1xuICBoZWlnaHQ6IDEwMHB4O1xuICB3aWR0aDogMTAwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMHB4O1xuICBtYXJnaW46IDAgYXV0bztcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbiNjaGFuZ2UtcHJvLXBpYy1idXR0b24ge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xuICBiYWNrZ3JvdW5kOiAjMGQ0NjdiO1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMS41ZW07XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG4gIGJvcmRlci1yYWRpdXM6IDEwMHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAtMjBweDtcbiAgbGVmdDogMjVweDtcbn1cblxuI2VkaXQtcHJvZmlsZS1idXR0b24ge1xuICAtLWJhY2tncm91bmQ6ICNkM2QzZDM7XG4gIC0tY29sb3I6ICMzMzM7XG4gIGZvbnQtc2l6ZTogMC42ZW07XG59XG5cbi5sb2dvdXQtYnV0dG9uIHtcbiAgY29sb3I6IHJlZDtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNzY4cHgpIHtcbiAgI2NoYW5nZS1wcm8tcGljLWJ1dHRvbiB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogNzVweDtcbiAgICBsZWZ0OiAxODhweDtcbiAgfVxufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-header {\n  display: none;\n}\nion-header ion-buttons ion-button {\n  color: white;\n}\nion-toolbar {\n  --color: #005191;\n}\nion-alert {\n  --background: #e4405f;\n}\n#profile-info {\n  height: auto;\n  margin-top: 20px;\n  text-align: left;\n  padding: 25px;\n}\nh4 {\n  color: #777;\n}\n.header-half {\n  height: auto;\n  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(230, 230, 230, 0.4)), to(rgba(200, 200, 200, 0.9)));\n  background-image: linear-gradient(to bottom right, rgba(230, 230, 230, 0.4), rgba(200, 200, 200, 0.9));\n  background-attachment: fixed;\n  padding: 50px 0 50px 0;\n}\nspan {\n  color: #005191;\n  font-weight: 600;\n}\n#profile-picture {\n  height: 100px;\n  width: 100px;\n  border-radius: 100px;\n  margin: 0 auto;\n  display: block;\n}\n#change-pro-pic-button {\n  width: 30px;\n  height: 30px;\n  background: #0d467b;\n  color: white;\n  font-size: 1.5em;\n  font-weight: 400;\n  border-radius: 100px;\n  display: inline-block;\n  position: relative;\n  top: -20px;\n  left: 25px;\n}\n#edit-profile-button {\n  --background: #d3d3d3;\n  --color: #333;\n  font-size: 0.6em;\n}\n.logout-button {\n  color: red;\n}\n@media screen and (min-width: 768px) {\n  #change-pro-pic-button {\n    position: absolute;\n    top: 75px;\n    left: 188px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvcHJvZmlsZS9wcm9maWxlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9wcm9maWxlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7QUNDRjtBRENJO0VBQ0UsWUFBQTtBQ0NOO0FESUE7RUFDRSxnQkFBQTtBQ0RGO0FESUE7RUFDRSxxQkFBQTtBQ0RGO0FESUE7RUFDRSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7QUNERjtBRElBO0VBQ0UsV0FBQTtBQ0RGO0FESUE7RUFDRSxZQUFBO0VBQ0EsZ0lBQUE7RUFBQSxzR0FBQTtFQUlBLDRCQUFBO0VBQ0Esc0JBQUE7QUNKRjtBRFFBO0VBQ0UsY0FBQTtFQUNBLGdCQUFBO0FDTEY7QURRQTtFQUNFLGFBQUE7RUFDQSxZQUFBO0VBQ0Esb0JBQUE7RUFDQSxjQUFBO0VBQ0EsY0FBQTtBQ0xGO0FEUUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxvQkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsVUFBQTtBQ0xGO0FEUUE7RUFDRSxxQkFBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtBQ0xGO0FEUUE7RUFDRSxVQUFBO0FDTEY7QURRQTtFQUNFO0lBQ0Usa0JBQUE7SUFDQSxTQUFBO0lBQ0EsV0FBQTtFQ0xGO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlL3Byb2ZpbGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlciB7XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGlvbi1idXR0b25zIHtcbiAgICBpb24tYnV0dG9uIHtcbiAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICB9XG4gIH1cbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuXG5pb24tYWxlcnQge1xuICAtLWJhY2tncm91bmQ6ICNlNDQwNWY7XG59XG5cbiNwcm9maWxlLWluZm8ge1xuICBoZWlnaHQ6IGF1dG87XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIHBhZGRpbmc6IDI1cHg7XG59XG5cbmg0IHtcbiAgY29sb3I6ICM3Nzc7XG59XG5cbi5oZWFkZXItaGFsZiB7XG4gIGhlaWdodDogYXV0bztcbiAgYmFja2dyb3VuZC1pbWFnZTogbGluZWFyLWdyYWRpZW50KFxuICAgIHRvIGJvdHRvbSByaWdodCwgXG4gICAgcmdiYSgyMzAsMjMwLDIzMCwwLjQpLCBcbiAgICByZ2JhKDIwMCwyMDAsMjAwLDAuOSkpO1xuICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xuICBwYWRkaW5nOiA1MHB4IDAgNTBweCAwO1xufVxuXG5cbnNwYW4ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuI3Byb2ZpbGUtcGljdHVyZSB7XG4gIGhlaWdodDogMTAwcHg7XG4gIHdpZHRoOiAxMDBweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuI2NoYW5nZS1wcm8tcGljLWJ1dHRvbiB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGJhY2tncm91bmQ6ICMwZDQ2N2I7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxLjVlbTtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC0yMHB4O1xuICBsZWZ0OiAyNXB4O1xufVxuXG4jZWRpdC1wcm9maWxlLWJ1dHRvbiB7XG4gIC0tYmFja2dyb3VuZDogI2QzZDNkMztcbiAgLS1jb2xvcjogIzMzMztcbiAgZm9udC1zaXplOiAwLjZlbTtcbn1cblxuLmxvZ291dC1idXR0b24ge1xuICBjb2xvcjogcmVkO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xuICAjY2hhbmdlLXByby1waWMtYnV0dG9uIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiA3NXB4O1xuICAgIGxlZnQ6IDE4OHB4O1xuICB9XG59ICIsImlvbi1oZWFkZXIge1xuICBkaXNwbGF5OiBub25lO1xufVxuaW9uLWhlYWRlciBpb24tYnV0dG9ucyBpb24tYnV0dG9uIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5pb24tdG9vbGJhciB7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG59XG5cbmlvbi1hbGVydCB7XG4gIC0tYmFja2dyb3VuZDogI2U0NDA1Zjtcbn1cblxuI3Byb2ZpbGUtaW5mbyB7XG4gIGhlaWdodDogYXV0bztcbiAgbWFyZ2luLXRvcDogMjBweDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgcGFkZGluZzogMjVweDtcbn1cblxuaDQge1xuICBjb2xvcjogIzc3Nztcbn1cblxuLmhlYWRlci1oYWxmIHtcbiAgaGVpZ2h0OiBhdXRvO1xuICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIHJpZ2h0LCByZ2JhKDIzMCwgMjMwLCAyMzAsIDAuNCksIHJnYmEoMjAwLCAyMDAsIDIwMCwgMC45KSk7XG4gIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XG4gIHBhZGRpbmc6IDUwcHggMCA1MHB4IDA7XG59XG5cbnNwYW4ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuI3Byb2ZpbGUtcGljdHVyZSB7XG4gIGhlaWdodDogMTAwcHg7XG4gIHdpZHRoOiAxMDBweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuI2NoYW5nZS1wcm8tcGljLWJ1dHRvbiB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGJhY2tncm91bmQ6ICMwZDQ2N2I7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxLjVlbTtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IC0yMHB4O1xuICBsZWZ0OiAyNXB4O1xufVxuXG4jZWRpdC1wcm9maWxlLWJ1dHRvbiB7XG4gIC0tYmFja2dyb3VuZDogI2QzZDNkMztcbiAgLS1jb2xvcjogIzMzMztcbiAgZm9udC1zaXplOiAwLjZlbTtcbn1cblxuLmxvZ291dC1idXR0b24ge1xuICBjb2xvcjogcmVkO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xuICAjY2hhbmdlLXByby1waWMtYnV0dG9uIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiA3NXB4O1xuICAgIGxlZnQ6IDE4OHB4O1xuICB9XG59Il19 */";
     /***/
   },
 

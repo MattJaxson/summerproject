@@ -1,3 +1,78 @@
 ion-title {
     margin: 0;
 }
+
+.header-wrapper {
+    background: white;
+    width: 50%;
+    height: 100px;
+    border-radius: 100px;
+}
+
+#mentor-profile-picture{
+    height: 50px; width: 50px;
+    background: #222;
+    border-radius: 50px;
+    opacity: 0;
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+}
+
+#mentor-name {
+    font-size: 2em;
+    font-weight: 900;
+    opacity: 0;
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+}
+
+#mentor-title {
+    font-size: 1.3em;
+    opacity: 0;
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
+}
+
+#mentor-location {
+    font-size: 1.3em;
+    opacity: 0;
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s forwards;
+}
+
+#mentor-email {
+    font-size: 1.3em;
+    opacity: 0;
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.7s forwards;
+}
+
+#mentor-description {
+    font-size: 1.1em;
+    line-height: 1.7em;
+    opacity: 0;
+    animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.9s forwards;
+}
+
+#contact-button {
+    margin: 50px 0 250px 0;
+    --background: linear-gradient(#0672c4, #005191);
+    --background-hover: linear-gradient(#0672c4, #222);
+    --transition: 0.5s;
+    font-weight: 800;
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slide-in-up {
+    0% {
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

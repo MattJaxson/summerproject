@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController, AlertController, ModalController, IonContent, IonFab } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
-import { ReportModalPage} from './post-page-modals/report-modal/report-modal.page';
+// import { ReportModalPage} from './post-page-modals/report-modal/report-modal.page';
 
 
 @Component({
@@ -283,24 +283,24 @@ export class PostPagePage implements OnInit {
   }
 
 
-  async report(commentID) {
-    await console.log(commentID);
-    await console.log('Attemping to report comment');
-    await this.reportModal();
-  }
+  // async report(commentID) {
+  //   await console.log(commentID);
+  //   await console.log('Attemping to report comment');
+  //   await this.reportModal();
+  // }
 
-  async reportModal() {
-    const reportAlertConfig = await this.modal.create({
-    component: ReportModalPage,
-    componentProps: {
-      reportedName: 'Tracy Liu',
-      reportedComment: 'This is a reported Comment',
-      commentDate: 'December 10th, 2019'
-    }
-    });
+  // async reportModal() {
+  //   const reportAlertConfig = await this.modal.create({
+  //   component: ReportModalPage,
+  //   componentProps: {
+  //     reportedName: 'Tracy Liu',
+  //     reportedComment: 'This is a reported Comment',
+  //     commentDate: 'December 10th, 2019'
+  //   }
+  //   });
 
-    await reportAlertConfig.present();
-  }
+  //   await reportAlertConfig.present();
+  // }
 
   // async reply(commentID) {
   //   await console.log(commentID);

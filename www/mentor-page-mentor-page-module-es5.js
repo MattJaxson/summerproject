@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n        <ion-back-button></ion-back-button>\r\n      </ion-buttons>\r\n    <ion-title>Mentor</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-grid fixed>\r\n        <ion-row style=\" margin-top: 20px;\">\r\n            <ion-col size=\"2\" offset=\"0.5\">\r\n                <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\r\n                  <!-- <ion-img [src]=\"{{mentorPhoto}}\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\r\n              </ion-col>\r\n              <ion-col size=\"7\">\r\n    <ion-title></ion-title>\r\n    <ion-title></ion-title>\r\n                  <h6>{{mentorName}}</h6>\r\n                  <p>{{mentorTitle}}</p>\r\n                  <p>{{mentorCity}}, {{mentorState}}</p>\r\n                  <p>{{mentorEmail}}</p>\r\n              </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col size=\"11\" offset=\"0.5\">\r\n                <p>{{mentorDescription}}</p>\r\n              </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-button (click)=\"contactMentor()\">\r\n          Contact\r\n        </ion-button>\r\n      </ion-grid>\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header class=\"ion-hide-lg-up\">\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button></ion-back-button>\n      </ion-buttons>\n    <ion-title>Mentor</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class=\"ion-hide-md-down\" style=\"margin: 5% 0% 3% 0%;\">\n      <ion-col offset=\"3\" size=\"2\">\n        <h1>Mentor</h1>\n      </ion-col>\n      <ion-col push=\"2.6\" size=\"2\">\n        <ion-button class=\"back-button\" (click)=\"back()\">\n           Back\n        </ion-button>\n      </ion-col>\n    </ion-row>\n    <ion-row class=\"ion-justify-content-center ion-hide-md-down\">\n      <ion-col size=\"10\">\n        <hr style=\"background-color: #00000044;\" />\n      </ion-col>\n    </ion-row>\n    <ion-row class=\"ion-justify-content-center\" style=\" margin-top: 20px;\">\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\n        <div style=\"height: 50px; width: 50px; background: #222; border-radius: 50px;\"></div>\n        <!-- <ion-img [src]=\"{{mentorPhoto}}\" style=\"background: #999; border-radius: 100px;\"></ion-img> -->\n      </ion-col>\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\n        <ion-title></ion-title>\n        <ion-title></ion-title>\n        <h6>{{mentorName}}</h6>\n        <p>{{mentorTitle}}</p>\n        <p>{{mentorCity}}, {{mentorState}}</p>\n        <p>{{mentorEmail}}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col size-xs=\"11\" size-sm=\"10\" size-md=\"8\" size-lg=\"6\">\n        <p>{{mentorDescription}}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col size-xs=\"12\" size-md=\"2\">\n        <ion-button (click)=\"contactMentor()\" expand=\"block\">\n          Contact\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n";
     /***/
   },
 
@@ -168,7 +168,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21lbnRvcnMvbWVudG9yLXBhZ2UvbWVudG9yLXBhZ2UucGFnZS5zY3NzIn0= */";
+    __webpack_exports__["default"] = "ion-title {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3ItcGFnZS9tZW50b3ItcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL21lbnRvcnMvbWVudG9yLXBhZ2UvbWVudG9yLXBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3ItcGFnZS9tZW50b3ItcGFnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGUge1xuICAgIG1hcmdpbjogMDtcbn0iLCJpb24tdGl0bGUge1xuICBtYXJnaW46IDA7XG59Il19 */";
     /***/
   },
 
@@ -245,6 +245,10 @@
         this.mentorPhoto = photo;
         this.mentorCity = city;
         this.mentorState = state;
+      }
+
+      back() {
+        this.router.navigate(['/home/mentors']);
       }
 
       contactMentor() {

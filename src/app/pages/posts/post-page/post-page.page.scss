@@ -24,6 +24,23 @@
   border-style: solid;
 }
 
+.post-mobile {
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 90px;
+  background: white;
+  box-shadow: none;
+}
+
+.post-mobile:hover {
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 120px;
+  background: white;
+  box-shadow: 1px 1px 3px #999;
+  border-radius: 5px;
+}
+
 .profile-picture {
   border-radius: 100px;
   height: 40px;
@@ -114,6 +131,10 @@
 
 ion-toolbar {
   --background: none;
+}
+
+.toolbar {
+  --background: #005191;
 }
 
 ion-item {

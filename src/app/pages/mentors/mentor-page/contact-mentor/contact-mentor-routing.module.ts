@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ContactMentorPage
   },
   {
-    path: 'confirm/:name/:email',
+    path: 'confirm/:name/:email/:phone',
     loadChildren: () => import('./confirm/confirm.module').then( m => m.ConfirmPageModule)
   }
 ];

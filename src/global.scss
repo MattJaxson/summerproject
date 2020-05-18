@@ -172,6 +172,8 @@ ion-select-option {
 .back-button {
   --color: white;
   --background: linear-gradient(#0672c4, #005191);
+  --background-hover: linear-gradient(#0672c4, #222);
+  --transition: 0.5s;
   font-weight: 800;
   display: block;
   width: 100px;

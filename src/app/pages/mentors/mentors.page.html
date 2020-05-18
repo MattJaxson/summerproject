@@ -20,21 +20,21 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="7" size-xl="5">
-        <ion-row class="white-background">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10" size-xl="5">
+        <ion-row class="mentors">
           <ion-col size="1">
             <div class="mentor-thumbnail"></div>
             <!-- <ion-img [src]="image" style="background: #999; border-radius: 100px;"></ion-img> -->
           </ion-col>
           <ion-col size="6" push-xs="1">
-            <h6>{{mentor.name}}</h6>
-            <p>{{mentor.title}}</p>
+            <p id="mentor-name">{{mentor.name}}</p>
+            <p id="mentor-title">{{mentor.title}}</p>
           </ion-col>
-          <ion-col class="ion-align-self-center" id="button-col" size-md="4" size-xs="12" push-md="1">
-            <ion-button class="blue-button ion-hide-md-up" expand="full" (click)="mentorPage(mentor)">
+          <ion-col class="ion-align-self-center" size-md="4" size-xs="10" push-md="1">
+            <ion-button class="back-button ion-hide-md-up" (click)="mentorPage(mentor)">
               Contact
             </ion-button>
-            <ion-button class="blue-button ion-hide-sm-down" (click)="mentorPage(mentor)">
+            <ion-button class="back-button ion-hide-sm-down" (click)="mentorPage(mentor)">
               Contact
             </ion-button>
           </ion-col>

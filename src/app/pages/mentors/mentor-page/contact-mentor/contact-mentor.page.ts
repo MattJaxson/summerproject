@@ -17,6 +17,7 @@ export class ContactMentorPage implements OnInit {
   mentorId;
   mentorName;
   mentorEmail;
+  mentorPhoto;
   message;
 
   userEmail;
@@ -50,10 +51,13 @@ export class ContactMentorPage implements OnInit {
     const email  = this.activatedRoute.snapshot.paramMap.get('email');
     // tslint:disable-next-line: radix
     const name  = this.activatedRoute.snapshot.paramMap.get('name');
+    // tslint:disable-next-line: radix
+    const photo  = this.activatedRoute.snapshot.paramMap.get('photo');
 
     this.mentorId = id;
     this.mentorName = name;
     this.mentorEmail = email;
+    this.mentorPhoto = photo;
 
     // Get User details
     this.userDetails();
@@ -62,9 +66,9 @@ export class ContactMentorPage implements OnInit {
 
   async confirm(value) {
 
-    await this.sendMessage();
+    await this.sendMessage(value);
     // tslint:disable-next-line: max-line-length
-    await this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor/:name/:email/confirm', this.mentorName, this.mentorEmail]);
+    await this.router.navigate(['/home/mentors/mentor-page/:name/:title/:email/:description/:photo/:city/:state/contact-mentor/:name/:email/:photo/confirm', this.mentorName, this.mentorEmail, this.mentorPhoto]);
   }
 
   userDetails() {
@@ -81,9 +85,9 @@ export class ContactMentorPage implements OnInit {
     });
   }
 
-  sendMessage() {
+  sendMessage(value) {
    this.mentors.sendMentorAnEmail(
-      this.message,
+      value,
       this.mentorName,
       this.mentorEmail,
       this.userEmail,
