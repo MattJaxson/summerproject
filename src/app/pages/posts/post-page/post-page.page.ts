@@ -397,26 +397,26 @@ export class PostPagePage implements OnInit {
         }, {
           text: 'Delete',
           handler: () => {
-
-            function deleteLoading() {
-              const loading = this.loading.create({
-                message: 'Deleting comment...',
-                duration: 2000
-              });
-              loading.present();
-
-              const { role, data } = loading.onDidDismiss();
-              this.modal.dismiss();
-              console.log('Loading dismissed!');
-            }
-
-            deleteLoading();
+            this.deleteLoading();
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+
+  async deleteLoading() {
+    const loading = await this.loading.create({
+      message: 'Deleting Comment...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    await this.modal.dismiss();
+    console.log('Loading dismissed!');
   }
 
 
