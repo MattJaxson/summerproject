@@ -24,14 +24,14 @@ export class PostPagePage implements OnInit {
   showFab = false;
   following = false;
 
-  postID;
-  commentID;
-  creatorName;
-  creatorEmail;
-  date;
-  followers;
+  post: string;
   comments;
-  post;
+  followers: [];
+  date: string;
+  creatorEmail: string;
+  creatorName: string;
+  commentID: string;
+  postID: string;
 
   // debugging
   scroll = '';
@@ -64,6 +64,7 @@ export class PostPagePage implements OnInit {
         this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
             const comments = postInfo['comments'];
+            console.log(comments);
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const post = postInfo['post'];
@@ -91,6 +92,17 @@ export class PostPagePage implements OnInit {
                 includeSeconds: true,
                 addSuffix: true
               });
+             }
+
+            let replies = [];
+
+            for (let i = 0; comments.length > i; i++) {
+              console.log(comments[i].replies);
+              replies.push(replies);
+              // date = formatDistanceToNow( new Date(date), {
+              //   includeSeconds: true,
+              //   addSuffix: true
+              // });
              }
 
             this.creatorName = creatorName;
