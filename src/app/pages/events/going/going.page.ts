@@ -4,6 +4,7 @@ import { EventsService } from '../../../services/events.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController, AlertController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-going',
@@ -14,6 +15,7 @@ export class GoingPage implements OnInit {
   goingToEvents = [];
   userEmail;
   id;
+  localGoingEvents$ = new BehaviorSubject([]);
 
   constructor(
     private router: Router,
@@ -36,25 +38,27 @@ export class GoingPage implements OnInit {
 
        console.log('getting event user ' + this.id + ' is going to');
        this.events.getEventsGoing(this.id).subscribe( events => {
-        this.goingToEvents = Object.values(events);
-        this.goingToEvents.reverse();
-        console.log(this.goingToEvents);
+         this.goingToEvents = Object.values(events);
+         this.goingToEvents.reverse();
+         console.log(this.goingToEvents);
 
-        for (const event of this.goingToEvents) {
-          event.date = format( new Date(event.date), 'MMMM dd, yyyy');
-          event.time = format( new Date(event.date), 'hh:mm a');
-          event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-        }
+         for (const event of this.goingToEvents) {
+           event.date = format( new Date(event.date), 'MMMM dd, yyyy');
+           event.time = format( new Date(event.date), 'hh:mm a');
+           event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
+             includeSeconds: true,
+             addSuffix: true
+           });
+         }
 
-      // for (const event of this.goingToEvents) {
-      //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
-      //   event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
-      //   event.time = format( new Date(event.date), 'hh:mm a');
-      // }
-    });
+         this.localGoingEvents$.next(this.goingToEvents);
+
+         // for (const event of this.goingToEvents) {
+         //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
+         //   event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
+         //   event.time = format( new Date(event.date), 'hh:mm a');
+         // }
+        });
      });
   }
 
@@ -72,17 +76,27 @@ export class GoingPage implements OnInit {
     console.log(`Removing ${eventID} from this Users eventsGoing property`);;
     this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(
       events => {
-        const eventsGoing = this.events.eventsGoing$.getValue();
+        const eventsGoing = this.localGoingEvents$.subscribe( values => {
+          console.log(`Before event cancel: ${Object.values(values)}`)
+        });
 
-        for (let i = 0; i < eventsGoing.length; i++) {
-          if (eventsGoing[i] === eventID) {
-            eventsGoing.splice(i, 1);
-          }
-        }
-        console.log(eventsGoing);
-        this.presentNotGoingToast();
+        // for (let i = 0; i < eventsGoing.length; i++) {
+        //   if (eventsGoing[i] === eventID) {
+        //     eventsGoing.splice(i, 1);
+        //   }
+        // }
+        
+        // console.log(`events value: ${Object.values(events)}`);
 
-        this.events.eventsGoing$.next(eventsGoing);
+        // console.log(`Remaining events: ${eventsGoing}`);
+        // this.presentNotGoingToast();
+
+        // this.events.eventsGoing$.next(eventsGoing);
+        // this.localGoingEvents$.next(Object.values(events));
+
+        // this.localGoingEvents$.subscribe(events => {
+        //   this.goingToEvents = Object.values(events);
+        // });
       }
     );
   }

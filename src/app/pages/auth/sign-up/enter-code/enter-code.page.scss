@@ -1,3 +1,16 @@
+ion-title {
+  margin: 0;
+}
+
+.cancel-button {
+  margin: 0 10px;
+}
+
+h6.text-header {
+  margin: 30px auto;
+  padding: unset;
+}
+
 .send-new-code {
   display: block;
   --background: none;
@@ -14,7 +27,7 @@
 
 span {
   font-weight: 900;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #005191;
 }
 
