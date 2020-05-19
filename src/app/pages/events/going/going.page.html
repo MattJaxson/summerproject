@@ -1,16 +1,17 @@
+<!-- Mobile Toolbar -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button>Back</ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title slot="end">My Events</ion-title>
+    <ion-title>My Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
     <!-- Desktop -->
-    <ion-grid class="ion-hide-lg-down">
+    <ion-grid class="ion-hide-md-down">
 
       <!-- Back Button -->
       <ion-row class="ion-justify-content-center ion-align-items-center" style="margin-top: 5%;">
@@ -69,6 +70,9 @@
               <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
             </ion-card-header>
             <ion-card-content class="ion-text-center">
+              <ion-button class="orange-button" style="--background: #999; --color: white;" (click)="eventPage(event)">
+                Details
+              </ion-button>
               <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">
                 Cancel
               </ion-button>
