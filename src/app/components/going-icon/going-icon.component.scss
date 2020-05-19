@@ -7,8 +7,9 @@ ion-button {
   font-size: 1em;
   font-weight: 800;
   height: 50px;
-  width: 100px;
-  margin: 5px;
+  width: 48%;
+  margin-left: 0;
+  margin-right: 0;
   --background: none;
   --color: #21ce99;
   --border-style: solid;
@@ -28,5 +29,6 @@ ion-button {
   --border-style: solid;
   --border-color: #999;
   --border-width: 2px;
+  margin-right: 10px;
 }
 

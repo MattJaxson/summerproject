@@ -44,21 +44,20 @@ export class EventsPage implements OnInit, AfterViewInit {
   ngOnInit() {
 
     // Get the User's details
-    this.profile.getUserDetails().subscribe(
-     details => {
+    this.profile.getUserDetails().subscribe( details => {
 
-       this.id = details['_id'];
-       this.userEmail = details['email'];
+      this.id = details['_id'];
+      this.userEmail = details['email'];
 
-       this.events.eventsGoing$.next(details['eventsGoing']);
-       this.events.eventsGoing$.subscribe(
-         events => {
-           this.eventsGoingLength = Object.values(events).length;
-         }
-       );
-       console.log('User id: ' + this.id);
-       console.log('User email: ' + this.userEmail);
-     });
+      this.events.eventsGoing$.next(details['eventsGoing']);
+      this.events.eventsGoing$.subscribe(
+        events => {
+          this.eventsGoingLength = Object.values(events).length;
+        }
+      );
+      console.log('User id: ' + this.id);
+      console.log('User email: ' + this.userEmail);
+    });
 
     this.events.getEvents().subscribe( events => {
 

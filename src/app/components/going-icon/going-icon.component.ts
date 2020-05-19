@@ -55,7 +55,15 @@ export class GoingIconComponent implements OnInit {
      details => {
 
        this.userEmail = details['email'];
-       this.events = details['eventsGoing'];
+       let eventsGoing = details['eventsGoing'];
+       
+       if (eventsGoing.includes(this.event._id)) {
+         this.going = true;
+         this.goingState = 'going'
+       } else {
+         this.going = false;
+         this.goingState = 'not-going'
+       }
 
      });
   }
@@ -64,6 +72,7 @@ export class GoingIconComponent implements OnInit {
 
     if (this.goingState === 'not-going') {
 
+      // Going
       this.goingState = 'going';
       this.iconName = 'close-circle-outline';
       this.going = true;
@@ -71,17 +80,36 @@ export class GoingIconComponent implements OnInit {
       console.log(`Going to event, ${event.title}`);
 
 
-      this.events.getEvents();
+      this.events.goingToEvent(event._id, this.userEmail, this.id).subscribe(events => {
+
+        let updatedEvents = [...Object.values(events['eventsGoing']), this.event._id];
+        this.events.eventsGoing$.next(updatedEvents);
+        console.log(this.events.eventsGoing$.getValue());
+
+      });
 
 
     } else {
 
+      // Not Going
       this.goingState = 'not-going';
       this.iconName = 'add-circle-outline';
       this.going = false;
       this.notGoingToast();
       console.log('No longer going to Event');
-      // this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe();
+      this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe(events => {
+
+        const eventsGoing = this.events.eventsGoing$.getValue();
+
+        for (let i = 0; i < eventsGoing.length; i++) {
+          if (eventsGoing[i] === this.event._id) {
+            eventsGoing.splice(i, 1);
+          }
+        }
+        console.log(eventsGoing);
+
+        this.events.eventsGoing$.next(eventsGoing)
+      });
 
     }
 
