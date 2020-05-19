@@ -7,15 +7,22 @@ import { IonicModule } from '@ionic/angular';
 
 import { PostPagePage } from './post-page.page';
 import { PostPagePageRoutingModule } from './post-page-routing.module';
+import { ReplyCommentPageModule } from 'src/app/modals/reply-comment/reply-comment.module';
+import { ReportCommentPageModule } from 'src/app/modals/report-comment/report-comment.module';
+import { EditCommentPageModule } from 'src/app/modals/edit-comment/edit-comment.module';
 
 @NgModule({
   imports: [
-    CustomComponentsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    PostPagePageRoutingModule
+    PostPagePageRoutingModule,
+    CustomComponentsModule,
+    ReplyCommentPageModule,
+    ReportCommentPageModule,
+    EditCommentPageModule
+
       ],
   declarations: [PostPagePage]
 })
