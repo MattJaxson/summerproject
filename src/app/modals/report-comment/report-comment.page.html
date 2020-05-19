@@ -1,0 +1,55 @@
+<!-- Desktop Header -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">Report Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="end">Report Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <p id="comment">Comment: {{commentContents}}</p>
+      <p id="userfullname">User being Reported: {{userFullName}}</p>
+      <p id="date">Posted: {{date}}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <form [formGroup]="reportCommentForm">
+        <ion-textarea
+          class="report-input"
+          autogrow="true"
+          autocapitalize="true"
+          rows="8"
+          spellcheck="true"
+          wrap="soft"
+          type="text"
+          placeholder="Why are you reporting this post?" formControlName="report">
+        </ion-textarea>
+      </form>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center">
+      <ion-button class="orange-button" style="margin-top: 20px;" (click)="report()">
+        Report
+      </ion-button>
+    </ion-col>
+</ion-row>
+</ion-content>

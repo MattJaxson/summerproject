@@ -1,0 +1,49 @@
+<!-- Desktop Header -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">Reply to Comment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="end">Reply to Comment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="10">
+        <p id="userfullname"></p>
+        <form [formGroup]="replyCommentForm">
+          <ion-textarea
+            class="reply-input"
+            autogrow="true"
+            autocapitalize="true"
+            rows="15"
+            spellcheck="true"
+            wrap="soft"
+            type="text"
+            placeholder="Replying to: {{userFullName}}" formControlName="reply">
+          </ion-textarea>
+        </form>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button class="orange-button" style="margin-top: 20px;" (click)="reply()">
+          Reply
+        </ion-button>
+      </ion-col>
+  </ion-row>
+</ion-content>
