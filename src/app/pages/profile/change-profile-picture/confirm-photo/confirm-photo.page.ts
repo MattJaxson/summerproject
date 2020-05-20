@@ -23,6 +23,7 @@ export class ConfirmPhotoPage implements OnInit {
   takeAnotherPhoto() {
     //  Access Gallery
     //  Replace last photo taken with another photo
+    console.error("TODO: takeAnotherPhoto() not implemented yet");
   }
 
   cancel() {

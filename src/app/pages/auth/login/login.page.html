@@ -25,7 +25,7 @@
     <!-- Logo -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="8" size-sm="8" size-md="8" style="margin-top: 10%;" class="ion-text-center">
-        <img src="../../assets/fyf-logo.png" style="height: 70px; margin: 35px 0 30px 0;"/>
+        <img src="../../../../assets/fyf-logo-2.png" style="height: 70px; margin: 35px 0 30px 0;"/>
       </ion-col>
     </ion-row>
 
@@ -119,17 +119,18 @@
             <ion-list class="line-input">
 
                 <!-- Refactor Logo Section -->
-                <img src="../../assets/fyf-logo-1.svg" style="height: 70px; margin: 35px 0 30px 0;"/>
+                <img src="../../../../assets/fyf-logo-2.png" style="height: 70px; margin: 35px 0 30px 0;"/>
  
               <ion-item>
                 <!-- Email -->
                   <ion-input
-                    #autoFucousInput
+                    #autoFocusInput
                     required
                     placeholder="Email"
                     inputmode="email"
                     formControlName="email"
-                    type="email">
+                    type="email"
+                    (keyup.enter)="login(this.loginForm.value)">
                   </ion-input>
               </ion-item>
                   <!-- Password Validation-->
@@ -152,7 +153,8 @@
                   placeholder="Password"
                   inputmode="text"
                   formControlName="password"
-                  type="password">
+                  type="password"
+                  (keyup.enter)="login(this.loginForm.value)">
                 </ion-input>
             </ion-item>
   

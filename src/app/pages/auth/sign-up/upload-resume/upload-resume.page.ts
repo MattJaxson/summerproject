@@ -31,11 +31,11 @@ export class UploadResumePage implements OnInit {
   }
 
   getFileFromPhone() {
-    console.error("TODO: getFileFromPhone() not implemented yet")
+    console.error("TODO: getFileFromPhone() not implemented yet");
   }
 
   uploadResume() {
-    console.error("TODO: uploadResume() not implemented yet")
+    console.error("TODO: uploadResume() not implemented yet");
   }
 
   cancel() {

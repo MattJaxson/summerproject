@@ -13,9 +13,14 @@
   animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 2s forwards;
 }
 
-#mentor-photo{
+#mentor-photo {
   opacity: 0;
   animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 1.3s forwards;
+}
+
+ion-button {
+  opacity: 0;
+  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 3s forwards;
 }
 
 @keyframes slide-in-up {

@@ -45,9 +45,9 @@
   <ion-grid class="ion-hide-lg-up">
     <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
       <ion-col size="6">
-        <h6 class="text-header">There were no Search results with that name. Please Refresh the page</h6>
-        <ion-button class="orange-button" (click)="doRefresh($event)">
-          Refresh
+        <h6 class="text-header">There were no search results with that name.</h6>
+        <ion-button class="orange-button" expand="block" (click)="doRefresh($event)">
+          Clear Search
         </ion-button>
       </ion-col>
     </ion-row>
@@ -101,13 +101,22 @@
       </ion-col>
     </ion-row>
 
+    <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
+      <ion-col size="6">
+        <h6 class="text-header">There were no search results with that name.</h6>
+        <ion-button class="orange-button" expand="block" (click)="doRefresh($event)">
+          Clear Search
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
     <!-- Card List -->
     <ion-row>
-      <ion-col push="1" size="8">
+      <ion-col push="1" size="8" size-xl="8">
         <!-- Individual Cards -->
         <ion-row>
           <ion-col size-lg="5.5" *ngFor="let event of allEvents">
-              <ion-card style="height: 55vh;">
+              <ion-card class="event-card">
                   <img src="../assets/Journi_flyer.jpg" />
                   <ion-card-header (click)="eventPage(event)">
                     <ion-card-title>{{ event.title }}</ion-card-title>
@@ -116,7 +125,7 @@
                     <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
                     <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
                   </ion-card-header>
-                  <ion-card-content class="ion-text-center" style="width: 91%; position: absolute; bottom: 0">
+                  <ion-card-content class="ion-text-center" style="width: 91%;">
                     <ion-toolbar style="--background: none; height: auto;">
                       <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
                     </ion-toolbar>

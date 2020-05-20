@@ -1,17 +1,39 @@
-<ion-header>
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-title>confirm-photo</ion-title>
+    <ion-title>Confirm Photo</ion-title>
     <ion-button (click)="cancel()" id="cancel-button" slot="end">
-        cancel
+        Cancel
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 0 auto; margin-top: 30px;">
-        new picture goes here
-      </div>
-      <p>Are you sure you want to use this photo? </p>
+<ion-content class="ion-text-center">
+  <ion-grid>
+    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+      <ion-col offset="2.5" size="2.5">
+        <h1>Confirm Photo</h1>
+      </ion-col>
+      <ion-col push="2.8" size="2">
+        <ion-button class="back-button" (click)="cancel()">
+           Cancel
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-hide-md-down">
+      <ion-col size="10">
+        <hr style="background-color: #00000044;" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6" id="main-content-col">
+        <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 30px auto 0px;">
+          New picture goes here
+        </div>
+        <h6 class="text-header">Are you sure you want to use this photo?</h6>
+        <ion-button (click)="uploadPhoto()" class="orange-button" id="next-button" style="margin-right:16px;">YES</ion-button>
+        <ion-button (click)="takeAnotherPhoto()" class="orange-button" id="next-button">TAKE ANOTHER PHOTO</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-<button (click)="uploadPhoto()" id="next-button">YES</button>
-<button (click)="takeAnotherPhoto()" id="next-button">TAKE ANOTHER PHOTO</button>

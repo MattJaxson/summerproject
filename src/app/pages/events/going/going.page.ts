@@ -13,9 +13,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class GoingPage implements OnInit {
   goingToEvents = [];
+  goingToEvents$ = new BehaviorSubject([]);
   userEmail;
   id;
-  localGoingEvents$ = new BehaviorSubject([]);
 
   constructor(
     private router: Router,
@@ -37,8 +37,8 @@ export class GoingPage implements OnInit {
        this.userEmail = details['email'];
 
        console.log('getting event user ' + this.id + ' is going to');
-       this.events.getEventsGoing(this.id).subscribe( events => {
-         this.goingToEvents = Object.values(events);
+       this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
+         this.goingToEvents = Object.values(eventsGoing);
          this.goingToEvents.reverse();
          console.log(this.goingToEvents);
 
@@ -51,7 +51,7 @@ export class GoingPage implements OnInit {
            });
          }
 
-         this.localGoingEvents$.next(this.goingToEvents);
+         this.goingToEvents$.next(this.goingToEvents);
 
          // for (const event of this.goingToEvents) {
          //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
@@ -74,29 +74,24 @@ export class GoingPage implements OnInit {
   cancel(eventID) {
     console.log(eventID);
     console.log(`Removing ${eventID} from this Users eventsGoing property`);;
-    this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(
-      events => {
-        const eventsGoing = this.localGoingEvents$.subscribe( values => {
-          console.log(`Before event cancel: ${Object.values(values)}`)
-        });
+    this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( () => {
+      this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
+        this.goingToEvents = Object.values(eventsGoing);
+        this.goingToEvents.reverse();
+        console.log(`Updated events going list: ${this.goingToEvents}`);
 
-        // for (let i = 0; i < eventsGoing.length; i++) {
-        //   if (eventsGoing[i] === eventID) {
-        //     eventsGoing.splice(i, 1);
-        //   }
-        // }
-        
-        // console.log(`events value: ${Object.values(events)}`);
+        for (const event of this.goingToEvents) {
+          event.date = format( new Date(event.date), 'MMMM dd, yyyy');
+          event.time = format( new Date(event.date), 'hh:mm a');
+          event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+        }
 
-        // console.log(`Remaining events: ${eventsGoing}`);
-        // this.presentNotGoingToast();
-
-        // this.events.eventsGoing$.next(eventsGoing);
-        // this.localGoingEvents$.next(Object.values(events));
-
-        // this.localGoingEvents$.subscribe(events => {
-        //   this.goingToEvents = Object.values(events);
-        // });
+        this.goingToEvents$.next(this.goingToEvents);
+      });
+      this.presentNotGoingToast();
       }
     );
   }
