@@ -29,6 +29,7 @@ export class ContactMentorPage implements OnInit {
   userSchool;
   userProfilePicture;
   userResume;
+  messageValid: boolean;
 
   constructor(
     private profile: ProfileService,
@@ -41,6 +42,19 @@ export class ContactMentorPage implements OnInit {
 
     this.contactMenorForm = this.formBuilder.group({
       message: ['', Validators.required]
+    });
+
+    console.log(`Valid: ${this.contactMenorForm.valid}`);
+    this.contactMenorForm.get("message").valueChanges.subscribe(msg => {
+      console.log(`Subscribed message: ${msg}`);
+      setTimeout(() => {
+        if (this.contactMenorForm.valid) {
+          this.messageValid = true;
+        } else {
+          this.messageValid = false;
+        }
+        console.log(`Valid: ${this.contactMenorForm.valid}`);
+      }, 100);
     });
 
     this.message = this.contactMenorForm.value.message;

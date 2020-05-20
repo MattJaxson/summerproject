@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalController, NavParams, LoadingController } from '@ionic/angular';
+import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
+import { PostsService } from 'src/app/services/post.service';
 
 
 @Component({
@@ -10,28 +11,33 @@ import { ModalController, NavParams, LoadingController } from '@ionic/angular';
 })
 export class EditCommentPage implements OnInit {
   editCommentForm: FormGroup;
-  commentContents;
-  userFullName;
+  postID: string;
+  commentContents: string;
   commentID: string;
-  date;
 
   constructor(
     private formBuilder: FormBuilder,
     private modal: ModalController,
-    navParams: NavParams,
-    private loading: LoadingController
+    private navParams: NavParams,
+    private loading: LoadingController,
+    private posts: PostsService,
+    private alert: AlertController
   ) {
-      this.commentID = navParams.get('commentID');
-      this.commentContents = navParams.get('commentCotents');
-      this.userFullName = navParams.get('userFullName');
-      this.date = navParams.get('date');
     }
 
   ngOnInit() {
+
+     this.commentID = this.navParams.get('commentID');
+     this.postID = this.navParams.get('postID');
+     this.commentContents = this.navParams.get('commentCotents');
+
      // To collect comment data
      this.editCommentForm = this.formBuilder.group({
-      comment: this.commentContents
+      newComment: this.commentContents
     });
+
+     console.log(this.commentID);
+     console.log(this.postID);
 
   }
 
@@ -40,9 +46,10 @@ export class EditCommentPage implements OnInit {
     this.modal.dismiss();
   }
 
-  async edit() {
+  async edit(newComment) {
     await console.log('editting');
     await this.editLoading();
+    await this.posts.editComment(this.commentID, this.postID, newComment.newComment).subscribe();
   }
 
   async editLoading() {
@@ -54,7 +61,18 @@ export class EditCommentPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     await this.modal.dismiss();
+    await this.confirmAlert();
     console.log('Loading dismissed!');
+  }
+
+  async confirmAlert() {
+    const alert = await this.alert.create({
+      cssClass: 'success-alert',
+      message: 'Your comment has been edited.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

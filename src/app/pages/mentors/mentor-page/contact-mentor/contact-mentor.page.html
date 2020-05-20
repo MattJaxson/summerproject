@@ -46,7 +46,8 @@
                 required
                 spellcheck="true"></ion-textarea>
             </ion-item>
-            <ion-button type="submit" class="orange-button" expand="block">
+            <ion-button type="submit" class="orange-button" [disabled]="!messageValid"
+            expand="block">
                 Send
             </ion-button>
           </form>

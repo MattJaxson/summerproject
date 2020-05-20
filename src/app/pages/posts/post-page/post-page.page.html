@@ -180,13 +180,15 @@
             <ion-col offset="1" size="4">
               <ion-toolbar>
                 <ion-buttons slot="end">
-                  <ion-button (click)="reply(comment._id, comment.comment, comment.userFullName, comment.date)" class="reply ion-float-right">
+                  <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture,comment.userFullName, comment.userEmail)" class="reply ion-float-right">
                     Reply
                   </ion-button>
-                  <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, comment.userFullName, comment.date)"  class="report ion-float-right">
+                  <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userEmail, comment.date, this.userEmail, this.userFullName)"  class="report ion-float-right">
                     Report
                   </ion-button>
-                  <ion-button *ngIf="comment.isUser === true" (click)="edit(comment._id, comment.comment, comment.userFullName, comment.date)"  class="edit ion-float-right">
+                  <ion-button
+                    *ngIf="comment.isUser === true" (click)="editComment(comment._id,this.postID, comment.comment)"
+                    class="edit ion-float-right">
                     Edit
                   </ion-button>
                   <ion-button *ngIf="comment.canDelete === true" (click)="delete(comment._id)"  class="delete ion-float-right">

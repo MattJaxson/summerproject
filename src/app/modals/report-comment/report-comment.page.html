@@ -26,14 +26,15 @@
   <ion-row class="ion-justify-content-center">
     <ion-col size="10">
       <p id="comment">Comment: {{commentContents}}</p>
-      <p id="userfullname">User being Reported: {{userFullName}}</p>
-      <p id="date">Posted: {{date}}</p>
+      <p id="userfullname">User being Reported: {{commentUserFullName}}</p>
+      <p id="useremail">User being Reported Email: {{commentUserEmail}}</p>
+      <p id="date">Posted: {{commentDate}}</p>
     </ion-col>
   </ion-row>
 
   <ion-row class="ion-justify-content-center">
     <ion-col size="10">
-      <form [formGroup]="reportCommentForm">
+      <form [formGroup]="reportCommentForm" (ngSubmit)="report(this.reportCommentForm.value)">
         <ion-textarea
           class="report-input"
           autogrow="true"
@@ -42,14 +43,15 @@
           spellcheck="true"
           wrap="soft"
           type="text"
-          placeholder="Why are you reporting this post?" formControlName="report">
+          placeholder="Why are you reporting this post?" formControlName="reportedReason">
         </ion-textarea>
+
+        <ion-col size="6" class="ion-text-center">
+          <ion-button class="orange-button" style="margin-top: 20px;" type="submit">
+            Report
+          </ion-button>
+        </ion-col>
       </form>
-    </ion-col>
-    <ion-col size="6" class="ion-text-center">
-      <ion-button class="orange-button" style="margin-top: 20px;" (click)="report()">
-        Report
-      </ion-button>
     </ion-col>
 </ion-row>
 </ion-content>
