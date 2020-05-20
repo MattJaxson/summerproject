@@ -55,6 +55,7 @@ ion-tab-button{
 
     .active-link {
       color: #FA6400;
+      font-weight: 700;
     }
 
     ion-button {
@@ -62,4 +63,8 @@ ion-tab-button{
       opacity: 0.6;
       font-weight: 700;
     }
+  }
+
+  ion-grid {
+    height: 50px;
   }

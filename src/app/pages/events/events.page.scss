@@ -2,8 +2,16 @@ ion-toolbar {
   --background: none;
 }
 
-ion-card {
+ion-card.event-card {
   --background: white;
+  height: 60vh;
+  min-height: 530px;
+  max-height: 560px;
+}
+
+ion-card.event-card ion-card-content {
+  position: absolute;
+  bottom: 0;
 }
 
 
@@ -26,8 +34,10 @@ ion-searchbar {
   --icon-color: #005191;
   transition: 0.5s;
   padding: 5px;
+}
 
-
+.orange-button {
+  width: unset;
 }
 
 .job-section {
@@ -42,15 +52,28 @@ h6, p {
   display: block;
 }
 
+h6.text-header {
+  padding: unset;
+  text-align: center;
+}
+
 --ion-buttons {
   --color: #888;
 }
 
 ion-card-title {
   font-weight: 900;
+  margin-bottom: 25px;
 }
 
 ion-card-subtitle {
   font-weight: 400;
   font-size: 1.3em;
+}
+
+@media screen and (min-width: 1200px) {
+  ion-card.event-card {
+    height: 44vw;
+    max-height: 670px;
+  }
 }

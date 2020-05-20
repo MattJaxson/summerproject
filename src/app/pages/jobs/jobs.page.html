@@ -57,9 +57,9 @@
     <!-- No Search Results Message -->
     <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
       <ion-col class="ion-center-text" size="6" style="margin-top: 10%">
-        <h6 class="text-header-mobile">There were no Search results with that name. Please Refresh the page</h6>
-        <ion-button class="orange-button" (click)="doRefresh($event)">
-          Refresh
+        <h6 class="text-header-mobile" style="text-align: center;">There were no search results with that name.</h6>
+        <ion-button class="orange-button" expand="block" (click)="doRefresh($event)">
+          Clear Search
         </ion-button>
       </ion-col>
     </ion-row>

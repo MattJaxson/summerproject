@@ -26,9 +26,13 @@ export class ConfirmPage implements OnInit {
     console.log('Mentor Photo:');
     console.log(this.mentorName);
 
-    setTimeout(() => {
-      this.router.navigate(['/home/mentors']);
-    }, 9000);
+    // setTimeout(() => {
+    //   this.router.navigate(['/home/mentors']);
+    // }, 9000);
+  }
+
+  returnToMentors() {
+    this.router.navigate(['/home/mentors']);
   }
 
 }

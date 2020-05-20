@@ -1,0 +1,19 @@
+ion-title {
+    margin: 0;
+}
+
+h6.text-header {
+    font-size: 1.3em;
+    margin: 30px auto;
+    padding: unset;
+}
+
+.orange-button {
+    width: unset;
+}
+
+@media screen and (max-width: 384px) {
+    #main-content-col ion-button:last-child {
+        margin-top: 15px;
+    }
+}
