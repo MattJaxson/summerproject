@@ -3,10 +3,11 @@ import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, AlertController, ModalController, IonContent, IonFab } from '@ionic/angular';
+import { ToastController, AlertController, ModalController, IonContent, IonFab, LoadingController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
-// import { ReportModalPage} from './post-page-modals/report-modal/report-modal.page';
-
+import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.page';
+import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
+import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 
 @Component({
   selector: 'app-post-page',
@@ -21,8 +22,12 @@ export class PostPagePage implements OnInit {
 
   userEmail;
   userFullName;
+  userProfilePicture;
   showFab = false;
   following = false;
+  isUser = false;
+  canDelete = false;
+  canReport = true;
 
   post: string;
   comments;
@@ -43,7 +48,9 @@ export class PostPagePage implements OnInit {
     private profile: ProfileService,
     private formBuilder: FormBuilder,
     private toast: ToastController,
-    private modal: ModalController
+    private modal: ModalController,
+    private alert: AlertController,
+    private loading: LoadingController
     ) { }
 
   ngOnInit() {
@@ -56,14 +63,16 @@ export class PostPagePage implements OnInit {
     this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
+        this.userEmail = userEmail;
         let userFullName = details['fullName'];
+        let userProfilePicture = details['profilePicture'];
 
         // Get information about selected post.
         // Format its date on the front end
         // initiate this components post metadata from data in Posts Service
         this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
-            const comments = postInfo['comments'];
+            let comments = postInfo['comments'];
             console.log(comments);
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
@@ -87,11 +96,27 @@ export class PostPagePage implements OnInit {
               }
           }
 
+
+            console.log(this.userEmail);
             for (const comment of comments) {
+
+              // If the Logged in User's Email equals the creatorEmail of the Comment,
+              // they will be given the ability to edit and delete their Comment.
+              // The ability for them to report their own comment is disabled
+              comment.isUser = false;
+              comment.canDelete = false;
+              comment.canReport = true;
               comment.date = formatDistanceToNow( new Date(comment.date), {
                 includeSeconds: true,
                 addSuffix: true
               });
+
+              console.log(comment.userEmail);
+              if (comment.userEmail === this.userEmail) {
+                comment.isUser = true;
+                comment.canDelete = true;
+                comment.canReport = false;
+              }
              }
 
             let replies = [];
@@ -111,9 +136,9 @@ export class PostPagePage implements OnInit {
             this.followers = followers;
             this.comments = comments;
             this.following = following;
-            this.userEmail = userEmail;
-            this.userFullName = userFullName;
             this.post = post;
+            this.userProfilePicture = userProfilePicture;
+            this.userFullName = userFullName;
 
             this.posts.commentsSubject$.next(comments.reverse());
 
@@ -295,43 +320,125 @@ export class PostPagePage implements OnInit {
   }
 
 
-  // async report(commentID) {
-  //   await console.log(commentID);
-  //   await console.log('Attemping to report comment');
-  //   await this.reportModal();
-  // }
+  async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate) {
+    // Get information from comment
+    await console.log('Attemping to report comment');
+    // tslint:disable-next-line: max-line-length
+    await this.reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, this.userEmail, this.userFullName);
 
-  // async reportModal() {
-  //   const reportAlertConfig = await this.modal.create({
-  //   component: ReportModalPage,
-  //   componentProps: {
-  //     reportedName: 'Tracy Liu',
-  //     reportedComment: 'This is a reported Comment',
-  //     commentDate: 'December 10th, 2019'
-  //   }
-  //   });
+  }
 
-  //   await reportAlertConfig.present();
-  // }
+  async reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+    const reportAlertConfig = await this.modal.create({
+    component: ReportCommentPage,
+    componentProps: {
+      commentID,
+      commentCotents,
+      commentUserFullName,
+      commentUserEmail,
+      commentDate,
+      userEmail,
+      userFullName,
+      post,
+      postID
+    }
+    });
 
-  // async reply(commentID) {
-  //   await console.log(commentID);
-  //   await console.log('Attemping to reply to comment');
-  //   await this.replyModal();
-  // }
+    await reportAlertConfig.present();
+  }
 
-  // async replyModal() {
-  //   const replayAlertConfig = await this.modal.create({
-  //   component: ReplyModalPage,
-  //   componentProps: {
-  //     'firstName': 'Douglas',
-  //     'lastName': 'Adams',
-  //     'middleInitial': 'N'
-  //   }
-  //   });
+  async reply(commentID, userFullName,userProfilePicture, userEmail, commentUserEmail, commentUserFullName,  ) {
+    await console.log('Attemping to reply to comment');
+    await this.replyModal(commentID, this.postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName);
+  }
 
-  //   await replayAlertConfig.present();
-  // }
+  async replyModal(commentID, postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName) {
+    const replyAlertConfig = await this.modal.create({
+    component: ReplyCommentPage,
+    componentProps: {
+      commentID,
+      postID,
+      userFullName,
+      userProfilePicture,
+      userEmail,
+      commentUserEmail,
+      commentUserFullName,
+    }
+    });
+
+    await replyAlertConfig.present();
+  }
+
+  async editComment(postID, commentID, commentCotents) {
+    await console.log(commentID);
+    await console.log('Attemping to edit comment');
+    await this.editCommentModal(postID, commentID, commentCotents);
+  }
+
+  async editCommentModal(postID, commentID, commentCotents) {
+    const editAlertConfig = await this.modal.create({
+    component: EditCommentPage,
+    componentProps: {
+      commentID,
+      postID,
+      commentCotents
+    }
+    });
+
+    await editAlertConfig.present();
+  }
+
+  async delete(commentID) {
+    console.log('deleting comment..');
+    this.deleteAlert(this.postID, commentID);
+  }
+
+  async deleteAlert(postID, commentID) {
+    const alert = await this.alert.create({
+      header: 'Are you sure you want to delete this comment?',
+      subHeader: 'This cannot be undone',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Delete',
+          handler: async () => {
+            await this.deleteLoading(postID, commentID);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+  async deleteLoading(postID, commentID) {
+
+    await this.posts.deleteComment(postID, commentID).subscribe(
+      values => {
+        let comments = values['comments'];
+        console.log(comments);
+        this.posts.commentsSubject$.next(comments);
+      }
+    );
+
+    const loading = await this.loading.create({
+      message: 'Deleting Comment...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    await this.modal.dismiss();
+    console.log('Loading dismissed!');
+  }
+
 
   async doRefresh(event) {
     this.posts.getPostInfo(this.postID).subscribe(

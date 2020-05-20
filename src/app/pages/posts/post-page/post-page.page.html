@@ -26,43 +26,45 @@
   <!-- Desktop -->
   <ion-grid>
 
-    <!-- Header -->
-    <ion-row class="ion-hide-md-down" style="margin: 2% 0% 3% 0%;">
-      <ion-col push="7" size="2">
-        <ion-button *ngIf="!following" class="follow-button"  (click)="follow(postID)">
-          Follow
-        </ion-button>
-        <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow(postID)">
-          UnFollow
-        </ion-button>
-      </ion-col>
-      <ion-col push="6" size="2">
-        <ion-button class="back-button"  (click)="back()">
-           Back
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
     <!-- Post -->
     <ion-row class="ion-justify-content-center">
-      <ion-col size="12">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="12">
+
         <ion-row class="post">
+          <ion-col size="12">
+             <!-- Header -->
+            <ion-row class="ion-hide-md-down" style="margin: 2% 0% 3% 0%;">
+              <ion-col push="9" size="2">
+                <ion-button *ngIf="!following" class="follow-button"  (click)="follow(postID)">
+                  Follow
+                </ion-button>
+                <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow(postID)">
+                  UnFollow
+                </ion-button>
+              </ion-col>
+              <ion-col push="8" size="2">
+                <ion-button class="back-button"  (click)="back()">
+                  Back
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
 
           <!-- Profile Header -->
           <ion-col size="12">
             <ion-row style="position: relative; left: 5px; top: 4px;" >
             <!-- Profile Picture -->
-            <ion-col size="1">
+            <ion-col push="1" size="1">
               <img class="profile-picture" src="../../assets/batman-pro-pic.png">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="8">
+            <ion-col push="1" size="6">
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}}</h6>
             </ion-col>
 
             <!-- Date -->
-            <ion-col size="2">
+            <ion-col push="3" size="2">
                 <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
             </ion-col>
 
@@ -133,7 +135,7 @@
       </ion-col>
 
         <!-- Comment Wrapper -->
-        <ion-col *ngFor="let comment of comments" class="comment" size="11">
+        <ion-col *ngFor="let comment of comments" class="comment" size-xs="11" size-sm="10" size-md="8" size-lg="8">
 
           <!-- Comment Header -->
           <ion-row>
@@ -174,15 +176,23 @@
                   </ion-buttons>
                 </ion-toolbar>
             </ion-col>
-            <!-- Report & Reply -->
+            <!-- Report, Edit & Reply -->
             <ion-col offset="1" size="4">
               <ion-toolbar>
                 <ion-buttons slot="end">
-                  <ion-button (click)="reply(comment._id)" class="reply ion-float-right">
+                  <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture,comment.userFullName, comment.userEmail)" class="reply ion-float-right">
                     Reply
                   </ion-button>
-                  <ion-button (click)="report(comment._id)"  class="report ion-float-right">
+                  <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userEmail, comment.date, this.userEmail, this.userFullName)"  class="report ion-float-right">
                     Report
+                  </ion-button>
+                  <ion-button
+                    *ngIf="comment.isUser === true" (click)="editComment(comment._id,this.postID, comment.comment)"
+                    class="edit ion-float-right">
+                    Edit
+                  </ion-button>
+                  <ion-button *ngIf="comment.canDelete === true" (click)="delete(comment._id)"  class="delete ion-float-right">
+                    Delete
                   </ion-button>
                 </ion-buttons>
               </ion-toolbar>

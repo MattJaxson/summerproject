@@ -1,0 +1,48 @@
+<!-- Desktop Header -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">Edit Comment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="end">Edit Comment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <form [formGroup]="editCommentForm" (ngSubmit)="edit(this.editCommentForm.value)">
+        <ion-textarea
+          class="comment-input"
+          autogrow="true"
+          autocapitalize="true"
+          rows="15"
+          spellcheck="true"
+          wrap="soft"
+          type="text"
+          formControlName="newComment">
+        </ion-textarea>
+
+        <ion-col size="6" class="ion-text-center">
+          <ion-button class="orange-button" style="margin-top: 20px;" type="submit">
+            Edit
+          </ion-button>
+        </ion-col>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
