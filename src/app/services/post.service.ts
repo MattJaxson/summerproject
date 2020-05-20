@@ -42,29 +42,16 @@ export class PostsService {
     { comment: comment }
   ) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } ).subscribe();
-  }
-
-  canEditPost(postID, userEmail) {
-    // Get userEmail
-    // See if it matches each and every postID in the feed
-    // Display to UI that this post can be editted.
 
   }
 
-  canEditComment(postID, userEmail) {
-    // Get userEmail
-    // See if it matches each and every postID in the feed
-    // Display to UI that this post can be editted.
+  editPost(postID, commentID, newPost) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/edit-post`, { postID, commentID, newPost });
 
   }
 
-  editPost(postID, userEmail) {
-    // 
-
-  }
-
-  editComment(postID, userEmail) {
-    // 
+  editComment(postID, commentID, newComment) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/edit-comment`, { postID, commentID, newComment });
 
   }
 
@@ -109,5 +96,20 @@ export class PostsService {
 
   getFollowedPost(userId) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/get-followed-posts`, {_id: userId});
+  }
+
+  deleteComment(postID, commentID) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/delete-comment`, {_id: postID, cid: commentID});
+  }
+
+  // tslint:disable-next-line: max-line-length
+  reportComment(commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate, ) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate });
+  }
+
+  replyComment(commentID, postID, reply, userFullName ,userProfilePicture, userEmail, commentUserEmail, commentUserFullName ) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID, commentID, reply, userFullName, userProfilePicture, userEmail, commentUserEmail, commentUserFullName });
   }
 }

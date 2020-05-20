@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalController, NavParams, LoadingController } from '@ionic/angular';
+import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
+import { PostsService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-reply-post',
@@ -9,22 +10,22 @@ import { ModalController, NavParams, LoadingController } from '@ionic/angular';
 })
 export class ReplyCommentPage implements OnInit {
   replyCommentForm: FormGroup;
-  commentContents;
-  userFullName;
+  postID: string;
+  userProfilePicture: string;
+  userEmail: string;
+  userFullName: string;
   commentID: string;
-  date;
-
+  commentUserFullName: string;
+  commentUserEmail: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private modal: ModalController,
-    navParams: NavParams,
-    private loading: LoadingController) {
+    private navParams: NavParams,
+    private loading: LoadingController,
+    private alert: AlertController,
+    private posts: PostsService) {
 
-      this.commentID = navParams.get('commentID');
-      this.commentContents = navParams.get('commentContents');
-      this.userFullName = navParams.get('userFullName');
-      this.date = navParams.get('date');
     }
 
   ngOnInit() {
@@ -33,11 +34,24 @@ export class ReplyCommentPage implements OnInit {
      reply: ['']
    });
 
+    this.commentID = this.navParams.get('commentID');
+    this.userFullName = this.navParams.get('userFullName');
+    this.postID = this.navParams.get('postID');
+    this.userEmail = this.navParams.get('userEmail');
+    this.userProfilePicture = this.navParams.get('userProfilePicture');
+    this.commentUserFullName = this.navParams.get('commentUserFullName');
+    this.commentUserEmail = this.navParams.get('commentUserEmail');
+
+    console.log(this.commentUserEmail);
+
   }
 
-  async reply() {
+  async reply(reply) {
     await console.log('replying to comment...');
     await this.replyLoading();
+    // tslint:disable-next-line: max-line-length
+    await this.posts.replyComment(this.commentID, this.postID, reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
+      .subscribe();
   }
 
   async replyLoading() {
@@ -49,7 +63,18 @@ export class ReplyCommentPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     await this.modal.dismiss();
+    // await this.confirmAlert();
     console.log('Loading dismissed!');
+  }
+
+  async confirmAlert() {
+    const alert = await this.alert.create({
+      cssClass: 'success-alert',
+      message: 'Your comment has been edited.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   cancel () {

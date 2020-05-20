@@ -27,7 +27,7 @@
 
       <ion-col size="10">
         <p id="userfullname"></p>
-        <form [formGroup]="replyCommentForm">
+        <form [formGroup]="replyCommentForm" (ngSubmit)="reply(this.replyCommentForm.value)">
           <ion-textarea
             class="reply-input"
             autogrow="true"
@@ -38,12 +38,13 @@
             type="text"
             placeholder="Replying to: {{userFullName}}" formControlName="reply">
           </ion-textarea>
+
+          <ion-col size="6" class="ion-text-center">
+            <ion-button class="orange-button" style="margin-top: 20px;" type=submit>
+              Reply
+            </ion-button>
+          </ion-col>
         </form>
-      </ion-col>
-      <ion-col size="6" class="ion-text-center">
-        <ion-button class="orange-button" style="margin-top: 20px;" (click)="reply()">
-          Reply
-        </ion-button>
       </ion-col>
   </ion-row>
 </ion-content>

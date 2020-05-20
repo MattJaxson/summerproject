@@ -22,6 +22,7 @@ export class PostPagePage implements OnInit {
 
   userEmail;
   userFullName;
+  userProfilePicture;
   showFab = false;
   following = false;
   isUser = false;
@@ -64,6 +65,7 @@ export class PostPagePage implements OnInit {
         let userEmail = details['email'];
         this.userEmail = userEmail;
         let userFullName = details['fullName'];
+        let userProfilePicture = details['profilePicture'];
 
         // Get information about selected post.
         // Format its date on the front end
@@ -134,9 +136,9 @@ export class PostPagePage implements OnInit {
             this.followers = followers;
             this.comments = comments;
             this.following = following;
-            this.userEmail = userEmail;
-            this.userFullName = userFullName;
             this.post = post;
+            this.userProfilePicture = userProfilePicture;
+            this.userFullName = userFullName;
 
             this.posts.commentsSubject$.next(comments.reverse());
 
@@ -318,59 +320,68 @@ export class PostPagePage implements OnInit {
   }
 
 
-  async report(commentID, commentCotents, userFullName, date) {
+  async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate) {
     // Get information from comment
     await console.log('Attemping to report comment');
-    await this.reportModal(commentID, commentCotents, userFullName, date);
+    // tslint:disable-next-line: max-line-length
+    await this.reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, this.userEmail, this.userFullName);
+
   }
 
-  async reportModal(commentID, commentCotents, userFullName, date) {
+  async reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
     const reportAlertConfig = await this.modal.create({
     component: ReportCommentPage,
     componentProps: {
       commentID,
       commentCotents,
+      commentUserFullName,
+      commentUserEmail,
+      commentDate,
+      userEmail,
       userFullName,
-      date
+      post,
+      postID
     }
     });
 
     await reportAlertConfig.present();
   }
 
-  async reply(commentID, commentCotents, userFullName, date) {
+  async reply(commentID, userFullName,userProfilePicture, userEmail, commentUserEmail, commentUserFullName,  ) {
     await console.log('Attemping to reply to comment');
-    await this.replyModal(commentID, commentCotents, userFullName, date);
+    await this.replyModal(commentID, this.postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName);
   }
 
-  async replyModal(commentID, commentCotents, userFullName, date) {
+  async replyModal(commentID, postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName) {
     const replyAlertConfig = await this.modal.create({
     component: ReplyCommentPage,
     componentProps: {
       commentID,
-      commentCotents,
+      postID,
       userFullName,
-      date
+      userProfilePicture,
+      userEmail,
+      commentUserEmail,
+      commentUserFullName,
     }
     });
 
     await replyAlertConfig.present();
   }
 
-  async edit(commentID, commentCotents, userFullName, date) {
+  async editComment(postID, commentID, commentCotents) {
     await console.log(commentID);
     await console.log('Attemping to edit comment');
-    await this.editModal(commentID, commentCotents, userFullName, date);
+    await this.editCommentModal(postID, commentID, commentCotents);
   }
 
-  async editModal(commentID, commentCotents, userFullName, date) {
+  async editCommentModal(postID, commentID, commentCotents) {
     const editAlertConfig = await this.modal.create({
     component: EditCommentPage,
     componentProps: {
       commentID,
-      commentCotents,
-      userFullName,
-      date
+      postID,
+      commentCotents
     }
     });
 
@@ -379,10 +390,10 @@ export class PostPagePage implements OnInit {
 
   async delete(commentID) {
     console.log('deleting comment..');
-    this.deleteAlert();
+    this.deleteAlert(this.postID, commentID);
   }
 
-  async deleteAlert() {
+  async deleteAlert(postID, commentID) {
     const alert = await this.alert.create({
       header: 'Are you sure you want to delete this comment?',
       subHeader: 'This cannot be undone',
@@ -396,8 +407,8 @@ export class PostPagePage implements OnInit {
           }
         }, {
           text: 'Delete',
-          handler: () => {
-            this.deleteLoading();
+          handler: async () => {
+            await this.deleteLoading(postID, commentID);
           }
         }
       ]
@@ -407,7 +418,16 @@ export class PostPagePage implements OnInit {
   }
 
 
-  async deleteLoading() {
+  async deleteLoading(postID, commentID) {
+
+    await this.posts.deleteComment(postID, commentID).subscribe(
+      values => {
+        let comments = values['comments'];
+        console.log(comments);
+        this.posts.commentsSubject$.next(comments);
+      }
+    );
+
     const loading = await this.loading.create({
       message: 'Deleting Comment...',
       duration: 2000

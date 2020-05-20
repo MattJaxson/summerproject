@@ -3,6 +3,25 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  .success-alert {
+    --background: #797;
+
+    .alert-title{
+      color: white;
+      font-size: 1.9em;
+    }
+
+    .alert-message{
+      color: white;
+    }
+
+    button{
+      color: white;
+      font-size: 1.4em;
+    }
+
+  }
   /** primary **/
   --ion-color-primary: #005191;
   --ion-color-primary-rgb: 56, 128, 255;
