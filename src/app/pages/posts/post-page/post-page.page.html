@@ -154,15 +154,36 @@
           <!-- Comment -->
           <ion-row>
             <ion-col offset="1" size="10">
-                <p class="comment-text ion-text-wrap">  {{comment.comment}}.
+                <p class="comment-text ion-text-wrap" style="margin-top: 40px;">  {{comment.comment}}
                 </p>
             </ion-col>
           </ion-row>
 
+          <!-- Line -->
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
+            </ion-col>
+          </ion-row>
+
+          <!-- Replies -->
+          <ion-row class="ion-align-items-start" *ngFor="let reply of comment.replies">
+            <ion-col push-lg="1" size="1">
+              <img class="comment-avatar" src="../../assets/batman-pro-pic.png">
+            </ion-col>
+            <ion-col push-lg="1" size="6">
+                <p class="reply-text ion-text-wrap">  {{reply.reply}}.
+                </p>
+            </ion-col>
+            <ion-col push-lg="2.5" size="1">
+              <p id="reply-date">{{reply.date}}</p>
+            </ion-col>
+          </ion-row>
+
           <!-- Comment Buttons -->
-          <ion-row>
+          <ion-row style="margin-top: 60px;">
             <!-- Upvote & Downvote Comments-->
-            <ion-col offset="1" size="4">
+            <ion-col offset="0.5" size="4">
                 <ion-toolbar>
                   <ion-buttons slot="start">
                     <ion-button class="upvote" (click)="upVoteComment(comment)">
@@ -177,7 +198,7 @@
                 </ion-toolbar>
             </ion-col>
             <!-- Report, Edit & Reply -->
-            <ion-col offset="1" size="4">
+            <ion-col push-lg="2.5" size="4">
               <ion-toolbar>
                 <ion-buttons slot="end">
                   <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture,comment.userFullName, comment.userEmail)" class="reply ion-float-right">

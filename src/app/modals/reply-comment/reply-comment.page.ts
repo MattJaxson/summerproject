@@ -35,8 +35,8 @@ export class ReplyCommentPage implements OnInit {
    });
 
     this.commentID = this.navParams.get('commentID');
-    this.userFullName = this.navParams.get('userFullName');
     this.postID = this.navParams.get('postID');
+    this.userFullName = this.navParams.get('userFullName');
     this.userEmail = this.navParams.get('userEmail');
     this.userProfilePicture = this.navParams.get('userProfilePicture');
     this.commentUserFullName = this.navParams.get('commentUserFullName');
@@ -50,7 +50,7 @@ export class ReplyCommentPage implements OnInit {
     await console.log('replying to comment...');
     await this.replyLoading();
     // tslint:disable-next-line: max-line-length
-    await this.posts.replyComment(this.commentID, this.postID, reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
+    await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe();
   }
 

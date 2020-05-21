@@ -72,12 +72,11 @@ export class PostPagePage implements OnInit {
         // initiate this components post metadata from data in Posts Service
         this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
-            let comments = postInfo['comments'];
-            console.log(comments);
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
+            let comments = postInfo['comments'];
             let following = false;
             let date = formatDistanceToNow(
               new Date(postInfo['date']), {
@@ -85,6 +84,7 @@ export class PostPagePage implements OnInit {
                 addSuffix: true
               });
 
+            // See if the Logged in User is following the post on this page
             followers.find(findFollower);
 
             function findFollower(follower) {
@@ -96,8 +96,8 @@ export class PostPagePage implements OnInit {
               }
           }
 
-
-            console.log(this.userEmail);
+            // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
             for (const comment of comments) {
 
               // If the Logged in User's Email equals the creatorEmail of the Comment,
@@ -111,24 +111,22 @@ export class PostPagePage implements OnInit {
                 addSuffix: true
               });
 
-              console.log(comment.userEmail);
+              // If this comment is the logged in user, they can delete and edit
               if (comment.userEmail === this.userEmail) {
                 comment.isUser = true;
                 comment.canDelete = true;
                 comment.canReport = false;
               }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                console.log(comment.replies[i].date);
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: false
+                });
              }
 
-            let replies = [];
-
-            for (let i = 0; comments.length > i; i++) {
-              console.log(comments[i].replies);
-              replies.push(replies);
-              // date = formatDistanceToNow( new Date(date), {
-              //   includeSeconds: true,
-              //   addSuffix: true
-              // });
-             }
+           }
 
             this.creatorName = creatorName;
             this.creatorEmail = creatorEmail;
@@ -395,13 +393,12 @@ export class PostPagePage implements OnInit {
 
   async deleteAlert(postID, commentID) {
     const alert = await this.alert.create({
-      header: 'Are you sure you want to delete this comment?',
-      subHeader: 'This cannot be undone',
+      header: 'Are you sure you want to delete this comment? This cannot be undone.',
+      cssClass: 'danger-alert',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
           handler: (blah) => {
             console.log('Confirm Cancel');
           }
@@ -441,20 +438,90 @@ export class PostPagePage implements OnInit {
 
 
   async doRefresh(event) {
-    this.posts.getPostInfo(this.postID).subscribe(
-      post =>  {
+    this.profile.getUserDetails().subscribe(
+      details => {
+        let userEmail = details['email'];
+        this.userEmail = userEmail;
+        let userFullName = details['fullName'];
+        let userProfilePicture = details['profilePicture'];
 
-        for (const comment of post['comments']) {
-          comment.date = formatDistanceToNow( new Date(comment.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-         }
+        // Get information about selected post.
+        // Format its date on the front end
+        // initiate this components post metadata from data in Posts Service
+        this.posts.getPostInfo(this.postID).subscribe(
+          postInfo =>  {
+            const creatorEmail = postInfo['creatorEmail'];
+            const creatorName = postInfo['creatorName'];
+            const post = postInfo['post'];
+            const followers = postInfo['followers'];
+            let comments = postInfo['comments'];
+            let following = false;
+            let date = formatDistanceToNow(
+              new Date(postInfo['date']), {
+                includeSeconds: true,
+                addSuffix: true
+              });
 
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-        this.post = post['post'];
+            // See if the Logged in User is following the post on this page
+            followers.find(findFollower);
+
+            function findFollower(follower) {
+              if (!follower) {
+              }
+
+              if (follower === userEmail) {
+                following = true;
+              }
+          }
+
+            // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
+            for (const comment of comments) {
+
+              // If the Logged in User's Email equals the creatorEmail of the Comment,
+              // they will be given the ability to edit and delete their Comment.
+              // The ability for them to report their own comment is disabled
+              comment.isUser = false;
+              comment.canDelete = false;
+              comment.canReport = true;
+              comment.date = formatDistanceToNow( new Date(comment.date), {
+                includeSeconds: true,
+                addSuffix: true
+              });
+
+              // If this comment is the logged in user, they can delete and edit
+              if (comment.userEmail === this.userEmail) {
+                comment.isUser = true;
+                comment.canDelete = true;
+                comment.canReport = false;
+              }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                console.log(comment.replies[i].date);
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: false
+                });
+             }
+
+           }
+
+            this.creatorName = creatorName;
+            this.creatorEmail = creatorEmail;
+            this.date = date;
+            this.followers = followers;
+            this.comments = comments;
+            this.following = following;
+            this.post = post;
+            this.userProfilePicture = userProfilePicture;
+            this.userFullName = userFullName;
+
+            this.posts.commentsSubject$.next(comments.reverse());
+
+          }
+        );
       }
-    );
+    );;
 
     await setTimeout(() => {
       const toast = this.toast.create({

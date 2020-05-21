@@ -4,6 +4,7 @@
   top: -5px;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-bottom: 90px;
+  padding-bottom: 20px;
   background: white;
   box-shadow: none;
   border-radius: 5px;
@@ -15,7 +16,7 @@
 .post:hover {
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin-bottom: 120px;
+  margin-bottom: 100px;
   background: white;
   box-shadow: 1px 1px 3px #999;
   border-radius: 5px;
@@ -79,7 +80,7 @@
 // Change color
 .unfollow-button {
   --color: white;
-  --background: linear-gradient(red, orange);
+  --background: linear-gradient(#faa71b, #e99b14);
   font-weight: 800;
   display: block;
   width: 100px;
@@ -131,16 +132,16 @@
 .edit{
   --border-width: 1px;
   width: 60px;
-  --border-color: #944;
+  --border-color: #faa71b;
   --border-style: solid;
   border-radius: 5px;
-  --color: #888;
+  --color: #faa71b;
   font-size: 0.6em;
   margin-right: 10px;
 }
 .delete{
   width: 60px;
-  --background: #944;
+  --background: #faa71b;
   border-radius: 5px;
   --color: white;
   font-size: 0.6em;
@@ -205,12 +206,20 @@ ion-fab {
 
 .comment-text {
   color: #222;
-  // font-weight: 500;
+  font-size: 1.2em;
+  margin: 0px 0 20px 0;
+}
+
+.reply-text {
+  color: #222;
+  font-size: 1em;
+  margin: 0px 0 20px 0;
 }
 
 .comment-avatar {
   height: 30px;
   width: 30px;
+  border-radius: 50px;
 }
 
 .comment {
@@ -261,6 +270,10 @@ ion-fab {
   padding-left: 10px;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#reply-date {
+  font-size: 0.7em;
+  color: #999;
 }
 
 form {
