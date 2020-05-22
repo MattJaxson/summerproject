@@ -33,14 +33,11 @@ export class FavoritesService {
 
     // this.favoriteJobs$.next([job]);
 
-    return this.http.post(`${this.BACKEND_URL}/api/job/get-favorites`, { email : email }).subscribe(
+    return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, { email : email, _id : id }).subscribe(
       data => {
         console.log('Posting Favorite Job to Database..');
-        console.log(`favorite value: ${data}`);
-        let updatedFavorites = [...Object.values(data['favoriteJobs']), job];
+        let updatedFavorites = [...Object.values(data), job];
         this.favoriteJobs$.next(updatedFavorites);
-
-        console.log(data['favoriteJobs']);
       }
     );
 
@@ -51,13 +48,13 @@ export class FavoritesService {
     const email = this.profile.activeEmail;
 
     job.userEmail = email;
+    let id = job._id;
 
     // post to database
-    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, { email : email })
-      .subscribe(
+    this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, { email : email, _id: id}).subscribe(
       async data => {
-        console.log(`unfavorite data value: ${Object.values(data)}`);
-        let updatedFavorites = [...Object.values(data['favoriteJobs'])];
+        console.log("Unfavorite data value: ", data);
+        let updatedFavorites = [...Object.values(data)];
         
         for (let i = 0; i < updatedFavorites.length; i++) {
           if (updatedFavorites[i] === job) {
@@ -65,7 +62,6 @@ export class FavoritesService {
           }
         }
 
-        console.log(data['favoriteJobs']);
         await this.favoriteJobs$.next(updatedFavorites);
       }
     );

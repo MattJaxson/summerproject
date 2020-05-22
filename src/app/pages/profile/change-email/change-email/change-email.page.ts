@@ -15,6 +15,8 @@ export class ChangeEmailPage implements OnInit {
   changeEmail: FormGroup;
   activeEmail = '';
 
+  formValid: Boolean;
+
   validationMessasges = {
     email: [
       { type: 'email', message: 'Must be a valid email address'}
@@ -38,16 +40,26 @@ export class ChangeEmailPage implements OnInit {
      }
 
   ngOnInit() {
+  
     this.changeEmail =  this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.compose([
-        Validators.minLength(6),
+        Validators.minLength(8),
         Validators.required,
         // this is for the letters (both uppercase and lowercase) and numbers validation
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])]
     });
 
+    this.changeEmail.valueChanges.subscribe( _ => {
+      setTimeout(() => {
+        if (this.changeEmail.valid) {
+          this.formValid = true;
+        } else {
+          this.formValid = false;
+        }
+      }, 100);
+    })
   }
 
   back() {
