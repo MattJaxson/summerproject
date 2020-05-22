@@ -17,22 +17,15 @@ span {
   background: white;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
   height: auto;
-
+  margin-top: 5%;
 }
 
 @media only screen and (min-width: 992px) {
-  .description {
-    margin-top: 5%;
-    padding: 40px 0 40px 0;
-  }
-
   .orange-button{
     width: 160px;
   }
 }
 
-.orange-button {
-}
 
 #job-summary {
   font-size: 1.1em;
@@ -65,7 +58,7 @@ span {
 }
 
 #job-full-description {
-  font-size: 1.6em;
+  font-size: 1.3em;
   line-height: 29px;
   position: relative;
   color: #666;
