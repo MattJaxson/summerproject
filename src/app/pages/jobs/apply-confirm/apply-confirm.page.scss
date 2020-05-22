@@ -1,0 +1,47 @@
+#background {
+  opacity: 0;
+  height: 90vh;
+  --background: #999;
+  --transition: 0.5s;
+  animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) .3s forwards;
+}
+  
+#confirm-text {
+  color: white;
+  font-size: 1.3em;
+  font-weight: 800;
+  opacity: 0;
+  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 2s forwards;
+}
+
+#confirm-icon {
+  opacity: 0;
+  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 1.3s forwards;
+}
+
+ion-button {
+  opacity: 0;
+  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 3s forwards;
+}
+
+// Keyframes
+@keyframes slide-in-up {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    opacity: 1;
+    --background: #797;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slide-in-up-2 {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-100px);
+  }
+}

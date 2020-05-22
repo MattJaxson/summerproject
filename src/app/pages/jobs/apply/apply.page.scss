@@ -1,22 +1,42 @@
 ion-title {
-    margin: 0;
+  margin: 0;
+}
+
+.company-logo {
+  margin-top: 20px;
+  background-image: url("../../../../assets/journi-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 h1.job-title {
-    font-size: 2em;
-    font-weight: 900;
-    color: #005191;
-    margin-bottom: 5px;
+  font-size: 2em;
+  font-weight: 900;
+  color: #005191;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 h2.company-name {
-    margin-top: 0;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+#instructions p {
+  margin-top: 5px;
 }
 
 ion-item {
-    margin: 10px 0;
+  margin: 10px 0;
+  border: 1px solid rgba(0, 81, 145, 0.4);
+  border-radius: 5px;
+}
+
+.back-button {
+  width: unset;
 }
 
 .orange-button {
-    width: unset;
+  width: unset;
 }

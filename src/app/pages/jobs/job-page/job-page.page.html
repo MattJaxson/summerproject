@@ -15,14 +15,15 @@
             <!-- Back and Favorite Buttons (Desktop) -->
             <ion-row class="ion-align-items-end">
               <ion-col size="7">
-                <div style="height: 100px; width: 100px; background: lightblue;"></div>
+                <div class="company-logo" style="height: 100px; width: 100px;"></div>
               </ion-col>
               <ion-col size="2">
                 <app-heart-icon [job]="jobId"></app-heart-icon>
               </ion-col>
               <ion-col size="2">
                 <ion-button  class="ion-hide-sm-down back-button" style="float: right; position: relative; top: -40px;" (click)="goBack()">
-                  Go Back</ion-button>
+                  Go Back
+                </ion-button>
               </ion-col>
             </ion-row>
           </ion-col>

@@ -5,15 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { FavoritesPageRoutingModule } from './favorites-routing.module';
+import { CustomComponentsModule } from "../../../components/custom-component.module";
 
 import { FavoritesPage } from './favorites.page';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FavoritesPageRoutingModule
+    FavoritesPageRoutingModule,
+    CustomComponentsModule
   ],
   declarations: [FavoritesPage]
 })

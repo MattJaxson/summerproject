@@ -1,21 +1,16 @@
-<ion-header>
+<ion-header style="display: none;">
   <ion-toolbar class="ion-text-center">
     <ion-title>Verification</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="background">
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="11" size-md="8" size-lg="7" size-xl="6">
-        <p>Thank you for adding a post! Please allow for up to 1 day for your post to be verified. You will recieve a notifcation soon. (Refactor message)</p>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="11" size-md="3" size-lg="2" size-xl="1">
-          <ion-button (click)="backToPosts()" expand="block">
-            Back
-          </ion-button>
+    <ion-row class="ion-justify-content-center full-page" style="margin: 5% 0% 3%;">
+      <ion-col class="ion-align-self-center ion-text-center" size="10">
+        <img id="confirm-icon" src="../../../../../assets/icon/white-check.svg">
+        <p id="confirm-text">Thank you for adding a post! Please allow for up to 1 day for your post to be verified. You will recieve a notifcation soon. (Refactor message)</p>
+        <ion-button (click)="backToPosts()" color="light" fill="solid">Done</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

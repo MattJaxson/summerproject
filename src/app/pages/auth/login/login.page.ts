@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit, AfterViewInit {
 
   loginForm: FormGroup;
-  @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
+  @ViewChild('autoFocusInput', {static: false})  inputElement: IonInput;
 
   validationMessasges = {
     email: [
