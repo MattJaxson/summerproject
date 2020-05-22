@@ -15,20 +15,26 @@
       <ion-col size="5">
         <h1 style="margin: 10px 0">New Post</h1>
       </ion-col>
-      <ion-col size="5">
-        <ion-button class="orange-button"  (click)="back()">
+      <ion-col push="2" size="5">
+        <ion-button class="back-button"  (click)="back()">
            Back
         </ion-button>
       </ion-col>
     </ion-row>
+    <!-- Horizontal Line for Desktop Header -->
+    <ion-row class="ion-justify-content-center ion-hide-md-down">
+      <ion-col size="10">
+        <hr style="background-color: #00000044;" />
+      </ion-col>
+    </ion-row>
 
-    <ion-row class="ion-justify-content-center" style="margin-top: 3%;">
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+    <ion-row class="ion-justify-content-center" style="margin-top: 1%;">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
         <!-- Mobile Text Header -->
-        <p class="message ion-hide-lg-up"><span class="blue-mobile">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green-mobile">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
+        <p class="message ion-hide-lg-up">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
 
         <!-- Desktop Text Header -->
-        <p class="message ion-hide-md-down"><span class="blue">Please keep your content clean.</span> In order to maintain a high standard of content, each post will have to be <span class="green">verified</span> before they are added to the Posts feed. Happy posting, and be inspired!</p>
+        <p class="message ion-hide-md-down">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
       </ion-col>
 
     </ion-row>
@@ -37,8 +43,8 @@
       <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
         <form [formGroup]="textPostForm" (ngSubmit)="post(this.creatorName, this.creatorEmail, this.textPostForm.value.textPost)">
           <ion-row>
-            <ion-col>
-              <ion-item>
+            <ion-col class="ion-text-center">
+              <ion-item class="ion-no-padding">
                 <ion-textarea
                   rows="15"
                   auto-grow="true"

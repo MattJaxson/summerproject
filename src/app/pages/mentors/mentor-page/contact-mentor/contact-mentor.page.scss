@@ -2,7 +2,10 @@
     width: 100px;
     height: 100px;
     border-radius: 100px;
-    background: lightgrey;
+    background-image: url("../../../../../assets/aaron.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     margin: 35px auto 0;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;

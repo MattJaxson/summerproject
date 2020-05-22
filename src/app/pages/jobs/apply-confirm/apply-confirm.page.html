@@ -1,10 +1,17 @@
-<ion-header>
+<ion-header style="display: none;">
   <ion-toolbar>
-    <ion-title>apply-confirm</ion-title>
+    <ion-title>Application Sent</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p>Thanks for applying to {{jobCompanyName}} for the role of {{jobTitle}}. {{jobCompanyName}} has been notified at the email address of {{jobCompanyEmail}} and you will hear from them shortly.</p>
+<ion-content id="background">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center full-page" style="margin: 5% 0% 3%;">
+      <ion-col class="ion-align-self-center ion-text-center" size="10">
+        <img id="confirm-icon" src="../../../../assets/icon/white-check.svg">
+        <p id="confirm-text">Thanks for applying to {{jobCompanyName}} for the role of {{jobTitle}}. {{jobCompanyName}} has been notified at the email address of {{jobCompanyEmail}} and you will hear from them shortly.</p>
+        <ion-button (click)="backHome()" color="light" fill="solid">Done</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-<button (click)="backHome()" id="next-button">GO HOME</button>
