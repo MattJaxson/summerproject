@@ -2,11 +2,20 @@ ion-title {
     margin: 0;
 }
 
+ion-header {
+    padding: 10px 0 10px 0;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  }
+
 .header-wrapper {
     background: white;
     width: 50%;
     height: 100px;
     border-radius: 100px;
+}
+
+.mentor {
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
 }
 
 #mentor-profile-picture{

@@ -1,4 +1,4 @@
-<ion-header class="ion-hide-lg-up">
+<ion-header no-border class="ion-hide-lg-up">
 
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar style="--background: white;" >
@@ -13,7 +13,7 @@
           (ionChange)="filter($event)"
           ></ion-searchbar>
         </ion-col>
-  
+
         <ion-col size-xs="3" size-sm="2" size-md="2">
           <ion-button  class="blue-button" style="font-size: 0.6em; width: 100%; height: 40px; position: static; animation: none; opacity: 1;" (click)="going()">
             My Events ({{ eventsGoingLength }})
@@ -31,7 +31,7 @@
     <!-- Refresh -->
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
+    </ion-refresher>
 
 
       <!-- Search Results -->
