@@ -1,5 +1,14 @@
-ion-card.event-card {
+ion-header {
+  padding: 10px 0 10px 0;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+ion-card {
   --background: white;
+  margin: 50px 0 50px 0;
+}
+
+ion-card.event-card {
   height: 60vh;
   min-height: 530px;
   max-height: 560px;
@@ -21,12 +30,6 @@ ion-icon {
   font-size: 25px;
   position: relative;
   right: 5px;
-}
-
-
-ion-header {
-  padding: 20px 0 20px 0;
-  box-shadow: 1px 1px 100px rgba(0,0,0,0.1);
 }
 
 ion-searchbar {

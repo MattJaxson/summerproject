@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, IonRefresher } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
@@ -15,7 +15,7 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
   templateUrl: 'posts.page.html',
   styleUrls: ['posts.page.scss']
 })
-export class PostsPage implements OnInit, OnDestroy {
+export class PostsPage implements OnInit {
 
   @ViewChild(IonRefresher, {static: true}) refresher: IonRefresher;
 
@@ -36,9 +36,7 @@ export class PostsPage implements OnInit, OnDestroy {
   private formBuilder: FormBuilder,
   private postPageEmitter: PostPageEmitterService
     ) {}
-  ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
-  }
+
 
   ngOnInit() {
 
@@ -92,10 +90,6 @@ export class PostsPage implements OnInit, OnDestroy {
           });
       }
     );
-
-    
-
-
   }
 
     postPage(post) {
