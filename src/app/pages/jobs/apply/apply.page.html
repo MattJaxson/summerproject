@@ -11,6 +11,7 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+        <div class="company-logo" style="height: 80px; width: 80px;"></div>
 
         <h1 class="job-title">{{jobTitle}}</h1>
 
@@ -18,8 +19,10 @@
 
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">Please go over your Resume and information before you apply. </ion-col>
+    <ion-row id="instructions" class="ion-justify-content-center">
+        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+          <p>Please go over your Resume and information before you apply.</p>
+        </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
         <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
@@ -30,7 +33,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Go over your Resume</ion-label>
-              <ion-button (click)="viewResume()">
+              <ion-button class="back-button" (click)="viewResume()">
                 View Resume
               </ion-button>
             </ion-item>
@@ -49,7 +52,11 @@
               ></ion-textarea>
             </ion-item>
             <p><i>optional</i> - 2500 characters max</p>
-            <ion-button (click)="finishApplication()" class="orange-button next-button">Submit Application</ion-button>
+            <ion-row>
+              <ion-col class="ion-text-center" size="12">
+                <ion-button (click)="finishApplication()" class="orange-button next-button">Submit</ion-button>
+              </ion-col>
+            </ion-row>
           </form>
           </ion-col>
         </ion-row>

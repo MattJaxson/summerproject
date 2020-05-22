@@ -11,7 +11,10 @@ ion-title {
 
 #mentor-profile-picture{
     height: 50px; width: 50px;
-    background: #222;
+    background-image: url("../../../../assets/aaron.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     border-radius: 50px;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;

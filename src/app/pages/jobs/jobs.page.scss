@@ -1,15 +1,20 @@
-
 ion-header {
   padding: 20px 0 20px 0;
   box-shadow: 1px 1px 100px rgba(0,0,0,0.1);
 }
-
 
 #logo{
   width: 100px;
   position: relative;
   top: 10px;
   left: 10px;
+}
+
+.company-logo {
+  background-image: url("../../../assets/journi-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 ion-button {

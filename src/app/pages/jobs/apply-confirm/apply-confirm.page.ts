@@ -31,7 +31,7 @@ export class ApplyConfirmPage implements OnInit {
   }
 
   backHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/jobs']);
   }
 
 }

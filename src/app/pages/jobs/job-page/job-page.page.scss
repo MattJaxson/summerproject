@@ -2,6 +2,13 @@ ion-title {
   margin: 0;
 }
 
+.company-logo {
+  background-image: url("../../../../assets/journi-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 span {
   font-weight: 700;
 }

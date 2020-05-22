@@ -13,7 +13,10 @@ ion-toolbar {
   top: 25px;
   height: 50px;
   width: 50px;
-  background: #222;
+  background-image: url("../../../assets/aaron.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   border-radius: 50px;
 }
 

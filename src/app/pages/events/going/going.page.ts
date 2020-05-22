@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../../services/events.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class GoingPage implements OnInit {
   goingToEvents = [];
-  goingToEvents$ = new BehaviorSubject([]);
+  public goingToEvents$ = new BehaviorSubject([]);
   userEmail;
   id;
 
@@ -21,6 +21,7 @@ export class GoingPage implements OnInit {
     private router: Router,
     private events: EventsService,
     private profile: ProfileService,
+    private cdr: ChangeDetectorRef,
     private toast: ToastController,
     private alert: AlertController
     ) { }
@@ -37,28 +38,7 @@ export class GoingPage implements OnInit {
        this.userEmail = details['email'];
 
        console.log('getting event user ' + this.id + ' is going to');
-       this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
-         this.goingToEvents = Object.values(eventsGoing);
-         this.goingToEvents.reverse();
-         console.log(this.goingToEvents);
-
-         for (const event of this.goingToEvents) {
-           event.date = format( new Date(event.date), 'MMMM dd, yyyy');
-           event.time = format( new Date(event.date), 'hh:mm a');
-           event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
-             includeSeconds: true,
-             addSuffix: true
-           });
-         }
-
-         this.goingToEvents$.next(this.goingToEvents);
-
-         // for (const event of this.goingToEvents) {
-         //   event.date = format( new Date(event.date), 'MMMM-dd-yyyy');
-         //   event.dateCreated = formatRelative( new Date(event.dateCreated), new Date(event.dateCreated));
-         //   event.time = format( new Date(event.date), 'hh:mm a');
-         // }
-        });
+       this.refreshGoingEvents();
      });
   }
 
@@ -75,7 +55,14 @@ export class GoingPage implements OnInit {
     console.log(eventID);
     console.log(`Removing ${eventID} from this Users eventsGoing property`);;
     this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( () => {
-      this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
+      this.refreshGoingEvents();
+      this.presentNotGoingToast();
+      }
+    );
+  }
+
+  refreshGoingEvents() {
+    this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
         this.goingToEvents = Object.values(eventsGoing);
         this.goingToEvents.reverse();
         console.log(`Updated events going list: ${this.goingToEvents}`);
@@ -90,10 +77,8 @@ export class GoingPage implements OnInit {
         }
 
         this.goingToEvents$.next(this.goingToEvents);
+        this.cdr.detectChanges(); // Check for new changes in events going list
       });
-      this.presentNotGoingToast();
-      }
-    );
   }
 
   async presentNotGoingToast() {
