@@ -56,7 +56,7 @@ export class JobsPage implements OnInit, OnDestroy {
         this.favorites.favoriteJobs$.next(this.favoriteJobs);
         this.favorites.favoriteJobs$.subscribe(
           favs => {
-            console.log('Favorite Jobs in Service');
+            console.log(`Favorite Jobs in Service: ${favs}`);
             this.favoriteJobsAmount = favs.length;
           }
         );

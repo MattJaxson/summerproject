@@ -41,7 +41,8 @@
                     required
                     placeholder="new email"
                     formControlName="email"
-                    type="email">
+                    type="email"
+                    (keyup.enter)="formValid ? confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value) : null">
                   </ion-input>
                 </ion-item>
 
@@ -63,11 +64,13 @@
                       required
                       placeholder="password"
                       formControlName="password"
-                      type="password">
+                      minlength="8"
+                      type="password"
+                      (keyup.enter)="formValid ? confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value) : null">
                     </ion-input>
                 </ion-item>
           </ion-list>
-                <ion-button type="submit" class="orange-button" style="width: unset;">CHANGE EMAIL</ion-button>
+                <ion-button type="submit" [disabled]="!formValid" class="orange-button" style="width: unset;">CHANGE EMAIL</ion-button>
               </form>
         </ion-col>
       </ion-row>

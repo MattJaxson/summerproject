@@ -19,12 +19,13 @@
             <ion-item>
               <!-- Email -->
                 <ion-input
-                  #autoFucousInput
+                  #autoFocusInput
                   required
                   placeholder="Email"
                   inputmode="email"
                   formControlName="email"
-                  type="email">
+                  type="email"
+                  (keyup.enter)="login(this.loginForm.value)">
                 </ion-input>
             </ion-item>
                 <!-- Password Validation-->
@@ -47,7 +48,8 @@
                 placeholder="Password"
                 inputmode="text"
                 formControlName="password"
-                type="password">
+                type="password"
+                (keyup.enter)="login(this.loginForm.value)">
               </ion-input>
           </ion-item>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FavoritesService } from '../../services/favorites.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 
 @Component({
@@ -31,29 +32,52 @@ export class HeartIconComponent implements OnInit {
   favoriteState = 'unfavorited';
   public iconName = 'heart-empty';
   @Input() job;
+  favoriteJobs;
+  userEmail;
 
   constructor(
-    private favorites: FavoritesService
+    private favorites: FavoritesService,
+    private profile: ProfileService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.warn("Heart here with job id: ", this.job._id);
+    
+    this.profile.getUserDetails().subscribe(user => {
+      console.log(this.userEmail);
+      this.favorites.getFavorites(this.userEmail).subscribe(data => {
+        this.favoriteJobs = data;
+        console.log("Favorite jobs: ", this.favoriteJobs);
+        for (const job of this.favoriteJobs) {
+          if (this.job._id == job._id) {
+            this.setFavoriteStateOn()
+          }
+        }
+      })
+    })
+  }
 
   toggleLikeState() {
 
     if (this.favoriteState === 'unfavorited') {
-
-      this.favoriteState = 'favorited';
-      this.iconName = 'heart';
+      this.setFavoriteStateOn()
       this.favorites.favoriteThisJob(this.job);
-
     } else {
-
-      this.favoriteState = 'unfavorited';
-      this.iconName = 'heart-empty';
+      this.setFavoriteStateOff()
       this.favorites.unFavoriteThisJob(this.job);
-
     }
 
+  }
+
+  setFavoriteStateOn() {
+    this.favoriteState = 'favorited';
+    this.iconName = 'heart';
+    
+ }
+
+  setFavoriteStateOff() {
+    this.favoriteState = 'unfavorited';
+    this.iconName = 'heart-empty';
   }
 
 }
