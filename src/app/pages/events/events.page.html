@@ -1,9 +1,9 @@
-<ion-header>
+<ion-header class="ion-hide-lg-up">
 
   <!-- Mobile & Tablet Toolbar -->
-  <ion-toolbar style="--background: white;" class="ion-hide-lg-up">
+  <ion-toolbar style="--background: white;" >
     <ion-grid>
-      <ion-row class="ion-justify-content-center">
+      <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-col size-xs="8" size-sm="8" size-md="8">
           <ion-searchbar
           debounce="2000"
@@ -15,7 +15,7 @@
         </ion-col>
   
         <ion-col size-xs="3" size-sm="2" size-md="2">
-          <ion-button  class="blue-button" style="font-size: 0.6em; width: 100%; height: 100%; position: static; animation: none; opacity: 1;" (click)="going()">
+          <ion-button  class="blue-button" style="font-size: 0.6em; width: 100%; height: 40px; position: static; animation: none; opacity: 1;" (click)="going()">
             My Events ({{ eventsGoingLength }})
         </ion-button>
 
@@ -26,7 +26,7 @@
 
 </ion-header>
 
-<ion-content style="--background: rgba(245,245,245,1); background-attachment: fixed;">
+<ion-content>
 
     <!-- Refresh -->
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -92,7 +92,7 @@
       <ion-col size="2" push="1">
         <ion-row>
           <ion-col size="12">
-            <ion-button class="blue-button ion-float-right" style="width: 100%; position: static;" (click)="going()">
+            <ion-button class="blue-button ion-float-right" style="width: 170px; position: fixed; top: 60px;" (click)="going()">
               My Events ({{ eventsGoingLength }})
             </ion-button>
           </ion-col>

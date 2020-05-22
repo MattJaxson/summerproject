@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, IonRefresher } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 
 @Component({
@@ -15,6 +16,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['posts.page.scss']
 })
 export class PostsPage implements OnInit, OnDestroy {
+
+  @ViewChild(IonRefresher, {static: true}) refresher: IonRefresher;
+
   postsSub: Subscription;
   // postsSub: Subscription;
   commentForm: FormGroup;
@@ -29,15 +33,42 @@ export class PostsPage implements OnInit, OnDestroy {
   public posts: PostsService,
   private profile: ProfileService,
   private toast: ToastController,
-  private formBuilder: FormBuilder
-  ) {}
+  private formBuilder: FormBuilder,
+  private postPageEmitter: PostPageEmitterService
+    ) {}
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
 
   ngOnInit() {
 
+     // To collect comment data
+     this.commentForm = this.formBuilder.group({
+      comment: ['']
+    });
+
+     this.commentForm.controls.comment.valueChanges.subscribe(data => {
+
+      if (data === '') {
+      console.log('Value is empty');
+      this.commentForm.markAsPristine();
+      }
+
+      console.log(this.commentForm);
+    });
+
     // Get all for post for this section
-    this.postsSub = this.posts.getPosts().subscribe(
+     this.posts.getPosts().subscribe(
       posts => {
-        this.allPosts =  Object.values(posts).reverse();
+        let allPosts =  Object.values(posts).reverse();
+        this.posts.postsSubject$.next(allPosts);
+        this.posts.postsSubject$.subscribe(
+            data => {
+              this.allPosts = data;
+            }
+          );
+
+        this.allPosts = this.posts.postsSubject$.value;
 
         for (const post of this.allPosts) {
           post.date = formatDistanceToNow( new Date(post.date), {
@@ -51,43 +82,23 @@ export class PostsPage implements OnInit, OnDestroy {
             this.allPosts.comments = comments;
           }
         );
+        // Get the User's details
+        this.profile.getUserDetails().subscribe(
+          details => {
+            this.userEmail = details['email'];
+            this.userFullName = details['fullName'];
+            this.followedPost = Object.values(details['followedPost']).length;
+            console.log('User email: ' + this.userEmail);
+          });
       }
     );
 
-     // To collect comment data
-    this.commentForm = this.formBuilder.group({
-      comment: ['']
-    });
-
-    this.commentForm.controls.comment.valueChanges.subscribe(data => {
-
-      if (data === '') {
-      console.log('Value is empty');
-      this.commentForm.markAsPristine();
-      }
-
-      console.log(this.commentForm);
-    });
+    
 
 
-    // Get the User's details
-    this.profile.getUserDetails().subscribe(
-      details => {
-        this.userEmail = details['email'];
-        this.userFullName = details['fullName'];
-        this.followedPost = Object.values(details['followedPost']).length;
-        console.log('User email: ' + this.userEmail);
-      });
   }
 
-  ngOnDestroy() {
-    console.log('Page Destroyed?');
-    if (this.postsSub) {
-      this.postsSub.unsubscribe();
-    }
-  }
-
-  postPage(post) {
+    postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
@@ -95,7 +106,6 @@ export class PostsPage implements OnInit, OnDestroy {
   async doRefresh(event) {
     await this.posts.getPosts().subscribe( jobs => {
       this.allPosts = Object.values(jobs).reverse();
-      console.log(this.allPosts);
 
       for (const post of this.allPosts) {
         post.date = formatDistanceToNow( new Date(post.date), {
@@ -103,7 +113,7 @@ export class PostsPage implements OnInit, OnDestroy {
           addSuffix: true
         });
       }
-    }).unsubscribe();
+    });
 
     // Present Toast
     await setTimeout(() => {
@@ -117,11 +127,11 @@ export class PostsPage implements OnInit, OnDestroy {
   }
 
 
-  addPost() {
+    addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
 
-  following() {
+    following() {
     this.router.navigate(['/home/posts/following']);
   }
 

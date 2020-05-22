@@ -3,7 +3,12 @@
   margin-bottom: 90px;
   background: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px #888;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+ion-header {
+  padding: 20px 0 20px 0;
+  box-shadow: 1px 1px 100px rgba(0,0,0,0.1);
 }
 
 .user-details {
@@ -21,12 +26,14 @@
   animation: username-slide-in 1s cubic-bezier(0.075, 0.82, 0.165, 1)  forwards;
 }
 
+
 ion-toolbar {
   --background: none;
+  height: 60px;
 
   p {
     color: #000;
-    font-weight: bold;
+    font-size: 1.2em;
   }
 }
 

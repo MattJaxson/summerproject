@@ -44,10 +44,11 @@ ion-grid {
 
 ion-list {
   --background: none;
+  padding: 20px;
 }
 
 ion-content {
-  --background: #f4f5f8;
+  --background: #ffffff;
 }
 
 .full-page {
@@ -81,9 +82,21 @@ ion-title {
   border-radius: 5px !important;
   height: 50px !important;
   max-width: 100%;
+  opacity: 0;
   font-size: 1.25em !important;
-  border: 1px solid #005191 !important;
-  box-shadow: none !important;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1) !important;
+  animation: searchbar-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+}
+
+@keyframes searchbar-slide-up {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 
@@ -306,6 +319,7 @@ ion-select-option {
     justify-content: center;
   }
 }
+
 
 .text-header {
   background: none;

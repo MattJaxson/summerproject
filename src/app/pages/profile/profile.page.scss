@@ -23,23 +23,39 @@ ion-alert {
 }
 
 h4 {
-  color: #777;
+  color: #000;
+  font-size: 1.9em;
+  opacity: 0;
+  animation: header-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+}
+
+p {
+  font-size: 1.4em;
+  opacity: 0;
+  transition: 0.5s;
+  animation: text-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
 }
 
 .header-half {
   height: auto;
   background-image: linear-gradient(
-    to bottom right, 
-    rgba(230,230,230,0.4), 
+    to bottom right,
+    rgba(230,230,230,0.4),
     rgba(200,200,200,0.9));
   background-attachment: fixed;
   padding: 50px 0 50px 0;
+
+  .orange-button{
+    animation: buttons-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) .9s forwards;
+  }
 }
 
 
 span {
   color: #005191;
   font-weight: 600;
+  width: 100px;
+  display: inline-block;
 }
 
 #profile-picture {
@@ -48,13 +64,16 @@ span {
   border-radius: 100px;
   margin: 0 auto;
   display: block;
+  opacity: 0;
+  animation: pic-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
 
 #change-pro-pic-button {
-  width: 30px;
-  height: 30px;
-  background: #0d467b;
+  width: 40px;
+  height: 40px;
+  background: #faa71b;
   color: white;
+  padding: 0;
   font-size: 1.5em;
   font-weight: 400;
   border-radius: 100px;
@@ -62,6 +81,13 @@ span {
   position: relative;
   top: -20px;
   left: 25px;
+  opacity: 0;
+  animation: pic-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.75s forwards;
+}
+
+.back-button{
+  opacity: 0;
+  animation: buttons-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 #edit-profile-button {
@@ -71,8 +97,78 @@ span {
 }
 
 .logout-button {
-  color: red;
+  color: #e4405f;
+  --background: none;
+  height: 45px;
+  width: 120px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  margin-bottom: 39%;
 }
+
+@keyframes text-slide-up {
+  0%{
+    transform: translateY(20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pic-slide-right {
+  0%{
+    transform: translateX(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes header-slide-right {
+  0%{
+    transform: translateX(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes buttons-slide-up {
+  0%{
+    transform: translateY(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes buttons-slide-right {
+  0%{
+    transform: translateX(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  p {
+    font-size: 1.2em;
+  }
+   span {
+    color: #005191;
+    font-weight: 600;
+    width: 90px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+  }
+}
+
 
 @media screen and (min-width: 768px) {
   #change-pro-pic-button {
@@ -80,4 +176,4 @@ span {
     top: 75px;
     left: 188px;
   }
-} 
+}

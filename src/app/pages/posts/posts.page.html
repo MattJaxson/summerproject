@@ -1,16 +1,16 @@
  <!-- Mobile Toolbar -->
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar style="--background: white;">
+  <ion-toolbar style="--background: white; box-shadow: none;">
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="1">
+        <ion-col push="0.5" size="1">
           <img src="../../assets/goku-pro-pic.png" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
-        <ion-col size="7">
+        <ion-col push="0.5" size="7">
           <p class="username">{{userFullName}}</p>
         </ion-col>
         <ion-col offset="0.5" size="2">
-          <ion-button style="font-size: 0.7em; width: 50px" class="back-button" style="animation: none; opacity: 1; width: 80px; height: 40px; font-size: 0.6em; position: relative; top: -10px;" (click)="following()">
+          <ion-button style="font-size: 0.7em; width: 50px" class="back-button" style="animation: none; opacity: 1; width: 80px; height: 40px; font-size: 0.6em; position: relative; top: -15px;" (click)="following()">
             Following
         </ion-button>
         </ion-col>
@@ -225,20 +225,14 @@
           <!-- Post Buttons -->
           <ion-col size="12">
             <ion-row>
-              <ion-col push="1" size="10">
-                <ion-toolbar class="post-toolbar" style="--background: none;">
-                  <ion-buttons slot="end">
-                      <!-- Icons -->
-                        <app-follow-icon [post]="post" [userEmail]="userEmail">Follow</app-follow-icon>
+              <!-- Upvote & Downvote-->
+              <ion-col offset="0.5" size="4">
+                <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
+              </ion-col>
 
-
-                    <ion-button (click)="postPage(post)">
-                    <ion-icon style=" position: relative; left: -5px;"  name="chatboxes" ></ion-icon>
-                    ({{post.comments.length}})
-                    </ion-button>
-
-                  </ion-buttons>
-              </ion-toolbar>
+              <!-- Follow & Comment -->
+              <ion-col push="1" size="6">
+                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>
           </ion-col>

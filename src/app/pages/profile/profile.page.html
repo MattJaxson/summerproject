@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header style="display: none;">
 </ion-header>
 
 <ion-content>
@@ -31,27 +31,27 @@
     </ion-row>
 
     <ion-row>
-      <ion-col id="profile-info" size="6">
+      <ion-col id="profile-info" push="0.5" size="11">
 
         <h4>Profile Information: </h4>
         <br>
 
-        <p><span>Name</span>: {{userObject.fullName}}</p>
-        <p><span>Email</span>: {{userObject.email}}</p>
-        <p><span>Gender</span>: {{userObject.gender}}</p>
-        <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>
-        <p><span>Phone</span>: {{userObject.phone}}</p>
-        <p><span>City</span>: {{userObject.city}}</p>
-        <p><span>State</span>: {{userObject.state}}</p>
-        <p><span>Zip</span>: {{userObject.zip}}</p>
-        <p><span>School</span>: {{userObject.school}}</p>
-        <p><span>Grade</span>: {{userObject.grade}}</p>
+        <p><span>Name:</span> {{userObject.fullName}}</p>
+        <p><span>Email:</span> {{userObject.email}}</p>
+        <p><span>Gender:</span> {{userObject.gender}}</p>
+        <p><span>Address:</span> {{userObject.addressOne}}, {{userObject.addressTwo}}</p>
+        <p><span>Phone:</span> {{userObject.phone}}</p>
+        <p><span>City:</span> {{userObject.city}}</p>
+        <p><span>State:</span> {{userObject.state}}</p>
+        <p><span>Zip:</span> {{userObject.zip}}</p>
+        <p><span>School:</span> {{userObject.school}}</p>
+        <p><span>Grade:</span> {{userObject.grade}}</p>
       </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
       <ion-col size="6">
-        <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
+        <ion-button class="logout-button" (click)="confirmLogout()">
           Logout
         </ion-button>
       </ion-col>
@@ -63,45 +63,41 @@
 
       <ion-row style="margin-top: 5%;">
 
-          <ion-col size="4">
-            <div>
-                <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
-                <button id="change-pro-pic-button" (click)="changeProfilePicture()">
-                    +
-                </button>
-            </div>
-          </ion-col>
+        <ion-col size="4">
+          <div>
+              <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
+              <button id="change-pro-pic-button" (click)="changeProfilePicture()">
+                  +
+              </button>
+          </div>
+        </ion-col>
 
-          <ion-col size="4">
-            <ion-button class="orange-button" (click)="editPage()" style="margin-right: 16px">
-              Edit Profile
-            </ion-button>
-            <ion-button class="orange-button" (click)="updateResume()">
-              View Resume
-            </ion-button>
-          </ion-col>
-
-          <ion-col size="4">
-          </ion-col>
-
+        <ion-col push="2" size="6">
+          <ion-button class="back-button" style="display: inline-block; width: 130px; animation-delay: 2.5s;" (click)="editPage()">
+            Edit Profile
+          </ion-button>
+          <ion-button class="back-button" style="display: inline-block; width: 130px; animation-delay: 3s;" (click)="updateResume()">
+            View Resume
+          </ion-button>
+        </ion-col>
       </ion-row>
 
       <ion-row>
-        <ion-col id="profile-info" size="12">
+        <ion-col id="profile-info" push="1" size="10">
 
           <h4>Profile Information: </h4>
           <br>
 
-          <p><span>Name</span>: {{userObject.fullName}}</p>
-          <p><span>Email</span>: {{userObject.email}}</p>
-          <p><span>Gender</span>: {{userObject.gender}}</p>
-          <p><span>Address</span>: {{userObject.addressOne}}, {{userObject.addressTwo}}</p>
-          <p><span>Phone</span>: {{userObject.phone}}</p>
-          <p><span>City</span>: {{userObject.city}}</p>
-          <p><span>State</span>: {{userObject.state}}</p>
-          <p><span>Zip</span>: {{userObject.zip}}</p>
-          <p><span>School</span>: {{userObject.school}}</p>
-          <p><span>Grade</span>: {{userObject.grade}}</p>
+          <p><span>Name:</span> {{userObject.fullName}}</p>
+          <p><span>Email:</span> {{userObject.email}}</p>
+          <p><span>Gender:</span> {{userObject.gender}}</p>
+          <p><span>Address:</span> {{userObject.addressOne}}, {{userObject.addressTwo}}</p>
+          <p><span>Phone:</span> {{userObject.phone}}</p>
+          <p><span>City:</span> {{userObject.city}}</p>
+          <p><span>State:</span> {{userObject.state}}</p>
+          <p><span>Zip:</span> {{userObject.zip}}</p>
+          <p><span>School:</span> {{userObject.school}}</p>
+          <p><span>Grade:</span> {{userObject.grade}}</p>
         </ion-col>
 
         <ion-col size="11" offset="0.5">

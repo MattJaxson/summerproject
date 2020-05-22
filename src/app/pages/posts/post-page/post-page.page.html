@@ -32,17 +32,29 @@
 
         <ion-row class="post">
           <ion-col size="12">
+
              <!-- Header -->
             <ion-row class="ion-hide-md-down" style="margin: 2% 0% 3% 0%;">
-              <ion-col push="9" size="2">
-                <ion-button *ngIf="!following" class="follow-button"  (click)="follow(postID)">
+              <!-- Profile Picture -->
+              <ion-col push="1" size="1">
+                <img class="profile-picture" src="../../assets/batman-pro-pic.png">
+              </ion-col>
+
+              <!-- Post Creator's Name -->
+              <ion-col push="1" size="3">
+                <h6 style="font-size: 1.7em; font-weight: 800; opacity: 0.9;">{{creatorName}}</h6>
+                <h6 style="opacity: 0.4; font-size: 0.9em;">{{date}}</h6>
+              </ion-col>
+              <ion-col offset="3" size-lg="4">
+                <ion-button *ngIf="!following && isUser" class="follow-button"  (click)="follow(postID)">
                   Follow
                 </ion-button>
-                <ion-button *ngIf="following" class="unfollow-button"  (click)="unFollow(postID)">
+                <ion-button *ngIf="following && isUser" class="unfollow-button"  (click)="unFollow(postID)">
                   UnFollow
                 </ion-button>
-              </ion-col>
-              <ion-col push="8" size="2">
+                <ion-button *ngIf="canDeletePost" class="delete-button"  (click)="deletePost(postID)">
+                  Delete
+                </ion-button>
                 <ion-button class="back-button"  (click)="back()">
                   Back
                 </ion-button>
@@ -53,29 +65,15 @@
           <!-- Profile Header -->
           <ion-col size="12">
             <ion-row style="position: relative; left: 5px; top: 4px;" >
-            <!-- Profile Picture -->
-            <ion-col push="1" size="1">
-              <img class="profile-picture" src="../../assets/batman-pro-pic.png">
-            </ion-col>
-
-            <!-- Post Creator's Name -->
-            <ion-col push="1" size="6">
-              <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}}</h6>
-            </ion-col>
-
-            <!-- Date -->
-            <ion-col push="3" size="2">
-                <h6 style="opacity: 0.4; font-size: 0.8em;">{{date}}</h6>
-            </ion-col>
-
-          </ion-row>
+              <hr style="background: red;">
+            </ion-row>
           </ion-col>
 
           <!-- Post Content -->
           <ion-col offset="1" size="10">
             <ion-row>
               <!-- 1080x1350 -->
-              <ion-col size="12">
+              <ion-col size="8">
                <p class="post-content">{{post}}</p>
               </ion-col>
            </ion-row>
@@ -212,7 +210,7 @@
                     class="edit ion-float-right">
                     Edit
                   </ion-button>
-                  <ion-button *ngIf="comment.canDelete === true" (click)="delete(comment._id)"  class="delete ion-float-right">
+                  <ion-button *ngIf="comment.canDeleteComment === true" (click)="deleteComment(comment._id)"  class="delete ion-float-right">
                     Delete
                   </ion-button>
                 </ion-buttons>
