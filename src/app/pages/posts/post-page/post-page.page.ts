@@ -8,6 +8,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.page';
 import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 @Component({
   selector: 'app-post-page',
@@ -17,16 +18,15 @@ import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 export class PostPagePage implements OnInit {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
-  @ViewChild('ion-fab', {static: true}) fab: IonFab;
-  commentForm: FormGroup;
 
-  userEmail;
-  userFullName;
-  userProfilePicture;
+  userEmail: string;
+  userFullName: string;
+  userProfilePicture: string;
   showFab = false;
   following = false;
   isUser = false;
-  canDelete = false;
+  canDeleteComment = false;
+  canDeletePost = false;
   canReport = true;
 
   post: string;
@@ -40,9 +40,11 @@ export class PostPagePage implements OnInit {
 
   // debugging
   scroll = '';
+  commentForm: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private postPageEmitter: PostPageEmitterService,
     private router: Router,
     private posts: PostsService,
     private profile: ProfileService,
@@ -72,12 +74,11 @@ export class PostPagePage implements OnInit {
         // initiate this components post metadata from data in Posts Service
         this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
-            let comments = postInfo['comments'];
-            console.log(comments);
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
+            let comments = postInfo['comments'];
             let following = false;
             let date = formatDistanceToNow(
               new Date(postInfo['date']), {
@@ -85,6 +86,13 @@ export class PostPagePage implements OnInit {
                 addSuffix: true
               });
 
+            // Check if the post creator is the same as the User
+            // Enables the user to delete post if true
+            if (creatorEmail === this.userEmail) {
+              this.canDeletePost = true;
+            }
+
+            // See if the Logged in User is following the post on this page
             followers.find(findFollower);
 
             function findFollower(follower) {
@@ -96,39 +104,37 @@ export class PostPagePage implements OnInit {
               }
           }
 
-
-            console.log(this.userEmail);
+            // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
             for (const comment of comments) {
 
               // If the Logged in User's Email equals the creatorEmail of the Comment,
               // they will be given the ability to edit and delete their Comment.
               // The ability for them to report their own comment is disabled
               comment.isUser = false;
-              comment.canDelete = false;
+              comment.canDeleteComment = false;
               comment.canReport = true;
               comment.date = formatDistanceToNow( new Date(comment.date), {
-                includeSeconds: true,
+                includeSeconds: false,
                 addSuffix: true
               });
 
-              console.log(comment.userEmail);
+              // If this comment is the logged in user, they can delete and edit
               if (comment.userEmail === this.userEmail) {
                 comment.isUser = true;
-                comment.canDelete = true;
+                comment.canDeleteComment = true;
                 comment.canReport = false;
               }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                console.log(comment.replies[i].date);
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: true
+                });
              }
 
-            let replies = [];
-
-            for (let i = 0; comments.length > i; i++) {
-              console.log(comments[i].replies);
-              replies.push(replies);
-              // date = formatDistanceToNow( new Date(date), {
-              //   includeSeconds: true,
-              //   addSuffix: true
-              // });
-             }
+           }
 
             this.creatorName = creatorName;
             this.creatorEmail = creatorEmail;
@@ -224,6 +230,7 @@ export class PostPagePage implements OnInit {
     }
 
   }
+
   ScrollToTop() {
     this.content.scrollToTop(1500);
   }
@@ -241,18 +248,19 @@ export class PostPagePage implements OnInit {
       this.userFullName,
       this.userEmail,
       comment
-    );
+    ).subscribe( data => {
+      this.posts.getPostInfo(this.postID).subscribe(
+        post => {
+          for (let postComments of post['comments']) {
+            postComments.date = formatDistanceToNow( new Date(postComments.date), {
+              includeSeconds: true,
+              addSuffix: true
+            });
+           }
+          this.posts.commentsSubject$.next(post['comments'].reverse());
+        });
+    });
 
-    await this.posts.getPostInfo(this.postID).subscribe(
-      post => {
-        for (let postComments of post['comments']) {
-          postComments.date = formatDistanceToNow( new Date(postComments.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-         }
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-      });
 
     const toast = this.toast.create({
       message: 'Your comment has been added.',
@@ -388,27 +396,26 @@ export class PostPagePage implements OnInit {
     await editAlertConfig.present();
   }
 
-  async delete(commentID) {
+  async deleteComment(commentID) {
     console.log('deleting comment..');
-    this.deleteAlert(this.postID, commentID);
+    this.deleteCommentAlert(this.postID, commentID);
   }
 
-  async deleteAlert(postID, commentID) {
+  async deleteCommentAlert(postID, commentID) {
     const alert = await this.alert.create({
-      header: 'Are you sure you want to delete this comment?',
-      subHeader: 'This cannot be undone',
+      header: 'Are you sure you want to delete this comment? This cannot be undone.',
+      cssClass: 'danger-alert',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
           handler: (blah) => {
             console.log('Confirm Cancel');
           }
         }, {
           text: 'Delete',
           handler: async () => {
-            await this.deleteLoading(postID, commentID);
+            await this.deleteCommentLoading(postID, commentID);
           }
         }
       ]
@@ -417,8 +424,7 @@ export class PostPagePage implements OnInit {
     await alert.present();
   }
 
-
-  async deleteLoading(postID, commentID) {
+  async deleteCommentLoading(postID, commentID) {
 
     await this.posts.deleteComment(postID, commentID).subscribe(
       values => {
@@ -439,22 +445,142 @@ export class PostPagePage implements OnInit {
     console.log('Loading dismissed!');
   }
 
+  async deletePost(postID) {
+    console.log('deleting post..');
+    console.log(postID);
+    this.deletePostAlert(postID);
+  }
 
-  async doRefresh(event) {
-    this.posts.getPostInfo(this.postID).subscribe(
-      post =>  {
+  async deletePostAlert(postID) {
+    const alert = await this.alert.create({
+      header: 'Are you sure you want to delete this post? This cannot be undone.',
+      cssClass: 'danger-alert',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: (blah) => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Delete',
+          handler: async () => {
+            await this.deletePostLoading(postID);
+          }
+        }
+      ]
+    });
 
-        for (const comment of post['comments']) {
-          comment.date = formatDistanceToNow( new Date(comment.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-         }
+    await alert.present();
+  }
 
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-        this.post = post['post'];
+  async deletePostLoading(postID) {
+    console.log(postID);
+    await this.posts.deletePost(postID).subscribe(
+      remainingPosts => {
+        this.posts.postsSubject$.next(Object.values(remainingPosts).reverse());
+        console.log(this.posts.postsSubject$.getValue());
       }
     );
+
+    await this.router.navigate(['/home/posts']);
+    console.log('Loading dismissed!');
+
+    const loading = await this.loading.create({
+      message: 'Deleting Comment...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    await this.modal.dismiss();
+  }
+
+  async doRefresh(event) {
+    this.profile.getUserDetails().subscribe(
+      details => {
+        let userEmail = details['email'];
+        this.userEmail = userEmail;
+        let userFullName = details['fullName'];
+        let userProfilePicture = details['profilePicture'];
+
+        // Get information about selected post.
+        // Format its date on the front end
+        // initiate this components post metadata from data in Posts Service
+        this.posts.getPostInfo(this.postID).subscribe(
+          postInfo =>  {
+            const creatorEmail = postInfo['creatorEmail'];
+            const creatorName = postInfo['creatorName'];
+            const post = postInfo['post'];
+            const followers = postInfo['followers'];
+            let comments = postInfo['comments'];
+            let following = false;
+            let date = formatDistanceToNow(
+              new Date(postInfo['date']), {
+                includeSeconds: true,
+                addSuffix: true
+              });
+
+            // See if the Logged in User is following the post on this page
+            followers.find(findFollower);
+
+            function findFollower(follower) {
+              if (!follower) {
+              }
+
+              if (follower === userEmail) {
+                following = true;
+              }
+          }
+
+            // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
+            for (const comment of comments) {
+
+              // If the Logged in User's Email equals the creatorEmail of the Comment,
+              // they will be given the ability to edit and delete their Comment.
+              // The ability for them to report their own comment is disabled
+              comment.isUser = false;
+              comment.canDeleteComment = false;
+              comment.canReport = true;
+              comment.date = formatDistanceToNow( new Date(comment.date), {
+                includeSeconds: true,
+                addSuffix: true
+              });
+
+              // If this comment is the logged in user, they can delete and edit
+              if (comment.userEmail === this.userEmail) {
+                comment.isUser = true;
+                comment.canDeleteComment = true;
+                comment.canReport = false;
+              }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                console.log(comment.replies[i].date);
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: true
+                });
+             }
+
+           }
+
+            this.creatorName = creatorName;
+            this.creatorEmail = creatorEmail;
+            this.date = date;
+            this.followers = followers;
+            this.comments = comments;
+            this.following = following;
+            this.post = post;
+            this.userProfilePicture = userProfilePicture;
+            this.userFullName = userFullName;
+
+            this.posts.commentsSubject$.next(comments.reverse());
+
+          }
+        );
+      }
+    );;
 
     await setTimeout(() => {
       const toast = this.toast.create({

@@ -11,6 +11,7 @@ import { ProfileService } from '../services/profile.service';
 
 export class PostsService {
   BACKEND_URL = environment.url;
+  postsSubject$ = new BehaviorSubject([]);
   commentsSubject$ = new BehaviorSubject([]);
   followersSubject$ = new BehaviorSubject([]);
 
@@ -41,7 +42,7 @@ export class PostsService {
     userEmail,
     { comment: comment }
   ) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } ).subscribe();
+    return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } )
 
   }
 
@@ -100,6 +101,10 @@ export class PostsService {
 
   deleteComment(postID, commentID) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/delete-comment`, {_id: postID, cid: commentID});
+  }
+
+  deletePost(postID) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/delete-post`, {_id: postID});
   }
 
   // tslint:disable-next-line: max-line-length

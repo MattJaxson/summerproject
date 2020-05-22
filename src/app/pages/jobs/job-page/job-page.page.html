@@ -10,43 +10,45 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-        <ion-col class="description" size-xs="10" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <ion-col class="description" size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6">
           <ion-col size="12">
             <!-- Back and Favorite Buttons (Desktop) -->
             <ion-row class="ion-align-items-end">
-              <ion-col size="7">
-                <div class="company-logo" style="height: 100px; width: 100px;"></div>
+              <ion-col push="1">
+                <div style="height: 100px; width: 100px; background: lightblue;"></div>
+              </ion-col>
+              <ion-col  class="ion-float-right" size="2">
+                <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobId"></app-heart-icon>
               </ion-col>
               <ion-col size="2">
-                <app-heart-icon [job]="jobId"></app-heart-icon>
-              </ion-col>
-              <ion-col size="2">
-                <ion-button  class="ion-hide-sm-down back-button" style="float: right; position: relative; top: -40px;" (click)="goBack()">
-                  Go Back
-                </ion-button>
+                <ion-button  class="ion-hide-sm-down back-button" style=" position: relative; top: -35px;" (click)="goBack()">
+                  Go Back</ion-button>
               </ion-col>
             </ion-row>
           </ion-col>
 
-            
-            <h3 style="color: #005191; font-weight: 600;">{{jobTitle}}</h3>
-            <h6>{{jobCompanyName}}</h6>
-            <h6>{{jobCompanyEmail}}</h6>
-            <h6>{{jobFullJobDescription}}</h6>
+          <ion-col size="12" >
+            <ion-row>
+              <ion-col push="1" size="10" style="margin-top: 20px;">
+                <h3  id="job-title">{{jobTitle}}</h3>
+                <p id="company-name">{{jobCompanyName}}</p>
+                <p id="company-name">{{jobCompanyEmail}}</p>
+                <p id="job-full-description">{{jobFullJobDescription}}</p>
+                <div style="text-align: center; width: 100%;">
+                  <ion-button (click)="applyForJob()" class="orange-button">Apply for Job</ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
         </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
       <ion-col size="6"  class="ion-text-center">
-        <ion-button (click)="applyForJob()" class="orange-button">Apply for Job</ion-button>
       </ion-col>
     </ion-row>
 
 
   </ion-grid>
-  <ion-fab class="ion-hide-md-up" vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="favoriteThisJob()">
-        <ion-icon name="heart"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
 </ion-content>

@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 // Custom Modules
 import { CustomComponentsModule } from './components/custom-component.module';
 
+// Custom Emitters
+import { PostPageEmitterService } from './emitters/post-page-emitter.service';
+
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -63,6 +66,7 @@ export function jwtOptionsFactory(storage) {
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
+    PostPageEmitterService,
     StatusBar,
     SplashScreen,
     Keyboard,
