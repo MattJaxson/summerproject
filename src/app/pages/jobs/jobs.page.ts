@@ -45,6 +45,7 @@ export class JobsPage implements OnInit, OnDestroy {
     // Get all the jobs t be viewed on the home page
     this.jobs.getJobs().subscribe( jobs => {
       this.allJobs = Object.values(jobs);
+      console.log("alljobs: ", this.allJobs);
     });
 
     this.getFavoriteJobs();
@@ -74,6 +75,28 @@ export class JobsPage implements OnInit, OnDestroy {
 
   }
 
+  getFavoriteJobs() {
+    // getting all the favorite jobs that the user has on their profile
+    this.profile.getUserDetails().subscribe(
+      data => {
+        this.favoriteJobs = data['favoriteJobs']
+        console.log('Favorite Jobs:');
+        console.log(this.favoriteJobs);
+
+        this.favorites.favoriteJobs$.next(this.favoriteJobs);
+        this.favorites.favoriteJobs$.subscribe(
+          favs => {
+            console.log(`Favorite Jobs in Service: ${favs}`);
+            this.favoriteJobsAmount = favs.length;
+            this.favorites.getFavorites(data['email']).subscribe( favDetails => {
+              this.favoriteJobsObj = favDetails;
+            })
+          }
+        );
+      }
+    );
+  }
+
   // getFavoritesAmount() {
   //   this.favorites.favoriteJobs$.subscribe(
   //     favs => {
@@ -84,12 +107,11 @@ export class JobsPage implements OnInit, OnDestroy {
   // }
 
   jobPage(job) {
-    console.log(job);
-    console.log('Going to specific Job Page');
+    console.log('Going to specific Job Page:', job.title);
+    console.log('The job: ', job);
     // state object after url has to be an object for navigate()
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/jobs/job-page', job._id, job.title, job.companyName, job.companyEmail, job.summary, job.fullJobDescription, job.rateOfPay]);
-    console.log(job.name);
   }
 
   favoritesPage() {
@@ -200,29 +222,5 @@ export class JobsPage implements OnInit, OnDestroy {
     });
     return await loading.present();
   }
-
-  getFavoriteJobs() {
-    // getting all the favorite jobs that the user has on their profile
-    this.profile.getUserDetails().subscribe(
-      data => {
-        this.favoriteJobs = data['favoriteJobs']
-        console.log('Favorite Jobs:');
-        console.log(this.favoriteJobs);
-
-        this.favorites.favoriteJobs$.next(this.favoriteJobs);
-        this.favorites.favoriteJobs$.subscribe(
-          favs => {
-            console.log(`Favorite Jobs in Service: ${favs}`);
-            this.favoriteJobsAmount = favs.length;
-          }
-        );
-
-        this.favorites.getFavorites(data['email']).subscribe( data => {
-          this.favoriteJobsObj = data;
-        });
-      }
-    );
-  }
-
 
 }

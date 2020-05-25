@@ -12,6 +12,7 @@ import { formatDistanceToNow } from 'date-fns';
 })
 export class FavoritesPage implements OnInit {
   favoriteJobs;
+  favoriteJobsObj;
   userEmail;
 
   constructor(
@@ -24,21 +25,34 @@ export class FavoritesPage implements OnInit {
     // this.favorites.favoriteJobs$.subscribe(favorites => {
     //   this.favoriteJobs = Object.values(favorites);
     // });
-    this.profile.getUserDetails().subscribe(details => {
-      this.userEmail = details["email"];
-      console.log(this.userEmail);
-      this.favorites.getFavorites(this.userEmail).subscribe(data => {
-        console.log(data);
-        this.favoriteJobs = data;
-        for (const job of this.favoriteJobs) {
-          job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: true });
-        }
-      });
-    });
+    this.getFavoriteJobs();
   }
 
   back() {
     this.router.navigate(['/home/jobs']);
+  }
+
+  getFavoriteJobs() {
+    // getting all the favorite jobs that the user has on their profile
+    this.profile.getUserDetails().subscribe( data => {
+      this.userEmail = data['email'];
+      this.favoriteJobs = data['favoriteJobs']
+      console.log('Favorite Jobs:');
+      console.log(this.favoriteJobs);
+
+      this.favorites.favoriteJobs$.next(this.favoriteJobs);
+      this.favorites.favoriteJobs$.subscribe(
+        favs => {
+          console.log(`Favorite Jobs in Service: ${favs}`);
+          this.favorites.getFavorites(this.userEmail).subscribe( favDetails => {
+            this.favoriteJobsObj = favDetails;
+            for (const job of this.favoriteJobsObj) {
+              job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: true });
+            }
+          });
+        }
+      )
+    });
   }
 
   jobPage(job) {
