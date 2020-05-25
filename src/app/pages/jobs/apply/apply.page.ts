@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../../services/jobs.service';
 import { ProfileService } from '../../../services/profile.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-apply',
@@ -26,31 +27,36 @@ export class ApplyPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private jobs: JobsService,
     private profile: ProfileService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private location: Location
   ) { }
-  
+
   ngOnInit() {
-    
+
     // tslint:disable-next-line: radix
     const title  = this.activatedRoute.snapshot.paramMap.get('title');
     const companyName  = this.activatedRoute.snapshot.paramMap.get('companyName');
     const companyEmail  = this.activatedRoute.snapshot.paramMap.get('companyEmail');
-    
+
     this.jobTitle = title;
     this.jobCompanyName = companyName;
     this.jobCompanyEmail = companyEmail;
-    
+
     this.profile.getUserDetails().subscribe(data => {
       let user = data;
       let userPhoneNumber = data["phone"];
       let userResume = data["resume"]
-  
+
       this.user = user;
       this.userPhoneNumber = userPhoneNumber
       this.userResume = userResume
 
-      this.populateForm(userPhoneNumber)
+      this.populateForm(userPhoneNumber);
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   populateForm(phoneNumber) {

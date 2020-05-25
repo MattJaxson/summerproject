@@ -9,56 +9,83 @@
 
 <ion-content>
   <ion-grid>
+
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-        <div class="company-logo" style="height: 80px; width: 80px;"></div>
+      <ion-col class="app-wrapper" size-xs="11" size-sm="10" size-md="8" size-lg="8">
 
-        <h1 class="job-title">{{jobTitle}}</h1>
+        <!-- Logo, Title, Company Name -->
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+            <div class="company-logo" style="height: 80px; width: 80px;"></div>
 
-        <h2 class="company-name">{{jobCompanyName}}</h2>
+            <h1 class="job-title">{{jobTitle}}</h1>
+
+            <h2 class="company-name">{{jobCompanyName}}</h2>
+
+          </ion-col>
+          <ion-col size="2">
+            <ion-button class="ion-hide-md-down back-button" (click)="goBack()">
+              Go Back</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- Line -->
+        <ion-row id="instructions" class="ion-justify-content-center">
+          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
+            <hr style="background-color: #999;">
+          </ion-col>
+        </ion-row>
+
+        <!-- Instructions -->
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
+            <p class="instructions" style="font-weight: 600;">Please go over your Resume and information before you apply.</p>
+          </ion-col>
+        </ion-row>
+
+        <!-- Forms -->
+        <ion-row class="ion-justify-content-center" style="margin-bottom: 100px;">
+            <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
+              <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
+                <ion-list class="line-input">
+                  <p class="instructions" >Phone Number</p>
+                  <ion-item>
+                    <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
+                  </ion-item>
+
+                  <p class="instructions" >Resume</p>
+                  <ion-item>
+                    <ion-button class="back-button" style="height: 30px;" (click)="viewResume()">
+                      View Resume
+                    </ion-button>
+                    <!-- <p>or</p> -->
+                    <ion-input type="file" class="custom-file-input ">
+                      <label style="margin-right: 10px;">Upload Resume</label>
+                    </ion-input>
+                  </ion-item>
+
+
+                  <ion-item>
+                    <ion-textarea
+                    formControlName="reasonTextArea"
+                    maxlength="2500"
+                    rows="10"
+                    placeholder="Why are you a great candidate for the position of {{jobTitle}}? .. optional - 2500 characters max"
+                    ></ion-textarea>
+                  </ion-item>
+                </ion-list>
+                <p></p>
+                <ion-row>
+                  <ion-col class="ion-text-center" size="12">
+                    <ion-button (click)="finishApplication()" class="orange-button next-button">Submit</ion-button>
+                  </ion-col>
+                </ion-row>
+              </form>
+              </ion-col>
+        </ion-row>
 
       </ion-col>
     </ion-row>
-    <ion-row id="instructions" class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-          <p>Please go over your Resume and information before you apply.</p>
-        </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-          <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
-            <ion-item>
-              <ion-label position="stacked">Phone Number</ion-label>
-              <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Go over your Resume</ion-label>
-              <ion-button class="back-button" (click)="viewResume()">
-                View Resume
-              </ion-button>
-            </ion-item>
-            <p>or</p>
-            <ion-item>
-              <ion-input type="file">
-                <p style="margin-right: 10px;">Upload Resume</p>
-              </ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-textarea
-              formControlName="reasonTextArea"
-              maxlength="2500"
-              rows="10"
-              placeholder="Why are you a great candidate for the position of {{jobTitle}}?"
-              ></ion-textarea>
-            </ion-item>
-            <p><i>optional</i> - 2500 characters max</p>
-            <ion-row>
-              <ion-col class="ion-text-center" size="12">
-                <ion-button (click)="finishApplication()" class="orange-button next-button">Submit</ion-button>
-              </ion-col>
-            </ion-row>
-          </form>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+
+  </ion-grid>
 </ion-content>

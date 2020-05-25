@@ -10,7 +10,7 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-        <ion-col class="description" size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="6">
+        <ion-col class="description" size-xs="11" size-sm="10" size-md="8" size-lg="8">
           <ion-col size="12">
             <!-- Back and Favorite Buttons (Desktop) -->
             <ion-row class="ion-align-items-end">
@@ -21,7 +21,7 @@
                 <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobId"></app-heart-icon>
               </ion-col>
               <ion-col size="2">
-                <ion-button  class="ion-hide-sm-down back-button" style=" position: relative; top: -35px;" (click)="goBack()">
+                <ion-button  class="ion-hide-md-down back-button" style=" position: relative; top: -35px;" (click)="goBack()">
                   Go Back</ion-button>
               </ion-col>
             </ion-row>
@@ -30,8 +30,8 @@
           <ion-col size="12" >
             <ion-row>
               <ion-col push="1" size="10" style="margin-top: 20px;">
-                <h3  id="job-title">{{jobTitle}}</h3>
-                <p id="company-name">{{jobCompanyName}}</p>
+                <h1  id="job-title">{{jobTitle}}</h1>
+                <h2 id="company-name">{{jobCompanyName}}</h2>
                 <p id="company-name">{{jobCompanyEmail}}</p>
                 <p id="job-full-description">{{jobFullJobDescription}}</p>
                 <div style="text-align: center; width: 100%;">

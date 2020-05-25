@@ -1,6 +1,16 @@
 ion-header {
   padding: 10px 0 10px 0;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+#my-events-button {
+  opacity: 1;
+  --background: white;
+  --color: #005191;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  width: 80px;
+  height: 40px;
+  font-size: 0.6em;
 }
 
 ion-card {

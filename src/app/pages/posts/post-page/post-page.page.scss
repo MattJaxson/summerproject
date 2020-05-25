@@ -1,29 +1,15 @@
 .post {
-  transition: 0.5s;
-  position: relative;
-  top: -5px;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 20px 0px 20px 0px;
+  background: #f1f1f1;
   margin-bottom: 90px;
-  padding-bottom: 20px;
-  background: white;
-  box-shadow: none;
+  background: #fbfbfb;
   border-radius: 5px;
-  border-width: 1px;
-  border-color: rgba(255, 179, 81, 0.2);
-  border-style: solid;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
 }
-
-.post:hover {
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin-bottom: 100px;
-  background: white;
-  box-shadow: 1px 1px 3px #999;
-  border-radius: 5px;
-  border-width: 2px;
-  border-color: rgba(255, 179, 81, 0.7);
-  border-style: solid;
+@media only screen and (max-width: 576px) {
+  .profile-picture  {
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .post-mobile {
@@ -45,19 +31,24 @@
 
 .profile-picture {
   border-radius: 100px;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   position: relative;
-  left: 10px;
+  left: 5px;
   top: 4px;
 }
 
+
+@media only screen and (max-width: 576px) {
+  .profile-picture  {
+    height: 40px;
+    width: 40px;
+  }
+}
+
 .post-content{
-  position: relative;
-  left: 6px;
   font-size: 1.4em;
   line-height: 35px;
-  width: 94%;
   text-align: justify;
 }
 
@@ -92,15 +83,15 @@
 .comment-post-button {
     width: 100px;
     height: 36px;
+    opacity: 0;
   --background: none;
   --color: #24d8a8;
   --border-style: solid;
   --border-width: 1px;
   --border-color: linear-gradient(#24d8a8, #1baf88);
+  animation: post-button-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   font-weight: 800;
-  display: block;
   width: 100px;
-  margin-top: 20px;
 }
 
 .delete-button{
@@ -114,26 +105,27 @@
 
 .upvote{
   border-radius: 5px;
-  width: 60px;
-  padding-left: 10px;
+  width: 50px;
+  padding-left: 0px;
   --color: #005191;
 
   ion-icon {
     color: #005191;
-    font-size: 30px;
+    font-size: 40px;
   }
 }
 .downvote {
   border-radius: 5px;
-  width: 60px;
-  padding-left: 10px;
+  width: 50px;
+  padding-left: 0px;
   --color: #005191;
 
   ion-icon {
     color: #005191;
-    --font-size: 30px;
+    --font-size: 40px;
   }
 }
+
 .reply{
   width: 60px;
   --border-width: 1px;
@@ -235,10 +227,20 @@ ion-fab {
   margin: 0px 0 20px 0;
 }
 
+.reply-wrapper {
+  position: relative;
+  top: 10px;
+  margin-bottom: 5px;
+}
+
 .reply-text {
   color: #222;
   font-size: 1em;
   margin: 0px 0 20px 0;
+}
+
+.reply-link {
+  color: #005191;
 }
 
 .comment-avatar {
@@ -250,14 +252,14 @@ ion-fab {
 .comment {
   background: white;
   height: auto;
+  opacity: 0;
   margin: 30px 0 60px 0;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
   // border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
   padding-left: 10px;
   transition: 0.5s;
-  transform: scale(1);
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: post-button-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
 
 .comment:hover {
@@ -274,19 +276,31 @@ ion-fab {
 }
 
 .comment-input {
-  background: rgba(247, 248, 248, 0.5);
+  background: white;
   height: auto;
-  margin: 30px 0 60px 0;
+  margin: 20px 0 20px 0;
   box-shadow: none;
   border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: linear;
+}
+
+.comment-input:hover {
+  background: rgba(250, 167, 27, 0.02);
+  height: auto;
+  margin: 35px 0 65px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
   border-radius: 5px;
   padding-left: 10px;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.comment-input:hover {
-  background: rgba(247, 248, 248, 0.5);
+.comment-input:focus {
+  background: rgba(250, 167, 27, 0.04);
   height: auto;
   margin: 35px 0 65px 0;
   box-shadow: 1px 1px 3px #999;
@@ -302,7 +316,7 @@ ion-fab {
 }
 
 form {
-  width: 98%;
+  width: 100%;
 }
 
 @keyframes send-icon-slide-in {
@@ -313,5 +327,27 @@ form {
   100% {
     transform: translateX(0px);
       opacity: 1;
+  }
+}
+
+@keyframes post-button-slide-up {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+}
+
+@keyframes comment-slide-up {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 1;
   }
 }

@@ -13,11 +13,7 @@
 <!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="cancel()">
-        cancel
-      </ion-button>
-    </ion-buttons>
+    <ion-icon id="back-arrow-icons" (click)="cancel()" name="arrow-back"></ion-icon>
     <ion-title slot="end">Report Post</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -36,6 +32,7 @@
     <ion-col size="10">
       <form [formGroup]="reportCommentForm" (ngSubmit)="report(this.reportCommentForm.value)">
         <ion-textarea
+          (keyup.enter)="report(this.reportCommentForm.value)"
           class="report-input"
           autogrow="true"
           autocapitalize="true"

@@ -1,16 +1,16 @@
  <!-- Mobile Toolbar -->
 <ion-header no-border class="ion-hide-lg-up">
-  <ion-toolbar style="--background: white; box-shadow: none;">
+  <ion-toolbar>
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="1.2">
+        <ion-col push-xs=".45" push-sm="2"  size-xs="1.2">
           <img src="../../../assets/aaron.jpg" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
-        <ion-col push="0.5" size="7">
-          <p class="username">{{userFullName}}</p>
+        <ion-col push-sm="1.45" size="7">
+          <p class="username" style="color: white;">{{userFullName}}</p>
         </ion-col>
-        <ion-col offset="0.5" size="2">
-          <ion-button style="font-size: 0.7em; width: 50px" class="back-button" style="animation: none; opacity: 1; width: 80px; height: 40px; font-size: 0.6em; position: relative; top: -15px;" (click)="following()">
+        <ion-col size="2">
+          <ion-button class="following-button" (click)="following()">
             Following
         </ion-button>
         </ion-col>
@@ -41,8 +41,8 @@
         <ion-row *ngFor="let post of allPosts" class="post">
 
           <!-- Profile Header -->
-          <ion-col size="12">
-            <ion-row style="position: relative; left: 5px; top: 4px;" >
+          <ion-col size="8">
+            <ion-row class="ion-justify-content-center" style="position: relative; left: 5px; top: 4px;" >
             <!-- Profile Picture -->
             <ion-col offset="0.5" size="1.2">
               <img src="../../../assets/aaron.jpg" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
@@ -60,6 +60,7 @@
 
           </ion-row>
           </ion-col>
+
           <!-- (click)="postPage(post)" -->
           <!-- Post Content -->
           <ion-col size="12">
@@ -151,14 +152,14 @@
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
 
-    <ion-row class="ion-justfiy-content-center" style="margin-top: 5%;">
+    <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
 
       <!-- Posts -->
-      <ion-col offset="0.35" size="11">
+      <ion-col push-xs="" push-sm="" push-md="" size-xs="12" size-sm="8" size-md="8">
         <ion-row *ngFor="let post of allPosts" style="margin-top: 3%;" class="post">
 
           <!-- Profile Header -->
-          <ion-col  offset="0.35" size="11">
+          <ion-col  offset="0.5" size="11">
             <ion-row style="position: relative; right: 5px; top: -4px;" >
             <!-- Profile Picture -->
             <ion-col size="2">
@@ -167,7 +168,7 @@
 
             <!-- Post Creator's Name -->
             <ion-col size="5">
-              <h6 style="font-size: 0.9em; font-weight: 700; margin: 10px 0 10px 5px;">{{post.creatorName}}</h6>
+              <h6 style="font-size: 0.9em; font-weight: 700; margin: 10px 0 10px 0px; color: #666;">{{post.creatorName}}</h6>
             </ion-col>
 
             <!-- Date -->
@@ -179,11 +180,11 @@
           </ion-col>
 
           <!-- Post Content -->
-          <ion-col  offset="0.35" size="11">
-            <ion-row>
+          <ion-col size="12">
+            <ion-row class="ion-justify-content-center">
               <!-- (click)="postPage(post)"  -->
               <!-- 1080x1350 -->
-              <ion-col offset="0.35" size="11" style="height: auto; background: white">
+              <ion-col size="11" style="height: auto; background: white">
               <p style="font-size: 1em; line-height: 25px; width: 100%;">{{post.post}}</p>
               </ion-col>
           </ion-row>
@@ -191,8 +192,8 @@
 
           <!-- Comment -->
           <ion-col size="12">
-            <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col offset="0.35" size="11">
+            <ion-row class="ion-justify-content-center" style="position: relative; right: 6px; top: -4px;" >
+              <ion-col size="12">
                 <ion-item  style="height: auto;" lines="none">
                 <form style="border-top: 1px solid #999; padding-top: 20px;" (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
                   <ion-textarea
@@ -224,14 +225,14 @@
 
           <!-- Post Buttons -->
           <ion-col size="12">
-            <ion-row>
+            <ion-row class="ion-justify-content-center">
               <!-- Upvote & Downvote-->
-              <ion-col offset="0.5" size="4">
+              <ion-col size="4">
                 <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
               </ion-col>
 
               <!-- Follow & Comment -->
-              <ion-col push="1" size="6">
+              <ion-col size="7">
                 <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>

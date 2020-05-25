@@ -13,11 +13,7 @@
 <!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="cancel()">
-        cancel
-      </ion-button>
-    </ion-buttons>
+    <ion-icon id="back-arrow-icons" (click)="cancel()" name="arrow-back"></ion-icon>
     <ion-title slot="end">Edit Comment</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -27,6 +23,7 @@
     <ion-col size="10">
       <form [formGroup]="editCommentForm" (ngSubmit)="edit(this.editCommentForm.value)">
         <ion-textarea
+          (keyup.enter)="edit(this.editCommentForm.value)"
           class="comment-input"
           autogrow="true"
           autocapitalize="true"

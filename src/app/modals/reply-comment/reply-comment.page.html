@@ -1,23 +1,21 @@
 <!-- Desktop Header -->
 <ion-header class="ion-hide-md-down">
   <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="cancel()">
-        cancel
-      </ion-button>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-button (click)="cancel()">
+          cancel
+        </ion-button>
+      </ion-buttons>
     </ion-buttons>
-    <ion-title slot="start">Reply to Comment</ion-title>
+    <ion-title slot="end">Reply to Comment</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="cancel()">
-        cancel
-      </ion-button>
-    </ion-buttons>
+      <ion-icon id="back-arrow-icons" (click)="cancel()" name="arrow-back"></ion-icon>
     <ion-title slot="end">Reply to Comment</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -29,6 +27,7 @@
         <p id="userfullname"></p>
         <form [formGroup]="replyCommentForm" (ngSubmit)="reply(this.replyCommentForm.value)">
           <ion-textarea
+            (keyup.enter)="reply(this.replyCommentForm.value)"
             class="reply-input"
             autogrow="true"
             autocapitalize="true"

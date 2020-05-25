@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, IonRefresher } from '@ionic/angular';
+import { NavController, IonRefresher, IonFabButton } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
@@ -17,7 +17,7 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 })
 export class PostsPage implements OnInit {
 
-  @ViewChild(IonRefresher, {static: true}) refresher: IonRefresher;
+  @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
 
   postsSub: Subscription;
   // postsSub: Subscription;
@@ -40,12 +40,14 @@ export class PostsPage implements OnInit {
 
   ngOnInit() {
 
+    this.fabButton.size = 'small';
+
      // To collect comment data
-     this.commentForm = this.formBuilder.group({
+    this.commentForm = this.formBuilder.group({
       comment: ['']
     });
 
-     this.commentForm.controls.comment.valueChanges.subscribe(data => {
+    this.commentForm.controls.comment.valueChanges.subscribe(data => {
 
       if (data === '') {
       console.log('Value is empty');
@@ -56,7 +58,7 @@ export class PostsPage implements OnInit {
     });
 
     // Get all for post for this section
-     this.posts.getPosts().subscribe(
+    this.posts.getPosts().subscribe(
       posts => {
         let allPosts =  Object.values(posts).reverse();
         this.posts.postsSubject$.next(allPosts);

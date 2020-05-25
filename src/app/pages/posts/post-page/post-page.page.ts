@@ -3,12 +3,14 @@ import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastController, AlertController, ModalController, IonContent, IonFab, LoadingController } from '@ionic/angular';
+// tslint:disable-next-line: max-line-length
+import { ToastController, AlertController, ModalController, IonContent, IonFab, IonTabs, LoadingController, IonTextarea } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.page';
 import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+
 
 @Component({
   selector: 'app-post-page',
@@ -18,6 +20,10 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 export class PostPagePage implements OnInit {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
+  @ViewChild(IonTextarea, {static: true}) textarea: IonTextarea;
+
+  tabBar = document.getElementById('myTabBar');
+  votes = document.getElementById('votes');
 
   userEmail: string;
   userFullName: string;
@@ -52,7 +58,7 @@ export class PostPagePage implements OnInit {
     private toast: ToastController,
     private modal: ModalController,
     private alert: AlertController,
-    private loading: LoadingController
+    private loading: LoadingController,
     ) { }
 
   ngOnInit() {
@@ -79,11 +85,12 @@ export class PostPagePage implements OnInit {
             const post = postInfo['post'];
             const followers = postInfo['followers'];
             let comments = postInfo['comments'];
+            console.log(comments);
             let following = false;
             let date = formatDistanceToNow(
               new Date(postInfo['date']), {
                 includeSeconds: true,
-                addSuffix: true
+                addSuffix: false
               });
 
             // Check if the post creator is the same as the User
@@ -116,7 +123,7 @@ export class PostPagePage implements OnInit {
               comment.canReport = true;
               comment.date = formatDistanceToNow( new Date(comment.date), {
                 includeSeconds: false,
-                addSuffix: true
+                addSuffix: false
               });
 
               // If this comment is the logged in user, they can delete and edit
@@ -130,7 +137,7 @@ export class PostPagePage implements OnInit {
               for (let i = 0; comment.replies.length > i; i++) {
                 console.log(comment.replies[i].date);
                 comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
-                  addSuffix: true
+                  addSuffix: false
                 });
              }
 
@@ -231,16 +238,61 @@ export class PostPagePage implements OnInit {
 
   }
 
+  // Hide the Tab bar when the user is attempting to make a comment
   ScrollToTop() {
-    this.content.scrollToTop(1500);
+    this.content.scrollToPoint(0, 200, 100);
+    this.tabBar.style.height = '0px';
+    this.votes.style.height = '0px';
   }
+
+  fabScrollTop() {
+    this.content.scrollToTop();
+  }
+
+  // When the user submits the comment, the tabar will show up again
+  ScrollToPostedComment() {
+    this.content.scrollToPoint(0, 600, 100);
+    this.textarea.getInputElement()
+      .then((textarea: HTMLTextAreaElement) => {
+        textarea.blur();
+
+    });
+  }
+
+  onBlur() {
+    this.textarea.getInputElement()
+      .then((textarea: HTMLTextAreaElement) => {
+        this.tabBar.style.height = '70px';
+        this.votes.style.height = '70px';
+    });
+  }
+
+  // for when the user un focuses out of the comment textarea but hasnt submitted the comment
+  blur() {
+    this.textarea.getInputElement()
+      .then((textarea: HTMLTextAreaElement) => {
+        textarea.blur();
+        this.tabBar.style.height = '70px';
+        this.votes.style.height = '70px';
+    });
+  }
+
 
   async comment(comment) {
 
     // Reset Comment Input
     this.commentForm.reset();
+    this.commentLoading(comment);
+    const toast = this.toast.create({
+      message: 'Your comment has been added.',
+      duration: 1500
+    });
+
+    toast.then(toast => toast.present());
+  }
+
+  async commentLoading(comment) {
     const date = await Date.now();
-    console.log('Posting comment');
 
     await this.posts.comment(
       this.postID,
@@ -254,20 +306,20 @@ export class PostPagePage implements OnInit {
           for (let postComments of post['comments']) {
             postComments.date = formatDistanceToNow( new Date(postComments.date), {
               includeSeconds: true,
-              addSuffix: true
+              addSuffix: false
             });
            }
           this.posts.commentsSubject$.next(post['comments'].reverse());
         });
     });
 
-
-    const toast = this.toast.create({
-      message: 'Your comment has been added.',
-      duration: 1500
+    const loading = await this.loading.create({
+      message: 'Adding Comment...',
+      duration: 1000
     });
+    await loading.present();
 
-    toast.then(toast => toast.present());
+    const { role, data } = await loading.onDidDismiss();
   }
 
   async upVotePost() {
@@ -518,7 +570,7 @@ export class PostPagePage implements OnInit {
             let date = formatDistanceToNow(
               new Date(postInfo['date']), {
                 includeSeconds: true,
-                addSuffix: true
+                addSuffix: false
               });
 
             // See if the Logged in User is following the post on this page
@@ -545,7 +597,7 @@ export class PostPagePage implements OnInit {
               comment.canReport = true;
               comment.date = formatDistanceToNow( new Date(comment.date), {
                 includeSeconds: true,
-                addSuffix: true
+                addSuffix: false
               });
 
               // If this comment is the logged in user, they can delete and edit
@@ -559,7 +611,7 @@ export class PostPagePage implements OnInit {
               for (let i = 0; comment.replies.length > i; i++) {
                 console.log(comment.replies[i].date);
                 comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
-                  addSuffix: true
+                  addSuffix: false
                 });
              }
 

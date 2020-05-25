@@ -1,3 +1,7 @@
+ion-icon {
+  color: white;
+}
+
 .reply-input {
   background: white;
   height: auto;
@@ -30,4 +34,11 @@
 
 #date {
   font-size: 1em;
+}
+
+#back-arrow-icons {
+  font-size: 1.5em;
+  position: relative;
+  left: 24px;
+  top: 8px;
 }
