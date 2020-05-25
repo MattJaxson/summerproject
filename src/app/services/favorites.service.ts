@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from 'src/app/services/profile.service';
 import { environment } from '../../environments/environment';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class FavoritesService {
 
   constructor(
     private http: HttpClient,
-    private profile: ProfileService
+    private profile: ProfileService,
+    private toast: ToastController
   ) {}
 
   getFavorites(email) {
@@ -38,6 +40,7 @@ export class FavoritesService {
         console.log('Posting Favorite Job to Database..');
         let updatedFavorites = [...Object.values(data)];
         this.favoriteJobs$.next(updatedFavorites);
+        this.presentToast('You favorited this job!');
       }
     );
 
@@ -63,10 +66,23 @@ export class FavoritesService {
         }
 
         await this.favoriteJobs$.next(updatedFavorites);
+        this.presentToast('You removed this job from Favorites.');
       }
     );
     // update favoriteJobsSubject
     console.log('Unfavoriting this Job');
   }
+
+  async presentToast(msg: string) {
+    const toast = await this.toast.create({
+      message: msg,
+      duration: 3000,
+      cssClass: 'updated-toast',
+      position: 'bottom'
+    });
+
+    toast.present();
+  }
+  
 }
 

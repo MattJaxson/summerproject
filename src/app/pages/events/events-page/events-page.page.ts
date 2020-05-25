@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { EventsService } from '../../../services/events.service';
 import { ProfileService } from '../../../services/profile.service';
+import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-events-page',
@@ -33,75 +35,75 @@ export class EventsPagePage implements OnInit {
     private events: EventsService,
     private profile: ProfileService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private eventEmitterService: EventsEventEmitterService,
+    private location: PlatformLocation
     ) { }
 
   ngOnInit() {
 
-      // tslint:disable-next-line: radix
-      const id  = this.activatedRoute.snapshot.paramMap.get('id');
-      // tslint:disable-next-line: radix
-      const title  = this.activatedRoute.snapshot.paramMap.get('title');
-      // tslint:disable-next-line: radix
-      const addressOne  = this.activatedRoute.snapshot.paramMap.get('addressOne');
-      // tslint:disable-next-line: radix
-      const addressTwo  = this.activatedRoute.snapshot.paramMap.get('addressTwo');
-      // tslint:disable-next-line: radix
-      const city  = this.activatedRoute.snapshot.paramMap.get('city');
-      // tslint:disable-next-line: radix
-      const state  = this.activatedRoute.snapshot.paramMap.get('state');
-      // tslint:disable-next-line: radix
-      const zip  = this.activatedRoute.snapshot.paramMap.get('zip');
-      // tslint:disable-next-line: radix
-      const date  = this.activatedRoute.snapshot.paramMap.get('date');
-      // tslint:disable-next-line: radix
-      const dateCreated  = this.activatedRoute.snapshot.paramMap.get('dateCreated');
-      // tslint:disable-next-line: radix
-      const time  = this.activatedRoute.snapshot.paramMap.get('time');
-       // tslint:disable-next-line: radix
-      const description  = this.activatedRoute.snapshot.paramMap.get('description');
-       // tslint:disable-next-line: radix
-      const photo  = this.activatedRoute.snapshot.paramMap.get('photo');
-        // tslint:disable-next-line: radix
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    });
 
-      this.eventId = id;
-      this.eventTitle = title;
-      this.eventAddressOne = addressOne;
-      this.eventAddressTwo = addressTwo;
-      this.eventCity = city;
-      this.eventState = state;
-      this.eventZip = zip;
-      this.eventDateCreated = dateCreated;
-      this.eventDate = date;
-      this.eventTime = time;
-      this.eventDescription = description;
-      this.eventPhoto = photo;
+    // tslint:disable-next-line: radix
+    const id  = this.activatedRoute.snapshot.paramMap.get('id');
+    // tslint:disable-next-line: radix
+    const title  = this.activatedRoute.snapshot.paramMap.get('title');
+    // tslint:disable-next-line: radix
+    const addressOne  = this.activatedRoute.snapshot.paramMap.get('addressOne');
+    // tslint:disable-next-line: radix
+    const addressTwo  = this.activatedRoute.snapshot.paramMap.get('addressTwo');
+    // tslint:disable-next-line: radix
+    const city  = this.activatedRoute.snapshot.paramMap.get('city');
+    // tslint:disable-next-line: radix
+    const state  = this.activatedRoute.snapshot.paramMap.get('state');
+    // tslint:disable-next-line: radix
+    const zip  = this.activatedRoute.snapshot.paramMap.get('zip');
+    // tslint:disable-next-line: radix
+    const date  = this.activatedRoute.snapshot.paramMap.get('date');
+    // tslint:disable-next-line: radix
+    const dateCreated  = this.activatedRoute.snapshot.paramMap.get('dateCreated');
+    // tslint:disable-next-line: radix
+    const time  = this.activatedRoute.snapshot.paramMap.get('time');
+      // tslint:disable-next-line: radix
+    const description  = this.activatedRoute.snapshot.paramMap.get('description');
+      // tslint:disable-next-line: radix
+    const photo  = this.activatedRoute.snapshot.paramMap.get('photo');
+      // tslint:disable-next-line: radix
 
-      this.profile.getUserDetails().subscribe(
-        details => {
+    this.eventId = id;
+    this.eventTitle = title;
+    this.eventAddressOne = addressOne;
+    this.eventAddressTwo = addressTwo;
+    this.eventCity = city;
+    this.eventState = state;
+    this.eventZip = zip;
+    this.eventDateCreated = dateCreated;
+    this.eventDate = date;
+    this.eventTime = time;
+    this.eventDescription = description;
+    this.eventPhoto = photo;
 
-          // Get all the events that the user is going to.
+    this.profile.getUserDetails().subscribe(
+      details => {
 
-          this.id = details['_id'];
-          let eventsGoing = details['eventsGoing'];
-          console.log(eventsGoing);
+        // Get all the events that the user is going to.
 
-          if (eventsGoing.includes(this.eventId)) {
-            this.going = true;
-          } else {
-            this.going = false;
-          }
+        this.id = details['_id'];
+        let eventsGoing = details['eventsGoing'];
+        console.log(eventsGoing);
 
-          console.log();
+        if (eventsGoing.includes(this.eventId)) {
+          this.going = true;
+        } else {
+          this.going = false;
         }
-      )
+
+        console.log();
+      }
+    )
   }
-
-
-
-
-
-
 
   goingToEvent() {
 
@@ -144,10 +146,9 @@ export class EventsPagePage implements OnInit {
     );
   }
 
-
-
-
-
+  callEventEmitter() {
+    this.eventEmitterService.onBackAction();
+  }
 
   async presentGoingToast() {
     const toast = await this.toastController.create({

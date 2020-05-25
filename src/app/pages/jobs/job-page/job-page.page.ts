@@ -7,8 +7,7 @@ import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.co
 import { ProfileService } from 'src/app/services/profile.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { JobsService } from 'src/app/services/jobs.service';
-
-
+import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 
 @Component({
   selector: 'app-job-page',
@@ -34,7 +33,8 @@ export class JobPagePage implements OnInit {
     private toastController: ToastController,
     private profile: ProfileService,
     private favorites: FavoritesService,
-    private jobs: JobsService
+    private jobs: JobsService,
+    private eventEmitterService: FavoritesEventEmitterService
   ) { }
   ngOnInit() {
     
@@ -103,6 +103,7 @@ export class JobPagePage implements OnInit {
   }
 
   goBack() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/jobs']);
   }
 

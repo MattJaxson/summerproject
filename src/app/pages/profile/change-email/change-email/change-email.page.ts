@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { ProfileService } from '../../../../services/profile.service';
 
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-change-email',
@@ -33,6 +33,7 @@ export class ChangeEmailPage implements OnInit {
     private router: Router,
     private auth: AuthService,
     private toast: ToastController,
+    private alertController: AlertController,
     private profile: ProfileService
     ) {
       this.activeEmail = this.profile.email.getValue();
@@ -78,8 +79,27 @@ export class ChangeEmailPage implements OnInit {
     toast.present();
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'danger-alert',
+      header: 'Invalid Email',
+      message: 'New Email cannot be the same as the current one.',
+      buttons: [{
+        text: 'OK'
+      }]
+    });
+
+    await alert.present();
+  }
+
   confirmChangedEmail(newEmail, password) {
-    this.profile.changeEmail('eddie@gmail.com', newEmail, password);
+    if (newEmail == this.activeEmail) {
+      // Show an alert telling the user that they can't use the same email
+      this.presentAlert();
+    }
+    else {
+      this.profile.changeEmail('eddie@gmail.com', newEmail, password);
+    }
   }
 
 }

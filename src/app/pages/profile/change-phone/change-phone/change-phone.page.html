@@ -34,13 +34,15 @@
 
 
             <ion-list class="line-input">
-                <!-- Email -->
+                <!-- New Number -->
                 <ion-item>
                   <ion-input
+                    required
                     maxLength="10"
                     placeholder="New Number  - xxx - xxx - xxxx"
                     formControlName="newNumber"
-                    type="text">
+                    type="text"
+                    (keyup.enter)="formValid ? confirmChangedPhoneNumber(this.changePhone.controls.newNumber.value, this.changePhone.controls.password.value) : null">
                   </ion-input>
                 </ion-item>
 
@@ -50,7 +52,7 @@
                       <div class="error-message"
                         *ngIf="changePhone
                           .get('newNumber')
-                          .hasError(validation.text) && (changePhone.get('newNumber')
+                          .hasError(validation.message) && (changePhone.get('newNumber')
                           .dirty || changePhone.get('newNumber').touched)">
                         {{ validation.message }}
                       </div>
@@ -58,14 +60,16 @@
                   </div>
                 <ion-item>
                     <ion-input
+                      required
                       placeholder="Password"
                       formControlName="password"
-                      type="password">
+                      type="password"
+                      (keyup.enter)="formValid ? confirmChangedPhoneNumber(this.changePhone.controls.newNumber.value, this.changePhone.controls.password.value) : null">
                     </ion-input>
                 </ion-item>
               </ion-list>
                 <ion-button
-                  [disabled]="disabled"
+                  [disabled]="!formValid"
                   type="submit"
                   class="orange-button" style="width: unset;">CHANGE NUMBER</ion-button>
               </form>

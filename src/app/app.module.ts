@@ -14,6 +14,7 @@ import { CustomComponentsModule } from './components/custom-component.module';
 
 // Custom Emitters
 import { PostPageEmitterService } from './emitters/post-page-emitter.service';
+import { FavoritesEventEmitterService } from "./emitters/favorites-event-emitter.service";
 
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -67,6 +68,7 @@ export function jwtOptionsFactory(storage) {
   ],
   providers: [
     PostPageEmitterService,
+    FavoritesEventEmitterService,
     StatusBar,
     SplashScreen,
     Keyboard,

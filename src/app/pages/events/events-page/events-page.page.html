@@ -50,7 +50,7 @@
                   <ion-button class="going-button" (click)="goingToEvent()">
                    Yes.
                   </ion-button><br><br>
-                  <a class="going-link" routerLink="/home/events">Go back to Events Page</a><br><br>
+                  <a class="going-link" routerLink="/home/events" (click)="callEventEmitter()">Go back to Events Page</a><br><br>
                   <a class="going-link" routerLink="/home/events/going">View My Events</a>
                  </ion-col>
               </ion-row>
@@ -66,7 +66,7 @@
                 <ion-button class="not-going-button" (click)="notGoingToEvent()">
                  No.
                 </ion-button><br><br>
-                <a class="not-going-link" routerLink="/home/events">Go back to Events Page</a><br><br>
+                <a class="not-going-link" routerLink="/home/events" (click)="callEventEmitter()">Go back to Events Page</a><br><br>
                 <a class="not-going-link" routerLink="/home/events/going">View My Events</a>
                </ion-col>
             </ion-row>

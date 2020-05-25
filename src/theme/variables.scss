@@ -33,11 +33,25 @@
       font-size: 1.6em;
     }
 
+    .alert-message {
+      color: #fff;
+    }
+
     button{
       color: white;
       font-size: 1.2em;
     }
   }
+
+  .updated-toast {
+    --background: #797;
+
+    .toast-message {
+      color: white;
+    }
+
+  }
+
   /** primary **/
   --ion-color-primary: #005191;
   --ion-color-primary-rgb: 56, 128, 255;
