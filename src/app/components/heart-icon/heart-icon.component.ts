@@ -32,8 +32,7 @@ export class HeartIconComponent implements OnInit {
   favoriteState = 'unfavorited';
   public iconName = 'heart-empty';
   @Input() job;
-  favoriteJobs;
-  userEmail;
+  @Input() favoriteJobs;
 
   constructor(
     private favorites: FavoritesService,
@@ -41,20 +40,12 @@ export class HeartIconComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.warn("Heart here with job id: ", this.job._id);
-    
-    this.profile.getUserDetails().subscribe(user => {
-      console.log(this.userEmail);
-      this.favorites.getFavorites(this.userEmail).subscribe(data => {
-        this.favoriteJobs = data;
-        console.log("Favorite jobs: ", this.favoriteJobs);
-        for (const job of this.favoriteJobs) {
-          if (this.job._id == job._id) {
-            this.setFavoriteStateOn()
-          }
-        }
-      })
-    })
+
+    for (const job of this.favoriteJobs) {
+      if (this.job._id == job._id) {
+        this.setFavoriteStateOn();
+      }
+    }
   }
 
   toggleLikeState() {

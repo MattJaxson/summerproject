@@ -68,7 +68,7 @@
       <ion-row>
         <ion-col size="12" style="height: 45px; margin-bottom: 20px;">
             <!-- Heart Icon Component holds the state for Favorites -->
-            <app-heart-icon [job]="job"></app-heart-icon>
+            <app-heart-icon [job]="job" [favoriteJobs]="favoriteJobs" *ngIf="favoriteJobs"></app-heart-icon>
         </ion-col>
       </ion-row>
       <!-- Old UI -->

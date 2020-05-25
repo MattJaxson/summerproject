@@ -36,7 +36,7 @@ export class FavoritesService {
     return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, { email : email, _id : id }).subscribe(
       data => {
         console.log('Posting Favorite Job to Database..');
-        let updatedFavorites = [...Object.values(data), job];
+        let updatedFavorites = [...Object.values(data)];
         this.favoriteJobs$.next(updatedFavorites);
       }
     );
