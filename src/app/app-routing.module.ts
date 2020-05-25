@@ -44,10 +44,6 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-  },
-  {
-    path: 'replies-page',
-    loadChildren: () => import('./modals/replies-page/replies-page.module').then( m => m.RepliesPagePageModule)
   }
 ];
 @NgModule({
