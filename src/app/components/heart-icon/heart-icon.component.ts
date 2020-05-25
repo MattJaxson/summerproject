@@ -40,12 +40,13 @@ export class HeartIconComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    for (const job of this.favoriteJobs) {
-      if (this.job._id == job._id) {
-        this.setFavoriteStateOn();
+    setTimeout(() => {
+      for (const job of this.favoriteJobs) {
+        if (this.job._id == job._id) {
+          this.setFavoriteStateOn();
+        }
       }
-    }
+    }, 300);
   }
 
   toggleLikeState() {

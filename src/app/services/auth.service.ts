@@ -183,7 +183,11 @@ getLoginCredentials(data) {
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {
-          this.presentToast();
+          if (e.error.msg === 'The email and password don\'t match.') {
+            this.presentAlert('Incorrect Email/Password', "The email and password don't match.");
+          } else {
+            this.presentAlert('Email/Password Error', 'Please try again.')
+          }
           throw new Error(e);
         })
       ).subscribe();
@@ -199,6 +203,19 @@ getLoginCredentials(data) {
 
     });
     toast.present();
+  }
+
+  async presentAlert(header: string, msg: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'danger-alert',
+      header: header,
+      message: msg,
+      buttons: [{
+        text: 'OK'
+      }]
+    });
+
+    await alert.present();
   }
 
   forgotPassword(email, newPassword) {

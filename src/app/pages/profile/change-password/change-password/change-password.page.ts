@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { ProfileService } from '../../../../services/profile.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-change-password',
@@ -24,6 +25,7 @@ export class ChangePasswordPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
+    private alertController: AlertController,
     private profile: ProfileService
     ) {
       this.activeEmail = this.auth.user.email;
@@ -79,9 +81,28 @@ export class ChangePasswordPage implements OnInit {
       }
     );
   }
+  
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'danger-alert',
+      header: 'Invalid Password',
+      message: 'New password cannot be the same as the current one.',
+      buttons: [{
+        text: 'OK'
+      }]
+    });
 
-  confirmChangedPassword(oldPassword, newPassword,  reTypeNewPassword) {
-    this.profile.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
+    await alert.present();
   }
 
+  confirmChangedPassword(oldPassword, newPassword, reTypeNewPassword) {
+    if (oldPassword == newPassword) {
+      // Show an alert telling the user that they can't use the same email
+      this.presentAlert();
+    }
+    else {
+      this.profile.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
+    }
+  }
+  
 }

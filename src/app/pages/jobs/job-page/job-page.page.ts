@@ -4,8 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
 import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.component';
-
-
+import { ProfileService } from 'src/app/services/profile.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
+import { JobsService } from 'src/app/services/jobs.service';
+import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 
 @Component({
   selector: 'app-job-page',
@@ -26,7 +28,11 @@ export class JobPagePage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private profile: ProfileService,
+    private favorites: FavoritesService,
+    private jobs: JobsService,
+    private eventEmitterService: FavoritesEventEmitterService
   ) { }
   ngOnInit() {
     // tslint:disable-next-line: radix
@@ -66,6 +72,7 @@ export class JobPagePage implements OnInit {
   }
 
   goBack() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/jobs']);
   }
 

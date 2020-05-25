@@ -8,6 +8,7 @@ import { FavoritesService } from '../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BehaviorSubject } from 'rxjs';
 import { format, formatDistanceToNow } from 'date-fns';
+import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 
 
 
@@ -38,10 +39,18 @@ export class JobsPage implements OnInit, OnDestroy {
     private jobs: JobsService,
     private favorites: FavoritesService,
     private profile: ProfileService,
+    private eventEmitterService: FavoritesEventEmitterService,
     public loading: LoadingController
   ) {}
 
   ngOnInit() {
+
+    if (this.eventEmitterService.subsVar == undefined) {
+      this.eventEmitterService.subsVar = this.eventEmitterService.invokeJobsPageRefresh.subscribe(() => {
+        this.getJobs();
+      });
+    }
+
     // Get all the jobs t be viewed on the home page
     this.jobs.getJobs().subscribe( jobs => {
       this.allJobs = Object.values(jobs);
@@ -126,6 +135,21 @@ export class JobsPage implements OnInit, OnDestroy {
     });
 
     await console.log('Refreshing jobs Page..');
+  }
+
+  async getJobs() {
+    await this.jobs.getJobs().subscribe( jobs => {
+
+      this.allJobs = Object.values(jobs);
+      this.allJobsLength = this.allJobs.length;
+      this.allJobs.reverse();
+      this.searching = false;
+
+      // Format Times
+      for (const job of this.allJobs) {
+        job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: false });
+      }
+    });
   }
 
   filter($job) {

@@ -5,6 +5,8 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController, AlertController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-going',
@@ -23,10 +25,16 @@ export class GoingPage implements OnInit {
     private profile: ProfileService,
     private cdr: ChangeDetectorRef,
     private toast: ToastController,
-    private alert: AlertController
+    private alert: AlertController,
+    private eventEmitterService: EventsEventEmitterService,
+    private location: PlatformLocation
     ) { }
 
   ngOnInit() {
+
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    });
 
     console.log('going to events: ');
     console.log(this.goingToEvents.length);
@@ -48,6 +56,7 @@ export class GoingPage implements OnInit {
   }
 
   goBack() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/events']);
   }
 

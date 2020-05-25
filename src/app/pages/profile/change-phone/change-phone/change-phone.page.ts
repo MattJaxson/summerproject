@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { ProfileService } from '../../../../services/profile.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-change-phone',
@@ -15,6 +16,8 @@ export class ChangePhonePage implements OnInit {
   activePhone = this.profile.phone.getValue();
   disabled = true;
 
+  formValid: Boolean;
+
   validationMessasges = {
     phone: [
       { type: 'text', message: 'Phone number has to be 10 digits long'}
@@ -25,6 +28,7 @@ export class ChangePhonePage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
+    private alertController: AlertController,
     private profile: ProfileService
     ) {
       this.activeEmail = this.auth.user.email;
@@ -39,7 +43,15 @@ export class ChangePhonePage implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.formOnChanges();
+    this.changePhone.valueChanges.subscribe( _ => {
+      setTimeout(() => {
+        if (this.changePhone.valid) {
+          this.formValid = true;
+        } else {
+          this.formValid = false;
+        }
+      }, 100);
+    })
   }
 
   back() {
@@ -47,20 +59,37 @@ export class ChangePhonePage implements OnInit {
     this.router.navigate(['/home/profile/edit-profile-page']);
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'danger-alert',
+      header: 'Already Using This Number',
+      message: 'You are already using this phone number.',
+      buttons: [{
+        text: 'OK'
+      }]
+    });
+
+    await alert.present();
+  }
+
   confirmChangedPhoneNumber(newNumber, password) {
-    this.profile.changePhone(this.activeEmail, newNumber, password);
+    if (newNumber == this.activePhone) {
+      this.presentAlert();
+    } else {
+      this.profile.changePhone(this.activeEmail, newNumber, password);
+    }
   }
 
-  formOnChanges(): void {
-    this.changePhone.statusChanges.subscribe(
-      status => {
-        console.log(status);
+  // formOnChanges(): void {
+  //   this.changePhone.statusChanges.subscribe(
+  //     status => {
+  //       console.log(status);
 
-        if (status === 'VALID') {
-          this.disabled = false;
-        }
-      }
-    );
-  }
+  //       if (status === 'VALID') {
+  //         this.disabled = false;
+  //       }
+  //     }
+  //   );
+  // }
 
 }

@@ -3,6 +3,7 @@ import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { FavoritesService } from '../../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { formatDistanceToNow } from 'date-fns';
+import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class FavoritesPage implements OnInit {
   constructor(
     private router: Router,
     private favorites: FavoritesService,
-    private profile: ProfileService
+    private profile: ProfileService,
+    private eventEmitterService: FavoritesEventEmitterService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class FavoritesPage implements OnInit {
   }
 
   back() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/jobs']);
   }
 

@@ -4,6 +4,7 @@ import { EventsService } from '../../services/events.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
+import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 
 
 
@@ -32,7 +33,8 @@ export class EventsPage implements OnInit, AfterViewInit {
     private events: EventsService,
     private profile: ProfileService,
     private toast: ToastController,
-    public loading: LoadingController
+    public loading: LoadingController,
+    private eventEmitterService: EventsEventEmitterService
     ) { }
 
   ngAfterViewInit() {
@@ -42,6 +44,12 @@ export class EventsPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+
+    if (this.eventEmitterService.subsVar == undefined) {
+      this.eventEmitterService.subsVar = this.eventEmitterService.invokeEventsPageRefresh.subscribe(() => {
+        this.getEvents();
+      })
+    }
 
     // Get the User's details
     this.profile.getUserDetails().subscribe( details => {
@@ -199,6 +207,26 @@ export class EventsPage implements OnInit, AfterViewInit {
     });
 
     await console.log('Refreshing Events Page..');
+  }
+
+  async getEvents() {
+    await this.events.getEvents().subscribe( events => {
+
+      this.allEvents = Object.values(events);
+      this.allEventsLength = this.allEvents.length;
+      this.allEvents.reverse();
+      this.searching = false;
+
+      // Format Times
+      for (const event of this.allEvents) {
+        event.date = format( new Date(event.date), 'MMMM dd, yyyy');
+        event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
+          includeSeconds: true,
+          addSuffix: true
+        });
+        event.time = format( new Date(event.date), 'hh:mm a');
+      }
+    });
   }
 
 }

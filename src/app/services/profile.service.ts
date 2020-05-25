@@ -80,11 +80,11 @@ export class ProfileService {
     // Toast for Successful Change
     presentSuccessToast() {
       const successToast = this.toastController.create({
-        message: `You have changed your email address to ${this.activeEmail}.`,
+        message: 'Your Email address has been updated.',
         duration: 3000,
-        cssClass: 'success-toast',
+        cssClass: 'updated-toast',
         keyboardClose: true,
-        position: 'top',
+        position: 'bottom'
       });
       successToast.then(t => t.present());
     }
@@ -115,8 +115,11 @@ export class ProfileService {
             console.log('TRUE');
             this.router.navigate(['']);
             let toast = this.toastController.create({
-              message: 'Please login with your new Password',
-              duration: 3000
+              message: 'Password updated. Please login with your new password.',
+              duration: 3000,
+              cssClass: 'updated-toast',
+              keyboardClose: true,
+              position: 'bottom'
             });
             toast.then(t => t.present());
            } else {
@@ -138,11 +141,11 @@ export class ProfileService {
           this.router.navigate(['/home/profile']);
     
           const successToast = this.toastController.create({
-            message: `Phone Number changed to ${newNumber}`,
+            message: 'Your phone number has been updated.',
             duration: 3000,
-            cssClass: 'success-toast',
+            cssClass: 'updated-toast',
             keyboardClose: true,
-            position: 'top'
+            position: 'bottom'
           });
           successToast.then(t => t.present());
          } else {
@@ -193,11 +196,11 @@ export class ProfileService {
 
           let successToast = this.toastController.create({
             // tslint:disable-next-line: max-line-length
-            message: `You have changed your address to ${addressOne} ${addressTwo} ,${city}, ${state}, ${zip}.`,
+            message: 'Your address has been updated.',
             duration: 3000,
-            cssClass: 'success-toast',
+            cssClass: 'updated-toast',
             keyboardClose: true,
-            position: 'top'
+            position: 'bottom'
           });
 
           successToast.then(t => t.present());
@@ -231,11 +234,11 @@ export class ProfileService {
 
           let successToast = this.toastController.create({
             // tslint:disable-next-line: max-line-length
-            message: `Your school and grade has been updated to ${newGrade}, ${newSchool}`,
-            duration: 5000,
-            cssClass: 'success-toast',
+            message: 'Your school information has been updated.',
+            duration: 3000,
+            cssClass: 'updated-toast',
             keyboardClose: true,
-            position: 'top'
+            position: 'bottom'
           });
 
           successToast.then(t => t.present());
