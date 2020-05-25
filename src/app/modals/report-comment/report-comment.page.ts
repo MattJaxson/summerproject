@@ -10,13 +10,11 @@ import { PostsService } from 'src/app/services/post.service';
 })
 export class ReportCommentPage implements OnInit {
   reportCommentForm: FormGroup;
-
   commentContents: string;
   commentUserFullName: string;
   commentUserEmail: string;
   commentID: string;
   commentDate: string;
-
   post: string;
   postID: string;
   userEmail: string;

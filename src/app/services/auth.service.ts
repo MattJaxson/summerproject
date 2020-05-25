@@ -183,10 +183,6 @@ getLoginCredentials(data) {
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {
-          console.log(e);
-          if (e.error.msg === 'The email and password don\'t match.') {
-            console.log('We did it');
-          }
           this.presentToast();
           throw new Error(e);
         })
