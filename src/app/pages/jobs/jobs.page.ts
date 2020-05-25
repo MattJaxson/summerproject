@@ -25,6 +25,7 @@ export class JobsPage implements OnInit, OnDestroy {
   jobsGoingLength = 0;
   favoriteJobs;
   favoriteJobsAmount;
+  favoriteJobsObj;
   searching = false;
   searchTerm;
   noSearchInput = false;
@@ -46,21 +47,7 @@ export class JobsPage implements OnInit, OnDestroy {
       this.allJobs = Object.values(jobs);
     });
 
-    // getting all the favorite jobs that the user has on their profile
-    this.profile.getUserDetails().subscribe(
-      data => {
-        this.favoriteJobs = data['favoriteJobs']
-        console.log('Favorite Jobs');
-        console.log(this.favoriteJobs);
-
-        this.favorites.favoriteJobs$.next(this.favoriteJobs);
-        this.favorites.favoriteJobs$.subscribe(
-          favs => {
-            console.log(`Favorite Jobs in Service: ${favs}`);
-            this.favoriteJobsAmount = favs.length;
-          }
-        );
-      });
+    this.getFavoriteJobs();
 
     this.jobs.getJobs().subscribe( jobs => {
 
@@ -112,6 +99,9 @@ export class JobsPage implements OnInit, OnDestroy {
   async doRefresh(job) {
 
     this.allJobs = [];
+
+    this.getFavoriteJobs();
+
     await this.jobs.getJobs().subscribe( jobs => {
 
       this.allJobs = Object.values(jobs);
@@ -195,21 +185,44 @@ export class JobsPage implements OnInit, OnDestroy {
       });
       this.noSearchInput = true;
     }
-}
+  }
 
-initializeItems(): void {
-  this.allJobs = this.loadedAllJobs;
-}
+  initializeItems(): void {
+    this.allJobs = this.loadedAllJobs;
+  }
 
-async presentLoadingWithOptions() {
-  const loading = await this.loading.create({
-    duration: 1000,
-    message: 'Searching for jobs...',
-    translucent: true,
-    cssClass: 'custom-class custom-loading'
-  });
-  return await loading.present();
-}
+  async presentLoadingWithOptions() {
+    const loading = await this.loading.create({
+      duration: 1000,
+      message: 'Searching for jobs...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
+
+  getFavoriteJobs() {
+    // getting all the favorite jobs that the user has on their profile
+    this.profile.getUserDetails().subscribe(
+      data => {
+        this.favoriteJobs = data['favoriteJobs']
+        console.log('Favorite Jobs:');
+        console.log(this.favoriteJobs);
+
+        this.favorites.favoriteJobs$.next(this.favoriteJobs);
+        this.favorites.favoriteJobs$.subscribe(
+          favs => {
+            console.log(`Favorite Jobs in Service: ${favs}`);
+            this.favoriteJobsAmount = favs.length;
+          }
+        );
+
+        this.favorites.getFavorites(data['email']).subscribe( data => {
+          this.favoriteJobsObj = data;
+        });
+      }
+    );
+  }
 
 
 }
