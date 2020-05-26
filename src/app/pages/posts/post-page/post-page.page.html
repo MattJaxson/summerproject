@@ -57,25 +57,24 @@
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
               <!-- 1080x1350 -->
-              <ion-col size-xs="11" size-sm="10" size-md="12" size-lg="8">
+              <ion-col size-xs="11" size-sm="12" size-md="12" size-lg="8">
                <p class="post-content">{{post}}</p>
               </ion-col>
            </ion-row>
           </ion-col>
 
           <!-- Line -->
-          <ion-col size="12">
+          <ion-col size="11">
             <ion-row class="ion-justify-content-center">
-              <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="8" size-xl="8">
+              <ion-col size-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8">
                 <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
               </ion-col>
             </ion-row>
           </ion-col>
 
-          <!-- Comment Bar -->
-          <ion-col size-xs="12" size-sm="10" size-md="12" size-lg="8">
+          <!-- Comment Input -->
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="8">
             <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col size="12">
                 <ion-item lines="none">
                  <form (ngSubmit)="comment(this.commentForm.value, this.postID)" [formGroup]="commentForm">
                     <ion-textarea
@@ -103,13 +102,11 @@
                       </ion-button>
                  </form>
                 </ion-item>
-
-              </ion-col>
             </ion-row>
           </ion-col>
 
           <!-- Upvote and Downvote Post -->
-          <ion-col id="votes" size-xs="12" size-sm="10" size-md="12" size-lg="8">
+          <ion-col id="votes" size-xs="12" size-sm="12" size-md="12" size-lg="8">
             <ion-row>
               <ion-col size="4">
                 <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
@@ -159,36 +156,32 @@
           </ion-row>
 
           <!-- Line -->
-          <ion-row>
-            <ion-col push-xs="0.24" size="11">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
               <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 0 0;">
             </ion-col>
           </ion-row>
 
 
-
-          <ion-row>
-          </ion-row>
-
-
           <!-- Replies -->
-          <ion-row class="reply-wrapper ion-justify-content-center" *ngFor="let reply of comment.replies">
-
+          <ion-row class="ion-justify-content-center">
             <ion-col size="10">
-              <p class="reply-link">Replies - {{comments.repliesLength}}</p>
+              <p
+              (click)="repliesModal(
+                this.postID,
+                comment.replies,
+                comment.comment,
+                comment._id,
+                comment.userFullName,
+                comment.userEmail,
+                comment.date,
+                comment.userProfilePicture,
+                this.userFullName,
+                this.userEmail)"
+              *ngIf="comment.repliesLength >= 1" id="replies-link">Replies - {{comment.repliesLength}}</p>
             </ion-col>
-
-            <!-- <ion-col push-lg="1" push-xs="1" size="1">
-              <img class="comment-avatar" src="../../assets/batman-pro-pic.png">
-            </ion-col>
-            <ion-col push-lg="1"  push-xs="1" size="6">
-                <p class="reply-text ion-text-wrap">  {{reply.reply}}.
-                </p>
-            </ion-col>
-            <ion-col push-lg="2.5"  push-xs="2.5" size="1">
-              <p id="reply-date">{{reply.date}}</p>
-            </ion-col> -->
           </ion-row>
+
 
           <!-- Comment Buttons -->
           <ion-row style="margin-top: 20px;">

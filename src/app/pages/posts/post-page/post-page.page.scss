@@ -1,7 +1,7 @@
 .post {
   padding: 20px 0px 20px 0px;
   background: #f1f1f1;
-  margin-bottom: 90px;
+  margin-bottom: 20px;
   background: #fbfbfb;
   border-radius: 5px;
 }
@@ -302,7 +302,6 @@ ion-fab {
 .comment-input:focus {
   background: rgba(250, 167, 27, 0.04);
   height: auto;
-  margin: 35px 0 65px 0;
   box-shadow: 1px 1px 3px #999;
   border: 1px solid rgba(0, 81, 145, 1);
   border-radius: 5px;
@@ -313,6 +312,11 @@ ion-fab {
 #reply-date {
   font-size: 0.7em;
   color: #999;
+}
+
+#replies-link {
+  color: #005191;
+  font-weight: 500;
 }
 
 form {
