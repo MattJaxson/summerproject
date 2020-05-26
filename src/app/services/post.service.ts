@@ -100,7 +100,7 @@ export class PostsService {
   }
 
   deleteComment(postID, commentID) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/delete-comment`, {_id: postID, cid: commentID});
+    return this.http.post(`${this.BACKEND_URL}/api/posts/delete-comment`, {_id: postID, _cid: commentID});
   }
 
   deletePost(postID) {

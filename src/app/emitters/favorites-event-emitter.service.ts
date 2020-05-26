@@ -12,6 +12,6 @@ export class FavoritesEventEmitterService {
   constructor() { }
 
   onBackAction() {
-    this.invokeJobsPageRefresh.emit()
+    this.invokeJobsPageRefresh.emit();
   }
 }

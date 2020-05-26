@@ -10,12 +10,20 @@ export class PostPageEmitterService {
   // First component = post-page
   // Second component = post-page-page
 
-  invokeFirstComponentFunction = new EventEmitter();
+  invokeRepliesRefresh = new EventEmitter();
+  invokePostPageRefresh = new EventEmitter();
+  // invokePostsPagePAGERefresh = new EventEmitter();
   subsVar: Subscription;
 
   constructor() { }
 
-  onFirstComponentButtonClick() {
-    this.invokeFirstComponentFunction.emit();
+  repliesRefresh() {
+    this.invokeRepliesRefresh.emit();
   }
+
+  postPageRefresh() {
+    this.invokePostPageRefresh.emit();
+  }
+
+
 }

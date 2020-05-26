@@ -34,13 +34,18 @@ export class PostsPage implements OnInit {
   private profile: ProfileService,
   private toast: ToastController,
   private formBuilder: FormBuilder,
-  private postPageEmitter: PostPageEmitterService
+  private postEmitterService: PostPageEmitterService
     ) {}
 
 
   ngOnInit() {
 
-    this.fabButton.size = 'small';
+
+    if (this.postEmitterService.subsVar === undefined) {
+      this.postEmitterService.subsVar = this.postEmitterService.invokePostPageRefresh.subscribe(() => {
+        this.getPosts();
+      });
+    }
 
      // To collect comment data
     this.commentForm = this.formBuilder.group({
@@ -57,7 +62,15 @@ export class PostsPage implements OnInit {
       console.log(this.commentForm);
     });
 
-    // Get all for post for this section
+    this.getPosts();
+  }
+
+    postPage(post) {
+    // tslint:disable-next-line: max-line-length
+    this.router.navigate(['/home/posts/post-page', post._id]);
+  }
+
+  getPosts() {
     this.posts.getPosts().subscribe(
       posts => {
         let allPosts =  Object.values(posts).reverse();
@@ -71,6 +84,7 @@ export class PostsPage implements OnInit {
         this.allPosts = this.posts.postsSubject$.value;
 
         for (const post of this.allPosts) {
+          post.isUser = false;
           post.date = formatDistanceToNow( new Date(post.date), {
             includeSeconds: true,
             addSuffix: true
@@ -92,11 +106,6 @@ export class PostsPage implements OnInit {
           });
       }
     );
-  }
-
-    postPage(post) {
-    // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
   async doRefresh(event) {

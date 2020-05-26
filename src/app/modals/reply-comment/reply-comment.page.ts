@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 @Component({
   selector: 'app-reply-post',
@@ -24,7 +25,8 @@ export class ReplyCommentPage implements OnInit {
     private navParams: NavParams,
     private loading: LoadingController,
     private alert: AlertController,
-    private posts: PostsService) {
+    private posts: PostsService,
+    private postEmitterService: PostPageEmitterService) {
 
     }
 
@@ -52,6 +54,7 @@ export class ReplyCommentPage implements OnInit {
     // tslint:disable-next-line: max-line-length
     await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe();
+    await this.refreshRepliesAmount();
   }
 
   async replyLoading() {
@@ -65,6 +68,10 @@ export class ReplyCommentPage implements OnInit {
     await this.modal.dismiss();
     // await this.confirmAlert();
     console.log('Loading dismissed!');
+  }
+
+  refreshRepliesAmount() {
+    this.postEmitterService.repliesRefresh();
   }
 
   async confirmAlert() {
