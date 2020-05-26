@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class EditCommentPage implements OnInit {
     private navParams: NavParams,
     private loading: LoadingController,
     private posts: PostsService,
-    private alert: AlertController
+    private alert: AlertController,
+    private postEmitterService: PostPageEmitterService
   ) {
     }
 
@@ -46,10 +48,15 @@ export class EditCommentPage implements OnInit {
     this.modal.dismiss();
   }
 
+  refreshComment() {
+    this.postEmitterService.repliesRefresh();
+  }
+
   async edit(newComment) {
     await console.log('editting');
-    await this.editLoading();
     await this.posts.editComment(this.commentID, this.postID, newComment.newComment).subscribe();
+    await this.editLoading();
+    await this.refreshComment();
   }
 
   async editLoading() {

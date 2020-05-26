@@ -1,12 +1,12 @@
 <!-- Desktop Header -->
 <ion-header class="ion-hide-md-down">
   <ion-toolbar>
+    <ion-title slot="start">Replies</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="cancel()">
         cancel
       </ion-button>
     </ion-buttons>
-    <ion-title slot="start">Replies</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -36,14 +36,14 @@
 
   <!-- Comment -->
   <ion-row class="ion-justify-content-center">
-    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+    <ion-col size="11">
       <p>{{ commentContents}}</p>
     </ion-col>
   </ion-row>
 
   <!-- Reply Input -->
   <ion-row class="ion-justify-content-center">
-    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+    <ion-col size="11">
     <form [formGroup]="repliesForm" (ngSubmit)="reply()">
       <ion-textarea
       (ionFocus)="ScrollToTop()"
@@ -65,7 +65,7 @@
 
   <!-- Line-->
   <ion-row class="ion-justify-content-center">
-    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+    <ion-col size="11">
       <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
     </ion-col>
   </ion-row>

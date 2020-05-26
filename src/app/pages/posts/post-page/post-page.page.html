@@ -50,6 +50,13 @@
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}} - <span style="font-size: 0.5em;">{{date}}  ago</span></h6>
             </ion-col>
 
+            <!-- Back button-->
+            <ion-col class="ion-hide-md-down" push="5" size="1">
+              <ion-button class="back-button ion-float-right" (click)="back()">
+                Back
+              </ion-button>
+            </ion-col>
+
             </ion-row>
           </ion-col>
 
@@ -64,9 +71,9 @@
           </ion-col>
 
           <!-- Line -->
-          <ion-col size="11">
+          <ion-col size="12">
             <ion-row class="ion-justify-content-center">
-              <ion-col size-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8">
+              <ion-col size="11" size-lg="8">
                 <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
               </ion-col>
             </ion-row>
@@ -75,6 +82,7 @@
           <!-- Comment Input -->
           <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="8">
             <ion-row style="position: relative; right: 6px; top: -4px;" >
+              <ion-col size="12">
                 <ion-item lines="none">
                  <form (ngSubmit)="comment(this.commentForm.value, this.postID)" [formGroup]="commentForm">
                     <ion-textarea
@@ -102,6 +110,8 @@
                       </ion-button>
                  </form>
                 </ion-item>
+
+              </ion-col>
             </ion-row>
           </ion-col>
 
@@ -110,6 +120,28 @@
             <ion-row>
               <ion-col size="4">
                 <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
+            </ion-col>
+            <ion-col class="" size="7">
+              <ion-button *ngIf="this.isUser === true" (click)="deleteComment(this.postID)"  class="delete ion-float-right">
+                Delete
+              </ion-button>
+              <ion-button
+                *ngIf="this.isUser === true" (click)="editComment  (this.postID)"
+                class="edit ion-float-right"
+                style="--background: none;">
+                Edit
+              </ion-button>
+              <ion-button
+                *ngIf="this.isUser === false && !following" (click)="follow(this.postID)"
+                class="follow ion-float-right">
+                Follow
+              </ion-button>
+              <ion-button
+                *ngIf="this.isUser === false && following" (click)="unFollow(this.postID)"
+                class="delete ion-float-right"
+                style="width: 80px">
+                Unfollow
+              </ion-button>
             </ion-col>
             </ion-row>
           </ion-col>
@@ -122,12 +154,12 @@
     <ion-row class="ion-justify-content-center">
 
       <!-- If No Comments -->
-      <ion-col class="ion-text-center" style="margin-bottom: 100px;" *ngIf="comments.length === 0" size="10">
-      <h4>This post has no comments</h4>
+      <ion-col class="ion-text-center" style="margin: 100px 0;" *ngIf="comments.length === 0" size="10">
+      <p style="color: #888;">This post has no comments</p>
       </ion-col>
 
-      <ion-col size="10">
-        <p style="color: #666">Comments - {{comments.length}}</p>
+      <ion-col *ngIf="comments.length > 0" size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <p style="color: #888; margin: 60px 0">Comments - {{comments.length}}</p>
       </ion-col>
 
         <!-- Comment Wrapper -->
@@ -136,7 +168,7 @@
           <!-- Comment Header -->
           <ion-row>
             <ion-col>
-              <ion-item>
+              <ion-item lines="none">
                 <ion-avatar class="comment-avatar" slot="start">
                   <img src="../../../../assets/aaron.jpg">
                 </ion-avatar>
@@ -149,7 +181,7 @@
 
           <!-- Comment -->
           <ion-row class="ion-justify-content-center">
-            <ion-col push-xs="1" size="12">
+            <ion-col size="11">
                 <p class="comment-text ion-text-wrap" style="margin-top: 40px;">  {{comment.comment}}
                 </p>
             </ion-col>
@@ -157,7 +189,7 @@
 
           <!-- Line -->
           <ion-row class="ion-justify-content-center">
-            <ion-col size="10">
+            <ion-col size="11">
               <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 0 0;">
             </ion-col>
           </ion-row>
@@ -165,7 +197,7 @@
 
           <!-- Replies -->
           <ion-row class="ion-justify-content-center">
-            <ion-col size="10">
+            <ion-col size="11">
               <p
               (click)="repliesModal(
                 this.postID,

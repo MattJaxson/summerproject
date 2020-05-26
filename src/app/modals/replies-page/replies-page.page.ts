@@ -4,6 +4,8 @@ import { ModalController, NavParams, LoadingController, AlertController, IonCont
 import { PostsService } from 'src/app/services/post.service';
 import { formatDistanceToNow } from 'date-fns';
 import { BehaviorSubject } from 'rxjs';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+
 
 @Component({
   selector: 'app-replies-page',
@@ -39,7 +41,8 @@ export class RepliesPagePage implements OnInit {
     private navParams: NavParams,
     private loading: LoadingController,
     private posts: PostsService,
-    private alert: AlertController) { }
+    private alert: AlertController,
+    private postEmitterService: PostPageEmitterService) { }
 
   ngOnInit() {
      // To collect comment data
@@ -70,11 +73,14 @@ export class RepliesPagePage implements OnInit {
     this.modal.dismiss();
   }
 
+  refreshRepliesAmount() {
+    this.postEmitterService.repliesRefresh();
+  }
+
   async reply(reply) {
     // Reset Comment Input
     await this.repliesForm.reset();
     await console.log('replying to comment...');
-    await this.repliesLoading();
     // tslint:disable-next-line: max-line-length
     await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe(
@@ -91,7 +97,9 @@ export class RepliesPagePage implements OnInit {
             });
          }
         }
-      );
+      )
+
+    await this.repliesLoading();
   }
 
   async repliesLoading() {
@@ -99,6 +107,8 @@ export class RepliesPagePage implements OnInit {
       message: 'Replying to Comment...',
       duration: 2000
     });
+
+    await this.refreshRepliesAmount();
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
@@ -113,7 +123,6 @@ export class RepliesPagePage implements OnInit {
       message: 'Your comment has been edited.',
       buttons: ['OK']
     });
-
     await alert.present();
   }
 
