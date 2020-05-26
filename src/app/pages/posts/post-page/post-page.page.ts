@@ -10,6 +10,7 @@ import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.pag
 import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 
 
 @Component({
@@ -118,6 +119,8 @@ export class PostPagePage implements OnInit {
               // If the Logged in User's Email equals the creatorEmail of the Comment,
               // they will be given the ability to edit and delete their Comment.
               // The ability for them to report their own comment is disabled
+
+              comment.repliesLength = comment.replies.length;
               comment.isUser = false;
               comment.canDeleteComment = false;
               comment.canReport = true;
@@ -427,6 +430,27 @@ export class PostPagePage implements OnInit {
     });
 
     await replyAlertConfig.present();
+  }
+
+  // tslint:disable-next-line: max-line-length
+  async repliesModal(postID, replies, comment, commentID, commentUserFullName, commentUserEmail, commentDate, userProfilePicture, userFullName, userEmail) {
+    const repliesPageModalConfig = await this.modal.create({
+      component: RepliesPagePage,
+      componentProps: {
+        postID,
+        replies,
+        comment,
+        commentID,
+        commentUserFullName,
+        commentUserEmail,
+        commentDate,
+        userProfilePicture,
+        userFullName,
+        userEmail
+      }
+      });
+
+    await repliesPageModalConfig.present();
   }
 
   async editComment(postID, commentID, commentCotents) {

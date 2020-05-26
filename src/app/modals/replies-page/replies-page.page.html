@@ -1,0 +1,87 @@
+<!-- Desktop Header -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">Replies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-icon id="back-arrow-icons" (click)="cancel()" name="arrow-back"></ion-icon>
+    <ion-title slot="end">Replies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- commentUser Info -->
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="11">
+      <ion-item lines="none">
+        <ion-avatar class="comment-avatar" slot="start">
+          <img src="../../../../assets/aaron.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h6 style="opacity: 0.5">{{ commentUserFullName  }} - {{ commentDate }} </h6>
+          </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Comment -->
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+      <p>{{ commentContents}}</p>
+    </ion-col>
+  </ion-row>
+
+  <!-- Reply Input -->
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+    <form [formGroup]="repliesForm" (ngSubmit)="reply()">
+      <ion-textarea
+      (ionFocus)="ScrollToTop()"
+      (ionBlur)="onBlur()"
+      (onfocusout)="blur()"
+      (keyup.enter)="reply(this.repliesForm.value) && ScrollToReply()"
+      class="reply-input"
+      autogrow="true"
+      autocapitalize="true"
+      rows="5"
+      spellcheck="true"
+      wrap="soft"
+      type="text"
+      placeholder="Reply to this Comment" formControlName="reply">
+      </ion-textarea>
+    </form>
+    </ion-col>
+  </ion-row>
+
+  <!-- Line-->
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8" size-xl="6">
+      <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
+    </ion-col>
+  </ion-row>
+
+  <!-- Replies -->
+  <ion-row *ngFor="let reply of replies" class="ion-justify-content-center ion-align-items-start reply-wrapper">
+    <ion-col size="1">
+      <img id="reply-avatar" src="../../../assets/batman-pro-pic.png">
+    </ion-col>
+    <ion-col size="7">
+         <p class="reply-text ion-text-wrap">  {{reply.reply}}.
+        </p>
+    </ion-col>
+    <ion-col size="2">
+       <p id="reply-date">{{reply.date}}</p>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
