@@ -7,7 +7,7 @@
           <img src="../../../assets/aaron.jpg" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
         <ion-col push-sm="1.45" size="7">
-          <p class="username" style="color: white;">{{userFullName}}</p>
+          <p id="username">{{userFullName}}</p>
         </ion-col>
         <ion-col size="2">
           <ion-button class="following-button" (click)="following()">
@@ -23,7 +23,7 @@
 
   <!-- fab placed to the bottom end -->
   <ion-fab class="ion-hide-lg-up" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addPost()">
+    <ion-fab-button id="add-post-button" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -139,7 +139,7 @@
           </ion-col>
           <ion-col size="12">
             <ion-button class="followed-button" (click)="following()">
-              Followed ({{followedPost}})
+              Following ({{followedPost}})
             </ion-button>
             <ion-button class="add-button"  (click)="addPost()">
               Add Post
@@ -155,7 +155,7 @@
     <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
 
       <!-- Posts -->
-      <ion-col push-xs="" push-sm="" push-md="" size-xs="12" size-sm="8" size-md="8">
+      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="10" pull-lg="2">
         <ion-row *ngFor="let post of allPosts" style="margin-top: 3%;" class="post">
 
           <!-- Profile Header -->
@@ -227,12 +227,12 @@
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
               <!-- Upvote & Downvote-->
-              <ion-col size="4">
+              <ion-col pull="1" size="4">
                 <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
               </ion-col>
 
               <!-- Follow & Comment -->
-              <ion-col size="7">
+              <ion-col size="6">
                 <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>

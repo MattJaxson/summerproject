@@ -32,14 +32,14 @@
 
     <!-- Mentors -->
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="10">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8">
         <ion-row class="mentor ion-justify-content-center" style=" margin-top: 20px; padding: 10% 0 10% 0;">
-          <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
+          <ion-col size-xs="9" size-sm="10" size-md="10" push-lg="1" size-lg="10">
             <div id="mentor-profile-picture"></div>
 
-            <ion-button id="contact-button-header" (click)="contactMentor()">
+            <!-- <ion-button id="contact-button-header" (click)="contactMentor()">
             Contact
-            </ion-button>
+            </ion-button> -->
             <!-- <ion-img [src]="{{mentorPhoto}}" style="background: #999; border-radius: 100px;"></ion-img> -->
           </ion-col>
           <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
@@ -57,8 +57,8 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="9" size-md="2">
-        <ion-button id="contact-button" (click)="contactMentor()" expand="block">
+      <ion-col size-xs="9" size-md="2" class="ion-text-center">
+        <ion-button class="orange-button" style="margin: 100px 0 100px 0;" (click)="contactMentor()">
           Contact
         </ion-button>
       </ion-col>

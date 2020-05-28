@@ -18,7 +18,7 @@ export class ApplyPage implements OnInit {
   public jobCompanyEmail;
   public applyPageForm: FormGroup;
 
-  protected user;
+  private user;
   private userPhoneNumber;
   private userResume
 
@@ -48,8 +48,8 @@ export class ApplyPage implements OnInit {
       let userResume = data["resume"]
 
       this.user = user;
-      this.userPhoneNumber = userPhoneNumber
-      this.userResume = userResume
+      this.userPhoneNumber = userPhoneNumber;
+      this.userResume = userResume;
 
       this.populateForm(userPhoneNumber);
     });

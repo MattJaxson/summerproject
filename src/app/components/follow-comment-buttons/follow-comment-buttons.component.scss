@@ -1,27 +1,24 @@
 .comment-button{
-  width: 100px;
+  width: 105px;
   --border-width: 1px;
   --border-color: #005191;
   --border-style: solid;
   border-radius: 5px;
   --color: #005191;
-  font-size: 0.6em;
+  font-size: 0.3em;
   margin-right: 0;
 }
 
 .follow-button {
   --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
-  font-weight: 800;
-  font-size: 0.5em;
-  width: 100px;
+  --background: linear-gradient(#797, #799);
+  font-size: 0.3em;
+  width: 105px;
 }
 
 // Change color
 .unfollow-button {
   --color: white;
-  --background: linear-gradient(#faa71b, #e99b14);
-  font-weight: 800;
-  font-size: 0.5em;
-  width: 100px;
+  --background: linear-gradient(#faa71b, #e99b14);  font-size: 0.3em;
+  width: 105px;
 }
