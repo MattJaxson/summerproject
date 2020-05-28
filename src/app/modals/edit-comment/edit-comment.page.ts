@@ -49,7 +49,7 @@ export class EditCommentPage implements OnInit {
   }
 
   refreshComment() {
-    this.postEmitterService.repliesRefresh();
+    this.postEmitterService.postPageRefresh();
   }
 
   async edit(newComment) {

@@ -67,42 +67,6 @@ export class PostsPage implements OnInit {
     this.getPosts();
   }
 
-    postPage(post) {
-    // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/posts/post-page', post._id]);
-  }
-
-  getPosts() {
-    this.posts.getPosts().subscribe(
-      posts => {
-        let allPosts =  Object.values(posts).reverse();
-        this.posts.postsSubject$.next(allPosts);
-        this.posts.postsSubject$.subscribe(
-            data => {
-              this.allPosts = data;
-            }
-          );
-
-        this.allPosts = this.posts.postsSubject$.value;
-
-        for (const post of this.allPosts) {
-          post.isUser = false;
-          post.date = formatDistanceToNow( new Date(post.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-        }
-        this.posts.commentsSubject$.next(this.allPosts);
-        this.posts.commentsSubject$.subscribe(
-          comments => {
-            this.allPosts.comments = comments;
-          }
-        );
-        this.getFollowingPosts();
-      }
-    );
-  }
-
   postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);

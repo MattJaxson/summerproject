@@ -74,7 +74,7 @@ export class RepliesPagePage implements OnInit {
   }
 
   refreshRepliesAmount() {
-    this.postEmitterService.repliesRefresh();
+    this.postEmitterService.postPageRefresh();
   }
 
   async reply(reply) {

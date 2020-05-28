@@ -23,7 +23,6 @@ export class PostPagePage implements OnInit {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
   @ViewChild(IonTextarea, {static: true}) textarea: IonTextarea;
-  comments$ = new BehaviorSubject([]);
 
   tabBar = document.getElementById('myTabBar');
   votes = document.getElementById('votes');
@@ -79,7 +78,7 @@ export class PostPagePage implements OnInit {
     if (this.postEmitterService.subsVar == undefined) {
 
       // For Comment and Reply Refreshes
-      this.postEmitterService.subsVar = this.postEmitterService.invokeRepliesRefresh.subscribe(() => {
+      this.postEmitterService.subsVar = this.postEmitterService.invokePostsPageRefresh.subscribe(() => {
         this.getPostInfo();
       });
 
@@ -117,7 +116,7 @@ export class PostPagePage implements OnInit {
   }
 
   refreshAfterDelete() {
-    this.postEmitterService.repliesRefresh();
+    this.postEmitterService.postPageRefresh();
   }
 
   refreshAfterFollow() {
@@ -467,10 +466,6 @@ export class PostPagePage implements OnInit {
 
         await console.log(postID);
         await console.log(comments);
-        await this.comments$.next(comments);
-        await this.comments$.subscribe( data => {
-          this.comments = data;
-        });
         await this.refreshAfterDelete();
       }
     );

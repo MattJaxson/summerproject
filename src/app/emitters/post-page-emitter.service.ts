@@ -16,7 +16,7 @@ export class PostPageEmitterService {
   }
 
   postPageRefresh() {
-    this.invokePostPageRefresh.emit();
+    this.invokePostsPageRefresh.emit();
   }
 
 

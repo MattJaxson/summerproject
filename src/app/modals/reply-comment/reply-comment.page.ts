@@ -71,7 +71,7 @@ export class ReplyCommentPage implements OnInit {
   }
 
   refreshRepliesAmount() {
-    this.postEmitterService.repliesRefresh();
+    this.postEmitterService.postPageRefresh();
   }
 
   async confirmAlert() {
