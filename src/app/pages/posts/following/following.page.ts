@@ -7,6 +7,8 @@ import { format } from 'date-fns';
 import { formatDistanceToNow } from 'date-fns';
 import { FollowIconComponent } from '../../../components/follow-icon/follow-icon.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { PlatformLocation } from '@angular/common';
 
 
 @Component({
@@ -28,9 +30,16 @@ export class FollowingPage implements OnInit {
     public posts: PostsService,
     private profile: ProfileService,
     private toast: ToastController,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private eventEmitterService: PostPageEmitterService,
+    private location: PlatformLocation
+  ) { }
 
   ngOnInit() {
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    })
+
      // Get the User's Followed Posts
      this.profile.getUserDetails().subscribe(
       details => {
@@ -70,6 +79,7 @@ export class FollowingPage implements OnInit {
   }
 
   back() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
 

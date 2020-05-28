@@ -75,7 +75,7 @@ export class FollowCommentButtonsComponent implements OnInit {
   async follow(postID) {
     await console.log('Following Post');
     await console.log(postID);
-    await this.posts.followPost(postID, this.userEmail).subscribe();
+    await this.posts.followPost(postID, this.userEmail);
     this.following = true;
     this.followingLength$.next(this.followingLength + 1);
     await this.followToast();
@@ -93,7 +93,7 @@ export class FollowCommentButtonsComponent implements OnInit {
   async unFollow(postID) {
     await console.log('Unfollowing Post');
     await console.log(postID);
-    await this.posts.unFollowPost(postID, this.userEmail).subscribe();
+    await this.posts.unFollowPost(postID, this.userEmail);
     this.following = false;
     this.followingLength$.next(this.followingLength - 1);
     await this.unFollowToast();

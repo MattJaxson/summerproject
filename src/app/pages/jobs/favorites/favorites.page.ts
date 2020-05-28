@@ -4,6 +4,7 @@ import { FavoritesService } from '../../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { formatDistanceToNow } from 'date-fns';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
+import { PlatformLocation } from '@angular/common';
 
 
 @Component({
@@ -20,10 +21,16 @@ export class FavoritesPage implements OnInit {
     private router: Router,
     private favorites: FavoritesService,
     private profile: ProfileService,
-    private eventEmitterService: FavoritesEventEmitterService
+    private eventEmitterService: FavoritesEventEmitterService,
+    private location: PlatformLocation
   ) { }
 
   ngOnInit() {
+
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    })
+
     // this.favorites.favoriteJobs$.subscribe(favorites => {
     //   this.favoriteJobs = Object.values(favorites);
     // });

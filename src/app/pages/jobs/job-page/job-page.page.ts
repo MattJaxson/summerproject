@@ -8,6 +8,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-job-page',
@@ -34,9 +35,14 @@ export class JobPagePage implements OnInit {
     private profile: ProfileService,
     private favorites: FavoritesService,
     private jobs: JobsService,
-    private eventEmitterService: FavoritesEventEmitterService
+    private eventEmitterService: FavoritesEventEmitterService,
+    private location: PlatformLocation
   ) { }
   ngOnInit() {
+
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    })
     
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
@@ -78,7 +84,6 @@ export class JobPagePage implements OnInit {
               for (const job of Object.values(jobs)) {
                 if (this.jobId == job._id) {
                   this.jobObj = job;
-                  console.warn("Found it! ", this.jobObj);
                 }
               }
             });
