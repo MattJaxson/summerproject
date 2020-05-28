@@ -5,12 +5,16 @@ ion-header {
 
 #my-events-button {
   opacity: 1;
-  --background: white;
-  --color: #005191;
+  --background: rgba(255,255,255,0.1);
+  --color: white;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: white;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  width: 80px;
+  width: 100px;
   height: 40px;
   font-size: 0.6em;
+  font-weight: 600;
 }
 
 ion-card {

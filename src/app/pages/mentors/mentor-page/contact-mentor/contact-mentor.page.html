@@ -22,19 +22,19 @@
 
     <!-- Horizontal Line for Desktop Header -->
     <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="6">
+      <ion-col size="8">
         <hr style="background-color: #999;" />
       </ion-col>
     </ion-row>
 
     <!-- Contact Form -->
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
         <!-- Mentor Photo -->
         <div id="mentor-photo"></div>
         <!-- Form -->
         <form id="mentor-form" [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)">
-            <ion-item style="margin: 55px 0 55px 0">
+            <ion-item lines="none" style="margin: 55px 0 55px 0">
                 <ion-textarea
                 formControlName="message"
                 placeholder="Have a question for a {{mentorName}}? Send them an email!"

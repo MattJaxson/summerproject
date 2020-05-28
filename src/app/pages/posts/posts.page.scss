@@ -3,6 +3,8 @@
   margin-bottom: 90px;
   border-radius: 5px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  font-size: 1.2em;
+  line-height: 35px;
 }
 
 .user-details {
@@ -11,13 +13,14 @@
   height: 200px;
 }
 
-.username {
+#username {
   color: white;
   font-size: 1em;
+  font-weight: 600;
   position: relative;
   left: 10px;
   opacity: 0;
-  animation: username-slide-in 1s cubic-bezier(0.075, 0.82, 0.165, 1)  forwards;
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 
@@ -61,14 +64,16 @@ ion-item {
 
 .following-button {
   opacity: 1;
-  --background: white;
-  --color: #005191;
+  --background: rgba(255,255,255,0.1);
+  --color: white;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: white;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  width: 80px;
+  width: 100px;
   height: 40px;
   font-size: 0.6em;
-  position: relative;
-  top: -5px;
+  font-weight: 600;
 }
 
 .followed-button {
@@ -138,7 +143,7 @@ ion-item {
 
 
 ion-fab-button {
-  --background: #1baf88;
+  --background: #797;
   --background-focused: #FFB351;
   --background-hover: #FFB351;
   --background-activated: #FFB351;
@@ -148,6 +153,7 @@ ion-fab-button {
   position: relative;
   bottom: 50px;
   right: 10px;
+  // animation: add-post-button-tap .5
 }
 
 @keyframes slide-up {
@@ -169,6 +175,19 @@ ion-fab-button {
 
   100% {
     transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes add-post-button-tap {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
     opacity: 1;
   }
 }

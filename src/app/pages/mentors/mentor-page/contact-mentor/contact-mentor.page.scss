@@ -16,6 +16,13 @@
     animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.45s forwards;
 }
 
+ion-item {
+  padding: 20px 0;
+  margin-bottom: 90px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
 .orange-button {
     margin-bottom: 30px;
     --background: #faa71b;

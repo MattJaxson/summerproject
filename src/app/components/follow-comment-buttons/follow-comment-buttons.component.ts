@@ -19,6 +19,8 @@ export class FollowCommentButtonsComponent implements OnInit {
   following = false;
 
   @Input() postID;
+  @Input() isUser;
+  @Input() postEmail;
   followingLength$ = new BehaviorSubject(null);
   followingLength = null;
 
@@ -51,6 +53,10 @@ export class FollowCommentButtonsComponent implements OnInit {
                 following = true;
               }
           }
+
+            if (userEmail === this.postEmail) {
+              return this.isUser === true;
+            }
 
             this.followers = followers;
             this.comments = comments;

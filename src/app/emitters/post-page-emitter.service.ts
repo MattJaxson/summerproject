@@ -14,4 +14,10 @@ export class PostPageEmitterService {
   onBackAction() {
     this.invokePostsPageRefresh.emit();
   }
+
+  postPageRefresh() {
+    this.invokePostPageRefresh.emit();
+  }
+
+
 }

@@ -17,26 +17,23 @@
               <ion-col push="1">
                 <div class="company-logo" style="height: 100px; width: 100px;"></div>
               </ion-col>
-              <ion-col  class="ion-float-right" size="2">
+              <ion-col  class="ion-float-right" size="2" push-md="1">
                 <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
               </ion-col>
               <ion-col size="2">
-                <ion-button  class="ion-hide-md-down back-button" style=" position: relative; top: -35px;" (click)="goBack()">
+                <ion-button  class="ion-hide-md-down back-button" style=" position: relative; top: -155px;" (click)="goBack()">
                   Go Back</ion-button>
               </ion-col>
             </ion-row>
           </ion-col>
 
-          <ion-col size="12" >
+          <ion-col size="12">
             <ion-row>
               <ion-col push="1" size="10" style="margin-top: 20px;">
                 <h1  id="job-title">{{jobTitle}}</h1>
                 <h2 id="company-name">{{jobCompanyName}}</h2>
                 <p id="company-name">{{jobCompanyEmail}}</p>
                 <p id="job-full-description">{{jobFullJobDescription}}</p>
-                <div style="text-align: center; width: 100%;">
-                  <ion-button (click)="applyForJob()" class="orange-button">Apply for Job</ion-button>
-                </div>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -46,6 +43,7 @@
 
     <ion-row class="ion-justify-content-center">
       <ion-col size="6"  class="ion-text-center">
+        <ion-button (click)="applyForJob()" class="orange-button" style="width: 180px; margin-bottom: 100px;">Apply for Job</ion-button>
       </ion-col>
     </ion-row>
 

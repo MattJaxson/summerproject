@@ -48,7 +48,7 @@ export class EventsPage implements OnInit, AfterViewInit {
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeEventsPageRefresh.subscribe(() => {
         this.getEvents();
-      })
+      });
     }
 
     // Get the User's details
