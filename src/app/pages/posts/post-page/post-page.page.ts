@@ -11,6 +11,7 @@ import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
+import { PlatformLocation } from '@angular/common';
 
 
 @Component({
@@ -60,9 +61,14 @@ export class PostPagePage implements OnInit {
     private modal: ModalController,
     private alert: AlertController,
     private loading: LoadingController,
+    private eventEmitterService: PostPageEmitterService,
+    private location: PlatformLocation
     ) { }
 
   ngOnInit() {
+    this.location.onPopState(() => {
+      this.eventEmitterService.onBackAction();
+    })
 
     // Get Post ID from navigation params on the main posts tab
     const id  = this.activatedRoute.snapshot.paramMap.get('_id');
@@ -186,13 +192,14 @@ export class PostPagePage implements OnInit {
   }
 
   back() {
+    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
 
   async follow(postID) {
     await console.log('Following Post');
     await console.log(postID);
-    await this.posts.followPost(postID, this.userEmail).subscribe();
+    await this.posts.followPost(postID, this.userEmail);
     this.following = true;
     await this.followToast();
   }
@@ -209,7 +216,7 @@ export class PostPagePage implements OnInit {
   async unFollow(postID) {
     await console.log('Unfollowing Post');
     await console.log(postID);
-    await this.posts.unFollowPost(postID, this.userEmail).subscribe();
+    await this.posts.unFollowPost(postID, this.userEmail);
     this.following = false;
     await this.unFollowToast();
   }

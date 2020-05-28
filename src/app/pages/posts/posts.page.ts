@@ -24,21 +24,28 @@ export class PostsPage implements OnInit {
   commentForm: FormGroup;
   allPosts;
   followedPost;
+  followedPostCount;
   userEmail;
   userFullName;
   date;
 
   constructor(
-  private router: Router,
-  public posts: PostsService,
-  private profile: ProfileService,
-  private toast: ToastController,
-  private formBuilder: FormBuilder,
-  private postPageEmitter: PostPageEmitterService
-    ) {}
+    private router: Router,
+    public posts: PostsService,
+    private profile: ProfileService,
+    private toast: ToastController,
+    private formBuilder: FormBuilder,
+    private eventEmitterService: PostPageEmitterService
+  ) {}
 
 
   ngOnInit() {
+
+    if (this.eventEmitterService.subsVar == undefined) {
+      this.eventEmitterService.subsVar = this.eventEmitterService.invokePostsPageRefresh.subscribe(() => {
+        this.getPosts();
+      })
+    }
 
     this.fabButton.size = 'small';
 
@@ -82,24 +89,34 @@ export class PostsPage implements OnInit {
             this.allPosts.comments = comments;
           }
         );
-        // Get the User's details
-        this.profile.getUserDetails().subscribe(
-          details => {
-            this.userEmail = details['email'];
-            this.userFullName = details['fullName'];
-            this.followedPost = Object.values(details['followedPost']).length;
-            console.log('User email: ' + this.userEmail);
-          });
+        this.getFollowingPosts();
       }
     );
   }
 
-    postPage(post) {
+  postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
+  getFollowingPosts() {
+    // Get the User's details
+    this.profile.getUserDetails().subscribe( details => {
+      this.userEmail = details['email'];
+      this.userFullName = details['fullName'];
+
+      this.followedPost = details['followedPost'];
+      this.posts.followingSubject$.next(this.followedPost);
+      this.posts.followingSubject$.subscribe( posts => {
+        this.followedPostCount = posts.length;
+      });
+    });
+  }
+
   async doRefresh(event) {
+
+    this.getFollowingPosts();
+
     await this.posts.getPosts().subscribe( jobs => {
       this.allPosts = Object.values(jobs).reverse();
 
@@ -120,6 +137,19 @@ export class PostsPage implements OnInit {
       event.target.complete();
       toast.then(toast => toast.present());
     }, 2000);
+  }
+
+  async getPosts() {
+    await this.posts.getPosts().subscribe( jobs => {
+      this.allPosts = Object.values(jobs).reverse();
+
+      for (const post of this.allPosts) {
+        post.date = formatDistanceToNow( new Date(post.date), {
+          includeSeconds: true,
+          addSuffix: true
+        });
+      }
+    });
   }
 
 
