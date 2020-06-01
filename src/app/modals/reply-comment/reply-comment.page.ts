@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 @Component({
   selector: 'app-reply-post',
@@ -50,11 +51,51 @@ export class ReplyCommentPage implements OnInit {
 
   async reply(reply) {
     await console.log('replying to comment...');
-    await this.replyLoading();
     // tslint:disable-next-line: max-line-length
     await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
-      .subscribe();
-    await this.refreshRepliesAmount();
+      .subscribe(
+        data => {
+          console.log(data);
+          let comments = data['comments'];
+          let userEmail = data['userEmail'];
+          // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
+          for (const comment of comments) {
+
+              // If the Logged in User's Email equals the creatorEmail of the Comment,
+              // they will be given the ability to edit and delete their Comment.
+              // The ability for them to report their own comment is disabled
+              console.log('false');
+
+              comment.repliesLength = comment.replies.length;
+              comment.isUser = false;
+              comment.canDeleteComment = false;
+              comment.canReport = true;
+              comment.date = formatDistanceToNow( new Date(comment.date), {
+                includeSeconds: false,
+                addSuffix: false
+              });
+
+              // If this comment is the logged in user, they can delete and edit
+              if (comment.userEmail === userEmail) {
+                console.log('true');
+                comment.isUser = true;
+                comment.canDeleteComment = true;
+                comment.canReport = false;
+              }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: false
+                });
+             }
+
+           }
+          this.posts.commentsSubject$.next(comments);
+        }
+      );
+    await this.replyLoading();
   }
 
   async replyLoading() {
@@ -62,16 +103,13 @@ export class ReplyCommentPage implements OnInit {
       message: 'Replying to Comment...',
       duration: 2000
     });
+
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
     await this.modal.dismiss();
     // await this.confirmAlert();
     console.log('Loading dismissed!');
-  }
-
-  refreshRepliesAmount() {
-    this.postEmitterService.postPageRefresh();
   }
 
   async confirmAlert() {

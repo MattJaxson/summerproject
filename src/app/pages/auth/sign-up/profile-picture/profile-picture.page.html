@@ -2,37 +2,84 @@
 </ion-header>
 
 <ion-content class="ion-text-center">
-  <ion-grid style="margin-top: 10%;">
-    <ion-row class="ion-justify-content-center">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center" style="height: 100vh ;">
 
       <!-- Mobile -->
-      <ion-col class="ion-hide-lg-up" size-xs="11" size-md="8">
-        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
+      <ion-col class="ion-hide-lg-up" style="position: relative; top: 100px" size-xs="11" size-md="8">
 
-        <div id="img-wrapper">
-          <img src="{{profilePicture}}" alt="">
+        <!-- Picture Wrapper -->
+        <div
+          id="default-picture-wrapper"
+          *ngIf="!imageUrl">
         </div>
 
-        <ion-button type="file" class="camera-button"  (click)="selectImage()">
+        <!-- User has uploaded profile picture -->
+        <div
+          id="upload-picture-wrapper"
+          *ngIf="imageUrl"
+          style="
+          background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
+
+        </div>
+
+        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
+
+        <ion-button class="blue-button"  (click)="selectImage()">
           Select Picture
         </ion-button>
 
-        <ion-button class="skip-button"  (click)="skip()">
+        <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
         </ion-button>
 
-        <input (click)="goToUploadResumePage()" class="orange-button" type="submit" value="Upload Picture"><br>
+        <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit" 
+        [disabled]="!imageUrl" >Next
+        </ion-button>
         <ion-button (click)="cancel()" class="cancel-button">
             Cancel
         </ion-button>
       </ion-col>
 
       <!-- Desktop -->
-      <ion-col class="ion-hide-md-down" size-lg="6" size-xl="5">
+      <ion-col class="ion-hide-md-down wrapper  ion-align-self-center" size-lg="8" size-xl="6">
+
+
+        <ion-row class="ion-hide-md-down">
+          <ion-col size="4">
+            <h1>Profile Picture</h1>
+          </ion-col>
+          <ion-col push="4" size="4" class="ion-float-right">
+            <ion-button class="cancel-button" (click)="cancel()">
+              Cancel
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-hide-md-down">
+          <ion-col size="11" push="0.7">
+            <hr style="background-color: #00000044; margin: 20px 0;" />
+          </ion-col>
+        </ion-row>
+
+        <!-- Picture Wrapper -->
+        <div
+          id="default-picture-wrapper"
+          *ngIf="!imageUrl">
+        </div>
+
+        <!-- User has uploaded profile picture -->
+        <div
+          id="upload-picture-wrapper"
+          *ngIf="imageUrl"
+          style="
+          background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
+
+        </div>
+
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
 
         <input (change)="onImagePicked($event)" placeholder="Upload Image"
-        type="file" style="margin-bottom: 10px;" />
+        type="file"/>
 
         <div *ngIf="imageUrl">
         Preview Image from AWS
@@ -42,28 +89,16 @@
         imageUrl }}" />
         </div>
 
-        <ion-button class="skip-button" (click)="skip()" style="margin-top: 20px;">
+        <ion-button class="blue-button skip-button" (click)="skip()" style="margin-top: 20px;">
           Skip
         </ion-button>
 
-        <ion-button class="orange-button" (click)="goToUploadResumePage()" style="width: 40%;">Upload Picture</ion-button>
-
-        <ion-button (click)="cancel()" class="cancel-button" style="margin-top: 10px;">
-          Cancel
-        </ion-button>
+        <ion-button
+          class="orange-button"
+          (click)="goToUploadResumePage()"
+          [disabled]="!imageUrl">Next</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-  <!-- <ion-input
-    (change)="onChange($event)"
-    class="camera-button"
-    type="file"
-    name="picture"
-    enctype="multipart/form-data"></ion-input> -->
-
-
-
 
 </ion-content>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>default-pro-picture</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#0672C4" offset="0%"></stop>
+            <stop stop-color="#005191" offset="100%"></stop>
+        </linearGradient>
+        <path d="M28,26.8647541 C25.4375,26.8647541 24.2053571,28.2786885 20,28.2786885 C15.7946429,28.2786885 14.5714286,26.8647541 12,26.8647541 C5.375,26.8647541 0,32.1846824 0,38.7418033 L0,41.0040984 C0,43.3459273 1.91964286,45.2459016 4.28571429,45.2459016 L35.7142857,45.2459016 C38.0803571,45.2459016 40,43.3459273 40,41.0040984 L40,38.7418033 C40,32.1846824 34.625,26.8647541 28,26.8647541 Z M35.7142857,41.0040984 L4.28571429,41.0040984 L4.28571429,38.7418033 C4.28571429,34.5353484 7.75,31.1065574 12,31.1065574 C13.3035714,31.1065574 15.4196429,32.5204918 20,32.5204918 C24.6160714,32.5204918 26.6875,31.1065574 28,31.1065574 C32.25,31.1065574 35.7142857,34.5353484 35.7142857,38.7418033 L35.7142857,41.0040984 Z M20,25.4508197 C27.0982143,25.4508197 32.8571429,19.7508965 32.8571429,12.7254098 C32.8571429,5.69992316 27.0982143,0 20,0 C12.9017857,0 7.14285714,5.69992316 7.14285714,12.7254098 C7.14285714,19.7508965 12.9017857,25.4508197 20,25.4508197 Z M20,4.24180328 C24.7232143,4.24180328 28.5714286,8.05058914 28.5714286,12.7254098 C28.5714286,17.4002305 24.7232143,21.2090164 20,21.2090164 C15.2767857,21.2090164 11.4285714,17.4002305 11.4285714,12.7254098 C11.4285714,8.05058914 15.2767857,4.24180328 20,4.24180328 Z" id="path-2"></path>
+        <filter x="-17.5%" y="-11.1%" width="135.0%" height="130.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="default-pro-picture" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="100" height="100"></rect>
+        <g id="user" transform="translate(30.000000, 27.000000)" fill-rule="nonzero">
+            <g id="Shape">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="#FFB351" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

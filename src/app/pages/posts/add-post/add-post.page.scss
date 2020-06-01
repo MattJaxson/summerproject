@@ -7,7 +7,7 @@ ion-title {
 }
 
 .message {
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding: 10px;
 }
 
@@ -18,10 +18,15 @@ ion-item {
   --inner-padding-end: 0;
 }
 
+.item {
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  padding-left: 10px;
+}
+
 ion-textarea {
   --background: white;
   --border-color: none;
-  padding: 0 10px;
 }
 
 .item-interactive {

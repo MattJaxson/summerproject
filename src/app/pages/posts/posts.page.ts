@@ -47,7 +47,17 @@ export class PostsPage implements OnInit {
       })
     }
 
-    this.fabButton.size = 'small';
+    this.profile.getUserDetails().subscribe( details => {
+      this.userEmail = details['email'];
+      this.userFullName = details['fullName'];
+
+      this.followedPost = details['followedPost'];
+      this.posts.followingSubject$.next(this.followedPost);
+      this.posts.followingSubject$.subscribe( posts => {
+        this.followedPostCount = posts.length;
+      });
+    });
+
 
      // To collect comment data
     this.commentForm = this.formBuilder.group({

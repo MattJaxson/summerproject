@@ -11,7 +11,7 @@ import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
-import { PlatformLocation } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -59,14 +59,9 @@ export class PostPagePage implements OnInit {
     private modal: ModalController,
     private alert: AlertController,
     private loading: LoadingController,
-    private eventEmitterService: PostPageEmitterService,
-    private location: PlatformLocation
     ) { }
 
   ngOnInit() {
-    this.location.onPopState(() => {
-      this.eventEmitterService.onBackAction();
-    })
 
     // Get Post ID from navigation params on the main posts tab
     const id  = this.activatedRoute.snapshot.paramMap.get('_id');
@@ -107,7 +102,6 @@ export class PostPagePage implements OnInit {
   }
 
   back() {
-    this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
 
@@ -345,7 +339,7 @@ export class PostPagePage implements OnInit {
   }
 
   async reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
-    const reportAlertConfig = await this.modal.create({
+    const reportModalConfig = await this.modal.create({
     component: ReportCommentPage,
     componentProps: {
       commentID,
@@ -360,7 +354,7 @@ export class PostPagePage implements OnInit {
     }
     });
 
-    await reportAlertConfig.present();
+    await reportModalConfig.present();
   }
 
   async reply(commentID, userFullName,userProfilePicture, userEmail, commentUserEmail, commentUserFullName,  ) {
@@ -369,7 +363,7 @@ export class PostPagePage implements OnInit {
   }
 
   async replyModal(commentID, postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName) {
-    const replyAlertConfig = await this.modal.create({
+    const replyModalConfig = await this.modal.create({
     component: ReplyCommentPage,
     componentProps: {
       commentID,
@@ -382,7 +376,7 @@ export class PostPagePage implements OnInit {
     }
     });
 
-    await replyAlertConfig.present();
+    await replyModalConfig.present();
   }
 
   // tslint:disable-next-line: max-line-length
@@ -461,13 +455,36 @@ export class PostPagePage implements OnInit {
   async deleteCommentLoading(postID, commentID) {
 
     await this.posts.deleteComment(this.postID, commentID).subscribe(
-      async values  => {
+       values  => {
         let comments = values['comments'];
 
-        await console.log(postID);
-        await console.log(comments);
-        await this.refreshAfterDelete();
+        for (const comment of comments) {
+
+          // If the Logged in User's Email equals the creatorEmail of the Comment,
+          // they will be given the ability to edit and delete their Comment.
+          // The ability for them to report their own comment is disabled
+
+          comment.repliesLength = comment.replies.length;
+          comment.isUser = false;
+          comment.canDeleteComment = false;
+          comment.canReport = true;
+          comment.date = formatDistanceToNow( new Date(comment.date), {
+            includeSeconds: false,
+            addSuffix: false
+          });
+
+          // If this comment is the logged in user, they can delete and edit
+          if (comment.userEmail === this.userEmail) {
+            console.log('true');
+            comment.isUser = true;
+            comment.canDeleteComment = true;
+            comment.canReport = false;
+          }
+       }
+
+        this.posts.commentsSubject$.next(comments.reverse());
       }
+
     );
 
     const loading = await this.loading.create({
@@ -480,6 +497,8 @@ export class PostPagePage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
   }
+
+
   async deletePost(postID) {
     console.log('deleting post..');
     console.log(postID);
@@ -531,8 +550,8 @@ export class PostPagePage implements OnInit {
     await this.modal.dismiss();
   }
 
-  getPostInfo() {
-    this.profile.getUserDetails().subscribe(
+  async getPostInfo() {
+   await this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
         this.userEmail = userEmail;
@@ -617,7 +636,6 @@ export class PostPagePage implements OnInit {
             this.userProfilePicture = userProfilePicture;
             this.userFullName = userFullName;
 
-            this.posts.commentsSubject$.next(comments.reverse());
 
           }
         );

@@ -1,6 +1,55 @@
 .orange-button {
   width: unset;
   display: block;
+  margin: 40px auto;
+  width: 200px;
+}
+
+.blue-button {
+  width: 200px;
+}
+
+
+.skip-button{
+  display: block;
+  --background: none;
+  color: darkgray;
+  --border-color: darkgray;
+  --border-width : 1px;
+  --border-style: solid;
+  width: 200px;
+  margin: 40px auto;
+
+}
+
+ion-button {
+}
+
+.wrapper {
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  height: auto;
+  padding: 50px;
+}
+
+#default-picture-wrapper {
+  height: 100px; width: 100px;
+  border: 2px solid #005191;
+  margin: 20px auto 50px auto;
+  border-radius: 50px;
+  background-image: url('../../../../../assets/icon/default-pro-picture.svg');
+}
+
+#upload-picture-wrapper {
+  height: 100px; width: 100px;
+  border: 2px solid #005191;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border-radius: 50px;
+}
+
+span{
+  color: #FFB351;
+  font-weight: 600;
 }
 
 #next-button{
@@ -13,20 +62,24 @@
 }
 
 .text-header {
-  font-size: 0.8em;
+  font-size: 1.2em;
   padding: unset;
+  color: #333;
 }
 
-#cancel-button {
+.cancel-button {
+  color: #e4405f;
   --background: none;
-  --color: red;
-  --opacity: 0.3;
-  --box-shadow:none;
-  --color-activated: lightgray;
   --background-hover: none;
-  font-size: 0.7em;
-  margin: 10px auto;
-  display: block;
+  height: 50px;
+  width: 200px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cancel-button:hover {
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
 }
 
 .camera-button{
@@ -40,31 +93,28 @@
 }
 
 input[type=file] {
-  color: #005191;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
   border: #005191 1px solid;
-  padding: 10px;
+  background: linear-gradient(#0672c4, #005191);
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 20px 0 0 20px;
+  text-align: center;
+  cursor: pointer;
+
 }
 
-input[type=submit] {
-  background: #FFB351;
-  border-radius: 5px;
-  color: #005191;
+input[type=file]::-webkit-file-upload-button {
+  visibility: hidden;
 }
+
+
 
 #img-wrapper {
   height: 150px;
   width: 150px;
   margin: 50px auto;
-}
-
-.skip-button{
-  display: block;
-  --background: none;
-  color: darkgray;
-  --border-color: darkgray;
-  --border-width : 1px;
-  --border-style: solid;
-  border: 1px;
-  width: 100px;
-  margin: 10px auto;
 }
