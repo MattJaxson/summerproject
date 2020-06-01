@@ -1,18 +1,114 @@
 ion-title {
-    margin: 0;
+  margin: 0;
 }
 
 .company-logo {
-    background-image: url("../../../../assets/journi-logo.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  background-image: url("../../../../assets/journi-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .job-section {
-    height: 250px;
-    color: #777;
-    position: relative;
-    top: 20px;
-    width: 100%;
+  background: white;
+  height: auto;
+  color: #777;
+  position: relative;
+  top: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+#job-details {
+  color: #005191;
+  --background: white;
+  --background-hover: linear-gradient(#0672c4, #00467c);
+  --color-hover: white;
+  font-size: 15px;
+  height: 45px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+#favorites-button {
+  opacity: 1;
+  --background: rgba(255,255,255,0.1);
+  --color: white;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: white;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  width: 70px;
+  height: 40px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+ion-icon {
+  color: red;
+  font-size: 25px;
+  position: relative;
+  right: 5px;
+}
+
+ion-searchbar {
+  --background: white;
+  border-radius: 5px;
+  --height: 60px;
+  --box-shadow: none;
+  --cancel-button-color: #005191;
+  --clear-button-color: #005191;
+  --placeholder-opacity: 0.5;
+  --icon-color: #005191;
+  transition: 0.5s;
+  padding: 5px;
+
+
+}
+
+h6, p {
+  display: block;
+}
+
+--ion-buttons {
+  --color: #888;
+}
+
+#job-summary {
+  font-size: 1.1em;
+  line-height: 29px;
+  position: relative;
+  color: #666;
+  opacity: 0.7;
+  top: -60px;
+}
+
+#company-name {
+  font-size: 0.9em;
+  opacity: 0.8;
+  position: relative;
+  top: -31px
+}
+
+#job-title {
+  font-size: 0.9em;
+  font-weight: 500;
+  position: relative;
+  top: -15px
+}
+
+#job-posted-date {
+  font-size: 10px;
+  opacity: 0.7;
+  position: relative;
+  top: -43px
+}
+
+@media only screen and (min-width: 576px) {
+  #job-title  {
+    font-size: 1.3em;
+    font-weight: 500;
   }
+}

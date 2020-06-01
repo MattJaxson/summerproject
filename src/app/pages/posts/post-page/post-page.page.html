@@ -219,18 +219,7 @@
           <ion-row style="margin-top: 20px;">
             <!-- Upvote & Downvote Comments-->
             <ion-col size="4">
-                <ion-toolbar>
-                  <ion-buttons slot="start">
-                    <ion-button class="upvote" (click)="upVoteComment(comment)">
-                      <ion-icon size="large" src="../../../assets/icon/caret-up-outline.svg"></ion-icon>
-                      0
-                    </ion-button>
-                    <ion-button class="downvote" (click)="downVoteComment()">
-                      <ion-icon size="large" src="../../../assets/icon/caret-down-outline.svg"></ion-icon>
-                      0
-                    </ion-button>
-                  </ion-buttons>
-                </ion-toolbar>
+              <app-comment-vote-bar [postID]="this.postID" [commentID]="comment._id"></app-comment-vote-bar>
             </ion-col>
             <!-- Report, Edit & Reply -->
             <ion-col push="1" size="6">

@@ -41,7 +41,7 @@ export class JobPagePage implements OnInit {
   ngOnInit() {
 
     this.location.onPopState(() => {
-      this.eventEmitterService.onBackAction();
+      this.triggerJobPageRefresh();
     })
     
     // tslint:disable-next-line: radix
@@ -108,8 +108,12 @@ export class JobPagePage implements OnInit {
   }
 
   goBack() {
-    this.eventEmitterService.onBackAction();
+    this.triggerJobPageRefresh();
     this.router.navigate(['/home/jobs']);
+  }
+
+  triggerJobPageRefresh() {
+    this.eventEmitterService.onBackAction();
   }
 
   async presentToast() {

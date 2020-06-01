@@ -6,6 +6,7 @@ import { GoingIconComponent } from './going-icon/going-icon.component';
 import { NotGoingIconComponent } from './not-going-icon/not-going-icon.component';
 import { FollowIconComponent } from './follow-icon/follow-icon.component';
 import { UpDownVoteButtonsComponent } from './up-down-vote-buttons/up-down-vote-buttons.component';
+import { CommentVoteBarComponent } from "./comment-vote-bar/comment-vote-bar.component";
 import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-comment-buttons.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-c
         NotGoingIconComponent,
         FollowIconComponent,
         UpDownVoteButtonsComponent,
+        CommentVoteBarComponent,
         FollowCommentButtonsComponent
     ],
     exports: [
@@ -27,6 +29,7 @@ import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-c
         NotGoingIconComponent,
         FollowIconComponent,
         UpDownVoteButtonsComponent,
+        CommentVoteBarComponent,
         FollowCommentButtonsComponent
     ]
 })

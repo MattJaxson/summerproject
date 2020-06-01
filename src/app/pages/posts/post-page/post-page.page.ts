@@ -303,6 +303,9 @@ export class PostPagePage implements OnInit {
   async upVoteComment(comment) {
     await console.log('Upvoting Comment');
     await console.log(comment);
+
+    await this.posts.upVoteComment
+
     await this.upVoteCommentToast();
   }
 
