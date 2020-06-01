@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\n</ion-header>\n\n<ion-content class=\"ion-text-center\">\n  <ion-grid style=\"margin-top: 10%;\">\n    <ion-row>\n\n      <!-- Mobile -->\n      <ion-col class=\"ion-hide-md-up\" size-md=\"6\" offset-md=\"3\">\n        <h6 class=\"text-header\">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>\n\n        <div id=\"img-wrapper\">\n          <img src=\"{{profilePicture}}\" alt=\"\">\n        </div>\n\n        <ion-button type=\"file\" class=\"camera-button\"  (click)=\"selectImage()\">\n          Get Picture\n        </ion-button>\n\n        <ion-button class=\"skip-button\"  (click)=\"skip()\">\n          Skip\n        </ion-button>\n\n        <input (click)=\"goToUploadResumePage()\" class=\"orange-button\" type=\"submit\" value=\"Upload Picture\"><br>\n        <ion-button (click)=\"cancel()\" class=\"cancel-button\" slot=\"end\">\n            cancel\n          </ion-button>\n      </ion-col>\n\n      <!-- Desktop -->\n      <ion-col class=\"ion-hide-md-down\" size-lg=\"6\" offset-lg=\"3\">\n        <input (change)=\"onImagePicked($event)\" placeholder=\"Upload Image\"\n        type=\"file\" /><br>\n        <button (click)=\"onImageUpload()\">Upload Image</button>\n\n         <div *ngIf=\"imageUrl\">\n          Preview Image from AWS\n          <br />\n          <img width=\"200px\" src=\"https://YOUR S3 BUCKET\n          NAME.s3.amazonaws.com/{{\n          imageUrl }}\"\n          />\n         </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n  <!-- <ion-input\n    (change)=\"onChange($event)\"\n    class=\"camera-button\"\n    type=\"file\"\n    name=\"picture\"\n    enctype=\"multipart/form-data\"></ion-input> -->\n\n\n\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header style=\"display: none;\">\n</ion-header>\n\n<ion-content class=\"ion-text-center\">\n  <ion-grid>\n    <ion-row class=\"ion-justify-content-center\" style=\"height: 100vh ;\">\n\n      <!-- Mobile -->\n      <ion-col class=\"ion-hide-lg-up\" style=\"position: relative; top: 100px\" size-xs=\"11\" size-md=\"8\">\n\n        <!-- Picture Wrapper -->\n        <div\n          id=\"default-picture-wrapper\"\n          *ngIf=\"!imageUrl\">\n        </div>\n\n        <!-- User has uploaded profile picture -->\n        <div\n          id=\"upload-picture-wrapper\"\n          *ngIf=\"imageUrl\"\n          style=\"\n          background-image: url('../../../../../assets/icon/default-pro-picture.svg');\">\n\n        </div>\n\n        <h6 class=\"text-header\">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>\n\n        <ion-button class=\"blue-button\"  (click)=\"selectImage()\">\n          Select Picture\n        </ion-button>\n\n        <ion-button class=\"blue-button skip-button\"  (click)=\"skip()\">\n          Skip\n        </ion-button>\n\n        <ion-button (click)=\"goToUploadResumePage()\" class=\"orange-button\" type=\"submit\" \n        [disabled]=\"!imageUrl\" >Next\n        </ion-button>\n        <ion-button (click)=\"cancel()\" class=\"cancel-button\">\n            Cancel\n        </ion-button>\n      </ion-col>\n\n      <!-- Desktop -->\n      <ion-col class=\"ion-hide-md-down wrapper  ion-align-self-center\" size-lg=\"8\" size-xl=\"6\">\n\n\n        <ion-row class=\"ion-hide-md-down\">\n          <ion-col size=\"4\">\n            <h1>Profile Picture</h1>\n          </ion-col>\n          <ion-col push=\"4\" size=\"4\" class=\"ion-float-right\">\n            <ion-button class=\"cancel-button\" (click)=\"cancel()\">\n              Cancel\n            </ion-button>\n          </ion-col>\n        </ion-row>\n        <ion-row class=\"ion-hide-md-down\">\n          <ion-col size=\"11\" push=\"0.7\">\n            <hr style=\"background-color: #00000044; margin: 20px 0;\" />\n          </ion-col>\n        </ion-row>\n\n        <!-- Picture Wrapper -->\n        <div\n          id=\"default-picture-wrapper\"\n          *ngIf=\"!imageUrl\">\n        </div>\n\n        <!-- User has uploaded profile picture -->\n        <div\n          id=\"upload-picture-wrapper\"\n          *ngIf=\"imageUrl\"\n          style=\"\n          background-image: url('../../../../../assets/icon/default-pro-picture.svg');\">\n\n        </div>\n\n        <h6 class=\"text-header\">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>\n\n        <input (change)=\"onImagePicked($event)\" placeholder=\"Upload Image\"\n        type=\"file\"/>\n\n        <div *ngIf=\"imageUrl\">\n        Preview Image from AWS\n        <br />\n        <img width=\"200px\" src=\"https://YOUR S3 BUCKET\n        NAME.s3.amazonaws.com/{{\n        imageUrl }}\" />\n        </div>\n\n        <ion-button class=\"blue-button skip-button\" (click)=\"skip()\" style=\"margin-top: 20px;\">\n          Skip\n        </ion-button>\n\n        <ion-button\n          class=\"orange-button\"\n          (click)=\"goToUploadResumePage()\"\n          [disabled]=\"!imageUrl\">Next</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n";
     /***/
   },
 
@@ -168,7 +168,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#next-button {\n  width: 100%;\n  height: 60px;\n  background: lightgray;\n  position: absolute;\n  bottom: 0;\n  font-size: 1em;\n}\n\n.text-header {\n  font-size: 0.8em;\n}\n\n#cancel-button {\n  --background: none;\n  --color: red;\n  --opacity: 0.3;\n  --box-shadow:none;\n  --color-activated: lightgray;\n  --background-hover: none;\n  font-size: 0.7em;\n}\n\n.camera-button {\n  display: block;\n  --background: white;\n  --color: #005191;\n  --border-style: solid;\n  --border-width: 1px;\n  --border-color:#005191;\n  border: 1px;\n  width: 130px;\n  margin: 30px auto;\n}\n\ninput[type=file] {\n  color: #005191;\n  border: #005191 1px solid;\n  padding: 10px;\n}\n\ninput[type=submit] {\n  background: #FFB351;\n  border-radius: 5px;\n  color: #005191;\n}\n\n#img-wrapper {\n  height: 150px;\n  width: 150px;\n  margin: 50px auto;\n}\n\n.skip-button {\n  display: block;\n  --background: none;\n  color: lightgray;\n  --border-color: lightgray;\n  --border-width: 1px;\n  --border-style: solid;\n  border: 1px;\n  width: 100px;\n  margin: 0 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvYXV0aC9zaWduLXVwL3Byb2ZpbGUtcGljdHVyZS9wcm9maWxlLXBpY3R1cmUucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9hdXRoL3NpZ24tdXAvcHJvZmlsZS1waWN0dXJlL3Byb2ZpbGUtcGljdHVyZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EsY0FBQTtBQ0NGOztBREVBO0VBQ0UsZ0JBQUE7QUNDRjs7QURFQTtFQUNFLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLDRCQUFBO0VBQ0Esd0JBQUE7RUFDQSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0EseUJBQUE7RUFDQSxhQUFBO0FDQ0Y7O0FERUE7RUFDRSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2F1dGgvc2lnbi11cC9wcm9maWxlLXBpY3R1cmUvcHJvZmlsZS1waWN0dXJlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNuZXh0LWJ1dHRvbntcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNjBweDtcbiAgYmFja2dyb3VuZDogbGlnaHRncmF5O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogMDtcbiAgZm9udC1zaXplOiAxZW07XG59XG5cbi50ZXh0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG59XG5cbiNjYW5jZWwtYnV0dG9uIHtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWNvbG9yOiByZWQ7XG4gIC0tb3BhY2l0eTogMC4zO1xuICAtLWJveC1zaGFkb3c6bm9uZTtcbiAgLS1jb2xvci1hY3RpdmF0ZWQ6IGxpZ2h0Z3JheTtcbiAgLS1iYWNrZ3JvdW5kLWhvdmVyOiBub25lO1xuICBmb250LXNpemU6IDAuN2VtO1xufVxuXG4uY2FtZXJhLWJ1dHRvbntcbiAgZGlzcGxheTogYmxvY2s7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcbiAgLS1ib3JkZXItY29sb3I6IzAwNTE5MTtcbiAgYm9yZGVyOiAxcHg7XG4gIHdpZHRoOiAxMzBweDtcbiAgbWFyZ2luOiAzMHB4IGF1dG87XG59XG5cbmlucHV0W3R5cGU9ZmlsZV0ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgYm9yZGVyOiAjMDA1MTkxIDFweCBzb2xpZDtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuaW5wdXRbdHlwZT1zdWJtaXRdIHtcbiAgYmFja2dyb3VuZDogI0ZGQjM1MTtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBjb2xvcjogIzAwNTE5MTtcbn1cblxuI2ltZy13cmFwcGVyIHtcbiAgaGVpZ2h0OiAxNTBweDtcbiAgd2lkdGg6IDE1MHB4O1xuICBtYXJnaW46IDUwcHggYXV0bztcbn1cblxuLnNraXAtYnV0dG9ue1xuICBkaXNwbGF5OiBibG9jaztcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICBjb2xvcjogbGlnaHRncmF5O1xuICAtLWJvcmRlci1jb2xvcjogbGlnaHRncmF5O1xuICAtLWJvcmRlci13aWR0aCA6IDFweDtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXI6IDFweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDAgYXV0bztcbn0iLCIjbmV4dC1idXR0b24ge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiA2MHB4O1xuICBiYWNrZ3JvdW5kOiBsaWdodGdyYXk7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICBmb250LXNpemU6IDFlbTtcbn1cblxuLnRleHQtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAwLjhlbTtcbn1cblxuI2NhbmNlbC1idXR0b24ge1xuICAtLWJhY2tncm91bmQ6IG5vbmU7XG4gIC0tY29sb3I6IHJlZDtcbiAgLS1vcGFjaXR5OiAwLjM7XG4gIC0tYm94LXNoYWRvdzpub25lO1xuICAtLWNvbG9yLWFjdGl2YXRlZDogbGlnaHRncmF5O1xuICAtLWJhY2tncm91bmQtaG92ZXI6IG5vbmU7XG4gIGZvbnQtc2l6ZTogMC43ZW07XG59XG5cbi5jYW1lcmEtYnV0dG9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcbiAgLS1ib3JkZXItY29sb3I6IzAwNTE5MTtcbiAgYm9yZGVyOiAxcHg7XG4gIHdpZHRoOiAxMzBweDtcbiAgbWFyZ2luOiAzMHB4IGF1dG87XG59XG5cbmlucHV0W3R5cGU9ZmlsZV0ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgYm9yZGVyOiAjMDA1MTkxIDFweCBzb2xpZDtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuaW5wdXRbdHlwZT1zdWJtaXRdIHtcbiAgYmFja2dyb3VuZDogI0ZGQjM1MTtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBjb2xvcjogIzAwNTE5MTtcbn1cblxuI2ltZy13cmFwcGVyIHtcbiAgaGVpZ2h0OiAxNTBweDtcbiAgd2lkdGg6IDE1MHB4O1xuICBtYXJnaW46IDUwcHggYXV0bztcbn1cblxuLnNraXAtYnV0dG9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgY29sb3I6IGxpZ2h0Z3JheTtcbiAgLS1ib3JkZXItY29sb3I6IGxpZ2h0Z3JheTtcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcbiAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXI6IDFweDtcbiAgd2lkdGg6IDEwMHB4O1xuICBtYXJnaW46IDAgYXV0bztcbn0iXX0= */";
+    __webpack_exports__["default"] = ".orange-button {\n  width: unset;\n  display: block;\n  margin: 40px auto;\n  width: 200px;\n}\n\n.blue-button {\n  width: 200px;\n}\n\n.skip-button {\n  display: block;\n  --background: none;\n  color: darkgray;\n  --border-color: darkgray;\n  --border-width: 1px;\n  --border-style: solid;\n  width: 200px;\n  margin: 40px auto;\n}\n\n.wrapper {\n  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);\n  height: auto;\n  padding: 50px;\n}\n\n#default-picture-wrapper {\n  height: 100px;\n  width: 100px;\n  border: 2px solid #005191;\n  margin: 20px auto 50px auto;\n  border-radius: 50px;\n  background-image: url('default-pro-picture.svg');\n}\n\n#upload-picture-wrapper {\n  height: 100px;\n  width: 100px;\n  border: 2px solid #005191;\n  margin: 0 auto;\n  margin-bottom: 50px;\n  border-radius: 50px;\n}\n\nspan {\n  color: #FFB351;\n  font-weight: 600;\n}\n\n#next-button {\n  width: 100%;\n  height: 60px;\n  background: lightgray;\n  position: absolute;\n  bottom: 0;\n  font-size: 1em;\n}\n\n.text-header {\n  font-size: 1.2em;\n  padding: unset;\n  color: #333;\n}\n\n.cancel-button {\n  color: #e4405f;\n  --background: none;\n  --background-hover: none;\n  height: 50px;\n  width: 200px;\n  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.cancel-button:hover {\n  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);\n}\n\n.camera-button {\n  --background: white;\n  --color: #005191;\n  --border-style: solid;\n  --border-width: 1px;\n  --border-color:#005191;\n  border: 1px;\n  margin: 30px auto;\n}\n\ninput[type=file] {\n  color: white;\n  font-size: 1.2em;\n  font-weight: 600;\n  border: #005191 1px solid;\n  background: -webkit-gradient(linear, left top, left bottom, from(#0672c4), to(#005191));\n  background: linear-gradient(#0672c4, #005191);\n  width: 400px;\n  height: 50px;\n  border-radius: 5px;\n  padding: 20px 0 0 20px;\n  text-align: center;\n  cursor: pointer;\n}\n\ninput[type=file]::-webkit-file-upload-button {\n  visibility: hidden;\n}\n\n#img-wrapper {\n  height: 150px;\n  width: 150px;\n  margin: 50px auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvYXV0aC9zaWduLXVwL3Byb2ZpbGUtcGljdHVyZS9wcm9maWxlLXBpY3R1cmUucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9hdXRoL3NpZ24tdXAvcHJvZmlsZS1waWN0dXJlL3Byb2ZpbGUtcGljdHVyZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0UsWUFBQTtBQ0NGOztBREdBO0VBQ0UsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLHdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtBQ0FGOztBRE9BO0VBQ0UsMkNBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTtBQ0pGOztBRE9BO0VBQ0UsYUFBQTtFQUFlLFlBQUE7RUFDZix5QkFBQTtFQUNBLDJCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnREFBQTtBQ0hGOztBRE1BO0VBQ0UsYUFBQTtFQUFlLFlBQUE7RUFDZix5QkFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDRkY7O0FES0E7RUFDRSxjQUFBO0VBQ0EsZ0JBQUE7QUNGRjs7QURLQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxjQUFBO0FDRkY7O0FES0E7RUFDRSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FDRkY7O0FES0E7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSx3QkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsMkNBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsMkVBQUE7VUFBQSxtRUFBQTtBQ0ZGOztBREtBO0VBQ0UsMkNBQUE7QUNGRjs7QURLQTtFQUNFLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSxXQUFBO0VBQ0EsaUJBQUE7QUNGRjs7QURLQTtFQUNFLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7RUFDQSx1RkFBQTtFQUFBLDZDQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FDRkY7O0FETUE7RUFDRSxrQkFBQTtBQ0hGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtBQ0xGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYXV0aC9zaWduLXVwL3Byb2ZpbGUtcGljdHVyZS9wcm9maWxlLXBpY3R1cmUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm9yYW5nZS1idXR0b24ge1xuICB3aWR0aDogdW5zZXQ7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW46IDQwcHggYXV0bztcbiAgd2lkdGg6IDIwMHB4O1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICB3aWR0aDogMjAwcHg7XG59XG5cblxuLnNraXAtYnV0dG9ue1xuICBkaXNwbGF5OiBibG9jaztcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICBjb2xvcjogZGFya2dyYXk7XG4gIC0tYm9yZGVyLWNvbG9yOiBkYXJrZ3JheTtcbiAgLS1ib3JkZXItd2lkdGggOiAxcHg7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgd2lkdGg6IDIwMHB4O1xuICBtYXJnaW46IDQwcHggYXV0bztcblxufVxuXG5pb24tYnV0dG9uIHtcbn1cblxuLndyYXBwZXIge1xuICBib3gtc2hhZG93OiAxcHggMXB4IDEwcHggcmdiYSgwLDAsMCwwLjEpO1xuICBoZWlnaHQ6IGF1dG87XG4gIHBhZGRpbmc6IDUwcHg7XG59XG5cbiNkZWZhdWx0LXBpY3R1cmUtd3JhcHBlciB7XG4gIGhlaWdodDogMTAwcHg7IHdpZHRoOiAxMDBweDtcbiAgYm9yZGVyOiAycHggc29saWQgIzAwNTE5MTtcbiAgbWFyZ2luOiAyMHB4IGF1dG8gNTBweCBhdXRvO1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJy4uLy4uLy4uLy4uLy4uL2Fzc2V0cy9pY29uL2RlZmF1bHQtcHJvLXBpY3R1cmUuc3ZnJyk7XG59XG5cbiN1cGxvYWQtcGljdHVyZS13cmFwcGVyIHtcbiAgaGVpZ2h0OiAxMDBweDsgd2lkdGg6IDEwMHB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjMDA1MTkxO1xuICBtYXJnaW46IDAgYXV0bztcbiAgbWFyZ2luLWJvdHRvbTogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbn1cblxuc3BhbntcbiAgY29sb3I6ICNGRkIzNTE7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbiNuZXh0LWJ1dHRvbntcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNjBweDtcbiAgYmFja2dyb3VuZDogbGlnaHRncmF5O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogMDtcbiAgZm9udC1zaXplOiAxZW07XG59XG5cbi50ZXh0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMS4yZW07XG4gIHBhZGRpbmc6IHVuc2V0O1xuICBjb2xvcjogIzMzMztcbn1cblxuLmNhbmNlbC1idXR0b24ge1xuICBjb2xvcjogI2U0NDA1ZjtcbiAgLS1iYWNrZ3JvdW5kOiBub25lO1xuICAtLWJhY2tncm91bmQtaG92ZXI6IG5vbmU7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDIwMHB4O1xuICBib3gtc2hhZG93OiAxcHggMXB4IDEwcHggcmdiYSgwLDAsMCwwLjEpO1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICB0cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogY3ViaWMtYmV6aWVyKDAuMTc1LCAwLjg4NSwgMC4zMiwgMS4yNzUpO1xufVxuXG4uY2FuY2VsLWJ1dHRvbjpob3ZlciB7XG4gIGJveC1zaGFkb3c6IDFweCAxcHggMTBweCByZ2JhKDAsMCwwLDAuNCk7XG59XG5cbi5jYW1lcmEtYnV0dG9ue1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xuICAtLWNvbG9yOiAjMDA1MTkxO1xuICAtLWJvcmRlci1zdHlsZTogc29saWQ7XG4gIC0tYm9yZGVyLXdpZHRoOiAxcHg7XG4gIC0tYm9yZGVyLWNvbG9yOiMwMDUxOTE7XG4gIGJvcmRlcjogMXB4O1xuICBtYXJnaW46IDMwcHggYXV0bztcbn1cblxuaW5wdXRbdHlwZT1maWxlXSB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxLjJlbTtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgYm9yZGVyOiAjMDA1MTkxIDFweCBzb2xpZDtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMwNjcyYzQsICMwMDUxOTEpO1xuICB3aWR0aDogNDAwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBwYWRkaW5nOiAyMHB4IDAgMCAyMHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGN1cnNvcjogcG9pbnRlcjtcblxufVxuXG5pbnB1dFt0eXBlPWZpbGVdOjotd2Via2l0LWZpbGUtdXBsb2FkLWJ1dHRvbiB7XG4gIHZpc2liaWxpdHk6IGhpZGRlbjtcbn1cblxuXG5cbiNpbWctd3JhcHBlciB7XG4gIGhlaWdodDogMTUwcHg7XG4gIHdpZHRoOiAxNTBweDtcbiAgbWFyZ2luOiA1MHB4IGF1dG87XG59XG4iLCIub3JhbmdlLWJ1dHRvbiB7XG4gIHdpZHRoOiB1bnNldDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogNDBweCBhdXRvO1xuICB3aWR0aDogMjAwcHg7XG59XG5cbi5ibHVlLWJ1dHRvbiB7XG4gIHdpZHRoOiAyMDBweDtcbn1cblxuLnNraXAtYnV0dG9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgY29sb3I6IGRhcmtncmF5O1xuICAtLWJvcmRlci1jb2xvcjogZGFya2dyYXk7XG4gIC0tYm9yZGVyLXdpZHRoOiAxcHg7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgd2lkdGg6IDIwMHB4O1xuICBtYXJnaW46IDQwcHggYXV0bztcbn1cblxuLndyYXBwZXIge1xuICBib3gtc2hhZG93OiAxcHggMXB4IDEwcHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICBoZWlnaHQ6IGF1dG87XG4gIHBhZGRpbmc6IDUwcHg7XG59XG5cbiNkZWZhdWx0LXBpY3R1cmUtd3JhcHBlciB7XG4gIGhlaWdodDogMTAwcHg7XG4gIHdpZHRoOiAxMDBweDtcbiAgYm9yZGVyOiAycHggc29saWQgIzAwNTE5MTtcbiAgbWFyZ2luOiAyMHB4IGF1dG8gNTBweCBhdXRvO1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi8uLi8uLi9hc3NldHMvaWNvbi9kZWZhdWx0LXByby1waWN0dXJlLnN2Z1wiKTtcbn1cblxuI3VwbG9hZC1waWN0dXJlLXdyYXBwZXIge1xuICBoZWlnaHQ6IDEwMHB4O1xuICB3aWR0aDogMTAwcHg7XG4gIGJvcmRlcjogMnB4IHNvbGlkICMwMDUxOTE7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBtYXJnaW4tYm90dG9tOiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xufVxuXG5zcGFuIHtcbiAgY29sb3I6ICNGRkIzNTE7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbiNuZXh0LWJ1dHRvbiB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDYwcHg7XG4gIGJhY2tncm91bmQ6IGxpZ2h0Z3JheTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBib3R0b206IDA7XG4gIGZvbnQtc2l6ZTogMWVtO1xufVxuXG4udGV4dC1oZWFkZXIge1xuICBmb250LXNpemU6IDEuMmVtO1xuICBwYWRkaW5nOiB1bnNldDtcbiAgY29sb3I6ICMzMzM7XG59XG5cbi5jYW5jZWwtYnV0dG9uIHtcbiAgY29sb3I6ICNlNDQwNWY7XG4gIC0tYmFja2dyb3VuZDogbm9uZTtcbiAgLS1iYWNrZ3JvdW5kLWhvdmVyOiBub25lO1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiAyMDBweDtcbiAgYm94LXNoYWRvdzogMXB4IDFweCAxMHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgdHJhbnNpdGlvbjogMC41cztcbiAgdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGN1YmljLWJlemllcigwLjE3NSwgMC44ODUsIDAuMzIsIDEuMjc1KTtcbn1cblxuLmNhbmNlbC1idXR0b246aG92ZXIge1xuICBib3gtc2hhZG93OiAxcHggMXB4IDEwcHggcmdiYSgwLCAwLCAwLCAwLjQpO1xufVxuXG4uY2FtZXJhLWJ1dHRvbiB7XG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG4gIC0tYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcbiAgLS1ib3JkZXItY29sb3I6IzAwNTE5MTtcbiAgYm9yZGVyOiAxcHg7XG4gIG1hcmdpbjogMzBweCBhdXRvO1xufVxuXG5pbnB1dFt0eXBlPWZpbGVdIHtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEuMmVtO1xuICBmb250LXdlaWdodDogNjAwO1xuICBib3JkZXI6ICMwMDUxOTEgMXB4IHNvbGlkO1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIzA2NzJjNCwgIzAwNTE5MSk7XG4gIHdpZHRoOiA0MDBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHBhZGRpbmc6IDIwcHggMCAwIDIwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG5pbnB1dFt0eXBlPWZpbGVdOjotd2Via2l0LWZpbGUtdXBsb2FkLWJ1dHRvbiB7XG4gIHZpc2liaWxpdHk6IGhpZGRlbjtcbn1cblxuI2ltZy13cmFwcGVyIHtcbiAgaGVpZ2h0OiAxNTBweDtcbiAgd2lkdGg6IDE1MHB4O1xuICBtYXJnaW46IDUwcHggYXV0bztcbn0iXX0= */";
     /***/
   },
 
@@ -303,83 +303,9 @@
       ngOnInit() {}
 
       onImagePicked(event) {
-        const FILE = event.target.files[0];
+        const FILE = event.target.files;
         this.imageObj = FILE;
-      }
-
-      onImageUpload() {
-        const imageForm = new FormData();
-        imageForm.append('image', this.imageObj);
-        this.photo.imageUpload(imageForm).subscribe(res => {
-          this.imageUrl = res['image'];
-        });
-      } // setProfilePhoto(name, sourceType): Promise<any> {
-      // return new Promise((resolve, reject) => {
-      // this.options.sourceType = sourceType;
-      // this.camera.getPicture(this.options)
-      // .then((res) => {
-      // let base64Image = 'data:image/jpeg;base64,' + res;
-      // resolve(base64Image);
-      // })
-      // .catch((err) => {
-      // reject(err);
-      // });
-      // });
-      // }
-
-
-      selectImage() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          const actionSheet = yield this.actionSheet.create({
-            header: 'Select Image source',
-            buttons: [{
-              text: 'Load from Library',
-              handler: () => {
-                this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-              }
-            }, {
-              text: 'Use Camera',
-              handler: () => {
-                this.takePicture(this.camera.PictureSourceType.CAMERA);
-              }
-            }, {
-              text: 'Cancel',
-              role: 'cancel'
-            }]
-          });
-          yield actionSheet.present();
-        });
-      }
-
-      takePicture(sourceType) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          // Get IMAGE PATH from Camera
-          const imagePath = yield this.camera.getPicture(this.options); // tslint:disable-next-line: max-line-length
-          // Given the IMAGE PATH from the Camera, find the path, get the file from the FileEntry, and use the FileReader on the file object to get raw data from the file.
-
-          const imageFile = yield this.photo.getSingleFile(imagePath); // console.log(imageFile.name);
-          // console.log('Image File');
-          // console.log(imageFile);
-          // to show profile picture on the webview in a format it can understand.
-          // this.profilePictureWebView = (window as any).Ionic.WebView.convertFileSrc(imagePath);
-          // console.log(this.profilePictureWebView);
-          // this.profilePicture = imageFile;
-          // resize image file with sharp
-
-          this.auth.modifyProfilePicture(imagePath).subscribe(data => {
-            console.log('Pic Data');
-            console.log(data);
-          });
-        });
-      }
-
-      pathForImage(img) {
-        if (img === null) {
-          return '';
-        } else {
-          let converted = this.webView.convertFileSrc(img);
-          return converted;
-        }
+        console.log(FILE);
       }
 
       goToUploadResumePage() {
@@ -387,7 +313,7 @@
         this.router.navigate(['/personal-info/profile-picture/upload-resume']);
       }
 
-      presentAlert() {
+      presentSkipAlert() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
           const alert = yield this.alertController.create({
             header: 'Skip',
@@ -421,14 +347,35 @@
         });
       }
 
+      presentCancelAlert() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const alert = yield this.alertController.create({
+            header: 'Cancel Sign up?',
+            cssClass: 'danger-alert',
+            buttons: [{
+              text: 'Yes',
+              handler: () => {
+                this.router.navigate(['']);
+                console.log('Cancelling Sign Up...');
+              }
+            }, {
+              text: 'No',
+              role: 'cancel',
+              handler: () => {}
+            }]
+          });
+          yield alert.present();
+        });
+      }
+
       skip() {
         console.log('Skipping to Upload Resume >>');
-        this.presentAlert(); // this.router.navigate(['/personal-info/profile-picture/upload-resume']);
+        this.presentSkipAlert();
       }
 
       cancel() {
         console.log('Sign up cancelled');
-        this.router.navigate(['']);
+        this.presentCancelAlert();
       }
 
     };

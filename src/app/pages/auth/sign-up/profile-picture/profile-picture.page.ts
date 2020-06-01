@@ -67,103 +67,20 @@ export class ProfilePicturePage implements OnInit {
   ngOnInit() {
     }
 
-   onImagePicked(event: Event): void {
-    const FILE = (event.target as HTMLInputElement).files[0];
+   onImagePicked(event: Event) {
+    const FILE = (event.target as HTMLInputElement).files;
     this.imageObj = FILE;
+    console.log(FILE);
+
    }
 
-   onImageUpload() {
-    const imageForm = new FormData();
-    imageForm.append('image', this.imageObj);
-    this.photo.imageUpload(imageForm).subscribe(res => {
-      this.imageUrl = res['image'];
-    });
-   }
-    // setProfilePhoto(name, sourceType): Promise<any> {
-
-      // return new Promise((resolve, reject) => {
-
-        // this.options.sourceType = sourceType;
-        // this.camera.getPicture(this.options)
-          // .then((res) => {
-            // let base64Image = 'data:image/jpeg;base64,' + res;
-            // resolve(base64Image);
-          // })
-          // .catch((err) => {
-            // reject(err);
-          // });
-        // });
-      // }
-
-async selectImage() {
-    const actionSheet = await this.actionSheet.create({
-        header: 'Select Image source',
-        buttons: [{
-                text: 'Load from Library',
-                handler: () => {
-                    this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-                }
-            },
-            {
-                text: 'Use Camera',
-                handler: () => {
-                    this.takePicture(this.camera.PictureSourceType.CAMERA);
-                }
-            },
-            {
-                text: 'Cancel',
-                role: 'cancel'
-            }
-        ]
-    });
-    await actionSheet.present();
-}
-
-async takePicture(sourceType: PictureSourceType) {
-
-  
-
-    // Get IMAGE PATH from Camera
-    const imagePath: string = await this.camera.getPicture(this.options);
-
-    // tslint:disable-next-line: max-line-length
-    // Given the IMAGE PATH from the Camera, find the path, get the file from the FileEntry, and use the FileReader on the file object to get raw data from the file.
-    const imageFile = await this.photo.getSingleFile(imagePath);
-    // console.log(imageFile.name);
-
-    // console.log('Image File');
-    // console.log(imageFile);
-
-    // to show profile picture on the webview in a format it can understand.
-    // this.profilePictureWebView = (window as any).Ionic.WebView.convertFileSrc(imagePath);
-    // console.log(this.profilePictureWebView);
-
-    // this.profilePicture = imageFile;
-
-    // resize image file with sharp
-    this.auth.modifyProfilePicture(imagePath).subscribe(data => {
-      console.log('Pic Data');
-      console.log(data);
-
-  });
-
-  }
-
-pathForImage(img) {
-if (img === null) {
-  return '';
-} else {
-  let converted = this.webView.convertFileSrc(img);
-  return converted;
-}
-}
 
   goToUploadResumePage() {
     console.log('Going to Resume Page >>');
     this.router.navigate(['/personal-info/profile-picture/upload-resume']);
   }
 
-  async presentAlert() {
+  async presentSkipAlert() {
     const alert = await this.alertController.create({
       header: 'Skip',
       message: 'Are you sure you want to skip? You can always upload a picture in the future by going to your Profile.',
@@ -197,20 +114,40 @@ if (img === null) {
     toast.present();
   }
 
+  async presentCancelAlert() {
+    const alert = await this.alertController.create({
+      header: 'Cancel Sign up?',
+      cssClass: 'danger-alert',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.router.navigate(['']);
+            console.log('Cancelling Sign Up...');
+          }
+        },
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   skip() {
     console.log('Skipping to Upload Resume >>');
-    this.presentAlert();
-    // this.router.navigate(['/personal-info/profile-picture/upload-resume']);
+    this.presentSkipAlert();
   }
 
   cancel() {
     console.log('Sign up cancelled');
-    this.router.navigate(['']);
+    this.presentCancelAlert();
   }
 
-
-// Testing
-// tslint:disable-next-line: member-ordering
 
 
 

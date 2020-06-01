@@ -37,24 +37,24 @@
   <ion-grid class="ion-hide-md-down">
     <ion-row class="ion-justify-content-center" style="margin-top: 5%;">
       <!-- Posts -->
-      <ion-col size="5">
+      <ion-col size="6">
         <ion-row *ngFor="let post of allPosts" class="post">
 
           <!-- Profile Header -->
-          <ion-col size="8">
-            <ion-row class="ion-justify-content-center" style="position: relative; left: 5px; top: 4px;" >
+          <ion-col size="11">
+            <ion-row class="ion-align-items-center">
             <!-- Profile Picture -->
-            <ion-col offset="0.5" size="1.2">
+            <ion-col offset-lg="0.5" size="1">
               <img src="../../../assets/aaron.jpg" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="7">
+            <ion-col size="4">
               <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
             </ion-col>
 
             <!-- Date -->
-            <ion-col size="2">
+            <ion-col class="ion-float-right" push-lg="3" size="3">
                 <h6 style="opacity: 0.4; font-size: 0.8em;">{{post.date}}</h6>
             </ion-col>
 
@@ -114,7 +114,7 @@
               </ion-col>
 
               <!-- Follow & Comment -->
-              <ion-col push="1" size="6">
+              <ion-col size="6">
                 <app-follow-comment-buttons [isUser]="post.isUser" [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>

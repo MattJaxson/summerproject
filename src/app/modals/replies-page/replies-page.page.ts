@@ -85,19 +85,52 @@ export class RepliesPagePage implements OnInit {
     await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe(
         data => {
-          let replies = data['replies'];
-          console.log(replies);
-          this.replies$.next(replies.reverse());
+          console.log(data);
 
-          // Format the Reply Dates
-          for (let i = 0; replies.length > i; i++) {
-            console.log(replies[i].date);
-            replies[i].date = formatDistanceToNow( new Date(replies[i].date), {
-              addSuffix: false
-            });
-         }
+          let comments = data['comments'];
+          let userEmail = data['userEmail'];
+          let replies = data['replies'];
+          // Give User ability to Edit, Delete, or Report a Comment.
+            // User cannot Report their own comment **
+          for (const comment of comments) {
+
+              // If the Logged in User's Email equals the creatorEmail of the Comment,
+              // they will be given the ability to edit and delete their Comment.
+              // The ability for them to report their own comment is disabled
+              console.log('false');
+
+              comment.repliesLength = comment.replies.length;
+              comment.isUser = false;
+              comment.canDeleteComment = false;
+              comment.canReport = true;
+              comment.date = formatDistanceToNow( new Date(comment.date), {
+                includeSeconds: false,
+                addSuffix: false
+              });
+
+              // If this comment is the logged in user, they can delete and edit
+              if (comment.userEmail === userEmail) {
+                console.log('true');
+                comment.isUser = true;
+                comment.canDeleteComment = true;
+                comment.canReport = false;
+              }
+
+              // Format the Reply Dates
+              for (let i = 0; comment.replies.length > i; i++) {
+                comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+                  addSuffix: false
+                });
+                replies.push(comment.replies[i]);
+             }
+           }
+
+          this.replies = replies;
+
+          this.posts.commentsSubject$.next(comments);
+          this.replies$.next(this.replies.reverse());
         }
-      )
+      );
 
     await this.repliesLoading();
   }
