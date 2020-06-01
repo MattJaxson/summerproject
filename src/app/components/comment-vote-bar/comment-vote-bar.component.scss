@@ -1,0 +1,37 @@
+.upvote{
+    border-radius: 5px;
+    width: 60px;
+    position: relative;
+    --color: #005191;
+  
+    ion-icon {
+      color: #005191;
+      font-size: 40px;
+    }
+  }
+  
+  .downvote {
+    border-radius: 5px;
+    width: 60px;
+    padding-left: 0px;
+    --color: #005191;
+  
+    ion-icon {
+      color: #005191;
+      --font-size: 40px;
+    }
+  }
+  
+  .upvoted-toast {
+    --background: #005191;
+  }
+  .downvoted-toast {
+    --background: #FFB351;
+  }
+  
+  .followed-toast {
+    --background: #24d8a8;
+  }
+  .unfollowed-toast {
+    --background: #FFB351;
+  }

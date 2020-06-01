@@ -69,13 +69,13 @@ export class PostsService {
 
    // Upvote
    upVoteComment(postID, commentID, userEmail) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, commentID, userEmail });
 
   }
 
    // Downvote
    downVoteComment(postID, commentID, userEmail) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-comment`, { postID, commentID, userEmail });
 
   }
 
