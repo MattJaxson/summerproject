@@ -87,6 +87,8 @@ export class CommentVoteBarComponent implements OnInit {
             }
         }
 
+          console.log('Current user: ', userEmail);
+
           this.userEmail = userEmail;
           this.currentUserUpvoted = upVoted;
           this.currentUserDownvoted = downVoted;
@@ -97,19 +99,22 @@ export class CommentVoteBarComponent implements OnInit {
   async upVoteComment() {
     await this.posts.upVoteComment(this.postID, this.commentID, this.userEmail)
       .subscribe(data => {
-       const upvotes = (data['upvotes']);
-       const downvotes = (data['downvotes']);
-       console.log(data);
-       this.upVoteCount$.next(upvotes);
-       this.downVoteCount$.next(downvotes);
-       this.currentUserUpvoted = true;
-      //  this.upVoteLength = this.upVoteCount$.getValue();
-      //  this.downVoteLength = this.downVoteCount$.getValue();
 
-       if (this.currentUserUpvoted === true) {
+        if (data['alreadyUpvoted']) {
+          console.log(data['message']);
+          return;
+        }
+        
+        const upvotes = (data['upvotes']);
+        const downvotes = (data['downvotes']);
+        console.log(data);
+        this.upVoteCount$.next(upvotes);
+        this.downVoteCount$.next(downvotes);
+        this.currentUserUpvoted = true;
 
-         return this.currentUserDownvoted = false;
-      }
+        if (this.currentUserUpvoted === true) {
+          return this.currentUserDownvoted = false;
+        }
     }
      );
 
@@ -124,17 +129,21 @@ export class CommentVoteBarComponent implements OnInit {
 
     await this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
     .subscribe(data => {
+
+      if (data['alreadyDownvoted']) {
+        console.log(data['message']);
+        return;
+      }
+
       const upvotes = (data['upvotes']);
       const downvotes = (data['downvotes']);
+      console.log('Data received:');
       console.log(data);
       this.upVoteCount$.next(upvotes);
       this.downVoteCount$.next(downvotes);
       this.currentUserDownvoted = true;
-      // this.upVoteLength = this.upVoteCount$.getValue();
-      // this.downVoteLength = this.downVoteCount$.getValue();
 
       if (this.currentUserDownvoted === true) {
-
         return this.currentUserUpvoted = false;
       }
     }

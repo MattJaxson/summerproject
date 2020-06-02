@@ -72,7 +72,7 @@ export class UpDownVoteButtonsComponent implements OnInit {
               return upVoted = true;
             }
 
-            console.log(upVoter);
+            console.log(`Upvoter: ${upVoter}`);
         }
 
           function findDownVoter(downVoter) {
