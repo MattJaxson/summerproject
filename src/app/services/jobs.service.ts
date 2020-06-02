@@ -15,13 +15,13 @@ export class JobsService {
 
   getJobs() {
     console.log('Getting Jobs');
-    return this.http.get(`${this.BACKEND_URL}/api/admin/jobs`);
+    return this.http.get(`${this.BACKEND_URL}/api/jobs`);
   }
 
   sendEmailApplication(user) {
     console.log(user);
     console.log(`Sending email to ${user.jobCompanyEmail}`);
-    return this.http.post(`${this.BACKEND_URL}/api/job`, user);
+    return this.http.post(`${this.BACKEND_URL}/api/jobs/send-application`, user);
   }
 }
 

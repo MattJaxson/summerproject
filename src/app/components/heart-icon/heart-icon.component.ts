@@ -64,7 +64,7 @@ export class HeartIconComponent implements OnInit {
   setFavoriteStateOn() {
     this.favoriteState = 'favorited';
     this.iconName = 'heart';
-    
+
  }
 
   setFavoriteStateOff() {

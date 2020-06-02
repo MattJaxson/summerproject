@@ -13,13 +13,14 @@
 .skip-button{
   display: block;
   --background: none;
-  color: darkgray;
-  --border-color: darkgray;
-  --border-width : 1px;
+  color: #888;
+  --border-color: #888;
+  --border-width : 3px;
   --border-style: solid;
   width: 200px;
   margin: 40px auto;
-
+  animation: none;
+  opacity: 0.5;
 }
 
 ion-button {
@@ -33,10 +34,11 @@ ion-button {
 
 #default-picture-wrapper {
   height: 100px; width: 100px;
-  border: 2px solid #005191;
   margin: 20px auto 50px auto;
   border-radius: 50px;
   background-image: url('../../../../../assets/icon/default-pro-picture.svg');
+  opacity: 0;
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1) 0.5s forwards;
 }
 
 #upload-picture-wrapper {
@@ -45,11 +47,16 @@ ion-button {
   margin: 0 auto;
   margin-bottom: 50px;
   border-radius: 50px;
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
 
 span{
   color: #FFB351;
   font-weight: 600;
+  background: #999;
+  padding: 6px;
+  line-height: 1.5em;
+  border-radius: 5px;
 }
 
 #next-button{
@@ -117,4 +124,15 @@ input[type=file]::-webkit-file-upload-button {
   height: 150px;
   width: 150px;
   margin: 50px auto;
+}
+
+@keyframes lide-up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }

@@ -3,10 +3,10 @@
 
 <ion-content class="ion-text-center">
   <ion-grid>
-    <ion-row class="ion-justify-content-center" style="height: 100vh ;">
+    <ion-row class="ion-justify-content-center" style="margin-top: 3%;">
 
       <!-- Mobile -->
-      <ion-col class="ion-hide-lg-up" style="position: relative; top: 100px" size-xs="11" size-md="8">
+      <ion-col class="ion-hide-lg-up" size-xs="9" size-md="8">
 
         <!-- Picture Wrapper -->
         <div
@@ -21,7 +21,13 @@
           style="
           background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
 
-        </div>
+      </div>
+
+        <ion-row class="ion-hide-lg-up">
+          <ion-col size="11" push="0.7">
+            <hr style="background-color: #00000044; margin: 20px 0;" />
+          </ion-col>
+        </ion-row>
 
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
 
@@ -33,7 +39,7 @@
           Skip
         </ion-button>
 
-        <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit" 
+        <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit"
         [disabled]="!imageUrl" >Next
         </ion-button>
         <ion-button (click)="cancel()" class="cancel-button">
@@ -76,7 +82,7 @@
 
         </div>
 
-        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions '.png', '.jpg', and '.jpeg' are allowed. </h6>
+        <h6 class="text-header">Please select your profile picture.<br> Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
 
         <input (change)="onImagePicked($event)" placeholder="Upload Image"
         type="file"/>

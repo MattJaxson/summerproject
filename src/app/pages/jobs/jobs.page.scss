@@ -57,8 +57,10 @@ ion-searchbar {
   --icon-color: #005191;
   transition: 0.5s;
   padding: 5px;
+}
 
-
+ion-searchbar:focus {
+  border: 1px solid #005191;
 }
 
 .job-section {
