@@ -108,8 +108,9 @@ export class EventsPage implements OnInit, AfterViewInit {
     let searchTerm = $event.detail.value;
 
     if (!searchTerm) {
-      console.log('No results returned from Search');
+      console.log('Search term is empty; showing all events instead');
       this.noSearchInput = true;
+      this.getEvents();
     }
 
     this.presentLoadingWithOptions();

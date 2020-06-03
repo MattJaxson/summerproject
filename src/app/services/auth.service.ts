@@ -183,7 +183,10 @@ getLoginCredentials(data) {
           console.log('Active User: ' + this.user.email);
         }),
         catchError(e => {
-          if (e.error.msg === 'The email and password don\'t match.') {
+          console.error(e);
+          if (e.message.startsWith('Http failure response')) {
+            this.presentAlert('Server Connection Error', 'There was a problem connecting to the server. Please try again later.');
+          } else if (e.error.msg === 'The email and password don\'t match.') {
             this.presentAlert('Incorrect Email/Password', "The email and password don't match.");
           } else {
             this.presentAlert('Email/Password Error', 'Please try again.')
