@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../../services/jobs.service';
 import { ProfileService } from '../../../services/profile.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { differenceInYears, parseISO } from "date-fns";
 
 @Component({
   selector: 'app-apply',
@@ -16,11 +17,13 @@ export class ApplyPage implements OnInit {
   public jobTitle;
   public jobCompanyName;
   public jobCompanyEmail;
+  public age;
+  public phoneNumber;
+  public reason;
+
   public applyPageForm: FormGroup;
 
   private user;
-  private userPhoneNumber;
-  private userResume
 
   constructor(
     private router: Router,
@@ -43,15 +46,12 @@ export class ApplyPage implements OnInit {
     this.jobCompanyEmail = companyEmail;
 
     this.profile.getUserDetails().subscribe(data => {
-      let user = data;
-      let userPhoneNumber = data["phone"];
-      let userResume = data["resume"]
+      this.user = data;
+      this.age = differenceInYears(Date.now(), parseISO(data["dob"]));
+      
+      console.log('User\'s age: ', this.age);
 
-      this.user = user;
-      this.userPhoneNumber = userPhoneNumber;
-      this.userResume = userResume;
-
-      this.populateForm(userPhoneNumber);
+      this.populateForm(this.user["phone"]);
     });
   }
 
@@ -84,7 +84,10 @@ export class ApplyPage implements OnInit {
   }
 
   finishApplication() {
-    this.jobs.sendEmailApplication(this.user).subscribe();
+    this.reason = this.applyPageForm.value.reasonTextArea;
+    this.phoneNumber = this.applyPageForm.value.phoneNumber;
+    console.log('Reason: ', this.reason);
+    this.jobs.sendEmailApplication(this.user, this.age, this.phoneNumber, this.reason, this.jobTitle, this.jobCompanyEmail).subscribe();
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply/:title/:companyEmail/:companyName/apply-confirm/', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }
