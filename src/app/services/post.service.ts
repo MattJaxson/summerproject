@@ -46,8 +46,8 @@ export class PostsService {
 
   }
 
-  editPost(postID, commentID, newPost) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/edit-post`, { postID, commentID, newPost });
+  editPost(postID, newPost) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/edit-post`, { postID, newPost });
 
   }
 

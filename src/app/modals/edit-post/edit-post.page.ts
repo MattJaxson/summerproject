@@ -6,15 +6,14 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 
 
 @Component({
-  selector: 'app-edit-comment',
-  templateUrl: './edit-comment.page.html',
-  styleUrls: ['./edit-comment.page.scss'],
+  selector: 'app-edit-post',
+  templateUrl: './edit-post.page.html',
+  styleUrls: ['./edit-post.page.scss'],
 })
-export class EditCommentPage implements OnInit {
-  editCommentForm: FormGroup;
+export class EditPostPage implements OnInit {
+  editPostForm: FormGroup;
   postID: string;
-  commentContents: string;
-  commentID: string;
+  post: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,13 +28,14 @@ export class EditCommentPage implements OnInit {
 
   ngOnInit() {
 
-     this.commentID = this.navParams.get('commentID');
      this.postID = this.navParams.get('postID');
-     this.commentContents = this.navParams.get('commentCotents');
+     this.post = this.navParams.get('post');
+
+     console.log(this.post);
 
      // To collect comment data
-     this.editCommentForm = this.formBuilder.group({
-      newComment: this.commentContents
+     this.editPostForm = this.formBuilder.group({
+      newPost: this.post
     });
 
   }
@@ -49,16 +49,16 @@ export class EditCommentPage implements OnInit {
     this.postEmitterService.postPageRefresh();
   }
 
-  async edit(newComment) {
+  async edit(newPost) {
     await console.log('editting');
-    await this.posts.editComment(this.commentID, this.postID, newComment.newComment).subscribe();
+    await this.posts.editPost(this.postID, newPost.newPost).subscribe();
     await this.editLoading();
     await this.refreshComment();
   }
 
   async editLoading() {
     const loading = await this.loading.create({
-      message: 'Editing your comment...',
+      message: 'Editing your Post...',
       duration: 2000
     });
     await loading.present();
@@ -72,7 +72,7 @@ export class EditCommentPage implements OnInit {
   async confirmAlert() {
     const alert = await this.alert.create({
       cssClass: 'success-alert',
-      message: 'Your comment has been edited.',
+      message: 'Your Post has been edited.',
       buttons: ['OK']
     });
 

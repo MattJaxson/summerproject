@@ -10,6 +10,7 @@ import { PostPagePageRoutingModule } from './post-page-routing.module';
 import { ReplyCommentPageModule } from 'src/app/modals/reply-comment/reply-comment.module';
 import { ReportCommentPageModule } from 'src/app/modals/report-comment/report-comment.module';
 import { EditCommentPageModule } from 'src/app/modals/edit-comment/edit-comment.module';
+import { EditPostPageModule } from 'src/app/modals/edit-post/edit-post.module';
 import { RepliesPagePageModule } from 'src/app/modals/replies-page/replies-page.module';
 
 
@@ -24,6 +25,7 @@ import { RepliesPagePageModule } from 'src/app/modals/replies-page/replies-page.
     ReplyCommentPageModule,
     ReportCommentPageModule,
     EditCommentPageModule,
+    EditPostPageModule,
     RepliesPagePageModule
 
       ],

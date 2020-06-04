@@ -35,16 +35,16 @@ export class PostsPage implements OnInit {
     private profile: ProfileService,
     private toast: ToastController,
     private formBuilder: FormBuilder,
-    private eventEmitterService: PostPageEmitterService
+    private postsEmitterService: PostPageEmitterService
   ) {}
 
 
   ngOnInit() {
 
-    if (this.eventEmitterService.subsVar == undefined) {
-      this.eventEmitterService.subsVar = this.eventEmitterService.invokePostsPageRefresh.subscribe(() => {
+    if (this.postsEmitterService.subsVar == undefined) {
+      this.postsEmitterService.subsVar = this.postsEmitterService.invokePostsPageRefresh.subscribe(() => {
         this.getPosts();
-      })
+      });
     }
 
     this.profile.getUserDetails().subscribe( details => {
@@ -71,7 +71,6 @@ export class PostsPage implements OnInit {
       this.commentForm.markAsPristine();
       }
 
-      console.log(this.commentForm);
     });
 
     this.getPosts();
@@ -124,7 +123,11 @@ export class PostsPage implements OnInit {
 
   async getPosts() {
     await this.posts.getPosts().subscribe( jobs => {
-      this.allPosts = Object.values(jobs).reverse();
+      this.posts.postsSubject$.next(Object.values(jobs).reverse());
+      this.posts.postsSubject$.subscribe( posts => {
+        this.allPosts = posts;
+      });
+
 
       for (const post of this.allPosts) {
         post.date = formatDistanceToNow( new Date(post.date), {
@@ -158,7 +161,7 @@ export class PostsPage implements OnInit {
       this.userFullName,
       this.userEmail,
       comment
-    );
+    ).subscribe();
 
     await this.posts.getPostInfo(postID).subscribe(
       post => {

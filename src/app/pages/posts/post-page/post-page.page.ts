@@ -9,9 +9,11 @@ import { formatDistanceToNow } from 'date-fns';
 import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.page';
 import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
 import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
+import { EditPostPage } from 'src/app/modals/edit-post/edit-post.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { BehaviorSubject } from 'rxjs';
+import { PlatformLocation } from '@angular/common';
 
 
 @Component({
@@ -35,7 +37,7 @@ export class PostPagePage implements OnInit {
   isUser = false;
 
 
-  post: string;
+  post;
   comments;
   followers: [];
   date: string;
@@ -59,9 +61,14 @@ export class PostPagePage implements OnInit {
     private modal: ModalController,
     private alert: AlertController,
     private loading: LoadingController,
+    private location: PlatformLocation
     ) { }
 
   ngOnInit() {
+
+    this.location.onPopState(() => {
+      this.postEmitterService.onBackAction();
+    });
 
     // Get Post ID from navigation params on the main posts tab
     const id  = this.activatedRoute.snapshot.paramMap.get('_id');
@@ -75,6 +82,7 @@ export class PostPagePage implements OnInit {
       // For Comment and Reply Refreshes
       this.postEmitterService.subsVar = this.postEmitterService.invokePostsPageRefresh.subscribe(() => {
         this.getPostInfo();
+        console.log('Refreshing Post-Page-Page');
       });
 
     }
@@ -422,6 +430,25 @@ export class PostPagePage implements OnInit {
     await editAlertConfig.present();
   }
 
+  async editPost(postID, post) {
+
+    await console.log('Attemping to edit comment');
+    console.log(post);
+    await this.editPostModal(postID, post);
+  }
+
+  async editPostModal(postID, post) {
+    const editAlertConfig = await this.modal.create({
+    component: EditPostPage,
+    componentProps: {
+      postID,
+      post
+    }
+    });
+
+    await editAlertConfig.present();
+  }
+
   async deleteComment(commentID) {
     console.log('deleting comment..');
     console.log(this.postID);
@@ -550,7 +577,8 @@ export class PostPagePage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    await this.modal.dismiss();
+
+
   }
 
   async getPostInfo() {
