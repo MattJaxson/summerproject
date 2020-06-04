@@ -91,6 +91,10 @@ ion-title {
   width: 94%;
 }
 
+.comment-text, #mentor-description, #job-full-description, .reply-text, .event-description {
+  white-space: pre-wrap;
+}
+
 .searchbar-input {
   background: #FFF !important;
   border-radius: 5px !important;

@@ -41,7 +41,8 @@
                 rows="10"
                 autogrow="true"
                 required
-                spellcheck="true"></ion-textarea>
+                spellcheck="true"
+                (keydown.control.enter)="messageValid ? confirm(this.contactMenorForm.value) : null"></ion-textarea>
             </ion-item>
             <ion-button type="submit" class="orange-button" [disabled]="!messageValid"
             expand="block">

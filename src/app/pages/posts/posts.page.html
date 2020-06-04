@@ -23,7 +23,7 @@
 
   <!-- fab placed to the bottom end -->
   <ion-fab class="ion-hide-lg-up" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button id="add-post-button" >
+    <ion-fab-button id="add-post-button" (click)="addPost()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -86,7 +86,8 @@
                       spellcheck="true"
                       wrap="soft"
                       type="text"
-                      placeholder="Add a Comment" formControlName="comment">
+                      placeholder="Add a Comment" formControlName="comment"
+                      (keydown.control.enter)="comment(this.commentForm.value, this.post._id)">
                     </ion-textarea>
                     <!-- Comment Post Button -->
                     <ion-button
@@ -139,7 +140,7 @@
           </ion-col>
           <ion-col size="12">
             <ion-button class="followed-button" (click)="following()">
-              Followed ({{followedPostCount}})
+              Following ({{followedPostCount}})
             </ion-button>
             <ion-button class="add-button"  (click)="addPost()">
               Add Post
@@ -204,7 +205,8 @@
                   spellcheck="true"
                   wrap="soft"
                   type="text"
-                  placeholder="Add a Comment" formControlName="comment">
+                  placeholder="Add a Comment" formControlName="comment"
+                  (keydown.control.enter)="comment(this.commentForm.value, this.post._id)">
                 </ion-textarea>
                 <!-- Comment Post Button -->
                 <ion-button

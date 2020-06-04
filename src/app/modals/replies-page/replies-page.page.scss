@@ -21,6 +21,11 @@
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+ion-button[type=submit] {
+  --color: white;
+  --background: linear-gradient(#24d8a8, #1baf88)
+}
+
 .reply-wrapper {
   padding: 10px;
 }

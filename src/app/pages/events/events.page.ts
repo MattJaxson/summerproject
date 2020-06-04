@@ -107,12 +107,6 @@ export class EventsPage implements OnInit, AfterViewInit {
     this.initializeItems();
     let searchTerm = $event.detail.value;
 
-    if (!searchTerm) {
-      console.log('Search term is empty; showing all events instead');
-      this.noSearchInput = true;
-      this.getEvents();
-    }
-
     this.presentLoadingWithOptions();
 
     this.allEvents = this.allEvents.filter( currentEvents => {
@@ -141,7 +135,6 @@ export class EventsPage implements OnInit, AfterViewInit {
       }
         return false;
     }
-      this.noSearchInput = true;
 
   });
 
@@ -160,9 +153,16 @@ export class EventsPage implements OnInit, AfterViewInit {
       });
       this.noSearchInput = true;
     }
-}
 
-    initializeItems(): void {
+    if (!searchTerm) {
+      console.log('Search term is empty; showing all events instead');
+      this.noSearchInput = false;
+      this.searching = false;
+      this.getEvents();
+    }
+  }
+
+  initializeItems(): void {
     this.allEvents = this.loadedAllEvents;
   }
 

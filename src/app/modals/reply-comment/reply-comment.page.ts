@@ -92,7 +92,7 @@ export class ReplyCommentPage implements OnInit {
              }
 
            }
-          this.posts.commentsSubject$.next(comments);
+          this.posts.commentsSubject$.next(comments.reverse());
         }
       );
     await this.replyLoading();

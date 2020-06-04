@@ -44,12 +44,12 @@
   <!-- Reply Input -->
   <ion-row class="ion-justify-content-center">
     <ion-col size="11">
-    <form [formGroup]="repliesForm" (ngSubmit)="reply()">
+    <form [formGroup]="repliesForm" (ngSubmit)="this.repliesForm.value.reply.length > 0 ? reply(this.repliesForm.value) && ScrollToReply() : null">
       <ion-textarea
       (ionFocus)="ScrollToTop()"
       (ionBlur)="onBlur()"
       (onfocusout)="blur()"
-      (keyup.enter)="reply(this.repliesForm.value) && ScrollToReply()"
+      (keydown.control.enter)="this.repliesForm.value.reply.length > 0 ? reply(this.repliesForm.value) && ScrollToReply() : null"
       class="reply-input"
       autogrow="true"
       autocapitalize="true"
@@ -57,8 +57,11 @@
       spellcheck="true"
       wrap="soft"
       type="text"
-      placeholder="Reply to this Comment" formControlName="reply">
+      placeholder="Reply to this comment" formControlName="reply">
       </ion-textarea>
+      <ion-button type="submit" expand="block">
+        Reply
+      </ion-button>
     </form>
     </ion-col>
   </ion-row>
@@ -76,8 +79,7 @@
       <img id="reply-avatar" src="../../../assets/batman-pro-pic.png">
     </ion-col>
     <ion-col size="7">
-         <p class="reply-text ion-text-wrap">  {{reply.reply}}.
-        </p>
+      <p class="reply-text">{{reply.reply}}</p>
     </ion-col>
     <ion-col size="2">
        <p id="reply-date">{{reply.date}}</p>
