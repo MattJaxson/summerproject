@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { formatDistanceToNow } from 'date-fns';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 import { PlatformLocation } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,9 +14,11 @@ import { PlatformLocation } from '@angular/common';
   styleUrls: ['./favorites.page.scss'],
 })
 export class FavoritesPage implements OnInit {
-  favoriteJobs;
+  // favoriteJobs;
   favoriteJobsObj;
   userEmail;
+
+  favJobsSub: Subscription;
 
   constructor(
     private router: Router,
@@ -26,9 +29,9 @@ export class FavoritesPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.location.onPopState(() => {
       this.eventEmitterService.onBackAction();
+      // this.favorites.getFavorites(this.userEmail);
     })
 
     // this.favorites.favoriteJobs$.subscribe(favorites => {
@@ -46,16 +49,18 @@ export class FavoritesPage implements OnInit {
     // getting all the favorite jobs that the user has on their profile
     this.profile.getUserDetails().subscribe( data => {
       this.userEmail = data['email'];
-      this.favoriteJobs = data['favoriteJobs']
-      console.log('Favorite Jobs:');
-      console.log(this.favoriteJobs);
+      // this.favoriteJobs = data['favoriteJobs']
+      // console.log('Favorite Jobs:');
+      // console.log(this.favoriteJobs);
 
-      this.favorites.favoriteJobs$.next(this.favoriteJobs);
+      // this.favorites.favoriteJobs$.next(this.favoriteJobs);
       this.favorites.favoriteJobs$.subscribe(
         favs => {
           console.log(`Favorite Jobs in Service: ${favs}`);
           this.favorites.getFavorites(this.userEmail).subscribe( favDetails => {
             this.favoriteJobsObj = favDetails;
+            console.log('Favorite jobs:')
+            console.log(favDetails)
             for (const job of this.favoriteJobsObj) {
               job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: true });
             }

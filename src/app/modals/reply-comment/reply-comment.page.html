@@ -25,9 +25,9 @@
 
       <ion-col size="10">
         <p id="userfullname"></p>
-        <form [formGroup]="replyCommentForm" (ngSubmit)="reply(this.replyCommentForm.value)">
+        <form [formGroup]="replyCommentForm" (ngSubmit)="this.replyCommentForm.value.reply.length > 0 ? reply(this.replyCommentForm.value) : null">
           <ion-textarea
-            (keyup.enter)="reply(this.replyCommentForm.value)"
+            (keydown.control.enter)="this.replyCommentForm.value.reply.length > 0 ? reply(this.replyCommentForm.value) : null"
             class="reply-input"
             autogrow="true"
             autocapitalize="true"

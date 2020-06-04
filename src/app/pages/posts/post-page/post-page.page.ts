@@ -633,7 +633,7 @@ export class PostPagePage implements OnInit {
             this.creatorEmail = creatorEmail;
             this.date = date;
             this.followers = followers;
-            this.comments = comments;
+            this.comments = comments.reverse();
             this.following = following;
             this.post = post;
             this.userProfilePicture = userProfilePicture;

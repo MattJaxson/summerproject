@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, IonRefresher, IonFabButton } from '@ionic/angular';
+import { IonFabButton } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 
@@ -19,7 +18,6 @@ export class PostsPage implements OnInit {
 
   @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
 
-  postsSub: Subscription;
   // postsSub: Subscription;
   commentForm: FormGroup;
   allPosts;
@@ -47,18 +45,6 @@ export class PostsPage implements OnInit {
       })
     }
 
-    this.profile.getUserDetails().subscribe( details => {
-      this.userEmail = details['email'];
-      this.userFullName = details['fullName'];
-
-      this.followedPost = details['followedPost'];
-      this.posts.followingSubject$.next(this.followedPost);
-      this.posts.followingSubject$.subscribe( posts => {
-        this.followedPostCount = posts.length;
-      });
-    });
-
-
      // To collect comment data
     this.commentForm = this.formBuilder.group({
       comment: ['']
@@ -75,6 +61,7 @@ export class PostsPage implements OnInit {
     });
 
     this.getPosts();
+    this.getFollowingPosts();
   }
 
   postPage(post) {
@@ -83,12 +70,12 @@ export class PostsPage implements OnInit {
   }
 
   getFollowingPosts() {
-    // Get the User's details
+    // Get the user's posts he/she is following
     this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
       this.userFullName = details['fullName'];
-
       this.followedPost = details['followedPost'];
+
       this.posts.followingSubject$.next(this.followedPost);
       this.posts.followingSubject$.subscribe( posts => {
         this.followedPostCount = posts.length;
@@ -136,11 +123,11 @@ export class PostsPage implements OnInit {
   }
 
 
-    addPost() {
+  addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
 
-    following() {
+  following() {
     this.router.navigate(['/home/posts/following']);
   }
 

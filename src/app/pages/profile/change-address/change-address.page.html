@@ -158,7 +158,16 @@
                   required
                   type="password"
                   placeholder="Password"
-                  formControlName="password">
+                  formControlName="password"
+                  (keyup.enter)="confirmChangeAddress(
+                    this.activeEmail,
+                    this.changeAddress.controls.addressOne.value,
+                    this.changeAddress.controls.addressTwo.value,
+                    this.changeAddress.controls.city.value,
+                    this.changeAddress.controls.state.value,
+                    this.changeAddress.controls.zip.value,
+                    this.changeAddress.controls.password.value
+                  )">
                 </ion-input>
             </ion-item>
               <ion-button type="submit"class="orange-button" style="width: unset; margin-top: 16px;">CHANGE ADDRESS</ion-button>

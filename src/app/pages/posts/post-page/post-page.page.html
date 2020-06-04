@@ -89,7 +89,7 @@
                       (ionFocus)="ScrollToTop()"
                       (ionBlur)="onBlur()"
                       (onfocusout)="blur()"
-                      (keyup.enter)="comment(this.commentForm.value, this.postID) && ScrollToPostedComment()"
+                      (keydown.control.enter)="comment(this.commentForm.value, this.postID) && ScrollToPostedComment()"
                       class="comment-input"
                       autogrow="true"
                       autocapitalize="true"
@@ -182,7 +182,7 @@
           <!-- Comment -->
           <ion-row class="ion-justify-content-center">
             <ion-col size="11">
-                <p class="comment-text ion-text-wrap" style="margin-top: 40px;">  {{comment.comment}}
+                <p class="comment-text" style="margin-top: 40px;">{{comment.comment}}
                 </p>
             </ion-col>
           </ion-row>

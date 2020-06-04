@@ -71,6 +71,7 @@
                     maxlength="2500"
                     rows="10"
                     placeholder="Why are you a great candidate for the position of {{jobTitle}}? .. optional - 2500 characters max"
+                    (keydown.control.enter)="finishApplication()"
                     ></ion-textarea>
                   </ion-item>
                 </ion-list>

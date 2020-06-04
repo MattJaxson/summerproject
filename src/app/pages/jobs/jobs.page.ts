@@ -1,13 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { IonSearchbar, LoadingController } from '@ionic/angular';
-import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { JobsService } from '../../services/jobs.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { BehaviorSubject } from 'rxjs';
-import { format, formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 
 
@@ -85,7 +83,7 @@ export class JobsPage implements OnInit, OnDestroy {
   }
 
   getFavoriteJobs() {
-    // getting all the favorite jobs that the user has on their profile
+    // Get all the user's favorite jobs
     this.profile.getUserDetails().subscribe(
       data => {
         this.favoriteJobs = data['favoriteJobs']

@@ -59,11 +59,11 @@ export class FavoritesService {
         console.log("Unfavorite data value: ", data);
         let updatedFavorites = [...Object.values(data)];
         
-        for (let i = 0; i < updatedFavorites.length; i++) {
-          if (updatedFavorites[i] === job) {
-            updatedFavorites.splice(i, 1);
-          }
-        }
+        // for (let i = 0; i < updatedFavorites.length; i++) {
+        //   if (updatedFavorites[i] === job) {
+        //     updatedFavorites.splice(i, 1);
+        //   }
+        // }
 
         this.favoriteJobs$.next(updatedFavorites);
         this.presentToast('You removed this job from Favorites.');

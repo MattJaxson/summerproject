@@ -46,25 +46,25 @@ export class RepliesPagePage implements OnInit {
 
   ngOnInit() {
      // To collect comment data
-     this.repliesForm = this.formBuilder.group({
+    this.repliesForm = this.formBuilder.group({
       reply: ['']
-   });
+    });
 
-     this.replies$.next(this.navParams.get('replies').reverse());
-     this.replies$.subscribe(data => {
-      this.replies = data;
-     });
+    this.replies$.next(this.navParams.get('replies').reverse());
+    this.replies$.subscribe(data => {
+    this.replies = data;
+    });
 
-     this.postID = this.navParams.get('postID');
-     this.commentContents = this.navParams.get('comment');
-     this.commentID = this.navParams.get('commentID');
-     this.commentUserFullName = this.navParams.get('commentUserFullName');
-     this.commentUserEmail = this.navParams.get('commentUserEmail');
-     this.commentDate = this.navParams.get('commentDate');
+    this.postID = this.navParams.get('postID');
+    this.commentContents = this.navParams.get('comment');
+    this.commentID = this.navParams.get('commentID');
+    this.commentUserFullName = this.navParams.get('commentUserFullName');
+    this.commentUserEmail = this.navParams.get('commentUserEmail');
+    this.commentDate = this.navParams.get('commentDate');
 
 
-     this.userFullName = this.navParams.get('userFullName');
-     this.userEmail = this.navParams.get('userEmail');
+    this.userFullName = this.navParams.get('userFullName');
+    this.userEmail = this.navParams.get('userEmail');
 
   }
 
@@ -85,8 +85,19 @@ export class RepliesPagePage implements OnInit {
     await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe(
         data => {
+          let currentComment;
+          let currentCommentReplies = [];
+
           console.log(data);
 
+          for (const comment of data['comments']) {
+            if (comment._id == data['comment']) {
+              currentComment = comment;
+              for (let i = 0; i < comment.replies.length; i++) {
+                currentCommentReplies.push(comment.replies[i]);
+              }
+            }
+          }
           let comments = data['comments'];
           let userEmail = data['userEmail'];
           let replies = data['replies'];
@@ -125,9 +136,9 @@ export class RepliesPagePage implements OnInit {
              }
            }
 
-          this.replies = replies;
+          this.replies = currentCommentReplies;
 
-          this.posts.commentsSubject$.next(comments);
+          this.posts.commentsSubject$.next(comments.reverse());
           this.replies$.next(this.replies.reverse());
         }
       );
