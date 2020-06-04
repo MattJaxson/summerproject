@@ -65,7 +65,7 @@ export class FavoritesService {
           }
         }
 
-        await this.favoriteJobs$.next(updatedFavorites);
+        this.favoriteJobs$.next(updatedFavorites);
         this.presentToast('You removed this job from Favorites.');
       }
     );
