@@ -2,22 +2,22 @@
   <ion-buttons slot="start">
     <ion-button *ngIf="!currentUserUpvoted" class="upvote" (click)="upVoteComment()">
       <ion-icon size="large" src="../assets/icon/caret-up-outline.svg"></ion-icon>
-      {{ upVoteCount$.getValue() }}
+      {{upVoteLength}}
     </ion-button>
     <ion-button *ngIf="currentUserUpvoted" class="upvote" (click)="upVoteComment()">
       <ion-icon  size="large" src="../assets/icon/caret-up-outline-active.svg"></ion-icon>
-      {{ upVoteCount$.getValue() }}
+      {{upVoteLength}}
     </ion-button>
 
     <!-- Downvotes -->
     <ion-button *ngIf="!currentUserDownvoted" class="downvote" (click)="downVoteComment()">
       <ion-icon size="large" src="../assets/icon/caret-down-outline.svg">
       </ion-icon>
-      {{ downVoteCount$.getValue() }}
+      {{downVoteLength}}
     </ion-button>
       <ion-button *ngIf="currentUserDownvoted" class="downvote" (click)="downVoteComment()">
         <ion-icon size="large" src="../assets/icon/caret-down-outline-active.svg"></ion-icon>
-        {{ downVoteCount$.getValue() }}
+        {{downVoteLength}}
       </ion-button>
   </ion-buttons>
 </ion-toolbar>

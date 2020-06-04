@@ -18,8 +18,11 @@ export class CommentVoteBarComponent implements OnInit {
   upVoteCount$ = new BehaviorSubject(0);
   downVoteCount$ = new BehaviorSubject(0);
 
-  upVoteCount;
-  downVoteCount;
+  upVoteLength: any;
+  downVoteLength: any;
+
+  upVotes;
+  downVotes;
 
   upVoters = [];
   downVoters = [];
@@ -45,17 +48,17 @@ export class CommentVoteBarComponent implements OnInit {
           }
         }
 
-        this.upVoteCount = comment['upvotes'];
-        this.downVoteCount = comment['downvotes'];
+        this.upVotes = comment['upvotes'];
+        this.downVotes = comment['downvotes'];
 
         this.upVoters = comment['upvoters'];
         this.downVoters = comment['downvoters'];
 
-        this.upVoteCount$.next(this.upVoteCount);
-        this.downVoteCount$.next(this.downVoteCount);
+        this.upVoteCount$.next(this.upVotes);
+        this.downVoteCount$.next(this.downVotes);
 
-        // this.upVoteLength = this.upVotes$.getValue();
-        // this.downVoteLength = this.downVotes$.getValue();
+        this.upVoteLength = this.upVoteCount$.getValue();
+        this.downVoteLength = this.downVoteCount$.getValue();
 
         // Get User Email
         this.profile.getUserDetails()
@@ -99,18 +102,14 @@ export class CommentVoteBarComponent implements OnInit {
   async upVoteComment() {
     await this.posts.upVoteComment(this.postID, this.commentID, this.userEmail)
       .subscribe(data => {
-
-        if (data['alreadyUpvoted']) {
-          console.log(data['message']);
-          return;
-        }
-        
         const upvotes = (data['upvotes']);
         const downvotes = (data['downvotes']);
         console.log(data);
         this.upVoteCount$.next(upvotes);
         this.downVoteCount$.next(downvotes);
         this.currentUserUpvoted = true;
+        this.upVoteLength = this.upVoteCount$.getValue();
+        this.downVoteLength = this.downVoteCount$.getValue();
 
         if (this.currentUserUpvoted === true) {
           return this.currentUserDownvoted = false;
@@ -118,38 +117,7 @@ export class CommentVoteBarComponent implements OnInit {
     }
      );
 
-
-    // console.log(this.upVoteLength);
-    // console.log(this.downVoteLength);
-
     this.upVoteCommentToast();
-  }
-
-  async downVoteComment() {
-
-    await this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
-    .subscribe(data => {
-
-      if (data['alreadyDownvoted']) {
-        console.log(data['message']);
-        return;
-      }
-
-      const upvotes = (data['upvotes']);
-      const downvotes = (data['downvotes']);
-      console.log('Data received:');
-      console.log(data);
-      this.upVoteCount$.next(upvotes);
-      this.downVoteCount$.next(downvotes);
-      this.currentUserDownvoted = true;
-
-      if (this.currentUserDownvoted === true) {
-        return this.currentUserUpvoted = false;
-      }
-    }
-   );
-
-    this.downVoteCommentToast();
   }
 
   async upVoteCommentToast() {
@@ -159,6 +127,30 @@ export class CommentVoteBarComponent implements OnInit {
       duration: 2000
     });
     upVotePostToast.present();
+  }
+
+
+  async downVoteComment() {
+
+    await this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
+    .subscribe(data => {
+
+      const upvotes = (data['upvotes']);
+      const downvotes = (data['downvotes']);
+      console.log(data);
+      this.upVoteCount$.next(upvotes);
+      this.downVoteCount$.next(downvotes);
+      this.currentUserDownvoted = true;
+      this.upVoteLength = this.upVoteCount$.getValue();
+      this.downVoteLength = this.downVoteCount$.getValue();
+
+      if (this.currentUserDownvoted === true) {
+        return this.currentUserUpvoted = false;
+      }
+    }
+   );
+
+    this.downVoteCommentToast();
   }
 
   async downVoteCommentToast() {

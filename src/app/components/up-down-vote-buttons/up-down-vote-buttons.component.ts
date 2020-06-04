@@ -111,10 +111,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     }
      );
 
-
-    console.log(this.upVoteLength);
-    console.log(this.downVoteLength);
-
     this.upVotePostToast();
   }
 
