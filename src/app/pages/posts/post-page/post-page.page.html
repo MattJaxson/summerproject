@@ -122,11 +122,11 @@
                 <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
             </ion-col>
             <ion-col class="" size="7">
-              <ion-button *ngIf="this.isUser === true" (click)="deleteComment(this.postID)"  class="delete ion-float-right">
+              <ion-button *ngIf="this.isUser === true" (click)="deletePost(this.postID)"  class="delete ion-float-right">
                 Delete
               </ion-button>
               <ion-button
-                *ngIf="this.isUser === true" (click)="editComment  (this.postID)"
+                *ngIf="this.isUser === true" (click)="editPost(this.postID, this.post)"
                 class="edit ion-float-right"
                 style="--background: none;">
                 Edit

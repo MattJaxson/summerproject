@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: 'replies-page',
     loadChildren: () => import('./modals/replies-page/replies-page.module').then( m => m.RepliesPagePageModule)
+  },
+  {
+    path: 'edit-post',
+    loadChildren: () => import('./modals/edit-post/edit-post.module').then( m => m.EditPostPageModule)
   }
 ];
 @NgModule({

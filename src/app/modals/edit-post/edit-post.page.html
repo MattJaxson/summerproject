@@ -1,0 +1,45 @@
+<!-- Desktop Header -->
+<ion-header class="ion-hide-md-down">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">Edit Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-icon id="back-arrow-icons" (click)="cancel()" name="arrow-back"></ion-icon>
+    <ion-title slot="end">Edit Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <form [formGroup]="editPostForm" (ngSubmit)="edit(this.editPostForm.value)">
+        <ion-textarea
+          (keyup.enter)="edit(this.editPostForm.value)"
+          class="comment-input"
+          autogrow="true"
+          autocapitalize="true"
+          rows="15"
+          spellcheck="true"
+          wrap="soft"
+          type="text"
+          formControlName="newPost">
+        </ion-textarea>
+
+        <div style="text-align: center; width: 100%; margin-top: 20px;" >
+          <ion-button class="orange-button" style="margin: 0 auto;" type="submit">
+            Edit
+          </ion-button>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

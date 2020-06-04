@@ -4,7 +4,7 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col size-xs="8" size-sm="8" size-md="8">
+        <ion-col push-xs="0.3" push-sm="1" size-xs="8" size-sm="8" size-md="8">
           <ion-searchbar
           debounce="2000"
           class="searchbar"
@@ -14,9 +14,9 @@
           ></ion-searchbar>
         </ion-col>
 
-        <ion-col size-xs="3" size-sm="3" size-md="3">
+        <ion-col push-xs="0.3" push-sm="1" size-xs="3" size-sm="3" size-md="3">
           <ion-button  id="my-events-button" (click)="going()">
-            My Events ({{ eventsGoingLength }})
+            Events ({{ eventsGoingLength }})
         </ion-button>
 
         </ion-col>
@@ -81,7 +81,7 @@
             (ionChange)="filter($event)"
             ></ion-searchbar>
       </ion-col>
-      <ion-col size="2" push="1">
+      <ion-col size="2" push="1.5">
         <ion-row>
           <ion-col size="12">
             <ion-button class="blue-button ion-float-right" style="width: 170px; position: fixed; top: 60px;" (click)="going()">

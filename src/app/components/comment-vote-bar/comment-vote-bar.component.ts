@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BehaviorSubject } from 'rxjs';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 @Component({
   selector: 'app-comment-vote-bar',
@@ -18,14 +19,14 @@ export class CommentVoteBarComponent implements OnInit {
   upVoteCount$ = new BehaviorSubject(0);
   downVoteCount$ = new BehaviorSubject(0);
 
-  upVoteLength: any;
-  downVoteLength: any;
+  upVoteLength;
+  downVoteLength;
 
   upVotes;
   downVotes;
 
-  upVoters = [];
-  downVoters = [];
+  upVoters;
+  downVoters;
 
   currentUserUpvoted = false;
   currentUserDownvoted = false;
@@ -33,77 +34,77 @@ export class CommentVoteBarComponent implements OnInit {
   constructor(
     public posts: PostsService,
     private profile: ProfileService,
-    private toast: ToastController
+    private toast: ToastController,
+    private postEmitterService: PostPageEmitterService,
   ) { }
 
   async ngOnInit() {
 
     // Get information about comment
-    await this.posts.getPostInfo(this.postID)
-      .subscribe( postInfo => {
-        let comment;
-        for (const commentIterator of postInfo['comments']) {
-          if (commentIterator['_id'] == this.commentID) {
-            comment = commentIterator;
+    this.posts.getPostInfo(this.postID)
+      .subscribe(postInfo => {
+        let theComment;
+        let allComments = postInfo['comments'];
+        allComments.find(comment => {
+
+          if (comment._id === this.commentID) {
+            this.upVoters = comment['upvoters'];
+            this.downVoters = comment['downvoters'];
+
+
+            this.upVotes = comment['upvotes'];
+            this.downVotes = comment['downvotes'];
+
+            this.upVoteCount$.next(this.upVotes);
+            this.downVoteCount$.next(this.downVotes);
+
+            this.upVoteLength = this.upVoteCount$.getValue();
+            this.downVoteLength = this.downVoteCount$.getValue();
+            return;
           }
-        }
-
-        this.upVotes = comment['upvotes'];
-        this.downVotes = comment['downvotes'];
-
-        this.upVoters = comment['upvoters'];
-        this.downVoters = comment['downvoters'];
-
-        this.upVoteCount$.next(this.upVotes);
-        this.downVoteCount$.next(this.downVotes);
-
-        this.upVoteLength = this.upVoteCount$.getValue();
-        this.downVoteLength = this.downVoteCount$.getValue();
+          console.log(theComment);
+        });
 
         // Get User Email
         this.profile.getUserDetails()
-          .subscribe( userDetails => {
-          let userEmail = userDetails['email'];
-          let upVoted = false;
-          let downVoted = false;
-
-          this.upVoters.find(findUpVoter);
-          this.downVoters.find(findDownVoter);
-
-          function findUpVoter(upVoter) {
-            if (!upVoter) {
+          .subscribe(userDetails => {
+            let userEmail = userDetails['email'];
+            let upVoted = false;
+            let downVoted = false;
+            this.upVoters.find(findUpVoter);
+            this.downVoters.find(findDownVoter);
+            function findUpVoter(upVoter) {
+              if (!upVoter) {
+              }
+              if (upVoter === userEmail) {
+                return upVoted = true;
+              }
+              console.log(upVoter);
             }
-
-            if (upVoter === userEmail) {
-              return upVoted = true;
+            function findDownVoter(downVoter) {
+              if (!downVoter) {
+              }
+              if (downVoter === userEmail) {
+                return downVoted = true;
+              }
             }
-
-            console.log(upVoter);
-        }
-
-          function findDownVoter(downVoter) {
-            if (!downVoter) {
-            }
-
-            if (downVoter === userEmail) {
-              return downVoted = true;
-            }
-        }
-
-          console.log('Current user: ', userEmail);
-
-          this.userEmail = userEmail;
-          this.currentUserUpvoted = upVoted;
-          this.currentUserDownvoted = downVoted;
-        });
+            console.log('Current user: ', userEmail);
+            this.userEmail = userEmail;
+            this.currentUserUpvoted = upVoted;
+            this.currentUserDownvoted = downVoted;
+          });
       });
   }
 
-  async upVoteComment() {
-    await this.posts.upVoteComment(this.postID, this.commentID, this.userEmail)
+  refreshAfterComment() {
+    this.postEmitterService.postPageRefresh();
+  }
+
+   upVoteComment() {
+     this.posts.upVoteComment(this.postID, this.commentID, this.userEmail)
       .subscribe(data => {
-        const upvotes = (data['upvotes']);
-        const downvotes = (data['downvotes']);
+        const upvotes = data['upvotes'];
+        const downvotes = data['downvotes'];
         console.log(data);
         this.upVoteCount$.next(upvotes);
         this.downVoteCount$.next(downvotes);
@@ -117,7 +118,8 @@ export class CommentVoteBarComponent implements OnInit {
     }
      );
 
-    this.upVoteCommentToast();
+     this.upVoteCommentToast();
+     this.refreshAfterComment();
   }
 
   async upVoteCommentToast() {
@@ -130,13 +132,13 @@ export class CommentVoteBarComponent implements OnInit {
   }
 
 
-  async downVoteComment() {
+   downVoteComment() {
 
-    await this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
+     this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
     .subscribe(data => {
 
-      const upvotes = (data['upvotes']);
-      const downvotes = (data['downvotes']);
+      const upvotes = data['upvotes'];
+      const downvotes = data['downvotes'];
       console.log(data);
       this.upVoteCount$.next(upvotes);
       this.downVoteCount$.next(downvotes);
@@ -150,7 +152,8 @@ export class CommentVoteBarComponent implements OnInit {
     }
    );
 
-    this.downVoteCommentToast();
+     this.downVoteCommentToast();
+     this.refreshAfterComment();
   }
 
   async downVoteCommentToast() {
