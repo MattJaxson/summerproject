@@ -51,7 +51,7 @@ export class PostsService {
 
   }
 
-  editComment(postID, commentID, newComment) {
+  editComment(commentID, postID, newComment) {
     return this.http.post(`${this.BACKEND_URL}/api/posts/edit-comment`, { postID, commentID, newComment });
 
   }

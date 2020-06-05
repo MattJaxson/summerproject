@@ -49,22 +49,26 @@ export class EditPostPage implements OnInit {
     this.postEmitterService.postPageRefresh();
   }
 
-  async edit(newPost) {
-    await console.log('editting');
-    await this.posts.editPost(this.postID, newPost.newPost).subscribe();
-    await this.editLoading();
-    await this.refreshComment();
+   edit(newPost) {
+     console.log('editting');
+     this.posts.editPost(this.postID, newPost.newPost).subscribe( post => {
+      console.log(post);
+      this.editLoading(post['post']);
+    });
   }
 
-  async editLoading() {
+  async editLoading(post) {
     const loading = await this.loading.create({
       message: 'Editing your Post...',
-      duration: 2000
+      duration: 1000
     });
     await loading.present();
+    console.log(post.post);
 
     const { role, data } = await loading.onDidDismiss();
+
     await this.modal.dismiss();
+    await this.posts.postsSubject$.next(post);
     await this.confirmAlert();
     console.log('Loading dismissed!');
   }

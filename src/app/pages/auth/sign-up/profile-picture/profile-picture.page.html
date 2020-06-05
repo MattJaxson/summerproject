@@ -40,7 +40,7 @@
         </ion-button>
 
         <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit"
-        [disabled]="!imageUrl" >Next
+        [disabled]="!webFile" >Next
         </ion-button>
         <ion-button (click)="cancel()" class="cancel-button">
             Cancel
@@ -70,30 +70,23 @@
         <!-- Picture Wrapper -->
         <div
           id="default-picture-wrapper"
+          style="
+          background-image: url('../../../../../assets/icon/default-pro-picture.svg');"
           *ngIf="!imageUrl">
         </div>
 
         <!-- User has uploaded profile picture -->
-        <div
+        <img
           id="upload-picture-wrapper"
-          *ngIf="imageUrl"
-          style="
-          background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
-
-        </div>
+          src="{{imageUrl}}"
+          *ngIf="imageUrl">
 
         <h6 class="text-header">Please select your profile picture.<br> Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
 
-        <input (change)="onImagePicked($event)" placeholder="Upload Image"
+        <form type="multipart/form-data">
+          <input name="profile-picture" (change)="getFormData($event)" placeholder="Upload Image"
         type="file"/>
-
-        <div *ngIf="imageUrl">
-        Preview Image from AWS
-        <br />
-        <img width="200px" src="https://YOUR S3 BUCKET
-        NAME.s3.amazonaws.com/{{
-        imageUrl }}" />
-        </div>
+        </form>
 
         <ion-button class="blue-button skip-button" (click)="skip()" style="margin-top: 20px;">
           Skip

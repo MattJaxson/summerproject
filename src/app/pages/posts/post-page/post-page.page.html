@@ -1,10 +1,11 @@
+<!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar class="toolbar">
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-      <div slot="end">
-        <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em;">{{date}} ago</span></ion-title>
+      <div style="position: relative; right: 15px;" slot="end">
+        <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: -2.5px;">{{date}} ago</span></ion-title>
       </div>
       <div style="position: relative; right: 15px;" slot="end">
         <img style="position: relative; right: 5px; display: inline-block;" slot="end" class="profile-picture" src="../../../../assets/aaron.jpg">
@@ -31,17 +32,17 @@
   <ion-grid>
 
     <ion-row class="post ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="12">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="8">
 
         <ion-row class="ion-justify-content-center">
 
           <!-- Profile Header -->
           <!-- Only on Desktop -->
-          <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="8">
+          <ion-col size="12">
             <ion-row>
 
             <!-- Profile Picture -->
-            <ion-col class="ion-hide-md-down" size="1">
+            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1">
               <img class="profile-picture" src="../../../../assets/aaron.jpg">
             </ion-col>
 
@@ -51,7 +52,7 @@
             </ion-col>
 
             <!-- Back button-->
-            <ion-col class="ion-hide-md-down" push="5" size="1">
+            <ion-col class="ion-hide-md-down" push="4.5" size="1">
               <ion-button class="back-button ion-float-right" (click)="back()">
                 Back
               </ion-button>
@@ -64,7 +65,7 @@
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
               <!-- 1080x1350 -->
-              <ion-col size-xs="11" size-sm="12" size-md="12" size-lg="8">
+              <ion-col size="11" size-lg="12">
                <p class="post-content">{{post}}</p>
               </ion-col>
            </ion-row>
@@ -73,20 +74,19 @@
           <!-- Line -->
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
-              <ion-col size="11" size-lg="8">
+              <ion-col size="11" size-lg="12">
                 <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
               </ion-col>
             </ion-row>
           </ion-col>
 
           <!-- Comment Input -->
-          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="8">
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12">
             <ion-row style="position: relative; right: 6px; top: -4px;" >
               <ion-col size="12">
                 <ion-item lines="none">
                  <form (ngSubmit)="comment(this.commentForm.value, this.postID)" [formGroup]="commentForm">
                     <ion-textarea
-                      (ionFocus)="ScrollToTop()"
                       (ionBlur)="onBlur()"
                       (onfocusout)="blur()"
                       (keydown.control.enter)="comment(this.commentForm.value, this.postID) && ScrollToPostedComment()"
@@ -116,12 +116,12 @@
           </ion-col>
 
           <!-- Upvote and Downvote Post -->
-          <ion-col id="votes" size-xs="12" size-sm="12" size-md="12" size-lg="8">
+          <ion-col id="votes" size-xs="12" size-sm="12" size-md="12" size-lg="12">
             <ion-row>
-              <ion-col size="4">
+              <ion-col size="4.5">
                 <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
             </ion-col>
-            <ion-col class="" size="7">
+            <ion-col push-lg="0.25" size="6.5">
               <ion-button *ngIf="this.isUser === true" (click)="deletePost(this.postID)"  class="delete ion-float-right">
                 Delete
               </ion-button>
@@ -232,7 +232,7 @@
                     Report
                   </ion-button>
                   <ion-button
-                    *ngIf="comment.isUser === true" (click)="editComment(comment._id,this.postID, comment.comment)"
+                    *ngIf="comment.isUser === true" (click)="editComment(comment._id, comment.comment, this.postID, this.userEmail)"
                     class="edit ion-float-right">
                     Edit
                   </ion-button>

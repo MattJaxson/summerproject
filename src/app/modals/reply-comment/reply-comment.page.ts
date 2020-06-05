@@ -65,7 +65,6 @@ export class ReplyCommentPage implements OnInit {
               // If the Logged in User's Email equals the creatorEmail of the Comment,
               // they will be given the ability to edit and delete their Comment.
               // The ability for them to report their own comment is disabled
-              console.log('false');
 
               comment.repliesLength = comment.replies.length;
               comment.isUser = false;
@@ -78,7 +77,6 @@ export class ReplyCommentPage implements OnInit {
 
               // If this comment is the logged in user, they can delete and edit
               if (comment.userEmail === userEmail) {
-                console.log('true');
                 comment.isUser = true;
                 comment.canDeleteComment = true;
                 comment.canReport = false;
@@ -108,14 +106,14 @@ export class ReplyCommentPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     await this.modal.dismiss();
-    // await this.confirmAlert();
+    await this.confirmAlert();
     console.log('Loading dismissed!');
   }
 
   async confirmAlert() {
     const alert = await this.alert.create({
       cssClass: 'success-alert',
-      message: 'Your comment has been edited.',
+      message: 'Your comment has been added.',
       buttons: ['OK']
     });
 
@@ -123,7 +121,7 @@ export class ReplyCommentPage implements OnInit {
   }
 
   cancel () {
-    console.log('cancelling comment...');
+    console.log('cancelling reply...');
     this.modal.dismiss();
   }
 
