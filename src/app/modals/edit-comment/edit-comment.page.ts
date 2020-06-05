@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController, NavParams, LoadingController, AlertController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { formatDistanceToNow } from 'date-fns';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class EditCommentPage implements OnInit {
   postID: string;
   commentContents: string;
   commentID: string;
+  userEmail: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,8 +32,14 @@ export class EditCommentPage implements OnInit {
   ngOnInit() {
 
      this.commentID = this.navParams.get('commentID');
-     this.postID = this.navParams.get('postID');
      this.commentContents = this.navParams.get('commentCotents');
+     this.postID = this.navParams.get('postID');
+     this.userEmail = this.navParams.get('userEmail');
+
+     console.log('post_id: ' + this.postID );
+     console.log(this.commentID);
+     console.log(this.commentContents );
+     console.log(this.userEmail );
 
      // To collect comment data
      this.editCommentForm = this.formBuilder.group({
@@ -49,14 +57,40 @@ export class EditCommentPage implements OnInit {
     this.postEmitterService.postPageRefresh();
   }
 
-  async edit(newComment) {
-    await console.log('editting');
-    await this.posts.editComment(this.commentID, this.postID, newComment.newComment).subscribe();
-    await this.editLoading();
-    await this.refreshComment();
+   edit(newComment) {
+    console.log('editting');
+    console.log(newComment);
+    this.posts.editComment(this.commentID, this.postID, newComment.newComment).subscribe(comment => {
+
+      this.posts.getPostInfo(this.postID).subscribe(
+        post => {
+
+          for (let postComments of post['comments']) {
+
+            postComments.isUser = false;
+            postComments.canDeleteComment = false;
+            postComments.canReport = true;
+
+              // If this comment is the logged in user, they can delete and edit
+            if (postComments.userEmail === this.userEmail) {
+                postComments.isUser = true;
+                postComments.canDeleteComment = true;
+                postComments.canReport = false;
+              }
+
+            postComments.repliesLength = postComments.replies.length;
+            postComments.date = formatDistanceToNow( new Date(postComments.date), {
+              includeSeconds: true,
+              addSuffix: false
+            });
+           }
+          this.posts.commentsSubject$.next(post['comments'].reverse());
+        });
+      this.editLoading(comment['newComment']);
+    });
   }
 
-  async editLoading() {
+  async editLoading(comment) {
     const loading = await this.loading.create({
       message: 'Editing your comment...',
       duration: 2000

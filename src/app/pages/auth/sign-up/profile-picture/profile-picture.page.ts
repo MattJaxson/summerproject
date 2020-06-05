@@ -13,9 +13,6 @@ import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
 
-// Amazon Web Services
-import * as AWS from 'aws-sdk';
-
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.page.html',
@@ -25,14 +22,7 @@ import * as AWS from 'aws-sdk';
 export class ProfilePicturePage implements OnInit {
   //  +++ Brainstorm +++
   //  Maybe I need to notify the server that this user didnt upload a profile picture?
-
-  imageObj: any;
-  imageUrl: string;
-
-
-  // Image of camera that is compatible with HTML
-  profilePictureWebView;
-  profilePicture;
+  imageUrl;
 
     // Options for Cordova Camera plugin
   private options: CameraOptions = {
@@ -67,12 +57,22 @@ export class ProfilePicturePage implements OnInit {
   ngOnInit() {
     }
 
-   onImagePicked(event: Event) {
-    const FILE = (event.target as HTMLInputElement).files;
-    this.imageObj = FILE;
-    console.log(FILE);
+   getFormData(event) {
+    const formElement = document.querySelector('form');
 
-   }
+    const formData = new FormData(formElement);
+
+    let reader = new FileReader();
+    reader.addEventListener('load',  () => {
+      // convert image file to base64 string
+      this.imageUrl = reader.result;
+    }, false);
+
+    if (formElement) {
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
 
 
   goToUploadResumePage() {

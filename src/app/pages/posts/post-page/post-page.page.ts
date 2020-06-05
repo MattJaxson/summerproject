@@ -107,6 +107,10 @@ export class PostPagePage implements OnInit {
     this.posts.commentsSubject$.subscribe(commentsFromSub => {
       this.comments = commentsFromSub;
     });
+
+    this.posts.postsSubject$.subscribe(post => {
+      this.post = post['post'];
+    });
   }
 
   back() {
@@ -207,7 +211,6 @@ export class PostPagePage implements OnInit {
     this.textarea.getInputElement()
       .then((textarea: HTMLTextAreaElement) => {
         this.tabBar.style.height = '70px';
-        this.votes.style.height = '70px';
     });
   }
 
@@ -217,7 +220,6 @@ export class PostPagePage implements OnInit {
       .then((textarea: HTMLTextAreaElement) => {
         textarea.blur();
         this.tabBar.style.height = '70px';
-        this.votes.style.height = '70px';
     });
   }
 
@@ -279,67 +281,6 @@ export class PostPagePage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
   }
-
-  async upVotePost() {
-    await console.log('Upvoting Post');
-    await this.upVotePostToast();
-  }
-
-  async upVotePostToast() {
-    const upVotePostToast = await this.toast.create({
-      cssClass: 'upvoted-toast',
-      message: 'You have UPVOTED this post.',
-      duration: 2000
-    });
-    upVotePostToast.present();
-  }
-
-  async downVotePost() {
-    await console.log('Downvoting');
-    await this.downVotePostToast();
-  }
-
-  async downVotePostToast() {
-    const downVotePostToast = await this.toast.create({
-      cssClass: 'downvoted-toast',
-      message: 'You have DOWNVOTED this post.',
-      duration: 2000
-    });
-    downVotePostToast.present();
-  }
-
-  async upVoteComment(comment) {
-    await console.log('Upvoting Comment');
-    await console.log(comment);
-
-    await this.posts.upVoteComment
-
-    await this.upVoteCommentToast();
-  }
-
-  async upVoteCommentToast() {
-    const upVoteCommentToast = await this.toast.create({
-      cssClass: 'upvoted-toast',
-      message: 'You have UPVOTED this comment.',
-      duration: 2000
-    });
-    upVoteCommentToast.present();
-  }
-
-  async downVoteComment() {
-    await console.log('Downvoting Comment');
-    await this.downVoteCommentToast();
-  }
-
-  async downVoteCommentToast() {
-    const upVoteCommentToast = await this.toast.create({
-      cssClass: 'downvoted-toast',
-      message: 'You have DOWNVOTED this comment.',
-      duration: 2000
-    });
-    upVoteCommentToast.present();
-  }
-
 
   async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate) {
     // Get information from comment
@@ -411,19 +352,20 @@ export class PostPagePage implements OnInit {
     await repliesPageModalConfig.present();
   }
 
-  async editComment(postID, commentID, commentCotents) {
+  async editComment(commentID, commentCotents, postID, userEmail) {
     await console.log(commentID);
     await console.log('Attemping to edit comment');
-    await this.editCommentModal(postID, commentID, commentCotents);
+    await this.editCommentModal(commentID,commentCotents, postID, userEmail);
   }
 
-  async editCommentModal(postID, commentID, commentCotents) {
+  async editCommentModal(commentID, commentCotents, postID, userEmail) {
     const editAlertConfig = await this.modal.create({
     component: EditCommentPage,
     componentProps: {
       commentID,
+      commentCotents,
       postID,
-      commentCotents
+      userEmail
     }
     });
 
@@ -433,12 +375,11 @@ export class PostPagePage implements OnInit {
   async editPost(postID, post) {
 
     await console.log('Attemping to edit comment');
-    console.log(post);
     await this.editPostModal(postID, post);
   }
 
   async editPostModal(postID, post) {
-    const editAlertConfig = await this.modal.create({
+    const editPostModalConfig = await this.modal.create({
     component: EditPostPage,
     componentProps: {
       postID,
@@ -446,7 +387,7 @@ export class PostPagePage implements OnInit {
     }
     });
 
-    await editAlertConfig.present();
+    await editPostModalConfig.present();
   }
 
   async deleteComment(commentID) {

@@ -88,8 +88,6 @@ export class RepliesPagePage implements OnInit {
           let currentComment;
           let currentCommentReplies = [];
 
-          console.log(data);
-
           for (const comment of data['comments']) {
             if (comment._id == data['comment']) {
               currentComment = comment;
@@ -98,6 +96,7 @@ export class RepliesPagePage implements OnInit {
               }
             }
           }
+
           let comments = data['comments'];
           let userEmail = data['userEmail'];
           let replies = data['replies'];
@@ -108,7 +107,6 @@ export class RepliesPagePage implements OnInit {
               // If the Logged in User's Email equals the creatorEmail of the Comment,
               // they will be given the ability to edit and delete their Comment.
               // The ability for them to report their own comment is disabled
-              console.log('false');
 
               comment.repliesLength = comment.replies.length;
               comment.isUser = false;
@@ -121,7 +119,6 @@ export class RepliesPagePage implements OnInit {
 
               // If this comment is the logged in user, they can delete and edit
               if (comment.userEmail === userEmail) {
-                console.log('true');
                 comment.isUser = true;
                 comment.canDeleteComment = true;
                 comment.canReport = false;
