@@ -71,9 +71,5 @@ export class LoginPage implements OnInit, AfterViewInit {
     this.auth.login(data);
   }
 
-  goBack() {
-    this.router.navigate(['']);
-  }
-
 
   }

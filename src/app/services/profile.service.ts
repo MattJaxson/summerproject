@@ -258,20 +258,10 @@ export class ProfileService {
       });
     }
 
-    async changeProfilePicture(email, newPicture, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
-        email,
-        newPicture,
-        password
-      }).subscribe(data => {
-        if ( data === true ) {
-          console.log('Changing Resume...');
-          this.profilePicture.next(newPicture);
-          this.router.navigate([`/home/user/change-school/:school/:grade/confirm`]);
-         } else {
-          return console.log('Passwords dont match');
-        }
-      });
+    async changeProfilePicture(imageForm, oldPhotoKey) {
+      return  this.http.post(`${this.BACKEND_URL}/api/photo/change-profile-picture`, {
+        imageForm, oldPhotoKey
+      }).subscribe();
     }
 
     async changeResume(email, newResume, password) {

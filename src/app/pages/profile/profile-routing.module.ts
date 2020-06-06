@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./change-profile-picture/change-profile-picture/change-profile-picture.module').then( m => m.ChangeProfilePicturePageModule)
   },
   {
-    path: 'resume/:resume',
+    path: 'resume',
     loadChildren: () => import('./resume/resume/resume.module').then( m => m.ResumePageModule)
   },
   {

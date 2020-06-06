@@ -26,6 +26,7 @@ export class PostsPage implements OnInit {
   userEmail;
   userFullName;
   date;
+  profilePicture;
 
   constructor(
     private router: Router,
@@ -72,6 +73,7 @@ export class PostsPage implements OnInit {
     // Get the user's posts he/she is following
     this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
+      this.profilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
       this.followedPost = details['followedPost'];
 

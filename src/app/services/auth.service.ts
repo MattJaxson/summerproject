@@ -10,14 +10,8 @@ import { Platform, AlertController } from '@ionic/angular';
 import { User } from '../../../models/user.model';
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
-// import {  } from '';
-// import {  } from '';
-
-// const HttpUploadOptions = {
-//   headers: new HttpHeaders({ "Content-Type": 'multipart/form-data' })
-// };
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +42,7 @@ export class AuthService {
     email: '',
     password: ''
   };
+  loginSub: Subscription;
 
   constructor(
     private http: HttpClient,
@@ -91,18 +86,14 @@ getPersonalInfo(data) {
   this.userInfo.grade = data.grade;
 }
 
-// Push the User's photo to the UserInfo Object
-modifyProfilePicture(pic) {
-  console.log('From AUTH Service: ');
-  console.log(pic);
-  let formData = new FormData();
-  formData.append('picture', pic );
-
-
-  return this.http.post(`${this.BACKEND_URL}/api/photo`, formData );
+getProfilePicture(data) {
+  console.log('Sending Profile Picture URL to Auth Service...');
+  this.userInfo.profilePicture = data;
+  console.log(this.userInfo);
 }
 
 getResume(data) {
+  console.log('data from auth service: ' + data)
   console.log('Sent Resume to Auth Service');
   this.userInfo.resume = data;
   console.log(this.userInfo);
@@ -167,7 +158,7 @@ getLoginCredentials(data) {
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.http.post(`${this.BACKEND_URL}/api/`,
+    return this.loginSub = this.http.post(`${this.BACKEND_URL}/api/`,
     { email: data.email,
       password: data.password
     })
@@ -229,7 +220,25 @@ getLoginCredentials(data) {
     this.storage.remove(this.TOKEN_KEY).then((token) => {
       console.log('Logging out...');
       this.user = null;
+      this.userInfo = {
+        fullName: '',
+        addressOne: '',
+        addressTwo: '',
+        phone: '',
+        city: '',
+        state: '',
+        zip: '',
+        gender: '',
+        dob: '',
+        school: '',
+        grade: '',
+        profilePicture: '',
+        resume: '',
+        email: '',
+        password: ''
+      },
       this.authenticationState.next(false);
+      window.location.reload();
     });
   }
 

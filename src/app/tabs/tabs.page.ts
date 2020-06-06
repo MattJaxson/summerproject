@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-tabs',
@@ -9,9 +11,11 @@ import { AlertController } from '@ionic/angular';
 })
 export class TabsPage {
 
+
   constructor(
     private auth: AuthService,
-    private alert: AlertController
+    private alert: AlertController,
+    private location: Location
   ) {}
 
   async logoutConfirm() {

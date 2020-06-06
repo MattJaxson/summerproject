@@ -14,26 +14,34 @@
         <h1>Update Resume</h1>
       </ion-col>
       <ion-col push="2.5" size="2">
-        <ion-button class="back-button" (click)="back()">
+        <ion-button class="blue-button" (click)="back()">
            Back
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="10">
-        <hr style="background-color: #00000044;" />
+      <ion-col size="6">
+        <hr style="background: #666;" />
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="6">
         <!-- Need to express to User formats that are acceptable -->
         <!-- pdf, ect -->
-        <p>Please upload a resume from your phone</p>
-        <ion-item>
-          <ion-label>file</ion-label>
-          <p>resume.pdf</p>
-        </ion-item>
-        <ion-button (click)="updateResume()" class="orange-button" style="width: unset;">UPLOAD</ion-button>
+        <p class="text-header">Please upload a resume from your phone</p>
+        <form
+        (ngSubmit)="uploadResume()" id="changeResumeForm">
+          <input
+            name="resume-update"
+            (change)="getFormData($event)" placeholder="Upload Resume"
+            type="file"/>
+
+          <ion-button
+            type="submit"
+            class="orange-button"
+            [disabled]="!uploadedPhotoURL">Update
+          </ion-button>
+        </form>
       </ion-col>
     </ion-row>
   </ion-grid>

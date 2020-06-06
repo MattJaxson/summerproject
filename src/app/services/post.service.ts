@@ -30,9 +30,9 @@ export class PostsService {
     return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, {_id: id});
   }
 
-  addPost(creatorName, creatorEmail, post) {
+  addPost(creatorName, creatorEmail, creatorProfilePicture, post) {
     console.log('Adding post to post que...');
-    return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, post });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, creatorProfilePicture, post });
   }
 
   comment(

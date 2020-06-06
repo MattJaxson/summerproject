@@ -9,7 +9,7 @@
     <ion-row class="header-half ion-justify-content-center">
         <ion-col size="12">
           <div>
-              <img id="profile-picture" src="../../../assets/aaron.jpg" alt="User Profile Picture">
+              <img id="profile-picture" src="{{this.userObject.profilePicture}}" alt="User Profile Picture">
               <button id="change-pro-pic-button" (click)="changeProfilePicture()">
                   +
                 </button>
@@ -65,7 +65,7 @@
 
         <ion-col size="4">
           <div>
-              <img id="profile-picture" src="../../assets/batman-pro-pic.png" alt="User Profile Picture">
+              <img id="profile-picture" src="{{this.userObject.profilePicture}}" alt="User Profile Picture">
               <button id="change-pro-pic-button" (click)="changeProfilePicture()">
                   +
               </button>
@@ -74,10 +74,10 @@
 
 
         <ion-col push="2" size="6">
-          <ion-button class="back-button" style="display: inline-block; width: 130px; animation-delay: 2.5s;" (click)="editPage()">
+          <ion-button class="blue-button" style="display: inline-block; width: 200px; margin-right: 50px; animation-delay: 2.5s;" (click)="editPage()">
             Edit Profile
           </ion-button>
-          <ion-button class="back-button" style="display: inline-block; width: 130px; animation-delay: 3s;" (click)="updateResume()">
+          <ion-button class="blue-button" style="display: inline-block; width: 200px; animation-delay: 3s;" (click)="updateResume()">
             View Resume
           </ion-button>
         </ion-col>

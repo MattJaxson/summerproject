@@ -4,7 +4,7 @@ import { ToastController, AlertController, LoadingController, NavController } fr
 import { AuthService } from '../../services/auth.service';
 import { ProfileService } from '../../services/profile.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscribable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,6 +13,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['profile.page.scss']
 })
 export class ProfilePage implements OnInit, OnDestroy {
+
+  detailsSub: Subscription;
 
 
   userObject: any = {
@@ -48,7 +50,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-      this.profile.getUserDetails()
+      this.detailsSub = this.profile.getUserDetails()
         .subscribe(
           res => {
             console.log(res);
@@ -140,7 +142,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   }
 
     ngOnDestroy() {
-
     }
 
     clearToken() {
@@ -165,7 +166,7 @@ export class ProfilePage implements OnInit, OnDestroy {
 
     updateResume() {
       console.log('Navigating to Change Resume Page');
-      this.router.navigate(['/home/profile/resume',  this.userObject.resume]);
+      this.router.navigate(['/home/profile/view-resume']);
     }
 
     async confirmLogout() {
@@ -189,6 +190,20 @@ export class ProfilePage implements OnInit, OnDestroy {
             role: 'cancel',
             handler: () => {
               console.log('Cancelling logout');
+              this.profile.fullName.next('');
+              this.profile.addressOne.next('');
+              this.profile.addressTwo.next('');
+              this.profile.phone.next('');
+              this.profile.city.next('');
+              this.profile.state.next('');
+              this.profile.zip.next('');
+              this.profile.gender.next('');
+              this.profile.dob.next('');
+              this.profile.school.next('');
+              this.profile.grade.next('');
+              this.profile.profilePicture.next('');
+              this.profile.resume.next('');
+              this.profile.email.next('');
               this.router.navigate(['/home/profile']);
             }
           },
