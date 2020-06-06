@@ -119,8 +119,12 @@ export class PostsService {
     return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate });
   }
 
-  replyComment(commentID, postID, reply, userFullName ,userProfilePicture, userEmail, commentUserEmail, commentUserFullName ) {
+  replyComment(commentID, postID, reply, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail  ) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID, commentID, reply, userFullName, userProfilePicture, userEmail, commentUserEmail, commentUserFullName });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID: postID, commentID: commentID, reply: reply, userFullName: userFullName, userProfilePicture: userProfilePicture, userEmail: userEmail, commentUserEmail: commentUserEmail, commentUserFullName: commentUserFullName });
+  }
+
+  deleteReply(replyID, commentID, postID) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/delete-reply`, { _rid: replyID, _cid: commentID, _pid: postID })
   }
 }

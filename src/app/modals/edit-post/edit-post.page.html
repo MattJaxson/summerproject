@@ -23,7 +23,7 @@
     <ion-col size="10">
       <form [formGroup]="editPostForm" (ngSubmit)="edit(this.editPostForm.value)">
         <ion-textarea
-          (keyup.enter)="edit(this.editPostForm.value)"
+          (keydown.control.enter)="edit(this.editPostForm.value)"
           class="comment-input"
           autogrow="true"
           autocapitalize="true"

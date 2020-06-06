@@ -110,10 +110,11 @@ export class PostsPage implements OnInit {
 
   async getPosts() {
     await this.posts.getPosts().subscribe( jobs => {
-      this.posts.postsSubject$.next(Object.values(jobs).reverse());
-      this.posts.postsSubject$.subscribe( posts => {
-        this.allPosts = posts;
-      });
+      this.allPosts = Object.values(jobs).reverse();
+      this.posts.postsSubject$.next(this.allPosts);
+      // this.posts.postsSubject$.subscribe( posts => {
+      //   this.allPosts = posts;
+      // });
 
 
       for (const post of this.allPosts) {

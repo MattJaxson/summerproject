@@ -12,7 +12,6 @@ import { EditCommentPage } from 'src/app/modals/edit-comment/edit-comment.page';
 import { EditPostPage } from 'src/app/modals/edit-post/edit-post.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
-import { BehaviorSubject } from 'rxjs';
 import { PlatformLocation } from '@angular/common';
 
 
@@ -108,12 +107,19 @@ export class PostPagePage implements OnInit {
       this.comments = commentsFromSub;
     });
 
-    this.posts.postsSubject$.subscribe(post => {
-      this.post = post['post'];
+    this.posts.postsSubject$.subscribe(posts => {
+      let currentPost;
+      for (const post of posts) {
+        if (post._id == this.postID) {
+          currentPost = post;
+        }
+      }
+      this.post = currentPost.post;
     });
   }
 
   back() {
+    this.postEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
 
@@ -255,7 +261,7 @@ export class PostPagePage implements OnInit {
             postComments.canDeleteComment = false;
             postComments.canReport = true;
 
-              // If this comment is the logged in user, they can delete and edit
+              // If this comment is from the logged in user, they can delete and edit
             if (postComments.userEmail === this.userEmail) {
                 postComments.isUser = true;
                 postComments.canDeleteComment = true;
@@ -309,12 +315,12 @@ export class PostPagePage implements OnInit {
     await reportModalConfig.present();
   }
 
-  async reply(commentID, userFullName,userProfilePicture, userEmail, commentUserEmail, commentUserFullName,  ) {
+  async reply(commentID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
     await console.log('Attemping to reply to comment');
-    await this.replyModal(commentID, this.postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName);
+    await this.replyModal(commentID, this.postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail);
   }
 
-  async replyModal(commentID, postID, userFullName , userProfilePicture, userEmail, commentUserEmail, commentUserFullName) {
+  async replyModal(commentID, postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
     const replyModalConfig = await this.modal.create({
     component: ReplyCommentPage,
     componentProps: {
@@ -507,10 +513,11 @@ export class PostPagePage implements OnInit {
         console.log(this.posts.postsSubject$.getValue());
       }
     );
-
+    
+    this.postEmitterService.onBackAction()
     await this.router.navigate(['/home/posts']);
     console.log('Loading dismissed!');
-
+    
     const loading = await this.loading.create({
       message: 'Deleting Comment...',
       duration: 2000
@@ -518,8 +525,6 @@ export class PostPagePage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-
-
   }
 
   async getPostInfo() {
