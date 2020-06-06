@@ -1,3 +1,9 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["confirm-confirm-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/confirm/confirm.page.html":
@@ -223,12 +229,16 @@
     /*! ./confirm.page */
     "./src/app/pages/auth/forgot-password/confirm/confirm.page.ts");
 
-    const routes = [// Last page of forgot password route
+    var routes = [// Last page of forgot password route
     {
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -298,7 +308,10 @@
     /*! ./confirm.page */
     "./src/app/pages/auth/forgot-password/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -322,7 +335,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".check-icon {\n  width: 80px;\n  height: 80px;\n  margin-top: 30px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 0;\n  -webkit-animation: slide-up 0.5s ease 0.5s forwards;\n          animation: slide-up 0.5s ease 0.5s forwards;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsVUFBQTtFQUNBLG1EQUFBO1VBQUEsMkNBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2F1dGgvZm9yZ290LXBhc3N3b3JkL2NvbmZpcm0vY29uZmlybS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2hlY2staWNvbiB7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG4gIG1hcmdpbi10b3A6IDMwcHg7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIG9wYWNpdHk6IDA7XG4gIGFuaW1hdGlvbjogc2xpZGUtdXAgMC41cyBlYXNlIDAuNXMgZm9yd2FyZHM7XG59IiwiLmNoZWNrLWljb24ge1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xuICBtYXJnaW4tdG9wOiAzMHB4O1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLXVwIDAuNXMgZWFzZSAwLjVzIGZvcndhcmRzO1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".check-icon {\n  width: 80px;\n  height: 80px;\n  margin-top: 30px;\n  transition: 0.5s;\n  opacity: 0;\n  -webkit-animation: slide-up 0.5s ease 0.5s forwards;\n          animation: slide-up 0.5s ease 0.5s forwards;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvYXV0aC9mb3Jnb3QtcGFzc3dvcmQvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFVBQUE7RUFDQSxtREFBQTtVQUFBLDJDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9hdXRoL2ZvcmdvdC1wYXNzd29yZC9jb25maXJtL2NvbmZpcm0ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoZWNrLWljb24ge1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xuICBtYXJnaW4tdG9wOiAzMHB4O1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLXVwIDAuNXMgZWFzZSAwLjVzIGZvcndhcmRzO1xufSIsIi5jaGVjay1pY29uIHtcbiAgd2lkdGg6IDgwcHg7XG4gIGhlaWdodDogODBweDtcbiAgbWFyZ2luLXRvcDogMzBweDtcbiAgdHJhbnNpdGlvbjogMC41cztcbiAgb3BhY2l0eTogMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS11cCAwLjVzIGVhc2UgMC41cyBmb3J3YXJkcztcbn0iXX0= */";
     /***/
   },
 
@@ -364,29 +377,37 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      goToLogin() {
-        this.router.navigate(['']);
-      }
+      _createClass(ConfirmPage, [{
+        key: "goToLogin",
+        value: function goToLogin() {
+          this.router.navigate(['']);
+        }
+      }]);
 
+      return ConfirmPage;
+    }();
+
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/auth/forgot-password/confirm/confirm.page.scss")).default]
+      "./src/app/pages/auth/forgot-password/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -435,11 +456,15 @@
     /*! ./confirm.page */
     "./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -509,7 +534,10 @@
     /*! ./confirm.page */
     "./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -533,7 +561,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#background {\n  opacity: 0;\n  height: 90vh;\n  --background: #999;\n  --transition: 0.5s;\n  -webkit-animation: slide-in-up 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 0.3s forwards;\n          animation: slide-in-up 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 0.3s forwards;\n}\n\n#confirm-text {\n  color: white;\n  font-size: 1.3em;\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 2s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 2s forwards;\n}\n\n#mentor-photo {\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 1.3s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 1.3s forwards;\n}\n\nion-button {\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 3s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 3s forwards;\n}\n\n@-webkit-keyframes slide-in-up {\n  0% {\n    -webkit-transform: translateY(100vh);\n            transform: translateY(100vh);\n  }\n  100% {\n    opacity: 1;\n    --background: #797;\n    -webkit-transform: translateY(0px);\n            transform: translateY(0px);\n  }\n}\n\n@keyframes slide-in-up {\n  0% {\n    -webkit-transform: translateY(100vh);\n            transform: translateY(100vh);\n  }\n  100% {\n    opacity: 1;\n    --background: #797;\n    -webkit-transform: translateY(0px);\n            transform: translateY(0px);\n  }\n}\n\n@-webkit-keyframes slide-in-up-2 {\n  0% {\n    -webkit-transform: translateY(0px);\n            transform: translateY(0px);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(-100px);\n            transform: translateY(-100px);\n  }\n}\n\n@keyframes slide-in-up-2 {\n  0% {\n    -webkit-transform: translateY(0px);\n            transform: translateY(0px);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: translateY(-100px);\n            transform: translateY(-100px);\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3ItcGFnZS9jb250YWN0LW1lbnRvci9jb25maXJtL2NvbmZpcm0ucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZW50b3JzL21lbnRvci1wYWdlL2NvbnRhY3QtbWVudG9yL2NvbmZpcm0vY29uZmlybS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxRkFBQTtVQUFBLDZFQUFBO0FDQ0Y7O0FERUE7RUFDRSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxVQUFBO0VBQ0EscUZBQUE7VUFBQSw2RUFBQTtBQ0NGOztBREVBO0VBQ0UsVUFBQTtFQUNBLHVGQUFBO1VBQUEsK0VBQUE7QUNDRjs7QURFQTtFQUNFLFVBQUE7RUFDQSxxRkFBQTtVQUFBLDZFQUFBO0FDQ0Y7O0FERUE7RUFDRTtJQUNJLG9DQUFBO1lBQUEsNEJBQUE7RUNDSjtFRENBO0lBQ0ksVUFBQTtJQUNBLGtCQUFBO0lBQ0Esa0NBQUE7WUFBQSwwQkFBQTtFQ0NKO0FBQ0Y7O0FEVEE7RUFDRTtJQUNJLG9DQUFBO1lBQUEsNEJBQUE7RUNDSjtFRENBO0lBQ0ksVUFBQTtJQUNBLGtCQUFBO0lBQ0Esa0NBQUE7WUFBQSwwQkFBQTtFQ0NKO0FBQ0Y7O0FERUU7RUFDRTtJQUNJLGtDQUFBO1lBQUEsMEJBQUE7RUNBTjtFREVFO0lBQ0ksVUFBQTtJQUNBLHFDQUFBO1lBQUEsNkJBQUE7RUNBTjtBQUNGOztBRFBFO0VBQ0U7SUFDSSxrQ0FBQTtZQUFBLDBCQUFBO0VDQU47RURFRTtJQUNJLFVBQUE7SUFDQSxxQ0FBQTtZQUFBLDZCQUFBO0VDQU47QUFDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21lbnRvcnMvbWVudG9yLXBhZ2UvY29udGFjdC1tZW50b3IvY29uZmlybS9jb25maXJtLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNiYWNrZ3JvdW5kIHtcbiAgb3BhY2l0eTogMDtcbiAgaGVpZ2h0OiA5MHZoO1xuICAtLWJhY2tncm91bmQ6ICM5OTk7XG4gIC0tdHJhbnNpdGlvbjogMC41cztcbiAgYW5pbWF0aW9uOiBzbGlkZS1pbi11cCAwLjhzIGN1YmljLWJlemllciguMTUsIC44NSwgLjc1LCAuOSkgLjNzIGZvcndhcmRzO1xufVxuXG4jY29uZmlybS10ZXh0IHtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEuM2VtO1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoLjE1LCAuODUsIC43NSwgLjkpIDJzIGZvcndhcmRzO1xufVxuXG4jbWVudG9yLXBob3RvIHtcbiAgb3BhY2l0eTogMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS1pbi11cC0yIDAuOHMgY3ViaWMtYmV6aWVyKC4xNSwgLjg1LCAuNzUsIC45KSAxLjNzIGZvcndhcmRzO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgb3BhY2l0eTogMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS1pbi11cC0yIDAuOHMgY3ViaWMtYmV6aWVyKC4xNSwgLjg1LCAuNzUsIC45KSAzcyBmb3J3YXJkcztcbn1cblxuQGtleWZyYW1lcyBzbGlkZS1pbi11cCB7XG4gIDAlIHtcbiAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxMDB2aCk7XG4gIH1cbiAgMTAwJSB7XG4gICAgICBvcGFjaXR5OiAxO1xuICAgICAgLS1iYWNrZ3JvdW5kOiAjNzk3O1xuICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDBweCk7XG4gIH1cbiAgfVxuXG4gIEBrZXlmcmFtZXMgc2xpZGUtaW4tdXAtMiB7XG4gICAgMCUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMHB4KTtcbiAgICB9XG4gICAgMTAwJSB7XG4gICAgICAgIG9wYWNpdHk6IDE7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtMTAwcHgpO1xuICAgIH1cbiAgfVxuIiwiI2JhY2tncm91bmQge1xuICBvcGFjaXR5OiAwO1xuICBoZWlnaHQ6IDkwdmg7XG4gIC0tYmFja2dyb3VuZDogIzk5OTtcbiAgLS10cmFuc2l0aW9uOiAwLjVzO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwIDAuOHMgY3ViaWMtYmV6aWVyKDAuMTUsIDAuODUsIDAuNzUsIDAuOSkgMC4zcyBmb3J3YXJkcztcbn1cblxuI2NvbmZpcm0tdGV4dCB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxLjNlbTtcbiAgb3BhY2l0eTogMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS1pbi11cC0yIDAuOHMgY3ViaWMtYmV6aWVyKDAuMTUsIDAuODUsIDAuNzUsIDAuOSkgMnMgZm9yd2FyZHM7XG59XG5cbiNtZW50b3ItcGhvdG8ge1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoMC4xNSwgMC44NSwgMC43NSwgMC45KSAxLjNzIGZvcndhcmRzO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgb3BhY2l0eTogMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS1pbi11cC0yIDAuOHMgY3ViaWMtYmV6aWVyKDAuMTUsIDAuODUsIDAuNzUsIDAuOSkgM3MgZm9yd2FyZHM7XG59XG5cbkBrZXlmcmFtZXMgc2xpZGUtaW4tdXAge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDEwMHZoKTtcbiAgfVxuICAxMDAlIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIC0tYmFja2dyb3VuZDogIzc5NztcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMHB4KTtcbiAgfVxufVxuQGtleWZyYW1lcyBzbGlkZS1pbi11cC0yIHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwcHgpO1xuICB9XG4gIDEwMCUge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0xMDBweCk7XG4gIH1cbn0iXX0= */";
+    __webpack_exports__["default"] = "#background {\n  opacity: 0;\n  height: 90vh;\n  --background: #999;\n  --transition: 0.5s;\n  -webkit-animation: slide-in-up 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 0.3s forwards;\n          animation: slide-in-up 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 0.3s forwards;\n}\n\n#confirm-text {\n  color: white;\n  font-size: 1.3em;\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 2s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 2s forwards;\n}\n\n#mentor-photo {\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 1.3s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 1.3s forwards;\n}\n\nion-button {\n  opacity: 0;\n  -webkit-animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 3s forwards;\n          animation: slide-in-up-2 0.8s cubic-bezier(0.15, 0.85, 0.75, 0.9) 3s forwards;\n}\n\n@-webkit-keyframes slide-in-up {\n  0% {\n    transform: translateY(100vh);\n  }\n  100% {\n    opacity: 1;\n    --background: #797;\n    transform: translateY(0px);\n  }\n}\n\n@keyframes slide-in-up {\n  0% {\n    transform: translateY(100vh);\n  }\n  100% {\n    opacity: 1;\n    --background: #797;\n    transform: translateY(0px);\n  }\n}\n\n@-webkit-keyframes slide-in-up-2 {\n  0% {\n    transform: translateY(0px);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px);\n  }\n}\n\n@keyframes slide-in-up-2 {\n  0% {\n    transform: translateY(0px);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px);\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3ItcGFnZS9jb250YWN0LW1lbnRvci9jb25maXJtL2NvbmZpcm0ucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZW50b3JzL21lbnRvci1wYWdlL2NvbnRhY3QtbWVudG9yL2NvbmZpcm0vY29uZmlybS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxRkFBQTtVQUFBLDZFQUFBO0FDQ0Y7O0FERUE7RUFDRSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxVQUFBO0VBQ0EscUZBQUE7VUFBQSw2RUFBQTtBQ0NGOztBREVBO0VBQ0UsVUFBQTtFQUNBLHVGQUFBO1VBQUEsK0VBQUE7QUNDRjs7QURFQTtFQUNFLFVBQUE7RUFDQSxxRkFBQTtVQUFBLDZFQUFBO0FDQ0Y7O0FERUE7RUFDRTtJQUNJLDRCQUFBO0VDQ0o7RURDQTtJQUNJLFVBQUE7SUFDQSxrQkFBQTtJQUNBLDBCQUFBO0VDQ0o7QUFDRjs7QURUQTtFQUNFO0lBQ0ksNEJBQUE7RUNDSjtFRENBO0lBQ0ksVUFBQTtJQUNBLGtCQUFBO0lBQ0EsMEJBQUE7RUNDSjtBQUNGOztBREVFO0VBQ0U7SUFDSSwwQkFBQTtFQ0FOO0VERUU7SUFDSSxVQUFBO0lBQ0EsNkJBQUE7RUNBTjtBQUNGOztBRFBFO0VBQ0U7SUFDSSwwQkFBQTtFQ0FOO0VERUU7SUFDSSxVQUFBO0lBQ0EsNkJBQUE7RUNBTjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbWVudG9ycy9tZW50b3ItcGFnZS9jb250YWN0LW1lbnRvci9jb25maXJtL2NvbmZpcm0ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2JhY2tncm91bmQge1xuICBvcGFjaXR5OiAwO1xuICBoZWlnaHQ6IDkwdmg7XG4gIC0tYmFja2dyb3VuZDogIzk5OTtcbiAgLS10cmFuc2l0aW9uOiAwLjVzO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwIDAuOHMgY3ViaWMtYmV6aWVyKC4xNSwgLjg1LCAuNzUsIC45KSAuM3MgZm9yd2FyZHM7XG59XG5cbiNjb25maXJtLXRleHQge1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMS4zZW07XG4gIG9wYWNpdHk6IDA7XG4gIGFuaW1hdGlvbjogc2xpZGUtaW4tdXAtMiAwLjhzIGN1YmljLWJlemllciguMTUsIC44NSwgLjc1LCAuOSkgMnMgZm9yd2FyZHM7XG59XG5cbiNtZW50b3ItcGhvdG8ge1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoLjE1LCAuODUsIC43NSwgLjkpIDEuM3MgZm9yd2FyZHM7XG59XG5cbmlvbi1idXR0b24ge1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoLjE1LCAuODUsIC43NSwgLjkpIDNzIGZvcndhcmRzO1xufVxuXG5Aa2V5ZnJhbWVzIHNsaWRlLWluLXVwIHtcbiAgMCUge1xuICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDEwMHZoKTtcbiAgfVxuICAxMDAlIHtcbiAgICAgIG9wYWNpdHk6IDE7XG4gICAgICAtLWJhY2tncm91bmQ6ICM3OTc7XG4gICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMHB4KTtcbiAgfVxuICB9XG5cbiAgQGtleWZyYW1lcyBzbGlkZS1pbi11cC0yIHtcbiAgICAwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwcHgpO1xuICAgIH1cbiAgICAxMDAlIHtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0xMDBweCk7XG4gICAgfVxuICB9XG4iLCIjYmFja2dyb3VuZCB7XG4gIG9wYWNpdHk6IDA7XG4gIGhlaWdodDogOTB2aDtcbiAgLS1iYWNrZ3JvdW5kOiAjOTk5O1xuICAtLXRyYW5zaXRpb246IDAuNXM7XG4gIGFuaW1hdGlvbjogc2xpZGUtaW4tdXAgMC44cyBjdWJpYy1iZXppZXIoMC4xNSwgMC44NSwgMC43NSwgMC45KSAwLjNzIGZvcndhcmRzO1xufVxuXG4jY29uZmlybS10ZXh0IHtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEuM2VtO1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoMC4xNSwgMC44NSwgMC43NSwgMC45KSAycyBmb3J3YXJkcztcbn1cblxuI21lbnRvci1waG90byB7XG4gIG9wYWNpdHk6IDA7XG4gIGFuaW1hdGlvbjogc2xpZGUtaW4tdXAtMiAwLjhzIGN1YmljLWJlemllcigwLjE1LCAwLjg1LCAwLjc1LCAwLjkpIDEuM3MgZm9yd2FyZHM7XG59XG5cbmlvbi1idXR0b24ge1xuICBvcGFjaXR5OiAwO1xuICBhbmltYXRpb246IHNsaWRlLWluLXVwLTIgMC44cyBjdWJpYy1iZXppZXIoMC4xNSwgMC44NSwgMC43NSwgMC45KSAzcyBmb3J3YXJkcztcbn1cblxuQGtleWZyYW1lcyBzbGlkZS1pbi11cCB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMTAwdmgpO1xuICB9XG4gIDEwMCUge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgLS1iYWNrZ3JvdW5kOiAjNzk3O1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwcHgpO1xuICB9XG59XG5Aa2V5ZnJhbWVzIHNsaWRlLWluLXVwLTIge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDBweCk7XG4gIH1cbiAgMTAwJSB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTEwMHB4KTtcbiAgfVxufSJdfQ== */";
     /***/
   },
 
@@ -575,42 +603,51 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(activatedRoute, router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(activatedRoute, router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.activatedRoute = activatedRoute;
         this.router = router;
       }
 
-      ngOnInit() {
-        this.mentorName = this.activatedRoute.snapshot.paramMap.get('name');
-        this.mentorEmail = this.activatedRoute.snapshot.paramMap.get('email');
-        this.mentorPhoto = this.activatedRoute.snapshot.paramMap.get('photo');
-        console.log('Mentor Photo:');
-        console.log(this.mentorName); // setTimeout(() => {
-        //   this.router.navigate(['/home/mentors']);
-        // }, 9000);
-      }
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.mentorName = this.activatedRoute.snapshot.paramMap.get('name');
+          this.mentorEmail = this.activatedRoute.snapshot.paramMap.get('email');
+          this.mentorPhoto = this.activatedRoute.snapshot.paramMap.get('photo');
+          console.log('Mentor Photo:');
+          console.log(this.mentorName); // setTimeout(() => {
+          //   this.router.navigate(['/home/mentors']);
+          // }, 9000);
+        }
+      }, {
+        key: "returnToMentors",
+        value: function returnToMentors() {
+          this.router.navigate(['/home/mentors']);
+        }
+      }]);
 
-      returnToMentors() {
-        this.router.navigate(['/home/mentors']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
-    }, {
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.scss")).default]
+      "./src/app/pages/mentors/mentor-page/contact-mentor/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -659,11 +696,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-address/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -733,7 +774,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-address/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -799,31 +843,40 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfile",
+        value: function backToProfile() {
+          this.router.navigate(['home/profile']);
+        }
+      }]);
 
-      backToProfile() {
-        this.router.navigate(['home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-address/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-address/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-address/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-address/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -872,11 +925,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-email/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -946,7 +1003,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-email/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -1012,37 +1072,47 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfilePage",
+        value: function backToProfilePage() {
+          console.log('Going back to Profile Page');
+          this.router.navigate(['/home/profile']);
+        }
+      }, {
+        key: "cancel",
+        value: function cancel() {
+          console.log('change email password cancelled');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      backToProfilePage() {
-        console.log('Going back to Profile Page');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
-      cancel() {
-        console.log('change email password cancelled');
-        this.router.navigate(['/home/profile']);
-      }
-
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-email/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-email/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-email/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-email/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -1091,11 +1161,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-password/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -1165,7 +1239,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-password/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -1231,32 +1308,41 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfile",
+        value: function backToProfile() {
+          console.log('Going back to profile');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      backToProfile() {
-        console.log('Going back to profile');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-password/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-password/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-password/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-password/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -1305,11 +1391,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-phone/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -1379,7 +1469,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-phone/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -1445,32 +1538,41 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfile",
+        value: function backToProfile() {
+          console.log('Going back to profile');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      backToProfile() {
-        console.log('Going back to profile');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-phone/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-phone/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-phone/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-phone/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -1519,11 +1621,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-profile-picture/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -1593,7 +1699,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-profile-picture/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -1659,32 +1768,41 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfile",
+        value: function backToProfile() {
+          console.log('Going back to profile');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      backToProfile() {
-        console.log('Going back to profile');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-profile-picture/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-profile-picture/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-profile-picture/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-profile-picture/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -1733,11 +1851,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-school/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -1807,7 +1929,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/change-school/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -1873,32 +1998,41 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "backToProfile",
+        value: function backToProfile() {
+          console.log('Going back to profile');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      backToProfile() {
-        console.log('Going back to profile');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-school/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-school/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/change-school/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/change-school/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   },
@@ -1947,11 +2081,15 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/resume/confirm/confirm.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _confirm_page__WEBPACK_IMPORTED_MODULE_3__["ConfirmPage"]
     }];
-    let ConfirmPageRoutingModule = class ConfirmPageRoutingModule {};
+
+    var ConfirmPageRoutingModule = function ConfirmPageRoutingModule() {
+      _classCallCheck(this, ConfirmPageRoutingModule);
+    };
+
     ConfirmPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -2021,7 +2159,10 @@
     /*! ./confirm.page */
     "./src/app/pages/profile/resume/confirm/confirm.page.ts");
 
-    let ConfirmPageModule = class ConfirmPageModule {};
+    var ConfirmPageModule = function ConfirmPageModule() {
+      _classCallCheck(this, ConfirmPageModule);
+    };
+
     ConfirmPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _confirm_routing_module__WEBPACK_IMPORTED_MODULE_5__["ConfirmPageRoutingModule"]],
       declarations: [_confirm_page__WEBPACK_IMPORTED_MODULE_6__["ConfirmPage"]]
@@ -2087,32 +2228,41 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let ConfirmPage = class ConfirmPage {
-      constructor(router) {
+    var ConfirmPage = /*#__PURE__*/function () {
+      function ConfirmPage(router) {
+        _classCallCheck(this, ConfirmPage);
+
         this.router = router;
       }
 
-      ngOnInit() {}
+      _createClass(ConfirmPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "goBackToProfile",
+        value: function goBackToProfile() {
+          console.log('Updating Resume from View Resume page');
+          this.router.navigate(['/home/profile']);
+        }
+      }]);
 
-      goBackToProfile() {
-        console.log('Updating Resume from View Resume page');
-        this.router.navigate(['/home/profile']);
-      }
+      return ConfirmPage;
+    }();
 
+    ConfirmPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
     };
-
-    ConfirmPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }];
 
     ConfirmPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-confirm',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./confirm.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/resume/confirm/confirm.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/resume/confirm/confirm.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./confirm.page.scss */
-      "./src/app/pages/profile/resume/confirm/confirm.page.scss")).default]
+      "./src/app/pages/profile/resume/confirm/confirm.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ConfirmPage);
     /***/
   }

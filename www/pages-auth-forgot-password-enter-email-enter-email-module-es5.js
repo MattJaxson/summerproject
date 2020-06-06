@@ -1,3 +1,9 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-auth-forgot-password-enter-email-enter-email-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/enter-email/enter-email.page.html":
@@ -63,20 +69,28 @@
     /*! ./enter-email.page */
     "./src/app/pages/auth/forgot-password/enter-email/enter-email.page.ts");
 
-    const routes = [// 1st of 3 forgot password pages
+    var routes = [// 1st of 3 forgot password pages
     {
       path: '',
       component: _enter_email_page__WEBPACK_IMPORTED_MODULE_3__["EnterEmailPage"]
     }, //  to new password page
     {
       path: 'enter-code/:email',
-      loadChildren: () => __webpack_require__.e(
-      /*! import() | forgot-password-enter-code-enter-code-module */
-      "forgot-password-enter-code-enter-code-module").then(__webpack_require__.bind(null,
-      /*! ../../forgot-password/enter-code/enter-code.module */
-      "./src/app/pages/auth/forgot-password/enter-code/enter-code.module.ts")).then(m => m.EnterCodePageModule)
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | forgot-password-enter-code-enter-code-module */
+        "forgot-password-enter-code-enter-code-module").then(__webpack_require__.bind(null,
+        /*! ../../forgot-password/enter-code/enter-code.module */
+        "./src/app/pages/auth/forgot-password/enter-code/enter-code.module.ts")).then(function (m) {
+          return m.EnterCodePageModule;
+        });
+      }
     }];
-    let EnterEmailPageRoutingModule = class EnterEmailPageRoutingModule {};
+
+    var EnterEmailPageRoutingModule = function EnterEmailPageRoutingModule() {
+      _classCallCheck(this, EnterEmailPageRoutingModule);
+    };
+
     EnterEmailPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -146,7 +160,10 @@
     /*! ./enter-email.page */
     "./src/app/pages/auth/forgot-password/enter-email/enter-email.page.ts");
 
-    let EnterEmailPageModule = class EnterEmailPageModule {};
+    var EnterEmailPageModule = function EnterEmailPageModule() {
+      _classCallCheck(this, EnterEmailPageModule);
+    };
+
     EnterEmailPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _enter_email_routing_module__WEBPACK_IMPORTED_MODULE_5__["EnterEmailPageRoutingModule"]],
       declarations: [_enter_email_page__WEBPACK_IMPORTED_MODULE_6__["EnterEmailPage"]]
@@ -224,8 +241,10 @@
     /*! src/app/services/auth.service */
     "./src/app/services/auth.service.ts");
 
-    let EnterEmailPage = class EnterEmailPage {
-      constructor(formBuilder, router, auth) {
+    var EnterEmailPage = /*#__PURE__*/function () {
+      function EnterEmailPage(formBuilder, router, auth) {
+        _classCallCheck(this, EnterEmailPage);
+
         this.formBuilder = formBuilder;
         this.router = router;
         this.auth = auth;
@@ -237,44 +256,67 @@
         };
       }
 
-      ngOnInit() {
-        this.forgotPasswordForm = this.formBuilder.group({
-          email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
-        });
-      }
+      _createClass(EnterEmailPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.forgotPasswordForm = this.formBuilder.group({
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
+          });
+        }
+      }, {
+        key: "goToEnterCodePage",
+        value: function goToEnterCodePage(email) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    console.log('Going to Enter Code Page'); // check if user exists, then navigate
 
-      goToEnterCodePage(email) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          console.log('Going to Enter Code Page'); // check if user exists, then navigate
+                    _context.next = 3;
+                    return this.auth.checkIfUserExits(email);
 
-          yield this.auth.checkIfUserExits(email);
-          yield this.router.navigate(['/enter-email/enter-code/', email]);
-        });
-      }
+                  case 3:
+                    _context.next = 5;
+                    return this.router.navigate(['/enter-email/enter-code/', email]);
 
-      cancel() {
-        console.log('Forgotten password cancelled');
-        this.router.navigate(['']);
-      }
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "cancel",
+        value: function cancel() {
+          console.log('Forgotten password cancelled');
+          this.router.navigate(['']);
+        }
+      }]);
 
+      return EnterEmailPage;
+    }();
+
+    EnterEmailPage.ctorParameters = function () {
+      return [{
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]
+      }];
     };
-
-    EnterEmailPage.ctorParameters = () => [{
-      type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
-    }, {
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
-    }, {
-      type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]
-    }];
 
     EnterEmailPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-enter-email',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./enter-email.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/enter-email/enter-email.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/forgot-password/enter-email/enter-email.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./enter-email.page.scss */
-      "./src/app/pages/auth/forgot-password/enter-email/enter-email.page.scss")).default]
+      "./src/app/pages/auth/forgot-password/enter-email/enter-email.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])], EnterEmailPage);
     /***/
   }
