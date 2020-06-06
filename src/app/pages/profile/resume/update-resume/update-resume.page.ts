@@ -38,7 +38,7 @@ export class UpdateResumePage implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/home/profile/resume/<resume>']);
+    this.router.navigate(['/home/profile/view-resume']);
   }
 
   getFormData(event) {

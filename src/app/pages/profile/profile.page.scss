@@ -38,11 +38,7 @@ p {
 
 .header-half {
   height: auto;
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(230,230,230,0.4),
-    rgba(200,200,200,0.9));
-  background-attachment: fixed;
+  background: #edf3f8;
   padding: 50px 0 50px 0;
 
   .orange-button{
