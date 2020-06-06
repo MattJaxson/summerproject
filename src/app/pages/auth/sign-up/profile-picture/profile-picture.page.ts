@@ -76,12 +76,17 @@ export class ProfilePicturePage implements OnInit {
 
   uploadPhoto() {
     const formElement = document.querySelectorAll('form');
-    console.log(formElement[3]);
-    this.formData = new FormData(formElement[3]);
+    formElement.forEach(form => {
+      if ( form.id === 'image-form') {
+        console.log('Got Form: ' + form);
+        this.formData = new FormData(form);
+      }
+     });
 
     this.photo.imageUpload(this.formData).subscribe(
       data => {
         console.log(data);
+        console.log('Image Upload API Successful');
         this.goToUploadResumePage(data['objectUrl']);
       }
     );

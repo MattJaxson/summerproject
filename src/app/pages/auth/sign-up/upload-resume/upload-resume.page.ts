@@ -28,14 +28,15 @@ export class UploadResumePage implements OnInit {
 
   getFormData(event) {
     const formElement = document.querySelectorAll('form');
-    console.log(formElement[4]);
-    this.formData = new FormData(formElement[4]);
+    formElement.forEach(form => {
+      if ( form.id === 'resume-form') {
+        console.log('Got Form: ' + form);
+        this.formData = new FormData(form);
+      }
+     });
   }
 
   uploadResume() {
-    const formElement = document.querySelectorAll('form');
-    console.log(formElement[4]);
-    this.formData = new FormData(formElement[4]);
     this.resume.resumeUpload(this.formData).subscribe(
       data => {
         console.log(data['objectUrl']);
