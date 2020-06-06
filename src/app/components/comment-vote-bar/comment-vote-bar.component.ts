@@ -43,7 +43,6 @@ export class CommentVoteBarComponent implements OnInit {
     // Get information about comment
     this.posts.getPostInfo(this.postID)
       .subscribe(postInfo => {
-        let theComment;
         let allComments = postInfo['comments'];
         allComments.find(comment => {
 
@@ -62,7 +61,6 @@ export class CommentVoteBarComponent implements OnInit {
             this.downVoteLength = this.downVoteCount$.getValue();
             return;
           }
-          console.log(theComment);
         });
 
         // Get User Email

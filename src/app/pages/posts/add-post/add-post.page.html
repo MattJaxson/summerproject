@@ -41,7 +41,7 @@
     
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
-        <form [formGroup]="textPostForm" (ngSubmit)="post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost)">
+        <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.textPostForm.value.textPost) : null">
           <ion-row>
             <ion-col class="ion-text-center">
               <ion-item class="text-input ion-no-padding">
@@ -51,7 +51,8 @@
                   spellcheck="true"
                   wrap="soft"
                   formControlName="textPost"
-                  placeholder="What do you have to say?">
+                  placeholder="What do you have to say?"
+                  (keydown.control.enter)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.textPostForm.value.textPost) : null">
                 </ion-textarea>
               </ion-item>
               </ion-col>

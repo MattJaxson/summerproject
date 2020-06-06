@@ -78,11 +78,16 @@
     <ion-col size="1">
       <img id="reply-avatar" src="../../../assets/batman-pro-pic.png">
     </ion-col>
-    <ion-col size="7">
+    <ion-col size="5">
       <p class="reply-text">{{reply.reply}}</p>
     </ion-col>
     <ion-col size="2">
        <p id="reply-date">{{reply.date}}</p>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button *ngIf="reply.isEditable" (click)="deleteReply(reply._id)" expand="block">
+        Delete
+      </ion-button>
     </ion-col>
   </ion-row>
 

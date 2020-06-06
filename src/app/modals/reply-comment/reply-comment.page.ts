@@ -46,6 +46,7 @@ export class ReplyCommentPage implements OnInit {
     this.commentUserEmail = this.navParams.get('commentUserEmail');
 
     console.log(this.commentUserEmail);
+    console.log(this.userEmail)
 
   }
 

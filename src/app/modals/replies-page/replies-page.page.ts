@@ -52,7 +52,14 @@ export class RepliesPagePage implements OnInit {
 
     this.replies$.next(this.navParams.get('replies').reverse());
     this.replies$.subscribe(data => {
-    this.replies = data;
+      this.replies = data;
+      for (let reply of this.replies) {
+        reply.isEditable = false;
+        console.log(reply.userEmail);
+        if (reply.userEmail == this.userEmail) {
+          reply.isEditable = true;
+        }
+      }
     });
 
     this.postID = this.navParams.get('postID');
@@ -100,6 +107,7 @@ export class RepliesPagePage implements OnInit {
           let comments = data['comments'];
           let userEmail = data['userEmail'];
           let replies = data['replies'];
+
           // Give User ability to Edit, Delete, or Report a Comment.
             // User cannot Report their own comment **
           for (const comment of comments) {
@@ -141,6 +149,60 @@ export class RepliesPagePage implements OnInit {
       );
 
     await this.repliesLoading();
+  }
+
+  async deleteReply(replyID) {
+    console.log('Deleting reply with id ', replyID);
+    await this.posts.deleteReply(replyID, this.commentID, this.postID).subscribe( data => {
+      console.log(data);
+      let currentComment;
+      let currentCommentReplies = [];
+
+      let comments = data['comments'];
+      let userEmail = data['userEmail'];
+      let replies = data['replies'];
+
+      for (const comment of comments) {
+        if (comment._id == data['comment']) {
+          currentComment = comment
+          for (let i = 0; i < comment.replies.length; i++) {
+            currentCommentReplies.push(comment.replies[i]);
+          }
+        }
+      }
+
+      for (const comment of comments) {
+
+        comment.repliesLength = comment.replies.length;
+        comment.isUser = false;
+        comment.canDeleteComment = false;
+        comment.canReport = true;
+        comment.date = formatDistanceToNow(new Date(comment.date), {
+          includeSeconds: false,
+          addSuffix: false
+        });
+
+        // If the comment was posted by the current user, it becomes editable
+        if (comment.userEmail == userEmail) {
+          comment.isUser = true;
+          comment.canDeleteComment = true;
+          comment.canReport = false;
+        }
+
+        // Format the Reply Dates
+        for (let i = 0; comment.replies.length > i; i++) {
+          comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
+            addSuffix: false
+          });
+          replies.push(comment.replies[i]);
+        }
+      }
+
+      this.replies = currentCommentReplies;
+
+      this.posts.commentsSubject$.next(comments.reverse());
+      this.replies$.next(this.replies.reverse());
+    });
   }
 
   async repliesLoading() {
