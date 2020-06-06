@@ -20,9 +20,10 @@ import { environment } from '../../../../../environments/environment';
   providers: []
 })
 export class ProfilePicturePage implements OnInit {
-  //  +++ Brainstorm +++
-  //  Maybe I need to notify the server that this user didnt upload a profile picture?
+
+  defaultProfilePicture = '../../../../../assets/icon/default-pro-picture.svg';
   imageUrl;
+  formData: FormData;
 
     // Options for Cordova Camera plugin
   private options: CameraOptions = {
@@ -58,9 +59,9 @@ export class ProfilePicturePage implements OnInit {
     }
 
    getFormData(event) {
-    const formElement = document.querySelector('form');
-
-    const formData = new FormData(formElement);
+    const formElement = document.querySelectorAll('form');
+    console.log(formElement[3]);
+    this.formData = new FormData(formElement[3]);
 
     let reader = new FileReader();
     reader.addEventListener('load',  () => {
@@ -73,9 +74,28 @@ export class ProfilePicturePage implements OnInit {
     }
   }
 
+  uploadPhoto() {
+    const formElement = document.querySelectorAll('form');
+    console.log(formElement[3]);
+    this.formData = new FormData(formElement[3]);
+
+    this.photo.imageUpload(this.formData).subscribe(
+      data => {
+        console.log(data);
+        this.goToUploadResumePage(data['objectUrl']);
+      }
+    );
+  }
+
+  skip() {
+    console.log('Skipping to Upload Resume >>');
+    this.presentSkipAlert();
+  }
 
 
-  goToUploadResumePage() {
+
+  goToUploadResumePage(photoURL) {
+    this.auth.getProfilePicture(photoURL);
     console.log('Going to Resume Page >>');
     this.router.navigate(['/personal-info/profile-picture/upload-resume']);
   }
@@ -136,11 +156,6 @@ export class ProfilePicturePage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  skip() {
-    console.log('Skipping to Upload Resume >>');
-    this.presentSkipAlert();
   }
 
   cancel() {

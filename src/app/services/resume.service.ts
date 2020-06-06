@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Storage } from '@ionic/storage';
 
 
 @Injectable({
@@ -11,5 +8,24 @@ import { Storage } from '@ionic/storage';
 })
 
 export class ResumeService {
+
+  BACKEND_URL = environment.url;
+
+  constructor(
+    private http: HttpClient
+  ) {
+
+  }
+  resumeUpload(resumeForm) {
+    console.log('resume uploading');
+    return this.http.post(`${this.BACKEND_URL}/api/resume/upload-resume`,
+    resumeForm);
+   }
+
+   changeResume(imageForm) {
+    console.log(imageForm);
+    return this.http.post(`${this.BACKEND_URL}/api/resume/change-resume`,
+    imageForm);
+   }
 
 }

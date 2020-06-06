@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../../../services/auth.service';
 import { ProfileService } from '../../../../services/profile.service';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { PhotoService } from '../../../../services/photo.service';
+import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -12,63 +11,104 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   styleUrls: ['./change-profile-picture.page.scss'],
 })
 export class ChangeProfilePicturePage implements OnInit {
-  changePicture: FormGroup;
-  activeEmail = '';
-  activePicture = this.profile.profilePicture.getValue();
+  formData: FormData;
+  imageUrl = this.profile.profilePicture.getValue();
+  uploadedPhotoURL;
+  uploadedPhoto = false;
+  awsPrefix = this.imageUrl.slice(-51);
+  userEmail: any;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private photo: PhotoService,
     private router: Router,
-    private auth: AuthService,
     private profile: ProfileService,
-    private activatedRoute: ActivatedRoute,
-    private camera: Camera,
+    private alert: AlertController,
+    private toast: ToastController,
+    private loading: LoadingController
     ) { }
 
   ngOnInit() {
+    this.profile.getUserDetails()
+      .subscribe(
+        data => {
+          this.userEmail = data['email'];
+          console.log(this.userEmail);
+        }
+      );
   }
+
+  getFormData(event) {
+   const formElement = document.querySelectorAll('form');
+   formElement.forEach(form => {
+    if ( form.id === 'changePhotoForm') {
+      console.log('Got Form: ' + form);
+      this.formData = new FormData(form);
+      this.uploadedPhoto = true;
+    }
+   });
+
+   console.log(this.formData);
+
+   let reader = new FileReader();
+   reader.addEventListener('load',  () => {
+     // convert image file to base64 string
+     this.uploadedPhotoURL = reader.result;
+   }, false);
+
+   if (formElement) {
+     reader.readAsDataURL(event.target.files[0]);
+   }
+ }
+
+ uploadChangedPhoto() {
+  const formElement = document.querySelectorAll('form');
+  formElement.forEach(form => {
+   if ( form.id === 'changePhotoForm') {
+     console.log('Got Form: ' + form);
+     this.formData = new FormData(form);
+     this.formData.append('oldPhotoKey', this.awsPrefix);
+     this.formData.append('email', this.userEmail);
+   }
+  });
+
+
+  this.photo.changeProfilePicture(this.formData).subscribe(
+     async data => {
+       console.log(data);
+       let newPhoto = data['objectUrl'];
+       await this.presentLoading();
+       await this.profile.profilePicture.next(newPhoto);
+       await this.presentToast();
+       await this.router.navigate(['/home/profile']);
+     }
+   );
+ }
+
+
+async presentToast() {
+  const toast = await this.toast.create({
+    message: 'Your Profile Picture has been changed',
+    animated: true,
+    cssClass: 'updated-toast',
+    duration: 2000
+  });
+  toast.present();
+}
+
+async presentLoading() {
+  const loading = await this.loading.create({
+    cssClass: 'my-custom-class',
+    message: 'Updating Photo...',
+    duration: 1000
+  });
+  await loading.present();
+
+  const { role, data } = await loading.onDidDismiss();
+  console.log('Loading dismissed!');
+}
 
   back() {
-    this.router.navigate(['/home/profile/edit-profile-page']);
+    this.router.navigate(['/home/profile']);
   }
 
-  // ADD password input to profile picture
-  confirmChangeProfilePicture(newPicture, psssword) {
-    this.profile.changeProfilePicture(this.activeEmail, newPicture, psssword);
-    // console.log('Going to Change Picture Confirm');
-    // this.router.navigate(['/home/profile/change-profile-picture/confirm']);
-  }
-
-
-
-  // Not finished
-  useCamera() {
-
-    let options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      // This is the actual picture
-      this.activePicture = (window as any).Ionic.WebView.convertFileSrc(imageData);
-      }, (err) => {
-      alert('error ' + JSON.stringify(err));
-    });
-    console.log("Accessing Phone's Camera to gather Photo");
-
-    // this.router.navigate(['/home/profile/confirm-photo']);
-  }
-
-  // Not finished
-  upload() {
-    console.log("Accessing Phone's File System to gather Photo");
-    this.router.navigate(['/home/profile/confirm-photo']);
-  }
 }

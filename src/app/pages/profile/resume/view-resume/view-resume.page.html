@@ -10,25 +10,27 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-      <ion-col offset="3" size="2">
+      <ion-col push-lg="0.5" size="2">
         <h1>View Resume</h1>
       </ion-col>
-      <ion-col push="2.5" size="2">
-        <ion-button class="back-button" (click)="back()">
+      <ion-col push-lg="6.4" size="6">
+        <ion-button (click)="updateResume()" class="orange-button" style="width: 150px;">UPDATE</ion-button>
+        <ion-button class="blue-button" (click)="back()">
           Back
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="10">
-        <hr style="background-color: #00000044;" />
+      <ion-col size="11">
+        <hr style="background-color: #666;" />
       </ion-col>
     </ion-row>
+
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6">
-        <p>This is your resume</p>
+      <ion-col style="margin: 100px auto;" size-xs="12" size-sm="11" size-md="11" size-lg="11">
+        <object [data]="this.sanitizeImageUrl(this.resume)" width="100%" height="700" type="application/pdf"></object>
+
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<button (click)="updateResume()" id="next-button">UPDATE RESUME</button>

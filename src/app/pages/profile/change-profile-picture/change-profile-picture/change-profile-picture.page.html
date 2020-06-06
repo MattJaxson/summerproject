@@ -15,24 +15,39 @@
         <h1>Change Profile Picture</h1>
       </ion-col>
       <ion-col push="2.5" size="2">
-        <ion-button class="back-button" (click)="back()">
+        <ion-button class="blue-button" (click)="back()">
            Back
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="10">
+      <ion-col size="6">
         <hr style="background-color: #00000044;" />
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-        <h6 class="text-header" style="padding: unset;">Please upload a new photo from your gallery, or take a new one with your camera.</h6>
-        <div style="width: 100px; height: 100px; border-radius: 100px;background: lightgrey; margin: 30px auto;">
-          <img src="" alt="Profile Picture">
-        </div>
-        <ion-button (click)="useCamera()" class="orange-button" style="margin-right: 16px;">CAMERA</ion-button>
-        <ion-button (click)="upload()" class="orange-button">UPLOAD</ion-button>
+        <h6 class="text-header">Please select the profile picture you will use to replace your current one. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
+
+        <!-- <p>{{awsPrefix}}</p> -->
+        <img *ngIf="!uploadedPhoto" id="profile-picture" src="{{imageUrl}}" alt="Profile Picture">
+
+
+        <img *ngIf="uploadedPhoto" id="profile-picture" src="{{uploadedPhotoURL}}" alt="Profile Picture">
+
+        <form
+        (ngSubmit)="uploadChangedPhoto()" id="changePhotoForm">
+          <input
+            name="profile-picture-update"
+            (change)="getFormData($event)" placeholder="Upload Image"
+            type="file"/>
+
+          <ion-button
+            type="submit"
+            class="orange-button"
+            [disabled]="!imageUrl">Update
+          </ion-button>
+        </form>
       </ion-col>
     </ion-row>
   </ion-grid>
