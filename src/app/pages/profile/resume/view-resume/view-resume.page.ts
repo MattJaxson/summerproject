@@ -37,7 +37,7 @@ export class ViewResumePage implements OnInit {
 }
 
   back() {
-    this.router.navigate(['/home/profile/resume']);
+    this.router.navigate(['/home/profile']);
   }
 
   updateResume() {
