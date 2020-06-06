@@ -1,3 +1,9 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-auth-login-login-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/login/login.page.html":
@@ -63,11 +69,15 @@
     /*! ./login.page */
     "./src/app/pages/auth/login/login.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _login_page__WEBPACK_IMPORTED_MODULE_3__["LoginPage"]
     }];
-    let LoginPageRoutingModule = class LoginPageRoutingModule {};
+
+    var LoginPageRoutingModule = function LoginPageRoutingModule() {
+      _classCallCheck(this, LoginPageRoutingModule);
+    };
+
     LoginPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -137,7 +147,10 @@
     /*! ./login.page */
     "./src/app/pages/auth/login/login.page.ts");
 
-    let LoginPageModule = class LoginPageModule {};
+    var LoginPageModule = function LoginPageModule() {
+      _classCallCheck(this, LoginPageModule);
+    };
+
     LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _login_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoginPageRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]],
       declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
@@ -221,9 +234,11 @@
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    let LoginPage = class LoginPage {
-      constructor( // private auth: AuthService,
+    var LoginPage = /*#__PURE__*/function () {
+      function LoginPage( // private auth: AuthService,
       formBuilder, auth, loading, toast, router) {
+        _classCallCheck(this, LoginPage);
+
         this.formBuilder = formBuilder;
         this.auth = auth;
         this.loading = loading;
@@ -242,70 +257,100 @@
         };
       }
 
-      ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-          email: ['eddielacrosse2@gmail.com', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].email]],
-          password: ['Lacrosse2', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, // this is for the letters (both uppercase and lowercase) and numbers validation
-          _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')])]
-        }); // this.wrongPasswordToast();
-      }
+      _createClass(LoginPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.loginForm = this.formBuilder.group({
+            email: ['eddielacrosse2@gmail.com', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].email]],
+            password: ['Lacrosse2', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, // this is for the letters (both uppercase and lowercase) and numbers validation
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')])]
+          }); // this.wrongPasswordToast();
+        }
+      }, {
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+          var _this = this;
 
-      ngAfterViewInit() {
-        setTimeout(() => {
-          this.inputElement.setFocus();
-        }, 1000);
-      }
+          setTimeout(function () {
+            _this.inputElement.setFocus();
+          }, 1000);
+        }
+      }, {
+        key: "presentLoading",
+        value: function presentLoading() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var loading, _yield$loading$onDidD, role, data;
 
-      presentLoading() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          const loading = yield this.loading.create({
-            message: 'Logging in...',
-            duration: 1000,
-            cssClass: 'success-toast',
-            keyboardClose: true
-          });
-          yield loading.present();
-          const {
-            role,
-            data
-          } = yield loading.onDidDismiss();
-        });
-      }
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.loading.create({
+                      message: 'Logging in...',
+                      duration: 1000,
+                      cssClass: 'success-toast',
+                      keyboardClose: true
+                    });
 
-      login(data) {
-        this.presentLoading();
-        this.auth.login(data);
-      }
+                  case 2:
+                    loading = _context.sent;
+                    _context.next = 5;
+                    return loading.present();
 
-      goBack() {
-        this.router.navigate(['']);
-      }
+                  case 5:
+                    _context.next = 7;
+                    return loading.onDidDismiss();
 
+                  case 7:
+                    _yield$loading$onDidD = _context.sent;
+                    role = _yield$loading$onDidD.role;
+                    data = _yield$loading$onDidD.data;
+
+                  case 10:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "login",
+        value: function login(data) {
+          this.presentLoading();
+          this.auth.login(data);
+        }
+      }]);
+
+      return LoginPage;
+    }();
+
+    LoginPage.ctorParameters = function () {
+      return [{
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]
+      }, {
+        type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+      }];
     };
 
-    LoginPage.ctorParameters = () => [{
-      type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]
-    }, {
-      type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
-    }, {
-      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]
-    }, {
-      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]
-    }, {
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
-    }];
-
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('autoFocusInput', {
-      static: false
+      "static": false
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonInput"])], LoginPage.prototype, "inputElement", void 0);
     LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-login',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./login.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/login/login.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/auth/login/login.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./login.page.scss */
-      "./src/app/pages/auth/login/login.page.scss")).default]
+      "./src/app/pages/auth/login/login.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])], LoginPage);
     /***/
   }

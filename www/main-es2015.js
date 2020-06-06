@@ -447,6 +447,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/comment-vote-bar/comment-vote-bar.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/comment-vote-bar/comment-vote-bar.component.html ***!
+  \*******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-toolbar style=\"--background: none\">\n  <ion-buttons slot=\"start\">\n    <ion-button *ngIf=\"!currentUserUpvoted\" class=\"upvote\" (click)=\"upVoteComment()\">\n      <ion-icon size=\"large\" src=\"../assets/icon/caret-up-outline.svg\"></ion-icon>\n      {{upVoteLength}}\n    </ion-button>\n    <ion-button *ngIf=\"currentUserUpvoted\" class=\"upvote\" (click)=\"upVoteComment()\">\n      <ion-icon  size=\"large\" src=\"../assets/icon/caret-up-outline-active.svg\"></ion-icon>\n      {{upVoteLength}}\n    </ion-button>\n\n    <!-- Downvotes -->\n    <ion-button *ngIf=\"!currentUserDownvoted\" class=\"downvote\" (click)=\"downVoteComment()\">\n      <ion-icon size=\"large\" src=\"../assets/icon/caret-down-outline.svg\">\n      </ion-icon>\n      {{downVoteLength}}\n    </ion-button>\n      <ion-button *ngIf=\"currentUserDownvoted\" class=\"downvote\" (click)=\"downVoteComment()\">\n        <ion-icon size=\"large\" src=\"../assets/icon/caret-down-outline-active.svg\"></ion-icon>\n        {{downVoteLength}}\n      </ion-button>\n  </ion-buttons>\n</ion-toolbar>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/follow-comment-buttons/follow-comment-buttons.component.html":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/follow-comment-buttons/follow-comment-buttons.component.html ***!
@@ -777,8 +790,8 @@ const routes = [
         path: '',
         // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
         // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
-        // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-sign-up-profile-picture-profile-picture-module */ "profile-picture-profile-picture-module").then(__webpack_require__.bind(null, /*! ./pages/auth/sign-up/profile-picture/profile-picture.module */ "./src/app/pages/auth/sign-up/profile-picture/profile-picture.module.ts")).then(m => m.ProfilePicturePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-auth-login-login-module */ "pages-auth-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/auth/login/login.module */ "./src/app/pages/auth/login/login.module.ts")).then(m => m.LoginPageModule)
+        // loadChildren: () => import('./pages/auth/sign-up/upload-resume/upload-resume.module').then( m => m.UploadResumePageModule)
     },
     {
         path: 'home',
@@ -818,6 +831,10 @@ const routes = [
     {
         path: 'replies-page',
         loadChildren: () => Promise.all(/*! import() | modals-replies-page-replies-page-module */[__webpack_require__.e("default~modals-replies-page-replies-page-module~pages-events-events-module~pages-jobs-jobs-module~pa~f0afecd2"), __webpack_require__.e("default~modals-replies-page-replies-page-module~post-page-post-page-module")]).then(__webpack_require__.bind(null, /*! ./modals/replies-page/replies-page.module */ "./src/app/modals/replies-page/replies-page.module.ts")).then(m => m.RepliesPagePageModule)
+    },
+    {
+        path: 'edit-post',
+        loadChildren: () => __webpack_require__.e(/*! import() | modals-edit-post-edit-post-module */ "common").then(__webpack_require__.bind(null, /*! ./modals/edit-post/edit-post.module */ "./src/app/modals/edit-post/edit-post.module.ts")).then(m => m.EditPostPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -1056,6 +1073,194 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/components/comment-vote-bar/comment-vote-bar.component.scss":
+/*!*****************************************************************************!*\
+  !*** ./src/app/components/comment-vote-bar/comment-vote-bar.component.scss ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".upvote {\n  border-radius: 5px;\n  width: 60px;\n  position: relative;\n  --color: #005191;\n}\n.upvote ion-icon {\n  color: #005191;\n  font-size: 40px;\n}\n.downvote {\n  border-radius: 5px;\n  width: 60px;\n  padding-left: 0px;\n  --color: #005191;\n}\n.downvote ion-icon {\n  color: #005191;\n  --font-size: 40px;\n}\n.upvoted-toast {\n  --background: #005191;\n}\n.downvoted-toast {\n  --background: #FFB351;\n}\n.followed-toast {\n  --background: #24d8a8;\n}\n.unfollowed-toast {\n  --background: #FFB351;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9jb21tZW50LXZvdGUtYmFyL2NvbW1lbnQtdm90ZS1iYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvY29tbWVudC12b3RlLWJhci9jb21tZW50LXZvdGUtYmFyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtBQ0NKO0FEQ0k7RUFDRSxjQUFBO0VBQ0EsZUFBQTtBQ0NOO0FER0U7RUFDRSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0FDQUo7QURFSTtFQUNFLGNBQUE7RUFDQSxpQkFBQTtBQ0FOO0FESUU7RUFDRSxxQkFBQTtBQ0RKO0FER0U7RUFDRSxxQkFBQTtBQ0FKO0FER0U7RUFDRSxxQkFBQTtBQ0FKO0FERUU7RUFDRSxxQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jb21tZW50LXZvdGUtYmFyL2NvbW1lbnQtdm90ZS1iYXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudXB2b3Rle1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICB3aWR0aDogNjBweDtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgLS1jb2xvcjogIzAwNTE5MTtcbiAgXG4gICAgaW9uLWljb24ge1xuICAgICAgY29sb3I6ICMwMDUxOTE7XG4gICAgICBmb250LXNpemU6IDQwcHg7XG4gICAgfVxuICB9XG4gIFxuICAuZG93bnZvdGUge1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICB3aWR0aDogNjBweDtcbiAgICBwYWRkaW5nLWxlZnQ6IDBweDtcbiAgICAtLWNvbG9yOiAjMDA1MTkxO1xuICBcbiAgICBpb24taWNvbiB7XG4gICAgICBjb2xvcjogIzAwNTE5MTtcbiAgICAgIC0tZm9udC1zaXplOiA0MHB4O1xuICAgIH1cbiAgfVxuICBcbiAgLnVwdm90ZWQtdG9hc3Qge1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTE5MTtcbiAgfVxuICAuZG93bnZvdGVkLXRvYXN0IHtcbiAgICAtLWJhY2tncm91bmQ6ICNGRkIzNTE7XG4gIH1cbiAgXG4gIC5mb2xsb3dlZC10b2FzdCB7XG4gICAgLS1iYWNrZ3JvdW5kOiAjMjRkOGE4O1xuICB9XG4gIC51bmZvbGxvd2VkLXRvYXN0IHtcbiAgICAtLWJhY2tncm91bmQ6ICNGRkIzNTE7XG4gIH0iLCIudXB2b3RlIHtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICB3aWR0aDogNjBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuLnVwdm90ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjMDA1MTkxO1xuICBmb250LXNpemU6IDQwcHg7XG59XG5cbi5kb3dudm90ZSB7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IDYwcHg7XG4gIHBhZGRpbmctbGVmdDogMHB4O1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuLmRvd252b3RlIGlvbi1pY29uIHtcbiAgY29sb3I6ICMwMDUxOTE7XG4gIC0tZm9udC1zaXplOiA0MHB4O1xufVxuXG4udXB2b3RlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogIzAwNTE5MTtcbn1cblxuLmRvd252b3RlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn1cblxuLmZvbGxvd2VkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjMjRkOGE4O1xufVxuXG4udW5mb2xsb3dlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/components/comment-vote-bar/comment-vote-bar.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/components/comment-vote-bar/comment-vote-bar.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: CommentVoteBarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentVoteBarComponent", function() { return CommentVoteBarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_services_post_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/post.service */ "./src/app/services/post.service.ts");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var src_app_emitters_post_page_emitter_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/emitters/post-page-emitter.service */ "./src/app/emitters/post-page-emitter.service.ts");
+
+
+
+
+
+
+
+let CommentVoteBarComponent = class CommentVoteBarComponent {
+    constructor(posts, profile, toast, postEmitterService) {
+        this.posts = posts;
+        this.profile = profile;
+        this.toast = toast;
+        this.postEmitterService = postEmitterService;
+        this.upVoteCount$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](0);
+        this.downVoteCount$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](0);
+        this.currentUserUpvoted = false;
+        this.currentUserDownvoted = false;
+    }
+    ngOnInit() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            // Get information about comment
+            this.posts.getPostInfo(this.postID)
+                .subscribe(postInfo => {
+                let allComments = postInfo['comments'];
+                allComments.find(comment => {
+                    if (comment._id === this.commentID) {
+                        this.upVoters = comment['upvoters'];
+                        this.downVoters = comment['downvoters'];
+                        this.upVotes = comment['upvotes'];
+                        this.downVotes = comment['downvotes'];
+                        this.upVoteCount$.next(this.upVotes);
+                        this.downVoteCount$.next(this.downVotes);
+                        this.upVoteLength = this.upVoteCount$.getValue();
+                        this.downVoteLength = this.downVoteCount$.getValue();
+                        return;
+                    }
+                });
+                // Get User Email
+                this.profile.getUserDetails()
+                    .subscribe(userDetails => {
+                    let userEmail = userDetails['email'];
+                    let upVoted = false;
+                    let downVoted = false;
+                    this.upVoters.find(findUpVoter);
+                    this.downVoters.find(findDownVoter);
+                    function findUpVoter(upVoter) {
+                        if (!upVoter) {
+                        }
+                        if (upVoter === userEmail) {
+                            return upVoted = true;
+                        }
+                        console.log(upVoter);
+                    }
+                    function findDownVoter(downVoter) {
+                        if (!downVoter) {
+                        }
+                        if (downVoter === userEmail) {
+                            return downVoted = true;
+                        }
+                    }
+                    console.log('Current user: ', userEmail);
+                    this.userEmail = userEmail;
+                    this.currentUserUpvoted = upVoted;
+                    this.currentUserDownvoted = downVoted;
+                });
+            });
+        });
+    }
+    refreshAfterComment() {
+        this.postEmitterService.postPageRefresh();
+    }
+    upVoteComment() {
+        this.posts.upVoteComment(this.postID, this.commentID, this.userEmail)
+            .subscribe(data => {
+            const upvotes = data['upvotes'];
+            const downvotes = data['downvotes'];
+            console.log(data);
+            this.upVoteCount$.next(upvotes);
+            this.downVoteCount$.next(downvotes);
+            this.currentUserUpvoted = true;
+            this.upVoteLength = this.upVoteCount$.getValue();
+            this.downVoteLength = this.downVoteCount$.getValue();
+            if (this.currentUserUpvoted === true) {
+                return this.currentUserDownvoted = false;
+            }
+        });
+        this.upVoteCommentToast();
+        this.refreshAfterComment();
+    }
+    upVoteCommentToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const upVotePostToast = yield this.toast.create({
+                cssClass: 'upvoted-toast',
+                message: 'You have UPVOTED this comment.',
+                duration: 2000
+            });
+            upVotePostToast.present();
+        });
+    }
+    downVoteComment() {
+        this.posts.downVoteComment(this.postID, this.commentID, this.userEmail)
+            .subscribe(data => {
+            const upvotes = data['upvotes'];
+            const downvotes = data['downvotes'];
+            console.log(data);
+            this.upVoteCount$.next(upvotes);
+            this.downVoteCount$.next(downvotes);
+            this.currentUserDownvoted = true;
+            this.upVoteLength = this.upVoteCount$.getValue();
+            this.downVoteLength = this.downVoteCount$.getValue();
+            if (this.currentUserDownvoted === true) {
+                return this.currentUserUpvoted = false;
+            }
+        });
+        this.downVoteCommentToast();
+        this.refreshAfterComment();
+    }
+    downVoteCommentToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const downVoteToast = yield this.toast.create({
+                cssClass: 'downvoted-toast',
+                message: 'You have DOWNVOTED this comment.',
+                duration: 2000
+            });
+            downVoteToast.present();
+        });
+    }
+};
+CommentVoteBarComponent.ctorParameters = () => [
+    { type: src_app_services_post_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
+    { type: src_app_emitters_post_page_emitter_service__WEBPACK_IMPORTED_MODULE_6__["PostPageEmitterService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], CommentVoteBarComponent.prototype, "postID", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], CommentVoteBarComponent.prototype, "commentID", void 0);
+CommentVoteBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-comment-vote-bar',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./comment-vote-bar.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/comment-vote-bar/comment-vote-bar.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./comment-vote-bar.component.scss */ "./src/app/components/comment-vote-bar/comment-vote-bar.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_post_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"],
+        src_app_emitters_post_page_emitter_service__WEBPACK_IMPORTED_MODULE_6__["PostPageEmitterService"]])
+], CommentVoteBarComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/custom-component.module.ts":
 /*!*******************************************************!*\
   !*** ./src/app/components/custom-component.module.ts ***!
@@ -1075,7 +1280,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./not-going-icon/not-going-icon.component */ "./src/app/components/not-going-icon/not-going-icon.component.ts");
 /* harmony import */ var _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./follow-icon/follow-icon.component */ "./src/app/components/follow-icon/follow-icon.component.ts");
 /* harmony import */ var _up_down_vote_buttons_up_down_vote_buttons_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./up-down-vote-buttons/up-down-vote-buttons.component */ "./src/app/components/up-down-vote-buttons/up-down-vote-buttons.component.ts");
-/* harmony import */ var _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./follow-comment-buttons/follow-comment-buttons.component */ "./src/app/components/follow-comment-buttons/follow-comment-buttons.component.ts");
+/* harmony import */ var _comment_vote_bar_comment_vote_bar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./comment-vote-bar/comment-vote-bar.component */ "./src/app/components/comment-vote-bar/comment-vote-bar.component.ts");
+/* harmony import */ var _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./follow-comment-buttons/follow-comment-buttons.component */ "./src/app/components/follow-comment-buttons/follow-comment-buttons.component.ts");
+
 
 
 
@@ -1100,7 +1307,8 @@ CustomComponentsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__["NotGoingIconComponent"],
             _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__["FollowIconComponent"],
             _up_down_vote_buttons_up_down_vote_buttons_component__WEBPACK_IMPORTED_MODULE_8__["UpDownVoteButtonsComponent"],
-            _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_9__["FollowCommentButtonsComponent"]
+            _comment_vote_bar_comment_vote_bar_component__WEBPACK_IMPORTED_MODULE_9__["CommentVoteBarComponent"],
+            _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_10__["FollowCommentButtonsComponent"]
         ],
         exports: [
             _heart_icon_heart_icon_component__WEBPACK_IMPORTED_MODULE_4__["HeartIconComponent"],
@@ -1108,7 +1316,8 @@ CustomComponentsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _not_going_icon_not_going_icon_component__WEBPACK_IMPORTED_MODULE_6__["NotGoingIconComponent"],
             _follow_icon_follow_icon_component__WEBPACK_IMPORTED_MODULE_7__["FollowIconComponent"],
             _up_down_vote_buttons_up_down_vote_buttons_component__WEBPACK_IMPORTED_MODULE_8__["UpDownVoteButtonsComponent"],
-            _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_9__["FollowCommentButtonsComponent"]
+            _comment_vote_bar_comment_vote_bar_component__WEBPACK_IMPORTED_MODULE_9__["CommentVoteBarComponent"],
+            _follow_comment_buttons_follow_comment_buttons_component__WEBPACK_IMPORTED_MODULE_10__["FollowCommentButtonsComponent"]
         ]
     })
 ], CustomComponentsModule);
@@ -1378,7 +1587,7 @@ FollowIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("p {\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  opacity: 1;\n}\n\nion-button {\n  font-size: 1em;\n  font-weight: 800;\n  height: 50px;\n  width: 48%;\n  margin-left: 0;\n  margin-right: 0;\n  --color: white;\n}\n\n.not-going {\n  --color: white;\n  --background: linear-gradient(#faa71b, #e99b14);\n}\n\n.event-details {\n  --color: white;\n  margin-right: 10px;\n  --background: linear-gradient(#0672c4, #005191);\n}\n\n.going {\n  --color: white;\n  --background: linear-gradient(#24d8a8, #1baf88);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL2dvaW5nLWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvZ29pbmctaWNvbi9nb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQUE7RUFBQSxnQkFBQTtFQUNBLFVBQUE7QUNDRjs7QURFQTtFQUNFLGNBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0EsK0NBQUE7QUNDRjs7QURFQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLCtDQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0EsK0NBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZ29pbmctaWNvbi9nb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsicCB7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIG9wYWNpdHk6IDE7XG59XG5cbmlvbi1idXR0b24ge1xuICBmb250LXNpemU6IDFlbTtcbiAgZm9udC13ZWlnaHQ6IDgwMDtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNDglO1xuICBtYXJnaW4tbGVmdDogMDtcbiAgbWFyZ2luLXJpZ2h0OiAwO1xuICAtLWNvbG9yOiB3aGl0ZTtcbn1cblxuLm5vdC1nb2luZyB7XG4gIC0tY29sb3I6IHdoaXRlO1xuICAtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgjZmFhNzFiLCAjZTk5YjE0KTtcbn1cblxuLmV2ZW50LWRldGFpbHN7XG4gIC0tY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG4gIC0tYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMwNjcyYzQsICMwMDUxOTEpO1xufVxuXG4uZ29pbmcge1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIzI0ZDhhOCwgIzFiYWY4OCk7XG59XG5cbiIsInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDQ4JTtcbiAgbWFyZ2luLWxlZnQ6IDA7XG4gIG1hcmdpbi1yaWdodDogMDtcbiAgLS1jb2xvcjogd2hpdGU7XG59XG5cbi5ub3QtZ29pbmcge1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoI2ZhYTcxYiwgI2U5OWIxNCk7XG59XG5cbi5ldmVudC1kZXRhaWxzIHtcbiAgLS1jb2xvcjogd2hpdGU7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbiAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIzA2NzJjNCwgIzAwNTE5MSk7XG59XG5cbi5nb2luZyB7XG4gIC0tY29sb3I6IHdoaXRlO1xuICAtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgjMjRkOGE4LCAjMWJhZjg4KTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  transition: 0.5s;\n  opacity: 1;\n}\n\nion-button {\n  font-size: 1em;\n  font-weight: 800;\n  height: 50px;\n  width: 48%;\n  margin-left: 0;\n  margin-right: 0;\n  --color: white;\n}\n\n.not-going {\n  --color: white;\n  --background: linear-gradient(#faa71b, #e99b14);\n}\n\n.event-details {\n  --color: white;\n  margin-right: 10px;\n  --background: linear-gradient(#0672c4, #005191);\n}\n\n.going {\n  --color: white;\n  --background: linear-gradient(#24d8a8, #1baf88);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9nb2luZy1pY29uL2dvaW5nLWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvZ29pbmctaWNvbi9nb2luZy1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7RUFDQSxVQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtFQUNBLCtDQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSwrQ0FBQTtBQ0NGOztBREVBO0VBQ0UsY0FBQTtFQUNBLCtDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2dvaW5nLWljb24vZ29pbmctaWNvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBvcGFjaXR5OiAxO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDQ4JTtcbiAgbWFyZ2luLWxlZnQ6IDA7XG4gIG1hcmdpbi1yaWdodDogMDtcbiAgLS1jb2xvcjogd2hpdGU7XG59XG5cbi5ub3QtZ29pbmcge1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoI2ZhYTcxYiwgI2U5OWIxNCk7XG59XG5cbi5ldmVudC1kZXRhaWxze1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICAtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgjMDY3MmM0LCAjMDA1MTkxKTtcbn1cblxuLmdvaW5nIHtcbiAgLS1jb2xvcjogd2hpdGU7XG4gIC0tYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMyNGQ4YTgsICMxYmFmODgpO1xufVxuXG4iLCJwIHtcbiAgdHJhbnNpdGlvbjogMC41cztcbiAgb3BhY2l0eTogMTtcbn1cblxuaW9uLWJ1dHRvbiB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBmb250LXdlaWdodDogODAwO1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiA0OCU7XG4gIG1hcmdpbi1sZWZ0OiAwO1xuICBtYXJnaW4tcmlnaHQ6IDA7XG4gIC0tY29sb3I6IHdoaXRlO1xufVxuXG4ubm90LWdvaW5nIHtcbiAgLS1jb2xvcjogd2hpdGU7XG4gIC0tYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCNmYWE3MWIsICNlOTliMTQpO1xufVxuXG4uZXZlbnQtZGV0YWlscyB7XG4gIC0tY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG4gIC0tYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMwNjcyYzQsICMwMDUxOTEpO1xufVxuXG4uZ29pbmcge1xuICAtLWNvbG9yOiB3aGl0ZTtcbiAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoIzI0ZDhhOCwgIzFiYWY4OCk7XG59Il19 */");
 
 /***/ }),
 
@@ -1552,7 +1761,7 @@ GoingIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  float: right;\n  z-index: 9999;\n  position: relative;\n  right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9oZWFydC1pY29uL2hlYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59IiwiaW9uLWljb24ge1xuICBmbG9hdDogcmlnaHQ7XG4gIHotaW5kZXg6IDk5OTk7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcmlnaHQ6IDEwcHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-icon {\n  float: right;\n  z-index: 9999;\n  position: relative;\n  right: 10px;\n  color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy9oZWFydC1pY29uL2hlYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvaGVhcnQtaWNvbi9oZWFydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxVQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYXJ0LWljb24vaGVhcnQtaWNvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pY29uIHtcbiAgZmxvYXQ6IHJpZ2h0O1xuICB6LWluZGV4OiA5OTk5O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHJpZ2h0OiAxMHB4O1xuICBjb2xvcjogcmVkO1xufSIsImlvbi1pY29uIHtcbiAgZmxvYXQ6IHJpZ2h0O1xuICB6LWluZGV4OiA5OTk5O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHJpZ2h0OiAxMHB4O1xuICBjb2xvcjogcmVkO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1784,7 +1993,7 @@ NotGoingIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".upvote {\n  border-radius: 5px;\n  width: 60px;\n  position: relative;\n  --color: #005191;\n}\n.upvote ion-icon {\n  color: #005191;\n  font-size: 40px;\n}\n.downvote {\n  border-radius: 5px;\n  width: 60px;\n  padding-left: 0px;\n  --color: #005191;\n}\n.downvote ion-icon {\n  color: #005191;\n  --font-size: 40px;\n}\n.upvoted-toast {\n  --background: #005191;\n}\n.downvoted-toast {\n  --background: #FFB351;\n}\n.followed-toast {\n  --background: #24d8a8;\n}\n.unfollowed-toast {\n  --background: #FFB351;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy91cC1kb3duLXZvdGUtYnV0dG9ucy91cC1kb3duLXZvdGUtYnV0dG9ucy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy91cC1kb3duLXZvdGUtYnV0dG9ucy91cC1kb3duLXZvdGUtYnV0dG9ucy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7QUNDRjtBRENFO0VBQ0UsY0FBQTtFQUNBLGVBQUE7QUNDSjtBREdBO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtBQ0FGO0FERUU7RUFDRSxjQUFBO0VBQ0EsaUJBQUE7QUNBSjtBRElBO0VBQ0UscUJBQUE7QUNERjtBREdBO0VBQ0UscUJBQUE7QUNBRjtBREdBO0VBQ0UscUJBQUE7QUNBRjtBREVBO0VBQ0UscUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXAtZG93bi12b3RlLWJ1dHRvbnMvdXAtZG93bi12b3RlLWJ1dHRvbnMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudXB2b3Rle1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHdpZHRoOiA2MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG5cbiAgaW9uLWljb24ge1xuICAgIGNvbG9yOiAjMDA1MTkxO1xuICAgIGZvbnQtc2l6ZTogNDBweDtcbiAgfVxufVxuXG4uZG93bnZvdGUge1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHdpZHRoOiA2MHB4O1xuICBwYWRkaW5nLWxlZnQ6IDBweDtcbiAgLS1jb2xvcjogIzAwNTE5MTtcblxuICBpb24taWNvbiB7XG4gICAgY29sb3I6ICMwMDUxOTE7XG4gICAgLS1mb250LXNpemU6IDQwcHg7XG4gIH1cbn1cblxuLnVwdm90ZWQtdG9hc3Qge1xuICAtLWJhY2tncm91bmQ6ICMwMDUxOTE7XG59XG4uZG93bnZvdGVkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRkZCMzUxO1xufVxuXG4uZm9sbG93ZWQtdG9hc3Qge1xuICAtLWJhY2tncm91bmQ6ICMyNGQ4YTg7XG59XG4udW5mb2xsb3dlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn0iLCIudXB2b3RlIHtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICB3aWR0aDogNjBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuLnVwdm90ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjMDA1MTkxO1xuICBmb250LXNpemU6IDQwcHg7XG59XG5cbi5kb3dudm90ZSB7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IDYwcHg7XG4gIHBhZGRpbmctbGVmdDogMHB4O1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuLmRvd252b3RlIGlvbi1pY29uIHtcbiAgY29sb3I6ICMwMDUxOTE7XG4gIC0tZm9udC1zaXplOiA0MHB4O1xufVxuXG4udXB2b3RlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogIzAwNTE5MTtcbn1cblxuLmRvd252b3RlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn1cblxuLmZvbGxvd2VkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjMjRkOGE4O1xufVxuXG4udW5mb2xsb3dlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".upvote {\n  border-radius: 5px;\n  position: relative;\n  --color: #005191;\n}\n.upvote ion-icon {\n  color: #005191;\n  font-size: 40px;\n}\n.downvote {\n  border-radius: 5px;\n  padding-left: 0px;\n  --color: #005191;\n}\n.downvote ion-icon {\n  color: #005191;\n  --font-size: 40px;\n}\n.upvoted-toast {\n  --background: #005191;\n}\n.downvoted-toast {\n  --background: #FFB351;\n}\n.followed-toast {\n  --background: #24d8a8;\n}\n.unfollowed-toast {\n  --background: #FFB351;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvY29tcG9uZW50cy91cC1kb3duLXZvdGUtYnV0dG9ucy91cC1kb3duLXZvdGUtYnV0dG9ucy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy91cC1kb3duLXZvdGUtYnV0dG9ucy91cC1kb3duLXZvdGUtYnV0dG9ucy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBRUEsa0JBQUE7RUFDQSxnQkFBQTtBQ0FGO0FERUU7RUFDRSxjQUFBO0VBQ0EsZUFBQTtBQ0FKO0FESUE7RUFDRSxrQkFBQTtFQUVBLGlCQUFBO0VBQ0EsZ0JBQUE7QUNGRjtBRElFO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0FDRko7QURNQTtFQUNFLHFCQUFBO0FDSEY7QURLQTtFQUNFLHFCQUFBO0FDRkY7QURLQTtFQUNFLHFCQUFBO0FDRkY7QURJQTtFQUNFLHFCQUFBO0FDREYiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3VwLWRvd24tdm90ZS1idXR0b25zL3VwLWRvd24tdm90ZS1idXR0b25zLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVwdm90ZXtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAvLyB3aWR0aDogNjBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAtLWNvbG9yOiAjMDA1MTkxO1xuXG4gIGlvbi1pY29uIHtcbiAgICBjb2xvcjogIzAwNTE5MTtcbiAgICBmb250LXNpemU6IDQwcHg7XG4gIH1cbn1cblxuLmRvd252b3RlIHtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAvLyB3aWR0aDogNjBweDtcbiAgcGFkZGluZy1sZWZ0OiAwcHg7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG5cbiAgaW9uLWljb24ge1xuICAgIGNvbG9yOiAjMDA1MTkxO1xuICAgIC0tZm9udC1zaXplOiA0MHB4O1xuICB9XG59XG5cbi51cHZvdGVkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjMDA1MTkxO1xufVxuLmRvd252b3RlZC10b2FzdCB7XG4gIC0tYmFja2dyb3VuZDogI0ZGQjM1MTtcbn1cblxuLmZvbGxvd2VkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjMjRkOGE4O1xufVxuLnVuZm9sbG93ZWQtdG9hc3Qge1xuICAtLWJhY2tncm91bmQ6ICNGRkIzNTE7XG59IiwiLnVwdm90ZSB7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAtLWNvbG9yOiAjMDA1MTkxO1xufVxuLnVwdm90ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjMDA1MTkxO1xuICBmb250LXNpemU6IDQwcHg7XG59XG5cbi5kb3dudm90ZSB7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgcGFkZGluZy1sZWZ0OiAwcHg7XG4gIC0tY29sb3I6ICMwMDUxOTE7XG59XG4uZG93bnZvdGUgaW9uLWljb24ge1xuICBjb2xvcjogIzAwNTE5MTtcbiAgLS1mb250LXNpemU6IDQwcHg7XG59XG5cbi51cHZvdGVkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjMDA1MTkxO1xufVxuXG4uZG93bnZvdGVkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRkZCMzUxO1xufVxuXG4uZm9sbG93ZWQtdG9hc3Qge1xuICAtLWJhY2tncm91bmQ6ICMyNGQ4YTg7XG59XG5cbi51bmZvbGxvd2VkLXRvYXN0IHtcbiAgLS1iYWNrZ3JvdW5kOiAjRkZCMzUxO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1849,7 +2058,7 @@ let UpDownVoteButtonsComponent = class UpDownVoteButtonsComponent {
                         if (upVoter === userEmail) {
                             return upVoted = true;
                         }
-                        console.log(upVoter);
+                        console.log(`Upvoter: ${upVoter}`);
                     }
                     function findDownVoter(downVoter) {
                         if (!downVoter) {
@@ -1881,8 +2090,6 @@ let UpDownVoteButtonsComponent = class UpDownVoteButtonsComponent {
                     return this.downVoted = false;
                 }
             });
-            console.log(this.upVoteLength);
-            console.log(this.downVoteLength);
             this.upVotePostToast();
         });
     }
@@ -2088,11 +2295,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import {  } from '';
-// import {  } from '';
-// const HttpUploadOptions = {
-//   headers: new HttpHeaders({ "Content-Type": 'multipart/form-data' })
-// };
 let AuthService = class AuthService {
     constructor(http, storage, alertController, helper, plt, router, toast) {
         this.http = http;
@@ -2155,15 +2357,13 @@ let AuthService = class AuthService {
         this.userInfo.school = data.school;
         this.userInfo.grade = data.grade;
     }
-    // Push the User's photo to the UserInfo Object
-    modifyProfilePicture(pic) {
-        console.log('From AUTH Service: ');
-        console.log(pic);
-        let formData = new FormData();
-        formData.append('picture', pic);
-        return this.http.post(`${this.BACKEND_URL}/api/photo`, formData);
+    getProfilePicture(data) {
+        console.log('Sending Profile Picture URL to Auth Service...');
+        this.userInfo.profilePicture = data;
+        console.log(this.userInfo);
     }
     getResume(data) {
+        console.log('data from auth service: ' + data);
         console.log('Sent Resume to Auth Service');
         this.userInfo.resume = data;
         console.log(this.userInfo);
@@ -2222,7 +2422,7 @@ let AuthService = class AuthService {
     // Login User
     login(data) {
         console.log('Logging in');
-        return this.http.post(`${this.BACKEND_URL}/api/`, { email: data.email,
+        return this.loginSub = this.http.post(`${this.BACKEND_URL}/api/`, { email: data.email,
             password: data.password
         })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(res => {
@@ -2235,7 +2435,11 @@ let AuthService = class AuthService {
             this.authenticationState.next(true);
             console.log('Active User: ' + this.user.email);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["catchError"])(e => {
-            if (e.error.msg === 'The email and password don\'t match.') {
+            console.error(e);
+            if (e.message.startsWith('Http failure response')) {
+                this.presentAlert('Server Connection Error', 'There was a problem connecting to the server. Please try again later.');
+            }
+            else if (e.error.msg === 'The email and password don\'t match.') {
                 this.presentAlert('Incorrect Email/Password', "The email and password don't match.");
             }
             else {
@@ -2276,7 +2480,25 @@ let AuthService = class AuthService {
         this.storage.remove(this.TOKEN_KEY).then((token) => {
             console.log('Logging out...');
             this.user = null;
-            this.authenticationState.next(false);
+            this.userInfo = {
+                fullName: '',
+                addressOne: '',
+                addressTwo: '',
+                phone: '',
+                city: '',
+                state: '',
+                zip: '',
+                gender: '',
+                dob: '',
+                school: '',
+                grade: '',
+                profilePicture: '',
+                resume: '',
+                email: '',
+                password: ''
+            },
+                this.authenticationState.next(false);
+            window.location.reload();
         });
     }
     isAuthenticated() {
@@ -2407,7 +2629,7 @@ let FavoritesService = class FavoritesService {
     }
     getFavorites(email) {
         console.log('Getting Favorites');
-        return this.http.post(`${this.BACKEND_URL}/api/job/get-favorites`, { email: email });
+        return this.http.post(`${this.BACKEND_URL}/api/jobs/get-favorites`, { email: email });
     }
     favoriteThisJob(job) {
         // get user's email for database query
@@ -2416,7 +2638,7 @@ let FavoritesService = class FavoritesService {
         job.userEmail = email;
         let id = job._id;
         // this.favoriteJobs$.next([job]);
-        return this.http.post(`${this.BACKEND_URL}/api/job/favorite`, { email: email, _id: id }).subscribe(data => {
+        return this.http.post(`${this.BACKEND_URL}/api/jobs/favorite`, { email: email, _id: id }).subscribe(data => {
             console.log('Posting Favorite Job to Database..');
             let updatedFavorites = [...Object.values(data)];
             this.favoriteJobs$.next(updatedFavorites);
@@ -2429,15 +2651,15 @@ let FavoritesService = class FavoritesService {
         job.userEmail = email;
         let id = job._id;
         // post to database
-        this.http.post(`${this.BACKEND_URL}/api/job/unfavorite`, { email: email, _id: id }).subscribe((data) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+        this.http.post(`${this.BACKEND_URL}/api/jobs/unfavorite`, { email: email, _id: id }).subscribe((data) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             console.log("Unfavorite data value: ", data);
             let updatedFavorites = [...Object.values(data)];
-            for (let i = 0; i < updatedFavorites.length; i++) {
-                if (updatedFavorites[i] === job) {
-                    updatedFavorites.splice(i, 1);
-                }
-            }
-            yield this.favoriteJobs$.next(updatedFavorites);
+            // for (let i = 0; i < updatedFavorites.length; i++) {
+            //   if (updatedFavorites[i] === job) {
+            //     updatedFavorites.splice(i, 1);
+            //   }
+            // }
+            this.favoriteJobs$.next(updatedFavorites);
             this.presentToast('You removed this job from Favorites.');
         }));
         // update favoriteJobsSubject
@@ -2512,17 +2734,17 @@ let PostsService = class PostsService {
         // console.log(`Getting information for post id ${id}`);
         return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, { _id: id });
     }
-    addPost(creatorName, creatorEmail, post) {
+    addPost(creatorName, creatorEmail, creatorProfilePicture, post) {
         console.log('Adding post to post que...');
-        return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, { creatorName, creatorEmail, post });
+        return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, { creatorName, creatorEmail, creatorProfilePicture, post });
     }
     comment(postID, date, userFullName, userEmail, { comment: comment }) {
         return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment });
     }
-    editPost(postID, commentID, newPost) {
-        return this.http.post(`${this.BACKEND_URL}/api/posts/edit-post`, { postID, commentID, newPost });
+    editPost(postID, newPost) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/edit-post`, { postID, newPost });
     }
-    editComment(postID, commentID, newComment) {
+    editComment(commentID, postID, newComment) {
         return this.http.post(`${this.BACKEND_URL}/api/posts/edit-comment`, { postID, commentID, newComment });
     }
     // Upvote Post
@@ -2535,11 +2757,11 @@ let PostsService = class PostsService {
     }
     // Upvote
     upVoteComment(postID, commentID, userEmail) {
-        return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
+        return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, commentID, userEmail });
     }
     // Downvote
     downVoteComment(postID, commentID, userEmail) {
-        return this.http.post(`${this.BACKEND_URL}/api/posts/up-vote-comment`, { postID, userEmail });
+        return this.http.post(`${this.BACKEND_URL}/api/posts/down-vote-comment`, { postID, commentID, userEmail });
     }
     followPost(postID, userEmail) {
         return this.http.post(`${this.BACKEND_URL}/api/posts/follow`, {
@@ -2573,9 +2795,12 @@ let PostsService = class PostsService {
         // tslint:disable-next-line: max-line-length
         return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate });
     }
-    replyComment(commentID, postID, reply, userFullName, userProfilePicture, userEmail, commentUserEmail, commentUserFullName) {
+    replyComment(commentID, postID, reply, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
         // tslint:disable-next-line: max-line-length
-        return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID, commentID, reply, userFullName, userProfilePicture, userEmail, commentUserEmail, commentUserFullName });
+        return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID: postID, commentID: commentID, reply: reply, userFullName: userFullName, userProfilePicture: userProfilePicture, userEmail: userEmail, commentUserEmail: commentUserEmail, commentUserFullName: commentUserFullName });
+    }
+    deleteReply(replyID, commentID, postID) {
+        return this.http.post(`${this.BACKEND_URL}/api/posts/delete-reply`, { _rid: replyID, _cid: commentID, _pid: postID });
     }
 };
 PostsService.ctorParameters = () => [
@@ -2858,22 +3083,11 @@ let ProfileService = class ProfileService {
             });
         });
     }
-    changeProfilePicture(email, newPicture, password) {
+    changeProfilePicture(imageForm, oldPhotoKey) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            return yield this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
-                email,
-                newPicture,
-                password
-            }).subscribe(data => {
-                if (data === true) {
-                    console.log('Changing Resume...');
-                    this.profilePicture.next(newPicture);
-                    this.router.navigate([`/home/user/change-school/:school/:grade/confirm`]);
-                }
-                else {
-                    return console.log('Passwords dont match');
-                }
-            });
+            return this.http.post(`${this.BACKEND_URL}/api/photo/change-profile-picture`, {
+                imageForm, oldPhotoKey
+            }).subscribe();
         });
     }
     changeResume(email, newResume, password) {

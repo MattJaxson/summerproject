@@ -1,3 +1,15 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["going-going-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/events/going/going.page.html":
@@ -63,11 +75,15 @@
     /*! ./going.page */
     "./src/app/pages/events/going/going.page.ts");
 
-    const routes = [{
+    var routes = [{
       path: '',
       component: _going_page__WEBPACK_IMPORTED_MODULE_3__["GoingPage"]
     }];
-    let GoingPageRoutingModule = class GoingPageRoutingModule {};
+
+    var GoingPageRoutingModule = function GoingPageRoutingModule() {
+      _classCallCheck(this, GoingPageRoutingModule);
+    };
+
     GoingPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -137,7 +153,10 @@
     /*! ./going.page */
     "./src/app/pages/events/going/going.page.ts");
 
-    let GoingPageModule = class GoingPageModule {};
+    var GoingPageModule = function GoingPageModule() {
+      _classCallCheck(this, GoingPageModule);
+    };
+
     GoingPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _going_routing_module__WEBPACK_IMPORTED_MODULE_5__["GoingPageRoutingModule"]],
       declarations: [_going_page__WEBPACK_IMPORTED_MODULE_6__["GoingPage"]]
@@ -245,8 +264,10 @@
     /*! @angular/common */
     "./node_modules/@angular/common/fesm2015/common.js");
 
-    let GoingPage = class GoingPage {
-      constructor(router, events, profile, cdr, toast, alert, eventEmitterService, location) {
+    var GoingPage = /*#__PURE__*/function () {
+      function GoingPage(router, events, profile, cdr, toast, alert, eventEmitterService, location) {
+        _classCallCheck(this, GoingPage);
+
         this.router = router;
         this.events = events;
         this.profile = profile;
@@ -259,121 +280,191 @@
         this.goingToEvents$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__["BehaviorSubject"]([]);
       }
 
-      ngOnInit() {
-        this.location.onPopState(() => {
+      _createClass(GoingPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.location.onPopState(function () {
+            _this.eventEmitterService.onBackAction();
+          });
+          console.log('going to events: ');
+          console.log(this.goingToEvents.length); // Get the User's details
+
+          this.profile.getUserDetails().subscribe(function (details) {
+            _this.id = details['_id'];
+            _this.userEmail = details['email'];
+            console.log('getting event user ' + _this.id + ' is going to');
+
+            _this.refreshGoingEvents();
+          });
+        }
+      }, {
+        key: "eventPage",
+        value: function eventPage(event) {
+          // tslint:disable-next-line: max-line-length
+          this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne, event.addressOne, event.city, event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
+        }
+      }, {
+        key: "goBack",
+        value: function goBack() {
           this.eventEmitterService.onBackAction();
-        });
-        console.log('going to events: ');
-        console.log(this.goingToEvents.length); // Get the User's details
+          this.router.navigate(['/home/events']);
+        }
+      }, {
+        key: "cancel",
+        value: function cancel(eventID) {
+          var _this2 = this;
 
-        this.profile.getUserDetails().subscribe(details => {
-          this.id = details['_id'];
-          this.userEmail = details['email'];
-          console.log('getting event user ' + this.id + ' is going to');
-          this.refreshGoingEvents();
-        });
-      }
+          console.log(eventID);
+          console.log("Removing ".concat(eventID, " from this Users eventsGoing property"));
+          ;
+          this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(function () {
+            _this2.refreshGoingEvents();
 
-      eventPage(event) {
-        // tslint:disable-next-line: max-line-length
-        this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne, event.addressOne, event.city, event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
-      }
-
-      goBack() {
-        this.eventEmitterService.onBackAction();
-        this.router.navigate(['/home/events']);
-      }
-
-      cancel(eventID) {
-        console.log(eventID);
-        console.log("Removing ".concat(eventID, " from this Users eventsGoing property"));
-        ;
-        this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe(() => {
-          this.refreshGoingEvents();
-          this.presentNotGoingToast();
-        });
-      }
-
-      refreshGoingEvents() {
-        this.events.getEventsGoing(this.id).subscribe(eventsGoing => {
-          this.goingToEvents = Object.values(eventsGoing);
-          this.goingToEvents.reverse();
-          console.log("Updated events going list: ".concat(this.goingToEvents));
-
-          for (const event of this.goingToEvents) {
-            event.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["format"])(new Date(event.date), 'MMMM dd, yyyy');
-            event.time = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["format"])(new Date(event.date), 'hh:mm a');
-            event.dateCreated = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["formatDistanceToNow"])(new Date(event.dateCreated), {
-              includeSeconds: true,
-              addSuffix: true
-            });
-          }
-
-          this.goingToEvents$.next(this.goingToEvents);
-          this.cdr.detectChanges(); // Check for new changes in events going list
-        });
-      }
-
-      presentNotGoingToast() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          const toast = yield this.toast.create({
-            message: 'You are no longer going to event. It has been removed from your "Going" list',
-            duration: 2000
+            _this2.presentNotGoingToast();
           });
-          toast.present();
-        });
-      }
+        }
+      }, {
+        key: "refreshGoingEvents",
+        value: function refreshGoingEvents() {
+          var _this3 = this;
 
-      presentAlertMultipleButtons(eventID) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-          const alert = yield this.alert.create({
-            header: 'Are you sure you want to delete this from My Events?',
-            buttons: [{
-              text: 'Yes',
-              handler: () => {
-                this.cancel(eventID);
-                return true;
+          this.events.getEventsGoing(this.id).subscribe(function (eventsGoing) {
+            _this3.goingToEvents = Object.values(eventsGoing);
+
+            _this3.goingToEvents.reverse();
+
+            console.log("Updated events going list: ".concat(_this3.goingToEvents));
+
+            var _iterator = _createForOfIteratorHelper(_this3.goingToEvents),
+                _step;
+
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                var event = _step.value;
+                event.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["format"])(new Date(event.date), 'MMMM dd, yyyy');
+                event.time = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["format"])(new Date(event.date), 'hh:mm a');
+                event.dateCreated = Object(date_fns__WEBPACK_IMPORTED_MODULE_5__["formatDistanceToNow"])(new Date(event.dateCreated), {
+                  includeSeconds: true,
+                  addSuffix: true
+                });
               }
-            }, {
-              text: 'Cancel',
-              role: 'cancel',
-              handler: () => {
-                console.log('confirm cancel');
-              }
-            }]
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+
+            _this3.goingToEvents$.next(_this3.goingToEvents);
+
+            _this3.cdr.detectChanges(); // Check for new changes in events going list
+
           });
-          yield alert.present();
-        });
-      }
+        }
+      }, {
+        key: "presentNotGoingToast",
+        value: function presentNotGoingToast() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toast.create({
+                      message: 'You are no longer going to event. It has been removed from your "Going" list',
+                      duration: 2000
+                    });
 
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "presentAlertMultipleButtons",
+        value: function presentAlertMultipleButtons(eventID) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this4 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.alert.create({
+                      header: 'Are you sure you want to delete this from My Events?',
+                      buttons: [{
+                        text: 'Yes',
+                        handler: function handler() {
+                          _this4.cancel(eventID);
+
+                          return true;
+                        }
+                      }, {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function handler() {
+                          console.log('confirm cancel');
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context2.sent;
+                    _context2.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }]);
+
+      return GoingPage;
+    }();
+
+    GoingPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"]
+      }, {
+        type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]
+      }, {
+        type: src_app_emitters_events_event_emitter_service__WEBPACK_IMPORTED_MODULE_8__["EventsEventEmitterService"]
+      }, {
+        type: _angular_common__WEBPACK_IMPORTED_MODULE_9__["PlatformLocation"]
+      }];
     };
-
-    GoingPage.ctorParameters = () => [{
-      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-    }, {
-      type: _services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"]
-    }, {
-      type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"]
-    }, {
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
-    }, {
-      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]
-    }, {
-      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]
-    }, {
-      type: src_app_emitters_events_event_emitter_service__WEBPACK_IMPORTED_MODULE_8__["EventsEventEmitterService"]
-    }, {
-      type: _angular_common__WEBPACK_IMPORTED_MODULE_9__["PlatformLocation"]
-    }];
 
     GoingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-going',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./going.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/events/going/going.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/events/going/going.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./going.page.scss */
-      "./src/app/pages/events/going/going.page.scss")).default]
+      "./src/app/pages/events/going/going.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_events_service__WEBPACK_IMPORTED_MODULE_3__["EventsService"], src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"], src_app_emitters_events_event_emitter_service__WEBPACK_IMPORTED_MODULE_8__["EventsEventEmitterService"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["PlatformLocation"]])], GoingPage);
     /***/
   }
