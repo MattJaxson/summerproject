@@ -2,7 +2,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid style="margin-top: 10%;" class="ion-text-center">
+  <ion-grid style="margin: 100px 0 100px 0;" class="ion-text-center">
     <ion-row class="ion-justify-content-center">
       <ion-col size-lg="5" size-md="7" size-xs="10">
           <h6 class="text-header">Please enter your profile information.</h6>
@@ -60,7 +60,7 @@
             <ion-item>
                 <ion-select
                 required
-                formControlName="state" 
+                formControlName="state"
                 interface="action-sheet"
                 placeholder="State"
                 value="">
@@ -142,14 +142,14 @@
 
             <ion-item>
               <ion-input
-                required 
-                maxLength="6"
+                required
+                maxLength="5"
                 formControlName="zip"   placeholder="zip"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-select
-                  required 
+                  required
                   formControlName="gender"  placeholder="Gender">
                     <ion-select-option value="female">Female</ion-select-option>
                     <ion-select-option value="male">Male</ion-select-option>
@@ -175,7 +175,7 @@
 
             <ion-item>
                 <ion-select
-                  required  
+                  required
                   formControlName="grade"   placeholder="Grade">
                   <ion-select-option value="7th Grade">Middle School - 7th Grade</ion-select-option>
                   <ion-select-option value="8th Grade">Middle School - 8th Grade</ion-select-option>
@@ -190,8 +190,8 @@
 
             </ion-item>
             </ion-list>
-            <ion-button class="orange-button" type="submit">NEXT</ion-button><br>
-            <ion-button (click)="cancel()" class="cancel-button" slot="end">
+            <ion-button [disabled]="!this.userInfoForm.valid" class="orange-button" type="submit">NEXT</ion-button><br>
+            <ion-button (click)="cancel()" class="blue-button" slot="end">
                 cancel
               </ion-button>
         </form>

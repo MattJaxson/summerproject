@@ -31,9 +31,19 @@
 
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
 
-        <ion-button class="blue-button"  (click)="selectImage()">
-          Select Picture
-        </ion-button>
+        <form
+        (ngSubmit)="uploadPhoto()" id="image-form">
+          <input
+            name="profile-picture"
+            (change)="getFormData($event)" placeholder="Upload Image"
+            type="file"/>
+
+          <ion-button
+            type="submit"
+            class="orange-button"
+            [disabled]="!imageUrl">Next
+          </ion-button>
+        </form>
 
         <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
@@ -56,7 +66,7 @@
             <h1>Profile Picture</h1>
           </ion-col>
           <ion-col push="4" size="4" class="ion-float-right">
-            <ion-button class="cancel-button" (click)="cancel()">
+            <ion-button class="blue-button" (click)="cancel()">
               Cancel
             </ion-button>
           </ion-col>
@@ -71,7 +81,7 @@
         <div
           id="default-picture-wrapper"
           style="
-          background-image: url('../../../../../assets/icon/default-pro-picture.svg');"
+          background-image: url('{{defaultProfilePicture}}');"
           *ngIf="!imageUrl">
         </div>
 
@@ -83,19 +93,23 @@
 
         <h6 class="text-header">Please select your profile picture.<br> Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
 
-        <form type="multipart/form-data">
-          <input name="profile-picture" (change)="getFormData($event)" placeholder="Upload Image"
-        type="file"/>
+        <form
+        (ngSubmit)="uploadPhoto()" id="image-form">
+          <input
+            name="profile-picture"
+            (change)="getFormData($event)" placeholder="Upload Image"
+            type="file"/>
+
+          <ion-button
+            type="submit"
+            class="orange-button"
+            [disabled]="!imageUrl">Next
+          </ion-button>
         </form>
 
         <ion-button class="blue-button skip-button" (click)="skip()" style="margin-top: 20px;">
           Skip
         </ion-button>
-
-        <ion-button
-          class="orange-button"
-          (click)="goToUploadResumePage()"
-          [disabled]="!imageUrl">Next</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

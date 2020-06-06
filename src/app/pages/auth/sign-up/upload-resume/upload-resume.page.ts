@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { ResumeService } from '../../../../services/resume.service';
 
 
 @Component({
@@ -11,17 +12,36 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
   styleUrls: ['./upload-resume.page.scss'],
 })
 export class UploadResumePage implements OnInit {
-  resume = '<resume>';
   uploaded = true;
+  formDataForS3: FormData;
+  formData: FormData;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private auth: AuthService,
-    private location: Location) { }
+    private resume: ResumeService) { }
 
   ngOnInit() {
 
+  }
+
+  getFormData(event) {
+    const formElement = document.querySelectorAll('form');
+    console.log(formElement[4]);
+    this.formData = new FormData(formElement[4]);
+  }
+
+  uploadResume() {
+    const formElement = document.querySelectorAll('form');
+    console.log(formElement[4]);
+    this.formData = new FormData(formElement[4]);
+    this.resume.resumeUpload(this.formData).subscribe(
+      data => {
+        console.log(data['objectUrl']);
+        this.goToCredentialsPage(data['objectUrl']);
+      }
+    );
   }
 
   goToCredentialsPage(resume) {
@@ -32,10 +52,6 @@ export class UploadResumePage implements OnInit {
 
   getFileFromPhone() {
     console.error("TODO: getFileFromPhone() not implemented yet");
-  }
-
-  uploadResume() {
-    console.error("TODO: uploadResume() not implemented yet");
   }
 
   cancel() {

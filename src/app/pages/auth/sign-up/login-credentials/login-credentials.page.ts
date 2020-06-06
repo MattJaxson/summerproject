@@ -15,7 +15,6 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
 
   credentialsForm: FormGroup;
-  private subscription: Subscription;
 
   passwordsMatch = false;
   code = '';
@@ -63,7 +62,7 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
 }
 
 ngOnDestroy() {
-
+  console.log('Being Destroyed');
 }
 
 formOnChanges(): void {

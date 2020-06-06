@@ -8,7 +8,7 @@ const routes: Routes = [
     // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
     // loadChildren: () => import('./pages/auth/forgot-password/confirm/confirm.module').then( m => m.ConfirmPageModule)
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
-    // loadChildren: () => import('./pages/auth/sign-up/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
+    // loadChildren: () => import('./pages/auth/sign-up/upload-resume/upload-resume.module').then( m => m.UploadResumePageModule)
   },
   {
     path: 'home',

@@ -20,6 +20,7 @@ export class AddPostPage implements OnInit {
 
   // Do some sort of Validation Later
   validationMessages = {};
+  creatorProfilePicture: any;
 
   constructor(
     private router: Router,
@@ -40,6 +41,7 @@ export class AddPostPage implements OnInit {
         console.log(details);
         this.creatorEmail = details['email'];
         this.creatorName = details['fullName'];
+        this.creatorProfilePicture = details['profilePicture'];
       }
     );
   }
@@ -48,9 +50,9 @@ export class AddPostPage implements OnInit {
     this.router.navigate(['/home/posts']);
   }
 
-  async post(creatorName, creatorEmail, post) {
+  async post(creatorName, creatorEmail, creatorProfilePicture, post) {
     await this.presentLoading();
-    await this.posts.addPost(creatorName, creatorEmail, post).subscribe(
+    await this.posts.addPost(creatorName, creatorEmail, creatorProfilePicture, post).subscribe(
       data => {
         console.log(data);
       }
