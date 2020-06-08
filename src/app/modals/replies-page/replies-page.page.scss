@@ -26,6 +26,14 @@ ion-button[type=submit] {
   --background: linear-gradient(#24d8a8, #1baf88)
 }
 
+.blue-button {
+  width: unset;
+  height: 36px;
+  font-size: 0.85em;
+  animation: none;
+  opacity: unset;
+}
+
 .reply-wrapper {
   padding: 10px;
 }
@@ -36,6 +44,11 @@ ion-button[type=submit] {
   border-radius: 50px;
   position: relative;
   right: 15px;
+}
+
+.reply-name {
+  font-weight: bold;
+  margin: 0.5em 0 0.5em;
 }
 
 #reply-date {

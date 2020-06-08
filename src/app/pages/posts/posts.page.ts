@@ -150,6 +150,7 @@ export class PostsPage implements OnInit {
       date,
       this.userFullName,
       this.userEmail,
+      this.profilePicture,
       comment
     ).subscribe();
 

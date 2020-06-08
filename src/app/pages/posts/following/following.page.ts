@@ -21,6 +21,7 @@ export class FollowingPage implements OnInit {
   commentForm: FormGroup;
   userEmail;
   userFullName;
+  userProfilePicture;
   date;
   allFollowedPosts = [];
   userID;
@@ -45,6 +46,9 @@ export class FollowingPage implements OnInit {
       details => {
         console.log('User ID from Following Page OnInit');
         this.userID = details['_id'];
+        this.userFullName = details['fullName'];
+        this.userEmail = details['email'];
+        this.userProfilePicture = details['profilePicture'];
         this.posts.getFollowedPost(this.userID).subscribe(
           data => {
             this.allFollowedPosts = Object.values(data).reverse();
@@ -96,6 +100,7 @@ export class FollowingPage implements OnInit {
       date,
       this.userFullName,
       this.userEmail,
+      this.userProfilePicture,
       comment
     );
 
