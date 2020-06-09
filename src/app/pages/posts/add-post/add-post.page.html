@@ -38,7 +38,7 @@
       </ion-col>
 
     </ion-row>
-    
+
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
         <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost) : null">
