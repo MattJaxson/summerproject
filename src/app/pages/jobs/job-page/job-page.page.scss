@@ -3,6 +3,7 @@ ion-title {
 }
 
 .company-logo {
+  border-radius: 50px;
   background-image: url("../../../../assets/journi-logo.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -14,10 +15,15 @@ span {
   font-weight: 700;
 }
 
+.blue-button {
+  display: block;
+  margin: 0px auto 200px auto;
+}
+
 .description {
   padding: 10px 0 10px 0;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  margin: 100px 0 100px 0;
+  // box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  margin: 20px 0 20px 0;
 }
 
 @media only screen and (max-width: 992px) {
@@ -55,6 +61,7 @@ span {
   margin-top: 15px;
   margin-bottom: 5px;
   opacity: 0;
+  color: #005191;
   animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
 }
 

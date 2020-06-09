@@ -15,7 +15,7 @@
 
         <!-- Logo, Title, Company Name -->
         <ion-row class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
             <div class="company-logo" style="height: 80px; width: 80px;"></div>
 
             <h1 class="job-title">{{jobTitle}}</h1>
@@ -23,28 +23,17 @@
             <h2 class="company-name">{{jobCompanyName}}</h2>
 
           </ion-col>
-          <ion-col size="2">
-            <ion-button class="ion-hide-md-down blue-button" (click)="goBack()">
-              Go Back</ion-button>
-          </ion-col>
-        </ion-row>
-
-        <!-- Line -->
-        <ion-row id="instructions" class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-            <hr style="background-color: #999;">
-          </ion-col>
         </ion-row>
 
         <!-- Instructions -->
         <ion-row class="ion-justify-content-center">
           <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-            <p class="instructions" style="font-weight: 600;">Please go over your Resume and information before you apply.</p>
+            <p class="instructions" style="color: #005191">Please go over your information before you send your application.</p>
           </ion-col>
         </ion-row>
 
         <!-- Forms -->
-        <ion-row class="ion-justify-content-center" style="margin-bottom: 100px;">
+        <ion-row class="ion-justify-content-center" style="margin: 20px auto;">
             <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
               <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
                 <ion-list class="line-input">
@@ -54,8 +43,8 @@
                   </ion-item>
 
                   <p class="instructions" >Resume</p>
-                  <ion-item>
-                    <ion-button class="blue-button" style="height: 30px;" (click)="viewResume()">
+                  <ion-item style="border: none;  position: relative; right: 20px;">
+                    <ion-button class="blue-button" style="height: 45px;" (click)="viewResume()">
                       View Resume
                     </ion-button>
                     <!-- <p>or</p> -->
@@ -79,6 +68,8 @@
                 <ion-row>
                   <ion-col class="ion-text-center" size="12">
                     <ion-button (click)="finishApplication()" class="orange-button next-button">Submit</ion-button>
+                    <ion-button class="ion-hide-md-down blue-button" (click)="goBack()">
+                      Go Back</ion-button>
                   </ion-col>
                 </ion-row>
               </form>
