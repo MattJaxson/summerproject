@@ -19,7 +19,7 @@
           id="upload-picture-wrapper"
           *ngIf="imageUrl"
           style="
-          background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
+          background-image: url('{{defaultProfilePicture}}');">
 
       </div>
 
@@ -48,6 +48,11 @@
         <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
         </ion-button>
+
+        <!-- <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit"
+        [disabled]="!imageUrl" >Next
+        </ion-button> -->
+
         <ion-button (click)="cancel()" class="cancel-button">
             Cancel
         </ion-button>
