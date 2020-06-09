@@ -103,7 +103,7 @@ ion-title {
 
 .searchbar-input {
   background: #FFF !important;
-  border: 1px solid rgba(0,0,0,0.1) !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
   border-radius: 5px !important;
   height: 50px !important;
   padding: 25px 0px 20px 50px !important;
@@ -115,12 +115,12 @@ ion-title {
 }
 
 .searchbar-input:hover {
-  border: 1px solid #00519188;
+  border: 1px solid #005191 !important;
   transition: 0.5s;
 }
 
 .searchbar-input:focus {
-  border: 1px solid #005191;
+  border: 1px solid #005191 !important;
   transition: 0.5s;
 }
 
