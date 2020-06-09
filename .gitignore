@@ -33,5 +33,6 @@ npm-debug.log*
 src/environments/environment.ts
 src/assets/Ionic Lab_files/main.js
 src/app/app-routing.module.ts
+src/app/login/login-component.ts
 
 fyfserver.pem
