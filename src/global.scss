@@ -378,6 +378,33 @@ ion-select-option {
   }
 }
 
+.action-sheet-group > button {
+  padding: 0 !important;
+}
+
+.action-sheet-button-inner {
+  color: #005191;
+  border-bottom: 1px solid lightgray;
+  padding: 0 15px;
+}
+
+.action-sheet-cancel .action-sheet-button-inner {
+  color: red;
+}
+
+.alert-wrapper {
+  --width: 100%;
+}
+
+.alert-radio-group {
+  border: none !important;
+  max-height: none !important;
+}
+
+.picker-opt {
+  color: #000000aa;
+}
+
 
 .text-header {
   background: none;
