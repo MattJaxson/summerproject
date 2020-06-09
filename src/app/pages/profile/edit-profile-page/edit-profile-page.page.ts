@@ -76,7 +76,7 @@ export class EditProfilePagePage implements OnInit {
   }
   updateResume() {
     console.log('Navigating to Change Resume Page');
-    this.router.navigate(['/home/profile/resume',  this.userObject.resume]);
+    this.router.navigate(['/home/profile/view-resume']);
   }
 
   logout() {

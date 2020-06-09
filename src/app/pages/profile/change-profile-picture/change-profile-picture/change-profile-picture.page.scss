@@ -34,7 +34,10 @@
     opacity: 0.5;
   }
 
-  ion-button {
+  .blue-button {
+    width: unset;
+    animation: none;
+    opacity: unset;
   }
 
   .wrapper {

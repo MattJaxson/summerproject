@@ -70,7 +70,7 @@ export class ApplyPage implements OnInit {
   }
 
   viewResume() {
-    console.log('Viewing Resume');
+    console.error('View Resume not yet implemented');
   }
 
   uploadResume() {

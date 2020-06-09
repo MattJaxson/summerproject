@@ -66,7 +66,7 @@ ion-item {
   --backsground: none;
 }
 
-.following-button {
+.following-mobile-button {
   opacity: 1;
   --background: rgba(255,255,255,0.1);
   --color: white;
@@ -80,13 +80,17 @@ ion-item {
   font-weight: 600;
 }
 
-.followed-button {
-  --color: white;
-  --background: linear-gradient(#0672c4, #005191);
+.following-desktop-button {
   font-weight: 800;
   display: block;
   width: 200px;
   margin-top: 20px;
+}
+
+.blue-button {
+  height: 36px;
+  animation: none;
+  opacity: unset;
 }
 
 .add-button {

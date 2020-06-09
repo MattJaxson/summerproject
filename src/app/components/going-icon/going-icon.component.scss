@@ -10,7 +10,6 @@ ion-button {
   width: 48%;
   margin-left: 0;
   margin-right: 0;
-  --color: white;
 }
 
 .not-going {
@@ -18,10 +17,14 @@ ion-button {
   --background: linear-gradient(#faa71b, #e99b14);
 }
 
+.blue-button {
+  position: unset;
+  animation: none;
+  opacity: unset;
+}
+
 .event-details{
-  --color: white;
   margin-right: 10px;
-  --background: linear-gradient(#0672c4, #005191);
 }
 
 .going {

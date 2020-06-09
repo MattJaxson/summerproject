@@ -63,13 +63,14 @@ ion-item {
   }
 }
 
-.back-button {
-  --color: white;
-  --background: linear-gradient(#0672c4, #005191);
-  font-weight: 800;
-  display: block;
-  width: 100px;
+.blue-button {
+  animation: none;
+  opacity: unset;
+  width: unset;
+  height: 36px;
   margin-top: 20px;
+  margin-bottom: 4px;
+  position: unset;
 }
 
 .add-button {

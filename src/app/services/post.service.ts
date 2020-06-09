@@ -32,6 +32,7 @@ export class PostsService {
 
   addPost(creatorName, creatorEmail, creatorProfilePicture, post) {
     console.log('Adding post to post que...');
+    console.log('Post: ', post)
     return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, creatorProfilePicture, post });
   }
 
@@ -40,9 +41,10 @@ export class PostsService {
     date,
     userFullName,
     userEmail,
+    userProfilePicture,
     { comment: comment }
   ) {
-    return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, comment } )
+    return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, date, userFullName, userEmail, userProfilePicture, comment } )
 
   }
 
