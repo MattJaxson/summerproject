@@ -9,7 +9,7 @@ import { AuthService } from '../../../../services/auth.service';
   templateUrl: './personal-info.page.html',
   styleUrls: ['./personal-info.page.scss'],
 })
-export class PersonalInfoPage implements OnInit, AfterViewInit {
+export class PersonalInfoPage implements OnInit {
 
   @ViewChild('ioninput', {static: false})  inputElement: IonInput;
   userInfoForm: FormGroup;
@@ -57,12 +57,6 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
 
     this.formOnChanges();
   }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-       this.inputElement.setFocus();
-  }, 1000);
-}
 
 
   goToProfilePicturePage(data) {

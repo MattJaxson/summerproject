@@ -62,6 +62,17 @@
 
   }
 
+  .reply-modal {
+    --width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .reply-modal {
+      --min-width: 600px;
+      --width: 80%;
+    }
+  }
+
   /** primary **/
   --ion-color-primary: #005191;
   --ion-color-primary-rgb: 56, 128, 255;

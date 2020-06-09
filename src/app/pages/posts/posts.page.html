@@ -10,8 +10,8 @@
           <p id="username">{{userFullName}}</p>
         </ion-col>
         <ion-col size="2">
-          <ion-button class="following-button" (click)="following()">
-            Following
+          <ion-button class="following-mobile-button" (click)="following()">
+            Following ({{followedPostCount}})
         </ion-button>
         </ion-col>
       </ion-row>
@@ -130,7 +130,7 @@
         <ion-row class="user-details" style="position: fixed;">
           <ion-col size="12">
             <ion-row>
-              <ion-col size="2.1">
+              <ion-col size-lg="2.8" size-xl="2.1">
                 <img src="{{profilePicture}}" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
               </ion-col>
               <ion-col size="6">
@@ -139,7 +139,7 @@
             </ion-row>
           </ion-col>
           <ion-col size="12">
-            <ion-button class="followed-button" (click)="following()">
+            <ion-button class="blue-button following-desktop-button" (click)="following()">
               Following ({{followedPostCount}})
             </ion-button>
             <ion-button class="add-button"  (click)="addPost()">

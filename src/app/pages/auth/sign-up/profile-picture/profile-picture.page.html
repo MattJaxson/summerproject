@@ -3,36 +3,37 @@
 
 <ion-content class="ion-text-center">
   <ion-grid>
-    <ion-row class="ion-justify-content-center" style="margin-top: 3%;">
+    <ion-row class="ion-justify-content-center">
 
       <!-- Mobile -->
-      <ion-col class="ion-hide-lg-up" size-xs="9" size-md="8">
+      <ion-col size="12">
 
-        <!-- Picture Wrapper -->
-        <div
-          id="default-picture-wrapper"
-          *ngIf="!imageUrl">
-        </div>
+        <!-- Picture Wrappers -->
+      <ion-row class="ion-justify-content-center header">
+        <ion-col size="12" class="ion-align-items-center">
+          <!-- Default Picture if user does not select profile picture Wrapper -->
+          <canvas
+            id="default-picture-wrapper"
+            *ngIf="!uploadedPhoto"></canvas>
 
-        <!-- User has uploaded profile picture -->
-        <div
-          id="upload-picture-wrapper"
-          *ngIf="imageUrl"
-          style="
-          background-image: url('../../../../../assets/icon/default-pro-picture.svg');">
+          <!-- User has uploaded profile picture -->
+          <img
+            id="upload-picture-wrapper"
+            *ngIf="uploadedPhoto"
+            src="{{uploadedPhotoURL}}" />
+        </ion-col>
 
-      </div>
+        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
+      </ion-row>
 
-        <ion-row class="ion-hide-lg-up">
-          <ion-col size="11" push="0.7">
-            <hr style="background-color: #00000044; margin: 20px 0;" />
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="10">
           </ion-col>
         </ion-row>
 
-        <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
-
         <form
-        (ngSubmit)="uploadPhoto()" id="image-form">
+        (ngSubmit)="uploadPhoto()" id="proPicForm">
+
           <input
             name="profile-picture"
             (change)="getFormData($event)" placeholder="Upload Image"
@@ -41,70 +42,20 @@
           <ion-button
             type="submit"
             class="orange-button"
-            [disabled]="!imageUrl">Next
+            [disabled]="!uploadedPhoto">Next
           </ion-button>
         </form>
 
         <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
         </ion-button>
+
+        <!-- <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit"
+        [disabled]="!imageUrl" >Next
+        </ion-button> -->
+
         <ion-button (click)="cancel()" class="cancel-button">
             Cancel
-        </ion-button>
-      </ion-col>
-
-      <!-- Desktop -->
-      <ion-col class="ion-hide-md-down wrapper  ion-align-self-center" size-lg="8" size-xl="6">
-
-
-        <ion-row class="ion-hide-md-down">
-          <ion-col size="4">
-            <h1>Profile Picture</h1>
-          </ion-col>
-          <ion-col push="4" size="4" class="ion-float-right">
-            <ion-button class="blue-button" (click)="cancel()">
-              Cancel
-            </ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-hide-md-down">
-          <ion-col size="11" push="0.7">
-            <hr style="background-color: #00000044; margin: 20px 0;" />
-          </ion-col>
-        </ion-row>
-
-        <!-- Picture Wrapper -->
-        <div
-          id="default-picture-wrapper"
-          style="
-          background-image: url('{{defaultProfilePicture}}');"
-          *ngIf="!imageUrl">
-        </div>
-
-        <!-- User has uploaded profile picture -->
-        <img
-          id="upload-picture-wrapper"
-          src="{{imageUrl}}"
-          *ngIf="imageUrl">
-
-        <h6 class="text-header">Please select your profile picture.<br> Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
-
-        <form
-        (ngSubmit)="uploadPhoto()" id="image-form">
-          <input
-            name="profile-picture"
-            (change)="getFormData($event)" placeholder="Upload Image"
-            type="file"/>
-
-          <ion-button
-            type="submit"
-            class="orange-button"
-            [disabled]="!imageUrl">Next
-          </ion-button>
-        </form>
-
-        <ion-button class="blue-button skip-button" (click)="skip()" style="margin-top: 20px;">
-          Skip
         </ion-button>
       </ion-col>
     </ion-row>

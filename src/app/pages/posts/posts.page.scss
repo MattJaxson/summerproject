@@ -39,7 +39,7 @@ ion-toolbar {
 }
 
 form {
-  width: 95%;
+  width: 100%;
   border-top: 1px solid rgba(50, 50, 50, 0.2);
 }
 
@@ -66,7 +66,7 @@ ion-item {
   --backsground: none;
 }
 
-.following-button {
+.following-mobile-button {
   opacity: 1;
   --background: rgba(255,255,255,0.1);
   --color: white;
@@ -78,24 +78,33 @@ ion-item {
   height: 40px;
   font-size: 0.6em;
   font-weight: 600;
+  position: relative;
+  right: 20px;
 }
 
-.followed-button {
-  --color: white;
-  --background: linear-gradient(#0672c4, #005191);
+.following-desktop-button {
   font-weight: 800;
   display: block;
+  height: 36px;
   width: 200px;
   margin-top: 20px;
+}
+
+.blue-button {
+  height: 36px;
+  animation: none;
+  opacity: unset;
 }
 
 .add-button {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
+  --color: #24d8a8;
+  --background: linear-gradient(#def8f0, #e5fdf6);
+  --background-hover: linear-gradient(#def8f0, #bef5e4);
   font-weight: 800;
   display: block;
   width: 200px;
   margin-top: 20px;
+  font-size: 1em;
 }
 
 .comment-input {
@@ -147,13 +156,12 @@ ion-item {
 
 
 ion-fab-button {
-  --background: #797;
+  --background: white;
   --background-focused: #FFB351;
   --background-hover: #FFB351;
   --background-activated: #FFB351;
-  --color-focused: white;
-  --color-hover: white;
-  --color-activated: white;
+  --color: #24d8a8;
+  scrollbar-base-color: #24d8a8;
   position: relative;
   bottom: 50px;
   right: 10px;

@@ -251,6 +251,7 @@ export class PostPagePage implements OnInit {
       date,
       this.userFullName,
       this.userEmail,
+      this.userProfilePicture,
       comment
     ).subscribe( data => {
       this.posts.getPostInfo(this.postID).subscribe(
@@ -322,16 +323,17 @@ export class PostPagePage implements OnInit {
 
   async replyModal(commentID, postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
     const replyModalConfig = await this.modal.create({
-    component: ReplyCommentPage,
-    componentProps: {
-      commentID,
-      postID,
-      userFullName,
-      userProfilePicture,
-      userEmail,
-      commentUserEmail,
-      commentUserFullName,
-    }
+      component: ReplyCommentPage,
+      componentProps: {
+        commentID,
+        postID,
+        userFullName,
+        userProfilePicture,
+        userEmail,
+        commentUserEmail,
+        commentUserFullName,
+      },
+      cssClass: 'reply-modal'
     });
 
     await replyModalConfig.present();
@@ -352,8 +354,9 @@ export class PostPagePage implements OnInit {
         userProfilePicture,
         userFullName,
         userEmail
-      }
-      });
+      },
+      cssClass: 'reply-modal'
+    });
 
     await repliesPageModalConfig.present();
   }

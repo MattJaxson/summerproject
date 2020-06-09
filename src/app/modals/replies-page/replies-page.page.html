@@ -76,16 +76,17 @@
   <!-- Replies -->
   <ion-row *ngFor="let reply of replies" class="ion-justify-content-center ion-align-items-start reply-wrapper">
     <ion-col size="1">
-      <img id="reply-avatar" src="../../../assets/batman-pro-pic.png">
+      <img id="reply-avatar" src="{{reply.userProfilePicture}}">
     </ion-col>
     <ion-col size="5">
+      <p class="reply-name">{{reply.userFullName}}</p>
       <p class="reply-text">{{reply.reply}}</p>
     </ion-col>
-    <ion-col size="2">
+    <ion-col size="1.5">
        <p id="reply-date">{{reply.date}}</p>
     </ion-col>
     <ion-col size="2">
-      <ion-button *ngIf="reply.isEditable" (click)="deleteReply(reply._id)" expand="block">
+      <ion-button class="blue-button" *ngIf="reply.isEditable" (click)="deleteReply(reply._id)" expand="block">
         Delete
       </ion-button>
     </ion-col>

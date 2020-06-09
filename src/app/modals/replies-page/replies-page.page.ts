@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ModalController, NavParams, LoadingController, AlertController, IonContent, IonTextarea} from '@ionic/angular';
+import { ProfileService } from 'src/app/services/profile.service';
 import { PostsService } from 'src/app/services/post.service';
 import { formatDistanceToNow } from 'date-fns';
 import { BehaviorSubject } from 'rxjs';
@@ -40,11 +41,16 @@ export class RepliesPagePage implements OnInit {
     private modal: ModalController,
     private navParams: NavParams,
     private loading: LoadingController,
+    private profile: ProfileService,
     private posts: PostsService,
     private alert: AlertController,
     private postEmitterService: PostPageEmitterService) { }
 
   ngOnInit() {
+    this.profile.getUserDetails().subscribe(details => {
+      this.userProfilePicture = details['profilePicture'];
+    })
+
      // To collect comment data
     this.repliesForm = this.formBuilder.group({
       reply: ['']
@@ -55,7 +61,7 @@ export class RepliesPagePage implements OnInit {
       this.replies = data;
       for (let reply of this.replies) {
         reply.isEditable = false;
-        console.log(reply.userEmail);
+        console.log('Reply: ', reply);
         if (reply.userEmail == this.userEmail) {
           reply.isEditable = true;
         }

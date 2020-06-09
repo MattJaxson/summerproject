@@ -2,10 +2,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid style="margin: 100px 0 100px 0;" class="ion-text-center">
+  <ion-grid class="ion-text-center">
     <ion-row class="ion-justify-content-center">
-      <ion-col size-lg="5" size-md="7" size-xs="10">
-          <h6 class="text-header">Please enter your profile information.</h6>
+
+      <!-- Header -->
+      <h6 class="text-header">Please enter your profile information.</h6>
+
+      <!-- Form -->
+      <ion-col style="margin-top: 150px;" size-lg="5" size-md="7" size-xs="10">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -17,17 +21,17 @@
               required
               inputmode="text"
               formControlName="fullName"
-              placeholder="First & Last name"></ion-input>
+              placeholder="First & Last Name"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-input
                 required 
-                formControlName="addressOne"  placeholder="address 1"></ion-input>
+                formControlName="addressOne"  placeholder="Address"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input formControlName="addressTwo"  placeholder="apt/unit #"></ion-input>
+              <ion-input formControlName="addressTwo"  placeholder="Apt/Unit #"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -36,7 +40,7 @@
               inputmode="text"
               formControlName="phone"
               maxlength="10"
-              placeholder="phone # e.i (xxx) xxx - xxxx"></ion-input>
+              placeholder="Phone # e.i (xxx) xxx - xxxx"></ion-input>
             </ion-item>
             <!-- Password Validation-->
             <div class="validation-errors">
@@ -54,11 +58,12 @@
             <ion-item>
               <ion-input 
               required
-              formControlName="city"  placeholder="city"></ion-input>
+              formControlName="city"  placeholder="City"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-select
+                id="state-select"
                 required
                 formControlName="state"
                 interface="action-sheet"
@@ -144,7 +149,7 @@
               <ion-input
                 required
                 maxLength="5"
-                formControlName="zip"   placeholder="zip"></ion-input>
+                formControlName="zip"   placeholder="Zip Code"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -164,13 +169,13 @@
                     displayFormat="DDD. MMM DD, YY"
                     placeholder="Select Date"
                     formControlName="dob"
-                    monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
+                    monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"></ion-datetime>
             </ion-item>
 
             <ion-item>
               <ion-input
                 required
-                formControlName="school"    placeholder="school"></ion-input>
+                formControlName="school"    placeholder="School"></ion-input>
             </ion-item>
 
             <ion-item>

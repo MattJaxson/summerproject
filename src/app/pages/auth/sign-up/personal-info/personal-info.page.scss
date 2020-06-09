@@ -2,11 +2,20 @@ h6 {
     padding: unset;
 }
 
-.cancel-button {
-    margin: 25px 0 50px 0;
+.orange-button, .blue-button {
+    margin: 25px 0 25px 0;
 }
 
-.orange-button {
-    margin: 40px 0;
-    width: 200px;
+.blue-button {
+    margin: 25px 0 100px 0;
+}
+
+.text-header {
+    background: #edf3f8;
+    width: 100%;
+    padding: 50px 0;
+    position: fixed;
+    color: #666;
+    z-index: 999;
+    // box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
