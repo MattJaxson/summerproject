@@ -2,10 +2,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid style="margin: 100px 0 100px 0;" class="ion-text-center">
+  <ion-grid class="ion-text-center">
     <ion-row class="ion-justify-content-center">
-      <ion-col size-lg="5" size-md="7" size-xs="10">
-          <h6 class="text-header">Please enter your profile information.</h6>
+
+      <!-- Header -->
+      <h6 class="text-header">Please enter your profile information.</h6>
+
+      <!-- Form -->
+      <ion-col style="margin-top: 150px;" size-lg="5" size-md="7" size-xs="10">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -59,6 +63,7 @@
 
             <ion-item>
                 <ion-select
+                id="state-select"
                 required
                 formControlName="state"
                 interface="action-sheet"

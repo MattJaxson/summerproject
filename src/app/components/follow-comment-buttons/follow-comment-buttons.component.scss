@@ -1,24 +1,29 @@
 .comment-button{
   width: 105px;
-  --border-width: 1px;
-  --border-color: #005191;
-  --border-style: solid;
-  border-radius: 5px;
+  --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
+  --background-hover: linear-gradient(#0672c4, #054372);
+  --transition: 1s;
   --color: #005191;
   font-size: 0.3em;
-  margin-right: 0;
 }
 
 .follow-button {
-  --color: white;
-  --background: linear-gradient(#797, #799);
+  --color: #24d8a8;
+  --background: linear-gradient(#def8f0, #e5fdf6);
   font-size: 0.3em;
   width: 105px;
 }
 
 // Change color
 .unfollow-button {
-  --color: white;
-  --background: linear-gradient(#faa71b, #e99b14);  font-size: 0.3em;
+  color: #faa71b;
+  --background: linear-gradient(#ffefd6, #ffeac5);
+  font-size: 0.3em;
   width: 105px;
+}
+
+@media screen and (max-width: 567px) {
+  .comment-button, .follow-button, .unfollow-button {
+      font-size: 0.5em;
+  }
 }

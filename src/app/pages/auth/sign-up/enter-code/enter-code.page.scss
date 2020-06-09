@@ -6,9 +6,31 @@ ion-title {
   margin: 0 10px;
 }
 
-h6.text-header {
-  margin: 30px auto;
-  padding: unset;
+.text-header {
+  font-size: 1em;
+  background: #edf3f8;
+  position: relative;
+  top: -10px;
+  padding: 75px;
+  color: #666;
+  z-index: 999;
+  text-align: justify;
+}
+
+.orange-button {
+  width: unset;
+  display: block;
+  margin: 100px auto 200px auto;
+  width: 200px;
+  animation: none;
+  opacity: 1;
+}
+
+
+span {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #005191;
 }
 
 .send-new-code {

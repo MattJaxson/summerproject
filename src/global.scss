@@ -95,10 +95,18 @@ ion-title {
   white-space: pre-wrap;
 }
 
+
+// Ion-Select Buttons
+.action-sheet-button-inner {
+  // color: red;
+}
+
 .searchbar-input {
   background: #FFF !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
   border-radius: 5px !important;
   height: 50px !important;
+  padding: 25px 0px 20px 50px !important;
   max-width: 100%;
   opacity: 0;
   font-size: 1.25em !important;
@@ -147,6 +155,11 @@ ion-title {
   opacity: 0;
 }
 
+ion-input:focus {
+  padding: 10px 0;
+  color: red;
+}
+
 .line-input {
   background: none;
 
@@ -155,16 +168,22 @@ ion-title {
       --border-color: transparent!important;
       --highlight-height: 0;
       margin: 20px auto;
-      border: 1px solid #dedede;
+      padding: 5px 0;
+      border: 2px solid #dedede;
       transition: 0.2s;
       border-radius: 4px;
       opacity: 1;
+      color: #999;
       &.item-has-focus {
-          border: 1.2px solid var(--ion-color-primary);
-        // --background: rgba(255,179,81,0.1);
+          padding: 6px 0;
+          border: 2px solid var(--ion-color-primary);
+          //  background: rgba(255,179,81,0.1);
           opacity: 1;
-          color: #222;
-          box-shadow: 1px 1px 5px rgba(0,0,0,0.1)
+          color: #005191;
+          font-size: 1.1em;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+          box-shadow: 1px 1px 10px rgba(0,0,0,0.1)
       }
       ion-label {
         opacity: 1;
@@ -185,13 +204,18 @@ ion-select-option {
   height: 50px;
   font-size: 1em;
   font-weight: 800;
-  margin: 0 auto;
-  --background: linear-gradient(#faa71b, #e99b14);
+  color: #faa71b;
+  margin: 10px auto;
+  --background: linear-gradient(#ffefd6, #ffeac5);
   --background-hover: linear-gradient(#faa71b, #cc8a17);
   --color: white;
   --transition: 0.5s;
   opacity: 0;
   animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.orange-button:hover {
+  color: white;
 }
 
 .blue-button {
@@ -407,7 +431,7 @@ ion-label {
 @keyframes slide-up {
   0% {
     width: 0px;
-    transform: translateY(20px);
+    transform: translateY(10px);
     opacity: 0;
   }
 

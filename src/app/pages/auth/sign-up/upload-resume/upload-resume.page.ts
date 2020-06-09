@@ -63,7 +63,6 @@ export class UploadResumePage implements OnInit {
   skip() {
     console.log('Skipping to Upload Resume >>');
     this.presentAlert();
-    // this.router.navigate(['/personal-info/profile-picture/upload-resume']);
   }
 
   async presentAlert() {
@@ -74,8 +73,36 @@ export class UploadResumePage implements OnInit {
         {
           text: 'Skip',
           handler: () => {
-            this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials']);
-            console.log('Skipping Resume Upload...');
+            // Get Default Picture Logo
+
+            const canvasElement = document.querySelectorAll('canvas');
+            canvasElement.forEach( canvas => {
+            if ( canvas.id === 'default-picture-wrapper') {
+              console.log('Got Canvas: ' + canvas.toDataURL);
+              canvas.toBlob( async blob => {
+                const canvasData = new FormData();
+                await canvasData.set('profile-picture', blob, 'default.png');
+                console.log(canvasData);
+
+                let reader = new FileReader();
+                if (canvasData) {
+                  reader.readAsBinaryString(blob);
+                }
+
+
+                await this.resume.resumeUpload(canvasData).subscribe(
+                  data => {
+                    console.log(data);
+                    console.log('Default Image Upload API Successful');
+                    return this.goToCredentialsPage(data['objectUrl']);
+                  }
+                );
+              });
+
+            }
+            });
+
+
           }
         },
         {

@@ -15,14 +15,17 @@
 
 
 #job-details {
-  color: #005191;
-  --background: white;
-  --background-hover: linear-gradient(#0672c4, #00467c);
-  --color-hover: white;
+  --background: #e6e6e6;
+  --background-hover: #999;
+  color: #888;
+  margin-right: 10px;
   font-size: 15px;
   height: 45px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+#job-details:hover{
+  color: white;
 }
 
 #favorites-button {
@@ -67,8 +70,6 @@ ion-searchbar:focus {
   background: white;
   height: auto;
   color: #777;
-  position: relative;
-  top: 20px;
   width: 100%;
   margin-bottom: 50px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);

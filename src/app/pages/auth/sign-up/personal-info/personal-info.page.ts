@@ -58,12 +58,6 @@ export class PersonalInfoPage implements OnInit, AfterViewInit {
     this.formOnChanges();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-       this.inputElement.setFocus();
-  }, 1000);
-}
-
 
   goToProfilePicturePage(data) {
     console.log(data);

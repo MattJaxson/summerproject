@@ -24,11 +24,14 @@ ion-button {
 }
 
 .event-details{
+  --background: #e6e6e6;
+  --background-hover: #999;
+  color: #888;
   margin-right: 10px;
 }
 
 .going {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
+  --color: #24d8a8;
+  --background: linear-gradient(#def8f0, #e5fdf6);
 }
 

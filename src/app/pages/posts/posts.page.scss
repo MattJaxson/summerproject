@@ -39,7 +39,7 @@ ion-toolbar {
 }
 
 form {
-  width: 95%;
+  width: 100%;
   border-top: 1px solid rgba(50, 50, 50, 0.2);
 }
 
@@ -78,11 +78,14 @@ ion-item {
   height: 40px;
   font-size: 0.6em;
   font-weight: 600;
+  position: relative;
+  right: 20px;
 }
 
 .following-desktop-button {
   font-weight: 800;
   display: block;
+  height: 36px;
   width: 200px;
   margin-top: 20px;
 }
@@ -94,12 +97,14 @@ ion-item {
 }
 
 .add-button {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
+  --color: #24d8a8;
+  --background: linear-gradient(#def8f0, #e5fdf6);
+  --background-hover: linear-gradient(#def8f0, #bef5e4);
   font-weight: 800;
   display: block;
   width: 200px;
   margin-top: 20px;
+  font-size: 1em;
 }
 
 .comment-input {
@@ -151,13 +156,12 @@ ion-item {
 
 
 ion-fab-button {
-  --background: #797;
+  --background: white;
   --background-focused: #FFB351;
   --background-hover: #FFB351;
   --background-activated: #FFB351;
-  --color-focused: white;
-  --color-hover: white;
-  --color-activated: white;
+  --color: #24d8a8;
+  scrollbar-base-color: #24d8a8;
   position: relative;
   bottom: 50px;
   right: 10px;

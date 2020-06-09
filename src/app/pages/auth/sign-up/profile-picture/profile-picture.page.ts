@@ -21,20 +21,10 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ProfilePicturePage implements OnInit {
 
-  defaultProfilePicture = '../../../../../assets/icon/default-pro-picture.svg';
-  imageUrl;
+  defaultProfilePicturePath = '../../../../../assets/icon/default-pro-picture.svg';
+  uploadedPhotoURL;
+  uploadedPhoto = false;
   formData: FormData;
-
-    // Options for Cordova Camera plugin
-  private options: CameraOptions = {
-   targetWidth: 384,
-   targetHeight: 384,
-   quality: 100,
-   destinationType: this.camera.DestinationType.FILE_URI,
-   encodingType: this.camera.EncodingType.JPEG,
-   mediaType: this.camera.MediaType.PICTURE,
-   correctOrientation: true,
-  };
 
   BACKEND_URL = environment.url;
 
@@ -43,30 +33,31 @@ export class ProfilePicturePage implements OnInit {
     private alertController: AlertController,
     private photo: PhotoService,
     private auth: AuthService,
-    private camera: Camera,
-    private file: File,
-    private http: HttpClient,
-    private actionSheet: ActionSheetController,
-    private loading: LoadingController,
-    private platform: Platform,
-    private ref: ChangeDetectorRef,
-    private filePath: FilePath,
-    private storage: Storage,
-    private webView: WebView,
     private toast: ToastController ) { }
 
   ngOnInit() {
+    const defualtPhoto = document.querySelectorAll('img');
+    defualtPhoto.forEach(div => {
+      if ( div.id === 'default-picture-wrapper') {
+        console.log(div);
+      }
+    });
     }
 
    getFormData(event) {
     const formElement = document.querySelectorAll('form');
-    console.log(formElement[3]);
-    this.formData = new FormData(formElement[3]);
+    formElement.forEach(form => {
+      if ( form.id === 'proPicForm') {
+        console.log('Got Form: ' + form);
+        this.formData = new FormData(form);
+        this.uploadedPhoto = true;
+      }
+     });
 
     let reader = new FileReader();
     reader.addEventListener('load',  () => {
       // convert image file to base64 string
-      this.imageUrl = reader.result;
+      this.uploadedPhotoURL = reader.result;
     }, false);
 
     if (formElement) {
@@ -77,12 +68,13 @@ export class ProfilePicturePage implements OnInit {
   uploadPhoto() {
     const formElement = document.querySelectorAll('form');
     formElement.forEach(form => {
-      if ( form.id === 'image-form') {
+      if ( form.id === 'profile-picture-form') {
         console.log('Got Form: ' + form);
         this.formData = new FormData(form);
       }
-     });
+  });
 
+    if (this.uploadedPhoto === true) {
     this.photo.imageUpload(this.formData).subscribe(
       data => {
         console.log(data);
@@ -90,6 +82,8 @@ export class ProfilePicturePage implements OnInit {
         this.goToUploadResumePage(data['objectUrl']);
       }
     );
+
+  }
   }
 
   skip() {
@@ -113,8 +107,37 @@ export class ProfilePicturePage implements OnInit {
         {
           text: 'Skip',
           handler: () => {
-            this.router.navigate(['/personal-info/profile-picture/upload-resume']);
-            console.log('Skipping Profile Picture...');
+            // Get Default Picture Logo
+
+            const canvasElement = document.querySelectorAll('canvas');
+            canvasElement.forEach( canvas => {
+            if ( canvas.id === 'default-picture-wrapper') {
+              console.log('Got Canvas: ' + canvas.toDataURL);
+              canvas.toBlob( async blob => {
+                const canvasData = new FormData();
+                await canvasData.set('profile-picture', blob, 'default.png');
+                console.log(canvasData);
+
+                let reader = new FileReader();
+                if (canvasData) {
+                  reader.readAsBinaryString(blob);
+                }
+
+
+                await this.photo.imageUpload(canvasData).subscribe(
+                  data => {
+                    console.log(data);
+                    console.log('Default Image Upload API Successful');
+                    console.log(data['objectUrl']);
+                    return this.goToUploadResumePage(data['objectUrl']);
+                  }
+                );
+              });
+
+            }
+            });
+
+
           }
         },
         {
