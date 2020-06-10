@@ -43,8 +43,12 @@ export class PostsService {
     userProfilePicture,
     comment,
   ) {
-
-    const date = Date.now();
+    console.log(
+      postID,
+      userFullName,
+      userEmail,
+      userProfilePicture,
+      comment);
     return this.http.post(`${this.BACKEND_URL}/api/posts/comment`, { postID, userFullName, userEmail, userProfilePicture, comment } );
 
   }

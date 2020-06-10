@@ -159,7 +159,7 @@ export class PostsPage implements OnInit {
           post => {
             for (let postComments of post['comments']) {
 
-              console.log(postComments)
+              console.log(postComments);
 
               postComments.isUser = false;
               postComments.canDeleteComment = false;
