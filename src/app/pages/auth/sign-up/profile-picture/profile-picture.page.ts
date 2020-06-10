@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ViewChild, AfterViewInit } from '
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { AlertController, ActionSheetController, ToastController, Platform, LoadingController, IonInput, ModalController } from '@ionic/angular';
+import { AlertController, ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';

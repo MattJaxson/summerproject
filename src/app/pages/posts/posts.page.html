@@ -4,7 +4,7 @@
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col push-xs=".45" push-sm="2"  size-xs="1.2">
-          <img src="{{profilePicture}}" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
+          <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
         <ion-col push-sm="1.45" size="7">
           <p id="username">{{userFullName}}</p>
@@ -77,7 +77,7 @@
             <ion-row style="position: relative; right: 6px; top: -4px;" >
               <ion-col offset="0.5" size="11">
                 <ion-item lines="none">
-                 <form (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
+                 <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
                    <ion-textarea
                       class="comment-input"
                       autogrow="true"
@@ -86,8 +86,7 @@
                       spellcheck="true"
                       wrap="soft"
                       type="text"
-                      placeholder="Add a Comment" formControlName="comment"
-                      (keydown.control.enter)="comment(this.commentForm.value, this.post._id)">
+                      placeholder="Add a Comment" formControlName="comment">
                     </ion-textarea>
                     <!-- Comment Post Button -->
                     <ion-button
@@ -131,7 +130,7 @@
           <ion-col size="12">
             <ion-row>
               <ion-col size-lg="2.8" size-xl="2.1">
-                <img src="{{profilePicture}}" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
+                <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 65px; width: 65px;">
               </ion-col>
               <ion-col size="6">
                 <h6 style="font-size: 1.2em; font-weight: 700; position: relative; left: 10px;">{{userFullName}}</h6>
@@ -196,7 +195,7 @@
             <ion-row class="ion-justify-content-center" style="position: relative; right: 6px; top: -4px;" >
               <ion-col size="12">
                 <ion-item  style="height: auto;" lines="none">
-                <form style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 20px;" (ngSubmit)="comment(this.commentForm.value, this.post._id)" [formGroup]="commentForm">
+                <form style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 20px;" (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
                   <ion-textarea
                   class="comment-input-mobile"
                   autogrow="true"
@@ -205,8 +204,7 @@
                   spellcheck="true"
                   wrap="soft"
                   type="text"
-                  placeholder="Add a Comment" formControlName="comment"
-                  (keydown.control.enter)="comment(this.commentForm.value, this.post._id)">
+                  placeholder="Add a Comment" formControlName="comment">
                 </ion-textarea>
                 <!-- Comment Post Button -->
                 <ion-button
