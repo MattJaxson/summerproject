@@ -2,16 +2,12 @@ import { Component, OnInit, ChangeDetectorRef, ViewChild, AfterViewInit } from '
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { AlertController, ActionSheetController, ToastController, Platform, LoadingController, IonInput } from '@ionic/angular';
-import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
-import { File } from '@ionic-native/file/ngx';
-import { Storage } from '@ionic/storage';
-import { FilePath } from '@ionic-native/file-path/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { Crop } from '@ionic-native/crop/ngx';
+import { AlertController, ActionSheetController, ToastController, Platform, LoadingController, IonInput, ModalController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
+import { ImageCropperPage } from 'src/app/modals/image-cropper/image-cropper.page';
+
 
 @Component({
   selector: 'app-profile-picture',
@@ -31,6 +27,7 @@ export class ProfilePicturePage implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
+    private modal: ModalController,
     private photo: PhotoService,
     private auth: AuthService,
     private toast: ToastController ) { }
@@ -62,6 +59,7 @@ export class ProfilePicturePage implements OnInit {
 
     if (formElement) {
       reader.readAsDataURL(event.target.files[0]);
+
     }
   }
 
@@ -90,6 +88,20 @@ export class ProfilePicturePage implements OnInit {
     console.log('Skipping to Upload Resume >>');
     this.presentSkipAlert();
   }
+
+  async cropPhoto() {
+    const modal = await this.modal.create({
+      component: ImageCropperPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'firstName': 'Douglas',
+        'lastName': 'Adams',
+        'middleInitial': 'N'
+      }
+    });
+    return await modal.present();
+  }
+
 
 
 

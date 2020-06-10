@@ -1,0 +1,34 @@
+<ion-header style="display: none;"></ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <!-- Selected Image -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-items-center" size="6">
+        <img [src]="imageDestination" class="img-preview">
+      </ion-col>
+    </ion-row>
+
+    <!-- Image Container -->
+    <ion-row>
+      <ion-col size="12">
+       <div class="img-container">
+        <img #image [src]="imageSource" crossorigin>
+      </div>
+     </ion-col>
+    </ion-row>
+
+    <!-- Buttons -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-items-center" size="6">
+        <ion-button class="orange-button" (click)="back()">
+          Crop
+        </ion-button>
+        <ion-button class="blue-button" (click)="back()">
+          Back
+        </ion-button>
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

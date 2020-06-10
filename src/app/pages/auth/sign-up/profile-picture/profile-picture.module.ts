@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePicturePageRoutingModule } from './profile-picture-routing.module';
 
 import { ProfilePicturePage } from './profile-picture.page';
+import { ImageCropperPageModule } from 'src/app/modals/image-cropper/image-cropper.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ProfilePicturePage } from './profile-picture.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ProfilePicturePageRoutingModule
+    ProfilePicturePageRoutingModule,
+    ImageCropperPageModule
   ],
   declarations: [ProfilePicturePage]
 })

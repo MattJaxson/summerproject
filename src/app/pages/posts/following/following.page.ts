@@ -97,7 +97,6 @@ export class FollowingPage implements OnInit {
 
     await this.posts.comment(
       postID,
-      date,
       this.userFullName,
       this.userEmail,
       this.userProfilePicture,
