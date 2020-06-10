@@ -94,8 +94,9 @@ span {
 }
 
 .logout-button {
-  color: #e4405f;
-  --background: none;
+  color: white;
+  --background: #e4405f;
+  --background-hover: #dd3252;
   height: 45px;
   width: 120px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);

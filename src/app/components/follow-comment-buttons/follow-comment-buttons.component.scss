@@ -2,9 +2,8 @@
   width: 105px;
   --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
   --background-hover: #005191;
-  --transition: 1s;
   --color: #005191;
-  font-size: 0.3em;
+  font-size: 0.6em;
 }
 
 .comment-button:hover {
@@ -15,7 +14,7 @@
   --color: #24d8a8;
   --background: linear-gradient(#def8f0, #e5fdf6);
   --background-hover: #24d8a8;
-  font-size: 0.3em;
+  font-size: 0.6em;
   width: 105px;
 }
 
@@ -23,7 +22,7 @@
 .unfollow-button {
   color: #faa71b;
   --background: linear-gradient(#ffefd6, #ffeac5);
-  font-size: 0.3em;
+  font-size: 0.6em;
   width: 105px;
 }
 

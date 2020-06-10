@@ -19,11 +19,11 @@
     <ion-grid>
 
       <!-- Desktop Header -->
-      <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
+      <ion-row class="ion-hide-md-down" style="margin: 2% 0% 3% 0%;">
         <ion-col offset="2.5" size="2.5">
           <h1>Following</h1>
         </ion-col>
-        <ion-col class="ion-text-center" push="1.8" size="2">
+        <ion-col class="ion-text-center" push="2.45" size="2">
           <ion-button class="add-button"  (click)="addPost()">
             Add Post
           </ion-button>
@@ -38,8 +38,13 @@
       <!-- Posts -->
       <ion-row class="ion-justify-content-center">
 
-        <ion-col *ngIf="allFollowedPosts.length === 0" size="6">
-          <p style="font-size: 1.4em;">You are currently not following any posts. Please click the follow button on any Post to add it to this page.</p>
+        <ion-col
+          class="no-posts ion-align-items-center"
+          *ngIf="allFollowedPosts.length === 0"
+          size-xs="11" size-sm="9" size-md="8" size-lg="7">
+          <div>
+            <p style="font-size: 1.2em;">You are currently not following any posts. Please click the follow button on any Post to add it to this page.</p>
+          </div>
         </ion-col>
 
         <ion-col size-xs="11" size-sm="8" size="6">
@@ -50,7 +55,7 @@
               <ion-row style="position: relative; left: 5px; top: 4px;" >
               <!-- Profile Picture -->
               <ion-col offset="0.5" size="1">
-                <img src="../../../../assets/aaron.jpg" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
+                <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
               </ion-col>
 
               <!-- Post Creator's Name -->

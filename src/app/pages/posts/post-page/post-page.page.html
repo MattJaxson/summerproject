@@ -8,7 +8,7 @@
         <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: -2.5px;">{{date}} ago</span></ion-title>
       </div>
       <div style="position: relative; right: 15px;" slot="end">
-        <img style="position: relative; right: 5px; display: inline-block;" slot="end" class="profile-picture" src="../../../../assets/aaron.jpg">
+        <img style="position: relative; right: 5px; display: inline-block;" slot="end" class="profile-picture" src="{{creatorProfilePicture}}">
       </div>
   </ion-toolbar>
 </ion-header>
@@ -43,7 +43,7 @@
 
             <!-- Profile Picture -->
             <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1">
-              <img class="profile-picture" src="../../../../assets/aaron.jpg">
+              <img class="profile-picture" src="{{creatorProfilePicture}}">
             </ion-col>
 
             <!-- Post Creator's Name -->
@@ -85,7 +85,7 @@
             <ion-row style="position: relative; right: 6px; top: -4px;" >
               <ion-col size="12">
                 <ion-item lines="none">
-                 <form (ngSubmit)="comment(this.commentForm.value)" [formGroup]="commentForm">
+                 <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value )" [formGroup]="commentForm">
                     <ion-textarea
                       (ionBlur)="onBlur()"
                       (onfocusout)="blur()"

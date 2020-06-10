@@ -10,6 +10,10 @@ ion-title {
   box-shadow: 1px 1px 3px #888;
 }
 
+.no-posts {
+  height: 70vh;
+}
+
 form {
   width: 100%;
   border-top: 1px solid rgba(50, 50, 50, 0.2);
@@ -74,8 +78,9 @@ ion-item {
 }
 
 .add-button {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
+  --color: #24d8a8;
+  --background: linear-gradient(#def8f0, #e5fdf6);
+  --background-hover: linear-gradient(#def8f0, #bef5e4);
   font-weight: 800;
   display: block;
   width: 100px;

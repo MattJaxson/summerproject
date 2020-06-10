@@ -1,5 +1,11 @@
-.header h1{
-  font-size: 2em;
+.blue-button {
+  animation: none;
+  opacity: unset;
+  width: unset;
+  height: 36px;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  position: unset;
 }
 
 ion-title {
@@ -8,7 +14,7 @@ ion-title {
 
 .message {
   font-size: 1.2em;
-  padding: 10px;
+  text-align: justify;
 }
 
 ion-item {
@@ -19,14 +25,27 @@ ion-item {
 }
 
 .text-input {
-  border-radius: 5px;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
   padding-left: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+@media only screen and (max-width: 576px) {
+  .text-input {
+    box-shadow: none;
+    background: #edf3f8;
+  }
+
+  ion-textarea {
+    background: #edf3f8;
+  }
 }
 
 ion-textarea {
   --background: white;
   --border-color: none;
+  padding: 5px 0 0 10px;
+  font-size: 1em;
 }
 
 .item-interactive {

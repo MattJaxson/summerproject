@@ -42,6 +42,7 @@ export class PostPagePage implements OnInit {
   date: string;
   creatorEmail: string;
   creatorName: string;
+  creatorProfilePicture: string;
   commentID: string;
   postID: string;
 
@@ -230,11 +231,12 @@ export class PostPagePage implements OnInit {
   }
 
 
-  async comment(comment) {
+  async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
+    console.log(comment);
 
     // Reset Comment Input
     this.commentForm.reset();
-    this.commentLoading(comment);
+    this.commentLoading(postID, userFullName, userEmail, userProfilePicture, comment);
     const toast = this.toast.create({
       message: 'Your comment has been added.',
       duration: 1500
@@ -243,20 +245,20 @@ export class PostPagePage implements OnInit {
     toast.then(toast => toast.present());
   }
 
-  async commentLoading(comment) {
-    const date = await Date.now();
+  async commentLoading(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     await this.posts.comment(
-      this.postID,
-      date,
-      this.userFullName,
-      this.userEmail,
-      this.userProfilePicture,
+      postID,
+      userFullName,
+      userEmail,
+      userProfilePicture,
       comment
     ).subscribe( data => {
       this.posts.getPostInfo(this.postID).subscribe(
         post => {
           for (let postComments of post['comments']) {
+
+            console.log(postComments)
 
             postComments.isUser = false;
             postComments.canDeleteComment = false;
@@ -545,6 +547,7 @@ export class PostPagePage implements OnInit {
           postInfo =>  {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
+            const creatorProfilePicture = postInfo['creatorProfilePicture'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
             let comments = postInfo['comments'];
@@ -608,6 +611,7 @@ export class PostPagePage implements OnInit {
 
             this.creatorName = creatorName;
             this.creatorEmail = creatorEmail;
+            this.creatorProfilePicture = creatorProfilePicture;
             this.date = date;
             this.followers = followers;
             this.comments = comments.reverse();
@@ -708,7 +712,7 @@ export class PostPagePage implements OnInit {
           }
         );
       }
-    );;
+    );
 
     await setTimeout(() => {
       const toast = this.toast.create({

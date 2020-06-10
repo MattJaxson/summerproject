@@ -50,6 +50,7 @@
     "cordova-plugin-vibration": "^3.1.1",
     "cordova-sqlite-storage": "^3.4.0",
     "core-js": "^2.5.4",
+    "cropperjs": "^1.5.7",
     "date-fns": "^2.9.0",
     "express": "^4.17.1",
     "nodemailer": "^6.4.2",

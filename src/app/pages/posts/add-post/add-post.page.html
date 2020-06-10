@@ -11,25 +11,19 @@
 <ion-content>
   <ion-grid>
     <!-- Desktop Header -->
-    <ion-row class="header ion-hide-md-down ion-justify-content-center ion-text-center" style="padding: 3% 0%;">
+    <ion-row class="header ion-hide-md-down ion-justify-content-center ion-text-center"  style="margin: 2% 0% 3% 0%;">
       <ion-col size="5">
-        <h1 style="margin: 10px 0">New Post</h1>
+        <h1>New Post</h1>
       </ion-col>
-      <ion-col push="2" size="5">
-        <ion-button class="back-button"  (click)="back()">
+      <ion-col push="" size="5">
+        <ion-button class="blue-button"  (click)="back()">
            Back
         </ion-button>
       </ion-col>
     </ion-row>
-    <!-- Horizontal Line for Desktop Header -->
-    <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="7">
-        <hr style="background-color: #666;" />
-      </ion-col>
-    </ion-row>
 
     <ion-row class="ion-justify-content-center" style="margin-top: 1%;">
-      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="9" size-lg="7" size-xl="6">
         <!-- Mobile Text Header -->
         <p class="message ion-hide-lg-up">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
 
@@ -40,7 +34,7 @@
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="7" size-xl="6">
+      <ion-col size-xs="12" size-sm="10" size-md="9" size-lg="7" size-xl="6">
         <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost) : null">
           <ion-row>
             <ion-col class="ion-text-center">
