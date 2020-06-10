@@ -151,7 +151,6 @@ export class PostsPage implements OnInit {
       this.userFullName,
       this.userEmail,
       this.profilePicture,
-      comment
     ).subscribe();
 
     await this.posts.getPostInfo(postID).subscribe(
