@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonInput } from '@ionic/angular';
+import { IonInput, AlertController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-credentials',
@@ -32,7 +33,8 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private alert: AlertController
     ) { }
 
   ngOnInit() {
@@ -44,7 +46,7 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
         // at least 1 number, 1 uppercase letter, and one lowercase letter
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])],
-     reTypePassword: ['', Validators.compose([
+     reTypePassword: ['Lacrosse2', Validators.compose([
       Validators.minLength(8),
       Validators.required,
       // at least 1 number, 1 uppercase letter, and one lowercase letter
@@ -95,12 +97,39 @@ formOnChanges(): void {
 }
 
 
-  enterCodePage(data) {
+  enterCodePage(email, password) {
     this.email = this.credentialsForm.controls.email.value;
-    this.auth.getLoginCredentials(data);
-    console.log('Going to Enter Code Page');
-    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
+    this.auth.doesUserExists(email, password)
+    .pipe(
+      catchError(e => {
+        console.error(e);
+        if (e.error.msg === 'User already registered with that email address.') {
+          return this.userAlreadyExistAlert();
+        }
+      }))
+    .subscribe(value  => {
+      console.log(value);
+      const exists = value['exists'];
+      if ( exists === false) {
+        this.auth.getLoginCredentials(email, password);
+        console.log('Going to Enter Code Page');
+        this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
+
+      }
+    });
   }
+
+  async userAlreadyExistAlert() {
+    const alert = await this.alert.create({
+      cssClass: 'danger-alert',
+      message: 'This user already exists.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
 
   cancel() {
     console.log('Sign up cancelled');

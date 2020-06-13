@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ViewChild, AfterViewInit } from '
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { AlertController, ToastController, LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, ToastController, LoadingController, ModalController, NavParams } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
@@ -19,7 +19,9 @@ export class ProfilePicturePage implements OnInit {
 
   defaultProfilePicturePath = '../../../../../assets/icon/default-pro-picture.svg';
   uploadedPhotoURL;
+  croppedPhotoURL;
   uploadedPhoto = false;
+  croppededPhoto = false;
   formData: FormData;
 
   BACKEND_URL = environment.url;
@@ -33,6 +35,7 @@ export class ProfilePicturePage implements OnInit {
     private toast: ToastController ) { }
 
   ngOnInit() {
+
     const defualtPhoto = document.querySelectorAll('img');
     defualtPhoto.forEach(div => {
       if ( div.id === 'default-picture-wrapper') {
@@ -41,9 +44,9 @@ export class ProfilePicturePage implements OnInit {
     });
     }
 
-   getFormData(event) {
-    const formElement = document.querySelectorAll('form');
-    formElement.forEach(form => {
+   async getFormData(event) {
+    let formElement = document.querySelectorAll('form');
+    await formElement.forEach(form => {
       if ( form.id === 'proPicForm') {
         console.log('Got Form: ' + form);
         this.formData = new FormData(form);
@@ -52,25 +55,23 @@ export class ProfilePicturePage implements OnInit {
      });
 
     let reader = new FileReader();
-    reader.addEventListener('load',  () => {
-      // convert image file to base64 string
+    await reader.addEventListener('load',  async () => {
       this.uploadedPhotoURL = reader.result;
-    }, false);
+      console.log('Before cropping: ' + reader.result);
+      await this.cropPhoto(this.uploadedPhotoURL);
+    }, true);
 
     if (formElement) {
-      reader.readAsDataURL(event.target.files[0]);
-
+      return reader.readAsDataURL(event.target.files[0]);
     }
   }
 
   uploadPhoto() {
-    const formElement = document.querySelectorAll('form');
-    formElement.forEach(form => {
-      if ( form.id === 'profile-picture-form') {
-        console.log('Got Form: ' + form);
-        this.formData = new FormData(form);
-      }
-  });
+    let formData = new FormData();
+    let photoBlob = new Blob([this.uploadedPhotoURL], {
+      type: 'image/png'});
+
+    formData.append('profile-picture-upload', photoBlob);
 
     if (this.uploadedPhoto === true) {
     this.photo.imageUpload(this.formData).subscribe(
@@ -89,17 +90,23 @@ export class ProfilePicturePage implements OnInit {
     this.presentSkipAlert();
   }
 
-  async cropPhoto() {
+  async cropPhoto(uploadedPhotoURL) {
     const modal = await this.modal.create({
       component: ImageCropperPage,
-      cssClass: 'my-custom-class',
+      cssClass: 'image-cropper',
       componentProps: {
-        'firstName': 'Douglas',
-        'lastName': 'Adams',
-        'middleInitial': 'N'
+        uploadedPhotoURL
       }
     });
-    return await modal.present();
+
+    await modal.present();
+
+    modal.onDidDismiss().then(data => {
+      this.uploadedPhotoURL = data.data;
+      console.log('After cropping: ' +  this.uploadedPhotoURL);
+    });
+
+
   }
 
 

@@ -39,10 +39,10 @@ export class FollowingPage implements OnInit {
   ngOnInit() {
     this.location.onPopState(() => {
       this.eventEmitterService.onBackAction();
-    })
+    });
 
      // Get the User's Followed Posts
-     this.profile.getUserDetails().subscribe(
+    this.profile.getUserDetails().subscribe(
       details => {
         console.log('User ID from Following Page OnInit');
         this.userID = details['_id'];
@@ -63,10 +63,10 @@ export class FollowingPage implements OnInit {
         );
       });
 
-     console.log('Got Followed Posts');
+    console.log('Got Followed Posts');
 
       // To collect comment data
-     this.commentForm = this.formBuilder.group({
+    this.commentForm = this.formBuilder.group({
       comment: ['']
     });
 
@@ -122,6 +122,41 @@ export class FollowingPage implements OnInit {
     toast.then(toast => toast.present());
 
     await this.router.navigate(['/home/posts/post-page', postID]);
+  }
+
+  async doRefresh(event) {
+
+     // Get the User's Followed Posts
+     this.profile.getUserDetails().subscribe(
+      details => {
+        console.log('User ID from Following Page OnInit');
+        this.userID = details['_id'];
+        this.userFullName = details['fullName'];
+        this.userEmail = details['email'];
+        this.userProfilePicture = details['profilePicture'];
+        this.posts.getFollowedPost(this.userID).subscribe(
+          data => {
+            this.allFollowedPosts = Object.values(data).reverse();
+            console.log(data);
+
+            for (const post of this.allFollowedPosts) {
+              post.date = format( new Date(post.date), 'MMMM do, yyyy');
+            }
+
+            return this.allFollowedPosts;
+          }
+        );
+      });
+
+    // Present Toast
+    await setTimeout(() => {
+      const toast = this.toast.create({
+        message: 'Inspiration Page has been refreshed',
+        duration: 3000
+      });
+      event.target.complete();
+      toast.then(toast => toast.present());
+    }, 2000);
   }
 
 }

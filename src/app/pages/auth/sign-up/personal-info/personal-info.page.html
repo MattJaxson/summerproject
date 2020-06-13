@@ -3,13 +3,18 @@
 
 <ion-content>
   <ion-grid class="ion-text-center">
+
+    <!-- Header -->
+    <ion-row class="header">
+      <ion-col size-lg="5" size-md="7" size-xs="11">
+        <h6 class="text-header">Please enter your profile information.</h6>
+      </ion-col>
+    </ion-row>
+
     <ion-row class="ion-justify-content-center">
 
-      <!-- Header -->
-      <h6 class="text-header">Please enter your profile information.</h6>
-
       <!-- Form -->
-      <ion-col style="margin-top: 150px;" size-lg="5" size-md="7" size-xs="10">
+      <ion-col style="margin-top: 150px;" size-lg="5" size-md="7" size-xs="11">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">

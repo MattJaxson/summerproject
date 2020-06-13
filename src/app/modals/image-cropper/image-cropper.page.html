@@ -2,10 +2,15 @@
 
 <ion-content>
   <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size="8">
+        <p>Please crop your photo to get the highest quality.</p>
+      </ion-col>
+    </ion-row>
 
     <!-- Selected Image -->
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-align-items-center" size="6">
+      <ion-col class="ion-text-center" size="6">
         <img [src]="imageDestination" class="img-preview">
       </ion-col>
     </ion-row>
@@ -14,21 +19,23 @@
     <ion-row>
       <ion-col size="12">
        <div class="img-container">
-        <img #image [src]="imageSource" crossorigin>
+        <img #image [src]="uploadedPhotoURL" crossorigin>
       </div>
      </ion-col>
     </ion-row>
 
     <!-- Buttons -->
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-align-items-center" size="6">
-        <ion-button class="orange-button" (click)="back()">
+      <ion-col class="ion-text-center" size="6">
+        <ion-button class="orange-button" (click)="crop(imageDestination)">
           Crop
         </ion-button>
-        <ion-button class="blue-button" (click)="back()">
-          Back
-        </ion-button>
      </ion-col>
+     <ion-col class="ion-text-center" size="6">
+       <ion-button class="blue-button" (click)="back()">
+         Cancel
+       </ion-button>
+    </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -93,18 +93,22 @@ getProfilePicture(data) {
 }
 
 getResume(data) {
-  console.log('data from auth service: ' + data)
+  console.log('data from auth service: ' + data);
   console.log('Sent Resume to Auth Service');
   this.userInfo.resume = data;
   console.log(this.userInfo);
 }
 
-getLoginCredentials(data) {
+getLoginCredentials(email, password) {
   console.log('Sent Login Credentials to Auth Service');
-  this.userInfo.email = data.email;
-  this.userInfo.password =  data.password;
+  this.userInfo.email = email;
+  this.userInfo.password =  password;
   console.log(this.userInfo);
 
+}
+
+doesUserExists(email, password) {
+  return this.http.post(`${this.BACKEND_URL}/api/signup/does-user-exist`, {email, password});
 }
 
  // looks up our storage for a valid JWT and if found, changes our authenticationState

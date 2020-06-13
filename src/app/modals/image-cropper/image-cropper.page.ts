@@ -9,15 +9,14 @@ import { ModalController, NavParams, LoadingController, ToastController } from '
 })
 export class ImageCropperPage implements OnInit, AfterViewInit {
 
-  @ViewChild('image', { static: false })
-  public imageElement: ElementRef;
+  @ViewChild('image', { static: false }) imageElement: ElementRef;
 
   // tslint:disable-next-line: no-input-rename
   @Input('src')
-  public imageSource = '../../assets/Journi_flyer-1050x750.png';
 
   public imageDestination: string;
   private cropper: Cropper;
+  uploadedPhotoURL;
 
   constructor(
     private modal: ModalController,
@@ -30,25 +29,52 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
 public ngAfterViewInit() {
   console.log('AfterViewInit');
   this.cropper = new Cropper(this.imageElement.nativeElement, {
-      zoomable: true,
-      scalable: true,
+      zoomable: false,
+      scalable: false,
       aspectRatio: 1,
+      viewMode: 1,
+      responsive: true,
+      movable: true,
+      zoomOnTouch: true,
+      zoomOnWheel: true,
       crop: () => {
           const canvas = this.cropper.getCroppedCanvas();
           this.imageDestination = canvas.toDataURL('image/png');
+      },
+      cropend: () => {
+        console.log('The crop ended');
       }
   });
 }
 
 public ngOnInit() {
-  console.log('OnInit'); }
+  console.log('OnInit');
+
+  this.uploadedPhotoURL = this.navParams.get('uploadedPhotoURL');
+}
 
   back() {
     console.log('back');
     this.modal.dismiss();
   }
 
-  crop() {
+  crop(imageDestination) {
     console.log('cropping');
+
+    // let blob = this.dataURLtoBlob(uploadedPhotoURL);
+
+    this.modal.dismiss(
+      imageDestination
+    );
+
+  }
+
+  dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type: mime});
   }
 }

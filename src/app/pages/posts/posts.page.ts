@@ -134,6 +134,10 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/add-post']);
   }
 
+  myPosts() {
+    console.log('Going to my posts page');
+  }
+
   following() {
     this.router.navigate(['/home/posts/following']);
   }

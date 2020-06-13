@@ -1,13 +1,15 @@
 .comment-button{
-  width: 105px;
+  width: 100%;
   --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
   --background-hover: #005191;
   --color: #005191;
   font-size: 0.6em;
+  font-size: 800;
+  border-radius: 5px;
 }
 
-.comment-button:hover {
-  --color: white;
+.comment-button:focus {
+  --color: orange;
 }
 
 .follow-button {
@@ -15,7 +17,9 @@
   --background: linear-gradient(#def8f0, #e5fdf6);
   --background-hover: #24d8a8;
   font-size: 0.6em;
-  width: 105px;
+  font-size: 800;
+  border-radius: 5px;
+  width: 100%;
 }
 
 // Change color
@@ -23,7 +27,9 @@
   color: #faa71b;
   --background: linear-gradient(#ffefd6, #ffeac5);
   font-size: 0.6em;
-  width: 105px;
+  font-size: 800;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .follow-button:hover, .unfollow-button:hover {

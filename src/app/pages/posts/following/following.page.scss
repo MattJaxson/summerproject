@@ -1,13 +1,25 @@
+ion-grid {
+  background: #edf3f8;
+}
+
 ion-title {
   margin: 0;
 }
 
 .post {
-  padding-top: 20px;
-  margin-bottom: 90px;
-  background: white;
+  padding: 30px 0;
+  margin-bottom: 80px;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px #888;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  background: white;
+  font-size: 1.2em;
+  line-height: 35px;
+
+  hr {
+    background: #999;
+    opacity: 0.4;
+
+  }
 }
 
 .no-posts {
@@ -16,7 +28,6 @@ ion-title {
 
 form {
   width: 100%;
-  border-top: 1px solid rgba(50, 50, 50, 0.2);
 }
 
 .comment {
@@ -36,6 +47,53 @@ form {
   transform: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.comment-input {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input:hover {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 50px 0 80px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input-mobile {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  padding-left: 10px;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  transition: 1s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input-mobile:focus {
+  background: rgba(247, 248, 248, 0.5);
+  height: 100px;
+  margin: 30px 0 150px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  transition: 1s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 ion-item {
@@ -70,27 +128,29 @@ ion-item {
 .blue-button {
   animation: none;
   opacity: unset;
-  width: unset;
+  width: 100px;
   height: 36px;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 4px;
   position: unset;
+  font-size: 0.7em;
 }
 
 .add-button {
-  --color: #24d8a8;
-  --background: linear-gradient(#def8f0, #e5fdf6);
-  --background-hover: linear-gradient(#def8f0, #bef5e4);
+  --color: white;
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  --background-hover: linear-gradient(#bffce9, #7efcd4);
+  font-size: 0.7em;
   font-weight: 800;
   display: block;
   width: 100px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .comment-input {
   background: rgba(247, 248, 248, 0.5);
   height: auto;
-  margin: 30px 0 60px 0;
+  margin: 10px 0 0px 0;
   box-shadow: none;
   border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
@@ -102,7 +162,7 @@ ion-item {
 .comment-input:hover {
   background: rgba(247, 248, 248, 0.5);
   height: auto;
-  margin: 50px 0 80px 0;
+  margin: 12px 0 0px 0;
   box-shadow: 1px 1px 3px #999;
   border: 1px solid rgba(0, 81, 145, 1);
   border-radius: 5px;
@@ -111,12 +171,20 @@ ion-item {
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.comment-post-button {
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  height: 40px;
+  margin-top: 40px;
+  opacity: 0;
+  width: 100%;
+  transform: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
 
 ion-fab-button {
   --background: #1baf88;
-  --background-focused: #FFB351;
-  --background-hover: #FFB351;
-  --background-activated: #FFB351;
   --color-focused: white;
   --color-hover: white;
   --color-activated: white;

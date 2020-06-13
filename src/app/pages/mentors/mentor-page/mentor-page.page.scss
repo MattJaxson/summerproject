@@ -20,7 +20,7 @@ ion-header {
 }
 
 .mentor {
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  
 }
 
 #mentor-profile-picture{
@@ -42,19 +42,22 @@ ion-header {
 }
 
 #mentor-title {
-    font-size: 1.3em;
+    font-size: 1em;
+    color: #999;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
 }
 
 #mentor-location {
-    font-size: 1.3em;
+    font-size: 1em;
+    color: #999;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s forwards;
 }
 
 #mentor-email {
-    font-size: 1.3em;
+    font-size: 1em;
+    color: #999;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.7s forwards;
 }

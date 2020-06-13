@@ -12,26 +12,28 @@ ion-button {
   margin-right: 0;
 }
 
+.thumbnail {
+
+}
+
 .not-going {
   --color: white;
   --background: linear-gradient(#faa71b, #e99b14);
 }
 
-.blue-button {
-  position: unset;
-  animation: none;
-  opacity: unset;
-}
-
-.event-details{
-  --background: #e6e6e6;
-  --background-hover: #999;
-  color: #888;
+.grey-button{
   margin-right: 10px;
 }
 
 .going {
   --color: #24d8a8;
   --background: linear-gradient(#def8f0, #e5fdf6);
+  --background-hover: #24d8a8;
+
+  &:hover {
+    --color: white;
+  }
 }
+
+
 

@@ -2,11 +2,16 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12">
+
+    <!-- Header -->
+    <ion-row class="ion-justify-content-center header">
+      <ion-col size-lg="5" size-md="7" size-xs="11">
         <h6 class="text-header">Please enter the 6 character code that was sent to <span>{{userEmail}}</span></h6>
       </ion-col>
-      <ion-col size="6">
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size-lg="5" size-md="7" size-xs="11">
         <form (ngSubmit)="thankYouPage()" [formGroup]="enterCodeForm">
           <ion-list class="line-input">
             <ion-item>

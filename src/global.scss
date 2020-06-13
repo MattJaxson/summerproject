@@ -43,8 +43,9 @@ ion-grid {
 }
 
 ion-header {
-  background: #005191;
-  color: white;
+  background: none;
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
+  color: #005191;
   padding: 10px 0 10px 0;
 }
 
@@ -70,7 +71,7 @@ ion-content {
 
 ion-toolbar {
   --background: none;
-  --color: white;
+  --color: #005191;
 }
 
 ion-icon {
@@ -201,37 +202,61 @@ ion-select-option {
 
 .orange-button {
   width: 150px;
-  height: 50px;
+  height: 40px;
   font-size: 1em;
   font-weight: 800;
   color: #faa71b;
   margin: 10px auto;
-  --background: linear-gradient(#ffefd6, #ffeac5);
+  --background: linear-gradient(#fadaa7, #ffeac5);
   --background-hover: linear-gradient(#faa71b, #cc8a17);
-  --color: white;
   --transition: 0.5s;
-  opacity: 0;
-  animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  // opacity: 0;
+  // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
+.orange-button:focus {
+  --background: #faa71b;
+  color: white;
+}
 .orange-button:hover {
+  --background: #faa71b;
+  color: white;
+}
+
+
+.grey-button {
+  --background: #e6e6e6;
+  --background-hover: #999;
+  color: #888;
+  width: 150px;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+.grey-button:focus {
+  --background: #333;
+  color: white;
+}
+.grey-button:hover {
+  --background: #333;
   color: white;
 }
 
 .blue-button {
   width: 150px;
-  height: 50px;
+  height: 40px;
   font-size: 1em;
   font-weight: 800;
-  margin: 0;
+  margin: 10px auto;
   position: relative;
   top: 5px;
   --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
   --background-hover: linear-gradient(#0672c4, #054372);
   --transition: 1s;
   --color: #005191;
-  opacity: 0;
-  animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 1s  forwards;
+  // opacity: 0;
+  // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 1s  forwards;
 }
 
 .blue-button:hover {

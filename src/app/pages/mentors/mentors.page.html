@@ -5,6 +5,7 @@
       <ion-row class="ion-justify-content-center">
         <ion-col size-xs="11" size-sm="8" size-md="8">
           <ion-searchbar
+          (ionChange)="filter($event)"
           debounce="2000"
           class="searchbar"
           showCancelButton="true"
@@ -19,17 +20,17 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10" size-xl="5">
-        <ion-row class="mentors">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="10" size-xl="5">
+        <ion-row class="mentors ion-justify-content-center">
           <ion-col size="1">
             <div class="mentor-thumbnail"></div>
           </ion-col>
-          <ion-col size="6" push-xs="1">
+          <ion-col size="6" push-xs="0">
             <p id="mentor-name">{{mentor.name}}</p>
             <p id="mentor-title">{{mentor.title}}</p>
           </ion-col>
           <ion-col class="ion-align-self-center" size-md="4" size-xs="10" push-md="1">
-            <ion-button class="blue-button ion-hide-md-up" (click)="mentorPage(mentor)">
+            <ion-button style="width: 100%;" class="blue-button ion-hide-md-up" (click)="mentorPage(mentor)">
               Contact
             </ion-button>
             <ion-button class="blue-button ion-hide-sm-down" (click)="mentorPage(mentor)">
