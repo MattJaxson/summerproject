@@ -28,7 +28,7 @@ npm-debug.log*
 /node_modules
 /platforms
 /plugins
-/www
+# /www
 
 src/environments/environment.ts
 src/assets/Ionic Lab_files/main.js
