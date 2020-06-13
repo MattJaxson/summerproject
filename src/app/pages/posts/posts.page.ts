@@ -187,8 +187,6 @@ export class PostsPage implements OnInit {
       }
     );
 
-    
-
     const toast = this.toast.create({
       message: 'Your comment has been added.',
       duration: 1500

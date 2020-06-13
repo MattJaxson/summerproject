@@ -87,7 +87,7 @@ export class FollowingPage implements OnInit {
     this.router.navigate(['/home/posts']);
   }
 
-  async comment(comment, postID) {
+  async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     // Reset Comment Input
     this.commentForm.reset();
@@ -97,22 +97,42 @@ export class FollowingPage implements OnInit {
 
     await this.posts.comment(
       postID,
-      this.userFullName,
-      this.userEmail,
-      this.userProfilePicture,
-      comment
-    );
+      userFullName,
+      userEmail,
+      userProfilePicture,
+      comment.comment
+    ).subscribe(
+      () => {this.posts.getPostInfo(postID).subscribe(
+        post => {
+          this.posts.getPostInfo(postID).subscribe(
+           post => {
+             for (let postComments of post['comments']) {
 
-    await this.posts.getPostInfo(postID).subscribe(
-      post => {
-        for (let postComments of post['comments']) {
-          postComments.date = formatDistanceToNow( new Date(postComments.date), {
-            includeSeconds: true,
-            addSuffix: true
-          });
-         }
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-      });
+               console.log(postComments);
+
+               postComments.isUser = false;
+               postComments.canDeleteComment = false;
+               postComments.canReport = true;
+
+                 // If this comment is from the logged in user, they can delete and edit
+               if (postComments.userEmail === this.userEmail) {
+                   postComments.isUser = true;
+                   postComments.canDeleteComment = true;
+                   postComments.canReport = false;
+                 }
+
+               postComments.repliesLength = postComments.replies.length;
+               postComments.date = formatDistanceToNow( new Date(postComments.date), {
+                 includeSeconds: true,
+                 addSuffix: false
+               });
+              }
+             this.posts.commentsSubject$.next(post['comments'].reverse());
+           });
+        });
+      }
+      );
+
 
     const toast = this.toast.create({
       message: 'Your comment has been added.',
