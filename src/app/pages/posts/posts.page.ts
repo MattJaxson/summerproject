@@ -147,7 +147,6 @@ export class PostsPage implements OnInit {
 
     await this.posts.comment(
       postID,
-      date,
       this.userFullName,
       this.userEmail,
       this.profilePicture,

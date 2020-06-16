@@ -14,6 +14,19 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
 
+const LANGUAGE_FILTER_LIST = [
+  'fuck',
+  'damn',
+  'shit',
+  'ass',
+  'bitch',
+  'slut',
+  'whore',
+  'dick',
+  'pussy',
+  'cunt',
+  'faggot'
+]
 
 @Component({
   selector: 'app-post-page',
@@ -276,7 +289,10 @@ export class PostPagePage implements OnInit {
               includeSeconds: true,
               addSuffix: false
             });
-           }
+
+            postComments.comment = this.filterLanguage(postComments.comment);
+          }
+
           this.posts.commentsSubject$.next(post['comments'].reverse());
         });
     });
@@ -605,7 +621,10 @@ export class PostPagePage implements OnInit {
                 comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
                   addSuffix: false
                 });
-             }
+              }
+
+              comment.comment = this.filterLanguage(comment.comment)
+              // comment.comment = comment.comment.replace(/go/g, "not go :(");
 
            }
 
@@ -625,6 +644,16 @@ export class PostPagePage implements OnInit {
         );
       }
     );
+  }
+
+  filterLanguage(content) {
+    var updatedContent = content;
+
+    LANGUAGE_FILTER_LIST.forEach(word => {
+      updatedContent = updatedContent.replace(RegExp(word, 'g'), '*'.repeat(word.length));
+    });
+
+    return updatedContent;
   }
 
   async doRefresh(event) {
@@ -693,7 +722,10 @@ export class PostPagePage implements OnInit {
                 comment.replies[i].date = formatDistanceToNow( new Date(comment.replies[i].date), {
                   addSuffix: false
                 });
-             }
+              }
+
+              comment.comment = this.filterLanguage(comment.comment);
+              // comment.comment = comment.comment.replace(/go/g, "not go :(");
 
            }
 

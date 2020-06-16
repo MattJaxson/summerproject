@@ -48,8 +48,9 @@ export class ProfilePicturePage implements OnInit {
     const formElement = document.querySelectorAll('form');
     formElement.forEach(form => {
       if ( form.id === 'proPicForm') {
-        console.log('Got Form: ' + form);
+        console.log('Got Form: ',  form);
         this.formData = new FormData(form);
+        console.log('Form data: ', this.formData);
         this.uploadedPhoto = true;
       }
      });
@@ -72,7 +73,7 @@ export class ProfilePicturePage implements OnInit {
         console.log('Got Form: ' + form);
         this.formData = new FormData(form);
       }
-  });
+    });
 
     if (this.uploadedPhoto === true) {
     this.photo.imageUpload(this.formData).subscribe(
@@ -84,6 +85,7 @@ export class ProfilePicturePage implements OnInit {
     );
 
   }
+
   }
 
   skip() {
