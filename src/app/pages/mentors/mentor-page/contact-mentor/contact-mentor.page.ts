@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../../../services/profile.service';
 import { MentorsService } from '../../../../services/mentor.service';
+import {Location} from '@angular/common';
+
 
 
 
@@ -36,7 +38,8 @@ export class ContactMentorPage implements OnInit {
     private mentors: MentorsService,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
 
@@ -114,6 +117,10 @@ export class ContactMentorPage implements OnInit {
       this.userProfilePicture,
       this.userResume
     ).subscribe();
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

@@ -1,14 +1,33 @@
 .post {
-  padding: 10px 0;
-  margin-bottom: 90px;
+  padding: 30px 0;
+  margin-bottom: 80px;
   border-radius: 5px;
-  // box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
   font-size: 1.2em;
   line-height: 35px;
+  background: white;
+
+  hr {
+    background: #999;
+    opacity: 0.4;
+
+  }
+}
+
+ion-content {
+  background: #edf3f8;
+}
+
+@media screen and (max-width: 744px) {
+  .post {
+    position: relative;
+    top: -20px;
+  }
 }
 
 .post-content {
   font-size: 1.05em;
+  line-height: 0.3em;
 }
 
 .user-details {
@@ -18,9 +37,9 @@
 }
 
 #username {
-  color: white;
-  font-size: 1em;
-  font-weight: 600;
+  color: #005191;
+  font-size: 1.2em;
+  font-weight: 500;
   position: relative;
   left: 10px;
   opacity: 0;
@@ -28,9 +47,13 @@
 }
 
 
-ion-toolbar {
-  --background: none;
+ion-header {
+  // --background: linear-gradient(rgba(6, 114, 196, .6), rgba(0, 81, 145, 0.2));
   height: 60px;
+
+  ion-toolbar {
+    --background: none;
+  }
 
   p {
     color: #000;
@@ -38,9 +61,76 @@ ion-toolbar {
   }
 }
 
+ion-item {
+  --backsground: none;
+}
+
+.following-mobile-button {
+  opacity: 1;
+  --background: #005191;
+  --color: white;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: white;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  width: 120px;
+  height: 40px;
+  font-size: 0.6em;
+  font-weight: 600;
+  position: relative;
+  right: 15px;
+}
+
+@media screen and (max-width: 470px) {
+  .following-mobile-button {
+    position: relative;
+    right: 35px;
+  }
+}
+
+
+.following-desktop-button {
+  font-weight: 800;
+  height: 36px;
+  width: 150px;
+  margin-top: 20px;
+  font-size: 0.7em;
+}
+
+.blue-button {
+  height: 36px;
+  animation: none;
+  opacity: unset;
+}
+
+.add-button {
+  --color: white;
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  --background-hover: linear-gradient(#bffce9, #7efcd4);
+  font-weight: 800;
+  display: block;
+  width: 150px;
+  margin-top: 20px;
+  font-size: 0.7em;
+}
+
+.my-post-button {
+  --background: #e6e6e6;
+  --background-hover: #999;
+  --color: #888;
+  font-weight: 800;
+  display: block;
+  width: 150px;
+  margin-top: 20px;
+  font-size: 0.7em;
+}
+
+.my-post-button:hover {
+  --color: white;
+}
+
 form {
-  width: 100%;
-  border-top: 1px solid rgba(50, 50, 50, 0.2);
+  width: 98%;
 }
 
 .comment {
@@ -52,65 +142,20 @@ form {
 }
 
 .comment-post-button {
-  --background: linear-gradient(#0672c4, #005191);
-  height: 30px;
-  margin-top: 20px;
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  height: 40px;
+  margin-top: 40px;
   opacity: 0;
-  width: 80px;
+  width: 100%;
   transform: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-ion-item {
-  --backsground: none;
-}
-
-.following-mobile-button {
-  opacity: 1;
-  --background: rgba(255,255,255,0.1);
-  --color: white;
-  --border-style: solid;
-  --border-width: 1px;
-  --border-color: white;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  width: 100px;
-  height: 40px;
-  font-size: 0.6em;
-  font-weight: 600;
-  position: relative;
-  right: 5px;
-}
-
-.following-desktop-button {
-  font-weight: 800;
-  display: block;
-  height: 36px;
-  width: 200px;
-  margin-top: 20px;
-}
-
-.blue-button {
-  height: 36px;
-  animation: none;
-  opacity: unset;
-}
-
-.add-button {
-  --color: #24d8a8;
-  --background: linear-gradient(#def8f0, #e5fdf6);
-  --background-hover: linear-gradient(#def8f0, #bef5e4);
-  font-weight: 800;
-  display: block;
-  width: 200px;
-  margin-top: 20px;
-  font-size: 1em;
-}
-
 .comment-input {
   background: rgba(247, 248, 248, 0.5);
   height: auto;
-  margin: 30px 0 60px 0;
+  margin: 10px 0 0px 0;
   box-shadow: none;
   border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
@@ -122,7 +167,7 @@ ion-item {
 .comment-input:hover {
   background: rgba(247, 248, 248, 0.5);
   height: auto;
-  margin: 50px 0 80px 0;
+  margin: 12px 0 4px 0;
   box-shadow: 1px 1px 3px #999;
   border: 1px solid rgba(0, 81, 145, 1);
   border-radius: 5px;
@@ -156,15 +201,13 @@ ion-item {
 
 
 ion-fab-button {
-  --background: #defdf5;
-  --background-focused: #FFB351;
-  --background-hover: #FFB351;
-  --background-activated: #FFB351;
-  --color: #24d8a8;
+  --background: #1baf88;
+  --color-focused: white;
+  --color-hover: white;
+  --color-activated: white;
   position: relative;
   bottom: 50px;
   right: 10px;
-  // animation: add-post-button-tap .5
 }
 
 @keyframes slide-up {

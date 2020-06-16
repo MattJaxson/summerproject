@@ -66,6 +66,15 @@
     --width: 100%;
   }
 
+  .image-cropper {
+    --width: 600px;
+    --height: 90vh;
+    --min-width: 100vw;
+    --max-width: 1200px;
+    --min-height: 50vh;
+    --max-height: 90vh;
+  }
+
   @media screen and (min-width: 768px) {
     .reply-modal {
       --min-width: 600px;

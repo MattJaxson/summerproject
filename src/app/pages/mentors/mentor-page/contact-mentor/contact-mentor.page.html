@@ -12,29 +12,26 @@
   <ion-grid>
     <!-- Desktop Header -->
     <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-      <ion-col offset="2.6" size="2.5">
-        <h1>Contact Mentor</h1>
+      <ion-col class="ion-align-self-center" push-lg="2" size="8">
+        <!-- Mentor Photo -->
+        <div id="mentor-photo"></div>
+        <h3 class="name">{{mentorName}}</h3>
+        <h3 class="name" style="
+        animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s forwards;">{{mentorEmail}}</h3>
       </ion-col>
-      <ion-col push="2" size="2">
-        <ion-back-button class="blue-button" text="Back" style="--icon-font-size: 0px;"></ion-back-button>
-      </ion-col>
-    </ion-row>
-
-    <!-- Horizontal Line for Desktop Header -->
-    <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="8">
-        <hr style="background-color: #999;" />
+      <ion-col size="2">
+        <ion-button class="blue-button" (click)="back();">Back</ion-button>
       </ion-col>
     </ion-row>
 
     <!-- Contact Form -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
-        <!-- Mentor Photo -->
-        <div id="mentor-photo"></div>
         <!-- Form -->
+        <!-- Mentor Photo -->
+        <div id="mentor-photo" class="ion-hide-lg-up"></div>
         <form id="mentor-form" [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)">
-            <ion-item lines="none" style="margin: 55px 0 55px 0">
+            <ion-item lines="none" >
                 <ion-textarea
                 formControlName="message"
                 placeholder="Have a question for a {{mentorName}}? Send them an email!"

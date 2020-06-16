@@ -25,6 +25,7 @@ export class PostsPage implements OnInit {
   followedPostCount;
   userEmail;
   userFullName;
+  userProfilePicture;
   date;
   profilePicture;
 
@@ -73,7 +74,7 @@ export class PostsPage implements OnInit {
     // Get the user's posts he/she is following
     this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
-      this.profilePicture = details['profilePicture'];
+      this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
       this.followedPost = details['followedPost'];
 
@@ -133,15 +134,20 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/add-post']);
   }
 
+  myPosts() {
+    console.log('Going to my posts page');
+  }
+
   following() {
     this.router.navigate(['/home/posts/following']);
   }
 
-  async comment(comment, postID) {
+  async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
+
+    console.log(postID, userFullName, userEmail, userProfilePicture, comment);
 
     // Reset Comment Input
     this.commentForm.reset();
-    const date = await Date.now();
     console.log('Posting comment');
     console.log('Post ID: ' + postID);
 
@@ -151,7 +157,36 @@ export class PostsPage implements OnInit {
       this.userEmail,
       this.profilePicture,
       comment
-    ).subscribe();
+    ).subscribe(
+      () => {
+         this.posts.getPostInfo(postID).subscribe(
+          post => {
+            for (let postComments of post['comments']) {
+
+              console.log(postComments);
+
+              postComments.isUser = false;
+              postComments.canDeleteComment = false;
+              postComments.canReport = true;
+
+                // If this comment is from the logged in user, they can delete and edit
+              if (postComments.userEmail === this.userEmail) {
+                  postComments.isUser = true;
+                  postComments.canDeleteComment = true;
+                  postComments.canReport = false;
+                }
+
+              postComments.repliesLength = postComments.replies.length;
+              postComments.date = formatDistanceToNow( new Date(postComments.date), {
+                includeSeconds: true,
+                addSuffix: false
+              });
+             }
+            this.posts.commentsSubject$.next(post['comments'].reverse());
+          }
+        );
+      }
+    );
 
     await this.posts.getPostInfo(postID).subscribe(
       post => {
@@ -160,9 +195,10 @@ export class PostsPage implements OnInit {
             includeSeconds: true,
             addSuffix: true
           });
-         }
-        this.posts.commentsSubject$.next(post['comments'].reverse());
-      });
+        }
+       this.posts.commentsSubject$.next(post['comments'].reverse());
+     }
+   );
 
     const toast = this.toast.create({
       message: 'Your comment has been added.',

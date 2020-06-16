@@ -5,13 +5,15 @@ ion-title {
 .cancel-button {
   margin: 0 10px;
 }
+.header {
+  background: #edf3f8;
+  height: 200px;
+}
 
 .text-header {
   font-size: 1em;
-  background: #edf3f8;
   position: relative;
-  top: -10px;
-  padding: 75px;
+  top: 50px;
   color: #666;
   z-index: 999;
   text-align: justify;

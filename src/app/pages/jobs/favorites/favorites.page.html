@@ -1,6 +1,6 @@
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-title>Favorite Jobs</ion-title>
+    <ion-title slot="end">Favorite Jobs</ion-title>
     <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -21,9 +21,9 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    
+
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="10.7" size-sm="10" size-md="8" size-lg="6">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6">
 
         <ion-row class="job-section" *ngFor="let job of favoriteJobsObj">
           <!-- First Row w/ Job Tile, Date posted, and Logo -->
@@ -56,7 +56,7 @@
           <ion-col size="12">
             <ion-row>
               <ion-col push="0.5" size="10.5">
-                <ion-button id="job-details" class="back-button ion-float-right" (click)="jobPage(job)">
+                <ion-button class="grey-button ion-float-right" (click)="jobPage(job)">
                   Details
                 </ion-button>
               </ion-col>

@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>My Events</ion-title>
+    <ion-title slot="end">My Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
 
       <!-- Back Button -->
       <ion-row class="ion-justify-content-center ion-align-items-center" style="margin-top: 5%;">
-        <ion-col class="ion-align-self-center" size="10">
+        <ion-col class="ion-align-self-center" pull=".1" size="8">
           <div><h1>My Events</h1></div>
           <ion-button class="ion-float-right blue-button" style="position: relative; top: -40px;" (click)="goBack()">
             Go Back
@@ -32,15 +32,15 @@
       <!-- Events -->
       <ion-row class="ion-justify-content-center" style="margin-top: 5%;" *ngFor="let event of goingToEvents$ | async">
         <ion-col size="2">
-         <img class="thumbnail" src="../assets/Journi_flyer.jpg" style="margin: 10% auto;" />
+         <img class="thumbnail" src="../assets/Journi_flyer.jpg"/>
         </ion-col>
-        <ion-col size="5">
+        <ion-col size="4">
           <p>{{ event.title }}</p>
           <p>{{ event.time }}</p>
           <p>{{ event.date }}</p>
         </ion-col>
         <ion-col size="2" class="ion-text-center">
-          <ion-button class="orange-button" style="--background: #999; --color: white; margin-bottom: 15px" (click)="eventPage(event)">
+          <ion-button class="grey-button" (click)="eventPage(event)">
             Details
           </ion-button>
           <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">
@@ -58,7 +58,7 @@
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="10" size-sm="8" size-md="8">
+        <ion-col size-xs="12" size-sm="10" size-md="9">
           <ion-card *ngFor="let event of goingToEvents$ | async">
             <img src="../assets/Journi_flyer.jpg" />
             <ion-card-header (click)="eventPage(event)">
@@ -69,7 +69,7 @@
               <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
             </ion-card-header>
             <ion-card-content class="ion-text-center">
-              <ion-button class="orange-button" style="--background: #999; --color: white;" (click)="eventPage(event)">
+              <ion-button class="grey-button"(click)="eventPage(event)">
                 Details
               </ion-button>
               <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">

@@ -5,10 +5,10 @@
         <ion-back-button></ion-back-button>
       </ion-buttons>
       <div style="position: relative; right: 15px;" slot="end">
-        <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: -2.5px;">{{date}} ago</span></ion-title>
+        <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: 0px; color: #666;">{{date}} ago</span></ion-title>
       </div>
       <div style="position: relative; right: 15px;" slot="end">
-        <img style="position: relative; right: 5px; display: inline-block;" slot="end" class="profile-picture" src="{{creatorProfilePicture}}">
+        <img slot="end" class="profile-picture" src="{{creatorProfilePicture}}">
       </div>
   </ion-toolbar>
 </ion-header>
@@ -69,15 +69,6 @@
                <p class="post-content">{{post}}</p>
               </ion-col>
            </ion-row>
-          </ion-col>
-
-          <!-- Line -->
-          <ion-col size="12">
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="11" size-lg="12">
-                <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
-              </ion-col>
-            </ion-row>
           </ion-col>
 
           <!-- Comment Input -->
@@ -184,13 +175,6 @@
             <ion-col size="11">
                 <p class="comment-text" style="margin-top: 40px;">{{comment.comment}}
                 </p>
-            </ion-col>
-          </ion-row>
-
-          <!-- Line -->
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="11">
-              <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 0 0;">
             </ion-col>
           </ion-row>
 

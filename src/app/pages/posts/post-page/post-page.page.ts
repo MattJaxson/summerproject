@@ -265,7 +265,7 @@ export class PostPagePage implements OnInit {
       userFullName,
       userEmail,
       userProfilePicture,
-      comment
+      comment.comment
     ).subscribe( data => {
       this.posts.getPostInfo(this.postID).subscribe(
         post => {

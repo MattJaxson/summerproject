@@ -1,6 +1,18 @@
 .post {
   margin-bottom: 20px;
-  background: #edf3f8;}
+  background: #edf3f8;
+}
+
+.blue-button {
+  animation: none;
+  opacity: unset;
+  width: 100px;
+  height: 36px;
+  margin-top: 30px;
+  margin-bottom: 4px;
+  position: unset;
+  font-size: 0.7em;
+}
 
 .post-mobile {
   transition: 0.5s;
@@ -21,9 +33,13 @@
 
 .profile-picture {
   border-radius: 100px;
-  border: 2px solid white;
+  border: 1px solid #005191;
   height: 50px;
   width: 50px;
+  position: relative;
+  right: 5px;
+  top: 5px;
+  display: inline-block
 }
 
 
@@ -50,23 +66,21 @@
 }
 
 .comment-post-button {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88);
-  --transition: 0.5s;
-  font-weight: 800;
-  display: inline-block;
-  width: 100px;
-  height: 50px;
-  margin-top: 20px;
-  margin-bottom: 100px;
-  animation: post-button-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  height: 40px;
+  margin-top: 40px;
+  opacity: 0;
+  width: 100%;
+  transform: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 // Change color
 .unfollow-button {
   --color: white;
   --background: linear-gradient(#faa71b, #e99b14);
-  font-weight: 800;
+  font-weight: 900;
   display: inline-block;
   width: 100px;
   margin-top: 20px;
@@ -77,7 +91,7 @@
   height: auto;
   opacity: 0;
   margin: 30px 0 60px 0;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
   // border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
   padding-left: 10px;
@@ -108,7 +122,7 @@
   --border-width: 1px;
   --border-color: linear-gradient(#797, #799);
   animation: post-button-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  font-weight: 800;
+  font-weight: 900;
   width: 100px;
 }
 
@@ -198,8 +212,12 @@ ion-toolbar {
   --background: none;
 }
 
+ion-title {
+  color: #005191;
+}
+
 .toolbar {
-  --background: #005191;
+  --background: none;
 }
 
 ion-item {
@@ -281,7 +299,7 @@ ion-fab {
 .comment-input {
   background: white;
   height: auto;
-  margin: 20px 0 20px 0;
+  margin: 10px 0 0px 0;
   width: 100%;
   box-shadow: none;
   border: 1px solid rgba(0, 81, 145,0.4);
@@ -294,7 +312,7 @@ ion-fab {
 .comment-input:hover {
   background: rgba(250, 167, 27, 0.02);
   height: auto;
-  margin: 20px 0 25px 0;
+  margin: 12px 0 0px 0;
   box-shadow: 1px 1px 3px #999;
   border: 1px solid rgba(0, 81, 145, 1);
   border-radius: 5px;

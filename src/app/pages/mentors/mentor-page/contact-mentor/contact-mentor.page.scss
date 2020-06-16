@@ -1,8 +1,15 @@
-ion-back-button.blue-button {
-    width: unset;
-    display: unset;
-    animation: none;
-    opacity: unset;
+
+
+.name {
+    display: block;
+    font-size: 1em;
+    color: #999;
+    opacity: 0;
+}
+
+// :nth-child(2) not working
+.name:nth-child(1) {
+    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s forwards;
 }
 
 #mentor-photo {
@@ -13,9 +20,17 @@ ion-back-button.blue-button {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    margin: 35px auto 0;
+    // margin: 35px auto 0;
+    display: inline-block;
     opacity: 0;
     animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+}
+
+@media screen and (min-width: 992px) {
+    #mentor-photo {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 #mentor-form {
@@ -27,13 +42,18 @@ ion-item {
   padding: 20px 0;
   margin-bottom: 90px;
   border-radius: 5px;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
+
 }
 
 .orange-button {
     margin-bottom: 30px;
-    --background: #faa71b;
     animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.9s forwards;
+}
+
+.blue-button {
+    animation: none;
+    opacity: unset;
 }
 
 @keyframes slide-in-left {

@@ -15,7 +15,7 @@ ion-label {
 }
 
 ion-tab-button{
-  font-size: 10px;
+  font-size: 0.6em;
   --color: #D0D4D8;
   --color-selected: #FFB351;
   --padding-end: 0px;
@@ -44,15 +44,15 @@ ion-tab-button{
   ion-toolbar {
     --min-height: 10vh;
     --background: white;
-    font-size: 1.1em;
+    font-size: 0.9em;
     box-shadow: 1px 1px 15px rgba(0,0,0,0.08);
 
     a {
       margin: 0 10px 0 10px;
       text-decoration: none;
-      color: #888888;
+      color: #777;
       letter-spacing: 1px;
-      opacity: 0.7;
+      opacity: 0.5;
       float: right;
     }
 

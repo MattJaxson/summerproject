@@ -21,6 +21,12 @@
             id="upload-picture-wrapper"
             *ngIf="uploadedPhoto"
             src="{{uploadedPhotoURL}}" />
+
+            <!-- User has cropped profile picture -->
+            <!-- <img
+              id="upload-picture-wrapper"
+              *ngIf="uploadedPhoto"
+              src="{{croppedPhotoURL}}" /> -->
         </ion-col>
 
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
@@ -49,10 +55,6 @@
         <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
         </ion-button>
-
-        <!-- <ion-button (click)="goToUploadResumePage()" class="orange-button" type="submit"
-        [disabled]="!imageUrl" >Next
-        </ion-button> -->
 
         <ion-button (click)="cancel()" class="cancel-button">
             Cancel
