@@ -153,10 +153,10 @@ export class PostsPage implements OnInit {
 
     await this.posts.comment(
       postID,
-      userFullName,
-      userEmail,
-      userProfilePicture,
-      comment.comment
+      this.userFullName,
+      this.userEmail,
+      this.profilePicture,
+      comment
     ).subscribe(
       () => {
          this.posts.getPostInfo(postID).subscribe(
@@ -183,9 +183,22 @@ export class PostsPage implements OnInit {
               });
              }
             this.posts.commentsSubject$.next(post['comments'].reverse());
-          });
+          }
+        );
       }
     );
+
+    await this.posts.getPostInfo(postID).subscribe(
+      post => {
+        for (let postComments of post['comments']) {
+          postComments.date = formatDistanceToNow( new Date(postComments.date), {
+            includeSeconds: true,
+            addSuffix: true
+          });
+        }
+       this.posts.commentsSubject$.next(post['comments'].reverse());
+     }
+   );
 
     const toast = this.toast.create({
       message: 'Your comment has been added.',

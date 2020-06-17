@@ -80,6 +80,7 @@
                     <ion-textarea
                       (ionBlur)="onBlur()"
                       (onfocusout)="blur()"
+                      (keydown.control.enter)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value) && ScrollToPostedComment()"
                       class="comment-input"
                       autogrow="true"
                       autocapitalize="true"
