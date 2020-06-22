@@ -40,6 +40,10 @@ export class MentorsPage implements OnInit, AfterViewInit {
       mentors => {
         this.allMentors = Object.values(mentors);
         this.allMentorsLength = this.allMentors.length;
+        this.allMentors.reverse();
+
+        this.loadedAllMentors = Object.values(mentors);
+        this.loadedAllMentors.reverse();
         this.searching = false;
       }
     );
@@ -56,7 +60,7 @@ export class MentorsPage implements OnInit, AfterViewInit {
     let searchTerm = $event.detail.value;
 
     this.presentLoadingWithOptions();
-
+    console.log(this.allMentors);
     this.allMentors = this.allMentors.filter( currentMentors => {
       console.log(currentMentors);
 
