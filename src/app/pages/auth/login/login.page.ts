@@ -45,6 +45,8 @@ export class LoginPage implements OnInit, AfterViewInit {
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])]
     });
+
+    console.log(this.loginForm.value);
     // this.wrongPasswordToast();
   }
 
