@@ -3,7 +3,7 @@
   "short_name": "FYF",
   "theme_color": "#005191",
   "background_color": "red",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [

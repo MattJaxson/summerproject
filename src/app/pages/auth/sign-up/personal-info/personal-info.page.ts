@@ -39,15 +39,10 @@ export class PersonalInfoPage implements OnInit {
     this.userInfoForm = this.formBuilder.group({
       fullName: ['', Validators.compose([
         Validators.required ])],
-      addressOne: ['', Validators.required],
-      addressTwo: ['', Validators.required],
       phone: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(10)
      ])],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', Validators.required],
       gender: ['', Validators.required],
       // Date of Birth
       dob: ['', [Validators.required]],
@@ -72,74 +67,6 @@ export class PersonalInfoPage implements OnInit {
 
   formOnChanges(): void {
     console.log(this.userInfoForm);
-
-
-    this.userInfoForm.statusChanges.subscribe(
-      status => {
-        if ( status === 'VALID') {
-          console.log('you did it bruh');
-        }
-
-        console.log(this.userInfoForm);
-      }
-    );
-
-    this.userInfoForm.controls.fullName.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-
-    this.userInfoForm.controls.addressOne.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.addressTwo.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.phone.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.city.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.state.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.zip.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.gender.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.dob.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.school.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    this.userInfoForm.controls.grade.statusChanges.subscribe(
-      data => {
-        console.log(data);
-      }
-    );
   }
 
 }
