@@ -14,7 +14,7 @@ export class MentorsService {
   ) {}
 
   getMentors() {
-    console.log('Getting Jobs');
+    console.log('Getting Mentors');
     return this.http.get(`${this.BACKEND_URL}/api/mentors`);
   }
 

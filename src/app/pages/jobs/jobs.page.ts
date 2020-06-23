@@ -177,11 +177,6 @@ export class JobsPage implements OnInit, OnDestroy {
     this.initializeItems();
     let searchTerm = $job.detail.value;
 
-    if (!searchTerm) {
-      console.log('No results returned from Search');
-      this.noSearchInput = true;
-    }
-
     this.presentLoadingWithOptions();
 
     this.allJobs = this.allJobs.filter( currentJobs => {
@@ -207,13 +202,12 @@ export class JobsPage implements OnInit, OnDestroy {
           this.noSearchInput = false;
 
           return true;
-      }
+        }
         return false;
-    }
+      }
       this.noSearchInput = true;
 
   });
-
 
     this.allJobsLength = this.allJobs.length;
 
@@ -229,6 +223,14 @@ export class JobsPage implements OnInit, OnDestroy {
       });
       this.noSearchInput = true;
     }
+
+    if (!searchTerm) {
+      console.log('Search term is empty; showing all jobs instead');
+      this.noSearchInput = false;
+      this.searching = false;
+      this.getJobs();
+    }
+
   }
 
   initializeItems(): void {
@@ -240,7 +242,8 @@ export class JobsPage implements OnInit, OnDestroy {
       duration: 1000,
       message: 'Searching for jobs...',
       translucent: true,
-      cssClass: 'custom-class custom-loading'
+      cssClass: 'custom-class custom-loading',
+      keyboardClose: false
     });
     return await loading.present();
   }
