@@ -24,7 +24,6 @@ npm-debug.log*
 /.versions
 /.vscode
 /coverage
-/dist
 /node_modules
 /platforms
 /plugins
@@ -35,4 +34,4 @@ src/assets/Ionic Lab_files/main.js
 src/app/app-routing.module.ts
 src/app/login/login-component.ts
 
-fyfserver.pem
+fyf_key.pem

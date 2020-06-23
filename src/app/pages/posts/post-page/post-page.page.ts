@@ -271,7 +271,7 @@ export class PostPagePage implements OnInit {
         post => {
           for (let postComments of post['comments']) {
 
-            console.log(postComments)
+            console.log(postComments);
 
             postComments.isUser = false;
             postComments.canDeleteComment = false;
@@ -290,7 +290,7 @@ export class PostPagePage implements OnInit {
               addSuffix: false
             });
 
-            postComments.comment = this.filterLanguage(postComments.comment);
+            console.log(postComments.comment);
           }
 
           this.posts.commentsSubject$.next(post['comments'].reverse());
@@ -496,7 +496,6 @@ export class PostPagePage implements OnInit {
     console.log('Loading dismissed!');
   }
 
-
   async deletePost(postID) {
     console.log('deleting post..');
     console.log(postID);
@@ -622,9 +621,7 @@ export class PostPagePage implements OnInit {
                   addSuffix: false
                 });
               }
-
-              comment.comment = this.filterLanguage(comment.comment)
-              // comment.comment = comment.comment.replace(/go/g, "not go :(");
+             // comment.comment = comment.comment.replace(/go/g, "not go :(");
 
            }
 
@@ -646,14 +643,14 @@ export class PostPagePage implements OnInit {
     );
   }
 
-  filterLanguage(content) {
-    var updatedContent = content;
+  filterLanguage(comment) {
+    const updatedComment = comment;
+    updatedComment.replace('fuck',  '****');
+    // LANGUAGE_FILTER_LIST.forEach(word => {
+    //   comment.replace(word, '****');
+    // });
 
-    LANGUAGE_FILTER_LIST.forEach(word => {
-      updatedContent = updatedContent.replace(RegExp(word, 'g'), '*'.repeat(word.length));
-    });
-
-    return updatedContent;
+    return updatedComment;
   }
 
   async doRefresh(event) {
