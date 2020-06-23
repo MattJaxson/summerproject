@@ -1,31 +1,33 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Storage } from '@ionic/storage';
 import { AppComponent } from './app.component';
+import { AuthService } from './services/auth.service';
 
 describe('AppComponent', () => {
 
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  let storageSpy, authSpy, jwtHelper;
 
   beforeEach(async(() => {
-    statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
-    splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
-    platformReadySpy = Promise.resolve();
-    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
+    storageSpy = jasmine.createSpyObj('jwtHelper', { get: 'sdsds'});
+    // storageSpy = jasmine.createSpyObj('JwtHelperService', { get: 'sdsds'});
+    authSpy = jasmine.createSpyObj('AuthService', {
+      authenticationState: 'asdasd'
+    });
+
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       providers: [
-        { provide: StatusBar, useValue: statusBarSpy },
-        { provide: SplashScreen, useValue: splashScreenSpy },
-        { provide: Platform, useValue: platformSpy },
+        AuthService,
+        { provide: Storage, useValue: storageSpy },
+        { provide: JwtHelperService, useValue: jwtHelper }
       ],
     }).compileComponents();
   }));
@@ -36,13 +38,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should initialize the app', async () => {
+  it('should check for a JWT on the devices Storage via Ionic Storage', async () => {
     TestBed.createComponent(AppComponent);
-    expect(platformSpy.ready).toHaveBeenCalled();
-    await platformReadySpy;
-    expect(statusBarSpy.styleDefault).toHaveBeenCalled();
-    expect(splashScreenSpy.hide).toHaveBeenCalled();
+    expect(storageSpy.get).toHaveBeenCalled();
   });
+
+
+  it('should check for the authentication state, should be defined as FALSE', async () => {
+    TestBed.createComponent(AppComponent);
+    expect(authSpy.authenticationState).toBeDefined();
+  });
+
 
   // TODO: add more tests!
 

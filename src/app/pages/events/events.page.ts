@@ -132,9 +132,11 @@ export class EventsPage implements OnInit, AfterViewInit {
           this.noSearchInput = false;
 
           return true;
-      }
+        }
         return false;
-    }
+      }
+
+      this.noSearchInput = true;
 
   });
 
@@ -171,7 +173,8 @@ export class EventsPage implements OnInit, AfterViewInit {
       duration: 1000,
       message: 'Searching for Events...',
       translucent: true,
-      cssClass: 'custom-class custom-loading'
+      cssClass: 'custom-class custom-loading',
+      keyboardClose: false
     });
     return await loading.present();
   }
