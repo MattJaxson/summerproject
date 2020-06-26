@@ -2,7 +2,7 @@
   "name": "Find Your Future",
   "short_name": "FYF",
   "theme_color": "#005191",
-  "background_color": "red",
+  "background_color": "white",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
