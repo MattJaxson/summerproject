@@ -189,7 +189,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             text: 'Cancel',
             role: 'cancel',
             handler: () => {
-              console.log('Cancelling logout');
+              console.log('Canceling logout');
               this.profile.fullName.next('');
               this.profile.addressOne.next('');
               this.profile.addressTwo.next('');
