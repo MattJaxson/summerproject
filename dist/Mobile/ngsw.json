@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1593147432831,
+  "timestamp": 1593180121230,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,7 +11,7 @@
         "/1-es2015.1c0512c7a15f37c3ddf6.js",
         "/1-es5.3915d09b9cdea880ff9d.js",
         "/10-es2015.f122cb94f05cc0a83ea6.js",
-        "/10-es5.91133504910d0ddfc1bf.js",
+        "/10-es5.3bb0b787f216aae29a79.js",
         "/100-es2015.5646d494f99ad0928757.js",
         "/100-es5.f70d2e206a33af4d9414.js",
         "/101-es2015.351b7224bab0874eb943.js",
@@ -289,7 +289,7 @@
         "/88-es5.737420a86265d03648ba.js",
         "/89-es2015.9d216d4d7536cc9acfc2.js",
         "/89-es5.2f554c32a6d9ab58e8cd.js",
-        "/9-es2015.e08eb0339374cdb8ecca.js",
+        "/9-es2015.30e88a663cd40edf0664.js",
         "/9-es5.b8b4263ca395d5c421e1.js",
         "/90-es2015.f222e71d3ef17073eeea.js",
         "/90-es5.6013121f9a577977a4fb.js",
@@ -318,8 +318,8 @@
         "/main-es5.c706166d6ff5294db7fa.js",
         "/polyfills-es2015.80259efc29e5feccaa7c.js",
         "/polyfills-es5.3b6d96b20484bbaeaa87.js",
-        "/runtime-es2015.4e3b3bc56ee0bece9df3.js",
-        "/runtime-es5.a9e54de5c7b29550fbea.js",
+        "/runtime-es2015.0d05b679df2fb6f11cbc.js",
+        "/runtime-es5.88763d37eb0809d80652.js",
         "/styles.dac6a720c0458a81b51b.css"
       ],
       "patterns": []
@@ -456,7 +456,7 @@
     "/1-es2015.1c0512c7a15f37c3ddf6.js": "c049ca60fefe45c7262ec980aab4019d226cf44c",
     "/1-es5.3915d09b9cdea880ff9d.js": "19fccb1cd40408de157975d4cd4f35ade7c4618b",
     "/10-es2015.f122cb94f05cc0a83ea6.js": "0d609d011dd7a354d1fa3da8a94b1bc35b69556e",
-    "/10-es5.91133504910d0ddfc1bf.js": "82f2c5b4aafb05bc61f6091ff9faa9ff95e5b582",
+    "/10-es5.3bb0b787f216aae29a79.js": "b021b7ec66bda3670e67cd82a40f5bba2c1c341f",
     "/100-es2015.5646d494f99ad0928757.js": "459ef061476bb97e25be1062da99290a08217f2f",
     "/100-es5.f70d2e206a33af4d9414.js": "ec5884a86ca175216ad9e81ceee5300ed2a41275",
     "/101-es2015.351b7224bab0874eb943.js": "615183b885925ae468d531ecb3a303c147265307",
@@ -734,7 +734,7 @@
     "/88-es5.737420a86265d03648ba.js": "d7c5b24ae0bab53c9e38d2e14113d410913e7856",
     "/89-es2015.9d216d4d7536cc9acfc2.js": "422ccaa6660de8aa8c48c5d291ec90f71d86c4d5",
     "/89-es5.2f554c32a6d9ab58e8cd.js": "f0f1ec2f17070fa330bde3f8d6810cdcca60ee55",
-    "/9-es2015.e08eb0339374cdb8ecca.js": "0de5e819873634f3ba2353cbac407bbcf8c70352",
+    "/9-es2015.30e88a663cd40edf0664.js": "41f6c3c444158e466ebe5837fd52ae2da39de32e",
     "/9-es5.b8b4263ca395d5c421e1.js": "b1df37bd30309ecb5a947c2ed4912fe23bf726dc",
     "/90-es2015.f222e71d3ef17073eeea.js": "27eaa64a32b288bd0d139027ea49c22cd808163a",
     "/90-es5.6013121f9a577977a4fb.js": "426f384d38751922d16fc4b1d87709b7d6ee0fa7",
@@ -875,14 +875,14 @@
     "/common-es2015.a20420489365c59713d9.js": "53daf409ec0ed4055da855b3756b36aa7c943f2f",
     "/common-es5.597976b1ee35f6b485bb.js": "a53379aa09b1945cfb727441a035f1a401812a3c",
     "/default-pro-picture.69dbc13508e0248e4d99.svg": "7aa97af1d198711e11c8edbff406f599960b915c",
-    "/index.html": "326814b239e19cd47ae6d21f54f93217b7cb165c",
+    "/index.html": "c7fbd532cdb075b6e111537f5d728e43804d16ad",
     "/journi-logo.394c593afb46f04d7760.png": "39a39276d0dfd67b7ac18946cdb8805c9ef80b8a",
     "/main-es2015.72c3b138f54f16092ffc.js": "923842ed9a55265c9897dd9492f9fb193b920f16",
     "/main-es5.c706166d6ff5294db7fa.js": "264487e733f8f20dd79f4203d8c8a21c570449cd",
     "/polyfills-es2015.80259efc29e5feccaa7c.js": "bff02dd491b51af17b8a8b58fbf9a8f0d2dc3358",
     "/polyfills-es5.3b6d96b20484bbaeaa87.js": "db61eb12fce879a46cfbe2be8da6b8358823d62e",
-    "/runtime-es2015.4e3b3bc56ee0bece9df3.js": "b15a16b3cc08cdc149b7b16c0f33c18678918d52",
-    "/runtime-es5.a9e54de5c7b29550fbea.js": "b85aa2927e6417a2b2098509d621df0f322321f5",
+    "/runtime-es2015.0d05b679df2fb6f11cbc.js": "d4f23b6edffa6ea5e5ee23239ab7167ec32d1792",
+    "/runtime-es5.88763d37eb0809d80652.js": "d3dac0f7c812e69b7e7cc6d22fd5803e9aa2b26d",
     "/styles.dac6a720c0458a81b51b.css": "c5079c33a07d4695e71b5c1f845f20c73ba7bd44"
   },
   "navigationUrls": [
