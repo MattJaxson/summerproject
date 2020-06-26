@@ -148,9 +148,8 @@ export class ProfilePicturePage implements OnInit {
 
                 let reader = new FileReader();
                 if (canvasData) {
-                  reader.readAsBinaryString(blob);
+                  reader.readAsDataURL(blob);
                 }
-
 
                 await this.photo.imageUpload(canvasData).subscribe(
                   data => {

@@ -46,7 +46,7 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
         // at least 1 number, 1 uppercase letter, and one lowercase letter
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])],
-     reTypePassword: ['Lacrosse2', Validators.compose([
+     reTypePassword: ['', Validators.compose([
       Validators.minLength(8),
       Validators.required,
       // at least 1 number, 1 uppercase letter, and one lowercase letter
