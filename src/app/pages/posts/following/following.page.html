@@ -59,7 +59,7 @@
       <ion-col size="11">
         <ion-row class="ion-align-items-center">
         <!-- Profile Picture -->
-        <ion-col offset-lg="0.25" size="1">
+        <ion-col push="0.25" size="1">
           <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
         </ion-col>
 
@@ -157,25 +157,25 @@
   </ion-col>
 
   <!-- Posts -->
-  <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="10" pull-lg="2">
+  <ion-col size-xs="12" size-sm="12" size-md="8" size-lg="10" pull-lg="2">
     <ion-row *ngFor="let post of allFollowedPosts" style="margin-top: 1%;" class="post">
 
       <!-- Profile Header -->
-      <ion-col  offset="0.5" size="11">
+      <ion-col size="11">
         <ion-row style="position: relative; right: 5px; top: -4px;" >
         <!-- Profile Picture -->
-        <ion-col size="1.3">
+        <ion-col push="0.2" size="1.3">
           <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
         </ion-col>
 
         <!-- Post Creator's Name -->
-        <ion-col size="5">
-          <h6 style="font-size: 0.9em; font-weight: 300; margin: 10px 0 10px 0px; color: #666;">{{post.creatorName}}</h6>
+        <ion-col push="0.2" size="5">
+          <h6 style="font-size: 1em; margin: 10px 0 10px 0px; color: #666;">{{post.creatorName}}</h6>
         </ion-col>
 
         <!-- Date -->
         <ion-col class="ion-text-right" push="1.5" size="3">
-            <h6 style="opacity: 0.4; font-size: 0.5em; margin: 10px 0; position: relative; top: 10px;">{{post.date}}</h6>
+            <h6 style="opacity: 0.4; font-size: 0.7em; margin: 10px 0; position: relative; top: 10px;">{{post.date}}</h6>
         </ion-col>
 
       </ion-row>
@@ -235,7 +235,7 @@
 
           <!-- Follow & Comment -->
           <ion-col size="6">
-            <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
+            <app-follow-comment-buttons style="font-size: 1.3em" [postID]="post._id"></app-follow-comment-buttons>
           </ion-col>
         </ion-row>
       </ion-col>

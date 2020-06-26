@@ -1,5 +1,5 @@
 .post {
-  padding: 30px;
+  padding: 40px 0;
   margin-bottom: 80px;
   border-radius: 5px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
@@ -69,9 +69,6 @@ ion-item {
   opacity: 1;
   --background: #005191;
   --color: white;
-  --border-style: solid;
-  --border-width: 1px;
-  --border-color: white;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
   width: 120px;
   height: 40px;
@@ -95,6 +92,7 @@ ion-item {
   width: 150px;
   margin-top: 20px;
   font-size: 0.7em;
+  transition: 0s;
 }
 
 .blue-button {
@@ -106,7 +104,7 @@ ion-item {
 .add-button {
   --color: white;
   --background: linear-gradient(#5ad8b2, #40c59d);
-  --background-hover: linear-gradient(#bffce9, #7efcd4);
+  --background-hover: linear-gradient(#5ad8b2, #2e8f72);
   font-weight: 800;
   display: block;
   width: 150px;
@@ -130,7 +128,7 @@ ion-item {
 }
 
 form {
-  width: 98%;
+  width: 100%;
 }
 
 .comment {
@@ -143,8 +141,10 @@ form {
 
 .comment-post-button {
   --background: linear-gradient(#5ad8b2, #40c59d);
+  --background-hover: linear-gradient(#5ad8b2, #2e8f72);
   height: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
+  border-radius: 5px;
   opacity: 0;
   width: 100%;
   transform: 0.5s;
@@ -178,7 +178,7 @@ form {
 
 .comment-input-mobile {
   background: rgba(247, 248, 248, 0.5);
-  height: auto;
+  height: 150px;
   margin: 30px 0 60px 0;
   box-shadow: none;
   padding-left: 10px;

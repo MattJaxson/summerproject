@@ -158,7 +158,6 @@ ion-title {
 
 ion-input:focus {
   padding: 10px 0;
-  color: red;
 }
 
 .line-input {
@@ -169,7 +168,7 @@ ion-input:focus {
       --border-color: transparent!important;
       --highlight-height: 0;
       margin: 20px auto;
-      padding: 5px 0;
+      padding: 3.5px 0;
       border: 2px solid #dedede;
       transition: 0.2s;
       border-radius: 4px;

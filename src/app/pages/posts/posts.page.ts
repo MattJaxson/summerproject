@@ -112,12 +112,10 @@ export class PostsPage implements OnInit {
   }
 
   async getPosts() {
-    await this.posts.getPosts().subscribe( jobs => {
-      this.allPosts = Object.values(jobs).reverse();
+    await this.posts.getPosts().subscribe( posts => {
+      console.log(posts);
+      this.allPosts = Object.values(posts).reverse();
       this.posts.postsSubject$.next(this.allPosts);
-      // this.posts.postsSubject$.subscribe( posts => {
-      //   this.allPosts = posts;
-      // });
 
 
       for (const post of this.allPosts) {
@@ -153,10 +151,10 @@ export class PostsPage implements OnInit {
 
     await this.posts.comment(
       postID,
-      this.userFullName,
-      this.userEmail,
-      this.profilePicture,
-      comment
+      userFullName,
+      userEmail,
+      userProfilePicture,
+      comment.comment
     ).subscribe(
       () => {
          this.posts.getPostInfo(postID).subscribe(

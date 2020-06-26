@@ -594,6 +594,7 @@ export class PostPagePage implements OnInit {
             // Give User ability to Edit, Delete, or Report a Comment.
             // User cannot Report their own comment **
             for (const comment of comments) {
+              console.log(comment);
 
               // If the Logged in User's Email equals the creatorEmail of the Comment,
               // they will be given the ability to edit and delete their Comment.
