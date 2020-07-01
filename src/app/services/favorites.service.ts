@@ -40,7 +40,7 @@ export class FavoritesService {
         console.log('Posting Favorite Job to Database..');
         let updatedFavorites = [...Object.values(data)];
         this.favoriteJobs$.next(updatedFavorites);
-        this.presentToast('You favorited this job!');
+        this.presentToastFavorited('You favorited this job!');
       }
     );
 
@@ -58,7 +58,6 @@ export class FavoritesService {
       async data => {
         console.log("Unfavorite data value: ", data);
         let updatedFavorites = [...Object.values(data)];
-        
         // for (let i = 0; i < updatedFavorites.length; i++) {
         //   if (updatedFavorites[i] === job) {
         //     updatedFavorites.splice(i, 1);
@@ -66,23 +65,34 @@ export class FavoritesService {
         // }
 
         this.favoriteJobs$.next(updatedFavorites);
-        this.presentToast('You removed this job from Favorites.');
+        this.presentToastUnfavorited('You removed this job from Favorites.');
       }
     );
     // update favoriteJobsSubject
     console.log('Unfavoriting this Job');
   }
 
-  async presentToast(msg: string) {
+  async presentToastFavorited(msg: string) {
     const toast = await this.toast.create({
       message: msg,
       duration: 3000,
-      cssClass: 'updated-toast',
+      cssClass: 'favorited-toast',
       position: 'bottom'
     });
 
     toast.present();
   }
-  
+
+  async presentToastUnfavorited(msg: string) {
+    const toast = await this.toast.create({
+      message: msg,
+      duration: 3000,
+      cssClass: 'unfavorited-toast',
+      position: 'bottom'
+    });
+
+    toast.present();
+  }
+
 }
 

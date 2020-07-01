@@ -49,12 +49,6 @@ export class JobsPage implements OnInit, OnDestroy {
       });
     }
 
-    // Get all the jobs t be viewed on the home page
-    this.jobs.getJobs().subscribe( jobs => {
-      this.allJobs = Object.values(jobs);
-      console.log("alljobs: ", this.allJobs);
-    });
-
     this.getFavoriteJobs();
 
     this.jobs.getJobs().subscribe( jobs => {

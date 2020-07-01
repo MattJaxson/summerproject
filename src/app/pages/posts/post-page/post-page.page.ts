@@ -315,19 +315,29 @@ export class PostPagePage implements OnInit {
 
   }
 
-  async reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+  async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+    console.log('commentID: ' + commentID);
+    console.log('commentContents: ' + commentContents);
+    console.log('post: ' + post);
+    console.log('postID: ' + postID);
+    console.log('commentUserFullName: ' + commentUserFullName);
+    console.log('commentUserEmail: ' + commentUserEmail);
+    console.log('commentDate: ' + commentDate);
+    console.log('userEmail: ' + userEmail);
+    console.log('userFullName: ' + userFullName);
+
     const reportModalConfig = await this.modal.create({
     component: ReportCommentPage,
     componentProps: {
       commentID,
-      commentCotents,
+      commentContents,
+      post,
+      postID,
       commentUserFullName,
       commentUserEmail,
       commentDate,
       userEmail,
       userFullName,
-      post,
-      postID
     }
     });
 

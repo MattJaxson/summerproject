@@ -121,9 +121,9 @@ export class PostsService {
   }
 
   // tslint:disable-next-line: max-line-length
-  reportComment(commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate, ) {
+  reportComment(commentID, commentContents, post, postID, reportedUserName, reportedUserEmail,commentDate, userEmail, userFullname, reportReason ) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, postID, post, userEmail, userFullname, reportedUserEmail, reportedUserName, reportReason, commentDate });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, post, postID, reportedUserName, reportedUserEmail,commentDate, userEmail, userFullname, reportReason });
   }
 
   replyComment(commentID, postID, reply, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail  ) {

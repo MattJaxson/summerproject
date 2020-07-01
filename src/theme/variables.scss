@@ -43,9 +43,28 @@
     }
   }
 
-  .updated-toast {
+  .favorited-toast {
     --background: #797;
     --border-color: #292;
+    --border-width: 3px;
+    --border-style: solid;
+    --border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-align: center;
+    padding: 200px auto;
+
+    .toast-message {
+      color: white;
+      position: relative;
+      top: 50px;
+    }
+
+  }
+
+  .unfavorited-toast {
+    --background: #faa71b;
+    --border-color: #da8f0e;
     --border-width: 3px;
     --border-style: solid;
     --border-radius: 5px;

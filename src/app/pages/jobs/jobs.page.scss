@@ -101,7 +101,7 @@ h6, p {
   font-size: 0.9em;
   opacity: 0.8;
   position: relative;
-  top: -31px
+  top: -29px
 }
 
 #job-title {
@@ -110,6 +110,14 @@ h6, p {
   position: relative;
   top: -15px;
   color: #111;
+}
+
+#job-rate {
+  font-size: 12px;
+  opacity: 0.7;
+  position: relative;
+  top: -53px;
+  color: green;
 }
 
 @media only screen and (min-width: 992px) {
