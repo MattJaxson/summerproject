@@ -98,15 +98,6 @@ export class JobsPage implements OnInit, OnDestroy {
     );
   }
 
-  // getFavoritesAmount() {
-  //   this.favorites.favoriteJobs$.subscribe(
-  //     favs => {
-  //       console.log(favs.length);
-  //       this.favsAmount = favs.length;
-  //     }
-  //   );
-  // }
-
   jobPage(job) {
     console.log('Going to specific Job Page:', job.title);
     console.log('The job: ', job);

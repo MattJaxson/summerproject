@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../services/auth.service';
-import { ProfileService } from '../../../../services/profile.service';
+import { AuthService } from '../../../services/auth.service';
+import { ProfileService } from '../../../services/profile.service';
 
 import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-change-email',
-  templateUrl: './change-email.page.html',
-  styleUrls: ['./change-email.page.scss'],
+  selector: 'app-change-about',
+  templateUrl: './change-about.page.html',
+  styleUrls: ['./change-about.page.scss'],
 })
-export class ChangeEmailPage implements OnInit {
-  changeEmail: FormGroup;
+export class ChangeAboutPage implements OnInit {
+  changeAbout: FormGroup;
   activeEmail = '';
+  currentAbout = '';
 
-  formValid: Boolean;
+  formValid: boolean;
 
   validationMessasges = {
-    email: [
-      { type: 'email', message: 'Must be a valid email address'}
+    about: [
+      { type: 'about', message: 'Must be a 500 characters or less.'}
     ],
     password: [
       // tslint:disable-next-line: max-line-length
@@ -27,23 +28,25 @@ export class ChangeEmailPage implements OnInit {
     ]
   };
 
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
     private toast: ToastController,
     private alertController: AlertController,
-    private profile: ProfileService
-    ) {
-      this.activeEmail = this.profile.email.getValue();
-      console.log('Active Email: ' + this.activeEmail);
-     }
+    private profile: ProfileService) { }
 
   ngOnInit() {
 
-    this.changeEmail =  this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    this.activeEmail = this.profile.email.getValue();
+    console.log('Active Email: ' + this.activeEmail);
+
+    this.currentAbout = this.profile.about.getValue();
+    console.log('Current About: ' + this.currentAbout);
+
+
+    this.changeAbout =  this.formBuilder.group({
+      about: ['', [Validators.required]],
       password: ['', Validators.compose([
         Validators.minLength(8),
         Validators.required,
@@ -52,14 +55,13 @@ export class ChangeEmailPage implements OnInit {
      ])]
     });
 
-    this.changeEmail.valueChanges.subscribe( _ => {
-      setTimeout(() => {
-        if (this.changeEmail.valid) {
+    this.changeAbout.valueChanges.subscribe( value => {
+      console.log(value);
+      if (value.about.length > 0) {
           this.formValid = true;
         } else {
           this.formValid = false;
         }
-      }, 100);
     });
   }
 
@@ -92,14 +94,8 @@ export class ChangeEmailPage implements OnInit {
     await alert.present();
   }
 
-  confirmChangedEmail(newEmail, password) {
-    if (newEmail == this.activeEmail) {
-      // Show an alert telling the user that they can't use the same email
-      this.presentAlert();
-    }
-    else {
-      this.profile.changeEmail('eddie@gmail.com', newEmail, password);
-    }
+  confirmChangedAbout(email, newAbout, password) {
+      this.profile.changeAbout(email, newAbout, password);
   }
 
 }

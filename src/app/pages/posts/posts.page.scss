@@ -1,5 +1,5 @@
 .post {
-  padding: 40px 0;
+  padding: 10px 0;
   margin-bottom: 80px;
   border-radius: 5px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
@@ -14,6 +14,14 @@
   }
 }
 
+.post-title {
+  font-weight: 800;
+  color: #005191;
+  position: relative;
+  left: 5px;
+  margin: 0;
+}
+
 ion-content {
   background: #edf3f8;
 }
@@ -21,7 +29,7 @@ ion-content {
 @media screen and (max-width: 744px) {
   .post {
     position: relative;
-    top: -20px;
+    top: 0px;
   }
 }
 

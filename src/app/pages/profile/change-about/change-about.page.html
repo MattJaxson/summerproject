@@ -1,9 +1,10 @@
+<!-- Mobile Header -->
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Change Email</ion-title>
+    <ion-title>Change About</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +13,7 @@
     <ion-grid fixed class="ion-text-center">
       <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
         <ion-col offset="2.5" size="2.5">
-          <h1>Change Email</h1>
+          <h1>Change About</h1>
         </ion-col>
         <ion-col push="2.5" size="2">
           <ion-button class="blue-button" (click)="back()">
@@ -29,31 +30,36 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-            <h6 class="text-header" style="width: unset;">{{activeEmail}}</h6>
-            <form (ngSubmit)="confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value)" [formGroup]="changeEmail">
+            <h6 class="text-header">{{currentAbout}}</h6>
+            <form (ngSubmit)="confirmChangedAbout(this.activeEmail, this.changeAbout.controls.about.value, this.changeAbout.controls.password.value)" [formGroup]="changeAbout">
 
 
             <ion-list class="line-input">
 
-                <!-- Email -->
+                <!-- About -->
                 <ion-item>
-                  <ion-input
+                  <ion-textarea
                     required
-                    placeholder="new email"
-                    formControlName="email"
-                    type="email"
-                    (keyup.enter)="formValid ? confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value) : null">
-                  </ion-input>
+                    autogrow="true"
+                    autocapitalize="true"
+                    rows="5"
+                    spellcheck="true"
+                    wrap="soft"
+                    type="text"
+                    maxlength="500"
+                    placeholder="Tell us about yourself"
+                    formControlName="about">
+                  </ion-textarea>
                 </ion-item>
 
-                <!-- Email Validation-->
+                <!-- About Validation-->
                 <div class="validation-errors">
-                  <ng-container *ngFor="let validation of validationMessasges.email">
+                  <ng-container *ngFor="let validation of validationMessasges.about">
                     <div class="error-message"
-                    *ngIf="changeEmail
-                      .get('email')
-                      .hasError(validation.type) && (changeEmail.get('email')
-                      .dirty || changeEmail.get('email').touched)">
+                    *ngIf="changeAbout
+                      .get('about')
+                      .hasError(validation.type) && (changeAbout.get('email')
+                      .dirty || changeAbout.get('email').touched)">
                       {{ validation.message }}
                     </div>
                   </ng-container>
@@ -65,15 +71,14 @@
                       placeholder="password"
                       formControlName="password"
                       minlength="8"
-                      type="password"
-                      (keyup.enter)="formValid ? confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value) : null">
+                      type="password">
                     </ion-input>
                 </ion-item>
           </ion-list>
-                <ion-button type="submit" [disabled]="!formValid" class="orange-button" style="width: unset;">CHANGE EMAIL</ion-button>
+                <ion-button type="submit" [disabled]="!formValid" class="orange-button" style="width: unset;">CHANGE ABOUT</ion-button>
               </form>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-content>
 
+</ion-content>

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ChangePhonePage } from './change-phone.page';
+import { ChangeAboutPage } from './change-about.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ChangePhonePage
+    component: ChangeAboutPage
   },
   {
     path: 'confirm',
-    loadChildren: () => import('../confirm/confirm.module').then( m => m.ConfirmPageModule)
+    loadChildren: () => import('./confirm/confirm.module').then( m => m.ConfirmPageModule)
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ChangePhonePageRoutingModule {}
+export class ChangeAboutPageRoutingModule {}

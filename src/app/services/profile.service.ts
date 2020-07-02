@@ -19,9 +19,7 @@ export class ProfileService {
   user = {};
 
   fullName = new BehaviorSubject('');
-  addressOne = new BehaviorSubject('');
-  addressTwo = new BehaviorSubject('');
-  phone = new BehaviorSubject('');
+  about = new BehaviorSubject('');
   city = new BehaviorSubject('');
   state = new BehaviorSubject('');
   zip = new BehaviorSubject('');
@@ -52,7 +50,7 @@ export class ProfileService {
       return this.http.post(`${this.BACKEND_URL}/api/home/user`, {email: this.activeEmail});
   }
 
-    changeEmail(activeEmail, newEmail, password) {
+  changeEmail(activeEmail, newEmail, password) {
       // tslint:disable-next-line: max-line-length
       return this.http.post(`${this.BACKEND_URL}/api/home/user/change-email`, {
         oldEmail: this.activeEmail,
@@ -128,96 +126,8 @@ export class ProfileService {
         });
     }
 
-    async changePhone(email, newNumber, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-phone`, {
-        newNumber,
-        password,
-        email
-      })
-      .subscribe(data => {
-        if ( data === true ) {
-          console.log('Changing phone number...');
-          this.phone.next(newNumber);
-          this.router.navigate(['/home/profile']);
-    
-          const successToast = this.toastController.create({
-            message: 'Your phone number has been updated.',
-            duration: 3000,
-            cssClass: 'updated-toast',
-            keyboardClose: true,
-            position: 'bottom'
-          });
-          successToast.then(t => t.present());
-         } else {
-           console.log('Passwords dont match!');
-    
-           const failToast = this.toastController.create({
-             message: 'Password was incorrect',
-             duration: 3000,
-             cssClass: 'wrong-password-toast',
-             keyboardClose: true,
-             position: 'top'
-           });
-           failToast.then(t => t.present());
-         }
-      });
-    }
-
-    async changeAddress(email, addressOne, addressTwo, city, state, zip, password) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-address`, {
-        email,
-        addressOne,
-        addressTwo,
-        city,
-        state,
-        zip,
-        password
-      })
-      .pipe(
-        tap( res => {
-
-          if (!res) {
-            console.log('There was no response. There might be a bad password');
-          }
-        }),
-        catchError(e => {
-          throw new Error(e);
-        })
-      )
-      .subscribe(data => {
-        if ( data === true ) {
-
-          this.addressOne.next(addressOne);
-          this.addressTwo.next(addressTwo);
-          this.city.next(city);
-          this.state.next(state);
-          this.zip.next(zip);
-          this.router.navigate(['/home/profile']);
-
-          let successToast = this.toastController.create({
-            // tslint:disable-next-line: max-line-length
-            message: 'Your address has been updated.',
-            duration: 3000,
-            cssClass: 'updated-toast',
-            keyboardClose: true,
-            position: 'bottom'
-          });
-
-          successToast.then(t => t.present());
-         } else {
-
-          let failToast = this.toastController.create({
-            // tslint:disable-next-line: max-line-length
-            message: 'Please make sure your password is correct',
-            duration: 3000,
-            cssClass: 'wrong-password-toast',
-            keyboardClose: true,
-            position: 'top',
-          });
-          failToast.then(t => t.present());
-          return console.log('Passwords dont match');
-        }
-  });
+    async changeAbout(email, newAbout, passsword) {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-about`, {email, newAbout, passsword}).subscribe();
     }
 
     async changeSchool(email, newSchool, newGrade, password) {

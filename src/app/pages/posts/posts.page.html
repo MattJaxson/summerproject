@@ -3,7 +3,7 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col push-xs=".45" push-sm="1"  size-xs="1.2">
+        <ion-col push-xs=".45"  push-sm="0.35"  size-xs="1.2">
           <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
         </ion-col>
         <ion-col push-sm=".5" size="7">
@@ -44,12 +44,12 @@
           <ion-col size="11">
             <ion-row class="ion-align-items-center">
             <!-- Profile Picture -->
-            <ion-col push="0.2" size="1">
+            <ion-col push="0.2" size="1" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="4">
+            <ion-col size="4" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
             </ion-col>
 
@@ -64,6 +64,12 @@
           <!-- (click)="postPage(post)" -->
           <!-- Post Content -->
           <ion-col size="11">
+            <ion-row class="ion-justify-content-center">
+              <!-- 1080x1350 -->
+              <ion-col size="11.3">
+               <p class="post-title">{{post.title}}</p>
+              </ion-col>
+           </ion-row>
             <ion-row class="ion-justify-content-center">
               <!-- 1080x1350 -->
               <ion-col size="11.3">
@@ -140,9 +146,9 @@
             <ion-button class="blue-button following-desktop-button" (click)="following()">
               Following ({{followedPostCount}})
             </ion-button>
-            <!-- <ion-button class="my-post-button"  (click)="myPosts()">
+            <ion-button class="my-post-button"  (click)="myPosts(this.userEmail)">
               My Posts
-            </ion-button> -->
+            </ion-button>
             <ion-button class="add-button"  (click)="addPost()">
               Add Post
             </ion-button>
@@ -165,12 +171,12 @@
           <ion-col size="11">
             <ion-row style="position: relative; right: 5px; top: -4px;" >
             <!-- Profile Picture -->
-            <ion-col size="1.3">
+            <ion-col size="1.3" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="5">
+            <ion-col size="5" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <h6 style="font-size: 0.9em; font-weight: 500; margin: 10px 0 10px 0px; color: #666;">{{post.creatorName}}</h6>
             </ion-col>
 
@@ -184,6 +190,12 @@
 
           <!-- Post Content -->
           <ion-col size="12">
+            <ion-row class="ion-justify-content-center">
+              <!-- 1080x1350 -->
+              <ion-col size="11.3">
+               <p class="post-title">{{post.title}}</p>
+              </ion-col>
+           </ion-row>
             <ion-row class="ion-justify-content-center">
               <!-- (click)="postPage(post)"  -->
               <!-- 1080x1350 -->

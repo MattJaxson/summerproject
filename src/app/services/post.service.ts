@@ -25,15 +25,19 @@ export class PostsService {
     return this.http.get(`${this.BACKEND_URL}/api/posts/`);
   }
 
+  getMyPosts(email) {
+    return this.http.post(`${this.BACKEND_URL}/api/posts/my-posts`, { email });
+  }
+
   getPostInfo(id) {
     // console.log(`Getting information for post id ${id}`);
     return this.http.post(`${this.BACKEND_URL}/api/posts/post-info`, {_id: id});
   }
 
-  addPost(creatorName, creatorEmail, creatorProfilePicture, post) {
+  addPost(creatorName, creatorEmail, creatorProfilePicture, post, title) {
     console.log('Adding post to post que...');
     console.log('Post: ', post);
-    return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, creatorProfilePicture, post });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/add-text-post`, {creatorName, creatorEmail, creatorProfilePicture, post, title });
   }
 
   comment(

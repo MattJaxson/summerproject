@@ -61,6 +61,10 @@ const routes: Routes = [
   {
     path: 'image-cropper',
     loadChildren: () => import('./modals/image-cropper/image-cropper.module').then( m => m.ImageCropperPageModule)
+  },
+  {
+    path: 'third-person-profile',
+    loadChildren: () => import('./modals/third-person-profile/third-person-profile.module').then( m => m.ThirdPersonProfilePageModule)
   }
 ];
 @NgModule({

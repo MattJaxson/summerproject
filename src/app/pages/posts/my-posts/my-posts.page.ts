@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController, ModalController } from '@ionic/angular';
@@ -9,25 +9,24 @@ import { FollowIconComponent } from '../../../components/follow-icon/follow-icon
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { PlatformLocation } from '@angular/common';
-import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
-
 
 @Component({
-  selector: 'app-following',
-  templateUrl: './following.page.html',
-  styleUrls: ['./following.page.scss'],
+  selector: 'app-my-posts',
+  templateUrl: './my-posts.page.html',
+  styleUrls: ['./my-posts.page.scss'],
 })
-export class FollowingPage implements OnInit {
+export class MyPostsPage implements OnInit {
 
   commentForm: FormGroup;
   userEmail;
-  userFullName;
-  userProfilePicture;
-  date;
-  allFollowedPosts = [];
-  userID;
+  allMyPosts = [];
+  userFullName: any;
+  userID: any;
+  userProfilePicture: any;
+
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     public posts: PostsService,
     private profile: ProfileService,
@@ -35,60 +34,33 @@ export class FollowingPage implements OnInit {
     private formBuilder: FormBuilder,
     private eventEmitterService: PostPageEmitterService,
     private modal: ModalController,
-    private location: PlatformLocation
-  ) { }
+    private location: PlatformLocation) { }
 
   ngOnInit() {
     this.location.onPopState(() => {
       this.eventEmitterService.onBackAction();
     });
 
-    // Get the User's Followed Posts
     this.profile.getUserDetails().subscribe(
       details => {
-        console.log('User ID from Following Page OnInit');
         this.userID = details['_id'];
         this.userFullName = details['fullName'];
         this.userEmail = details['email'];
         this.userProfilePicture = details['profilePicture'];
-        this.posts.getFollowedPost(this.userID).subscribe(
-          data => {
-            this.allFollowedPosts = Object.values(data).reverse();
-            console.log(data);
 
-            for (const post of this.allFollowedPosts) {
-              post.date = format( new Date(post.date), 'MMMM do, yyyy');
-            }
-
-            return this.allFollowedPosts;
-          }
-        );
       });
-
-    console.log('Got Followed Posts');
 
       // To collect comment data
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
-  }
 
-  async thirdPersonProfileModal(creatorEmail, creatorName) {
-    const thirdPersonProfileModalConfig = await this.modal.create({
-    component: ThirdPersonProfilePage,
-    componentProps: {
-      creatorEmail,
-      creatorName
-    },
-    cssClass: 'third-person-profile-modal'
-    });
 
-    await thirdPersonProfileModalConfig.present();
-  }
+    const email = this.activatedRoute.snapshot.paramMap.get('email');
+    this.userEmail = email;
+    console.log(this.userEmail);
 
-  postPage(post) {
-    // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/posts/post-page', post._id]);
+    this.myPosts(this.userEmail);
   }
 
   addPost() {
@@ -98,6 +70,21 @@ export class FollowingPage implements OnInit {
   back() {
     this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
+  }
+
+  myPosts(userEmail) {
+    this.posts.getMyPosts(userEmail).subscribe(
+      data => {
+        this.allMyPosts = Object.values(data).reverse();
+        console.log(data);
+
+        for (const post of this.allMyPosts) {
+          post.date = format( new Date(post.date), 'MMMM do, yyyy');
+        }
+
+        return this.allMyPosts;
+      }
+    );
   }
 
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
@@ -166,41 +153,6 @@ export class FollowingPage implements OnInit {
     toast.then(toast => toast.present());
 
     await this.router.navigate(['/home/posts/post-page', postID]);
-  }
-
-  async doRefresh(event) {
-
-     // Get the User's Followed Posts
-     this.profile.getUserDetails().subscribe(
-      details => {
-        console.log('User ID from Following Page OnInit');
-        this.userID = details['_id'];
-        this.userFullName = details['fullName'];
-        this.userEmail = details['email'];
-        this.userProfilePicture = details['profilePicture'];
-        this.posts.getFollowedPost(this.userID).subscribe(
-          data => {
-            this.allFollowedPosts = Object.values(data).reverse();
-            console.log(data);
-
-            for (const post of this.allFollowedPosts) {
-              post.date = format( new Date(post.date), 'MMMM do, yyyy');
-            }
-
-            return this.allFollowedPosts;
-          }
-        );
-      });
-
-    // Present Toast
-    await setTimeout(() => {
-      const toast = this.toast.create({
-        message: 'Inspiration Page has been refreshed',
-        duration: 3000
-      });
-      event.target.complete();
-      toast.then(toast => toast.present());
-    }, 2000);
   }
 
 }

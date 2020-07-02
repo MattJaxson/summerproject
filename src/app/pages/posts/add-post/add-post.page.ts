@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { PostsService } from 'src/app/services/post.service';
@@ -11,10 +11,14 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
   templateUrl: './add-post.page.html',
   styleUrls: ['./add-post.page.scss'],
 })
-export class AddPostPage implements OnInit {
+export class AddPostPage implements OnInit, AfterViewInit {
+
+  @ViewChild('postChars', {static: false}) postChars;
+  @ViewChild('titleChars', {static: false}) titleChars;
   creatorEmail;
   creatorName;
   postValue;
+  char;
 
   textPostForm: FormGroup;
 
@@ -29,10 +33,13 @@ export class AddPostPage implements OnInit {
     private profile: ProfileService,
     private formBuilder: FormBuilder,
   ) { }
+  ngAfterViewInit() {
+  }
 
   ngOnInit() {
     this.textPostForm = this.formBuilder.group({
-      textPost: ['', Validators.required]
+      title: ['', Validators.required],
+      post: ['', Validators.required]
     }
     );
 
@@ -50,9 +57,9 @@ export class AddPostPage implements OnInit {
     this.router.navigate(['/home/posts']);
   }
 
-  async post(creatorName, creatorEmail, creatorProfilePicture, post) {
+  async post(creatorName, creatorEmail, creatorProfilePicture, post, title) {
     await this.presentLoading();
-    await this.posts.addPost(creatorName, creatorEmail, creatorProfilePicture, post).subscribe(
+    await this.posts.addPost(creatorName, creatorEmail, creatorProfilePicture, post, title).subscribe(
       data => {
         console.log(data);
       }

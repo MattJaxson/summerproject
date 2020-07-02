@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ChangePhonePageRoutingModule } from './change-phone-routing.module';
+import { ChangeAboutPageRoutingModule } from './change-about-routing.module';
 
-import { ChangePhonePage } from './change-phone.page';
+import { ChangeAboutPage } from './change-about.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
-    ChangePhonePageRoutingModule
+    IonicModule,
+    ChangeAboutPageRoutingModule
   ],
-  declarations: [ChangePhonePage]
+  declarations: [ChangeAboutPage]
 })
-export class ChangePhonePageModule {}
+export class ChangeAboutPageModule {}
