@@ -1,13 +1,15 @@
  <!-- Mobile Toolbar -->
  <ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    <ion-title>Notifications</ion-title>
-    <ion-button slot="end" (click)="clear(this.userEmail)">
-      Clear
-    </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-title>Notifications</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="clear(this.userEmail)">
+        Clear
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +24,7 @@
   </ion-row>
   <ion-row *ngIf="this.allNotifications == 0" class="ion-justify-content-center">
     <ion-col size="4">
-      <img id="icon" src="../../../../assets/icons/notifications-icon.svg" alt="">
+      <img id="icon" src="../../../../assets/icons/no-notifications-icon.svg" alt="">
     </ion-col>
   </ion-row>
 
@@ -38,7 +40,7 @@
       <p id="date">{{n.date}}</p>
     </ion-item>
     <ion-item-options side="end">
-      <ion-item-option (click)="delete(notification)">Delete</ion-item-option>
+      <!-- <ion-item-option (click)="delete(notification)">Delete</ion-item-option> -->
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>

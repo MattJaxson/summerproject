@@ -2,10 +2,8 @@
 <ion-header no-border class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-title>
-      <div>
         <img class="profile-picture" src="{{userProfilePicture}}" alt="">
-        <p class="userfullname">{{userFullName}}</p>
-      </div>
+        {{userFullName}}
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="following()">

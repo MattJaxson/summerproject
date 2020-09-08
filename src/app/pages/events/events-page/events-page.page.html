@@ -4,16 +4,7 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button *ngIf="going" (click)="notGoingToEvent()" style="--padding-end: 20px;">
-          No longer going to this Event?
-          <ion-icon  name="close-circle-outline" style="color: #e4405f; margin-left: 10px;" size="large"></ion-icon>
-        </ion-button>
-        <ion-button *ngIf="!going" (click)="goingToEvent()" style="--padding-end: 20px;">
-          Want to go to this Event?
-          <ion-icon name="add-circle" style="color: #21ce99; margin-left: 10px;" size="large"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-title>{{eventTitle}}</ion-title>
     </ion-toolbar>
 </ion-header>
 

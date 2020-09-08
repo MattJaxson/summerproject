@@ -103,9 +103,9 @@ ion-icon {
 }
 
 ion-title {
-  --color: --ion-color-primary;
-  margin-top: 10px;
-  font-size: 1em;
+  font-weight: 400;
+  font-size: 1.24em;
+  margin-left: 0px;
 }
 
 .post-content {
@@ -472,13 +472,14 @@ ion-button {
 
 ion-back-button {
   --color: #005191;
+  width: auto;
 }
 
 ion-buttons > ion-button {
   font-size: 0.9em;
   font-weight: 700;
   margin-bottom: 0px;
-  --border-radius: 5px;
+  // --border-radius: 5px;
   --box-shadow: none;
 }
 

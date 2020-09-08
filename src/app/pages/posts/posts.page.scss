@@ -3,6 +3,8 @@
   border-radius: 100px;
   margin-right: 5px;
   display: inline-block;
+  position: relative;
+  top: 5px;
 }
 
 .userfullname {
@@ -12,11 +14,6 @@
   top: -10px;
   left: 0px;
   color: red;
-}
-
-ion-title {
-  font-size: 0.6em;
-  color: #005191;
 }
 
 .post {
