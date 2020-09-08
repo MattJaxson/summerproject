@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { MentorsPageRoutingModule } from './mentors-routing.module';
 
 import { MentorsPage } from './mentors.page';
+import { NewMessageMentorPageModule } from 'src/app/modals/new-message-mentor/new-message-mentor.module';
+
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { MentorsPage } from './mentors.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MentorsPageRoutingModule
+    MentorsPageRoutingModule,
+    NewMessageMentorPageModule
   ],
   declarations: [MentorsPage]
 })

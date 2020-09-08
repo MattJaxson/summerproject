@@ -50,6 +50,10 @@ export class ProfileService {
       return this.http.post(`${this.BACKEND_URL}/api/home/user`, {email: this.activeEmail});
   }
 
+  getTheirDetails(email) {
+    return this.http.post(`${this.BACKEND_URL}/api/home/user/their-details`, {email});
+  }
+
   changeEmail(activeEmail, newEmail, password) {
       // tslint:disable-next-line: max-line-length
       return this.http.post(`${this.BACKEND_URL}/api/home/user/change-email`, {

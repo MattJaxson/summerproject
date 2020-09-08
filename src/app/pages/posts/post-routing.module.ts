@@ -24,6 +24,14 @@ const routes: Routes = [
   {
     path: 'my-posts/:email',
     loadChildren: () => import('./my-posts/my-posts.module').then( m => m.MyPostsPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'student-chat',
+    loadChildren: () => import('./student-chat/student-chat.module').then( m => m.StudentChatPageModule)
   }
 ];
 

@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: ChangeAboutPage
-  },
-  {
-    path: 'confirm',
-    loadChildren: () => import('./confirm/confirm.module').then( m => m.ConfirmPageModule)
   }
 ];
 

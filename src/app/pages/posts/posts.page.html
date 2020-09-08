@@ -1,22 +1,34 @@
  <!-- Mobile Toolbar -->
 <ion-header no-border class="ion-hide-lg-up">
   <ion-toolbar>
-    <ion-grid>
+    <ion-title>
+      <div>
+        <img class="profile-picture" src="{{userProfilePicture}}" alt="">
+        <p class="userfullname">{{userFullName}}</p>
+      </div>
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="following()">
+        <ion-icon size="large" src="../../assets/icons/following-icon.svg"></ion-icon>
+      </ion-button>
+      <ion-button (click)="chat()">
+        <ion-icon size="large" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
+      </ion-button>
+      <ion-button (click)="notifications()">
+        <ion-icon size="large" src="../../assets/icons/notifications-icon.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- <ion-toolbar>
       <ion-row class="ion-align-items-center">
         <ion-col push-xs=".45"  push-sm="0.35"  size-xs="1.2">
-          <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 35px; width: 35px;">
+          <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 28px; width: 28px;">
         </ion-col>
         <ion-col push-sm=".5" size="7">
           <p id="username">{{userFullName}}</p>
         </ion-col>
-        <ion-col size="2">
-          <ion-button class="following-mobile-button" (click)="following()">
-            Following ({{followedPostCount}})
-        </ion-button>
-        </ion-col>
       </ion-row>
-    </ion-grid>
-    </ion-toolbar>
+    </ion-toolbar> -->
 </ion-header>
 
 <ion-content>

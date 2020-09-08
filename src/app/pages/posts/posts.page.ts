@@ -143,6 +143,14 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/following']);
   }
 
+  chat() {
+    this.router.navigate(['/home/posts/student-chat']);
+  }
+
+  notifications() {
+    this.router.navigate(['/home/posts/notifications']);
+  }
+
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     console.log(postID, userFullName, userEmail, userProfilePicture, comment);

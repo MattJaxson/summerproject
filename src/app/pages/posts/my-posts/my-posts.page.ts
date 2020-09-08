@@ -5,8 +5,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController, ModalController } from '@ionic/angular';
 import { format } from 'date-fns';
 import { formatDistanceToNow } from 'date-fns';
-import { FollowIconComponent } from '../../../components/follow-icon/follow-icon.component';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { PlatformLocation } from '@angular/common';
 
@@ -28,7 +27,7 @@ export class MyPostsPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public posts: PostsService,
+    private posts: PostsService,
     private profile: ProfileService,
     private toast: ToastController,
     private formBuilder: FormBuilder,

@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home/posts',
+    redirectTo: '/home/mentors',
     pathMatch: 'full'
   },
   {
@@ -59,6 +59,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/mentors/mentors.module').then(m => m.MentorsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'resources',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/resources/resources.module').then(m => m.ResourcesPageModule)
           }
         ]
       }

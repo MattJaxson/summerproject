@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{creatorName}}</ion-title>
+    <ion-title></ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="cancel()">
         <ion-icon slot="start"></ion-icon>
@@ -11,5 +11,129 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
 
+    <!-- Their Details -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+        <img id="profile-picture" src="{{profilePicture}}" alt="">
+        <p>{{creatorName}}</p>
+        <p>{{gender}}</p>
+        <p>{{dob}}</p>
+        <p>{{grade}}</p>
+        <p>{{about}}</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Their Post -->
+    <ion-row class="ion-justify-content-center" style="margin-top: 1%;">
+  <ion-col
+    class="no-posts ion-align-items-center"
+    *ngIf="allTheirPosts.length === 0"
+    size-xs="11" size-sm="9" size-md="8" size-lg="7">
+    <div>
+      <p style="font-size: 1.2em;">You currently do not have any posts. Please click the Add Post button to create a Post.</p>
+    </div>
+  </ion-col>
+
+  <!-- Posts -->
+  <ion-col size="7">
+    <ion-row>
+      <ion-col size="12">
+      <h1>{{creatorName}}'s Posts</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let post of allTheirPosts" class="post">
+
+      <!-- Profile Header -->
+      <ion-col size="11">
+        <ion-row class="ion-align-items-center">
+        <!-- Profile Picture -->
+        <ion-col push="0.25" size="1">
+          <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
+        </ion-col>
+
+        <!-- Post Creator's Name -->
+        <ion-col size="4">
+          <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
+        </ion-col>
+
+        <!-- Date -->
+        <ion-col class="ion-float-right" push-lg="5" size="3">
+            <h6 style="opacity: 0.4; font-size: 0.8em;">{{post.date}}</h6>
+        </ion-col>
+
+      </ion-row>
+      </ion-col>
+
+      <!-- Post Content -->
+      <ion-col size="12">
+        <ion-row class="ion-justify-content-center">
+          <!-- 1080x1350 -->
+          <ion-col size="11.3">
+           <p class="post-title">{{post.title}}</p>
+          </ion-col>
+       </ion-row>
+        <ion-row>
+          <!-- 1080x1350 -->
+          <ion-col push="0.25" size="11" >
+           <p class="post-content">{{post.post}}</p>
+          </ion-col>
+       </ion-row>
+      </ion-col>
+
+      <!-- Comment -->
+      <ion-col size="12">
+        <ion-row style="position: relative; right: 6px; top: -4px;" >
+          <ion-col size="11.8">
+            <ion-item lines="none">
+             <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
+               <ion-textarea
+                  class="comment-input"
+                  autogrow="true"
+                  autocapitalize="true"
+                  rows="5"
+                  spellcheck="true"
+                  wrap="soft"
+                  type="text"
+                  placeholder="Add a Comment" formControlName="comment">
+                </ion-textarea>
+                <!-- Comment Post Button -->
+                <ion-button
+                  style="float: right;"
+                  class="comment-post-button"
+                  *ngIf="!commentForm
+                          .get('comment')
+                          .pristine && commentForm.value.comment.length >= 3"
+                    name="send"
+                    type="submit">Post
+                </ion-button>
+             </form>
+
+    </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- Post Buttons -->
+      <ion-col size="12">
+        <ion-row>
+          <!-- Upvote & Downvote-->
+          <ion-col size="4.7">
+            <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
+          </ion-col>
+
+          <!-- Follow & Comment -->
+          <ion-col push="0.75" size="6">
+            <app-follow-comment-buttons [isUser]="post.isUser" [postID]="post._id"></app-follow-comment-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-col>
+
+</ion-row>
+  </ion-grid>
 </ion-content>
