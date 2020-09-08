@@ -1,0 +1,216 @@
+ion-title {
+  margin: 0;
+}
+
+.post {
+  padding: 30px 30px;
+  margin-bottom: 80px;
+  border-radius: 5px;
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
+  background: white;
+  font-size: 1em;
+  line-height: 35px;
+
+  hr {
+    background: #999;
+    opacity: 0.4;
+
+  }
+}
+
+.post-title {
+  font-weight: 800;
+  color: #005191;
+  position: relative;
+  left: 5px;
+  margin: 0;
+}
+
+@media screen and (max-width: 567px) {
+  .post {
+    padding: 30px 0px;
+  }
+}
+
+.no-posts {
+  height: 70vh;
+}
+
+form {
+  width: 100%;
+}
+
+.comment {
+  border: 1px solid #005191;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+  --padding-start: 20px;
+}
+
+.comment-post-button {
+  --background: linear-gradient(#0672c4, #005191);
+  height: 30px;
+  margin-top: 20px;
+  opacity: 0;
+  width: 80px;
+  transform: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.comment-input {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input:hover {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 50px 0 80px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input-mobile {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 30px 0 60px 0;
+  box-shadow: none;
+  padding-left: 10px;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  transition: 1s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input-mobile:focus {
+  background: rgba(247, 248, 248, 0.5);
+  height: 100px;
+  margin: 30px 0 150px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  transition: 1s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+ion-item {
+  --background: none;
+}
+
+.toolbar > ion-buttons > ion-button {
+  height: 45px;
+  border-radius: 5px;
+  padding: 10px;
+  --background: rgb(209,216,224,0.13);
+  --color: white;
+  width: 140px;
+  font-size: 0.6em;
+
+  ion-icon {
+    position: relative;
+    left: -10px;
+  }
+}
+
+.post-toolbar {
+  ion-buttons {
+    ion-button {
+      width: 140px;
+      font-size: 1em;
+      --color: #005191;
+    }
+  }
+}
+
+.blue-button {
+  animation: none;
+  opacity: unset;
+  width: 100px;
+  height: 36px;
+  margin-top: 30px;
+  margin-bottom: 4px;
+  position: unset;
+  font-size: 0.7em;
+}
+
+.add-button {
+  --color: white;
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  --background-hover: linear-gradient(#bffce9, #7efcd4);
+  font-size: 0.7em;
+  font-weight: 800;
+  display: block;
+  width: 100px;
+  margin-top: 30px;
+}
+
+.comment-input {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 10px 0 0px 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 81, 145,0.4);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-input:hover {
+  background: rgba(247, 248, 248, 0.5);
+  height: auto;
+  margin: 12px 0 0px 0;
+  box-shadow: 1px 1px 3px #999;
+  border: 1px solid rgba(0, 81, 145, 1);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comment-post-button {
+  --background: linear-gradient(#5ad8b2, #40c59d);
+  height: 40px;
+  margin-top: 40px;
+  opacity: 0;
+  width: 100%;
+  transform: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+
+ion-fab-button {
+  --background: #1baf88;
+  --color-focused: white;
+  --color-hover: white;
+  --color-activated: white;
+  position: relative;
+  bottom: 50px;
+  right: 10px;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

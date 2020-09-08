@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonFabButton } from '@ionic/angular';
+import { IonFabButton, ModalController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class PostsPage implements OnInit {
 
   constructor(
     private router: Router,
+    private modal: ModalController,
     public posts: PostsService,
     private profile: ProfileService,
     private toast: ToastController,
@@ -132,12 +134,21 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/add-post']);
   }
 
-  myPosts() {
+  myPosts(userEmail) {
     console.log('Going to my posts page');
+    this.router.navigate(['/home/posts/my-posts', userEmail]);
   }
 
   following() {
     this.router.navigate(['/home/posts/following']);
+  }
+
+  chat() {
+    this.router.navigate(['/home/posts/student-chat']);
+  }
+
+  notifications() {
+    this.router.navigate(['/home/posts/notifications']);
   }
 
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
@@ -206,6 +217,19 @@ export class PostsPage implements OnInit {
     toast.then(toast => toast.present());
 
     await this.router.navigate(['/home/posts/post-page', postID]);
+  }
+
+  async thirdPersonProfileModal(creatorEmail, creatorName) {
+    const thirdPersonProfileModalConfig = await this.modal.create({
+    component: ThirdPersonProfilePage,
+    componentProps: {
+      creatorEmail,
+      creatorName
+    },
+    cssClass: 'third-person-profile-modal'
+    });
+
+    await thirdPersonProfileModalConfig.present();
   }
 
 

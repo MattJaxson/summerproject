@@ -4,7 +4,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 // tslint:disable-next-line: max-line-length
-import { ToastController, AlertController, ModalController, IonContent, IonFab, IonTabs, LoadingController, IonTextarea } from '@ionic/angular';
+import { ToastController, AlertController, ModalController, IonContent, LoadingController, IonTextarea } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { ReplyCommentPage } from 'src/app/modals/reply-comment/reply-comment.page';
 import { ReportCommentPage } from 'src/app/modals/report-comment/report-comment.page';
@@ -13,6 +13,7 @@ import { EditPostPage } from 'src/app/modals/edit-post/edit-post.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
+import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 
 const LANGUAGE_FILTER_LIST = [
   'fuck',
@@ -315,19 +316,29 @@ export class PostPagePage implements OnInit {
 
   }
 
-  async reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+  async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+    console.log('commentID: ' + commentID);
+    console.log('commentContents: ' + commentContents);
+    console.log('post: ' + post);
+    console.log('postID: ' + postID);
+    console.log('commentUserFullName: ' + commentUserFullName);
+    console.log('commentUserEmail: ' + commentUserEmail);
+    console.log('commentDate: ' + commentDate);
+    console.log('userEmail: ' + userEmail);
+    console.log('userFullName: ' + userFullName);
+
     const reportModalConfig = await this.modal.create({
     component: ReportCommentPage,
     componentProps: {
       commentID,
-      commentCotents,
+      commentContents,
+      post,
+      postID,
       commentUserFullName,
       commentUserEmail,
       commentDate,
       userEmail,
       userFullName,
-      post,
-      postID
     }
     });
 
@@ -377,6 +388,19 @@ export class PostPagePage implements OnInit {
     });
 
     await repliesPageModalConfig.present();
+  }
+
+  async thirdPersonProfileModal(creatorEmail, creatorName) {
+    const thirdPersonProfileModalConfig = await this.modal.create({
+    component: ThirdPersonProfilePage,
+    componentProps: {
+      creatorEmail,
+      creatorName
+    },
+    cssClass: 'third-person-profile-modal'
+    });
+
+    await thirdPersonProfileModalConfig.present();
   }
 
   async editComment(commentID, commentCotents, postID, userEmail) {

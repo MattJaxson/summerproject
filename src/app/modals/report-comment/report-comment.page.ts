@@ -41,20 +41,22 @@ export class ReportCommentPage implements OnInit {
    });
 
     this.commentID = this.navParams.get('commentID');
-    this.commentContents = this.navParams.get('commentCotents');
+    this.commentContents = this.navParams.get('commentContents');
+    this.post = this.navParams.get('post');
+    this.postID = this.navParams.get('postID');
     this.commentUserFullName = this.navParams.get('commentUserFullName');
     this.commentUserEmail = this.navParams.get('commentUserEmail');
     this.commentDate = this.navParams.get('commentDate');
-    this.post = this.navParams.get('post');
-    this.postID = this.navParams.get('postID');
+    this.userEmail = this.navParams.get('userEmail');
+    this.userFullName = this.navParams.get('userFullName');
   }
 
-  async report(reportReason) {
-
+  async report() {
     await console.log('reporting comment...');
+    await console.log(this.reportCommentForm.value.reportedReason);
     await this.reportLoading();
     // tslint:disable-next-line: max-line-length
-    await this.posts.reportComment(this.commentID, this.commentContents, this.post, this.postID, this.commentUserFullName, this.commentUserEmail, this.commentDate, this.userEmail, this.userFullName, reportReason.reportedReason )
+    await this.posts.reportComment(this.commentID, this.commentContents, this.post, this.postID, this.commentUserFullName, this.commentUserEmail, this.commentDate, this.userEmail, this.userFullName, this.reportCommentForm.value.reportedReason )
       .subscribe();
   }
 

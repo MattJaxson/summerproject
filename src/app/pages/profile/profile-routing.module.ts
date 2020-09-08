@@ -17,10 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./change-password/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
   {
-    path: 'change-phone/:phone',
-    loadChildren: () => import('./change-phone/change-phone/change-phone.module').then( m => m.ChangePhonePageModule)
-  },
-  {
     path: 'change-school/:school/:grade',
     loadChildren: () => import('./change-school/change-school/change-school.module').then( m => m.ChangeSchoolPageModule)
   },
@@ -51,12 +47,16 @@ const routes: Routes = [
     loadChildren: () => import('./change-profile-picture/confirm-photo/confirm-photo.module').then( m => m.ConfirmPhotoPageModule)
   },
   {
-    path: 'change-address/:addressOne/:addressTwo/:city/:state/:zip',
-    loadChildren: () => import('./change-address/change-address.module').then( m => m.ChangeAddressPageModule)
+    path: 'change-about/:about',
+    loadChildren: () => import('./change-about/change-about.module').then( m => m.ChangeAboutPageModule)
   },
   {
     path: 'edit-profile-page',
     loadChildren: () => import('./edit-profile-page/edit-profile-page.module').then( m => m.EditProfilePagePageModule)
+  },
+  {
+    path: 'change-about',
+    loadChildren: () => import('./change-about/change-about.module').then( m => m.ChangeAboutPageModule)
   }
 ];
 

@@ -15,9 +15,7 @@ export class EditProfilePagePage implements OnInit {
 
   userObject: any = {
     fullName: '',
-    addressOne: '',
-    addressTwo: '',
-    phone: '',
+    about: '',
     city: '',
     state: '',
     zip: '',
@@ -51,11 +49,10 @@ export class EditProfilePagePage implements OnInit {
 
   }
 
-  changeAddress() {
-    console.log('Navigating to Change Address Page');
+  changeAbout() {
+    console.log('Navigating to Change About Page');
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/profile/change-address/', this.userObject.addressOne, this.userObject.addressTwo, this.userObject.city, this.userObject.state, this.userObject.city, ]);
-    // Delete params
+    this.router.navigate(['/home/profile/change-about/', this.userObject.about]);
 
   }
   changePassword() {

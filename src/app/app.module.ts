@@ -9,6 +9,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Compontent that I am currently developing
+
+
+// Third Party
+import { IonBottomDrawerModule } from 'ion-bottom-drawer';
+
+
 // Custom Modules
 import { CustomComponentsModule } from './components/custom-component.module';
 
@@ -27,7 +34,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -48,6 +54,7 @@ export function jwtOptionsFactory(storage) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    IonBottomDrawerModule,
     CustomComponentsModule,
     BrowserModule,
     BrowserAnimationsModule,

@@ -39,15 +39,12 @@ export class PersonalInfoPage implements OnInit {
     this.userInfoForm = this.formBuilder.group({
       fullName: ['', Validators.compose([
         Validators.required ])],
-      phone: ['', Validators.compose([
-        Validators.required,
-        Validators.maxLength(10)
-     ])],
       gender: ['', Validators.required],
       // Date of Birth
       dob: ['', [Validators.required]],
       school: ['', Validators.required],
       grade: ['', Validators.required],
+      about: ['', Validators.required],
     });
 
     this.formOnChanges();

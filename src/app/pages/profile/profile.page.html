@@ -36,12 +36,12 @@
         <h4>Profile Information: </h4>
         <br>
 
+        <p><span>About Me: </span><br>
+           {{userObject.about}}</p>
+
         <p><span>Name:</span> {{userObject.fullName}}</p>
         <p><span>Email:</span> {{userObject.email}}</p>
         <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
-        <p><span>Phone:</span> {{userObject.phone}}</p>
-        <!-- <p><span>City:</span> {{userObject.city}}</p> -->
-        <!-- <p><span>State:</span> {{userObject.state}}</p> -->
         <p><span>School:</span> {{userObject.school}}</p>
         <p><span>Grade:</span> {{userObject.grade}}</p>
       </ion-col>
@@ -57,7 +57,7 @@
   </ion-grid>
 
   <!-- Desktop -->
-  <ion-grid style="--ion-grid-padding: 0px; max-width: 1024px;" class="ion-hide-sm-down">
+  <ion-grid class="ion-hide-sm-down">
 
       <ion-row style="margin-top: 5%;">
 
@@ -87,12 +87,12 @@
           <h4>Profile Information: </h4>
           <br>
 
-          <p><span>Name:</span> {{userObject.fullName}}</p>
+          <p><span style="margin-bottom: 10px;">About: </span><br>
+            {{userObject.about}}</p>
+
+          <p><span style="margin-top: 30px;">Name:</span> {{userObject.fullName}}</p>
           <p><span>Email:</span> {{userObject.email}}</p>
           <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
-          <p><span>Phone:</span> {{userObject.phone}}</p>
-          <!-- <p><span>City:</span> {{userObject.city}}</p>
-          <p><span>State:</span> {{userObject.state}}</p> -->
           <p><span>School:</span> {{userObject.school}}</p>
           <p><span>Grade:</span> {{userObject.grade}}</p>
         </ion-col>

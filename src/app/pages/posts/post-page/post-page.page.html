@@ -4,10 +4,10 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-      <div style="position: relative; right: 15px;" slot="end">
+      <div (click)="thirdPersonProfileModal(creatorEmail, creatorName)" style="position: relative; right: 15px;" slot="end">
         <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: 0px; color: #666;">{{date}} ago</span></ion-title>
       </div>
-      <div style="position: relative; right: 15px;" slot="end">
+      <div (click)="thirdPersonProfileModal(creatorEmail, creatorName)" style="position: relative; right: 15px;" slot="end">
         <img slot="end" class="profile-picture" src="{{creatorProfilePicture}}">
       </div>
   </ion-toolbar>
@@ -42,12 +42,12 @@
             <ion-row>
 
             <!-- Profile Picture -->
-            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1">
+            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1" (click)="thirdPersonProfileModal(creatorEmail, creatorName)">
               <img class="profile-picture" src="{{creatorProfilePicture}}">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col class="ion-hide-md-down" size="5">
+            <ion-col (click)="thirdPersonProfileModal(creatorEmail, creatorName)" class="ion-hide-md-down" size="5">
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}} - <span style="font-size: 0.5em;">{{date}}  ago</span></h6>
             </ion-col>
 
@@ -160,10 +160,10 @@
           <ion-row>
             <ion-col>
               <ion-item lines="none">
-                <ion-avatar class="comment-avatar" slot="start">
+                <ion-avatar class="comment-avatar" slot="start" (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
                   <img src="{{comment.userProfilePicture}}">
                 </ion-avatar>
-                <ion-label>
+                <ion-label (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
                   <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} </h6>
                   </ion-label>
               </ion-item>

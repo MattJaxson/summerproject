@@ -1,0 +1,100 @@
+ <!-- Mobile Toolbar -->
+ <ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+        <p class="toolbar-title">Conversation</p>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="menu()">
+          <img class="ellipsis" src="../../../../../assets/icons/ellipsis.svg" alt="">
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../../assets/batman-pro-pic.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Username <span class="date-sent">&middot; date</span></h2>
+        <p>This is the message...</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+[shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+<div class="drawer-content">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-button class="blue-button" (click)="delertAlert()">
+          Delete
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button class="blue-button" (click)="reportConvo()">
+          Report
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button class="grey-button" (click)="menu()">
+          Cancel
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-bottom-drawer>

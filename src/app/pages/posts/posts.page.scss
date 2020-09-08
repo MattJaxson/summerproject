@@ -1,5 +1,26 @@
+.profile-picture {
+  height: 28px; width: 28px;
+  border-radius: 100px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.userfullname {
+  display: inline-block;
+  font-size: 0.5em;
+  position: relative;
+  top: -10px;
+  left: 0px;
+  color: red;
+}
+
+ion-title {
+  font-size: 0.6em;
+  color: #005191;
+}
+
 .post {
-  padding: 40px 0;
+  padding: 10px 0;
   margin-bottom: 80px;
   border-radius: 5px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
@@ -14,6 +35,14 @@
   }
 }
 
+.post-title {
+  font-weight: 800;
+  color: #005191;
+  position: relative;
+  left: 5px;
+  margin: 0;
+}
+
 ion-content {
   background: #edf3f8;
 }
@@ -21,7 +50,7 @@ ion-content {
 @media screen and (max-width: 744px) {
   .post {
     position: relative;
-    top: -20px;
+    top: 0px;
   }
 }
 
@@ -38,10 +67,10 @@ ion-content {
 
 #username {
   color: #005191;
-  font-size: 1.2em;
+  font-size: 0.8em;
   font-weight: 500;
   position: relative;
-  left: 10px;
+  left: 0px;
   opacity: 0;
   animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
@@ -66,11 +95,12 @@ ion-item {
 }
 
 .following-mobile-button {
+  display: inline-block;
   opacity: 1;
   --background: #005191;
   --color: white;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  width: 120px;
+  width: 40px;
   height: 40px;
   font-size: 0.6em;
   font-weight: 600;

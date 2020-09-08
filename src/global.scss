@@ -74,6 +74,30 @@ ion-toolbar {
   --color: #005191;
 }
 
+.drawer-content {
+  padding-top: 40px;
+  background: rgba(0,0,0,0.05);
+  height: 50vh;
+
+  ion-list {
+    background: none;
+  }
+
+  ion-item{
+    --background: none;
+  }
+  ion-button {
+    margin: 10px auto;
+    padding: 5px;
+  }
+}
+
+.toolbar-title{
+  font-weight: 400;
+  font-size: 1.24em;
+  margin-left: 20px;
+}
+
 ion-icon {
   font-size: 20px;
 }
@@ -96,23 +120,15 @@ ion-title {
   white-space: pre-wrap;
 }
 
-
-// Ion-Select Buttons
-.action-sheet-button-inner {
-  // color: red;
-}
-
 .searchbar-input {
   background: #FFF !important;
-  border: 1px solid rgba(0,0,0,0.15) !important;
+  border: 2px solid #005191 !important;
   border-radius: 5px !important;
   height: 50px !important;
-  padding: 25px 0px 20px 50px !important;
+  padding: 20px 0px 20px 50px !important;
   max-width: 100%;
-  opacity: 0;
   font-size: 1.25em !important;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1) !important;
-  animation: searchbar-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
 
 .searchbar-input:hover {
