@@ -1,5 +1,5 @@
 ion-avatar {
-  height: 1.3em; width: 1.3em;
+  height: 1.1em; width: 1.1em;
 }
 
 .new-message{
@@ -9,13 +9,40 @@ ion-avatar {
 ion-label {
   font-weight: 800;
   display: block;
+
+  p {
+    font-size: 1.8em;
+  }
 }
 
 .date-sent {
   font-size: 0.8em;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .ellipsis {
   height: 2.1em;
+}
+
+.chat-messages-create-container{
+  background: #005191;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+
+  ion-input {
+    border: 1px solid #fff;
+    --color: white;
+    height: 40px;
+    width: 90%;
+  }
+
+  ion-button {
+    --background: white;
+    --background-hover: white;
+    --color: #005191;
+    height: 40px;
+    margin-right: 15px;
+  }
 }

@@ -9,6 +9,7 @@ import { StudentChatPageRoutingModule } from './student-chat-routing.module';
 import { StudentChatPage } from './student-chat.page';
 import { NewMessageStudentPageModule } from 'src/app/modals/new-message-student/new-message-student.module';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
   imports: [

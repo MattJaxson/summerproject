@@ -43,8 +43,8 @@ export class ProfilePage implements OnInit, OnDestroy {
     private router: Router,
     private toast: ToastController,
     private alert: AlertController,
-    private loading: LoadingController,
-    private navCtrl: NavController) {
+    private loading: LoadingController
+    ) {
     }
 
     ngOnInit() {

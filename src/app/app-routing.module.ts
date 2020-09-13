@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     // loadChildren: () => import('./pages/mentors/mentors.module').then( m => m.MentorsPageModule)
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
-    // loadChildren: () => import('./modals/new-message-student/new-message-student.module').then( m => m.NewMessageStudentPageModule)
+    // loadChildren: () => import('./pages/posts/student-chat/chat-page/chat-page.module').then( m => m.ChatPagePageModule)
   },
   {
     path: 'home',

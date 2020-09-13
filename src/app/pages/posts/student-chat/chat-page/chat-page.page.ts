@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DrawerState } from 'ion-bottom-drawer';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ReportConvoPage } from 'src/app/modals/report-convo/report-convo.page';
+import { StudentChatService } from 'src/app/services/student-chat.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -16,14 +17,34 @@ export class ChatPagePage implements OnInit {
   states = DrawerState;
   minimumHeight = 0;
 
+  message: string;
 
 
   constructor(
     private alert: AlertController,
-    private modal: ModalController
+    private modal: ModalController,
+    private studentChat: StudentChatService
   ) { }
 
   ngOnInit() {
+
+  }
+
+  sendMessage() {
+    // this.studentChat.socket.emit('message', this.message);
+    // const element = document.createElement('ion-item');
+    // element.innerHTML =
+    // `<ion-item style="margin: 5px 0 15px 0;">
+    //   <ion-avatar slot="start">
+    //     <img src="../../../../assets/batman-pro-pic.png">
+    //   </ion-avatar>
+    //   <ion-label>
+    //     <h4 style="opacity: 0.4;">Username <span class="date-sent">&middot; date</span></h4>
+    //     <p style="font-size: 1.1em; color: #111;">${this.message}</p>
+    //   </ion-label>
+    // </ion-item>`;
+    // document.getElementById('message-list').appendChild(element);
+    // this.message = '';
   }
 
   menu() {
