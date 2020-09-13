@@ -14,66 +14,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img src="../../../../assets/batman-pro-pic.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Username <span class="date-sent">&middot; date</span></h2>
-        <p>This is the message...</p>
-      </ion-label>
-    </ion-item>
+  <ion-list lines="none" id="message-list">
+    <!-- Chat messages go here -->
   </ion-list>
+  <ion-toolbar class="chat-messages-create-container">
+    <ion-input type="text" placeholder="Type message here" [(ngModel)]="message"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button  class="chat-messages-create-button" (click)="sendMessage()"> Send </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-content>
 
 <ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"

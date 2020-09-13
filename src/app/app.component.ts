@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Vibration } from '@ionic-native/vibration/ngx';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { StudentChatService } from './services/student-chat.service';
+import { MentorChatService } from './services/mentor-chat.service';
 
 
 @Component({
@@ -14,34 +11,36 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
 
   tabsPlacement: string = 'bottom';
   tabsLayout: string = 'icon-top';
 
   constructor(
-    // Ionic Native Plugins
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private vibration: Vibration,
-    private keyboard: Keyboard,
-
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private studentChat: StudentChatService,
+    private mentorChat: MentorChatService
   ) {
     this.initializeApp();
+  }
+
+  ngOnInit() {
+    
+  }
+
+  ngOnDestroy() {
+    this.auth.authenticationState.unsubscribe();
   }
 
   initializeApp() {
     this.auth.checkToken();
     this.platform.ready().then(() => {
-      this.statusBar.backgroundColorByHexString('#000000');
-      // this.splashScreen.hide();
     });
 
     // State for the User. If Authentication State == False, the app reverts back to the landing page
-    this.auth.authenticationState.subscribe(state => {
+    this.auth.authenticationState.subscribe(async state => {
       if (state) {
         this.router.navigate(['home']);
       } else {

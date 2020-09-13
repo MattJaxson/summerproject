@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { NewMessageMentorPage } from 'src/app/modals/new-message-mentor/new-message-mentor.page';
+import { MentorChatService } from 'src/app/services/mentor-chat.service';
 
 
 @Component({
@@ -13,9 +14,12 @@ export class MentorChatPage implements OnInit {
 
   constructor(
     private router: Router,
-    private modal: ModalController) { }
+    private modal: ModalController,
+    private mentorChat: MentorChatService) { }
 
   ngOnInit() {
+    
+    // this.mentorChat.createChatRoom();
   }
 
   chatPage() {
