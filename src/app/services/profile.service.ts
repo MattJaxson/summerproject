@@ -45,8 +45,12 @@ export class ProfileService {
       this.activeEmail = this.auth.user.email;
      }
 
-    //  Gets User Details from Server to populate the Profile tab with User information.
-   getUserDetails() {
+  getAllUsers() {
+    return this.http.get(`${this.BACKEND_URL}/api/home/user`);
+  }
+
+  //  Gets User Details from Server to populate the Profile tab with User information.
+  getUserDetails() {
       return this.http.post(`${this.BACKEND_URL}/api/home/user`, {email: this.activeEmail});
   }
 

@@ -72,6 +72,71 @@ export class JobsPage implements OnInit, OnDestroy {
       });
   }
 
+  filter($job) {
+
+    this.initializeItems();
+    let searchTerm = $job.detail.value;
+
+    this.presentLoadingWithOptions();
+
+    this.allJobs = this.allJobs.filter( currentJobs => {
+      console.log(currentJobs);
+
+      if (!currentJobs || !searchTerm  ) {
+
+        console.log('No results from that search');
+        this.noSearchInput = true;
+
+      }
+
+      if ( currentJobs.title && searchTerm) {
+
+        if (currentJobs.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+
+          console.log(currentJobs.title);
+          console.log((currentJobs));
+
+          this.searchTerm = searchTerm;
+
+          this.searching = true;
+          this.noSearchInput = false;
+
+          return true;
+        }
+        return false;
+      }
+      this.noSearchInput = true;
+
+  });
+
+    this.allJobsLength = this.allJobs.length;
+
+    // If there are no matches with the searchTerm
+    if ( this.allJobsLength === 0 ) {
+
+      console.log('No results from that search');
+      this.searching = true;
+      this.searchTerm = searchTerm;
+
+      this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+        searchbarInputElement.value = '';
+      });
+      this.noSearchInput = true;
+    }
+
+    if (!searchTerm) {
+      console.log('Search term is empty; showing all jobs instead');
+      this.noSearchInput = false;
+      this.searching = false;
+      this.getJobs();
+    }
+
+  }
+
+  initializeItems(): void {
+    this.allJobs = this.loadedAllJobs;
+  }
+
   ngOnDestroy() {
 
   }
@@ -155,71 +220,6 @@ export class JobsPage implements OnInit, OnDestroy {
         job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: false });
       }
     });
-  }
-
-  filter($job) {
-
-    this.initializeItems();
-    let searchTerm = $job.detail.value;
-
-    this.presentLoadingWithOptions();
-
-    this.allJobs = this.allJobs.filter( currentJobs => {
-      console.log(currentJobs);
-
-      if (!currentJobs || !searchTerm  ) {
-
-        console.log('No results from that search');
-        this.noSearchInput = true;
-
-      }
-
-      if ( currentJobs.title && searchTerm) {
-
-        if (currentJobs.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-
-          console.log(currentJobs.title);
-          console.log((currentJobs));
-
-          this.searchTerm = searchTerm;
-
-          this.searching = true;
-          this.noSearchInput = false;
-
-          return true;
-        }
-        return false;
-      }
-      this.noSearchInput = true;
-
-  });
-
-    this.allJobsLength = this.allJobs.length;
-
-    // If there are no matches with the searchTerm
-    if ( this.allJobsLength === 0 ) {
-
-      console.log('No results from that search');
-      this.searching = true;
-      this.searchTerm = searchTerm;
-
-      this.searchbar.getInputElement().then(  (searchbarInputElement) => {
-        searchbarInputElement.value = '';
-      });
-      this.noSearchInput = true;
-    }
-
-    if (!searchTerm) {
-      console.log('Search term is empty; showing all jobs instead');
-      this.noSearchInput = false;
-      this.searching = false;
-      this.getJobs();
-    }
-
-  }
-
-  initializeItems(): void {
-    this.allJobs = this.loadedAllJobs;
   }
 
   async presentLoadingWithOptions() {

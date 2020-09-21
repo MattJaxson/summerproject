@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Socket, SocketIoConfig } from 'ngx-socket-io';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
-
-export class SocketNameSpace extends Socket{
-  constructor(socketConfig: SocketIoConfig){
+export class SocketNameSpace extends Socket {
+  constructor(socketConfig: SocketIoConfig) {
+    // TODO: Study this a little more
+    // super()
     super(socketConfig);
   }
 }
@@ -13,28 +16,85 @@ export class SocketNameSpace extends Socket{
   providedIn: 'root'
 })
 export class StudentChatService {
-  studentsChat: SocketNameSpace;
   constructor(
-    private http: HttpClient
-  ) {
-
-    this.studentsChat  = new SocketNameSpace({url: 'http://10.0.1.5:3000/student-chat', options: {} });
+    private router: Router) {
    }
 
-   // create a new document with a randomly generated id, and an empty string
-  newChatroom(requestingUserFullname, requestingUserEmail, respondingUser) {
-    this.studentsChat
+   // Whatever is returned from the messages event on the socket.io server, will be returned as an Observable -- fromEvent().
+  // currentChatRoom ]
+chatId;
+email;
+
+conversations$ = new BehaviorSubject([]);
+studentsChat  = new SocketNameSpace({url: 'http://127.0.0.1:3000/student-chat', options: {} });
+
+currentChatRoom = this.studentsChat.fromEvent('messages');
+newChatRoom = this.studentsChat.fromEvent('newChatRoom');
+
+getChat(chatId, fullName, profilePicture, email): void {
+  this.studentsChat
+    .emit('getChat', { chatId, fullName, profilePicture, email });
+}
+
+sendMessage(chatId, message, userFullName, userEmail, profilePicture): void {
+  this.studentsChat
+    .emit('addMessage', {
+      chatId,
+      message,
+      userFullName,
+      userEmail,
+      profilePicture
+  });
+}
+
+  // tslint:disable-next-line: max-line-length
+  async newChatroom(requestingUserFullname, requestingUserEmail, requestingUserPhoto, respondingUserFullname, respondingUserEmail, respondingUserPhoto) {
+    let conversations = await this.studentsChat
       .emit('addChatroom', {
-        chatId: this.chatId(),
+        chatId: this.chatIdGenerator(),
         requestingUserFullname,
         requestingUserEmail,
-        respondingUser,
-        dateCreated: Date.now(),
+        requestingUserPhoto,
+        respondingUserFullname,
+        respondingUserEmail,
+        respondingUserPhoto
       });
+    // console.log(conversations);
+
+    this.newChatRoom.subscribe(
+      async c => {
+        conversations = Object.values(c);
+        for (let convo of conversations) {
+          // console.log(convo.requestingUserEmail);
+          // console.log(this.email);
+          if (convo.requestingUserEmail === this.email) {
+            console.log('The requesting users is the same user as the one who logged in on this app');
+            // TODO: get users profile picture
+            // TODO: get the most recent message's text and date
+            //  mostRecentMessage
+            convo.isUser = true;
+          }
+        }
+
+        await this.conversations$.next(Object.values(conversations).reverse());
+        await this.router.navigate(['home/posts/student-chat/chat-page', this.chatId, requestingUserEmail]);
+      });
+
+    
+  }
+
+  // TODO: Refactor for production
+  // Current for development purposes
+  deleteMessages(chatId, userFullName, userEmail) {
+    this.studentsChat.emit('deleteMessages', {
+      chatId,
+      userFullName,
+      userEmail,
+    });
   }
 
 
-   private chatId(): string {
+   private chatIdGenerator(): string {
     let text = 'chat-';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -42,6 +102,7 @@ export class StudentChatService {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     text +=  Date.now();
+    this.chatId = text;
     return text;
   }
 

@@ -14,7 +14,7 @@ export class MentorChatService {
 
   mentorsChat: SocketNameSpace;
   constructor() {
-    this.mentorsChat  = new SocketNameSpace({url: 'http://10.0.1.5:3000/mentor-chat', options: {} });
+    this.mentorsChat  = new SocketNameSpace({url: 'http://127.0.0.1:3000/mentor-chat', options: {} });
   }
 
   newChatroom(): void {

@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { DrawerState } from 'ion-bottom-drawer';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { ReportConvoPage } from 'src/app/modals/report-convo/report-convo.page';
 import { StudentChatService } from 'src/app/services/student-chat.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { format, formatDistanceToNow } from 'date-fns';
+import { IonInput } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.page.html',
   styleUrls: ['./chat-page.page.scss'],
 })
-export class ChatPagePage implements OnInit {
+export class ChatPagePage implements OnInit, OnDestroy {
+
+
+  @ViewChild('message', {static: false}) input: IonInput;
+
   shouldBounce = true;
   dockedHeight = 400;
   distanceTop = 56;
@@ -17,33 +28,87 @@ export class ChatPagePage implements OnInit {
   states = DrawerState;
   minimumHeight = 0;
 
-  message: string;
-
+  _chatroomSub: Subscription;
+  chatroom;
+  chatId: string;
+  profilePicture: string;
+  fullName: string;
+  email: string;
+  message: HTMLInputElement;
 
   constructor(
     private alert: AlertController,
     private modal: ModalController,
-    private studentChat: StudentChatService
+    private studentChatService: StudentChatService,
+    private activatedRoute: ActivatedRoute,
+    private toast: ToastController
   ) { }
 
-  ngOnInit() {
+   ngOnInit() {
+    const chatId  =  this.activatedRoute.snapshot.paramMap.get('chatId');
+    this.chatId = chatId;
+    const profilePicture  =  this.activatedRoute.snapshot.paramMap.get('profilePicture');
+    this.profilePicture = profilePicture;
+    const fullName  =  this.activatedRoute.snapshot.paramMap.get('fullName');
+    this.fullName = fullName;
+    const email  =  this.activatedRoute.snapshot.paramMap.get('email');
+    this.email = email;
 
+
+    this.studentChatService.getChat(this.chatId, this.fullName, this.profilePicture, this.email);
+
+    this._chatroomSub = this.studentChatService.currentChatRoom
+    .subscribe(
+      data => {
+        this.chatroom = data['messages'];
+        // console.log(this.chatroom);
+
+        if (this.chatroom.length >= 5) {
+          console.log('more than 3 messages sent');
+          this.studentChatService.deleteMessages(this.chatId, this.fullName , this.email);
+        }
+
+        for (let message of this.chatroom) {
+          message.date = formatDistanceToNow(new Date(message.date));
+        }
+        // console.log(this.chatroom);
+      });
   }
 
-  sendMessage() {
-    // this.studentChat.socket.emit('message', this.message);
-    // const element = document.createElement('ion-item');
-    // element.innerHTML =
-    // `<ion-item style="margin: 5px 0 15px 0;">
-    //   <ion-avatar slot="start">
-    //     <img src="../../../../assets/batman-pro-pic.png">
-    //   </ion-avatar>
-    //   <ion-label>
-    //     <h4 style="opacity: 0.4;">Username <span class="date-sent">&middot; date</span></h4>
-    //     <p style="font-size: 1.1em; color: #111;">${this.message}</p>
-    //   </ion-label>
-    // </ion-item>`;
-    // document.getElementById('message-list').appendChild(element);
+  ngOnDestroy(): void {
+    this._chatroomSub.unsubscribe();
+    // leave room
+  }
+  
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngAfterViewInit() {
+    setTimeout(() => {
+       this.input.getInputElement()
+        .then( input => {
+          this.message = input;
+        });
+  }, 400);
+}
+
+  async sendMessage() {
+    // if user tries to send a message with no text
+    if (this.message.value === '') {
+      console.log('This message has no text');
+      const toast = await this.toast.create({
+        message: 'This message has no text.',
+        cssClass: 'danger-toast',
+        duration: 2000
+      });
+      toast.present();
+      return false;
+    }
+
+    await this.studentChatService.sendMessage(this.chatId, this.message.value, this.fullName, this.email , this.profilePicture);
+
+
+    this.message.value = '';
+
+    this.studentChatService.getChat(this.chatId, this.fullName, this.profilePicture, this.email);
     // this.message = '';
   }
 

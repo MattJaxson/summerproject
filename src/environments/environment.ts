@@ -10,14 +10,12 @@
 
 import 'zone.js/dist/zone-error';
 
-const ip = '10.0.1.5';
+const ip = '127.0.0.1';
 const baseUrl = `http://${ip}:3000`;
-const socketUrl = `http://${ip}:3030`;
 
 export const environment = {
   production: false,
-  url: baseUrl,
-  socketUrl
+  url: baseUrl
 };
 
 

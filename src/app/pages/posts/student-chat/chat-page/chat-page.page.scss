@@ -1,5 +1,6 @@
 ion-avatar {
-  height: 1.1em; width: 1.1em;
+  // height: 1.1em; width: 1.1em;
+  margin-right: 20px;
 }
 
 .new-message{
@@ -17,7 +18,13 @@ ion-label {
 
 .date-sent {
   font-size: 0.8em;
-  opacity: 0.4;
+  opacity: 0.8;
+}
+
+.no-messages {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  padding: 20px;
 }
 
 .ellipsis {
