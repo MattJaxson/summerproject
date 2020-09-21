@@ -8,6 +8,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
+import { StudentChatService } from 'src/app/services/student-chat.service';
 
 
 @Component({
@@ -37,13 +38,14 @@ export class PostsPage implements OnInit {
     private profile: ProfileService,
     private toast: ToastController,
     private formBuilder: FormBuilder,
-    private postsEmitterService: PostPageEmitterService
+    private postsEmitterService: PostPageEmitterService,
+    private studentChat: StudentChatService
   ) {}
 
 
   ngOnInit() {
 
-    if (this.postsEmitterService.subsVar == undefined) {
+    if (this.postsEmitterService.subsVar === undefined) {
       this.postsEmitterService.subsVar = this.postsEmitterService.invokePostsPageRefresh.subscribe(() => {
         this.getPosts();
       });
@@ -84,6 +86,9 @@ export class PostsPage implements OnInit {
       this.posts.followingSubject$.subscribe( posts => {
         this.followedPostCount = posts.length;
       });
+
+
+      this.studentChat.conversations$.next(Object.values(details['studentChat']).reverse());
     });
   }
 
@@ -115,7 +120,7 @@ export class PostsPage implements OnInit {
 
   async getPosts() {
     await this.posts.getPosts().subscribe( posts => {
-      console.log(posts);
+      // console.log(posts);
       this.allPosts = Object.values(posts).reverse();
       this.posts.postsSubject$.next(this.allPosts);
 

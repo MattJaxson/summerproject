@@ -5,9 +5,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: () => import('./pages/mentors/mentors.module').then( m => m.MentorsPageModule)
+    // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
-    // loadChildren: () => import('./pages/posts/student-chat/chat-page/chat-page.module').then( m => m.ChatPagePageModule)
   },
   {
     path: 'home',

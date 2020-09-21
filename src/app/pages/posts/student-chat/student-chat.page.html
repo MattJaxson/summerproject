@@ -20,15 +20,25 @@
   <ion-toolbar class="searchbar-wrapper ion-hide-lg-up">
     <ion-searchbar></ion-searchbar>
   </ion-toolbar>
+
+  
+
   <!-- List of Text Items -->
 <ion-list class="ion-hide-lg-up">
-  <ion-item-sliding *ngFor="let convo of conversations" (click)="chatPage()">
+  <!-- If student has no messages in their inbox -->
+  <div id="no-messages" class="ion-text-center" style="margin-top: 75px; padding: 15px;">
+    <p>You have <b>no messages</b> in your inbox. Please press the <ion-icon class="new-message" size="small" name="create"></ion-icon> button to create a new message. </p>
+  </div>
+
+  <ion-item-sliding *ngFor="let convo of conversations" (click)="chatPage(convo.chatId)">
   <ion-item class="unread">
     <ion-avatar slot="start">
-      <img src="../../../../assets/batman-pro-pic.png">
+      <!-- Show images are profiles of the other user -->
+      <img src="{{convo.isUser ? convo.respondingUserPhoto : convo.requestingUserPhoto}}">
     </ion-avatar>
     <ion-label>
-      <h2>{{convo.requestingUserEmail}} <span class="date-sent">&middot; date</span></h2>
+      <h2>{{convo.isUser ? convo.respondingUserFullname : convo.requestingUserFullname}} <span class="date-sent">&middot; date</span></h2>
+      <!-- TODO: Most recent message -->
       <p>This is the message...</p>
     </ion-label>
   </ion-item>
