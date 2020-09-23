@@ -100,7 +100,8 @@ export class NewMessageStudentPage implements OnInit {
             if (convo.requestingUserEmail === respondingUserEmail || convo.respondingUserEmail === respondingUserEmail) {
               console.log('You have already started a conversation with this user');
               await this.cancel();
-              return await this.router.navigate(['home/posts/student-chat/chat-page', convo.chatId, this.requestingUserEmail]);
+              // tslint:disable-next-line: max-line-length
+              return await this.router.navigate(['home/posts/student-chat/chat-page', convo.chatId, this.requestingUserFullname, this.requestingUserPhoto, this.requestingUserEmail]);
             }
           }
           // tslint:disable-next-line: max-line-length

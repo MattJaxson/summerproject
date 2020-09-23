@@ -7,6 +7,8 @@ const routes: Routes = [
     path: '',
     // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
+    // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
+    // loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
   },
   {
     path: 'home',
