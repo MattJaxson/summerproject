@@ -1,8 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
-import { AlertController, ToastController, LoadingController, ModalController, NavParams } from '@ionic/angular';
+import { AlertController, ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
@@ -19,9 +18,7 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
 
   defaultProfilePicturePath = '../../../../../assets/icon/default-pro-picture.svg';
   uploadedPhotoURL;
-  croppedPhotoURL;
   uploadedPhoto = false;
-  croppededPhoto = false;
   formData: FormData;
 
   BACKEND_URL = environment.url;
@@ -29,7 +26,6 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
   @ViewChild('defaultPicture', {static: false}) defaultPictureRef: ElementRef;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
     private alertController: AlertController,
     private modal: ModalController,
@@ -77,10 +73,10 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
         this.formData = new FormData(form);
       }
     });
-    let formData = new FormData();
-    let photoBlob = new File([this.dataURLtoBlob(this.uploadedPhotoURL)], 'picture.png');
+    const formData = new FormData();
+    const photoFile = new File([this.dataURLtoBlob(this.uploadedPhotoURL)], 'picture.png');
 
-    formData.append('profile-picture', photoBlob);
+    formData.append('profile-picture', photoFile);
 
     if (this.uploadedPhoto === true) {
     this.photo.imageUpload(formData).subscribe(

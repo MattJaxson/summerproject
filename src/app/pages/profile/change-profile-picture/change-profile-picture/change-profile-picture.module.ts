@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ChangeProfilePicturePageRoutingModule } from './change-profile-picture-routing.module';
 
 import { ChangeProfilePicturePage } from './change-profile-picture.page';
+import { ImageCropperPageModule } from 'src/app/modals/image-cropper/image-cropper.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ChangeProfilePicturePageRoutingModule
+    ChangeProfilePicturePageRoutingModule,
+    ImageCropperPageModule
   ],
   declarations: [ChangeProfilePicturePage]
 })

@@ -20,7 +20,7 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
 
   constructor(
     private modal: ModalController,
-    private navParams: NavParams,
+    public navParams: NavParams,
     private loading: LoadingController,
     private toast: ToastController) {
     this.imageDestination = '';
