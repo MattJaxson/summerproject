@@ -19,22 +19,23 @@ export class SelectionPage implements OnInit {
   ngOnInit() {
   }
 
-  setFair() {
-    this.fair = 'fair name';
+  setFair(fair) {
+    this.fair = fair.detail.value;
     this.selectedFair = true;
     console.log(`setting the fair to ${this.fair}`);
   }
 
-  setUsertype() {
-    this.usertype = 'student';
+  setUsertype(usertype) {
+    console.log(usertype);
+    this.usertype = usertype.detail.value;
     this.selectedUsertype = true;
     console.log(`setting the usertype to ${this.usertype}`);
 
   }
 
-  fairPage(fair, usertype) {
+  fairPage() {
     console.log('going to the fair page');
-    this.router.navigate(['/fair-page', fair, usertype]);
+    this.router.navigate(['/fair-page', this.fair, this.usertype]);
   }
 
 }

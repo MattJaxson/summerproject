@@ -1,6 +1,9 @@
-<ion-header style="display: none;">
+<ion-header>
   <ion-toolbar>
-    <!-- <ion-title>selection</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <p class="toolbar-title">Back</p>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,9 +26,9 @@
             <h2>Select a fair</h2>
           </ion-label>
           <ion-item>
-            <ion-select (click)="setFair()" placeholder="Select fair">
-              <ion-select-option value="f">Tech Fair</ion-select-option>
-              <ion-select-option value="m">Fair Name</ion-select-option>
+            <ion-select (ionChange)="setFair($event)" placeholder="Select fair">
+              <ion-select-option value="Tech Fair">Tech Fair</ion-select-option>
+              <ion-select-option value="Music Fair">Music Fair</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
@@ -47,11 +50,11 @@
               </ul>
             </ion-label>
             <ion-item>
-              <ion-select (click)="setUsertype()"  placeholder="Select user type">
-                <ion-select-option value="f">Student</ion-select-option>
-                <ion-select-option value="m">Volunteer</ion-select-option>
-                <ion-select-option value="m">Chaperone</ion-select-option>
-                <ion-select-option value="m">Partner</ion-select-option>
+              <ion-select (ionChange)="setUsertype($event)"  placeholder="Select user type">
+                <ion-select-option value="student">Student</ion-select-option>
+                <ion-select-option value="volunteer">Volunteer</ion-select-option>
+                <ion-select-option value="chaperone">Chaperone</ion-select-option>
+                <ion-select-option value="partner">Partner</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>

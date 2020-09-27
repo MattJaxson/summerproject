@@ -5,6 +5,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
+    // loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
     // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
     // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
     // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'fair-volunteer-register',
     loadChildren: () => import('./modals/fair-volunteer-register/fair-volunteer-register.module').then( m => m.FairVolunteerRegisterPageModule)
+  },
+  {
+    path: 'fair-page/:fair/:usertype',
+    loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
   }
 ];
 @NgModule({
