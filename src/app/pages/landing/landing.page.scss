@@ -9,6 +9,12 @@ ion-toolbar {
     --padding-end: 15px;
     --padding-top: 15px;
     --padding-bottom: 15px;
+
+    ion-button {
+        width: 120px;
+        height: 44px;
+        --border-radius: 5px;
+    }
 }
 
 ion-header > ion-toolbar {

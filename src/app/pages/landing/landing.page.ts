@@ -25,6 +25,10 @@ export class LandingPage implements OnInit {
     this.router.navigate(['login']);
   }
 
+  resources() {
+    this.router.navigate(['resources']);
+  }
+
   fairsPage() {
     this.router.navigate(['selection']);
   }
