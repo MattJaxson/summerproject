@@ -6,8 +6,9 @@ const routes: Routes = [
   {
     path: '',
     // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
-    loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
+    // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
     // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
+    loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
     // loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
   },
   {
@@ -80,6 +81,26 @@ const routes: Routes = [
   {
     path: 'report-convo-mentor',
     loadChildren: () => import('./modals/report-convo-mentor/report-convo-mentor.module').then( m => m.ReportConvoMentorPageModule)
+  },
+  {
+    path: 'selection',
+    loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
+  },
+  {
+    path: 'fair-student-register',
+    loadChildren: () => import('./modals/fair-student-register/fair-student-register.module').then( m => m.FairStudentRegisterPageModule)
+  },
+  {
+    path: 'fair-chaperone-register',
+    loadChildren: () => import('./modals/fair-chaperone-register/fair-chaperone-register.module').then( m => m.FairChaperoneRegisterPageModule)
+  },
+  {
+    path: 'fair-partner-register',
+    loadChildren: () => import('./modals/fair-partner-register/fair-partner-register.module').then( m => m.FairPartnerRegisterPageModule)
+  },
+  {
+    path: 'fair-volunteer-register',
+    loadChildren: () => import('./modals/fair-volunteer-register/fair-volunteer-register.module').then( m => m.FairVolunteerRegisterPageModule)
   }
 ];
 @NgModule({

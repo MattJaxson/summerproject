@@ -238,6 +238,28 @@ ion-select-option {
   color: white;
 }
 
+.green-button {
+  width: 150px;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 800;
+  color: white;
+  --background: linear-gradient(#4dc066, #2da847);
+  --background-hover: linear-gradient(#3fa054, #217734);
+  --transition: 0.5s;
+  // opacity: 0;
+  // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.green-button:focus {
+  --background: #faa71b;
+  color: white;
+}
+.green-button:hover {
+  --background: #faa71b;
+  color: white;
+}
+
 
 .grey-button {
   --background: #e6e6e6;

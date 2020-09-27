@@ -5,7 +5,7 @@ import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
-
+import { isAfter } from 'date-fns';
 
 
 @Component({
@@ -44,6 +44,7 @@ export class EventsPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.deleteEvent();
 
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeEventsPageRefresh.subscribe(() => {
@@ -93,16 +94,22 @@ export class EventsPage implements OnInit, AfterViewInit {
     });
   }
 
-  eventPage(event) {
+  deleteEvent() {
+    var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11));
+    console.log(result);
+
+  }
+
+    eventPage(event) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne,  event.addressOne,  event.city,  event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
   }
 
-  going() {
+    going() {
     this.router.navigate(['/home/events/going']);
   }
 
-  filter($event) {
+    filter($event) {
 
     this.initializeItems();
     let searchTerm = $event.detail.value;
@@ -164,7 +171,7 @@ export class EventsPage implements OnInit, AfterViewInit {
     }
   }
 
-  initializeItems(): void {
+    initializeItems(): void {
     this.allEvents = this.loadedAllEvents;
   }
 

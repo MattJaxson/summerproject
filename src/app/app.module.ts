@@ -36,7 +36,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 
-
 // For JWT
 export function jwtOptionsFactory(storage) {
   return {

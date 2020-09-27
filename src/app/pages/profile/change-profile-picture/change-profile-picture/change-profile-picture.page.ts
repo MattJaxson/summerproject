@@ -68,29 +68,26 @@ export class ChangeProfilePicturePage implements OnInit {
  }
 
  uploadChangedPhoto() {
-  const formElement = document.querySelectorAll('form');
-  formElement.forEach(form => {
-   if ( form.id === 'changePhotoForm') {
-     console.log('Got Form: ' + form);
-     this.formData = new FormData(form);
-   }
-  });
+
   const formData = new FormData();
   formData.append('oldPhotoKey', this.awsPrefix);
   formData.append('email', this.userEmail);
+
   const photoFile = new File([this.dataURLtoBlob(this.uploadedPhotoURL)], 'picture.png');
 
   formData.append('profile-picture-update', photoFile);
 
   if (this.uploadedPhoto === true) {
     this.photo.changeProfilePicture(formData).subscribe(
-      async data => {
+      data => {
         console.log(data);
         let newPhoto = data['objectUrl'];
-        await this.presentLoading();
-        await this.profile.profilePicture.next(newPhoto);
-        await this.presentToast();
-        await this.router.navigate(['/home/profile']);
+        // Update all the creatorProfilePicture properties with newPhoto
+        // this.photo.updatePostPhotos(newPhoto, this.userEmail);
+        this.presentLoading();
+        this.profile.profilePicture.next(newPhoto);
+        this.presentToast();
+        this.router.navigate(['/home/profile']);
       }
     );
   }

@@ -1,0 +1,76 @@
+<ion-header style="display: none;">
+  <ion-toolbar>
+    <!-- <ion-title>selection</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <!-- Fairs intro text -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <h1>Fairs</h1>
+        <p>Text about this page goes here. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid officiis dicta at iste rerum illo nulla non. Accusamus praesentium nisi provident numquam, quaerat atque veritatis, vitae exercitationem soluta culpa amet.</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Select a fair -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <ion-list class="line-input">
+          <ion-label>
+            <h2>Select a fair</h2>
+          </ion-label>
+          <ion-item>
+            <ion-select (click)="setFair()" placeholder="Select fair">
+              <ion-select-option value="f">Tech Fair</ion-select-option>
+              <ion-select-option value="m">Fair Name</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- What will you be coming as? -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <div [className]="!selectedFair ? 'off' : 'on'">
+          <ion-list class="line-input">
+            <ion-label>
+              <h2>What will you be coming as?</h2>
+              <ul>
+                <li>Student</li>
+                <li>Chaperone</li>
+                <li>Volunteer</li>
+                <li>Partner</li>
+              </ul>
+            </ion-label>
+            <ion-item>
+              <ion-select (click)="setUsertype()"  placeholder="Select user type">
+                <ion-select-option value="f">Student</ion-select-option>
+                <ion-select-option value="m">Volunteer</ion-select-option>
+                <ion-select-option value="m">Chaperone</ion-select-option>
+                <ion-select-option value="m">Partner</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Next button -->
+    <ion-row  class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <div [className]="!selectedUsertype ? 'off' : 'on'">
+          <ion-button (click)="fairPage(this.fair, this.usertype)" class="orange-button"
+          [disabled]="!fair && !usertype">
+            Next
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

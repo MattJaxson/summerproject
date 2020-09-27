@@ -29,4 +29,10 @@ export class PhotoService {
     imageForm);
    }
 
+   updatePostPhotos(newPhoto, email) {
+    console.log(newPhoto);
+    return this.http.post(`${this.BACKEND_URL}/api/photo/update-all-post-pictures`,
+    newPhoto, email).subscribe();
+   }
+
 }

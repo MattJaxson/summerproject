@@ -1,0 +1,43 @@
+ion-row {
+  margin-bottom: 20px;
+}
+
+h1{
+  color: #005191;
+  font-size: 2.5em;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 1.85em;
+}
+
+p {
+  font-weight: 1.9em;
+  line-height: 1.9em;
+}
+
+.off{
+  opacity: 0;
+}
+
+.on {
+  opacity: 0;
+  animation: slide-up 0.2s ease 4.5s forwards;
+}
+
+li {
+  font-size: 1.5em;
+  margin: 6.5px 0px;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}

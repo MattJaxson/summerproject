@@ -2,7 +2,8 @@
 <ion-header class="ion-hide-lg-up">
   <ion-toolbar class="ion-padding-horizontal">
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
-    <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">Login/Signup</ion-button>
+    <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">Login</ion-button>
+    <ion-button (click)="fairsPage()" color="dark" fill="outline" slot="end">Fairs</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -10,13 +11,8 @@
 <ion-header class="ion-hide-md-down">
   <ion-toolbar class="ion-justify-content-center">
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
-    <!-- Social media desktop -->
-    <div class="button-row ion-hide-sm-down">
-      <ion-button fill="clear"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
-    </div>
-    <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">Login/Signup</ion-button>
+    
+    <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">FYF</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -96,6 +92,11 @@
 
   <ion-footer>
     <!-- Social media mobile -->
+    <div class="button-row ion-hide-sm-down">
+      <ion-button fill="clear"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
+    </div>
     <ion-toolbar class="ion-hide-md-up">
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
