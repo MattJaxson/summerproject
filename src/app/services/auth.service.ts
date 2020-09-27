@@ -7,7 +7,6 @@ import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Platform, AlertController } from '@ionic/angular';
 
-import { User } from '../../../models/user.model';
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -45,7 +44,6 @@ export class AuthService {
     private alertController: AlertController,
     private helper: JwtHelperService,
     private plt: Platform,
-    private router: Router,
     private toast: ToastController) {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
@@ -198,7 +196,7 @@ doesUserExists(email, password) {
   async presentAlert(header: string, msg: string) {
     const alert = await this.alertController.create({
       cssClass: 'danger-alert',
-      header: header,
+      header,
       message: msg,
       buttons: [{
         text: 'OK'

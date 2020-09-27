@@ -1,0 +1,243 @@
+<!-- Mobile Header -->
+<ion-header>
+</ion-header>
+
+
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons (click)="cancel()" slot="start">
+      <ion-icon slot="end" name="close"></ion-icon>
+      <p class="toolbar-title">Register New Student</p>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <h1>Tech Fair</h1>
+        <h5>Date</h5>
+        <h5>Address</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta suscipit a expedita sed nostrum reprehenderit assumenda sequi veritatis rerum magnam omnis minima ratione, odio quidem adipisci possimus qui molestiae! Quisquam!</p>
+      </ion-col>
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+        <form [formGroup]="resgisterForm" (ngSubmit)="registerStudent()">
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-label position="floating">Fullname <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required formControlName="fullName" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required formControlName="email" type="email"></ion-input>
+            </ion-item>
+
+            <!-- Grade -->
+            <ion-item>
+              <ion-label position="floating">Grade
+                <ion-text color="danger">*</ion-text>
+              </ion-label>
+                <ion-select formControlName="grade"
+                placeholder="Select Grade">
+                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <!-- School -->
+            <ion-item>
+              <ion-label position="floating">School
+                <ion-text color="danger">*</ion-text>
+              </ion-label>
+                <ion-select formControlName="school"
+                placeholder="Select School">
+                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <!-- Lunch -->
+            <ion-item>
+              <ion-label position="floating">Lunch
+                <ion-text color="danger">*</ion-text>
+              </ion-label>
+                <ion-select formControlName="grade"
+                placeholder="Select Grade">
+                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <!-- Student Interests -->
+            <h3 style="margin-top: 100px;">Student Interests</h3>
+            <ion-item *ngFor="let entry of interests">
+              <ion-label>{{entry.val}}</ion-label>
+              <ion-checkbox slot="end"></ion-checkbox>
+            </ion-item>
+
+            <!-- Pre Suvery Questions -->
+
+            <!-- Question 1 -->
+            <ion-radio-group>
+              <ion-list-header>
+                <h3>Question 1
+                  <ion-text color="danger">*</ion-text></h3>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+            <!-- Question 2 -->
+            <ion-radio-group>
+              <ion-list-header>
+                <h3>Question 2
+                  <ion-text color="danger">*</ion-text></h3>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+            <!-- Question 3 -->
+            <ion-radio-group>
+              <ion-list-header>
+                <h3>Question 3
+                  <ion-text color="danger">*</ion-text></h3>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+            <!-- Question 4 -->
+            <ion-radio-group>
+              <ion-list-header>
+                <h3>Question 4
+                  <ion-text color="danger">*</ion-text>
+                </h3>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+            <!-- Question 5 -->
+            <ion-radio-group>
+              <ion-list-header>
+                <h3>Question 5
+                  <ion-text color="danger">*</ion-text>
+                </h3>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+
+          </ion-list>
+
+          <div style="text-align: center; margin: 100px auto">
+            <ion-button type="submit" class="orange-button" (click)="registerStudent()">
+              Register
+            </ion-button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="registered">
+    <ion-row class="ion-justify-content-center ion-align-items-center confirm-popout">
+      <ion-col class="ion-text-center" size="8">
+        <ion-icon [className]="registered ? 'slide-up' : 'off'" name="checkmark-circle-outline" size="large" color="success" ></ion-icon>
+        <h3>Thank you for Registering as a Student for Tech Fair.</h3>
+        <ion-button class="blue-button" (click)="confirm()">
+          Done
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

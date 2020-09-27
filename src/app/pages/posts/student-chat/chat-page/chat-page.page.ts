@@ -1,12 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { DrawerState } from 'ion-bottom-drawer';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { ReportConvoPage } from 'src/app/modals/report-convo/report-convo.page';
 import { StudentChatService } from 'src/app/services/student-chat.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-import { format, formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import { IonInput } from '@ionic/angular';
 
 
@@ -21,6 +20,7 @@ export class ChatPagePage implements OnInit, OnDestroy {
 
   @ViewChild('message', {static: false}) input: IonInput;
 
+  // Bottom Drawer Settings
   shouldBounce = true;
   dockedHeight = 400;
   distanceTop = 56;
@@ -31,9 +31,23 @@ export class ChatPagePage implements OnInit, OnDestroy {
   _chatroomSub: Subscription;
   chatroom;
   chatId: string;
-  profilePicture: string;
+
+  // Requesting User
+  requestingUserFullname: string;
+  requestingUserEmail: string;
+  requestingUserPhoto: string;
+
+  // Responding User
+  respondingUserFullname: string;
+  respondingUserEmail: string;
+  respondingUserPhoto: string;
+
+  // Client Users's info for chat messages
   fullName: string;
   email: string;
+  profilePicture: string;
+
+  // Message Input Element Reference
   message: HTMLInputElement;
 
   constructor(
@@ -45,28 +59,37 @@ export class ChatPagePage implements OnInit, OnDestroy {
   ) { }
 
    ngOnInit() {
+
     const chatId  =  this.activatedRoute.snapshot.paramMap.get('chatId');
     this.chatId = chatId;
-    const profilePicture  =  this.activatedRoute.snapshot.paramMap.get('profilePicture');
-    this.profilePicture = profilePicture;
-    const fullName  =  this.activatedRoute.snapshot.paramMap.get('fullName');
-    this.fullName = fullName;
     const email  =  this.activatedRoute.snapshot.paramMap.get('email');
     this.email = email;
+    const fullName  =  this.activatedRoute.snapshot.paramMap.get('fullName');
+    this.fullName = fullName;
+    const profilePicture  =  this.activatedRoute.snapshot.paramMap.get('profilePicture');
+    this.profilePicture = profilePicture;
+
+    const messageList = document.getElementById('message-list');
 
 
-    this.studentChatService.getChat(this.chatId, this.fullName, this.profilePicture, this.email);
+    this.studentChatService.getChat(this.chatId, this.email);
 
     this._chatroomSub = this.studentChatService.currentChatRoom
     .subscribe(
       data => {
+        // console.log(data);
         this.chatroom = data['messages'];
-        // console.log(this.chatroom);
+        this.requestingUserFullname = data['requestingUserFullname'];
+        this.requestingUserEmail = data['requestingUserEmail'];
+        this.requestingUserPhoto = data['requestingUserPhoto'];
+        this.respondingUserFullname = data['respondingUserFullname'];
+        this.respondingUserEmail = data['respondingUserEmail'];
+        this.respondingUserPhoto = data['respondingUserPhoto'];
 
-        if (this.chatroom.length >= 5) {
-          console.log('more than 3 messages sent');
-          this.studentChatService.deleteMessages(this.chatId, this.fullName , this.email);
-        }
+        // if (this.chatroom.length >= 5) {
+        //   console.log('more than 3 messages sent');
+        //   this.studentChatService.deleteMessages(this.chatId, this.fullName , this.email);
+        // }
 
         for (let message of this.chatroom) {
           message.date = formatDistanceToNow(new Date(message.date));
@@ -79,7 +102,7 @@ export class ChatPagePage implements OnInit, OnDestroy {
     this._chatroomSub.unsubscribe();
     // leave room
   }
-  
+
   // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit() {
     setTimeout(() => {
@@ -103,12 +126,17 @@ export class ChatPagePage implements OnInit, OnDestroy {
       return false;
     }
 
-    await this.studentChatService.sendMessage(this.chatId, this.message.value, this.fullName, this.email , this.profilePicture);
+    // tslint:disable-next-line: max-line-length
+    await this.studentChatService.sendMessage(this.chatId, this.message.value, this.fullName, this.profilePicture, this.requestingUserFullname, this.requestingUserEmail, this.requestingUserPhoto, this.respondingUserFullname, this.respondingUserEmail, this.respondingUserPhoto);
 
+    // this.studentChatService.conversations$.next(this.chatroom);
 
+    // When user submits message, clear the input value
     this.message.value = '';
+    this.message.focus();
 
-    this.studentChatService.getChat(this.chatId, this.fullName, this.profilePicture, this.email);
+
+    this.studentChatService.getChat(this.chatId, this.email);
     // this.message = '';
   }
 

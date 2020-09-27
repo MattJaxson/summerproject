@@ -31,19 +31,25 @@ studentsChat  = new SocketNameSpace({url: 'http://127.0.0.1:3000/student-chat', 
 currentChatRoom = this.studentsChat.fromEvent('messages');
 newChatRoom = this.studentsChat.fromEvent('newChatRoom');
 
-getChat(chatId, fullName, profilePicture, email): void {
+getChat(chatId, email): void {
   this.studentsChat
-    .emit('getChat', { chatId, fullName, profilePicture, email });
+    .emit('getChat', { chatId, email });
 }
 
-sendMessage(chatId, message, userFullName, userEmail, profilePicture): void {
+// tslint:disable-next-line: max-line-length
+sendMessage(chatId, message, fullName, profilePicture, requestingUserFullname, requestingUserEmail, requestingUserPhoto, respondingUserFullname, respondingUserEmail, respondingUserPhoto): void {
   this.studentsChat
     .emit('addMessage', {
       chatId,
       message,
-      userFullName,
-      userEmail,
-      profilePicture
+      fullName,
+      profilePicture,
+      requestingUserFullname,
+      requestingUserEmail,
+      requestingUserPhoto,
+      respondingUserFullname,
+      respondingUserEmail,
+      respondingUserPhoto
   });
 }
 

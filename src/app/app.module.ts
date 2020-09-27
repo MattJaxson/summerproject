@@ -28,13 +28,12 @@ import { FavoritesEventEmitterService } from './emitters/favorites-event-emitter
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 
 
 // For JWT
