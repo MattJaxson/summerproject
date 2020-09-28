@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format, formatDistanceToNow, parseISO } from 'date-fns';
 import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
@@ -73,17 +73,27 @@ export class EventsPage implements OnInit, AfterViewInit {
       // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
       // .
 
-      console.log('Events that are intially loaded: ');
-      console.log(events);
-
+      // First Array of Events
       this.allEvents = Object.values(events);
       this.allEventsLength  = this.allEvents.length;
       this.allEvents.reverse();
 
+      // Second Array of Events
       this.loadedAllEvents = Object.values(events);
       this.loadedAllEvents.reverse();
 
+      // Loop each Event and format the dates. Also, delete an Event if its scheduled date
       for (const event of this.allEvents) {
+        // First date Event Date
+        // Second date Current Date
+
+        // If the Current Date is After the Event Date, Delete
+        // If True, Delete event.
+
+        if (isAfter(new Date(Date.now()), new Date(event.date))) {
+          this.events.deleteEvent(event._id).subscribe();
+        }
+
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.time = format( new Date(event.date), 'hh:mm a');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
@@ -198,6 +208,15 @@ export class EventsPage implements OnInit, AfterViewInit {
 
       // Format Times
       for (const event of this.allEvents) {
+        // First date Event Date
+        // Second date Current Date
+
+        // If the Current Date is After the Event Date, Delete
+        // If True, Delete event.
+
+        if (isAfter(new Date(Date.now()), new Date(event.date))) {
+          this.events.deleteEvent(event._id).subscribe();
+        }
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
           includeSeconds: true,

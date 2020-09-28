@@ -102,13 +102,15 @@ h6.text-header {
 }
 
 ion-card-title {
-  font-weight: 900;
-  margin-bottom: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #005191;
 }
 
 ion-card-subtitle {
   font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 @media screen and (min-width: 1200px) {

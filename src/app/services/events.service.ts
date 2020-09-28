@@ -39,5 +39,9 @@ export class EventsService {
       id});
   }
 
+  deleteEvent(eventId) {
+    return this.http.post(`${this.BACKEND_URL}/api/events/delete-event`, {_id: eventId});
+  }
+
 }
 
