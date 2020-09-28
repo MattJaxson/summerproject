@@ -45,9 +45,15 @@ export class PostsPage implements OnInit {
 
   ngOnInit() {
 
+    this.getUserInfo();
+    this.getPosts();
+    this.getFollowingPosts();
+
+    // When Users updated their Profile Picture, Unfollow/Follow, Up/Downvote, or Comment on an individual
     if (this.postsEmitterService.subsVar === undefined) {
       this.postsEmitterService.subsVar = this.postsEmitterService.invokePostsPageRefresh.subscribe(() => {
         this.getPosts();
+        this.getUserInfo();
       });
     }
 
@@ -64,9 +70,6 @@ export class PostsPage implements OnInit {
       }
 
     });
-
-    this.getPosts();
-    this.getFollowingPosts();
   }
 
   postPage(post) {
@@ -74,13 +77,18 @@ export class PostsPage implements OnInit {
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
 
-  getFollowingPosts() {
-    // Get the user's posts he/she is following
+  getUserInfo() {
     this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
       this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
       this.followedPost = details['followedPost'];
+    });
+  }
+
+  getFollowingPosts() {
+    // Get the user's posts he/she is following
+    this.profile.getUserDetails().subscribe( details => {
 
       this.posts.followingSubject$.next(this.followedPost);
       this.posts.followingSubject$.subscribe( posts => {

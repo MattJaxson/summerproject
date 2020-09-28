@@ -571,8 +571,8 @@ export class PostPagePage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async getPostInfo() {
-   await this.profile.getUserDetails().subscribe(
+  getPostInfo() {
+    this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
         this.userEmail = userEmail;
