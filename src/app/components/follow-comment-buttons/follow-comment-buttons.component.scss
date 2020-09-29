@@ -1,8 +1,8 @@
 .comment-button{
   width: 130px;
-  --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
+  --background: #005191;
   --background-hover: #005191;
-  --color: #005191;
+  --color: white;
   font-size: 0.6em;
   font-size: 800;
   border-radius: 5px;
@@ -13,8 +13,8 @@
 }
 
 .follow-button {
-  --color: #24d8a8;
-  --background: linear-gradient(#def8f0, #e5fdf6);
+  --color: white;
+  --background: #24d8a8;
   --background-hover: #24d8a8;
   font-size: 0.6em;
   font-size: 800;

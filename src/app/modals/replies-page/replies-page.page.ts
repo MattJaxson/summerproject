@@ -28,10 +28,10 @@ export class RepliesPagePage implements OnInit {
   commentUserFullName: string;
   commentUserEmail: string;
   commentDate: string;
+  commentUserProfilePicture: string;
 
   userFullName: string;
   userEmail: string;
-  userProfilePicture: string;
 
   tabBar = document.getElementById('myTabBar');
   votes = document.getElementById('votes');
@@ -78,6 +78,7 @@ export class RepliesPagePage implements OnInit {
 
     this.userFullName = this.navParams.get('userFullName');
     this.userEmail = this.navParams.get('userEmail');
+    this.commentUserProfilePicture = this.navParams.get('userProfilePicture');
 
   }
 

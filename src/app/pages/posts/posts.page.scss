@@ -82,11 +82,11 @@ ion-content {
 
 
 ion-header {
-  // --background: linear-gradient(rgba(6, 114, 196, .6), rgba(0, 81, 145, 0.2));
-  height: 60px;
+  height: 50px;
 
   ion-toolbar {
-    --background: none;
+    --background: #edf3f8;
+    border-bottom: 1px solid #005191;
   }
 
   p {
