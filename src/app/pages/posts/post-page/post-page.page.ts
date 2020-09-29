@@ -49,8 +49,8 @@ export class PostPagePage implements OnInit {
   following = false;
   isUser = false;
 
-
-  post;
+  title: string;
+  post: string;
   comments;
   followers: [];
   date: string;
@@ -587,6 +587,7 @@ export class PostPagePage implements OnInit {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const creatorProfilePicture = postInfo['creatorProfilePicture'];
+            const title = postInfo['title'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
             let comments = postInfo['comments'];
@@ -658,6 +659,7 @@ export class PostPagePage implements OnInit {
             this.comments = comments.reverse();
             this.following = following;
             this.post = post;
+            this.title = title;
             this.userProfilePicture = userProfilePicture;
             this.userFullName = userFullName;
 
