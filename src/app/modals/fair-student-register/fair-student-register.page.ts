@@ -86,6 +86,13 @@ export class FairStudentRegisterPage implements OnInit {
     'Renaissance High School'
   ];
 
+
+  lunches = [
+    'Ham',
+    'Turkey',
+    'Veggietarian'
+  ];
+
   constructor(
     private modal: ModalController,
     private alert: AlertController,
@@ -184,10 +191,6 @@ export class FairStudentRegisterPage implements OnInit {
   // Add all the students interests to the studentInterest array
   this.interests.forEach(interest => {
 
-    if (this.studentObject.email === 'eddielacrosse2@gmail') {
-      return this.presentEmailTakenAlert();
-    }
-
     if (interest.isChecked === true) {
       this.studentInterests.push(interest.val);
     }
@@ -225,11 +228,11 @@ export class FairStudentRegisterPage implements OnInit {
       })
     )
     .subscribe(
-      async data => {
-         await console.log('REGISTERED STUDENT TO FAIR!');
-         this.registered = true;
+       () => {
+        console.log('REGISTERED STUDENT TO FAIR!');
+        this.registered = true;
        }
-     );;
+     );
     console.log(this.studentObject);
   }
 

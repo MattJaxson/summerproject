@@ -202,25 +202,34 @@ export class FairPagePage implements OnInit, AfterViewInit {
     }
 
     // Chaperone
-    if(this.usertype === 'chaperone') {
+    if (this.usertype === 'chaperone') {
       const registerModalConfig = await this.modal.create({
         component: FairChaperoneRegisterPage,
+        componentProps: {
+          id
+        }
       });
       await registerModalConfig.present();
     }
 
     // Volunteer
-    if(this.usertype === 'volunteer') {
+    if (this.usertype === 'volunteer') {
       const registerModalConfig = await this.modal.create({
         component: FairVolunteerRegisterPage,
+        componentProps: {
+          id
+        }
       });
       await registerModalConfig.present();
     }
 
     // Partner
-    if(this.usertype === 'partner') {
+    if (this.usertype === 'partner') {
       const registerModalConfig = await this.modal.create({
         component: FairPartnerRegisterPage,
+        componentProps: {
+          id
+        }
       });
       await registerModalConfig.present();
     }

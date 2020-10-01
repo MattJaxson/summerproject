@@ -21,36 +21,74 @@
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
         <form [formGroup]="resgisterForm" (ngSubmit)="registerStudent()">
           <ion-list class="line-input">
+
+            <!-- First & Last Name -->
             <ion-item>
-              <ion-label position="floating">Fullname <ion-text color="danger">*</ion-text></ion-label>
-              <ion-input required formControlName="fullName" type="text"></ion-input>
+              <ion-label position="floating">First & Last Name <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required formControlName="name" type="text"></ion-input>
             </ion-item>
+
+            <!-- Email -->
             <ion-item>
               <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
               <ion-input required formControlName="email" type="email"></ion-input>
             </ion-item>
 
-            <!-- Grade -->
+            <!-- Email Validation-->
+            <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.email">
+                    <div class="error-message"
+                    *ngIf="resgisterForm
+                      .get('email')
+                      .hasError(validation.type) && (resgisterForm.get('email')
+                      .dirty || resgisterForm.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+            </div>
+
+            <!-- Phone -->
             <ion-item>
-              <ion-label position="floating">Grade
+              <ion-label position="floating">Phone
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="grade"
-                placeholder="Select Grade">
-                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
-                </ion-select>
+              <ion-input required
+              maxlength="10"
+              minlength="10" formControlName="phone" type="phone"></ion-input>
             </ion-item>
+            <!-- Phone Validation-->
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validationMessasges.phone">
+                <div class="error-message"
+                *ngIf="resgisterForm
+                  .get('phone')
+                  .hasError(validation.type) && (resgisterForm.get('phone')
+                  .dirty || resgisterForm.get('phone').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
 
             <!-- School -->
             <ion-item>
               <ion-label position="floating">School
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="school"
+                <ion-select (ionChange)="selectSchool($event)"
                 placeholder="Select School">
-                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                  <ion-select-option *ngFor="let school of schools" value="{{school}}">{{school}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+             <!-- Gender -->
+             <ion-item>
+              <ion-label position="floating">Gender
+                <ion-text color="danger">*</ion-text>
+              </ion-label>
+                <ion-select (ionChange)="selectGender($event)"
+                placeholder="Select School">
+                  <ion-select-option value="Male">Male</ion-select-option>
+                  <ion-select-option value="Female">Female</ion-select-option>
                 </ion-select>
             </ion-item>
 
@@ -59,17 +97,16 @@
               <ion-label position="floating">Lunch
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="grade"
-                placeholder="Select Grade">
-                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                <ion-select (ionChange)="selectLunch($event)"
+                placeholder="Select School">
+                  <ion-select-option *ngFor="let lunch of lunches" value="{{lunch}}">{{lunch}}</ion-select-option>
                 </ion-select>
             </ion-item>
 
           </ion-list>
 
           <div style="text-align: center; margin: 100px auto">
-            <ion-button type="submit" class="orange-button" (click)="registerStudent()">
+            <ion-button type="submit" class="orange-button">
               Register
             </ion-button>
           </div>
