@@ -48,7 +48,7 @@ export class RepliesPagePage implements OnInit {
 
   ngOnInit() {
     this.profile.getUserDetails().subscribe(details => {
-      this.userProfilePicture = details['profilePicture'];
+      this.commentUserProfilePicture = details['profilePicture'];
     })
 
      // To collect comment data
@@ -96,7 +96,7 @@ export class RepliesPagePage implements OnInit {
     await this.repliesForm.reset();
     await console.log('replying to comment...');
     // tslint:disable-next-line: max-line-length
-    await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.userProfilePicture, this.commentUserFullName, this.commentUserEmail)
+    await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.commentUserProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe(
         data => {
           let currentComment;

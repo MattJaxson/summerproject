@@ -1,19 +1,20 @@
 .fair-header {
   height: auto;
-  // padding: 30px 0;
+  padding: 30px 0;
   // background: lightcyan;
 }
 
 .agenda {
   padding: 2em;
-  // background: lightgray;
+  background: lightgray;
   opacity: 0;
+  height: 70vh;
   transition: 0.5s;
   animation: popin 1s ease forwards;
 }
 
 .parking {
-  // background: lightgreen;
+  background: lightgreen;
   height: 100vh;
   opacity: 0;
   transition: 0.5s;
@@ -21,7 +22,7 @@
 }
 
 .faq {
-  // background: lightcoral;
+  background: lightcoral;
   height: 100vh;
   opacity: 0;
   transition: 0.5s;
@@ -29,7 +30,7 @@
 }
 
 .booth-partners {
-  // background: lightblue;
+  background: lightblue;
   height: 100vh;
   opacity: 0;
   transition: 0.5s;
@@ -37,7 +38,7 @@
 }
 
 .survey {
-  // background: lightgrey;
+  background: lightgrey;
   height: 100vh;
   opacity: 0;
   transition: 0.5s;
@@ -63,8 +64,8 @@ h5 {
 
 .off{
   opacity: 1;
-  // background: lightgreen;
-  height: 100vh;
+  background: lightgreen;
+  display: none;
   animation: popin-reverse 1s ease forwards;
 }
 

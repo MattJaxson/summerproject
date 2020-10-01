@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, OnDestroy, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
+import { format } from 'date-fns';
 import { FairChaperoneRegisterPage } from 'src/app/modals/fair-chaperone-register/fair-chaperone-register.page';
 import { FairPartnerRegisterPage } from 'src/app/modals/fair-partner-register/fair-partner-register.page';
 import { FairStudentRegisterPage } from 'src/app/modals/fair-student-register/fair-student-register.page';
 import { FairVolunteerRegisterPage } from 'src/app/modals/fair-volunteer-register/fair-volunteer-register.page';
+import { FairsService } from 'src/app/services/fairs.service';
 
 
 
@@ -15,9 +17,17 @@ import { FairVolunteerRegisterPage } from 'src/app/modals/fair-volunteer-registe
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FairPagePage implements OnInit, AfterViewInit {
-
-  fair: string;
+  fairName: string;
   usertype: string;
+  fairInfo;
+  summary: string;
+  description;
+  date;
+  city;
+  state;
+  zip;
+  faqInfo;
+  agenda;
 
   parking = false;
   parkingPopIn = false;
@@ -34,20 +44,60 @@ export class FairPagePage implements OnInit, AfterViewInit {
   @ViewChild('boothPartners', {static: false})  boothPartnersGrid: ElementRef;
   @ViewChild('faq', {static: false})  faqGrid: ElementRef;
   @ViewChild('survey', {static: false})  surveyGrid: ElementRef;
+  address: string;
+  partners: any;
+  id: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private modal: ModalController) {
+    private modal: ModalController,
+    private fairs: FairsService,) {
 
      }
 
   ngOnInit() {
 
+    const id  = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = id;
+
     const fair  = this.activatedRoute.snapshot.paramMap.get('fair');
-    this.fair = fair;
+    this.fairName = fair;
 
     const usertype  = this.activatedRoute.snapshot.paramMap.get('usertype');
     this.usertype = usertype;
+
+    const summary  = this.activatedRoute.snapshot.paramMap.get('summary');
+    this.summary = summary;
+
+    const date = this.activatedRoute.snapshot.paramMap.get('date');
+    this.date = format(new Date(date), 'MMMM dd, yyyy');
+
+    const address = this.activatedRoute.snapshot.paramMap.get('address');
+    this.address = address;
+
+    const city = this.activatedRoute.snapshot.paramMap.get('city');
+    this.city = city;
+
+    const state = this.activatedRoute.snapshot.paramMap.get('state');
+    this.state = state;
+
+    const zip = this.activatedRoute.snapshot.paramMap.get('zip');
+    this.zip = zip;
+
+    const description = this.activatedRoute.snapshot.paramMap.get('description');
+    this.description = description;
+
+    const agenda = JSON.parse(this.activatedRoute.snapshot.paramMap.get('agenda'));
+    this.agenda = agenda;
+
+    const faqInfo = JSON.parse(this.activatedRoute.snapshot.paramMap.get('faq'));
+    this.faqInfo = faqInfo;
+
+    const partners = JSON.parse(this.activatedRoute.snapshot.paramMap.get('partners'));
+    this.partners = partners;
+
+    console.log(partners);
+    console.log(`This is the ${usertype} agenda.`);
 
 
     switch (usertype) {
@@ -83,15 +133,11 @@ export class FairPagePage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.boothPartnersGrid);
-
-    // let boothPartnersGridPosition = this.boothPartnersGrid.el.offsetTop;
-
 
   }
 
   getYPosition(e: Event) {
-    console.log(this.boothPartnersGrid);
+    // console.log(this.boothPartnersGrid);
 
     const boothPartnersGridFromTop = this.boothPartnersGrid.nativeElement.offsetTop;
     const boothPartnersGridHeight = this.boothPartnersGrid.nativeElement.offsetHeight;
@@ -141,12 +187,16 @@ export class FairPagePage implements OnInit, AfterViewInit {
     // return (e.target as Element).scrollTop;
   }
 
-  async register() {
+  async register(id) {
 
     // Student
     if(this.usertype === 'student') {
       const registerModalConfig = await this.modal.create({
         component: FairStudentRegisterPage,
+        componentProps: {
+          id
+        }
+
       });
       await registerModalConfig.present();
     }

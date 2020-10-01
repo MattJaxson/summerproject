@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: FairPagePage
+  },
+  {
+    path: 'fair-page/:fair/:usertype/:summary/:description/:agenda/:faq',
+    loadChildren: () => import('./fair-page.module').then( m => m.FairPagePageModule)
   }
 ];
 
