@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController, NavParams } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalController, AlertController, NavParams , LoadingController} from '@ionic/angular';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FairsService } from 'src/app/services/fairs.service';
 import { catchError } from 'rxjs/operators';
@@ -13,6 +13,8 @@ import { throwError } from 'rxjs';
   styleUrls: ['./fair-student-register.page.scss'],
 })
 export class FairStudentRegisterPage implements OnInit {
+  @ViewChild('descriptionChars', {static: false}) descriptionChars;
+  @ViewChild('colleguesChars', {static: false}) colleguesChars;
   registered = false;
   resgisterForm: FormGroup;
   studentInterests = [];
@@ -86,7 +88,6 @@ export class FairStudentRegisterPage implements OnInit {
     'Renaissance High School'
   ];
 
-
   lunches = [
     'Ham',
     'Turkey',
@@ -98,14 +99,15 @@ export class FairStudentRegisterPage implements OnInit {
     private alert: AlertController,
     private formBuilder: FormBuilder,
     private fairs: FairsService,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private loading: LoadingController
   ) { }
 
   ngOnInit() {
     this.resgisterForm = this.formBuilder.group({
       name: ['Eddie', Validators.required],
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
-      phone: ['7324445665', [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9 ]{10}')]]
+      phone: ['7342237792', [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9 ]{10}')]]
     });
     this.studentObject.id = this.navParams.get('id');
 
@@ -128,16 +130,17 @@ export class FairStudentRegisterPage implements OnInit {
       for ( let i = 0; i < this.interests.length; ++i) { if ( this.interests[i].val === interestName) {
         console.log('Deleting ' + interestName + ' at ' + i );
         this.studentInterests = this.studentInterests.splice(i, 1); }}
-      return;
     }
 
     if (interest.val === interestName && interest.isChecked === false) {
-        interest.isChecked = true;
         console.log(interest.val + ' has not been checked');
         console.log(this.studentInterests);
+        interest.isChecked = true;
       }
+
+    return true;
     });
-  }
+ }
 
   selectGrade(e) {
     console.log('Added Grade ' + e.detail.value);
@@ -196,6 +199,11 @@ export class FairStudentRegisterPage implements OnInit {
     }
   });
 
+  this.studentObject.interests = JSON.stringify(this.studentInterests);
+  this.studentObject.name = this.resgisterForm.value['name'];
+  this.studentObject.email = this.resgisterForm.value['email'];
+  this.studentObject.phone = this.resgisterForm.value['phone'];
+
   // Check to see if the user has answered all the questions
   if (
     !this.studentObject.question1.answer ||
@@ -204,42 +212,20 @@ export class FairStudentRegisterPage implements OnInit {
     !this.studentObject.question4.answer ||
     !this.studentObject.question5.answer ||
     !this.resgisterForm.valid ||
+    !this.studentObject.name ||
     !this.studentObject.grade ||
     !this.studentObject.gender ||
     !this.studentObject.lunch ||
-    !this.studentObject.school ) {
+    !this.studentObject.school ||
+    !this.studentObject.interests ) {
       console.log('Please answer all the questions!');
       return this.presentFormAlert();
   }  else {
-    this.studentObject.interests = JSON.stringify(this.studentInterests);
-    this.studentObject.name = this.resgisterForm.value['name'];
-    this.studentObject.email = this.resgisterForm.value['email'];
-    this.studentObject.phone = this.resgisterForm.value['phone'];
-
-    this.fairs.registerStudent(this.studentObject).pipe(
-      catchError((error: HttpErrorResponse) => {
-
-        if ( error.error === 'A Student already has that email address' ) {
-          console.log('A Student already has that email address');
-
-          this.presentEmailTakenAlert();
-          return throwError;
-        }
-      })
-    )
-    .subscribe(
-       () => {
-        console.log('REGISTERED STUDENT TO FAIR!');
-        this.registered = true;
-       }
-     );
-    console.log(this.studentObject);
+    this.presentLoading();
   }
-
-
  }
 
- async presentFormAlert() {
+async presentFormAlert() {
   const alert = await this.alert.create({
     // tslint:disable-next-line: max-line-length
     message: 'Please fill out the entire form, including the information at the top, and questions at the bottom. You do not need to fill out the Student Interests selection',
@@ -269,9 +255,62 @@ async presentEmailTakenAlert() {
 
  await alert.present();
 }
+async presentWaitListedAlert() {
+ const alert = await this.alert.create({
+   // tslint:disable-next-line: max-line-length
+   header: 'You have been waitlisted',
+   // tslint:disable-next-line: max-line-length
+   message: 'There are already more than 30 students from your school signed up. If a space clears up, we will contact you via email and add you to the list.',
+   // cssClass: ''
+   buttons: [
+     {
+       text: 'Okay',
+       handler: () => {
+        this.modal.dismiss();
+       }
+     }
+   ]
+ });
 
- confirm() {
+ await alert.present();
+}
+async presentLoading() {
+  const loading = await this.loading.create({
+    cssClass: 'my-custom-class',
+    message: 'Registering',
+    duration: 2000
+  });
+  await loading.present();
+  this.fairs.registerStudent(this.studentObject).pipe(
+    catchError((error: HttpErrorResponse) => {
+
+      if ( error.error === 'A Student already has that email address' ) {
+        console.log('A Student already has that email address');
+
+        this.presentEmailTakenAlert();
+        return throwError;
+      }
+
+      if ( error.error === 'There are more than 30 students registered from your school' ) {
+        console.log('There are more than 30 students registered from your school');
+
+        this.presentWaitListedAlert();
+        return throwError;
+      }
+    })
+  )
+  .subscribe(
+     () => {
+      console.log('REGISTERED STUDENT TO FAIR!');
+      this.registered = true;
+      console.log(this.studentObject);
+     });
+
+  const { role, data } = await loading.onDidDismiss();
+  console.log('Loading dismissed!');
+}
+confirm() {
   this.modal.dismiss();
- }
+}
 
 }

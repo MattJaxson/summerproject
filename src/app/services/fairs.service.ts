@@ -40,18 +40,8 @@ export class FairsService {
     return this.http.post(`${this.BACKEND_URL}/api/fairs/register-chaperone`, chaperone);
   }
 
-
-
   registerPartner(partner) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner).subscribe(
-      async data => {
-        await console.log('registering partner to fair...');
-        await console.log(data);
-        await this.presentLoadingWithOptions(partner.name, partner.email);
-        await this.router.navigate(['']);
-        await console.log('REGISTERED PARTNER TO FAIR!');
-      }
-    );
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner);
   }
 
   async registerVolunteer(volunteer) {

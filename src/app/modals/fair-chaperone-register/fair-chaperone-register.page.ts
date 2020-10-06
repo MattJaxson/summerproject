@@ -57,7 +57,7 @@ export class FairChaperoneRegisterPage implements OnInit {
       this.resgisterForm = this.formBuilder.group({
         name: ['Eddie', Validators.required],
         email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
-        phone: ['Taliaferro', [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9 ]{10}')]],
+        phone: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9 ]{10}')]],
       });
       this.chaperoneObject.id = this.navParams.get('id');
 
@@ -100,8 +100,7 @@ export class FairChaperoneRegisterPage implements OnInit {
       !this.chaperoneObject.phone ||
       !this.chaperoneObject.gender ||
       !this.chaperoneObject.email ||
-      !this.chaperoneObject.lunch ||
-      !this.chaperoneObject.school) {
+      !this.chaperoneObject.lunch ) {
         console.log('Please answer all the questions!');
         console.log(this.chaperoneObject);
         
@@ -129,7 +128,7 @@ export class FairChaperoneRegisterPage implements OnInit {
     }
    }
 
-   async presentFormAlert() {
+  async presentFormAlert() {
     const alert = await this.alert.create({
       // tslint:disable-next-line: max-line-length
       message: 'Please fill out the entire form.',

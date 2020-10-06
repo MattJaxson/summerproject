@@ -78,7 +78,11 @@
         <ion-col size="6">
           <h1>Booth Partners</h1>
           <div *ngFor="let partner of partners">
-            <h1>{{partner.company}}</h1>
+            <div *ngIf="partner.verified === true">
+              <img src="{{partner.logo}}" alt="">
+              <h1>{{partner.organization}}</h1>
+              <p>{{partner.description}}</p>
+            </div>
           </div>
         </ion-col>
       </ion-row>

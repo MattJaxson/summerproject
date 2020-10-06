@@ -75,19 +75,20 @@ export class SelectionPage implements OnInit {
           this.description = fair.chaperoneDescription;
           this.faq = JSON.stringify(fair.chaperoneFAQ);
           this.partners = JSON.stringify(fair.partners);
-          console.log('Student');
           console.log('Chaperone');
           break;
         case 'volunteer':
           this.agenda = JSON.stringify(fair.volunteerAgenda);
           this.description = fair.volunteerDescription;
           this.faq = JSON.stringify(fair.volunteerFAQ);
+          this.partners = JSON.stringify(fair.partners);
           console.log('Volunteers');
           break;
         case 'partner':
           this.agenda = JSON.stringify(fair.partnerAgenda);
           this.description = fair.partnerDescription;
           this.faq = JSON.stringify(fair.partnerFAQ);
+          this.partners = JSON.stringify(fair.partners);
           console.log('Partner');
           break;
         default:
