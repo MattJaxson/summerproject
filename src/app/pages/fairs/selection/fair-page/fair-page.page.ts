@@ -51,7 +51,7 @@ export class FairPagePage implements OnInit, AfterViewInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private modal: ModalController,
-    private fairs: FairsService,) {
+    private fairs: FairsService) {
 
      }
 
@@ -151,11 +151,13 @@ export class FairPagePage implements OnInit, AfterViewInit {
     const surveyGridFromTop = this.surveyGrid.nativeElement.offsetTop;
     const surveyGridHeight = this.surveyGrid.nativeElement.offsetHeight;
 
-    // console.log('Current Y position: ' + e['detail'].currentY);
+    console.log('Current Y position: ' + e['detail'].currentY);
     // console.log('Current boothpartners height: ' +boothPartnersGridHeight);
 
     // Booth Partners Popin
-    if (e['detail'].currentY > boothPartnersGridFromTop - (boothPartnersGridHeight / 1.15) ) {
+    if (e['detail'].currentY > boothPartnersGridFromTop - ((window.innerHeight / 1.2 )) && this.boothPartners ) {
+      console.log('From Top: ' + boothPartnersGridFromTop);
+      console.log('Height: ' + boothPartnersGridHeight);
       console.log('Booth Partners Popping In');
       this.boothPartnersPopIn = true;
     } else {
@@ -163,7 +165,7 @@ export class FairPagePage implements OnInit, AfterViewInit {
     }
 
     // Parking Popin
-    if (e['detail'].currentY > parkingGridFromTop - (parkingGridHeight / 1.15) ) {
+    if (e['detail'].currentY > parkingGridFromTop - ((window.innerHeight / 1.2 )) && this.parking ) {
       console.log('Parking Popping In');
       this.parkingPopIn = true;
     } else {
@@ -171,20 +173,19 @@ export class FairPagePage implements OnInit, AfterViewInit {
     }
 
     // FAQ Popin
-    if (e['detail'].currentY > faqGridFromTop - (faqGridHeight / 1.15) ) {
+    if (e['detail'].currentY > faqGridFromTop - ((window.innerHeight / 1.2 )) && this.faq ) {
       console.log('FAQ Popping In');
       this.faqPopIn = true;
     } else {
       this.faqPopIn = false;
     }
 
-    if (e['detail'].currentY > surveyGridFromTop - (surveyGridHeight / 1.15) ) {
+    if (e['detail'].currentY > surveyGridFromTop - ((window.innerHeight / 1.2)) && this.survey ) {
       console.log('Survey Popping In');
       this.surveyPopIn = true;
     } else {
       this.surveyPopIn = false;
     }
-    // return (e.target as Element).scrollTop;
   }
 
   async register(id) {

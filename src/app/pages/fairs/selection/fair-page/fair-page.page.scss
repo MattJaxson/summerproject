@@ -63,9 +63,7 @@ h5 {
 }
 
 .off{
-  opacity: 1;
-  background: lightgreen;
-  display: none;
+  opacity: 0;
   animation: popin-reverse 1s ease forwards;
 }
 
