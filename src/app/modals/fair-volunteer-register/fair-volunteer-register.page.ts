@@ -8,7 +8,6 @@ import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angula
   styleUrls: ['./fair-volunteer-register.page.scss'],
 })
 export class FairVolunteerRegisterPage implements OnInit {
-  registered = false;
   resgisterForm: FormGroup;
 
   constructor(
@@ -27,10 +26,6 @@ export class FairVolunteerRegisterPage implements OnInit {
 
     cancel() {
       this.modal.dismiss();
-   }
-
-   registerStudent() {
-    this.registered = true;
    }
 
    confirm() {

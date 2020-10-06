@@ -20,22 +20,10 @@
       </ion-col>
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
         <div style="text-align: center; margin: 100px auto">
-          <ion-button type="submit" class="orange-button" (click)="registerStudent()">
+          <ion-button type="submit" class="orange-button">
             Register
           </ion-button>
         </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid *ngIf="registered">
-    <ion-row class="ion-justify-content-center ion-align-items-center confirm-popout">
-      <ion-col class="ion-text-center" size="8">
-        <ion-icon [className]="registered ? 'slide-up' : 'off'" name="checkmark-circle-outline" size="large" color="success" ></ion-icon>
-        <h3>Thank you for Registering as a Volunteer for Tech Fair.</h3>
-        <ion-button class="blue-button" (click)="confirm()">
-          Done
-        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
