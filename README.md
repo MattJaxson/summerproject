@@ -4,7 +4,7 @@
   -- After the device is connected, run on app on the device with the 'ionic cordova run android' command.
 
   ++ Running on Phone
-  ionic serve --address {ip address} > Type ip address on Mobile browser
+  ng serve --host {ip address} > Type ip address on Mobile browser
 
   ++ Connecting to AWS EC2 (Bitnami MEAN)
     -- navigate to Express folder
