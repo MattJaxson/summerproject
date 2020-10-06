@@ -7,13 +7,10 @@
   top: 5px;
 }
 
-.userfullname {
-  display: inline-block;
-  font-size: 0.5em;
-  position: relative;
-  top: -10px;
-  left: 0px;
-  color: red;
+.header-hr{
+  border-top: 1px solid #666;
+  opacity: 0.5;
+  margin-top: 10px;
 }
 
 .post {
@@ -24,12 +21,6 @@
   font-size: 1.2em;
   line-height: 35px;
   background: white;
-
-  hr {
-    background: #999;
-    opacity: 0.4;
-
-  }
 }
 
 .post-title {
@@ -38,6 +29,21 @@
   position: relative;
   left: 5px;
   margin: 0;
+  line-height: 25px;
+}
+
+.post-name {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #666; margin: 0;
+  line-height: 18px;
+
+}
+
+.post-date {
+  opacity: 0.4;
+  font-size: 0.5em;
+  margin: 0; line-height: 18px;
 }
 
 ion-content {
@@ -53,8 +59,10 @@ ion-content {
 
 .post-content {
   font-size: 0.9em;
-  line-height: 1.2em;
-}
+  position: relative;
+  top: 20px;
+  margin: 0;
+ }
 
 .user-details {
   position: fixed;
@@ -74,11 +82,11 @@ ion-content {
 
 
 ion-header {
-  // --background: linear-gradient(rgba(6, 114, 196, .6), rgba(0, 81, 145, 0.2));
-  height: 60px;
+  height: 50px;
 
   ion-toolbar {
-    --background: none;
+    --background: #edf3f8;
+    border-bottom: 1px solid #005191;
   }
 
   p {
@@ -170,7 +178,7 @@ form {
   --background: linear-gradient(#5ad8b2, #40c59d);
   --background-hover: linear-gradient(#5ad8b2, #2e8f72);
   height: 40px;
-  margin-top: 20px;
+  margin-top: 0px;
   border-radius: 5px;
   opacity: 0;
   width: 100%;
@@ -206,11 +214,11 @@ form {
 .comment-input-mobile {
   background: rgba(247, 248, 248, 0.5);
   height: 150px;
-  margin: 30px 0 60px 0;
+  margin: 20px 0 10px 0;
   box-shadow: none;
   padding-left: 10px;
-  border: 1px solid rgba(0, 81, 145,0.4);
-  border-radius: 5px;
+  border: 2px solid rgba(0, 81, 145, 1);
+  border-radius: 2px;
   transition: 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

@@ -1,9 +1,12 @@
 <!-- Mobile version -->
 <ion-header class="ion-hide-lg-up">
-  <ion-toolbar class="ion-padding-horizontal">
+  <ion-toolbar>
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
-    <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">Login</ion-button>
-    <ion-button (click)="fairsPage()" color="dark" fill="outline" slot="end">Fairs</ion-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="fairsPage()" color="primary" fill="solid" slot="end">Fairs</ion-button>
+      <ion-button (click)="resources()" color="primary" fill="solid" slot="end">Resources</ion-button>
+      <ion-button (click)="loginSignup()" color="primary" fill="solid" slot="end">Login</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

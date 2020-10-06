@@ -9,8 +9,8 @@ const routes: Routes = [
     // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
     // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
     // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-    loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
     // loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
+    loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
   },
   {
     path: 'home',
@@ -104,7 +104,7 @@ const routes: Routes = [
     loadChildren: () => import('./modals/fair-volunteer-register/fair-volunteer-register.module').then( m => m.FairVolunteerRegisterPageModule)
   },
   {
-    path: 'fair-page/:fair/:usertype',
+    path: 'fair-page/:id/:fair/:date/:address/:city/:state/:zip/:usertype/:summary/:description/:agenda/:faq/:partners',
     loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
   }
 ];

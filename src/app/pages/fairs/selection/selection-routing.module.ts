@@ -9,7 +9,7 @@ const routes: Routes = [
     component: SelectionPage
   },
   {
-    path: 'fair-page',
+    path: 'fair-page/',
     loadChildren: () => import('./fair-page/fair-page.module').then( m => m.FairPagePageModule)
   }
 ];

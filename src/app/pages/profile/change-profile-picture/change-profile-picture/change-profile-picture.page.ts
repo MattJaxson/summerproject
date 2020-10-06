@@ -5,6 +5,9 @@ import { PhotoService } from '../../../../services/photo.service';
 import { AlertController, ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { environment } from '../../../../../environments/environment';
 import { ImageCropperPage } from 'src/app/modals/image-cropper/image-cropper.page';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { SinglePostPageEmitterService } from 'src/app/emitters/single-post-page-emitter.service';
+
 
 
 
@@ -29,7 +32,9 @@ export class ChangeProfilePicturePage implements OnInit {
     private alert: AlertController,
     private modal: ModalController,
     private toast: ToastController,
-    private loading: LoadingController
+    private loading: LoadingController,
+    private postEmitter: PostPageEmitterService,
+    private singlePostEmitterService: SinglePostPageEmitterService,
     ) { }
 
   ngOnInit() {
@@ -87,6 +92,9 @@ export class ChangeProfilePicturePage implements OnInit {
         this.presentLoading();
         this.profile.profilePicture.next(newPhoto);
         this.presentToast();
+        // Get profile pages to refresh with updated profile pics
+        this.postEmitter.postPageRefresh();
+        this.singlePostEmitterService.singlePostPageRefresh();
         this.router.navigate(['/home/profile']);
       }
     );
@@ -128,7 +136,6 @@ async cropPhoto(uploadedPhotoURL) {
 
   modal.onDidDismiss().then(data => {
     this.uploadedPhotoURL = data.data;
-    console.log('After cropping: ' +  this.uploadedPhotoURL);
   });
 
 

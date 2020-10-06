@@ -14,6 +14,8 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
+import { SinglePostPageEmitterService } from 'src/app/emitters/single-post-page-emitter.service';
+
 
 const LANGUAGE_FILTER_LIST = [
   'fuck',
@@ -49,8 +51,8 @@ export class PostPagePage implements OnInit {
   following = false;
   isUser = false;
 
-
-  post;
+  title: string;
+  post: string;
   comments;
   followers: [];
   date: string;
@@ -67,6 +69,7 @@ export class PostPagePage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private postEmitterService: PostPageEmitterService,
+    private singlePostEmitterService: SinglePostPageEmitterService,
     private router: Router,
     private posts: PostsService,
     private profile: ProfileService,
@@ -91,15 +94,15 @@ export class PostPagePage implements OnInit {
     // Get the user's information to insert into the comment metadata
     this.getPostInfo();
 
-    if (this.postEmitterService.subsVar == undefined) {
+    if (this.singlePostEmitterService.subsVar == undefined) {
 
       // For Comment and Reply Refreshes
-      this.postEmitterService.subsVar = this.postEmitterService.invokePostsPageRefresh.subscribe(() => {
+      this.singlePostEmitterService.subsVar = this.singlePostEmitterService.invokeSinglePostPageRefresh.subscribe(() => {
         this.getPostInfo();
-        console.log('Refreshing Post-Page-Page');
+        console.log('Refreshing Replies');
       });
-
     }
+
 
     // To collect comment data
     this.commentForm = this.formBuilder.group({
@@ -557,11 +560,11 @@ export class PostPagePage implements OnInit {
         console.log(this.posts.postsSubject$.getValue());
       }
     );
-    
-    this.postEmitterService.onBackAction()
+
+    this.postEmitterService.onBackAction();
     await this.router.navigate(['/home/posts']);
     console.log('Loading dismissed!');
-    
+
     const loading = await this.loading.create({
       message: 'Deleting Comment...',
       duration: 2000
@@ -571,8 +574,8 @@ export class PostPagePage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async getPostInfo() {
-   await this.profile.getUserDetails().subscribe(
+  getPostInfo() {
+    this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
         this.userEmail = userEmail;
@@ -587,6 +590,7 @@ export class PostPagePage implements OnInit {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const creatorProfilePicture = postInfo['creatorProfilePicture'];
+            const title = postInfo['title'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
             let comments = postInfo['comments'];
@@ -658,6 +662,7 @@ export class PostPagePage implements OnInit {
             this.comments = comments.reverse();
             this.following = following;
             this.post = post;
+            this.title = title;
             this.userProfilePicture = userProfilePicture;
             this.userFullName = userFullName;
 
@@ -694,6 +699,7 @@ export class PostPagePage implements OnInit {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
             const post = postInfo['post'];
+            const title = postInfo['title'];
             const followers = postInfo['followers'];
             let comments = postInfo['comments'];
             let following = false;
@@ -758,6 +764,7 @@ export class PostPagePage implements OnInit {
             this.comments = comments;
             this.following = following;
             this.post = post;
+            this.title = title;
             this.userProfilePicture = userProfilePicture;
             this.userFullName = userFullName;
 

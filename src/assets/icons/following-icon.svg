@@ -4,16 +4,13 @@
     <title>following-icon</title>
     <desc>Created with Sketch.</desc>
     <g id="following-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#FFFFFF" x="0" y="0" width="152" height="172"></rect>
         <g id="Group-2" transform="translate(-1.000000, 0.000000)">
-            <path d="M5,136 L112,136 L112,5 L12,5 C8.13400675,5 5,8.13400675 5,12 L5,136 Z" id="Rectangle" stroke="#005191" stroke-width="10"></path>
-            <g id="Group" transform="translate(58.000000, 77.000000)">
-                <circle id="Oval" fill="#005191" cx="38" cy="38" r="38"></circle>
-                <path id="Line-3" d="M33.7708333,41 L8.22916667,41 L8.22916667,35 L33.7708333,35 L33.7708333,21 L67.7708333,38 L33.7708333,55 L33.7708333,41 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M5,154 L127,154 L127,5 L12,5 C8.13400675,5 5,8.13400675 5,12 L5,154 Z" id="Rectangle" stroke="#005191" stroke-width="10"></path>
+            <g id="Group" transform="translate(65.000000, 87.000000)">
+                <ellipse id="Oval" fill="#005191" cx="43" cy="42.5" rx="43" ry="42.5"></ellipse>
+                <path id="Line-3" d="M42.6880482,45.5 L9.7066886,45.5 L9.7066886,39.5 L42.6880482,39.5 L42.6880482,25.5 L76.6880482,42.5 L42.6880482,59.5 L42.6880482,45.5 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
             </g>
         </g>
-        <path d="M11.5,47.5 L57.5,47.5" id="Line-2" stroke="#FFFEFE" stroke-width="3" stroke-linecap="square"></path>
-        <path d="M11.5,60.5 L38.5,60.5" id="Line-2-Copy" stroke="#FFFEFE" stroke-width="3" stroke-linecap="square"></path>
         <rect id="Rectangle" fill="#005191" x="24" y="28" width="67" height="7"></rect>
         <rect id="Rectangle-Copy" fill="#005191" x="24" y="48" width="49" height="7"></rect>
         <rect id="Rectangle-Copy-2" fill="#005191" x="24" y="68" width="49" height="7"></rect>

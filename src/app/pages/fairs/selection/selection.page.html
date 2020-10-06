@@ -27,8 +27,7 @@
           </ion-label>
           <ion-item>
             <ion-select (ionChange)="setFair($event)" placeholder="Select fair">
-              <ion-select-option value="Tech Fair">Tech Fair</ion-select-option>
-              <ion-select-option value="Music Fair">Music Fair</ion-select-option>
+              <ion-select-option *ngFor="let fair of allFairs" value="{{fair.title}}">{{fair.title}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>

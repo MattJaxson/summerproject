@@ -8,13 +8,17 @@ import { FairStudentRegisterPageRoutingModule } from './fair-student-register-ro
 
 import { FairStudentRegisterPage } from './fair-student-register.page';
 
+import { ImageCropperPageModule } from 'src/app/modals/image-cropper/image-cropper.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    FairStudentRegisterPageRoutingModule
+    FairStudentRegisterPageRoutingModule,
+    ImageCropperPageModule
   ],
   declarations: [FairStudentRegisterPage]
 })

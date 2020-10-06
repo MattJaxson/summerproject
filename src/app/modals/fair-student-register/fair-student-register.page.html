@@ -21,24 +21,59 @@
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
         <form [formGroup]="resgisterForm" (ngSubmit)="registerStudent()">
           <ion-list class="line-input">
+
+            <!-- First & Last Name -->
             <ion-item>
-              <ion-label position="floating">Fullname <ion-text color="danger">*</ion-text></ion-label>
-              <ion-input required formControlName="fullName" type="text"></ion-input>
+              <ion-label position="floating">First & Last Name <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required formControlName="name" type="text"></ion-input>
             </ion-item>
+
+            <!-- Email -->
             <ion-item>
               <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
               <ion-input required formControlName="email" type="email"></ion-input>
             </ion-item>
+
+            <!-- Email Validation-->
+            <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.email">
+                    <div class="error-message"
+                    *ngIf="resgisterForm
+                      .get('email')
+                      .hasError(validation.type) && (resgisterForm.get('email')
+                      .dirty || resgisterForm.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+            </div>
+
+            <!-- Phone -->
+            <ion-item>
+              <ion-label position="floating">Phone <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required formControlName="phone" type="phone" maxlength="10" minlength="10"></ion-input>
+            </ion-item>
+
+            <!-- Phone Validation-->
+            <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.phone">
+                    <div class="error-message"
+                    *ngIf="resgisterForm
+                      .get('phone')
+                      .hasError(validation.type) && (resgisterForm.get('phone')
+                      .dirty || resgisterForm.get('phone').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+            </div>
 
             <!-- Grade -->
             <ion-item>
               <ion-label position="floating">Grade
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="grade"
+                <ion-select (ionChange)="selectGrade($event)"
                 placeholder="Select Grade">
-                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                  <ion-select-option  *ngFor="let grade of grades" value="{{grade}}">{{grade}}</ion-select-option>
                 </ion-select>
             </ion-item>
 
@@ -47,10 +82,21 @@
               <ion-label position="floating">School
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="school"
+                <ion-select (ionChange)="selectSchool($event)"
                 placeholder="Select School">
-                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                  <ion-select-option *ngFor="let school of schools" value="{{school}}">{{school}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <!-- Gender -->
+            <ion-item>
+              <ion-label position="floating">Gender
+                <ion-text color="danger">*</ion-text>
+              </ion-label>
+                <ion-select (ionChange)="selectGender($event)"
+                placeholder="Select Gender">
+                  <ion-select-option value="Male">Male</ion-select-option>
+                  <ion-select-option value="Female">Female</ion-select-option>
                 </ion-select>
             </ion-item>
 
@@ -59,7 +105,7 @@
               <ion-label position="floating">Lunch
                 <ion-text color="danger">*</ion-text>
               </ion-label>
-                <ion-select formControlName="grade"
+                <ion-select (ionChange)="selectLunch($event)"
                 placeholder="Select Grade">
                   <ion-select-option value="peperoni">Peperoni</ion-select-option>
                   <ion-select-option value="hawaii">Hawaii</ion-select-option>
@@ -68,15 +114,16 @@
 
             <!-- Student Interests -->
             <h3 style="margin-top: 100px;">Student Interests</h3>
-            <ion-item *ngFor="let entry of interests">
-              <ion-label>{{entry.val}}</ion-label>
-              <ion-checkbox slot="end"></ion-checkbox>
+            <ion-item *ngFor="let interest of interests">
+              <ion-label>{{interest.val}}</ion-label>
+              <ion-checkbox (click)="isChecked(interest.val)" slot="end"></ion-checkbox>
             </ion-item>
 
             <!-- Pre Suvery Questions -->
 
             <!-- Question 1 -->
-            <ion-radio-group>
+            <ion-radio-group
+            required (ionChange)="question1Handler($event)">
               <ion-list-header>
                 <h3>Question 1
                   <ion-text color="danger">*</ion-text></h3>
@@ -104,7 +151,8 @@
             </ion-radio-group>
 
             <!-- Question 2 -->
-            <ion-radio-group>
+            <ion-radio-group
+            required (ionChange)="question2Handler($event)">
               <ion-list-header>
                 <h3>Question 2
                   <ion-text color="danger">*</ion-text></h3>
@@ -132,7 +180,9 @@
             </ion-radio-group>
 
             <!-- Question 3 -->
-            <ion-radio-group>
+            <ion-radio-group
+            required
+            (ionChange)="question3Handler($event)">
               <ion-list-header>
                 <h3>Question 3
                   <ion-text color="danger">*</ion-text></h3>
@@ -160,7 +210,9 @@
             </ion-radio-group>
 
             <!-- Question 4 -->
-            <ion-radio-group>
+            <ion-radio-group
+            required
+            (ionChange)="question4Handler($event)">
               <ion-list-header>
                 <h3>Question 4
                   <ion-text color="danger">*</ion-text>
@@ -189,7 +241,9 @@
             </ion-radio-group>
 
             <!-- Question 5 -->
-            <ion-radio-group>
+            <ion-radio-group
+            required
+            (ionChange)="question5Handler($event)">
               <ion-list-header>
                 <h3>Question 5
                   <ion-text color="danger">*</ion-text>
@@ -220,7 +274,7 @@
           </ion-list>
 
           <div style="text-align: center; margin: 100px auto">
-            <ion-button type="submit" class="orange-button" (click)="registerStudent()">
+            <ion-button type="submit" class="orange-button">
               Register
             </ion-button>
           </div>

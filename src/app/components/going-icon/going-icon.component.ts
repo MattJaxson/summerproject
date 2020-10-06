@@ -59,10 +59,10 @@ export class GoingIconComponent implements OnInit {
        
        if (eventsGoing.includes(this.event._id)) {
          this.going = true;
-         this.goingState = 'going'
+         this.goingState = 'going';
        } else {
          this.going = false;
-         this.goingState = 'not-going'
+         this.goingState = 'not-going';
        }
 
      });
@@ -108,7 +108,7 @@ export class GoingIconComponent implements OnInit {
         }
         console.log(eventsGoing);
 
-        this.events.eventsGoing$.next(eventsGoing)
+        this.events.eventsGoing$.next(eventsGoing);
       });
 
     }

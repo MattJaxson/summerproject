@@ -42,7 +42,7 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
     }
 
    async getFormData(event) {
-    let formElement = document.querySelectorAll('form');
+    const formElement = document.querySelectorAll('form');
     await formElement.forEach(form => {
       if ( form.id === 'proPicForm') {
         console.log('Got Form: ',  form);
@@ -52,7 +52,7 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
       }
      });
 
-    let reader = new FileReader();
+    const reader = new FileReader();
     await reader.addEventListener('load',  async () => {
       this.uploadedPhotoURL = reader.result;
       console.log('Before cropping: ' + reader.result);
@@ -84,8 +84,7 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
         console.log(data);
         console.log('Image Upload API Successful');
         this.goToUploadResumePage(data['objectUrl']);
-      }
-    );
+      });
 
   }
 
@@ -198,13 +197,13 @@ export class ProfilePicturePage implements OnInit, AfterViewInit {
   }
 
   dataURLtoBlob(dataurl) {
-    let arr = dataurl.split(',');
-    let mime = arr[0].match(/:(.*?);/)[1];
-    let bstr = atob(arr[1]);
+    const arr = dataurl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
     let n = bstr.length;
-    let u8arr = new Uint8Array(n);
+    const u8arr = new Uint8Array(n);
 
-    while(n--) {
+    while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
     return new Blob([u8arr], {type: mime});
