@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-fair-student-register',
   templateUrl: './fair-student-register.page.html',
@@ -122,24 +123,44 @@ export class FairStudentRegisterPage implements OnInit {
  }
 
  isChecked(interestName) {
-  this.interests.find( interest => {
-    if (interest.val === interestName && interest.isChecked === true) {
-      interest.isChecked = false;
-      console.log('This interest was already checked');
-      // tslint:disable-next-line: max-line-length
-      for ( let i = 0; i < this.interests.length; ++i) { if ( this.interests[i].val === interestName) {
-        console.log('Deleting ' + interestName + ' at ' + i );
-        this.studentInterests = this.studentInterests.splice(i, 1); }}
-    }
-
-    if (interest.val === interestName && interest.isChecked === false) {
-        console.log(interest.val + ' has not been checked');
-        console.log(this.studentInterests);
-        interest.isChecked = true;
+  // tslint:disable-next-line: prefer-for-of
+  for (let i = 0; i < this.interests.length; i++) {
+    if (this.interests[i].val === interestName) {
+      if (this.interests[i].isChecked === false) {
+        console.log(interestName + ' has NOT been checked');
+        this.interests[i].isChecked = true;
+        console.log(this.interests);
+        return;
       }
+      if (this.interests[i].isChecked === true) {
+        console.log(interestName + 'Interest has been checked');
+        this.interests[i].isChecked = false;
+        console.log(this.interests);
+        return;
+      }
+    }
+  }
 
-    return true;
-    });
+
+
+
+  // this.interests.findIndex( interest => {
+  //   if (interest.val === interestName && interest.isChecked === true) {
+  //     interest.isChecked = false;
+  //     console.log('This interest was already checked');
+  //     // tslint:disable-next-line: max-line-length
+  //     for ( let i = 0; i < this.interests.length; i++) { if ( this.interests[i].val === interestName) {
+  //       console.log('Deleting ' + interestName + ' at ' + i );
+  //       this.studentInterests = this.studentInterests.splice(i, 1); }}
+  //   }
+
+  //   if (interest.val === interestName && interest.isChecked === false) {
+  //       console.log(interest.val + ' has not been checked');
+  //       interest.isChecked = true;
+  //       console.log(this.interests);
+  //     }
+
+  //   });
  }
 
   selectGrade(e) {
@@ -281,6 +302,8 @@ async presentLoading() {
     duration: 2000
   });
   await loading.present();
+  console.log('Trying to register student..');
+
   this.fairs.registerStudent(this.studentObject).pipe(
     catchError((error: HttpErrorResponse) => {
 
@@ -303,11 +326,10 @@ async presentLoading() {
      () => {
       console.log('REGISTERED STUDENT TO FAIR!');
       this.registered = true;
-      console.log(this.studentObject);
-     });
+      console.log(this.studentObject.interests);
 
-  const { role, data } = await loading.onDidDismiss();
-  console.log('Loading dismissed!');
+      console.log('Loading dismissed!');
+     });
 }
 confirm() {
   this.modal.dismiss();
