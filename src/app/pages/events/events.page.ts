@@ -6,6 +6,7 @@ import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular
 import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 import { isAfter } from 'date-fns';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,12 +14,13 @@ import { isAfter } from 'date-fns';
   templateUrl: './events.page.html',
   styleUrls: ['./events.page.scss'],
 })
-export class EventsPage implements OnInit, AfterViewInit {
+export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
+  eventsSub: Subscription;
   eventsGoing;
-  eventsGoingLength = 0;
+  eventsGoingLength;
   searching = false;
   noSearchInput = false;
   searchTerm;
@@ -36,6 +38,10 @@ export class EventsPage implements OnInit, AfterViewInit {
     public loading: LoadingController,
     private eventEmitterService: EventsEventEmitterService
     ) { }
+
+  ngOnDestroy(): void {
+    // this.eventsSub.unsubscribe();
+  }
 
   ngAfterViewInit() {
         this.searchbar.getInputElement().then(  (searchbarInputElement) => {
@@ -59,9 +65,11 @@ export class EventsPage implements OnInit, AfterViewInit {
       this.userEmail = details['email'];
 
       this.events.eventsGoing$.next(details['eventsGoing']);
-      this.events.eventsGoing$.subscribe(
+      
+      this.eventsSub = this.events.eventsGoing$.subscribe(
         events => {
-          this.eventsGoingLength = Object.values(events).length;
+          console.log(events.length);
+          this.eventsGoingLength = events.length;
         }
       );
       console.log('User id: ' + this.id);

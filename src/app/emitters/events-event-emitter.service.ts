@@ -14,4 +14,8 @@ export class EventsEventEmitterService {
   onBackAction() {
     this.invokeEventsPageRefresh.emit();
   }
+
+  resetEvents() {
+    this.invokeEventsPageRefresh.emit();
+  }
 }

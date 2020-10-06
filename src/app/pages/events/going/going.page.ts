@@ -15,7 +15,6 @@ import { PlatformLocation } from '@angular/common';
 })
 export class GoingPage implements OnInit {
   goingToEvents = [];
-  public goingToEvents$ = new BehaviorSubject([]);
   userEmail;
   id;
 
@@ -36,14 +35,15 @@ export class GoingPage implements OnInit {
       this.eventEmitterService.onBackAction();
     });
 
-    console.log('going to events: ');
-    console.log(this.goingToEvents.length);
-
     // Get the User's details
     this.profile.getUserDetails().subscribe(
      details => {
        this.id = details['_id'];
        this.userEmail = details['email'];
+       this.events.eventsGoing$.subscribe(
+         events => {
+           this.goingToEvents = events;
+         });
 
        console.log('getting event user ' + this.id + ' is going to');
        this.refreshGoingEvents();
@@ -62,9 +62,20 @@ export class GoingPage implements OnInit {
 
   cancel(eventID) {
     console.log(eventID);
-    console.log(`Removing ${eventID} from this Users eventsGoing property`);;
-    this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( () => {
-      this.refreshGoingEvents();
+    console.log(`Removing ${eventID} from this Users eventsGoing property`);
+    this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( events => {
+
+      const eventsGoing = this.events.eventsGoing$.getValue();
+
+      for (let i = 0; i < eventsGoing.length; i++) {
+        if (eventsGoing[i] === eventID) {
+          eventsGoing.splice(i, 1);
+        }
+      }
+      console.log(eventsGoing);
+      this.goingToEvents = eventsGoing;
+      this.events.eventsGoing$.next(eventsGoing);
+      this.eventEmitterService.resetEvents();
       this.presentNotGoingToast();
       }
     );
@@ -84,9 +95,6 @@ export class GoingPage implements OnInit {
             addSuffix: true
           });
         }
-
-        this.goingToEvents$.next(this.goingToEvents);
-        this.cdr.detectChanges(); // Check for new changes in events going list
       });
   }
 
