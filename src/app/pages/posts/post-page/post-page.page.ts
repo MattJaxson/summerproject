@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 // tslint:disable-next-line: max-line-length
 import { ToastController, AlertController, ModalController, IonContent, LoadingController, IonTextarea } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';

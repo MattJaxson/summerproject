@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsPage } from './jobs.page';
 import { JobsPageRoutingModule } from './jobs-routing.module';
 import { CustomComponentsModule } from '../../components/custom-component.module';
+import { ViewResumePageModule } from '../profile/resume/view-resume/view-resume.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CustomComponentsModule } from '../../components/custom-component.module
     FormsModule,
     ReactiveFormsModule,
     JobsPageRoutingModule,
-    RouterModule.forChild([{ path: '', component: JobsPage }])
+    RouterModule.forChild([{ path: '', component: JobsPage }]),
+    ViewResumePageModule
   ],
   declarations: [
     JobsPage]

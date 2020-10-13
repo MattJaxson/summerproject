@@ -2,19 +2,23 @@ ion-title {
   margin: 0;
 }
 
-.app-wrapper {
-  padding: 10px 0 10px 0;
-  margin: 20px 0 100px 0;
+.instructions {
+  font-weight: 800;
+  line-height: 1em;
+  background: #fff1d9;
+  width: 400px;
+  color: #faa71b;
+  font-size: 1.3em;
+  padding: 10px 0px 10px 20px;
+  border-radius: 50px;
 }
 
-@media only screen and (max-width: 992px) {
-  .app-wrapper {
-    margin: 40px 0 40px 0;
-  }
+.info-section{
+  margin-bottom: 60px;
 }
+
 
 .company-logo {
-  margin-top: 20px;
   background-image: url("../../../../assets/journi-logo.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -129,7 +133,7 @@ ion-item:nth-child(8) {
 
 .blue-button {
   display: block;
-  margin: 20px auto 100px auto;
+  // margin: 20px auto 20px auto;
 }
 
 @keyframes logo-slide-in {

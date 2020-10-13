@@ -4,9 +4,12 @@
     </ion-button>
     <ion-button *ngIf="following && !isUser" class="unfollow-button" (click)="unFollow(postID)">Unfollow ({{followingLength}})
     </ion-button>
-    <ion-button
+    <!-- <ion-button
     class="comment-button"
     (click)="postPage()">Comments ({{comments.length}})
-    </ion-button>
+    </ion-button> -->
+    <ion-icon
+    (click)="postPage()" slot="start" src="../../assets/icons/comments-icon.svg"></ion-icon>
+
   </ion-buttons>
 </ion-toolbar>

@@ -4,17 +4,27 @@ ion-row {
 
 h1{
   color: #005191;
-  font-size: 2.5em;
+  font-size: 3em;
+  z-index: 999;
+  margin-top: 40px;
 }
 
 h2 {
   font-weight: 800;
   font-size: 1.85em;
+  line-height: 1.85em;
+  background: rgb(66, 63, 57);
+  width: 300px;
+  color: white;
+  padding: 5px 0px 5px 20px;
+  border-radius: 5px;
 }
 
-p {
-  font-weight: 1.9em;
-  line-height: 1.9em;
+.desciption {
+  font-size: 1.2em;
+  line-height: 1.6em;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
 }
 
 .off{
@@ -26,9 +36,14 @@ p {
   animation: slide-up 0.2s ease .5s forwards;
 }
 
+ul {
+  background: rgba(0,0,0,0.03);
+  padding: 35px;
+}
+
 li {
-  font-size: 1.5em;
-  margin: 6.5px 0px;
+  font-size: 1.7em;
+  margin: 10px 0px;
 }
 
 @keyframes slide-up {

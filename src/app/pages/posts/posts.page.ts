@@ -9,6 +9,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 import { StudentChatService } from 'src/app/services/student-chat.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
+
 
 
 @Component({
@@ -30,6 +32,8 @@ export class PostsPage implements OnInit {
   userProfilePicture;
   date;
   profilePicture;
+  notificationsSub: any;
+  notificationsLength: number;
 
   constructor(
     private router: Router,
@@ -39,7 +43,8 @@ export class PostsPage implements OnInit {
     private toast: ToastController,
     private formBuilder: FormBuilder,
     private postsEmitterService: PostPageEmitterService,
-    private studentChat: StudentChatService
+    private studentChat: StudentChatService,
+    private notificationsService: NotificationsService
   ) {}
 
 
@@ -83,6 +88,13 @@ export class PostsPage implements OnInit {
       this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
       this.followedPost = details['followedPost'];
+
+      this.notificationsSub = this.notificationsService.notifications$.subscribe(
+        notifications => {
+          console.log(notifications.length);
+          this.notificationsLength = notifications.length;
+        }
+      );
     });
   }
 
@@ -180,12 +192,11 @@ export class PostsPage implements OnInit {
       userProfilePicture,
       comment.comment
     ).subscribe(
-      () => {
+      newComment => {
          this.posts.getPostInfo(postID).subscribe(
           post => {
             for (let postComments of post['comments']) {
 
-              console.log(postComments);
 
               postComments.isUser = false;
               postComments.canDeleteComment = false;
@@ -205,6 +216,14 @@ export class PostsPage implements OnInit {
               });
              }
             this.posts.commentsSubject$.next(post['comments'].reverse());
+
+            let postCreator = post['creatorEmail'];
+            console.log(newComment);
+
+            // this.userEmail = instigatingUser
+            // postCreator = recievingUser
+            this.notificationsService.
+            commentNotification(this.userEmail, postCreator, postID, newComment).subscribe();
           }
         );
       }
@@ -218,7 +237,7 @@ export class PostsPage implements OnInit {
             addSuffix: true
           });
         }
-       this.posts.commentsSubject$.next(post['comments'].reverse());
+        this.posts.commentsSubject$.next(post['comments'].reverse());
      }
    );
 

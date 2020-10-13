@@ -12,11 +12,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 const config: SocketIoConfig = { url: 'http://10.0.1.5:3000', options: {} };
 
-
-
 // Third Party
 import { IonBottomDrawerModule } from 'ion-bottom-drawer';
-
 
 // Custom Modules
 import { CustomComponentsModule } from './components/custom-component.module';

@@ -11,6 +11,7 @@ const routes: Routes = [
     // loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
     // loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
     loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
+    // loadChildren: () => import('./modals/fair-student-register/fair-student-register.module').then( m => m.FairStudentRegisterPageModule)
   },
   {
     path: 'home',
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'fair-page/:id/:fair/:date/:address/:city/:state/:zip/:usertype/:summary/:description/:agenda/:faq/:partners',
     loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
+  },
+  {
+    path: 'upload-resume-modal',
+    loadChildren: () => import('./modals/upload-resume-modal/upload-resume-modal.module').then( m => m.UploadResumeModalPageModule)
   }
 ];
 @NgModule({

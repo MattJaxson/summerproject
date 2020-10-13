@@ -4,7 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../../services/jobs.service';
 import { ProfileService } from '../../../services/profile.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { differenceInYears, parseISO } from "date-fns";
+import { differenceInYears, parseISO } from 'date-fns';
+import { ViewResumePage } from 'src/app/modals/view-resume/view-resume.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-apply',
@@ -31,7 +33,8 @@ export class ApplyPage implements OnInit {
     private jobs: JobsService,
     private profile: ProfileService,
     private formBuilder: FormBuilder,
-    private location: Location
+    private location: Location,
+    private modal: ModalController
   ) { }
 
   ngOnInit() {
@@ -48,7 +51,6 @@ export class ApplyPage implements OnInit {
     this.profile.getUserDetails().subscribe(data => {
       this.user = data;
       this.age = differenceInYears(Date.now(), parseISO(data["dob"]));
-      
       console.log('User\'s age: ', this.age);
 
       this.populateForm(this.user["phone"]);
@@ -69,13 +71,16 @@ export class ApplyPage implements OnInit {
     });
   }
 
-  viewResume() {
-    console.error('View Resume not yet implemented');
-  }
-
   uploadResume() {
     console.log('Uploading Resume');
+  }
 
+  async viewResumeModal() {
+    const modal = await this.modal.create({
+      component: ViewResumePage,
+      cssClass: 'my-custom-class'
+    });
+    await modal.present();
   }
 
   sendConfirmationEmail() {

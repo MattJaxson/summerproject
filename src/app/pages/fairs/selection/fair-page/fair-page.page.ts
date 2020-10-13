@@ -17,6 +17,7 @@ import { FairsService } from 'src/app/services/fairs.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FairPagePage implements OnInit, AfterViewInit {
+  id: string;
   fairName: string;
   usertype: string;
   fairInfo;
@@ -28,7 +29,10 @@ export class FairPagePage implements OnInit, AfterViewInit {
   zip;
   faqInfo;
   agenda;
+  address: string;
+  partners: any;
 
+  // Popin Animation properties
   parking = false;
   parkingPopIn = false;
   boothPartners = false;
@@ -38,15 +42,35 @@ export class FairPagePage implements OnInit, AfterViewInit {
   survey = false;
   surveyPopIn = false;
 
+  surveyObject = {
+    question1: {
+      question: 'This is the question 1',
+      answer: ''
+    },
+    question2: {
+      question: 'This is the question 2',
+      answer: ''
+    },
+    question3: {
+      question: 'This is the question 3',
+      answer: ''
+    },
+    question4: {
+      question: 'This is the question 4',
+      answer: ''
+    },
+    question5: {
+      question: 'This is the question 5',
+      answer: ''
+    },
+  };
+
 
   @ViewChild('info', {static: false})  infoGrid: ElementRef;
   @ViewChild('parking', {static: false})  parkingGrid: ElementRef;
   @ViewChild('boothPartners', {static: false})  boothPartnersGrid: ElementRef;
   @ViewChild('faq', {static: false})  faqGrid: ElementRef;
   @ViewChild('survey', {static: false})  surveyGrid: ElementRef;
-  address: string;
-  partners: any;
-  id: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,7 +94,7 @@ export class FairPagePage implements OnInit, AfterViewInit {
     this.summary = summary;
 
     const date = this.activatedRoute.snapshot.paramMap.get('date');
-    this.date = format(new Date(date), 'MMMM dd, yyyy');
+    this.date = format(new Date(date), 'hh:mm a, MMMM dd, yyyy');
 
     const address = this.activatedRoute.snapshot.paramMap.get('address');
     this.address = address;
@@ -94,8 +118,8 @@ export class FairPagePage implements OnInit, AfterViewInit {
     this.faqInfo = faqInfo;
 
     const partners = JSON.parse(this.activatedRoute.snapshot.paramMap.get('partners'));
+    // In order for a partner to be shown on the UI, their 'verified' property must be set to 'true'
     this.partners = partners;
-
     console.log(partners);
     console.log(`This is the ${usertype} agenda.`);
 
@@ -113,11 +137,13 @@ export class FairPagePage implements OnInit, AfterViewInit {
         this.survey = true;
         break;
       case 'volunteer':
-        console.log('usetype: volunteer');
+        console.log('usertype: volunteer');
         this.parking = true;
         this.faq = true;
         // set survey to false until surveys have to be pushed out posts surcey
         this.survey = true;
+        var booth = document.getElementById('boothPartners');
+        booth.style.height = '0px';
         break;
       case 'partner':
         console.log('usertype: partner');
@@ -125,6 +151,8 @@ export class FairPagePage implements OnInit, AfterViewInit {
         this.faq = true;
         // set survey to false until surveys have to be pushed out posts surcey
         this.survey = true;
+        var booth = document.getElementById('boothPartners');
+        booth.style.height = '0px';
         break;
       default:
         console.log('There was a problem getting the usertype');
@@ -136,28 +164,52 @@ export class FairPagePage implements OnInit, AfterViewInit {
 
   }
 
+  submitSurvey() {
+    console.log(this.surveyObject);
+  }
+
+  question1Handler(e) {
+    this.surveyObject.question1.answer = e.detail.value;
+    console.log(this.surveyObject.question1);
+   }
+
+   question2Handler(e) {
+    this.surveyObject.question2.answer = e.detail.value;
+    console.log(this.surveyObject.question2);
+   }
+
+   question3Handler(e) {
+    this.surveyObject.question3.answer = e.detail.value;
+    console.log(this.surveyObject.question3);
+   }
+
+   question4Handler(e) {
+    this.surveyObject.question4.answer = e.detail.value;
+    console.log(this.surveyObject.question4);
+   }
+
+   question5Handler(e) {
+    this.surveyObject.question5.answer = e.detail.value;
+    console.log(this.surveyObject.question5);
+   }
+
   getYPosition(e: Event) {
     // console.log(this.boothPartnersGrid);
 
     const boothPartnersGridFromTop = this.boothPartnersGrid.nativeElement.offsetTop;
-    const boothPartnersGridHeight = this.boothPartnersGrid.nativeElement.offsetHeight;
 
     const parkingGridFromTop = this.parkingGrid.nativeElement.offsetTop;
-    const parkingGridHeight = this.parkingGrid.nativeElement.offsetHeight;
 
     const faqGridFromTop = this.faqGrid.nativeElement.offsetTop;
-    const faqGridHeight = this.faqGrid.nativeElement.offsetHeight;
 
     const surveyGridFromTop = this.surveyGrid.nativeElement.offsetTop;
-    const surveyGridHeight = this.surveyGrid.nativeElement.offsetHeight;
 
-    console.log('Current Y position: ' + e['detail'].currentY);
+    // console.log('Current Y position: ' + e['detail'].currentY);
     // console.log('Current boothpartners height: ' +boothPartnersGridHeight);
 
     // Booth Partners Popin
     if (e['detail'].currentY > boothPartnersGridFromTop - ((window.innerHeight / 1.2 )) && this.boothPartners ) {
       console.log('From Top: ' + boothPartnersGridFromTop);
-      console.log('Height: ' + boothPartnersGridHeight);
       console.log('Booth Partners Popping In');
       this.boothPartnersPopIn = true;
     } else {

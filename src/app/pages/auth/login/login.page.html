@@ -89,6 +89,11 @@
       </ion-col>
     </ion-row>
 
+    <!-- Back Button -->
+    <ion-col size="12">
+      <ion-button class="grey-button" (click)="back()">Back</ion-button>
+    </ion-col>
+
   </ion-grid>
 
   <!-- Desktop -->
@@ -169,6 +174,13 @@
       <ion-row class="ion-justify-content-center">
         <ion-col size="6">
           <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <!-- Back Button -->
+        <ion-col size="6">
+          <ion-button class="grey-button" (click)="back()">Back</ion-button>
         </ion-col>
       </ion-row>
 

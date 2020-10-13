@@ -43,6 +43,10 @@ export class JobsPage implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    // Hide Tab Bar
+    const tabBar = document.getElementById('tabBar');
+    tabBar.style.display = 'static';
+
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeJobsPageRefresh.subscribe(() => {
         this.getJobs();

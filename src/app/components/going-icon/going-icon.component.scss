@@ -6,15 +6,15 @@ p {
 ion-button {
   font-size: 1em;
   font-weight: 800;
-  height: 50px;
-  width: 48%;
-  margin-left: 0;
-  margin-right: 0;
+  height: 40px;
+  width: 100px;
+  margin-left: 0px;
+  margin-right: 10px;
 }
 
-.thumbnail {
+// .thumbnail {
 
-}
+// }
 
 .not-going {
   --color: white;
@@ -23,11 +23,13 @@ ion-button {
 
 .grey-button{
   margin-right: 10px;
+  --background: #edf3f8;
+  color: #005191;
 }
 
 .going {
-  --color: #24d8a8;
-  --background: linear-gradient(#def8f0, #e5fdf6);
+  --color: white;
+  --background: #24d8a8;
   --background-hover: #24d8a8;
 
   &:hover {

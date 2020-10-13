@@ -47,7 +47,7 @@ ion-header {
   background: none;
   // box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
   color: #005191;
-  padding: 0px 0 0px 0;
+  height: 60px;
 }
 
 ion-list {
@@ -125,10 +125,10 @@ ion-title {
   background: #FFF !important;
   border: 2px solid #005191 !important;
   border-radius: 5px !important;
-  height: 50px !important;
-  padding: 20px 0px 20px 50px !important;
+  height: 40px !important;
+  padding: 10px 0px 10px 20px !important;
   max-width: 100%;
-  font-size: 1.25em !important;
+  font-size: 1.4em !important;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1) !important;
 }
 
@@ -215,6 +215,17 @@ ion-input:focus {
   }
 }
 
+ion-select {
+  /* Applies to the value and placeholder color */
+  color: #005191;
+  font-weight: 600;
+  font-size: 1.1em;
+
+  /* Set a different placeholder color */
+
+  /* Set full opacity on the placeholder */
+}
+
 ion-select-option {
   width: 200px;
 }
@@ -265,9 +276,9 @@ ion-select-option {
 
 
 .grey-button {
-  --background: #e6e6e6;
-  --background-hover: #999;
-  color: #888;
+  --background: #e0e0e0;
+  --background-hover: #e0e0e0;
+  color: #999;
   width: 150px;
   height: 40px;
   font-size: 1em;

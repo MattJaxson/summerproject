@@ -1,28 +1,22 @@
-<!-- Mobile Toolbar -->
 <ion-header no-border class="ion-hide-lg-up">
+  <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-    <ion-grid>
-      <!-- Searchbar & Favorites Icon -->
-      <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col push-xs="0.5" push-sm="1" size-xs="8" size-sm="8" size-md="8">
-          <ion-searchbar
-          class="searchbar"
-          debounce="2000"
-          showCancelButton="true"
-          placeholder="Search Job Titles"
-          (ionChange)="filter($event)"
-          ></ion-searchbar>
-        </ion-col>
+    <ion-searchbar
+      debounce="2000"
+      class="searchbar"
+      animated="true"
+      searchIcon="none"
+      showCancelButton="true"
+      placeholder="Search Job Titles"
+      (ionChange)="filter($event)"
+       ></ion-searchbar>
 
-
-      <ion-col push-xs="0.5" push-sm="1" size-xs="3" size-sm="3" size-md="3">
-        <ion-button id="favorites-button" (click)="favoritesPage()">
-            <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
-          {{favoriteJobsAmount}}</ion-button>
-      </ion-col>
-      </ion-row>
-  </ion-grid>
-
+       <ion-buttons slot="end">
+        <ion-button (click)="favoritesPage()">
+         <!-- My Events ({{ eventsGoingLength }}) -->
+         <ion-icon slot="start" src="../../assets/icons/my-favorite-jobs.svg"></ion-icon>
+     </ion-button>
+       </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -49,7 +43,7 @@
       </ion-col>
       <ion-col size="2" push="0.5">
         <ion-button class="blue-button ion-float-right" style="width: 170px; position: fixed; top: 60px;" (click)="favoritesPage()">
-          <ion-icon src="../../../assets/icon/heart-inactive.svg"></ion-icon>
+          <ion-icon src="../../../assets/icons/my-favorite-jobs"></ion-icon>
           {{favoriteJobsAmount}}
         </ion-button>
       </ion-col>
@@ -82,19 +76,15 @@
                 <h5 id="job-rate">${{job.rateOfPay}}/hr</h5>
               </ion-col>
               <ion-col push-xs="3.5" push-sm="3.5" push-sm="3.5" push-sm="3.9" size="1">
-                  <!-- Heart Icon Component holds the state for Favorites -->
-                  <app-heart-icon [job]="job" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
               </ion-col>
             </ion-row>
           </ion-col>
 
-          <ion-col size="12">
             <ion-row>
               <ion-col push="0.5"  size="10.5" >
                 <p id="job-summary">{{job.summary}}</p>
               </ion-col>
             </ion-row>
-          </ion-col>
 
           <ion-col size="12">
             <ion-row>
@@ -102,6 +92,8 @@
                 <ion-button id="job-details" class="ion-float-right" (click)="jobPage(job)">
                   Details
                 </ion-button>
+                <!-- Heart Icon Component holds the state for Favorites -->
+                <app-heart-icon [job]="job" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
               </ion-col>
             </ion-row>
           </ion-col>

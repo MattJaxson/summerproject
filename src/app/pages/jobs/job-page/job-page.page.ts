@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { ToastController } from '@ionic/angular';
+import { IonTabBar, ToastController } from '@ionic/angular';
 import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.component';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 import { PlatformLocation } from '@angular/common';
+
 
 @Component({
   selector: 'app-job-page',
@@ -42,8 +43,8 @@ export class JobPagePage implements OnInit {
 
     this.location.onPopState(() => {
       this.triggerJobPageRefresh();
-    })
-    
+    });
+
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
     // tslint:disable-next-line: radix

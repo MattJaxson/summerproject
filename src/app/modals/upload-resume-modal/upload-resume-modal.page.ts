@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../services/profile.service';
-import { ResumeService } from '../../../../services/resume.service';
-import { AlertController, ToastController, LoadingController } from '@ionic/angular';
-
-
+import { AlertController, ToastController, LoadingController, ModalController } from '@ionic/angular';
+import { ProfileService } from 'src/app/services/profile.service';
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
-  selector: 'app-update-resume',
-  templateUrl: './update-resume.page.html',
-  styleUrls: ['./update-resume.page.scss'],
+  selector: 'app-upload-resume-modal',
+  templateUrl: './upload-resume-modal.page.html',
+  styleUrls: ['./upload-resume-modal.page.scss'],
 })
-export class UpdateResumePage implements OnInit {
+export class UploadResumeModalPage implements OnInit {
 
   formData: FormData;
   uploadedResume: boolean;
@@ -26,6 +24,7 @@ export class UpdateResumePage implements OnInit {
     private router: Router,
     private profile: ProfileService,
     private alert: AlertController,
+    private modal: ModalController,
     private toast: ToastController,
     private loading: LoadingController) { }
 
@@ -85,7 +84,6 @@ export class UpdateResumePage implements OnInit {
          await this.presentLoading();
          await this.profile.resume.next(newResume);
          await this.presentToast();
-         await this.router.navigate(['/home/profile/view-resume']);
        }
      );
    }
@@ -110,6 +108,11 @@ export class UpdateResumePage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+    this.modal.dismiss();
+  }
+
+  cancel() {
+    this.modal.dismiss();
   }
 
 }

@@ -14,6 +14,7 @@
       </ion-button> -->
       <ion-button (click)="notifications()">
         <ion-icon size="large" src="../../assets/icons/notifications-icon.svg"></ion-icon>
+        <span style="background: none; color: #e4405f; height: 15px; width: 15px; border-radius: 100px; position: relative; font-size: 1.5em;">{{notificationsLength}}</span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -249,7 +250,7 @@
               </ion-col>
 
               <!-- Follow & Comment -->
-              <ion-col size="6">
+              <ion-col push="1" size="6" class="ion-float-right">
                 <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>
