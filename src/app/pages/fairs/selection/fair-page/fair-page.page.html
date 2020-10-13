@@ -55,7 +55,7 @@
   </div>
 
   <!-- Parking -->
-  <div #parking [className]="parkingPopIn ? 'parking' : 'off'">
+  <div #parking id="parking" [className]="parkingPopIn ? 'parking' : 'off'">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col class="ion-text-center" size="12">
@@ -67,7 +67,7 @@
 
 
   <!-- FAQ -->
-  <div #faq [className]="faqPopIn ? 'faq' : 'off'">
+  <div #faq id="faq" [className]="faqPopIn ? 'faq' : 'off'">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col  size-xs="11" size-sm="10" size-md="8" size-lg="8">
@@ -84,6 +84,32 @@
     </ion-grid>
   </div>
 
+  <!-- Booth Partners -->
+  <div #boothPartners id="boothPartners" [className]="boothPartnersPopIn ? 'booth-partners' : 'off'">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
+          <h1 style="margin-top: 40px;">Booth Partners</h1>
+          <div *ngFor="let partner of partners">
+            <div *ngIf="partner.verified === true">
+              <ion-row style="margin-bottom: 80px;">
+                <ion-col size="4">
+                  <img src="{{partner.logo}}" alt="">
+                  <a class="partner-link" href="http://www.google.com">Website</a>
+                </ion-col>
+                <ion-col size="7">
+                  <h3 class="organization">{{partner.organization}}</h3>
+                  <p class="partner-description">{{partner.description}}</p>
+                  <div class="divider"></div>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
   <!-- Survey -->
   <div #survey id="survey" [className]="surveyPopIn ? 'survey' : 'off'">
     <ion-grid>
@@ -92,6 +118,10 @@
           <h1 style="margin-top: 40px;">Survey</h1>
           <ion-list class="line-input">
             <!-- Post Suvery Questions -->
+            <h2>Please fill out the entire form to submit the survey.</h2>
+            <ion-item>
+              <ion-input #email type="email" placeholder="Email"></ion-input>
+            </ion-item>
 
             <!-- Question 1 -->
             <ion-radio-group
@@ -252,38 +282,12 @@
         </ion-col>
         <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="8">
           <ion-button class="green-button" (click)="submitSurvey()"
-          [disabled]="!this.surveyObject.question1.answer || !this.surveyObject.question2.answer || !this.surveyObject.question3.answer || !this.surveyObject.question4.answer || !this.surveyObject.question5.answer">
+          [disabled]=" !this.email.value || !this.surveyObject.question1.answer || !this.surveyObject.question2.answer || !this.surveyObject.question3.answer || !this.surveyObject.question4.answer || !this.surveyObject.question5.answer">
             Submit
           </ion-button>
-          <p class="survey-validation" *ngIf="!this.surveyObject.question1.answer || !this.surveyObject.question2.answer || !this.surveyObject.question3.answer || !this.surveyObject.question4.answer || !this.surveyObject.question5.answer">
+          <p class="survey-validation" *ngIf=" !this.email.value || !this.surveyObject.question1.answer || !this.surveyObject.question2.answer || !this.surveyObject.question3.answer || !this.surveyObject.question4.answer || !this.surveyObject.question5.answer">
             In order to submit the survey, please answer all the questions first.
           </p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <!-- Booth Partners -->
-  <div #boothPartners id="boothPartners" [className]="boothPartnersPopIn ? 'booth-partners' : 'off'">
-    <ion-grid>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
-          <h1 style="margin-top: 40px;">Booth Partners</h1>
-          <div *ngFor="let partner of partners">
-            <div *ngIf="partner.verified === true">
-              <ion-row style="margin-bottom: 80px;">
-                <ion-col size="4">
-                  <img src="{{partner.logo}}" alt="">
-                  <a class="partner-link" href="http://www.google.com">Website</a>
-                </ion-col>
-                <ion-col size="7">
-                  <h3 class="organization">{{partner.organization}}</h3>
-                  <p class="partner-description">{{partner.description}}</p>
-                  <div class="divider"></div>
-                </ion-col>
-              </ion-row>
-            </div>
-          </div>
         </ion-col>
       </ion-row>
     </ion-grid>

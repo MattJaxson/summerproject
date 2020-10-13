@@ -129,12 +129,20 @@ export class FairPagePage implements OnInit, AfterViewInit {
         this.boothPartners = true;
         // set survey to false until surveys have to be pushed out posts surcey
         this.survey = true;
+        var parking = document.getElementById('parking');
+        var faq = document.getElementById('faq');
+        parking.style.height = '0px';
+        faq.style.height = '0px';
         break;
       case 'chaperone':
         console.log('usertype: chaperone');
         this.boothPartners = true;
         // set survey to false until surveys have to be pushed out posts surcey
         this.survey = true;
+        var parking = document.getElementById('parking');
+        var faq = document.getElementById('faq');
+        parking.style.height = '0px';
+        faq.style.height = '0px';
         break;
       case 'volunteer':
         console.log('usertype: volunteer');
