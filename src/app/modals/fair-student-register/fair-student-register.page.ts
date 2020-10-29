@@ -92,7 +92,7 @@ export class FairStudentRegisterPage implements OnInit {
   lunches = [
     'Ham',
     'Turkey',
-    'Veggietarian'
+    'Veggie'
   ];
 
   constructor(
@@ -112,6 +112,10 @@ export class FairStudentRegisterPage implements OnInit {
     });
     this.studentObject.id = this.navParams.get('id');
 
+    this.fairs.getSchools().subscribe( schools => {
+      console.log(schools);
+    }
+    );
     this.resgisterForm.statusChanges.subscribe(
       status => console.log(status)
 

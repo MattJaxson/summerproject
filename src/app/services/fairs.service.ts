@@ -56,9 +56,7 @@ export class FairsService {
     );
   }
 
-
   // Errors
-
   async handleError(error: HttpErrorResponse) {
 
     if ( error.error === 'A Student already has that email address' ) {
@@ -79,7 +77,6 @@ export class FairsService {
 
     return await alert.present();
   }
-
 
   // Loading
   async presentLoadingWithOptions(chaperoneName, chaperoneEmail) {
@@ -107,6 +104,11 @@ async presentAlert() {
   });
 
   await alert.present();
+}
+
+getSchools() {
+  console.log('Getting schools');
+  return this.http.get(`${this.BACKEND_URL}/api/admin/fairs/get-schools`);
 }
 
 
