@@ -3,10 +3,30 @@ h1 {
 }
 
 img {
-  height: 100px; width: 100px;
+  height: 250px; width: 250px;
   border-radius: 50px;
+}
+
+.name {
+  font-size: 1.4em;
+  color: #005191;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
+
+.resource{
+  margin-bottom: 100px;
 }
 
 .link {
   width: 60px;
+  margin-bottom: 30px;
+}
+
+.orange-button {
+  margin-bottom: 100px;
 }

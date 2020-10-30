@@ -19,20 +19,29 @@
 
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="8">
-        <ion-row *ngFor="let resource of resources">
-          <ion-col size="2">
+        <ion-row class="resource" *ngFor="let resource of resources">
+          <ion-col class="ion-align-self-center" size="11">
             <img src="{{resource.logo}}" alt="">
           </ion-col>
-          <ion-col size="6">
-            <p>{{resource.name}}</p>
-            <p>{{resource.description}}</p>
-          </ion-col>
-          <ion-col size="3">
+          <ion-col size="11">
+            <p class="name">{{resource.name}}</p>
+            <p class="description">{{resource.description}}</p>
+
             <ion-button class="blue-button link" href="{{resource.url}}" target="_blank">
               LINK
             </ion-button>
+            <hr style="border-bottom: #999 solid 1px">
           </ion-col>
         </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-text-center" size="12">
+            <ion-button class="orange-button" (click)="back()">
+              Back
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
       </ion-col>
     </ion-row>
   </ion-grid>
