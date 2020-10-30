@@ -102,7 +102,7 @@ export class SelectionPage implements OnInit {
   fairPage() {
     console.log('going to the fair page');
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/fair-page', this.id, this.fair, this.date, this.address, this.city, this.state, this.zip, this.usertype, this.summary, this.description, this.agenda, this.faq, this.partners]);
+    this.router.navigate(['/fair-page', this.id, this.fair, this.date, this.address, this.city, this.state, this.zip, this.usertype, this.summary, this.agenda, this.faq, this.partners]);
   }
 
 }

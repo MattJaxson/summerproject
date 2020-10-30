@@ -175,9 +175,12 @@ h1 {
   position: relative;
   left: -15px;
   ion-badge {
-    font-size: 1.3em;
+    font-size: 1em;
     width: 4em;
-    padding: 6px;
+    padding: 12px;
+  }
+  h2{
+    font-size: 1.3em;
   }
 }
 
