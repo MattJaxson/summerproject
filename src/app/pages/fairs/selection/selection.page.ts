@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FairsService } from 'src/app/services/fairs.service';
 
 
@@ -8,7 +9,7 @@ import { FairsService } from 'src/app/services/fairs.service';
   templateUrl: './selection.page.html',
   styleUrls: ['./selection.page.scss'],
 })
-export class SelectionPage implements OnInit {
+export class SelectionPage implements OnInit, OnDestroy {
   [x: string]: any;
   fair: string;
   allFairs;
@@ -26,13 +27,19 @@ export class SelectionPage implements OnInit {
   address: any;
   partners: any;
 
+  fairsInfoSubscription: Subscription;
+
   constructor(
     private router: Router,
     private fairs: FairsService
   ) { }
 
+  ngOnDestroy(): void {
+    this.fairsInfoSubscription.unsubscribe();
+  }
+
   ngOnInit() {
-    this.fairs.getFairs().subscribe(
+    this.fairsInfoSubscription = this.fairs.getFairs().subscribe(
       fairs => {
         this.allFairs = Object.values(fairs);
         console.log(typeof fairs);
@@ -65,28 +72,24 @@ export class SelectionPage implements OnInit {
       switch (this.usertype) {
         case 'student':
           this.agenda = JSON.stringify(fair.studentAgenda);
-          this.description = fair.studentDescription;
           this.faq = JSON.stringify(fair.studentFAQ);
           this.partners = JSON.stringify(fair.partners);
           console.log('Student');
           break;
         case 'chaperone':
           this.agenda = JSON.stringify(fair.chaperoneAgenda);
-          this.description = fair.chaperoneDescription;
           this.faq = JSON.stringify(fair.chaperoneFAQ);
           this.partners = JSON.stringify(fair.partners);
           console.log('Chaperone');
           break;
         case 'volunteer':
           this.agenda = JSON.stringify(fair.volunteerAgenda);
-          this.description = fair.volunteerDescription;
           this.faq = JSON.stringify(fair.volunteerFAQ);
           this.partners = JSON.stringify(fair.partners);
           console.log('Volunteers');
           break;
         case 'partner':
           this.agenda = JSON.stringify(fair.partnerAgenda);
-          this.description = fair.partnerDescription;
           this.faq = JSON.stringify(fair.partnerFAQ);
           this.partners = JSON.stringify(fair.partners);
           console.log('Partner');

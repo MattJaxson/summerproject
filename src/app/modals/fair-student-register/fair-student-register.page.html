@@ -1,21 +1,21 @@
 <!-- Mobile Header -->
 <ion-header>
-</ion-header>
-
-
-<ion-content>
   <ion-toolbar>
     <ion-buttons (click)="cancel()" slot="start">
       <ion-icon slot="end" name="close"></ion-icon>
       <p class="toolbar-title">Register New Student</p>
     </ion-buttons>
   </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">
-        <h1>Tech Fair</h1>
-        <h5>Date</h5>
-        <h5>Address</h5>
+        <h1>{{fairName}}</h1>
+        <h5>{{date}}</h5>
+        <h5>{{address}}, {{city}}, {{state}}, {{zip}}</h5>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta suscipit a expedita sed nostrum reprehenderit assumenda sequi veritatis rerum magnam omnis minima ratione, odio quidem adipisci possimus qui molestiae! Quisquam!</p>
       </ion-col>
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="8">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
 import { format } from 'date-fns';
@@ -16,7 +16,7 @@ import { FairsService } from 'src/app/services/fairs.service';
   styleUrls: ['./fair-page.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FairPagePage implements OnInit, AfterViewInit {
+export class FairPagePage implements OnInit, OnDestroy, AfterViewInit {
   id: string;
   fairName: string;
   usertype: string;
@@ -76,7 +76,6 @@ export class FairPagePage implements OnInit, AfterViewInit {
     private activatedRoute: ActivatedRoute,
     private modal: ModalController,
     private fairs: FairsService) {
-
      }
 
   ngOnInit() {
@@ -255,7 +254,13 @@ export class FairPagePage implements OnInit, AfterViewInit {
       const registerModalConfig = await this.modal.create({
         component: FairStudentRegisterPage,
         componentProps: {
-          id
+          id,
+          city: this.city,
+          state: this.state,
+          zip: this.zip,
+          address: this.address,
+          fairName: this.fairName,
+          date: this.date
         }
 
       });

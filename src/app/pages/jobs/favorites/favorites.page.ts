@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { FavoritesService } from '../../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -13,12 +13,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
-  // favoriteJobs;
+export class FavoritesPage implements OnInit, OnDestroy {
   favoriteJobsObj;
   userEmail;
 
-  favJobsSub: Subscription;
+  favoriteSubs: Subscription;
+  profileSub: Subscription;
 
   constructor(
     private router: Router,
@@ -27,6 +27,12 @@ export class FavoritesPage implements OnInit {
     private eventEmitterService: FavoritesEventEmitterService,
     private location: PlatformLocation
   ) { }
+
+  ngOnDestroy(): void {
+    this.favoriteSubs.unsubscribe();
+    this.favorites.favoriteJobs$.unsubscribe();
+    this.profileSub.unsubscribe();
+  }
 
   ngOnInit() {
     this.location.onPopState(() => {
@@ -47,7 +53,7 @@ export class FavoritesPage implements OnInit {
 
   getFavoriteJobs() {
     // getting all the favorite jobs that the user has on their profile
-    this.profile.getUserDetails().subscribe( data => {
+    this.profileSub = this.profile.getUserDetails().subscribe( data => {
       this.userEmail = data['email'];
       // this.favoriteJobs = data['favoriteJobs']
       // console.log('Favorite Jobs:');
@@ -57,7 +63,7 @@ export class FavoritesPage implements OnInit {
       this.favorites.favoriteJobs$.subscribe(
         favs => {
           console.log(`Favorite Jobs in Service: ${favs}`);
-          this.favorites.getFavorites(this.userEmail).subscribe( favDetails => {
+          this.favoriteSubs = this.favorites.getFavorites(this.userEmail).subscribe( favDetails => {
             this.favoriteJobsObj = favDetails;
             console.log('Favorite jobs:')
             console.log(favDetails)

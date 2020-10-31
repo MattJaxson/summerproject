@@ -33,9 +33,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   };
   user: any;
 
-
-
-
   constructor(
     private auth: AuthService,
     private profile: ProfileService,
@@ -45,6 +42,21 @@ export class ProfilePage implements OnInit, OnDestroy {
     private alert: AlertController,
     private loading: LoadingController
     ) {
+    }
+
+    ngOnDestroy() {
+      this.detailsSub.unsubscribe();
+      this.profile.fullName.unsubscribe();
+      this.profile.about.unsubscribe();
+      this.profile.city.unsubscribe();
+      this.profile.state.unsubscribe();
+      this.profile.zip.unsubscribe();
+      this.profile.gender.unsubscribe();
+      this.profile.school.unsubscribe();
+      this.profile.grade.unsubscribe();
+      this.profile.profilePicture.unsubscribe();
+      this.profile.email.unsubscribe();
+      this.profile.resume.unsubscribe();
     }
 
     ngOnInit() {
@@ -127,9 +139,6 @@ export class ProfilePage implements OnInit, OnDestroy {
             );
     });
   }
-
-    ngOnDestroy() {
-    }
 
     clearToken() {
       // ONLY FOR TESTING!

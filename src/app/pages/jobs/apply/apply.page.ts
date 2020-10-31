@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../../services/jobs.service';
@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { differenceInYears, parseISO } from 'date-fns';
 import { ViewResumePage } from 'src/app/modals/view-resume/view-resume.page';
 import { ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-apply',
@@ -14,7 +15,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./apply.page.scss'],
 })
 
-export class ApplyPage implements OnInit {
+export class ApplyPage implements OnInit, OnDestroy {
 
   public jobTitle;
   public jobCompanyName;
@@ -24,6 +25,8 @@ export class ApplyPage implements OnInit {
   public reason;
 
   public applyPageForm: FormGroup;
+  profileSub: Subscription;
+  sendAppSub: Subscription;
 
   private user;
 
@@ -36,6 +39,10 @@ export class ApplyPage implements OnInit {
     private location: Location,
     private modal: ModalController
   ) { }
+  ngOnDestroy(): void {
+    this.profileSub.unsubscribe();
+    this.sendAppSub.unsubscribe();
+  }
 
   ngOnInit() {
 
@@ -48,7 +55,7 @@ export class ApplyPage implements OnInit {
     this.jobCompanyName = companyName;
     this.jobCompanyEmail = companyEmail;
 
-    this.profile.getUserDetails().subscribe(data => {
+    this.profileSub = this.profile.getUserDetails().subscribe(data => {
       this.user = data;
       this.age = differenceInYears(Date.now(), parseISO(data["dob"]));
       console.log('User\'s age: ', this.age);
@@ -92,7 +99,8 @@ export class ApplyPage implements OnInit {
     this.reason = this.applyPageForm.value.reasonTextArea;
     this.phoneNumber = this.applyPageForm.value.phoneNumber;
     console.log('Reason: ', this.reason);
-    this.jobs.sendEmailApplication(this.user, this.age, this.phoneNumber, this.reason, this.jobTitle, this.jobCompanyEmail).subscribe();
+    // tslint:disable-next-line: max-line-length
+    this.sendAppSub = this.jobs.sendEmailApplication(this.user, this.age, this.phoneNumber, this.reason, this.jobTitle, this.jobCompanyEmail).subscribe();
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply/:title/:companyEmail/:companyName/apply-confirm/', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
   }

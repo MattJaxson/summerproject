@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-fair-volunteer-register',
@@ -9,6 +10,7 @@ import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angula
 })
 export class FairVolunteerRegisterPage implements OnInit {
   resgisterForm: FormGroup;
+  registerVolunteerSubscription: Subscription;
 
   constructor(
     private modal: ModalController,

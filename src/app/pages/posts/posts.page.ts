@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonFabButton, ModalController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
@@ -10,6 +10,7 @@ import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.servi
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 import { StudentChatService } from 'src/app/services/student-chat.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -18,11 +19,14 @@ import { NotificationsService } from 'src/app/services/notifications.service';
   templateUrl: 'posts.page.html',
   styleUrls: ['posts.page.scss']
 })
-export class PostsPage implements OnInit {
+export class PostsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
 
-  // postsSub: Subscription;
+  postsSub: Subscription;
+  notificationsSub: Subscription;
+  profileSub: Subscription;
+  
   commentForm: FormGroup;
   allPosts;
   followedPost;
@@ -32,7 +36,6 @@ export class PostsPage implements OnInit {
   userProfilePicture;
   date;
   profilePicture;
-  notificationsSub: any;
   notificationsLength: number;
 
   constructor(
@@ -46,6 +49,13 @@ export class PostsPage implements OnInit {
     private studentChat: StudentChatService,
     private notificationsService: NotificationsService
   ) {}
+  ngOnDestroy(): void {
+    this.postsSub.unsubscribe();
+    this.notificationsSub.unsubscribe();
+    this.postsEmitterService.subsVar.unsubscribe();
+    this.profileSub.unsubscribe();
+    this.posts.followingSubject$.unsubscribe();
+  }
 
 
   ngOnInit() {
@@ -66,15 +76,6 @@ export class PostsPage implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
-
-    this.commentForm.controls.comment.valueChanges.subscribe(data => {
-
-      if (data === '') {
-      console.log('Value is empty');
-      this.commentForm.markAsPristine();
-      }
-
-    });
   }
 
   postPage(post) {
@@ -83,7 +84,7 @@ export class PostsPage implements OnInit {
   }
 
   getUserInfo() {
-    this.profile.getUserDetails().subscribe( details => {
+    this.postsSub = this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
       this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
@@ -100,7 +101,7 @@ export class PostsPage implements OnInit {
 
   getFollowingPosts() {
     // Get the user's posts he/she is following
-    this.profile.getUserDetails().subscribe( details => {
+    this.profileSub = this.profile.getUserDetails().subscribe( details => {
 
       this.posts.followingSubject$.next(this.followedPost);
       this.posts.followingSubject$.subscribe( posts => {
@@ -112,11 +113,11 @@ export class PostsPage implements OnInit {
     });
   }
 
-  async doRefresh(event) {
+ doRefresh(event) {
 
     this.getFollowingPosts();
 
-    await this.posts.getPosts().subscribe( jobs => {
+    this.postsSub = this.posts.getPosts().subscribe( jobs => {
       this.allPosts = Object.values(jobs).reverse();
 
       for (const post of this.allPosts) {
@@ -128,7 +129,7 @@ export class PostsPage implements OnInit {
     });
 
     // Present Toast
-    await setTimeout(() => {
+    setTimeout(() => {
       const toast = this.toast.create({
         message: 'Inspiration Page has been refreshed',
         duration: 3000
@@ -139,7 +140,7 @@ export class PostsPage implements OnInit {
   }
 
   async getPosts() {
-    await this.posts.getPosts().subscribe( posts => {
+    this.postsSub = this.posts.getPosts().subscribe( posts => {
       // console.log(posts);
       this.allPosts = Object.values(posts).reverse();
       this.posts.postsSubject$.next(this.allPosts);
@@ -193,7 +194,7 @@ export class PostsPage implements OnInit {
       comment.comment
     ).subscribe(
       newComment => {
-         this.posts.getPostInfo(postID).subscribe(
+         this.postsSub = this.posts.getPostInfo(postID).subscribe(
           post => {
             for (let postComments of post['comments']) {
 
@@ -229,7 +230,7 @@ export class PostsPage implements OnInit {
       }
     );
 
-    await this.posts.getPostInfo(postID).subscribe(
+    this.postsSub = this.posts.getPostInfo(postID).subscribe(
       post => {
         for (let postComments of post['comments']) {
           postComments.date = formatDistanceToNow( new Date(postComments.date), {

@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../../services/events.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import { ToastController, AlertController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 import { PlatformLocation } from '@angular/common';
 
@@ -13,7 +13,10 @@ import { PlatformLocation } from '@angular/common';
   templateUrl: './going.page.html',
   styleUrls: ['./going.page.scss'],
 })
-export class GoingPage implements OnInit {
+export class GoingPage implements OnInit, OnDestroy {
+  profileSub: Subscription;
+  eventsGoingSub: Subscription;
+  cancelSub: Subscription;
   goingToEvents = [];
   userEmail;
   id;
@@ -28,6 +31,12 @@ export class GoingPage implements OnInit {
     private eventEmitterService: EventsEventEmitterService,
     private location: PlatformLocation
     ) { }
+  ngOnDestroy(): void {
+    this.profileSub.unsubscribe();
+    this.eventsGoingSub.unsubscribe();
+    this.cancelSub.unsubscribe();
+    this.cancelSub.unsubscribe();
+  }
 
   ngOnInit() {
 
@@ -36,11 +45,11 @@ export class GoingPage implements OnInit {
     });
 
     // Get the User's details
-    this.profile.getUserDetails().subscribe(
+    this.profileSub = this.profile.getUserDetails().subscribe(
      details => {
        this.id = details['_id'];
        this.userEmail = details['email'];
-       this.events.eventsGoing$.subscribe(
+       this.eventsGoingSub = this.events.eventsGoing$.subscribe(
          events => {
            this.goingToEvents = events;
          });
@@ -63,7 +72,7 @@ export class GoingPage implements OnInit {
   cancel(eventID) {
     console.log(eventID);
     console.log(`Removing ${eventID} from this Users eventsGoing property`);
-    this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( events => {
+    this.cancelSub = this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( events => {
 
       const eventsGoing = this.events.eventsGoing$.getValue();
 
@@ -82,7 +91,7 @@ export class GoingPage implements OnInit {
   }
 
   refreshGoingEvents() {
-    this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
+    this.eventsGoingSub = this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
         this.goingToEvents = Object.values(eventsGoing);
         this.goingToEvents.reverse();
         console.log(`Updated events going list: ${this.goingToEvents}`);

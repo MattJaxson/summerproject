@@ -19,6 +19,9 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
   eventsSub: Subscription;
+  profileSub: Subscription;
+  eventsGoingSub: Subscription;
+  deleteEventSub: Subscription;
   eventsGoing;
   eventsGoingLength;
   searching = false;
@@ -40,7 +43,10 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
     ) { }
 
   ngOnDestroy(): void {
-    // this.eventsSub.unsubscribe();
+    this.eventsSub.unsubscribe();
+    this.eventsGoingSub.unsubscribe();
+    this.eventEmitterService.subsVar.unsubscribe();
+    this.deleteEventSub.unsubscribe();
   }
 
   ngAfterViewInit() {
@@ -59,14 +65,14 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
     }
 
     // Get the User's details
-    this.profile.getUserDetails().subscribe( details => {
+    this.profileSub = this.profile.getUserDetails().subscribe( details => {
 
       this.id = details['_id'];
       this.userEmail = details['email'];
 
       this.events.eventsGoing$.next(details['eventsGoing']);
-      
-      this.eventsSub = this.events.eventsGoing$.subscribe(
+
+      this.eventsGoingSub = this.events.eventsGoing$.subscribe(
         events => {
           console.log(events.length);
           this.eventsGoingLength = events.length;
@@ -76,7 +82,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
       console.log('User email: ' + this.userEmail);
     });
 
-    this.events.getEvents().subscribe( events => {
+    this.eventsGoing = this.events.getEvents().subscribe( events => {
 
       // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
       // .
@@ -99,7 +105,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
         // If True, Delete event.
 
         if (isAfter(new Date(Date.now()), new Date(event.date))) {
-          this.events.deleteEvent(event._id).subscribe();
+          this.deleteEventSub = this.events.deleteEvent(event._id).subscribe();
         }
 
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
@@ -207,7 +213,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
   async doRefresh(event) {
 
     this.allEvents = [];
-    await this.events.getEvents().subscribe( events => {
+    this.eventsSub = this.events.getEvents().subscribe( events => {
 
       this.allEvents = Object.values(events);
       this.allEventsLength = this.allEvents.length;
@@ -223,7 +229,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
         // If True, Delete event.
 
         if (isAfter(new Date(Date.now()), new Date(event.date))) {
-          this.events.deleteEvent(event._id).subscribe();
+          this.deleteEventSub = this.events.deleteEvent(event._id).subscribe();
         }
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
@@ -248,7 +254,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async getEvents() {
-    await this.events.getEvents().subscribe( events => {
+    this.eventsSub = this.events.getEvents().subscribe( events => {
 
       this.allEvents = Object.values(events);
       this.allEventsLength = this.allEvents.length;

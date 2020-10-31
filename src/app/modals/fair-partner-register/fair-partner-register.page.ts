@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertController, ModalController, LoadingController,  NavParams } from '@ionic/angular';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FairsService } from 'src/app/services/fairs.service';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { ImageCropperPage } from '../image-cropper/image-cropper.page';
 import { PhotoService } from 'src/app/services/photo.service';
 
@@ -14,10 +14,11 @@ import { PhotoService } from 'src/app/services/photo.service';
   templateUrl: './fair-partner-register.page.html',
   styleUrls: ['./fair-partner-register.page.scss'],
 })
-export class FairPartnerRegisterPage implements OnInit {
+export class FairPartnerRegisterPage implements OnInit, OnDestroy {
   registered = false;
   resgisterForm: FormGroup;
   formData: FormData;
+  registerPartnerSubscription: Subscription;
   partnerObject = {
     id: '',
     name: '',
@@ -58,7 +59,11 @@ export class FairPartnerRegisterPage implements OnInit {
     private navParams: NavParams,
     private loading: LoadingController) { }
 
-  ngOnInit() {
+    ngOnDestroy(): void {
+      this.registerPartnerSubscription.unsubscribe();
+    }
+
+    ngOnInit() {
     this.resgisterForm = this.formBuilder.group({
       name: ['Eddie', Validators.required],
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
@@ -69,11 +74,11 @@ export class FairPartnerRegisterPage implements OnInit {
     });
 
     this.partnerObject.id = this.navParams.get('id');
-  }
+    }
 
-  cancel() {
+    cancel() {
     this._modal.dismiss();
- }
+    }
 
  selectLunch(e) {
   console.log('Added Lunch ' + e.detail.value);
@@ -225,7 +230,7 @@ async presentEmailTakenAlert() {
     duration: 2000
   });
   await loading.present();
-  this.fairs.registerPartner(this.partnerObject).pipe(
+  this.registerPartnerSubscription = this.fairs.registerPartner(this.partnerObject).pipe(
     catchError((error: HttpErrorResponse) => {
 
       if ( error.error === 'A Partner already has that email address' ) {

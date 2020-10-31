@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FairsService } from 'src/app/services/fairs.service';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/internal/operators/catchError';
 
@@ -12,9 +12,10 @@ import { catchError } from 'rxjs/internal/operators/catchError';
   templateUrl: './fair-chaperone-register.page.html',
   styleUrls: ['./fair-chaperone-register.page.scss'],
 })
-export class FairChaperoneRegisterPage implements OnInit {
+export class FairChaperoneRegisterPage implements OnInit, OnDestroy {
   registered = false;
   resgisterForm: FormGroup;
+  registerChaperoneSubscription: Subscription;
   chaperoneObject = {
     id: '',
     name: '',
@@ -52,6 +53,10 @@ export class FairChaperoneRegisterPage implements OnInit {
     private formBuilder: FormBuilder,
     private fairs: FairsService,
     private navParams: NavParams) { }
+
+    ngOnDestroy(): void {
+      this.registerChaperoneSubscription.unsubscribe();
+    }
 
     ngOnInit() {
       this.resgisterForm = this.formBuilder.group({
@@ -103,10 +108,10 @@ export class FairChaperoneRegisterPage implements OnInit {
       !this.chaperoneObject.lunch ) {
         console.log('Please answer all the questions!');
         console.log(this.chaperoneObject);
-        
         return this.presentFormAlert();
     } else {
-      this.fairs.registerChaperone(this.chaperoneObject).pipe(
+
+      this.registerChaperoneSubscription = this.fairs.registerChaperone(this.chaperoneObject).pipe(
         catchError((error: HttpErrorResponse) => {
 
           if ( error.error === 'A Chaperone already has that email address' ) {

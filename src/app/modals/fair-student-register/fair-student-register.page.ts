@@ -1,24 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ModalController, AlertController, NavParams , LoadingController} from '@ionic/angular';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FairsService } from 'src/app/services/fairs.service';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
-
-
+import { Subscription, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-fair-student-register',
   templateUrl: './fair-student-register.page.html',
   styleUrls: ['./fair-student-register.page.scss'],
 })
-export class FairStudentRegisterPage implements OnInit {
+export class FairStudentRegisterPage implements OnInit, OnDestroy {
   @ViewChild('descriptionChars', {static: false}) descriptionChars;
-  @ViewChild('colleguesChars', {static: false}) colleguesChars;
   registered = false;
   resgisterForm: FormGroup;
+  registerStudentSubscription: Subscription;
   studentInterests = [];
+  date: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  fairName: string;
   studentObject = {
     id: '',
     name: '',
@@ -104,22 +108,24 @@ export class FairStudentRegisterPage implements OnInit {
     private loading: LoadingController
   ) { }
 
+  ngOnDestroy(): void {
+    this.registerStudentSubscription.unsubscribe();
+  }
+
   ngOnInit() {
     this.resgisterForm = this.formBuilder.group({
       name: ['Eddie', Validators.required],
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
       phone: ['7342237792', [Validators.required, Validators.maxLength(10), Validators.pattern('[0-9 ]{10}')]]
     });
+
     this.studentObject.id = this.navParams.get('id');
-
-    this.fairs.getSchools().subscribe( schools => {
-      console.log(schools);
-    }
-    );
-    this.resgisterForm.statusChanges.subscribe(
-      status => console.log(status)
-
-    );
+    this.city = this.navParams.get('city');
+    this.state = this.navParams.get('state');
+    this.zip = this.navParams.get('zip');
+    this.address = this.navParams.get('address');
+    this.fairName = this.navParams.get('fairName');
+    this.date = this.navParams.get('date');
   }
 
   cancel() {
@@ -144,27 +150,6 @@ export class FairStudentRegisterPage implements OnInit {
       }
     }
   }
-
-
-
-
-  // this.interests.findIndex( interest => {
-  //   if (interest.val === interestName && interest.isChecked === true) {
-  //     interest.isChecked = false;
-  //     console.log('This interest was already checked');
-  //     // tslint:disable-next-line: max-line-length
-  //     for ( let i = 0; i < this.interests.length; i++) { if ( this.interests[i].val === interestName) {
-  //       console.log('Deleting ' + interestName + ' at ' + i );
-  //       this.studentInterests = this.studentInterests.splice(i, 1); }}
-  //   }
-
-  //   if (interest.val === interestName && interest.isChecked === false) {
-  //       console.log(interest.val + ' has not been checked');
-  //       interest.isChecked = true;
-  //       console.log(this.interests);
-  //     }
-
-  //   });
  }
 
   selectGrade(e) {
@@ -308,7 +293,7 @@ async presentLoading() {
   await loading.present();
   console.log('Trying to register student..');
 
-  this.fairs.registerStudent(this.studentObject).pipe(
+  this.registerStudentSubscription = this.fairs.registerStudent(this.studentObject).pipe(
     catchError((error: HttpErrorResponse) => {
 
       if ( error.error === 'A Student already has that email address' ) {
