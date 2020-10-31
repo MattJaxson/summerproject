@@ -29,8 +29,8 @@ export class FavoritesPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    this.favoriteSubs.unsubscribe();
-    this.favorites.favoriteJobs$.unsubscribe();
+    // this.favoriteSubs.unsubscribe();
+    // this.favorites.favoriteJobs$.unsubscribe();
     this.profileSub.unsubscribe();
   }
 

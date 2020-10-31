@@ -98,10 +98,10 @@ export class PostPagePage implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
     this.userDetailsSub.unsubscribe();
     this.postInfoSub.unsubscribe();
-    this.deletePostSub.unsubscribe();
-    this.deleteCommentSub.unsubscribe();
-    this.unfollowPostSub.unsubscribe();
-    this.followPostSub.unsubscribe();
+    // this.deletePostSub.unsubscribe();
+    // this.deleteCommentSub.unsubscribe();
+    // this.unfollowPostSub.unsubscribe();
+    // this.followPostSub.unsubscribe();
   }
 
   ngOnInit() {

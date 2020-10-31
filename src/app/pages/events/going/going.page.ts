@@ -34,8 +34,7 @@ export class GoingPage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.profileSub.unsubscribe();
     this.eventsGoingSub.unsubscribe();
-    this.cancelSub.unsubscribe();
-    this.cancelSub.unsubscribe();
+    // this.cancelSub.unsubscribe();
   }
 
   ngOnInit() {

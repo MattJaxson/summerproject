@@ -16,7 +16,7 @@ import { FairsService } from 'src/app/services/fairs.service';
   styleUrls: ['./fair-page.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FairPagePage implements OnInit, OnDestroy, AfterViewInit {
+export class FairPagePage implements OnInit, AfterViewInit {
   id: string;
   fairName: string;
   usertype: string;

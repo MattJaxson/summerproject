@@ -109,7 +109,7 @@ export class FairStudentRegisterPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    this.registerStudentSubscription.unsubscribe();
+    // this.registerStudentSubscription.unsubscribe();
   }
 
   ngOnInit() {
@@ -293,7 +293,7 @@ async presentLoading() {
   await loading.present();
   console.log('Trying to register student..');
 
-  this.registerStudentSubscription = this.fairs.registerStudent(this.studentObject).pipe(
+  this.fairs.registerStudent(this.studentObject).pipe(
     catchError((error: HttpErrorResponse) => {
 
       if ( error.error === 'A Student already has that email address' ) {
@@ -318,7 +318,7 @@ async presentLoading() {
       console.log(this.studentObject.interests);
 
       console.log('Loading dismissed!');
-     });
+     })
 }
 confirm() {
   this.modal.dismiss();

@@ -23,7 +23,6 @@ export class JobsPage implements OnInit, OnDestroy {
   jobsSub: Subscription;
   profileSub: Subscription;
   favoriteJobsSub: Subscription;
-  jobsSub: Subscription;
 
   allJobs;
   allJobsLength;
