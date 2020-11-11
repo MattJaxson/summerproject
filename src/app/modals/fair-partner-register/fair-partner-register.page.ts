@@ -147,18 +147,21 @@ async cropPhoto(uploadedPhotoURL) {
 
   formData.append('booth-partner-logo', photoFile);
 
+  this.partnerObject.name = this.resgisterForm.value['name'];
+  this.partnerObject.email = this.resgisterForm.value['email'];
+  this.partnerObject.phone = this.resgisterForm.value['phone'];
+  this.partnerObject.colleagues = this.resgisterForm.value['colleagues'];
+  this.partnerObject.organization = this.resgisterForm.value['organization'];
+  this.partnerObject.description = this.resgisterForm.value['description'];
+
   if (this.uploadedPhoto === true) {
     this.photo.boothPartnerLogo(formData).subscribe(
       data => {
+
+        this.presentLoading();
         console.log(data);
         console.log('Image Upload API Successful');
         this.partnerObject.logo = data['objectUrl'];
-        this.partnerObject.name = this.resgisterForm.value['name'];
-        this.partnerObject.email = this.resgisterForm.value['email'];
-        this.partnerObject.phone = this.resgisterForm.value['phone'];
-        this.partnerObject.colleagues = this.resgisterForm.value['colleagues'];
-        this.partnerObject.organization = this.resgisterForm.value['organization'];
-        this.partnerObject.description = this.resgisterForm.value['description'];
 
         if (
             !this.resgisterForm.valid ||
@@ -176,9 +179,7 @@ async cropPhoto(uploadedPhotoURL) {
               console.log(this.partnerObject);
               return this.presentFormAlert();
 
-            } else {
-              this.presentLoading();
-            }
+            } 
       });
   }
  }

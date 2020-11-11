@@ -11,9 +11,9 @@ export class LandingPage implements OnInit {
 
   slideOptions = {
     autoplay: {
-      delay: 6000
+      delay: 5000000
     },
-    speed: 500
+    speed: 1000
   };
 
   constructor(private router: Router) { }

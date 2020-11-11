@@ -4,18 +4,23 @@ ion-grid {
 
 ion-toolbar {
 
+    #logo {
+        height: 30px;
+    }
+
     // height: 100%;
     --background: #fff;
-    --padding-start: 10px;
-    --padding-end: 10px;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    box-shadow: 1px 1px 24px black;
 
     .mobile-toolbar-button {
         height: 40px;
-        width: 80px;
-        font-size: 0.6em;
-        margin: 0px 5px;
+        width: 75px;
+        font-weight: 600;
+        font-size: .7rem;
     }
 
     ion-button {
@@ -30,28 +35,62 @@ ion-header > ion-toolbar {
     margin: 0 auto;
 }
 
+.header {
+    border-bottom: 5px solid #fab716;
+}
+
 .button-row {
     position: absolute;
     display: inline-block;
     margin-left: 10px;
 }
 
+
 ion-slides {
     width: 100%;
     height: 75vh;
     min-height: 400px;
-    background-color: #bbb; // placeholder background
+    background-image: url('../../../assets/Fair_Agenda.jpg');
+    background-position: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 ion-slide {
     display: block;
     padding-top: 25vh;
+    // background: rgb(0,81,145);
+    // background: linear-gradient(0deg, rgba(0, 81, 143, 1) 11%, rgba(40,107,160,0.5) 50%, rgba(172, 193, 209, 0) 64%);
 
-    h1 {
-        color: white;
-        font-size: 3em;
-        font-weight: bolder;
-        text-shadow: 3px 2px 8px #000;
+    .slide-text-wrapper {
+        bottom: 50px;
+        padding: 16px 0px;
+        margin: 130px auto 0px auto;
+        height: 500px;
+        width: auto;
+        min-width: 320px;
+        background: rgba(40,107,160,0.5);
+
+        h2 {
+            margin-top: 2.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+            width: 315px;
+            margin: 16px auto;
+        }
+
+        .orange-button {
+            --background: none;
+            border: 2.5px solid #fab716;
+            border-radius: 5px;
+        }
     }
 }
 

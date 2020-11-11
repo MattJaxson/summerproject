@@ -3,9 +3,9 @@
   <ion-toolbar>
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
     <ion-buttons slot="end">
-      <ion-button class="mobile-toolbar-button" (click)="fairsPage()" color="primary" fill="solid" slot="end">Fairs</ion-button>
-      <ion-button class="mobile-toolbar-button" (click)="resources()" color="primary" fill="solid" slot="end">Resources</ion-button>
-      <ion-button class="mobile-toolbar-button" (click)="loginSignup()" color="primary" fill="solid" slot="end">Login</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="fairsPage()" slot="end">Fairs</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="resources()" slot="end">Resources</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="loginSignup()" slot="end">Login</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,6 @@
 <ion-header class="ion-hide-md-down">
   <ion-toolbar class="ion-justify-content-center">
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
-    
     <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">FYF</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -23,27 +22,32 @@
   <ion-grid>
 
     <!-- Mobile version slides -->
-    <ion-row class="ion-hide-lg-up">
+    <ion-row class="header ion-hide-lg-up">
       <ion-slides [options]="slideOptions">
+        <ion-slide class="ion-text-center">
+          <div class="slide-text-wrapper">
+            <h2>Register for United Way Fairs</h2>
+            <h4>As a Student, Chaperone, Volunteer, or Booth Partner</h4>
+            <ion-button (click)="fairsPage()" class="orange-button">View Fairs</ion-button>
+          </div>
+        </ion-slide>
         <ion-slide class="ion-align-items-center">
-          <h1>Connect with Students</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Join Now</ion-button>
+          <div class="slide-text-wrapper">
+            <h2>Connect.</h2>
+            <h4>Make Posts, find Jobs, and go to Events associated with United Way & Find Your Future.</h4>
+            <ion-button (click)="loginSignup()" class="orange-button">Join FYF</ion-button>
+          </div>
         </ion-slide>
-        <ion-slide>
-          <h1>Find Jobs</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Sign Up</ion-button>
-        </ion-slide>
-        <ion-slide>
-          <h1>Find Events</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Join Now</ion-button>
-        </ion-slide>
-        <ion-slide>
-          <h1>Connect with Mentors</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Apply Now</ion-button>
+        <ion-slide class="ion-align-items-center">
+          <div class="slide-text-wrapper">
+            <h2>Get Information.</h2>
+            <h4>Find resources from other organizations associated with United Way & Find Your Future.</h4>
+            <ion-button (click)="resources()" class="orange-button">Resources</ion-button>
+          </div>
         </ion-slide>
       </ion-slides>
     </ion-row>
-    
+
     <!-- Web version slides -->
     <ion-row class="ion-hide-md-down">
       <ion-slides [options]="slideOptions">
