@@ -11,7 +11,7 @@ export class LandingPage implements OnInit {
 
   slideOptions = {
     autoplay: {
-      delay: 5000000
+      delay: 5000
     },
     speed: 1000
   };

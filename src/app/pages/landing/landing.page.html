@@ -70,31 +70,38 @@
       </ion-slides>
     </ion-row>
 
-    <!-- App description -->
-    <ion-row class="ion-justify-content-center detail-section" id="app-description">
-      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6" style="font-size: 1.3em; padding-top: 15px; padding-bottom: 15px">
-        <p>
-          Lorem ipsum dolor sit amet. This is a paragraph that introduces the app.
-          It educates the user about the features of this app.
-        </p>
-      </ion-col>
-    </ion-row>
-
     <!-- Who is United Way? -->
-    <ion-row class="ion-justify-content-center detail-section" id="who-is">
-      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <h3 style="text-transform: uppercase;">Who is United Way?</h3>
-        <img src="../../../assets/United_Way_Logo_3.svg" style="margin: 32px auto;" />
+    <ion-row class="ion-justify-content-center" id="united-way-description">
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <h2>Fairs</h2>
+      </ion-col>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <h2>FYF App</h2>
+      </ion-col>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <h2>Resource</h2>
+      </ion-col>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="ion-text-center">
+          <img class="uw-logo" src="../../../assets/United_Way_Logo_3.svg" />
+        </div>
         <p>
-          Lorem ipsum dolor sit amet. This paragraph talks about United Way. It describes to the user what the
-          organization does. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Tristique nulla aliquet enim tortor at auctor urna. Massa ultricies mi quis
-          hendrerit dolor magna eget est. Venenatis cras sed felis eget velit aliquet. Enim praesent elementum
-          facilisis leo.
+          United Way advances the common good in communities across the world. Our focus is on education, income and health — the building blocks for a good quality of life.
+          <br>
+          <br>
+          United Way works with companies, governments, nonprofits and other organizations to address complex challenges on a worldwide scale. Our partners contribute more than money. Their ideas, volunteer power, in-kind support and more are helping build stronger communities.
         </p>
+        <br>
+        <h3>United Way Partners</h3>
+        <img class="partner-logo" src="../../../assets/logos/Ford_logo_flat.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/National_Football_League_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/United_Parcel_Service_logo_2014.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Lyft_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Pepsi_logo_new.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Walmart_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Starbucks_Corporation_Logo_2011.png" alt="" srcset="">
       </ion-col>
     </ion-row>
-
   </ion-grid>
 
   <ion-footer>
@@ -108,11 +115,9 @@
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
-    </ion-toolbar>
-    <ion-toolbar>
-      <ion-button routerLink="/terms" fill="clear" color="light" size="small">Terms of Use</ion-button>
+      <ion-button routerLink="/terms" size="small">Terms of Use</ion-button>
       <span class="floating-dot">&#9679;</span>
-      <ion-button routerLink="/privacy" fill="clear" color="light" size="small">Privacy Policy</ion-button>
+      <ion-button routerLink="/privacy" size="small">Privacy Policy</ion-button>
     </ion-toolbar>
   </ion-footer>
 </ion-content>

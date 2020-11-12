@@ -14,7 +14,7 @@ ion-toolbar {
     --padding-end: 15px;
     --padding-top: 10px;
     --padding-bottom: 10px;
-    box-shadow: 1px 1px 24px black;
+    box-shadow: 1px 1px 35px #eee;
 
     .mobile-toolbar-button {
         height: 40px;
@@ -40,9 +40,7 @@ ion-header > ion-toolbar {
 }
 
 .button-row {
-    position: absolute;
-    display: inline-block;
-    margin-left: 10px;
+   
 }
 
 
@@ -100,23 +98,41 @@ ion-slide {
     }
 }
 
-.detail-section {
-    height: 60vh;
-    min-height: 300px;
-}
+#united-way-description {
+    p {
+        font-size: 1.3em;
+    }
 
-#who-is {
-    background-color: #ffb35166;
+    .uw-logo {
+        width: 200px;
+        margin: 120px auto 20px auto;
+    }
 
-    ion-col {
-        font-size: 1.2em;
+
+    .partner-logo {
+        width: 170px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    .partner-logo:nth-child(2){
+        width: 170px;
+    }
+    .partner-logo:nth-child(3){
+        width: 170px;
+    }
+
+    h3 {
+        color: #005191;
+        margin-bottom: 50px;
     }
 }
 
 ion-col {
-    padding-left: 8px;
-    padding-right: 8px;
-    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 120px;
+    // text-align: center;
 }
 
 ion-footer > ion-toolbar {
