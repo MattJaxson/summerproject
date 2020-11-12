@@ -61,6 +61,16 @@ const routes: Routes = [
               import('../pages/mentors/mentors.module').then(m => m.MentorsPageModule)
           }
         ]
+      },
+      {
+        path: 'resources',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/resources/resources.module').then(m => m.ResourcesPageModule)
+          }
+        ]
       }
     ]
   }

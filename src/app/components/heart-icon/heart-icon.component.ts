@@ -12,12 +12,12 @@ import { ProfileService } from 'src/app/services/profile.service';
 
     trigger('heart', [
         state('unfavorited', style({
-            color: '#FF443B',
-            opacity: '0.4',
+            color: '#faa71b',
+            opacity: '1',
             transform: 'scale(0.9)'
         })),
         state('favorited', style({
-            color: '#FF443B',
+            color: '#faa71b',
             opacity: '1',
             transform: 'scale(1)'
 

@@ -1,0 +1,61 @@
+ <!-- Mobile Toolbar -->
+ <ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+        <p class="toolbar-title">Conversation</p>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="menu()">
+          <img class="ellipsis" src="../../../../../assets/icons/ellipsis.svg" alt="">
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" id="message-list">
+    <!-- <div class="ion-text-center no-messages" *ngIf="chatroom.length == 0">
+      <p>Please send a message to start this conversation.</p>
+    </div> -->
+    <ion-item *ngFor="let message of chatroom">
+      <ion-avatar>
+        <img src="{{message.profilePicture}}" />
+      </ion-avatar>
+      <ion-label>
+        <h4 style="opacity: 0.8;">{{message.userFullName}} <span class="date-sent">&middot; {{message.date}}</span></h4>
+        <p style="font-size: 1.1em; color: #111;">{{message.text}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-toolbar class="chat-messages-create-container">
+    <ion-input #message (keyup.enter)="sendMessage()"
+     type="text" placeholder="Type message here"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button  class="chat-messages-create-button" (click)="sendMessage()"> Send </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-content>
+
+<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+[shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+<div class="drawer-content">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-button class="blue-button" (click)="delertAlert()">
+          Delete
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button class="blue-button" (click)="reportConvo()">
+          Report
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button class="grey-button" (click)="menu()">
+          Cancel
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-bottom-drawer>

@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { EventsService } from '../../../services/events.service';
 import { ProfileService } from '../../../services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 import { PlatformLocation } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-events-page',
   templateUrl: './events-page.page.html',
   styleUrls: ['./events-page.page.scss'],
 })
-export class EventsPagePage implements OnInit {
+export class EventsPagePage implements OnInit, OnDestroy {
 
   id;
   userEmail;
@@ -30,6 +31,11 @@ export class EventsPagePage implements OnInit {
   eventDescription;
   eventPhoto;
 
+  eventsSub: Subscription;
+  goingToEventSub: Subscription;
+  notGoingToEventSub: Subscription;
+  profileSub: Subscription;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private events: EventsService,
@@ -39,6 +45,11 @@ export class EventsPagePage implements OnInit {
     private eventEmitterService: EventsEventEmitterService,
     private location: PlatformLocation
     ) { }
+
+  ngOnDestroy(): void {
+      this.eventsSub.unsubscribe();
+      this.eventEmitterService.subsVar.unsubscribe();
+    }
 
   ngOnInit() {
 
@@ -85,7 +96,7 @@ export class EventsPagePage implements OnInit {
     this.eventDescription = description;
     this.eventPhoto = photo;
 
-    this.profile.getUserDetails().subscribe(
+    this.profileSub = this.profile.getUserDetails().subscribe(
       details => {
 
         // Get all the events that the user is going to.
@@ -102,7 +113,7 @@ export class EventsPagePage implements OnInit {
 
         console.log();
       }
-    )
+    );
   }
 
   goingToEvent() {
@@ -111,7 +122,7 @@ export class EventsPagePage implements OnInit {
     this.presentGoingToast();
     console.log(`Adding ${this.eventId} to this Users eventsGoing property`);
 
-    this.events.goingToEvent(this.eventId, this.userEmail, this.id)
+    this.goingToEventSub = this.events.goingToEvent(this.eventId, this.userEmail, this.id)
       .subscribe(events => {
 
         let updatedEvents = [...Object.values(events['eventsGoing']), this.eventId];
@@ -130,7 +141,7 @@ export class EventsPagePage implements OnInit {
     this.going = false;
     this.presentNotGoingToast();
     console.log(`Removing ${this.eventId} from this Users eventsGoing property`);;
-    this.events.notGoingToEvent(this.eventId, this.userEmail, this.id).subscribe(
+    this.notGoingToEventSub = this.events.notGoingToEvent(this.eventId, this.userEmail, this.id).subscribe(
       events => {
         const eventsGoing = this.events.eventsGoing$.getValue();
 

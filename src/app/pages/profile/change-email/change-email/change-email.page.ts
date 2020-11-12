@@ -41,7 +41,7 @@ export class ChangeEmailPage implements OnInit {
      }
 
   ngOnInit() {
-  
+
     this.changeEmail =  this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.compose([
@@ -60,7 +60,7 @@ export class ChangeEmailPage implements OnInit {
           this.formValid = false;
         }
       }, 100);
-    })
+    });
   }
 
   back() {

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostsService } from '../../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { format } from 'date-fns';
 import { formatDistanceToNow } from 'date-fns';
 import { FollowIconComponent } from '../../../components/follow-icon/follow-icon.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { PlatformLocation } from '@angular/common';
+import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class FollowingPage implements OnInit {
     private toast: ToastController,
     private formBuilder: FormBuilder,
     private eventEmitterService: PostPageEmitterService,
+    private modal: ModalController,
     private location: PlatformLocation
   ) { }
 
@@ -41,7 +43,7 @@ export class FollowingPage implements OnInit {
       this.eventEmitterService.onBackAction();
     });
 
-     // Get the User's Followed Posts
+    // Get the User's Followed Posts
     this.profile.getUserDetails().subscribe(
       details => {
         console.log('User ID from Following Page OnInit');
@@ -69,8 +71,19 @@ export class FollowingPage implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
+  }
 
+  async thirdPersonProfileModal(creatorEmail, creatorName) {
+    const thirdPersonProfileModalConfig = await this.modal.create({
+    component: ThirdPersonProfilePage,
+    componentProps: {
+      creatorEmail,
+      creatorName
+    },
+    cssClass: 'third-person-profile-modal'
+    });
 
+    await thirdPersonProfileModalConfig.present();
   }
 
   postPage(post) {

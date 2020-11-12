@@ -20,21 +20,24 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
 
   constructor(
     private modal: ModalController,
-    private navParams: NavParams,
+    public navParams: NavParams,
     private loading: LoadingController,
     private toast: ToastController) {
     this.imageDestination = '';
 }
 
 public ngAfterViewInit() {
-  console.log('AfterViewInit');
   this.cropper = new Cropper(this.imageElement.nativeElement, {
-      zoomable: false,
-      scalable: false,
+      zoomable: true,
+      scalable: true,
       aspectRatio: 1,
-      viewMode: 1,
+      autoCropArea: 1,
+      wheelZoomRatio: 0.8,
+      viewMode: 0,
       responsive: true,
       movable: true,
+      // minCropBoxWidth: 500,
+      // minCropBoxHeight: 500,
       zoomOnTouch: true,
       zoomOnWheel: true,
       crop: () => {
@@ -48,13 +51,10 @@ public ngAfterViewInit() {
 }
 
 public ngOnInit() {
-  console.log('OnInit');
-
   this.uploadedPhotoURL = this.navParams.get('uploadedPhotoURL');
 }
 
   back() {
-    console.log('back');
     this.modal.dismiss();
   }
 

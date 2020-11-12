@@ -27,8 +27,7 @@ import { RepliesPagePageModule } from 'src/app/modals/replies-page/replies-page.
     EditCommentPageModule,
     EditPostPageModule,
     RepliesPagePageModule
-
-      ],
+  ],
   declarations: [PostPagePage]
 })
 export class PostPagePageModule {}

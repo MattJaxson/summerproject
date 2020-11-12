@@ -28,7 +28,7 @@
                   (keyup.enter)="login(this.loginForm.value)">
                 </ion-input>
             </ion-item>
-                <!-- Password Validation-->
+                <!-- Email Validation-->
                 <div class="validation-errors">
                   <ng-container *ngFor="let validation of validationMessasges.email">
                     <div class="error-message"
@@ -88,6 +88,11 @@
         <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
       </ion-col>
     </ion-row>
+
+    <!-- Back Button -->
+    <ion-col size="12">
+      <ion-button class="grey-button" (click)="back()">Back</ion-button>
+    </ion-col>
 
   </ion-grid>
 
@@ -169,6 +174,13 @@
       <ion-row class="ion-justify-content-center">
         <ion-col size="6">
           <ion-button text-center [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <!-- Back Button -->
+        <ion-col size="6">
+          <ion-button class="grey-button" (click)="back()">Back</ion-button>
         </ion-col>
       </ion-row>
 

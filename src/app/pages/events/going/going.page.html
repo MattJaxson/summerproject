@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title slot="end">My Events</ion-title>
+    <ion-title>My Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +30,7 @@
       </ion-row>
 
       <!-- Events -->
-      <ion-row class="ion-justify-content-center" style="margin-top: 5%;" *ngFor="let event of goingToEvents$ | async">
+      <ion-row class="ion-justify-content-center" style="margin-top: 5%;" *ngFor="let event of goingToEvents">
         <ion-col size="2">
          <img class="thumbnail" src="../assets/Journi_flyer.jpg"/>
         </ion-col>
@@ -59,7 +59,7 @@
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-col size-xs="12" size-sm="10" size-md="9">
-          <ion-card *ngFor="let event of goingToEvents$ | async">
+          <ion-card *ngFor="let event of goingToEvents">
             <img src="../assets/Journi_flyer.jpg" />
             <ion-card-header (click)="eventPage(event)">
               <ion-card-title>{{ event.title }}</ion-card-title>
@@ -72,7 +72,7 @@
               <ion-button class="grey-button"(click)="eventPage(event)">
                 Details
               </ion-button>
-              <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">
+              <ion-button class="orange-button" (click)="cancel(event._id)">
                 Cancel
               </ion-button>
            </ion-card-content>

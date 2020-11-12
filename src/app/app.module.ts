@@ -8,6 +8,12 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://10.0.1.5:3000', options: {} };
+
+// Third Party
+import { IonBottomDrawerModule } from 'ion-bottom-drawer';
 
 // Custom Modules
 import { CustomComponentsModule } from './components/custom-component.module';
@@ -18,20 +24,13 @@ import { FavoritesEventEmitterService } from './emitters/favorites-event-emitter
 
 //  Ionic Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage, IonicStorageModule } from '@ionic/storage';
-import { Vibration } from '@ionic-native/vibration/ngx';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { Crop } from '@ionic-native/crop/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 
 
 // For JWT
@@ -48,6 +47,7 @@ export function jwtOptionsFactory(storage) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    IonBottomDrawerModule,
     CustomComponentsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -56,6 +56,7 @@ export function jwtOptionsFactory(storage) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
     IonicStorageModule.forRoot(),
     JwtModule.forRoot({
       jwtOptionsProvider: {
@@ -69,10 +70,6 @@ export function jwtOptionsFactory(storage) {
   providers: [
     PostPageEmitterService,
     FavoritesEventEmitterService,
-    StatusBar,
-    SplashScreen,
-    Keyboard,
-    Vibration,
     Camera,
     File,
     FilePath,

@@ -29,4 +29,18 @@ export class PhotoService {
     imageForm);
    }
 
+   updatePostPhotos(newPhoto, email) {
+    console.log(newPhoto);
+    return this.http.post(`${this.BACKEND_URL}/api/photo/update-all-post-pictures`,
+    newPhoto, email).subscribe();
+   }
+
+   boothPartnerLogo(logo) {
+    console.log('both partner uploading');
+    console.log(logo);
+    return this.http.post(`${this.BACKEND_URL}/api/photo/upload-booth-partner-logo`,
+    logo);
+
+   }
+
 }

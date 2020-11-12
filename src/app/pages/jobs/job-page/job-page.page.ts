@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subscription} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { ToastController } from '@ionic/angular';
+import { IonTabBar, ToastController } from '@ionic/angular';
 import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.component';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
@@ -10,12 +10,13 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
 import { PlatformLocation } from '@angular/common';
 
+
 @Component({
   selector: 'app-job-page',
   templateUrl: './job-page.page.html',
   styleUrls: ['./job-page.page.scss'],
 })
-export class JobPagePage implements OnInit {
+export class JobPagePage implements OnInit, OnDestroy {
 
   jobObj;
   jobId;
@@ -28,6 +29,11 @@ export class JobPagePage implements OnInit {
   jobDatePosted;
   favoriteJobsObj;
 
+  profileSub: Subscription;
+  favoriteJobsSub: Subscription;
+  jobsSub: Subscription;
+  favoritesSub: Subscription;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -38,12 +44,18 @@ export class JobPagePage implements OnInit {
     private eventEmitterService: FavoritesEventEmitterService,
     private location: PlatformLocation
   ) { }
+  ngOnDestroy(): void {
+    this.profileSub.unsubscribe();
+    this.favoriteJobsSub.unsubscribe();
+    this.favoritesSub.unsubscribe();
+    this.jobsSub.unsubscribe();
+  }
   ngOnInit() {
 
     this.location.onPopState(() => {
       this.triggerJobPageRefresh();
-    })
-    
+    });
+
     // tslint:disable-next-line: radix
     const id  = this.activatedRoute.snapshot.paramMap.get('id');
     // tslint:disable-next-line: radix
@@ -57,7 +69,7 @@ export class JobPagePage implements OnInit {
      // tslint:disable-next-line: radix
     const fullJobDescription  = this.activatedRoute.snapshot.paramMap.get('fullJobDescription');
       // tslint:disable-next-line: radix
-    const rateOfPay  = this.activatedRoute.snapshot.paramMap.get('rateOfPay');    
+    const rateOfPay  = this.activatedRoute.snapshot.paramMap.get('rateOfPay');
 
     this.jobId = id;
     this.jobTitle = title;
@@ -72,22 +84,22 @@ export class JobPagePage implements OnInit {
 
   getFavoriteJobs() {
     // getting all the favorite jobs that the user has on their profile
-    this.profile.getUserDetails().subscribe(
+    this.profileSub = this.profile.getUserDetails().subscribe(
       data => {
         let favoriteJobs = data['favoriteJobs']
 
         this.favorites.favoriteJobs$.next(favoriteJobs);
-        this.favorites.favoriteJobs$.subscribe(
+        this.favoriteJobsSub = this.favorites.favoriteJobs$.subscribe(
           favs => {
             console.log(`Favorite Jobs in Service: ${favs}`);
-            this.jobs.getJobs().subscribe( jobs => {
+            this.jobsSub = this.jobs.getJobs().subscribe( jobs => {
               for (const job of Object.values(jobs)) {
                 if (this.jobId == job._id) {
                   this.jobObj = job;
                 }
               }
             });
-            this.favorites.getFavorites(data['email']).subscribe( favDetails => {
+            this.favoritesSub = this.favorites.getFavorites(data['email']).subscribe( favDetails => {
               this.favoriteJobsObj = favDetails;
             });
           }

@@ -1,6 +1,44 @@
+.header-hr{
+  border-top: 1px solid #666;
+  opacity: 0.3;
+  margin-top: 10px;
+}
+
 .post {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background: #edf3f8;
+  padding: 20px 0px;
+}
+
+.post-title {
+  font-weight: 800;
+  color: #005191;
+}
+
+.profile-picture {
+  border-radius: 100px;
+  height: 35px;
+  width: 35px;
+  // position: relative;
+  // right: 5px;
+  // top: 5px;
+  display: inline-block
+}
+
+.post-name {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #005191;
+  margin: 0;
+  line-height: 18px;
+  display: inline-block;
+}
+
+.post-date {
+  opacity: 0.8;
+  font-size: 0.5em;
+  margin: 0; line-height: 18px;
+  display: block;
 }
 
 .blue-button {
@@ -31,17 +69,6 @@
   border-radius: 5px;
 }
 
-.profile-picture {
-  border-radius: 100px;
-  border: 1px solid #005191;
-  height: 50px;
-  width: 50px;
-  position: relative;
-  right: 5px;
-  top: 5px;
-  display: inline-block
-}
-
 
 @media only screen and (max-width: 576px) {
   .profile-picture  {
@@ -68,8 +95,9 @@
 .comment-post-button {
   --background: linear-gradient(#5ad8b2, #40c59d);
   height: 40px;
-  margin-top: 40px;
+  margin-top: 10px;
   opacity: 0;
+  font-size: 1.1em;
   width: 100%;
   transform: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -116,8 +144,8 @@
     width: 100px;
     height: 36px;
     opacity: 0;
-  --background: none;
-  --color: #24d8a8;
+  --background: #24d8a8;
+  --color: white;
   --border-style: solid;
   --border-width: 1px;
   --border-color: linear-gradient(#797, #799);
@@ -202,14 +230,14 @@ width: 80px;
 --border-color: linear-gradient(#24d8a8, #1baf88);;
 --border-style: solid;
 border-radius: 5px;
---color: #24d8a8;
---background: none;
-font-size: 0.6em;
+--color: white;
+--background: linear-gradient(#5ad8b2, #40c59d);
+font-size: 0.7em;
 margin-right: 10px;
 }
 
 ion-toolbar {
-  --background: none;
+  background: #edf3f8;
 }
 
 ion-title {
@@ -302,8 +330,8 @@ ion-fab {
   margin: 10px 0 0px 0;
   width: 100%;
   box-shadow: none;
-  border: 1px solid rgba(0, 81, 145,0.4);
-  border-radius: 5px;
+  border: 2px solid rgba(0, 81, 145, 1);
+  border-radius: 2px;
   padding-left: 10px;
   transition: 0.5s;
   transition-timing-function: linear;

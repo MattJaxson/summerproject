@@ -1,15 +1,9 @@
 <!-- Mobile Header -->
-<ion-header class="ion-hide-lg-up">
+<ion-header class="ion-hide-lg-up" no-border>
   <ion-toolbar class="toolbar">
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-      <div style="position: relative; right: 15px;" slot="end">
-        <ion-title >{{creatorName}}'s Post &middot; <span style="font-size: 0.5em; position: relative; top: 0px; color: #666;">{{date}} ago</span></ion-title>
-      </div>
-      <div style="position: relative; right: 15px;" slot="end">
-        <img slot="end" class="profile-picture" src="{{creatorProfilePicture}}">
-      </div>
   </ion-toolbar>
 </ion-header>
 
@@ -24,17 +18,14 @@
 
    <!-- fab placed to the bottom end; Going back to the top of the page on the mobile view. -->
   <ion-fab *ngIf="showFab" vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button (click)="fabScrollTop()">
-            <ion-icon name="arrow-up" size="large"></ion-icon>
-          </ion-fab-button>
+    <ion-fab-button (click)="fabScrollTop()">
+        <ion-icon name="arrow-up" size="large"></ion-icon>
+     </ion-fab-button>
   </ion-fab>
 
   <ion-grid>
 
     <ion-row class="post ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="8">
-
-        <ion-row class="ion-justify-content-center">
 
           <!-- Profile Header -->
           <!-- Only on Desktop -->
@@ -42,12 +33,12 @@
             <ion-row>
 
             <!-- Profile Picture -->
-            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1">
+            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1" (click)="thirdPersonProfileModal(creatorEmail, creatorName)">
               <img class="profile-picture" src="{{creatorProfilePicture}}">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col class="ion-hide-md-down" size="5">
+            <ion-col (click)="thirdPersonProfileModal(creatorEmail, creatorName)" class="ion-hide-md-down" size="5">
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}} - <span style="font-size: 0.5em;">{{date}}  ago</span></h6>
             </ion-col>
 
@@ -62,19 +53,22 @@
           </ion-col>
 
           <!-- Post Content -->
-          <ion-col size="12">
-            <ion-row class="ion-justify-content-center">
-              <!-- 1080x1350 -->
-              <ion-col size="11" size-lg="12">
+          <ion-col size="11">
+                <img class="profile-picture" src="{{creatorProfilePicture}}">
+                <div style="display: inline-block; margin-left: 10px;">
+                  <p class="post-name">{{creatorName}}</p>
+                  <p class="post-date">Posted {{date}} ago</p>
+                </div>
+                <hr class="header-hr">
+          </ion-col>
+          <!-- 1080x1350 -->
+          <ion-col size="11" size-lg="12">
+                <p class="post-title">{{title}}</p>
                <p class="post-content">{{post}}</p>
-              </ion-col>
-           </ion-row>
           </ion-col>
 
           <!-- Comment Input -->
-          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12">
-            <ion-row style="position: relative; right: 6px; top: -4px;" >
-              <ion-col size="12">
+          <ion-col size="12">
                 <ion-item lines="none">
                  <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value )" [formGroup]="commentForm">
                     <ion-textarea
@@ -102,17 +96,13 @@
                  </form>
                 </ion-item>
 
-              </ion-col>
-            </ion-row>
           </ion-col>
 
           <!-- Upvote and Downvote Post -->
-          <ion-col id="votes" size-xs="12" size-sm="12" size-md="12" size-lg="12">
-            <ion-row>
-              <ion-col size="4.5">
-                <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
-            </ion-col>
-            <ion-col push-lg="0.25" size="6.5">
+          <ion-col size="4.5">
+            <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
+          </ion-col>
+          <ion-col push-lg="0.25" size="6.5">
               <ion-button *ngIf="this.isUser === true" (click)="deletePost(this.postID)"  class="delete ion-float-right">
                 Delete
               </ion-button>
@@ -133,12 +123,8 @@
                 style="width: 80px">
                 Unfollow
               </ion-button>
-            </ion-col>
-            </ion-row>
           </ion-col>
 
-        </ion-row>
-      </ion-col>
     </ion-row>
 
     <!-- Comments -->
@@ -150,7 +136,7 @@
       </ion-col>
 
       <ion-col *ngIf="comments.length > 0" size-xs="11" size-sm="10" size-md="8" size-lg="8">
-        <p style="color: #888; margin: 60px 0">Comments - {{comments.length}}</p>
+        <p style="color: #888; margin: 0px 0">Comments - {{comments.length}}</p>
       </ion-col>
 
         <!-- Comment Wrapper -->
@@ -160,11 +146,13 @@
           <ion-row>
             <ion-col>
               <ion-item lines="none">
-                <ion-avatar class="comment-avatar" slot="start">
+                <ion-avatar class="comment-avatar" slot="start" (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
                   <img src="{{comment.userProfilePicture}}">
                 </ion-avatar>
-                <ion-label>
+                <ion-label (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
                   <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} </h6>
+
+                  <hr class="header-hr">
                   </ion-label>
               </ion-item>
             </ion-col>

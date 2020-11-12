@@ -1,0 +1,96 @@
+ion-toolbar {
+  color: white;
+  font-size: 1.2em;
+  position: relative;
+  top: -5px;
+}
+
+ion-header {
+  background: #21ce99;
+}
+#upload-picture-wrapper {
+  height: 150px; width: 150px;
+  // border-radius: 50px;
+  opacity: 0;
+  margin-top: 50px;
+  display: block;
+  animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+}
+
+#default-picture-wrapper {
+  border: 1px solid lightgrey;
+  margin: 20px 0px;
+  padding: 10px;
+  text-align: center;
+}
+
+.confirm-popout {
+  height: 100vh;
+  width: 100vw;
+  background-color: White;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  animation: popout 1s ease forwards;
+}
+
+.header-slide-up{
+  animation: slide-up 1s ease 1s forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  animation: slide-up 1s ease 1s forwards;
+}
+
+#sign-up {
+  background: lightblue;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+ion-list-header{
+  margin-top: 100px;
+}
+
+ion-textarea {
+  border: solid 1px #005191;
+}
+
+.char-limit {
+  color: #e4405f;
+  margin-bottom: 50px;
+}
+
+@keyframes popout {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes off {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+  }
+}
+

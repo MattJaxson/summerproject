@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'mentor-page/:name/:title/:email/:description/:photo/:city/:state',
     loadChildren: () => import('./mentor-page/mentor-page.module').then( m => m.MentorPagePageModule)
+  },
+  {
+    path: 'mentor-chat',
+    loadChildren: () => import('./mentor-chat/mentor-chat.module').then( m => m.MentorChatPageModule)
   }
 ];
 

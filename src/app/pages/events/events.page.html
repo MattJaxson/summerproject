@@ -1,29 +1,23 @@
 <ion-header no-border class="ion-hide-lg-up">
-
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-    <ion-grid>
-      <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col push-xs="0.3" push-sm="1" size-xs="8" size-sm="8" size-md="8">
-          <ion-searchbar
-          debounce="2000"
-          class="searchbar"
-          showCancelButton="true"
-          placeholder="Search Event Titles"
-          (ionChange)="filter($event)"
-          ></ion-searchbar>
-        </ion-col>
+    <ion-searchbar
+      debounce="2000"
+      class="searchbar"
+      animated="true"
+      searchIcon="none"
+      showCancelButton="true"
+      placeholder="Search Event Titles"
+      (ionChange)="filter($event)"
+       ></ion-searchbar>
 
-        <ion-col push-xs="0.3" push-sm="1" size-xs="3" size-sm="3" size-md="3">
-          <ion-button  id="my-events-button" (click)="going()">
-            My Events ({{ eventsGoingLength }})
-        </ion-button>
-
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </ion-toolbar>
-
+       <ion-buttons slot="end">
+        <ion-button (click)="going()">
+         <!-- My Events ({{ eventsGoingLength }}) -->
+         <ion-icon slot="start" src="../../assets/icons/my-events-icon.svg"></ion-icon>
+     </ion-button>
+       </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -45,8 +39,8 @@
     </ion-row>
 
     <!-- Mobile Events Cards -->
-    <ion-row class="ion-justify-content-center" *ngIf="!noSearchInput" >
-      <ion-col size-lg="6" size-md="8" size-sm="10" size-xs="12">
+    <ion-row  style="margin-top: 30px;" class="ion-justify-content-center" *ngIf="!noSearchInput" >
+      <ion-col size-lg="6" size-md="8" size-sm="10" size-xs="11.5 ">
         <ion-card *ngFor="let event of allEvents">
           <img src="../assets/Journi_flyer.jpg" />
           <ion-card-header (click)="eventPage(event)">
@@ -56,36 +50,34 @@
             <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
             <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
           </ion-card-header>
-          <ion-card-content style="--ion-grid-padding: 0;">
-            <ion-toolbar>
+          <ion-card-content>
               <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
-            </ion-toolbar>
          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <!-- Desktop -->
   <ion-grid class="ion-hide-md-down">
 
     <ion-row style="margin: 50px 0 50px 0;">
 
       <!-- Search Bar -->
       <ion-col size="8.33" push="1">
-            <ion-searchbar
+        <ion-searchbar
             no-border
             debounce="800"
             showCancelButton="focus"
             placeholder="Search Event Titles"
             (ionChange)="filter($event)"
-            ></ion-searchbar>
+            >
+      </ion-searchbar>
       </ion-col>
       <ion-col size="2" push="0.5">
         <ion-row>
           <ion-col size="12">
             <ion-button class="blue-button ion-float-right" style="width: 170px; position: fixed; top: 60px;" (click)="going()">
-              My Events ({{ eventsGoingLength }})
+              <ion-icon slot="start" src="../../assets/icons/my-events-icon.svg"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

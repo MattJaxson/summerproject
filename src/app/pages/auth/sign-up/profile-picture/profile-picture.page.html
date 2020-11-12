@@ -13,10 +13,11 @@
         <ion-col size="12" class="ion-align-items-center">
           <!-- Default Picture if user does not select profile picture Wrapper -->
           <canvas
+            #defaultPicture
             id="default-picture-wrapper"
             *ngIf="!uploadedPhoto"></canvas>
 
-          <!-- User has uploaded profile picture -->
+          <!-- User has uploaded cropped profile picture -->
           <img
             id="upload-picture-wrapper"
             *ngIf="uploadedPhoto"
@@ -32,13 +33,8 @@
         <h6 class="text-header">Please select your profile picture. Only pictures with the extentions <span>'.png', '.jpg', and '.jpeg'</span> are allowed. </h6>
       </ion-row>
 
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="10">
-          </ion-col>
-        </ion-row>
-
         <form
-        (ngSubmit)="uploadPhoto()" id="proPicForm">
+        (ngSubmit)="uploadPhoto()" id="proPicForm" type="multipart/form-data">
 
           <input
             name="profile-picture"

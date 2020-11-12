@@ -26,63 +26,23 @@ export class FairsService {
     return this.http.get(`${this.BACKEND_URL}/api/fairs`);
   }
 
-  getFair(id) {
-    console.log(id);
+  getFair(name) {
+    console.log(name);
     console.log('id from fairs service');
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/fair`, {id});
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/fair`, {name});
   }
 
   registerStudent(student) {
-  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student)
-    .pipe(
-      catchError((error: HttpErrorResponse) => {
-
-        if ( error.error === 'A Student already has that email address' ) {
-          console.log('A Student already has that email address');
-
-          this.emailAlreadyExistAlert();
-          return throwError;
-        }
-      })
-    )
-    .subscribe(
-      async data => {
-         await console.log('registering student to fair');
-         await console.log(data);
-         await this.presentLoadingWithOptions(student.name, student.email);
-         await this.router.navigate(['']);
-         await this.presentAlert();
-         await console.log('REGISTERED STUDENT TO FAIR!');
-       }
-     );;
+  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student);
   }
 
+  registerChaperone(chaperone) {
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-chaperone`, chaperone);
+  }
 
   registerPartner(partner) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner).subscribe(
-      async data => {
-        await console.log('registering partner to fair...');
-        await console.log(data);
-        await this.presentLoadingWithOptions(partner.name, partner.email);
-        await this.router.navigate(['']);
-        await console.log('REGISTERED PARTNER TO FAIR!');
-      }
-    );
+    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner);
   }
-
-
-  async registerChaperone(chaperone) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-chaperone`, chaperone).subscribe(
-      async data => {
-        await console.log('registering chaperone to fair');
-        await console.log(data);
-        await this.presentLoadingWithOptions(chaperone.name, chaperone.email);
-        await this.router.navigate(['']);
-        await console.log('REGISTERED CHAPERONE TO FAIR!');
-      }
-    );
-  }
-
 
   async registerVolunteer(volunteer) {
     return this.http.post(`${this.BACKEND_URL}/api/fairs/register-volunteer`, volunteer).subscribe(
@@ -96,9 +56,7 @@ export class FairsService {
     );
   }
 
-
   // Errors
-
   async handleError(error: HttpErrorResponse) {
 
     if ( error.error === 'A Student already has that email address' ) {
@@ -119,7 +77,6 @@ export class FairsService {
 
     return await alert.present();
   }
-
 
   // Loading
   async presentLoadingWithOptions(chaperoneName, chaperoneEmail) {
@@ -147,6 +104,11 @@ async presentAlert() {
   });
 
   await alert.present();
+}
+
+getSchools() {
+  console.log('Getting schools');
+  return this.http.get(`${this.BACKEND_URL}/api/admin/fairs/get-schools`);
 }
 
 

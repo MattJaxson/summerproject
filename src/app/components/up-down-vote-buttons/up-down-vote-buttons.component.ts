@@ -3,6 +3,7 @@ import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class UpDownVoteButtonsComponent implements OnInit {
   constructor(
     public posts: PostsService,
     private profile: ProfileService,
-    private toast: ToastController
+    private toast: ToastController,
+    private postsEmitterService: PostPageEmitterService,
   ) { }
 
   async ngOnInit() {
@@ -89,7 +91,7 @@ export class UpDownVoteButtonsComponent implements OnInit {
           this.downVoted = downVoted;
         });
       });
-  }
+    }
 
    async upVotePost() {
 
@@ -110,7 +112,7 @@ export class UpDownVoteButtonsComponent implements OnInit {
       }
     }
      );
-
+    this.postsEmitterService.postPageRefresh();
     this.upVotePostToast();
   }
 
@@ -137,12 +139,11 @@ export class UpDownVoteButtonsComponent implements OnInit {
       this.downVoteLength = this.downVotes$.getValue();
 
       if (this.downVoted === true) {
-
         return this.upVoted = false;
       }
     }
    );
-
+    this.postsEmitterService.postPageRefresh();
     this.downVoteToast();
   }
 

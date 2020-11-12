@@ -1,0 +1,41 @@
+<!-- Mobile Header -->
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-buttons (click)="cancel()" slot="start">
+      <ion-icon slot="start" name="close"></ion-icon>
+      <p class="toolbar-title">New Message</p>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button slot="end" color="secondary" (click)="newChatroom()">
+        Next
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row  class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="8" size-lg="6">
+        <ion-input type="text" placeholder="Type a name" (keyup)="search($event)"></ion-input>
+        <hr>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="8" size-lg="6">
+        <ion-item *ngFor="let user of users" lines="none" (click)="newChatroom(user.name, user.email, user.profilePicture)">
+          <ion-avatar slot="start">
+            <img src={{user.profilePicture}}>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{user.name}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <!-- If there are no search results -->
+      <ion-col *ngIf="this.users.length == 0" class="ion-text-center" size-xs="12" size-sm="8" size-lg="6">
+        <p class="no-users">There are no users with that name</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

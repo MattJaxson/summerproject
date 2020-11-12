@@ -3,12 +3,31 @@ ion-grid {
 }
 
 ion-toolbar {
-    height: 100%;
+
+    #logo {
+        height: 30px;
+    }
+
+    // height: 100%;
     --background: #fff;
     --padding-start: 15px;
     --padding-end: 15px;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    box-shadow: 1px 1px 35px #eee;
+
+    .mobile-toolbar-button {
+        height: 40px;
+        width: 75px;
+        font-weight: 600;
+        font-size: .7rem;
+    }
+
+    ion-button {
+        width: 120px;
+        height: 44px;
+        --border-radius: 5px;
+    }
 }
 
 ion-header > ion-toolbar {
@@ -16,48 +35,173 @@ ion-header > ion-toolbar {
     margin: 0 auto;
 }
 
-.button-row {
-    position: absolute;
-    display: inline-block;
-    margin-left: 10px;
+.header {
+    border-bottom: 5px solid #fab716;
 }
+
+.button-row {
+   
+}
+
 
 ion-slides {
     width: 100%;
     height: 75vh;
     min-height: 400px;
-    background-color: #bbb; // placeholder background
+    background-image: url('../../../assets/Fair_Agenda.jpg');
+    background-position: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.swiper-pagination {
+    position: fixed;
+    bottom: 0px;
+    padding-bottom: 3px;
 }
 
 ion-slide {
     display: block;
     padding-top: 25vh;
+    // background: rgb(0,81,145);
+    // background: linear-gradient(0deg, rgba(0, 81, 143, 1) 11%, rgba(40,107,160,0.5) 50%, rgba(172, 193, 209, 0) 64%);
 
-    h1 {
-        color: white;
-        font-size: 3em;
-        font-weight: bolder;
-        text-shadow: 3px 2px 8px #000;
+    .slide-text-wrapper {
+        bottom: 80px;
+        padding: 16px 0px;
+        margin: 130px auto 0px auto;
+        height: 800px;
+        width: auto;
+        min-width: 320px;
+        background: rgba(40,107,160,0.7);
+
+        h2 {
+            margin-top: 2.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+            width: 315px;
+            margin: 16px auto;
+        }
+
+        .orange-button {
+            --background: none;
+            border: 2.5px solid #fab716;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
     }
 }
 
-.detail-section {
-    height: 60vh;
-    min-height: 300px;
+
+
+.illustration {
+    background: lightgray;
+    height: 350px;
+    width: 300px;
+    margin: 135px auto;
 }
 
-#who-is {
-    background-color: #ffb35166;
+.usertype {
+    background: #eee;
+    padding: 10px 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
 
-    ion-col {
-        font-size: 1.2em;
+.lastest-fair {
+    background: blue;
+    width: 500px;
+    height: 357px;
+}
+
+.fairs-description,
+.lastest-fair-description,
+.app-description,
+.resources-description {
+    margin-bottom: 90px;
+}
+
+h2 {
+    margin-top: 100px;
+}
+
+.landing-page-button {
+    margin: 50px auto;
+    width: 200px;
+}
+
+.lastest-fair-description{
+
+}
+
+.app-description {
+
+}
+
+.resources-description {
+
+}
+
+.feature {
+    background: #eee;
+    padding: 10px 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.resource-logo {
+    height: 80px;
+    width: 80px;
+    margin: 86px 0px 20px 0px;
+    background: #676767;
+}
+
+.divider {
+    border-bottom: 3px solid #eee;
+}
+
+#united-way-description {
+    p {
+        font-size: 1.3em;
+    }
+
+    .uw-logo {
+        width: 200px;
+        margin: 120px auto 20px auto;
+    }
+
+
+    .partner-logo {
+        width: 170px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    .partner-logo:nth-child(2){
+        width: 170px;
+    }
+    .partner-logo:nth-child(3){
+        width: 170px;
+    }
+
+    h3 {
+        color: #005191;
+        margin-bottom: 50px;
     }
 }
 
 ion-col {
-    padding-left: 8px;
-    padding-right: 8px;
-    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 120px;
+    // text-align: center;
 }
 
 ion-footer > ion-toolbar {
@@ -78,6 +222,8 @@ ion-footer > ion-toolbar:nth-child(2) {
 }
 ion-footer ion-button {
     text-transform: capitalize;
+    display: block;
+    margin: 29px auto;
 }
 
 .floating-dot {

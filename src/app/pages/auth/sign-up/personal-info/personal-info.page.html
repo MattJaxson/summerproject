@@ -5,7 +5,7 @@
   <ion-grid class="ion-text-center">
 
     <!-- Header -->
-    <ion-row class="header">
+    <ion-row class="header ion-justify-content-center">
       <ion-col size-lg="5" size-md="7" size-xs="11">
         <h6 class="text-header">Please enter your profile information.</h6>
       </ion-col>
@@ -14,7 +14,7 @@
     <ion-row class="ion-justify-content-center">
 
       <!-- Form -->
-      <ion-col style="margin-top: 150px;" size-lg="5" size-md="7" size-xs="11">
+      <ion-col style="margin-top: 50px;" size-lg="5" size-md="7" size-xs="11">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -28,27 +28,6 @@
               formControlName="fullName"
               placeholder="First & Last Name"></ion-input>
             </ion-item>
-
-            <ion-item>
-              <ion-input
-              required
-              inputmode="text"
-              formControlName="phone"
-              maxlength="10"
-              placeholder="Phone # e.i (xxx) xxx - xxxx"></ion-input>
-            </ion-item>
-            <!-- Password Validation-->
-            <div class="validation-errors">
-              <ng-container *ngFor="let validation of validationMessasges.phone">
-                <div class="error-message"
-                *ngIf="userInfoForm
-                  .get('phone')
-                  .hasError(validation.type) && (userInfoForm.get('phone')
-                  .dirty || userInfoForm.get('phone').touched)">
-                  {{ validation.message }}
-                </div>
-              </ng-container>
-            </div>
 
             <ion-item>
                 <ion-select
@@ -93,8 +72,22 @@
 
             </ion-item>
 
+            <ion-item>
+              <ion-textarea
+              autogrow="true"
+              autocapitalize="true"
+              rows="5"
+              spellcheck="true"
+              wrap="soft"
+              type="text"
+              maxlength="500"
+              placeholder="Tell us about yourself" formControlName="about">
+            </ion-textarea>
+          </ion-item>
+          <p class="char-limit">500 character limit</p>
+
             </ion-list>
-            <ion-button [disabled]="!this.userInfoForm.valid" class="orange-button" type="submit">NEXT</ion-button><br>
+            <ion-button class="orange-button" type="submit">NEXT</ion-button><br>
             <ion-button (click)="cancel()" id="cancel-button" class="blue-button" slot="end">
                 cancel
               </ion-button>

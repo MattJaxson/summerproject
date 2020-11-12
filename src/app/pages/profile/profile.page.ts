@@ -19,9 +19,7 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   userObject: any = {
     fullName: '',
-    addressOne: '',
-    addressTwo: '',
-    phone: '',
+    about: '',
     city: '',
     state: '',
     zip: '',
@@ -35,9 +33,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   };
   user: any;
 
-
-
-
   constructor(
     private auth: AuthService,
     private profile: ProfileService,
@@ -45,8 +40,23 @@ export class ProfilePage implements OnInit, OnDestroy {
     private router: Router,
     private toast: ToastController,
     private alert: AlertController,
-    private loading: LoadingController,
-    private navCtrl: NavController) {
+    private loading: LoadingController
+    ) {
+    }
+
+    ngOnDestroy() {
+      this.detailsSub.unsubscribe();
+      this.profile.fullName.unsubscribe();
+      this.profile.about.unsubscribe();
+      this.profile.city.unsubscribe();
+      this.profile.state.unsubscribe();
+      this.profile.zip.unsubscribe();
+      this.profile.gender.unsubscribe();
+      this.profile.school.unsubscribe();
+      this.profile.grade.unsubscribe();
+      this.profile.profilePicture.unsubscribe();
+      this.profile.email.unsubscribe();
+      this.profile.resume.unsubscribe();
     }
 
     ngOnInit() {
@@ -55,9 +65,7 @@ export class ProfilePage implements OnInit, OnDestroy {
           res => {
             console.log(res);
             const fullName = res['fullName'];
-            const addressOne = res['addressOne'];
-            const addressTwo = res['addressTwo'];
-            const phone = res['phone'];
+            const about = res['about'];
             const city = res['city'];
             const state = res['state'];
             const zip = res['zip'];
@@ -72,9 +80,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             // Send initial profile values to Profile Service;
             // Have to initial these values from the Profile Component
             this.profile.fullName.next(fullName);
-            this.profile.addressOne.next(addressOne);
-            this.profile.addressTwo.next(addressTwo);
-            this.profile.phone.next(phone);
+            this.profile.about.next(about);
             this.profile.city.next(city);
             this.profile.state.next(state);
             this.profile.zip.next(zip);
@@ -90,15 +96,8 @@ export class ProfilePage implements OnInit, OnDestroy {
             this.profile.fullName.subscribe(data => {this.userObject.fullName = data;
               }
             );
-            this.profile.addressOne.subscribe(data => {
-                this.userObject.addressOne = data;
-              }
-            );
-            this.profile.addressTwo.subscribe(data => {this.userObject.addressTwo = data;
-              }
-            );
-            this.profile.phone.subscribe(data => {
-                this.userObject.phone = data;
+            this.profile.about.subscribe(data => {
+                this.userObject.about = data;
               }
             );
             this.profile.city.subscribe(data => {this.userObject.city = data;
@@ -140,9 +139,6 @@ export class ProfilePage implements OnInit, OnDestroy {
             );
     });
   }
-
-    ngOnDestroy() {
-    }
 
     clearToken() {
       // ONLY FOR TESTING!
@@ -191,9 +187,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             handler: () => {
               console.log('Canceling logout');
               this.profile.fullName.next('');
-              this.profile.addressOne.next('');
-              this.profile.addressTwo.next('');
-              this.profile.phone.next('');
+              this.profile.about.next('');
               this.profile.city.next('');
               this.profile.state.next('');
               this.profile.zip.next('');

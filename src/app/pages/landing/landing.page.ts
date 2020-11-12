@@ -11,9 +11,9 @@ export class LandingPage implements OnInit {
 
   slideOptions = {
     autoplay: {
-      delay: 6000
+      delay: 5000
     },
-    speed: 500
+    speed: 1000
   };
 
   constructor(private router: Router) { }
@@ -23,6 +23,14 @@ export class LandingPage implements OnInit {
 
   loginSignup() {
     this.router.navigate(['login']);
+  }
+
+  resources() {
+    this.router.navigate(['resources']);
+  }
+
+  fairsPage() {
+    this.router.navigate(['selection']);
   }
 
 }

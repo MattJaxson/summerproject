@@ -30,7 +30,7 @@ h4 {
 }
 
 p {
-  font-size: 1.4em;
+  font-size: 1em;
   opacity: 0;
   transition: 0.5s;
   animation: text-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
@@ -50,7 +50,7 @@ p {
 span {
   color: #005191;
   font-weight: 600;
-  width: 100px;
+  width: 120px;
   display: inline-block;
 }
 
@@ -155,7 +155,7 @@ span {
 
 @media screen and (max-width: 992px) {
   p {
-    font-size: 1.2em;
+    font-size: 1em;
   }
    span {
     color: #005191;

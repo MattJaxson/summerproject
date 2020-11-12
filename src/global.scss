@@ -25,8 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-html {
+html, body {
   box-sizing: border-box;
+  min-height: 100%;
 }
 *,
 *:before,
@@ -43,10 +44,10 @@ ion-grid {
 }
 
 ion-header {
-  background: none;
-  box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
+  background: #fff;
+  // box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
   color: #005191;
-  padding: 10px 0 10px 0;
+  // height: 60px;
 }
 
 ion-list {
@@ -74,14 +75,38 @@ ion-toolbar {
   --color: #005191;
 }
 
+.drawer-content {
+  padding-top: 40px;
+  background: rgba(0,0,0,0.05);
+  height: 50vh;
+
+  ion-list {
+    background: none;
+  }
+
+  ion-item{
+    --background: none;
+  }
+  ion-button {
+    margin: 10px auto;
+    padding: 5px;
+  }
+}
+
+.toolbar-title{
+  font-weight: 400;
+  font-size: 1.24em;
+  margin-left: 20px;
+}
+
 ion-icon {
-  font-size: 20px;
+  font-size: 2px;
 }
 
 ion-title {
-  --color: --ion-color-primary;
-  margin-top: 10px;
-  font-size: 1em;
+  font-weight: 400;
+  font-size: 1.24em;
+  margin-left: 0px;
 }
 
 .post-content {
@@ -96,23 +121,15 @@ ion-title {
   white-space: pre-wrap;
 }
 
-
-// Ion-Select Buttons
-.action-sheet-button-inner {
-  // color: red;
-}
-
 .searchbar-input {
   background: #FFF !important;
-  border: 1px solid rgba(0,0,0,0.15) !important;
+  border: 2px solid #005191 !important;
   border-radius: 5px !important;
-  height: 50px !important;
-  padding: 25px 0px 20px 50px !important;
+  height: 40px !important;
+  padding: 10px 0px 10px 20px !important;
   max-width: 100%;
-  opacity: 0;
-  font-size: 1.25em !important;
+  font-size: 1.4em !important;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1) !important;
-  animation: searchbar-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
 
 .searchbar-input:hover {
@@ -140,24 +157,34 @@ ion-title {
 .swiper-pagination {
   // Swiper disabled before student app launch
 
-  display: none;
   position: relative;
   bottom: 20px !important;
   left: 45%;
-  bottom: calc(env(safe-area-inset-bottom) + 60px) !important;
-  background: rgba(200, 200, 200, 0.5);
+  bottom: calc(env(safe-area-inset-bottom) + 40px) !important;
+  background: #eee;
   border-radius: 50px;
   padding: 5px;
   width: 100px !important;
   margin: 0 auto !important;
   }
 
+  .swiper-pagination-bullet {
+    background: #333;
+}
+  .swiper-pagination-bullet-active {
+    background: #005191;
+}
+
 .disabled {
-  opacity: 0;
+  opacity: 1;
 }
 
 ion-input:focus {
   padding: 10px 0;
+}
+
+.validation-errors{
+  background: none;
 }
 
 .line-input {
@@ -168,7 +195,6 @@ ion-input:focus {
       --border-color: transparent!important;
       --highlight-height: 0;
       margin: 20px auto;
-      padding: 3.5px 0;
       border: 2px solid #dedede;
       transition: 0.2s;
       border-radius: 4px;
@@ -195,6 +221,17 @@ ion-input:focus {
   }
 }
 
+ion-select {
+  /* Applies to the value and placeholder color */
+  color: #005191;
+  font-weight: 600;
+  font-size: 1.1em;
+
+  /* Set a different placeholder color */
+
+  /* Set full opacity on the placeholder */
+}
+
 ion-select-option {
   width: 200px;
 }
@@ -204,10 +241,9 @@ ion-select-option {
   height: 40px;
   font-size: 1em;
   font-weight: 800;
-  color: #faa71b;
+  color: white;
   margin: 10px auto;
-  --background: linear-gradient(#fadaa7, #ffeac5);
-  --background-hover: linear-gradient(#faa71b, #cc8a17);
+  --background: #faa71b;
   --transition: 0.5s;
   // opacity: 0;
   // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
@@ -222,11 +258,33 @@ ion-select-option {
   color: white;
 }
 
+.green-button {
+  width: 150px;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 800;
+  color: white;
+  --background: linear-gradient(#4dc066, #2da847);
+  --background-hover: linear-gradient(#3fa054, #217734);
+  --transition: 0.5s;
+  // opacity: 0;
+  // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.green-button:focus {
+  --background: #faa71b;
+  color: white;
+}
+.green-button:hover {
+  --background: #faa71b;
+  color: white;
+}
+
 
 .grey-button {
-  --background: #e6e6e6;
-  --background-hover: #999;
-  color: #888;
+  --background: #e0e0e0;
+  --background-hover: #e0e0e0;
+  color: #999;
   width: 150px;
   height: 40px;
   font-size: 1em;
@@ -250,10 +308,9 @@ ion-select-option {
   margin: 10px auto;
   position: relative;
   top: 5px;
-  --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
-  --background-hover: linear-gradient(#0672c4, #054372);
+  --background: #005191;
   --transition: 1s;
-  --color: #005191;
+  --color: white;
   // opacity: 0;
   // animation: slide-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 1s  forwards;
 }
@@ -456,13 +513,14 @@ ion-button {
 
 ion-back-button {
   --color: #005191;
+  width: auto;
 }
 
 ion-buttons > ion-button {
   font-size: 0.9em;
   font-weight: 700;
   margin-bottom: 0px;
-  --border-radius: 5px;
+  // --border-radius: 5px;
   --box-shadow: none;
 }
 

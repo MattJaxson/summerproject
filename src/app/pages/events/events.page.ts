@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format, formatDistanceToNow, parseISO } from 'date-fns';
 import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
-
+import { isAfter } from 'date-fns';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,12 +14,16 @@ import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter
   templateUrl: './events.page.html',
   styleUrls: ['./events.page.scss'],
 })
-export class EventsPage implements OnInit, AfterViewInit {
+export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
+  eventsSub: Subscription;
+  profileSub: Subscription;
+  eventsGoingSub: Subscription;
+  deleteEventSub: Subscription;
   eventsGoing;
-  eventsGoingLength = 0;
+  eventsGoingLength;
   searching = false;
   noSearchInput = false;
   searchTerm;
@@ -37,6 +42,13 @@ export class EventsPage implements OnInit, AfterViewInit {
     private eventEmitterService: EventsEventEmitterService
     ) { }
 
+  ngOnDestroy(): void {
+    this.eventsSub.unsubscribe();
+    this.eventsGoingSub.unsubscribe();
+    this.eventEmitterService.subsVar.unsubscribe();
+    this.deleteEventSub.unsubscribe();
+  }
+
   ngAfterViewInit() {
         this.searchbar.getInputElement().then(  (searchbarInputElement) => {
          searchbarInputElement.style.boxShadow = "none";
@@ -44,6 +56,7 @@ export class EventsPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.deleteEvent();
 
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeEventsPageRefresh.subscribe(() => {
@@ -52,37 +65,49 @@ export class EventsPage implements OnInit, AfterViewInit {
     }
 
     // Get the User's details
-    this.profile.getUserDetails().subscribe( details => {
+    this.profileSub = this.profile.getUserDetails().subscribe( details => {
 
       this.id = details['_id'];
       this.userEmail = details['email'];
 
       this.events.eventsGoing$.next(details['eventsGoing']);
-      this.events.eventsGoing$.subscribe(
+
+      this.eventsGoingSub = this.events.eventsGoing$.subscribe(
         events => {
-          this.eventsGoingLength = Object.values(events).length;
+          console.log(events.length);
+          this.eventsGoingLength = events.length;
         }
       );
       console.log('User id: ' + this.id);
       console.log('User email: ' + this.userEmail);
     });
 
-    this.events.getEvents().subscribe( events => {
+    this.eventsGoing = this.events.getEvents().subscribe( events => {
 
       // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
       // .
 
-      console.log('Events that are intially loaded: ');
-      console.log(events);
-
+      // First Array of Events
       this.allEvents = Object.values(events);
       this.allEventsLength  = this.allEvents.length;
       this.allEvents.reverse();
 
+      // Second Array of Events
       this.loadedAllEvents = Object.values(events);
       this.loadedAllEvents.reverse();
 
+      // Loop each Event and format the dates. Also, delete an Event if its scheduled date
       for (const event of this.allEvents) {
+        // First date Event Date
+        // Second date Current Date
+
+        // If the Current Date is After the Event Date, Delete
+        // If True, Delete event.
+
+        if (isAfter(new Date(Date.now()), new Date(event.date))) {
+          this.deleteEventSub = this.events.deleteEvent(event._id).subscribe();
+        }
+
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.time = format( new Date(event.date), 'hh:mm a');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
@@ -93,16 +118,22 @@ export class EventsPage implements OnInit, AfterViewInit {
     });
   }
 
-  eventPage(event) {
+  deleteEvent() {
+    var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11));
+    console.log(result);
+
+  }
+
+    eventPage(event) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne,  event.addressOne,  event.city,  event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
   }
 
-  going() {
+    going() {
     this.router.navigate(['/home/events/going']);
   }
 
-  filter($event) {
+    filter($event) {
 
     this.initializeItems();
     let searchTerm = $event.detail.value;
@@ -164,7 +195,7 @@ export class EventsPage implements OnInit, AfterViewInit {
     }
   }
 
-  initializeItems(): void {
+    initializeItems(): void {
     this.allEvents = this.loadedAllEvents;
   }
 
@@ -182,7 +213,7 @@ export class EventsPage implements OnInit, AfterViewInit {
   async doRefresh(event) {
 
     this.allEvents = [];
-    await this.events.getEvents().subscribe( events => {
+    this.eventsSub = this.events.getEvents().subscribe( events => {
 
       this.allEvents = Object.values(events);
       this.allEventsLength = this.allEvents.length;
@@ -191,6 +222,15 @@ export class EventsPage implements OnInit, AfterViewInit {
 
       // Format Times
       for (const event of this.allEvents) {
+        // First date Event Date
+        // Second date Current Date
+
+        // If the Current Date is After the Event Date, Delete
+        // If True, Delete event.
+
+        if (isAfter(new Date(Date.now()), new Date(event.date))) {
+          this.deleteEventSub = this.events.deleteEvent(event._id).subscribe();
+        }
         event.date = format( new Date(event.date), 'MMMM dd, yyyy');
         event.dateCreated = formatDistanceToNow( new Date(event.dateCreated), {
           includeSeconds: true,
@@ -214,7 +254,7 @@ export class EventsPage implements OnInit, AfterViewInit {
   }
 
   async getEvents() {
-    await this.events.getEvents().subscribe( events => {
+    this.eventsSub = this.events.getEvents().subscribe( events => {
 
       this.allEvents = Object.values(events);
       this.allEventsLength = this.allEvents.length;

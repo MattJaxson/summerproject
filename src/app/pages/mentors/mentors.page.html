@@ -1,43 +1,44 @@
 <ion-header no-border class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="8" size-md="8">
-          <ion-searchbar
+  <ion-toolbar style="padding: 10px;">
+    <ion-searchbar
           (ionChange)="filter($event)"
           debounce="2000"
           class="searchbar"
           showCancelButton="focus"
           placeholder="Search Mentors"
           ></ion-searchbar>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="chat()">
+        <ion-icon size="large" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
       <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="10" size-xl="5">
-        <ion-row class="mentors ion-justify-content-center">
-          <ion-col size="1">
-            <div class="mentor-thumbnail"></div>
-          </ion-col>
-          <ion-col size="6" push-xs="0">
-            <p id="mentor-name">{{mentor.name}}</p>
-            <p id="mentor-title">{{mentor.title}}</p>
-          </ion-col>
-          <ion-col class="ion-align-self-center" size-md="4" size-xs="10" push-md="1">
-            <ion-button style="width: 100%;" class="blue-button ion-hide-md-up" (click)="mentorPage(mentor)">
-              Contact
-            </ion-button>
-            <ion-button class="blue-button ion-hide-sm-down" (click)="mentorPage(mentor)">
-              Contact
-            </ion-button>
-          </ion-col>
-        </ion-row>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../../assets/aaron.jpg" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{mentor.name}}</h2>
+              <p>{{mentor.title}}</p>
+            </ion-label>
+            <ion-buttons slot="end">
+              <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="mentorPage(mentor)">
+                Info
+              </ion-button>
+              <ion-button (click)="newMessage()">
+                <ion-icon size="large"  class="new-message" slot="start" name="create"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,3 +1,13 @@
+ion-header {
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  background: #edf3f8;
+  border-bottom: 1px solid #005191;
+
+  ion-icon {
+    font-size: 2.5em;
+  }
+}
+
 #logo{
   width: 100px;
   position: relative;
@@ -12,12 +22,10 @@
   background-position: center;
 }
 
-
-
 #job-details {
-  --background: #e6e6e6;
-  --background-hover: #999;
-  color: #888;
+  --background: #edf3f8;
+  --background-hover: #edf3f8;
+  color: #005191;
   margin-right: 10px;
   font-size: 15px;
   height: 45px;
@@ -45,18 +53,13 @@
   right: 15px;
 }
 
-ion-icon {
-  color: red;
-  font-size: 25px;
-  position: relative;
-  right: 5px;
-}
 
 ion-searchbar {
+  margin-left: 10px;
   --background: white;
   border-radius: 5px;
   --height: 60px;
-  width: 90%;
+  width: 95%;
   font-size: 0.8em;
   --box-shadow: none;
   --cancel-button-color: #005191;
@@ -89,27 +92,38 @@ h6, p {
 }
 
 #job-summary {
-  font-size: 1.1em;
-  line-height: 29px;
+  font-size: 1.3em;
+  line-height: 1.3em;
   position: relative;
-  color: #666;
+  color: #333;
   opacity: 0.7;
   top: -60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #005191;
 }
 
 #company-name {
   font-size: 0.9em;
   opacity: 0.8;
   position: relative;
-  top: -31px
+  top: -29px
 }
 
 #job-title {
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-weight: 500;
   position: relative;
   top: -15px;
   color: #111;
+}
+
+#job-rate {
+  font-size: 0.95em;
+  font-weight: 900;
+  opacity: 0.7;
+  position: relative;
+  top: -53px;
+  color: #116e56;
 }
 
 @media only screen and (min-width: 992px) {

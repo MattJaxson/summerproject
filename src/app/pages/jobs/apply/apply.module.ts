@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 import { IonicModule } from '@ionic/angular';
 
 import { ApplyPageRoutingModule } from './apply-routing.module';
 
 import { ApplyPage } from './apply.page';
+import { ViewResumePageModule } from 'src/app/modals/view-resume/view-resume.module';
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { ApplyPage } from './apply.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ApplyPageRoutingModule
+    ApplyPageRoutingModule,
+    ViewResumePageModule
   ],
   declarations: [ApplyPage]
 })

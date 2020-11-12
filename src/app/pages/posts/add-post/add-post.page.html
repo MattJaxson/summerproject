@@ -34,23 +34,37 @@
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="10" size-md="9" size-lg="7" size-xl="6">
-        <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost) : null">
-          <ion-row>
-            <ion-col class="ion-text-center">
-              <ion-item class="text-input ion-no-padding">
+      <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="7" size-xl="6">
+        <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.post.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.controls.post.value, this.textPostForm.controls.title.value) : null">
+
+          <ion-list class="line-input">
+            <ion-item>
+              <ion-input
+              #titleChars
+              autocapitalize="on"
+              required
+              inputmode="text"
+              maxlength="100"
+              formControlName="title"
+              placeholder="Title"></ion-input>
+            </ion-item>
+            <p class="char-limit">{{titleChars.value.length}} / 100 character limit</p>
+
+              <ion-item>
                 <ion-textarea
-                  rows="15"
+                  #postChars
+                  rows="10"
                   auto-grow="true"
                   spellcheck="true"
-                  wrap="soft"
-                  formControlName="textPost"
+                  maxlength="3000"
+                  formControlName="post"
                   placeholder="What do you have to say?"
                   (keydown.control.enter)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost) : null">
                 </ion-textarea>
+                <p class="char-limit">{{postChars.value.length}} / 3000 character limit</p>
               </ion-item>
-              </ion-col>
-            </ion-row>
+            </ion-list>
+
             <ion-row>
               <ion-col>
                 <ion-item style="margin: 15px 0 20px;" lines="none">

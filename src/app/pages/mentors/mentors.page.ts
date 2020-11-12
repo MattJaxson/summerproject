@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MentorsService } from '../../services/mentor.service';
-import { IonSearchbar, LoadingController } from '@ionic/angular';
+import { IonSearchbar, LoadingController, ModalController } from '@ionic/angular';
+import { NewMessageMentorPage } from 'src/app/modals/new-message-mentor/new-message-mentor.page';
 
 @Component({
   selector: 'app-mentors',
@@ -23,7 +24,8 @@ export class MentorsPage implements OnInit, AfterViewInit {
   constructor(
     private router: Router,
     private mentors: MentorsService,
-    public loading: LoadingController) { }
+    public loading: LoadingController,
+    private modal: ModalController) { }
 
   ngOnInit() {
     this.getMentors();
@@ -47,6 +49,22 @@ export class MentorsPage implements OnInit, AfterViewInit {
         this.searching = false;
       }
     );
+  }
+
+  chat() {
+    this.router.navigate(['/home/mentors/mentor-chat']);
+  }
+
+  async newMessage() {
+
+    const newMessageModalConfig = await this.modal.create({
+      component: NewMessageMentorPage,
+      componentProps: {
+
+      }
+    });
+    await newMessageModalConfig.present();
+
   }
 
   mentorPage(mentor) {

@@ -17,17 +17,9 @@ ion-title {
   text-align: justify;
 }
 
-ion-item {
-  --background: none;
-  --border-color: none;
-  --border-radius: 5px;
-  --inner-padding-end: 0;
-}
-
-.text-input {
-  box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
-  padding-left: 10px;
-  border: 1px solid rgba(0,0,0,0.1);
+.char-limit {
+  color: #e4405f;
+  margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 576px) {
@@ -37,15 +29,8 @@ ion-item {
   }
 
   ion-textarea {
-    background: #edf3f8;
+    // background: #edf3f8;
   }
-}
-
-ion-textarea {
-  --background: white;
-  --border-color: none;
-  padding: 5px 0 0 10px;
-  font-size: 1em;
 }
 
 .item-interactive {

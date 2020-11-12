@@ -37,17 +37,14 @@ export class PersonalInfoPage implements OnInit {
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
-      fullName: ['', Validators.compose([
+      fullName: ['Eddie', Validators.compose([
         Validators.required ])],
-      phone: ['', Validators.compose([
-        Validators.required,
-        Validators.maxLength(10)
-     ])],
-      gender: ['', Validators.required],
+      gender: '',
       // Date of Birth
-      dob: ['', [Validators.required]],
-      school: ['', Validators.required],
-      grade: ['', Validators.required],
+      dob: '',
+      school: ['Wayne', Validators.required],
+      grade: ['Senior', Validators.required],
+      about: ['Wassup', Validators.required],
     });
 
     this.formOnChanges();

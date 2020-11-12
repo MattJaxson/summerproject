@@ -1,14 +1,21 @@
 ion-toolbar {
-  --min-height: 10vh;
+  padding: 0px;
+}
+
+.new-message{
+  color: #faa71b;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 400;
 }
 
 .blue-button {
-  position: static;
-  width: unset;
-  height: 36px;
   animation: none;
-  opacity: unset;
 }
+
+
 
 .mentor-thumbnail {
   position: absolute;
