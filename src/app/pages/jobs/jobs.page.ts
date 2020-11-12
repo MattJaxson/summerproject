@@ -7,6 +7,7 @@ import { FavoritesService } from '../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { formatDistanceToNow } from 'date-fns';
 import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-emitter.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -18,6 +19,10 @@ import { FavoritesEventEmitterService } from 'src/app/emitters/favorites-event-e
 export class JobsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
+
+  jobsSub: Subscription;
+  profileSub: Subscription;
+  favoriteJobsSub: Subscription;
 
   allJobs;
   allJobsLength;
@@ -41,7 +46,18 @@ export class JobsPage implements OnInit, OnDestroy {
     public loading: LoadingController
   ) {}
 
+  ngOnDestroy() {
+    this.eventEmitterService.subsVar.unsubscribe();
+    this.jobsSub.unsubscribe();
+    this.profileSub.unsubscribe();
+    this.favoriteJobsSub.unsubscribe();
+  }
+
   ngOnInit() {
+
+    // Hide Tab Bar
+    const tabBar = document.getElementById('tabBar');
+    tabBar.style.display = 'static';
 
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeJobsPageRefresh.subscribe(() => {
@@ -51,7 +67,7 @@ export class JobsPage implements OnInit, OnDestroy {
 
     this.getFavoriteJobs();
 
-    this.jobs.getJobs().subscribe( jobs => {
+    this.jobsSub = this.jobs.getJobs().subscribe( jobs => {
 
         // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list jobs,
         // .
@@ -137,20 +153,18 @@ export class JobsPage implements OnInit, OnDestroy {
     this.allJobs = this.loadedAllJobs;
   }
 
-  ngOnDestroy() {
-
-  }
+  
 
   getFavoriteJobs() {
     // Get all the user's favorite jobs
-    this.profile.getUserDetails().subscribe(
+    this.profileSub = this.profile.getUserDetails().subscribe(
       data => {
         this.favoriteJobs = data['favoriteJobs']
         console.log('Favorite Jobs:');
         console.log(this.favoriteJobs);
 
         this.favorites.favoriteJobs$.next(this.favoriteJobs);
-        this.favorites.favoriteJobs$.subscribe(
+        this.favoriteJobsSub = this.favorites.favoriteJobs$.subscribe(
           favs => {
             console.log(`Favorite Jobs in Service: ${favs}`);
             this.favoriteJobsAmount = favs.length;
@@ -181,7 +195,7 @@ export class JobsPage implements OnInit, OnDestroy {
 
     this.getFavoriteJobs();
 
-    await this.jobs.getJobs().subscribe( jobs => {
+    this.jobsSub = this.jobs.getJobs().subscribe( jobs => {
 
       this.allJobs = Object.values(jobs);
       this.allJobsLength = this.allJobs.length;
@@ -208,7 +222,7 @@ export class JobsPage implements OnInit, OnDestroy {
   }
 
   async getJobs() {
-    await this.jobs.getJobs().subscribe( jobs => {
+    this.jobsSub = this.jobs.getJobs().subscribe( jobs => {
 
       this.allJobs = Object.values(jobs);
       this.allJobsLength = this.allJobs.length;

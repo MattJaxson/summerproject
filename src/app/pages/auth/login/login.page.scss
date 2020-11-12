@@ -40,4 +40,17 @@ ion-footer {
   animation: slide-up 0.5s ease 1.5s forwards;
 }
 
+.grey-button {
+  width: 200px;
+  height: 50px;
+  font-size: 1em;
+  font-weight: 700;
+  margin-top: 60px;
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: #999;
+  --background:none;
+  --color: #999;
+  --border-radius: 5px;
+}
 

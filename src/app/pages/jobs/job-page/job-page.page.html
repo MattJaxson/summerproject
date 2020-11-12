@@ -11,11 +11,10 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
         <ion-col class="description" size-xs="11" size-sm="10" size-md="8" size-lg="8">
-          <ion-col size="12">
             <!-- Back and Favorite Buttons (Desktop) -->
             <ion-row class="ion-align-items-end">
               <ion-col push="1">
-                <div class="company-logo" style="height: 100px; width: 100px;"></div>
+                <div class="company-logo" style="height: 90px; width: 90px;"></div>
               </ion-col>
               <ion-col  class="ion-float-right" size="2" push-xs="2" push-sm="2" push-md="2">
                 <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
@@ -23,20 +22,16 @@
               <ion-col size="2">
               </ion-col>
             </ion-row>
-          </ion-col>
 
-          <ion-col size="12">
             <ion-row>
-              <ion-col push="1" size="10" style="margin-top: 20px;">
-                <h1  id="job-title">{{jobTitle}}</h1>
+              <ion-col push="1" size="10">
+                <h1 id="job-title">{{jobTitle}}</h1>
                 <h2 id="company-name">{{jobCompanyName}}</h2>
                 <p id="company-name">{{jobCompanyEmail}}</p>
                 <p id="job-full-description">{{jobFullJobDescription}}</p>
               </ion-col>
             </ion-row>
           </ion-col>
-
-        </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center">

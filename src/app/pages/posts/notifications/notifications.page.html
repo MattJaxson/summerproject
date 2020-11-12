@@ -6,7 +6,7 @@
       <ion-title>Notifications</ion-title>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="clear(this.userEmail)">
+      <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="clear()">
         Clear
       </ion-button>
     </ion-buttons>
@@ -31,7 +31,7 @@
 
 <!-- List of Sliding Items -->
 <ion-list>
-  <ion-item-sliding *ngFor="let n of allNotifications">
+  <ion-item-sliding (click)="goTo()" *ngFor="let n of allNotifications">
     <ion-item>
       <ion-avatar>
         <img [src]="n.instigatingUserProfilePicture" />
@@ -40,7 +40,7 @@
       <p id="date">{{n.date}}</p>
     </ion-item>
     <ion-item-options side="end">
-      <!-- <ion-item-option (click)="delete(notification)">Delete</ion-item-option> -->
+      <ion-item-option (click)="delete(n)">Delete</ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>

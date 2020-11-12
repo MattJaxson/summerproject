@@ -3,9 +3,9 @@
   <ion-toolbar>
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
     <ion-buttons slot="end">
-      <ion-button (click)="fairsPage()" color="primary" fill="solid" slot="end">Fairs</ion-button>
-      <ion-button (click)="resources()" color="primary" fill="solid" slot="end">Resources</ion-button>
-      <ion-button (click)="loginSignup()" color="primary" fill="solid" slot="end">Login</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="fairsPage()" slot="end">Fairs</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="resources()" slot="end">Resources</ion-button>
+      <ion-button class="mobile-toolbar-button" (click)="loginSignup()" slot="end">Login</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,6 @@
 <ion-header class="ion-hide-md-down">
   <ion-toolbar class="ion-justify-content-center">
     <img id="logo" src="../../../assets/fyf-logo-2.png" />
-    
     <ion-button (click)="loginSignup()" color="dark" fill="outline" slot="end">FYF</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -23,27 +22,32 @@
   <ion-grid>
 
     <!-- Mobile version slides -->
-    <ion-row class="ion-hide-lg-up">
-      <ion-slides [options]="slideOptions">
+    <ion-row class="header ion-hide-lg-up">
+      <ion-slides [options]="slideOptions" pager="true">
+        <ion-slide class="ion-text-center">
+          <div class="slide-text-wrapper">
+            <h2>Register for United Way Fairs</h2>
+            <h4>As a Student, Chaperone, Volunteer, or Booth Partner</h4>
+            <ion-button (click)="fairsPage()" class="orange-button">View Fairs</ion-button>
+          </div>
+        </ion-slide>
         <ion-slide class="ion-align-items-center">
-          <h1>Connect with Students</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Join Now</ion-button>
+          <div class="slide-text-wrapper">
+            <h2>Connect.</h2>
+            <h4>Make Posts, find Jobs, and go to Events associated with United Way & Find Your Future.</h4>
+            <ion-button (click)="loginSignup()" class="orange-button">Join FYF</ion-button>
+          </div>
         </ion-slide>
-        <ion-slide>
-          <h1>Find Jobs</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Sign Up</ion-button>
-        </ion-slide>
-        <ion-slide>
-          <h1>Find Events</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Join Now</ion-button>
-        </ion-slide>
-        <ion-slide>
-          <h1>Connect with Mentors</h1>
-          <ion-button (click)="loginSignup()" class="orange-button" fill="solid" color="secondary">Apply Now</ion-button>
+        <ion-slide class="ion-align-items-center">
+          <div class="slide-text-wrapper">
+            <h2>Get Information.</h2>
+            <h4>Find resources from other organizations associated with United Way & Find Your Future.</h4>
+            <ion-button (click)="resources()" class="orange-button">Resources</ion-button>
+          </div>
         </ion-slide>
       </ion-slides>
     </ion-row>
-    
+
     <!-- Web version slides -->
     <ion-row class="ion-hide-md-down">
       <ion-slides [options]="slideOptions">
@@ -66,49 +70,127 @@
       </ion-slides>
     </ion-row>
 
-    <!-- App description -->
-    <ion-row class="ion-justify-content-center detail-section" id="app-description">
-      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6" style="font-size: 1.3em; padding-top: 15px; padding-bottom: 15px">
-        <p>
-          Lorem ipsum dolor sit amet. This is a paragraph that introduces the app.
-          It educates the user about the features of this app.
+    <ion-row class="ion-justify-content-center" >
+      <!-- Fairs -->
+      <ion-col  class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+
+        <!-- Fairs -->
+        <div class="illustration"></div>
+        <h2>Fairs</h2>
+        <p class="fairs-description">Give the user a little more information about what Fairs are. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
+
+        <div class="usertype">
+          <h4>Student</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Chaperone</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Volunteer</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Booth Partner</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+
+
+        <h2>Latest Fair</h2>
+        <img class="lastest-fair" src="../../../assets/Journi_flyer-500x357.png" alt="">
+        <p class="lastest-fair-description">Information about latest fair. Lorem ias ashs jsh uii pooi juhy tui bh nui sas hha shh just rew tol poold sa sd woo as we will work.</p>
+        <ion-button class="landing-page-button">Sign up</ion-button>
+        <hr class="divider">
+      </ion-col>
+
+      <!-- FYF App -->
+      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="illustration"></div>
+        <h2>FYF</h2>
+        <p class="app-description">Give the user a little more information about The FYF App. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
+
+        <div class="feature">
+          <h3>Jobs</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Events</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Posts</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Mentors</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <ion-button class="landing-page-button">Sign up</ion-button>
+        <hr class="divider">
+      </ion-col>
+
+      <!-- Resources -->
+      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="illustration"></div>
+        <h2>Resources</h2>
+        <p class="resources-description">
+          Tell the user a little more information about Resources.
         </p>
+        <strong>Just a few resources:</strong>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 1</h4>
+        </div>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 2</h4>
+        </div>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 3</h4>
+        </div>
+        <ion-button class="landing-page-button">View More</ion-button>
+        <hr class="divider">
+      </ion-col>
+
+      <!-- About United Way -->
+      <ion-col id="united-way-description" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="ion-text-center">
+          <img class="uw-logo" src="../../../assets/United_Way_Logo_3.svg" />
+        </div>
+        <p>
+          United Way advances the common good in communities across the world. Our focus is on education, income and health — the building blocks for a good quality of life.
+          <br>
+          <br>
+          United Way works with companies, governments, nonprofits and other organizations to address complex challenges on a worldwide scale. Our partners contribute more than money. Their ideas, volunteer power, in-kind support and more are helping build stronger communities.
+        </p>
+        <br>
+        <h3>United Way Partners</h3>
+        <img class="partner-logo" src="../../../assets/logos/Ford_logo_flat.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/National_Football_League_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/United_Parcel_Service_logo_2014.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Lyft_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Pepsi_logo_new.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Walmart_logo.png" alt="" srcset="">
+        <img class="partner-logo" src="../../../assets/logos/Starbucks_Corporation_Logo_2011.png" alt="" srcset="">
       </ion-col>
     </ion-row>
-
-    <!-- Who is United Way? -->
-    <ion-row class="ion-justify-content-center detail-section" id="who-is">
-      <ion-col size-xs="12" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <h3 style="text-transform: uppercase;">Who is United Way?</h3>
-        <img src="../../../assets/United_Way_Logo_3.svg" style="margin: 32px auto;" />
-        <p>
-          Lorem ipsum dolor sit amet. This paragraph talks about United Way. It describes to the user what the
-          organization does. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Tristique nulla aliquet enim tortor at auctor urna. Massa ultricies mi quis
-          hendrerit dolor magna eget est. Venenatis cras sed felis eget velit aliquet. Enim praesent elementum
-          facilisis leo.
-        </p>
-      </ion-col>
-    </ion-row>
-
   </ion-grid>
 
   <ion-footer>
     <!-- Social media mobile -->
     <div class="button-row ion-hide-sm-down">
-      <ion-button fill="clear"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-facebook" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-twitter" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-instagram" size="large"></ion-icon></ion-button>
     </div>
     <ion-toolbar class="ion-hide-md-up">
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
-    </ion-toolbar>
-    <ion-toolbar>
-      <ion-button routerLink="/terms" fill="clear" color="light" size="small">Terms of Use</ion-button>
-      <span class="floating-dot">&#9679;</span>
-      <ion-button routerLink="/privacy" fill="clear" color="light" size="small">Privacy Policy</ion-button>
+      <ion-button routerLink="/terms" size="small">Terms of Use</ion-button>
+      <ion-button routerLink="/privacy" size="small">Privacy Policy</ion-button>
     </ion-toolbar>
   </ion-footer>
 </ion-content>

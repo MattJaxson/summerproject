@@ -1,6 +1,7 @@
 ion-header {
-  padding: 10px 0 10px 0;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  background: #edf3f8;
+  border-bottom: 1px solid #005191;
 }
 
 #my-events-button {
@@ -28,39 +29,35 @@ ion-header {
 ion-card {
   --background: white;
   margin: 0px 0 50px 0;
+  // padding-bottom: 20px;
   position: relative;
   top: -5px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
 }
 
-ion-card.event-card {
-  height: 60vh;
-  min-height: 530px;
-  max-height: 560px;
+ion-card {
+  min-height: 300px;
+  max-height: 500px;
+  padding-bottom: 150px;
 }
 
-ion-card.event-card ion-card-content {
+ion-card ion-card-content {
   position: absolute;
   bottom: 0;
+  padding: 0;
+  width: 100%;
 }
 
 ion-toolbar {
   --background: none;
 }
 
-
-ion-icon {
-  color: red;
-  font-size: 25px;
-  position: relative;
-  right: 5px;
-}
-
 ion-searchbar {
   --background: white;
+  margin-left: 10px;
   border-radius: 5px;
-  --height: 60px;
-  width: 90%;
+  --height: 30px;
+  width: 95%;
   font-size: 0.8em;
   --box-shadow: none;
   --cancel-button-color: #005191;
@@ -68,12 +65,6 @@ ion-searchbar {
   --placeholder-opacity: 0.5;
   --icon-color: #005191;
   transition: 0.5s;
-  padding: 5px;
-}
-
-.searchbar-search-icon {
-  position: relative;
-  top: 25px;
 }
 
 .orange-button {
@@ -101,16 +92,40 @@ h6.text-header {
   --color: #888;
 }
 
+ion-button {
+  --background: none;
+
+  ion-icon {
+    font-size: 2.5em;
+  }
+}
+
+.header-hr{
+  border-top: 2px solid #005191;
+  opacity: 0.5;
+  margin-top: 40px;
+  opacity: 0.2;
+}
+
 ion-card-title {
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 1.5em;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  font-size: 2em;
   color: #005191;
+  border-bottom: 1px solid #005191;
 }
 
 ion-card-subtitle {
-  font-weight: 400;
-  font-size: 1em;
+  font-weight: 800;
+  line-height: 1em;
+  background: #fff1d9;
+  width: 200px;
+  color: #faa71b;
+  font-size: 1.3em;
+  padding: 10px 0px 10px 20px;
+  border-radius: 50px;
 }
 
 @media screen and (min-width: 1200px) {

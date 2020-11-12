@@ -4,6 +4,8 @@ import { ProfileService } from '../../../../services/profile.service';
 import { ResumeService } from '../../../../services/resume.service';
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 
+
+
 @Component({
   selector: 'app-update-resume',
   templateUrl: './update-resume.page.html',

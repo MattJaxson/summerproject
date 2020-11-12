@@ -6,6 +6,8 @@ import { PostsService } from 'src/app/services/post.service';
 import { formatDistanceToNow } from 'date-fns';
 import { BehaviorSubject } from 'rxjs';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
+
 
 
 @Component({
@@ -44,7 +46,8 @@ export class RepliesPagePage implements OnInit {
     private profile: ProfileService,
     private posts: PostsService,
     private alert: AlertController,
-    private postEmitterService: PostPageEmitterService) { }
+    private postEmitterService: PostPageEmitterService,
+    private notificationsService: NotificationsService) { }
 
   ngOnInit() {
     this.profile.getUserDetails().subscribe(details => {
@@ -150,8 +153,14 @@ export class RepliesPagePage implements OnInit {
 
           this.replies = currentCommentReplies;
 
+
           this.posts.commentsSubject$.next(comments.reverse());
           this.replies$.next(this.replies.reverse());
+          console.log('From replyComment');
+
+          console.log(data);
+          // tslint:disable-next-line: max-line-length
+          this.notificationsService.replyNotification(this.userEmail, this.commentUserEmail, this.postID, currentComment, data['newReply']).subscribe();
         }
       );
 

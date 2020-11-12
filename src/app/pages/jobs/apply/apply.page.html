@@ -9,26 +9,22 @@
 
 <ion-content>
   <ion-grid>
-
-    <ion-row class="ion-justify-content-center">
-      <ion-col class="app-wrapper" size-xs="11" size-sm="10" size-md="8" size-lg="8">
-
-        <!-- Logo, Title, Company Name -->
-        <ion-row class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
+      <!-- Logo, Title, Company Name -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="11" size-sm="10"size-md="8" size-lg="10">
             <div class="company-logo" style="height: 80px; width: 80px;"></div>
 
             <h1 class="job-title">{{jobTitle}}</h1>
 
             <h2 class="company-name">{{jobCompanyName}}</h2>
 
-          </ion-col>
-        </ion-row>
+        </ion-col>
+      </ion-row>
 
         <!-- Instructions -->
         <ion-row class="ion-justify-content-center">
           <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-            <p class="instructions" style="color: #005191">Please go over your information before you send your application.</p>
+            <p style="color: #005191">Please go over your information before you send your application.</p>
           </ion-col>
         </ion-row>
 
@@ -37,32 +33,42 @@
             <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
               <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
                 <ion-list class="line-input">
-                  <p class="instructions" >Phone Number</p>
+
+                  <div class="info-section">
+                    <p class="instructions" >Phone Number</p>
                   <ion-item>
                     <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
                   </ion-item>
+                  </div>
+                  <div class="info-section">
 
-                  <p class="instructions" >Resume</p>
-                  <ion-item style="border: none;  position: relative; right: 20px;">
-                    <ion-button class="blue-button" style="height: 45px;" (click)="viewResume()">
-                      View Resume
-                    </ion-button>
-                    <!-- <p>or</p> -->
-                    <ion-input type="file" class="custom-file-input ">
-                      <label style="margin-right: 10px;">Upload Resume</label>
-                    </ion-input>
-                  </ion-item>
+                    <p class="instructions" >Resume</p>
+                    <ion-item style="border: none;  position: relative; right: 20px;">
+                      <ion-button class="blue-button" style="height: 45px;" (click)="viewResumeModal()">
+                        View Resume
+                      </ion-button>
+                      <!-- <p>or</p> -->
+                      <ion-input type="file" class="custom-file-input ">
+                        <label style="margin-right: 10px;">Upload Resume</label>
+                      </ion-input>
+                    </ion-item>
+
+                  </div>
+                  <div class="info-section">
+
+                    <p class="instructions" >Why are you a good fit for this job?</p>
+                    <ion-item>
+                      <ion-textarea
+                      formControlName="reasonTextArea"
+                      maxlength="2500"
+                      rows="10"
+                      placeholder="Add message here - 2500 characters max"
+                      (keydown.control.enter)="finishApplication()"
+                      ></ion-textarea>
+                    </ion-item>
+                  </div>
 
 
-                  <ion-item>
-                    <ion-textarea
-                    formControlName="reasonTextArea"
-                    maxlength="2500"
-                    rows="10"
-                    placeholder="Why are you a great candidate for the position of {{jobTitle}}? .. optional - 2500 characters max"
-                    (keydown.control.enter)="finishApplication()"
-                    ></ion-textarea>
-                  </ion-item>
                 </ion-list>
                 <p></p>
                 <ion-row>
@@ -75,9 +81,5 @@
               </form>
               </ion-col>
         </ion-row>
-
-      </ion-col>
-    </ion-row>
-
   </ion-grid>
 </ion-content>

@@ -1,18 +1,29 @@
-span {
-  color: #005191;
-  font-weight: 600;
-  font-size: 1.5em;
+ion-toolbar {
+  background: none;
+  --box-shadow: none;
 }
 
-span.event-description {
-  color: unset;
-  font-weight: unset;
-  font-size: unset;
+ion-header {
+  background: none;
+  --box-shadow: none;
+}
+
+h3 {
+  font-weight: 800;
+  line-height: 1em;
+  background: #fff1d9;
+  width: 150px;
+  color: #faa71b;
+  font-size: 1em;
+  padding: 10px 0px 10px 20px;
+  border-radius: 50px;
 }
 
 p {
-  font-size: 1.3em;
-  color: #999;
+  font-size: 1.1em;
+  color: #333;
+  padding-left: 10px;
+  margin-bottom: 40px;
 }
 
 .going-link:link {
@@ -24,26 +35,24 @@ p {
 }
 
 .not-going-link:link {
-  color: #FA6400;
+  color: #faa71b;
+  font-size: 1.4em;
 }
 
 .not-going-link:visited {
-  color: #FA6400;
+  color: #faa71b;
+  font-size: 1.4em;
 }
 
-.going-text {
-  font-size: 1.5em;
-  color: #999;
-  margin-top: 10%;
-}
 
 .header {
   background-color: #edf3f8;
-  height: 65vh;
+  padding: 0;
+  height: auto;
 }
 
 .event-image {
-  height: 500px;
+  height: 360px;
   background: lightgrey;
   background: url('../../../../assets/Journi_flyer-500x357.png');
   background-repeat: no-repeat;
@@ -54,31 +63,28 @@ p {
 }
 
 .details {
-  padding: 100px 0 100px;
   height: auto;
   background: white;
+  padding: 50px 0px;
+}
+
+.going-text {
+  font-size: 1.3em;
+  color: #333;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .going {
-  height: 60vh;
-  width: 100%;
-  background: url('../../../../assets/Backgrounds/Event_Page_Bottom_Background_Green.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #edf3f8;
+  padding: 30px 0px;
   color: white;
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .not-going {
-  height: 60vh;
-  width: 100%;
-  background: url('../../../../assets/Backgrounds/Event_Page_Bottom_Background_Orange.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #edf3f8;
+  padding: 30px 0px;
   color: white;
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .going-button {
@@ -93,21 +99,9 @@ p {
 .not-going-button {
   width: 200px;
   font-size: 1.2em;
-  --background: #FA6400;
-  --background-hover: #FA6400;
+  --background: #faa71b;
+  --background-hover: #faa71b;
   --color: white;
-}
-
-.going-button:hover, .not-going-button:hover {
-  transform: scale(1.5);
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.going-button:not(:hover), .not-going-button:not(:hover) {
-  transform: scale(1);
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 

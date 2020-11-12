@@ -22,11 +22,16 @@
         <!-- Event Details -->
         <ion-row class="details ion-justify-content-center ion-align-items-center">
           <ion-col size-xs="11" size-lg="6">
-            <p> <span>Title</span><br> {{ eventTitle }}</p><br>
-            <p> <span>Address </span><br>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p><br>
-            <p> <span>Date</span><br> {{ eventDate }}</p><br>
-            <p> <span>Time</span><br> {{ eventTime }}</p><br>
-            <p> <span>Description</span><br> <span class="event-description">{{ eventDescription }}</span></p><br>
+            <h3>Title</h3>
+            <p>{{ eventTitle }}</p>
+            <h3>Address </h3>
+            <p>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
+            <h3>Date</h3>
+            <p> {{ eventDate }}</p>
+            <h3>Time</h3>
+            <p>{{ eventTime }}</p>
+            <h3>Description</h3>
+            <p>{{ eventDescription }}</p>
         </ion-col>
         </ion-row>
 
@@ -34,25 +39,19 @@
 
         <!-- GOING? -->
         <ion-row *ngIf="!going" class="going ion-justify-content-center">
-            <ion-col class="going" size="12">
-              <ion-row class="going ion-justify-content-center">
-                <ion-col class="ion-text-center" size="6">
-                  <p class="going-text">Do you want to go to this event?<br> By clicking 'Yes', this event will be added to your Your Events.</p>
-                  <ion-button class="going-button" (click)="goingToEvent()">
+            <ion-col class="ion-text-center" size="12">
+              <p class="going-text">Do you want to go to this event?<br> By clicking 'Yes', this event will be added to your Your Events.</p>
+              <ion-button class="going-button" (click)="goingToEvent()">
                    Yes.
-                  </ion-button><br><br>
-                  <a class="going-link" routerLink="/home/events" (click)="callEventEmitter()">Go back to Events Page</a><br><br>
-                  <a class="going-link" routerLink="/home/events/going">View My Events</a>
+                </ion-button><br><br>
+              <a class="going-link" routerLink="/home/events" (click)="callEventEmitter()">Go back to Events Page</a><br><br>
+               <a class="going-link" routerLink="/home/events/going">View My Events</a>
                  </ion-col>
-              </ion-row>
-            </ion-col>
         </ion-row>
 
         <!-- NOT GOING -->
-        <ion-row *ngIf="going" class="ion-justify-content-center">
-          <ion-col class="not-going" size="12">
-            <ion-row class="not-going ion-justify-content-center">
-              <ion-col class="ion-text-center" size="6">
+        <ion-row *ngIf="going" class="going ion-justify-content-center">
+              <ion-col class="ion-text-center" size="10">
                 <p class="going-text">Do you want to go to this event?<br> By clicking 'No', this event will be deleted to your Your Events.</p>
                 <ion-button class="not-going-button" (click)="notGoingToEvent()">
                  No.
@@ -60,8 +59,6 @@
                 <a class="not-going-link" routerLink="/home/events" (click)="callEventEmitter()">Go back to Events Page</a><br><br>
                 <a class="not-going-link" routerLink="/home/events/going">View My Events</a>
                </ion-col>
-            </ion-row>
-          </ion-col>
       </ion-row>
 
       </ion-grid>

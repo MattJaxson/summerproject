@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnDestroy} from '@angular/core';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { formatDistanceToNow } from 'date-fns';
@@ -11,10 +11,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './notifications.page.html',
   styleUrls: ['./notifications.page.scss'],
 })
-export class NotificationsPage implements OnInit, AfterContentChecked {
+export class NotificationsPage implements OnInit, AfterContentChecked, OnDestroy {
   userEmail;
   allNotifications;
   initSub: Subscription;
+  notificationsSub: Subscription;
 
   constructor(
     private notifications: NotificationsService,
@@ -25,20 +26,25 @@ export class NotificationsPage implements OnInit, AfterContentChecked {
     console.log('Notification Added on backend');
   }
 
+  ngOnDestroy() {
+    this.notificationsSub.unsubscribe();
+  }
+
   ngOnInit() {
     this.initSub = this.profile.getUserDetails()
       .subscribe(
         userDetails => {
           this.userEmail = userDetails['email'];
+          console.log(this.userEmail);
 
-          this.notifications.getNotifications(this.userEmail)
+          this.notificationsSub = this.notifications.getNotifications(this.userEmail)
             .subscribe(
               notifications => {
                   console.log(notifications);
                   this.notifications.notifications$.next(Object.values(notifications));
                   this.notifications.notifications$.subscribe( data => {
                     this.allNotifications = Object.values(data);
-                    for (const n of this.allNotifications) {
+                    for (let n of this.allNotifications) {
                     n.date = formatDistanceToNow( new Date(n.date), {
                       includeSeconds: true,
                       addSuffix: false
@@ -55,13 +61,37 @@ export class NotificationsPage implements OnInit, AfterContentChecked {
       );
   }
 
-  clear(email) {
-    this.notifications.clearNotifications(email)
+  clear() {
+    this.notifications.clearNotifications(this.userEmail)
     .subscribe(
       data => {
-        this.notifications.notifications$.next(Object.values(data));
+
+        this.notificationsSub = this.notifications.getNotifications(this.userEmail)
+          .subscribe(
+            notifications => {
+                console.log(notifications);
+                this.notifications.notifications$.next(Object.values(notifications));
+                this.notifications.notifications$.subscribe( data => {
+                  this.allNotifications = Object.values(data);
+                  for (let n of this.allNotifications) {
+                  n.date = formatDistanceToNow( new Date(n.date), {
+                    includeSeconds: true,
+                    addSuffix: false
+                  });
+
+                }
+              });
+
+                // TODO: replaces 'minutes' with M
+                // let minutes = ;
+              }
+          );
       }
     );
+  }
+
+  goTo() {
+    console.log('Going to page from notification');
   }
 
   delete(notification) {

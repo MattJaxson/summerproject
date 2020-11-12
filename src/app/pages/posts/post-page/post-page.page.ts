@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 // tslint:disable-next-line: max-line-length
 import { ToastController, AlertController, ModalController, IonContent, LoadingController, IonTextarea } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
@@ -15,6 +15,8 @@ import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 import { SinglePostPageEmitterService } from 'src/app/emitters/single-post-page-emitter.service';
+import { Subscription } from 'rxjs';
+import { SubjectSubscriber } from 'rxjs/internal/Subject';
 
 
 const LANGUAGE_FILTER_LIST = [
@@ -36,7 +38,7 @@ const LANGUAGE_FILTER_LIST = [
   templateUrl: './post-page.page.html',
   styleUrls: ['./post-page.page.scss'],
 })
-export class PostPagePage implements OnInit {
+export class PostPagePage implements OnInit, OnDestroy {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
   @ViewChild(IonTextarea, {static: true}) textarea: IonTextarea;
@@ -66,6 +68,15 @@ export class PostPagePage implements OnInit {
   scroll = '';
   commentForm: FormGroup;
 
+  postInfoSub: Subscription;
+  commentsSub: Subscription;
+  postsSub: Subscription;
+  userDetailsSub: Subscription;
+  deletePostSub: Subscription;
+  deleteCommentSub: Subscription;
+  unfollowPostSub: Subscription;
+  followPostSub: Subscription;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private postEmitterService: PostPageEmitterService,
@@ -80,6 +91,18 @@ export class PostPagePage implements OnInit {
     private loading: LoadingController,
     private location: PlatformLocation
     ) { }
+
+  ngOnDestroy() {
+    this.singlePostEmitterService.subsVar.unsubscribe();
+    this.commentsSub.unsubscribe();
+    this.postsSub.unsubscribe();
+    this.userDetailsSub.unsubscribe();
+    this.postInfoSub.unsubscribe();
+    // this.deletePostSub.unsubscribe();
+    // this.deleteCommentSub.unsubscribe();
+    // this.unfollowPostSub.unsubscribe();
+    // this.followPostSub.unsubscribe();
+  }
 
   ngOnInit() {
 
@@ -109,23 +132,13 @@ export class PostPagePage implements OnInit {
       comment: ['']
     });
 
-    this.commentForm.controls.comment.valueChanges.subscribe(data => {
-
-      if (data === '') {
-      console.log('Value is empty');
-      this.commentForm.markAsPristine();
-      }
-
-      console.log(this.commentForm);
-    });
-
 
     // Subscribe to comments Behavior subject for live upates, specifically when the user posts a comment on the UI.
-    this.posts.commentsSubject$.subscribe(commentsFromSub => {
+    this.commentsSub = this.posts.commentsSubject$.subscribe(commentsFromSub => {
       this.comments = commentsFromSub;
     });
 
-    this.posts.postsSubject$.subscribe(posts => {
+    this.postsSub = this.posts.postsSubject$.subscribe(posts => {
       let currentPost;
       for (const post of posts) {
         if (post._id == this.postID) {
@@ -155,9 +168,7 @@ export class PostPagePage implements OnInit {
 
 
   async follow(postID) {
-    await console.log('Following Post');
-    await console.log(postID);
-    await this.posts.followPost(postID, this.userEmail);
+    this.followPostSub = this.posts.followPost(postID, this.userEmail);
     this.following = true;
     await this.followToast();
   }
@@ -174,9 +185,7 @@ export class PostPagePage implements OnInit {
   }
 
   async unFollow(postID) {
-    await console.log('Unfollowing Post');
-    await console.log(postID);
-    await this.posts.unFollowPost(postID, this.userEmail);
+    this.unfollowPostSub = this.posts.unFollowPost(postID, this.userEmail);
     this.following = false;
     await this.unFollowToast();
   }
@@ -264,14 +273,14 @@ export class PostPagePage implements OnInit {
 
   async commentLoading(postID, userFullName, userEmail, userProfilePicture, comment) {
 
-    await this.posts.comment(
+    this.postsSub = this.posts.comment(
       postID,
       userFullName,
       userEmail,
       userProfilePicture,
       comment.comment
     ).subscribe( data => {
-      this.posts.getPostInfo(this.postID).subscribe(
+      this.postInfoSub = this.posts.getPostInfo(this.postID).subscribe(
         post => {
           for (let postComments of post['comments']) {
 
@@ -320,15 +329,6 @@ export class PostPagePage implements OnInit {
   }
 
   async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
-    console.log('commentID: ' + commentID);
-    console.log('commentContents: ' + commentContents);
-    console.log('post: ' + post);
-    console.log('postID: ' + postID);
-    console.log('commentUserFullName: ' + commentUserFullName);
-    console.log('commentUserEmail: ' + commentUserEmail);
-    console.log('commentDate: ' + commentDate);
-    console.log('userEmail: ' + userEmail);
-    console.log('userFullName: ' + userFullName);
 
     const reportModalConfig = await this.modal.create({
     component: ReportCommentPage,
@@ -479,7 +479,7 @@ export class PostPagePage implements OnInit {
 
   async deleteCommentLoading(postID, commentID) {
 
-    await this.posts.deleteComment(this.postID, commentID).subscribe(
+    this.deleteCommentSub = this.posts.deleteComment(this.postID, commentID).subscribe(
        values  => {
         let comments = values['comments'];
 
@@ -554,7 +554,7 @@ export class PostPagePage implements OnInit {
 
   async deletePostLoading(postID) {
     console.log(postID);
-    await this.posts.deletePost(postID).subscribe(
+    this.deletePostSub = this.posts.deletePost(postID).subscribe(
       remainingPosts => {
         this.posts.postsSubject$.next(Object.values(remainingPosts).reverse());
         console.log(this.posts.postsSubject$.getValue());
@@ -562,7 +562,7 @@ export class PostPagePage implements OnInit {
     );
 
     this.postEmitterService.onBackAction();
-    await this.router.navigate(['/home/posts']);
+    this.router.navigate(['/home/posts']);
     console.log('Loading dismissed!');
 
     const loading = await this.loading.create({
@@ -575,7 +575,7 @@ export class PostPagePage implements OnInit {
   }
 
   getPostInfo() {
-    this.profile.getUserDetails().subscribe(
+    this.userDetailsSub = this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
         this.userEmail = userEmail;
@@ -585,7 +585,7 @@ export class PostPagePage implements OnInit {
         // Get information about selected post.
         // Format its date on the front end
         // initiate this components post metadata from data in Posts Service
-        this.posts.getPostInfo(this.postID).subscribe(
+        this.postInfoSub = this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];
@@ -684,7 +684,7 @@ export class PostPagePage implements OnInit {
   }
 
   async doRefresh(event) {
-    this.profile.getUserDetails().subscribe(
+    this.userDetailsSub = this.profile.getUserDetails().subscribe(
       details => {
         let userEmail = details['email'];
         this.userEmail = userEmail;
@@ -694,7 +694,7 @@ export class PostPagePage implements OnInit {
         // Get information about selected post.
         // Format its date on the front end
         // initiate this components post metadata from data in Posts Service
-        this.posts.getPostInfo(this.postID).subscribe(
+        this.postInfoSub = this.posts.getPostInfo(this.postID).subscribe(
           postInfo =>  {
             const creatorEmail = postInfo['creatorEmail'];
             const creatorName = postInfo['creatorName'];

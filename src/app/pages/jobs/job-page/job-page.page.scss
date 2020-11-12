@@ -21,14 +21,14 @@ span {
 }
 
 .description {
-  padding: 10px 0 10px 0;
+  // padding: 10px 0 10px 0;
   // box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  margin: 20px 0 20px 0;
+  // margin: 20px 0 20px 0;
 }
 
 @media only screen and (max-width: 992px) {
   .description {
-    margin: 40px 0 40px 0;
+    margin: 10px 0 10px 0;
   }
 }
 
@@ -58,10 +58,10 @@ span {
 #job-title {
   font-size: 2em;
   font-weight: 900;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  padding-top: 20px;
   opacity: 0;
   color: #005191;
+  border-top: 1px solid #005191;
   animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
 }
 
@@ -73,9 +73,9 @@ span {
 }
 
 #job-full-description {
-  font-size: 1.3em;
+  font-size: 1.2em;
   line-height: 29px;
-  color: #666;
+  color: #333;
   opacity: 0;
   margin: 50px 0;
   animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards;

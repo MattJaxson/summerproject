@@ -21,6 +21,20 @@ export class NotificationsService {
 
   clearNotifications(email) {
     console.log('Clearing Notifications');
+    console.log(email);
     return this.http.post(`${this.BACKEND_URL}/api/notifications/clear-notifications`, {email: email});
+  }
+
+  commentNotification(instigatingUser, recievingUser, postID, commentID) {
+    console.log(`Sending notfication to ${recievingUser} that ${instigatingUser} commented on their post.`);
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(`${this.BACKEND_URL}/api/notifications/comment-on-post-notification`, {instigatingUser, recievingUser, postID, commentID});
+  }
+
+  replyNotification(instigatingUser, recievingUser, postID, commentID, replyID) {
+    console.log(`Sending notfication to ${recievingUser} that ${instigatingUser} commented on their post.`);
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(`${this.BACKEND_URL}/api/notifications/reply-on-comment-notification`, {instigatingUser, recievingUser, postID, commentID, replyID});
+
   }
 }

@@ -73,5 +73,9 @@ export class LoginPage implements OnInit, AfterViewInit {
     this.auth.login(data);
   }
 
+  back() {
+    this.router.navigate(['/landing']);
+  }
+
 
   }
