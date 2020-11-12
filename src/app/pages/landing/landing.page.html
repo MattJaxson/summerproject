@@ -70,18 +70,92 @@
       </ion-slides>
     </ion-row>
 
-    <!-- Who is United Way? -->
-    <ion-row class="ion-justify-content-center" id="united-way-description">
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+    <ion-row class="ion-justify-content-center" >
+      <!-- Fairs -->
+      <ion-col  class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+
+        <!-- Fairs -->
+        <div class="illustration"></div>
         <h2>Fairs</h2>
+        <p class="fairs-description">Give the user a little more information about what Fairs are. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
+
+        <div class="usertype">
+          <h4>Student</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Chaperone</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Volunteer</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype">
+          <h4>Booth Partner</h4>
+          <p>This is the description of the usertype.</p>
+        </div>
+
+
+        <h2>Latest Fair</h2>
+        <img class="lastest-fair" src="../../../assets/Journi_flyer-500x357.png" alt="">
+        <p class="lastest-fair-description">Information about latest fair. Lorem ias ashs jsh uii pooi juhy tui bh nui sas hha shh just rew tol poold sa sd woo as we will work.</p>
+        <ion-button class="landing-page-button">Sign up</ion-button>
+        <hr class="divider">
       </ion-col>
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <h2>FYF App</h2>
+
+      <!-- FYF App -->
+      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="illustration"></div>
+        <h2>FYF</h2>
+        <p class="app-description">Give the user a little more information about The FYF App. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
+
+        <div class="feature">
+          <h3>Jobs</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Events</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Posts</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <div class="feature">
+          <h3>Mentors</h3>
+          <p>This is the description of the feature.</p>
+        </div>
+        <ion-button class="landing-page-button">Sign up</ion-button>
+        <hr class="divider">
       </ion-col>
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <h2>Resource</h2>
+
+      <!-- Resources -->
+      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="illustration"></div>
+        <h2>Resources</h2>
+        <p class="resources-description">
+          Tell the user a little more information about Resources.
+        </p>
+        <strong>Just a few resources:</strong>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 1</h4>
+        </div>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 2</h4>
+        </div>
+        <div class="resource">
+          <img class="resource-logo" src="" alt="">
+          <h4>Resource 3</h4>
+        </div>
+        <ion-button class="landing-page-button">View More</ion-button>
+        <hr class="divider">
       </ion-col>
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+
+      <!-- About United Way -->
+      <ion-col id="united-way-description" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
         <div class="ion-text-center">
           <img class="uw-logo" src="../../../assets/United_Way_Logo_3.svg" />
         </div>
@@ -107,16 +181,15 @@
   <ion-footer>
     <!-- Social media mobile -->
     <div class="button-row ion-hide-sm-down">
-      <ion-button fill="clear"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
-      <ion-button fill="clear"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-facebook" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-twitter" size="large"></ion-icon></ion-button>
+      <ion-button fill="clear"><ion-icon class="logo-instagram" size="large"></ion-icon></ion-button>
     </div>
     <ion-toolbar class="ion-hide-md-up">
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-facebook" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-twitter" size="large"></ion-icon></ion-button>
       <ion-button fill="clear" color="light" size="small"><ion-icon name="logo-instagram" size="large"></ion-icon></ion-button>
       <ion-button routerLink="/terms" size="small">Terms of Use</ion-button>
-      <span class="floating-dot">&#9679;</span>
       <ion-button routerLink="/privacy" size="small">Privacy Policy</ion-button>
     </ion-toolbar>
   </ion-footer>

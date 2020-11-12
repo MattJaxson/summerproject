@@ -70,7 +70,7 @@ ion-slide {
         bottom: 80px;
         padding: 16px 0px;
         margin: 130px auto 0px auto;
-        height: 500px;
+        height: 800px;
         width: auto;
         min-width: 320px;
         background: rgba(40,107,160,0.7);
@@ -94,8 +94,77 @@ ion-slide {
             --background: none;
             border: 2.5px solid #fab716;
             border-radius: 5px;
+            margin-top: 20px;
         }
     }
+}
+
+
+
+.illustration {
+    background: lightgray;
+    height: 350px;
+    width: 300px;
+    margin: 135px auto;
+}
+
+.usertype {
+    background: #eee;
+    padding: 10px 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.lastest-fair {
+    background: blue;
+    width: 500px;
+    height: 357px;
+}
+
+.fairs-description,
+.lastest-fair-description,
+.app-description,
+.resources-description {
+    margin-bottom: 90px;
+}
+
+h2 {
+    margin-top: 100px;
+}
+
+.landing-page-button {
+    margin: 50px auto;
+    width: 200px;
+}
+
+.lastest-fair-description{
+
+}
+
+.app-description {
+
+}
+
+.resources-description {
+
+}
+
+.feature {
+    background: #eee;
+    padding: 10px 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.resource-logo {
+    height: 80px;
+    width: 80px;
+    margin: 86px 0px 20px 0px;
+    background: #676767;
+}
+
+.divider {
+    border-bottom: 3px solid #eee;
 }
 
 #united-way-description {
@@ -153,6 +222,8 @@ ion-footer > ion-toolbar:nth-child(2) {
 }
 ion-footer ion-button {
     text-transform: capitalize;
+    display: block;
+    margin: 29px auto;
 }
 
 .floating-dot {
