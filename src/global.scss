@@ -157,20 +157,26 @@ ion-title {
 .swiper-pagination {
   // Swiper disabled before student app launch
 
-  display: none;
   position: relative;
   bottom: 20px !important;
   left: 45%;
-  bottom: calc(env(safe-area-inset-bottom) + 60px) !important;
-  background: rgba(200, 200, 200, 0.5);
+  bottom: calc(env(safe-area-inset-bottom) + 40px) !important;
+  background: #eee;
   border-radius: 50px;
   padding: 5px;
   width: 100px !important;
   margin: 0 auto !important;
   }
 
+  .swiper-pagination-bullet {
+    background: #333;
+}
+  .swiper-pagination-bullet-active {
+    background: #005191;
+}
+
 .disabled {
-  opacity: 0;
+  opacity: 1;
 }
 
 ion-input:focus {
