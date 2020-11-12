@@ -8,9 +8,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content (ionScroll)="doSomething($event)" [scrollEvents]="true">
+  <div class="progress-container">
+    <div class="progress-bar" id="scrollBar"></div>
+  </div>
   <ion-grid>
-
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="10" size-md="9" size-lg="8">
+        <p class="page-info">Here are some other organizations that can help you on your way to higher education and employment.</p>
+      </ion-col>
+    </ion-row>
     <ion-row class="ion-justify-content-center ion-hide-md-down">
       <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="8">
         <h1>Resources</h1>
@@ -30,7 +37,7 @@
             <ion-button class="blue-button link" href="{{resource.url}}" target="_blank">
               LINK
             </ion-button>
-            <hr style="border-bottom: #999 solid 1px">
+            <hr style="border-bottom: #eee solid 3px">
           </ion-col>
         </ion-row>
 
