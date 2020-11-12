@@ -43,37 +43,37 @@ ion-header > ion-toolbar {
    
 }
 
-
+.header-image {
+    // background-image: url('../../../assets/Fair_Agenda.jpg');
+    // background-position: center;
+    // background-attachment: fixed;
+    height: auto;
+    width: auto;
+    border-bottom: 5px solid #fab716;
+}
 ion-slides {
     width: 100%;
-    height: 75vh;
-    min-height: 400px;
-    background-image: url('../../../assets/Fair_Agenda.jpg');
-    background-position: 80%;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .swiper-pagination {
     position: fixed;
-    bottom: 0px;
+    bottom: 200px;
     padding-bottom: 3px;
 }
 
 ion-slide {
     display: block;
-    padding-top: 25vh;
+    height: 400px;
     // background: rgb(0,81,145);
     // background: linear-gradient(0deg, rgba(0, 81, 143, 1) 11%, rgba(40,107,160,0.5) 50%, rgba(172, 193, 209, 0) 64%);
 
     .slide-text-wrapper {
-        bottom: 80px;
-        padding: 16px 0px;
-        margin: 130px auto 0px auto;
-        height: 800px;
+        padding: 0px 0px;
+        margin: 0 auto 0px auto;
+        height: 450px;
+        padding-top: 40px;
         width: auto;
-        min-width: 320px;
-        background: rgba(40,107,160,0.7);
+        background: rgba(40,107,160,1);
 
         h2 {
             margin-top: 2.5rem;
@@ -163,6 +163,7 @@ h2 {
 .landing-page-button {
     margin: 50px auto;
     width: 200px;
+    font-size: 1.23rem;
 }
 
 .lastest-fair-description{
