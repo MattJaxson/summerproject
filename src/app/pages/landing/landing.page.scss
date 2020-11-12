@@ -2,6 +2,30 @@ ion-grid {
     padding: 0;
 }
 
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+    overflow: hidden;
+    position: fixed;
+    z-index: 9999;
+  }
+  
+  .progress-bar {
+    background: rgba(175, 210, 238,1);
+    background: -moz-linear-gradient(left, rgb(175, 210, 238) 0%, rgba(0,81,145) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(175, 210, 238,1))0, 81, 145p(100%, rgba(0,81,145)));
+    background: -webkit-linear-gradient(left, rgba(175, 210, 238,1) 0%, rgba(0,81,145,1) 100%);
+    background: -o-linear-gradient(left, rgba(175, 210, 238,1) 0%, rgba(0,81,145) 100%);
+    background: -ms-linear-gradient(left, rgba(175, 210, 238,1) 0%, rgba(0,81,145) 100%);
+    background: linear-gradient(to right, rgba(175, 210, 238,1) 0%, rgba(0,81,145) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edffb8', endColorstr='#61c900', GradientType=1 );
+    width: 0%;
+    transition-timing-function: ease-out;
+    transition: width .15s;
+    height: 100vh;
+  }
+
 ion-toolbar {
 
     #logo {
@@ -187,14 +211,30 @@ h2 {
 }
 
 .resource-logo {
-    height: 80px;
-    width: 80px;
-    margin: 86px 0px 20px 0px;
-    background: #676767;
+    height: auto;
+    width: 170px;
+    margin: 90px 0px 60px 0px;
+}
+
+.landing-page-link {
+    font-size: 1.03rem;
+    border: 1.5px solid #005191;
+    --color: #005191;
+    border-radius: 5px;
+    width: 90px;
+    --background: white;
+    margin-top: 20px;
 }
 
 .divider {
     border-bottom: 5px solid #fab716;
+}
+
+.small-divder {
+    height: 2px;
+    width: 227px;
+    margin: 51px auto 0px auto;
+    background: #ddd;
 }
 
 #united-way-description {

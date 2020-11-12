@@ -18,7 +18,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content (ionScroll)="scrollTracking($event)" [scrollEvents]="true">
+  <div class="progress-container">
+    <div class="progress-bar" id="scrollBar"></div>
+  </div>
   <ion-grid>
 
     <!-- Mobile version slides -->
@@ -155,16 +158,22 @@
         <strong>Just a few resources:</strong>
         <div class="ion-text-center">
           <div class="resource">
-            <img class="resource-logo" src="" alt="">
-            <h4>Resource 1</h4>
+            <img class="resource-logo" src="../../../assets/dys.png" alt="">
+            <h4>Discover Your Spark</h4>
+            <ion-button class="landing-page-link">Website</ion-button>
+            <div class="small-divder"></div>
           </div>
           <div class="resource">
-            <img class="resource-logo" src="" alt="">
-            <h4>Resource 2</h4>
+            <img class="resource-logo" src="../../../assets/ydrc.png" alt="">
+            <h4>YDRC</h4>
+            <ion-button class="landing-page-link">Website</ion-button>
+            <div class="small-divder"></div>
           </div>
           <div class="resource">
-            <img class="resource-logo" src="" alt="">
-            <h4>Resource 3</h4>
+            <img class="resource-logo" src="../../../assets/gdyt.png" alt="">
+            <h4>GDYT</h4>
+            <ion-button class="landing-page-link">Website</ion-button>
+            <div class="small-divder"></div>
           </div>
         </div>
         <div class="ion-text-center">

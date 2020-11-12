@@ -43,7 +43,7 @@ export class ResourcesPage implements OnInit {
   ngOnInit() {
   }
 
-  doSomething(event) {
+  scrollTracking(event) {
     console.log(event);
     const winScroll = event.detail.scrollTop;
     // const documentHeight = event.detail.scrollTop;

@@ -33,5 +33,20 @@ export class LandingPage implements OnInit {
     this.router.navigate(['selection']);
   }
 
+  scrollTracking(event) {
+    console.log(event);
+    const winScroll = event.detail.scrollTop;
+    // const documentHeight = event.detail.scrollTop;
+    // const windowHeight = event.detail.scrollTop;
+    const height = event.detail.event.path[0].clientHeight;
+    const scrollHeight = event.detail.event.path[0].scrollHeight;
+    const scrolled = (winScroll / (scrollHeight - height)) * 100;
+
+    console.log('ScrollTop: ', winScroll);
+    console.log('Height: ', height);
+    // console.log('Scroll %', scrolled);
+    document.getElementById('scrollBar').style.width = scrolled + '%';
+  }
+
 
 }

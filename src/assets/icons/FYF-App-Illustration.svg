@@ -4,6 +4,34 @@
     <title>FYF-App-Illustration</title>
     <desc>Created with Sketch.</desc>
     <g id="FYF-App-Illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#291818" x="175" y="156" width="369" height="529"></rect>
+        <rect id="Rectangle" stroke="#979797" stroke-width="3" fill="#000000" x="176.5" y="157.5" width="366" height="526" rx="18"></rect>
+        <rect id="Rectangle" x="175" y="616" width="123" height="59"></rect>
+        <rect id="Rectangle-Copy" x="298" y="616" width="123" height="59"></rect>
+        <rect id="Rectangle-Copy-2" x="421" y="616" width="123" height="59"></rect>
+        <g id="Group" transform="translate(228.000000, 637.000000)" stroke="#979797" stroke-linecap="square" stroke-width="3">
+            <path d="M0.5,0 L0.5,18.6041667" id="Line"></path>
+            <path d="M8.5,0 L8.5,18.6041667" id="Line-Copy"></path>
+            <path d="M16.5,0 L16.5,18.6041667" id="Line-Copy-2"></path>
+        </g>
+        <rect id="Rectangle" stroke="#979797" stroke-width="2" x="347" y="633" width="26" height="26" rx="9"></rect>
+        <g id="Group-2" transform="translate(476.000000, 639.000000)" stroke="#979797" stroke-linecap="square" stroke-width="3">
+            <path d="M0.272727273,5.75 L11.7272727,0" id="Line-2"></path>
+            <path d="M0.272727273,13.75 L11.5,6.75" id="Line-2-Copy" transform="translate(6.000000, 10.000000) scale(-1, 1) translate(-6.000000, -10.000000) "></path>
+        </g>
+        <g id="Group-5" transform="translate(218.000000, 223.000000)" fill="#D8D8D8" stroke="#979797">
+            <rect id="Rectangle" x="0.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-3" x="221.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-4" x="110.5" y="0.5" width="61" height="61"></rect>
+        </g>
+        <g id="Group-4" transform="translate(218.000000, 335.000000)" fill="#D8D8D8" stroke="#979797">
+            <rect id="Rectangle-Copy-5" x="0.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-6" x="221.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-7" x="110.5" y="0.5" width="61" height="61"></rect>
+        </g>
+        <g id="Group-3" transform="translate(218.000000, 447.000000)" fill="#D8D8D8" stroke="#979797">
+            <rect id="Rectangle-Copy-8" x="0.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-9" x="221.5" y="0.5" width="61" height="61"></rect>
+            <rect id="Rectangle-Copy-10" x="110.5" y="0.5" width="61" height="61"></rect>
+        </g>
     </g>
 </svg>
