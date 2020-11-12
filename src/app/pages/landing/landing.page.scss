@@ -99,20 +99,48 @@ ion-slide {
     }
 }
 
+h1{
+    margin: 20px 0;
+    font-size: 40px;
+}
 
 
 .illustration {
-    background: lightgray;
+    // background: lightgray;
     height: 350px;
     width: 300px;
-    margin: 135px auto;
+    margin: 35px auto;
 }
 
 .usertype {
     background: #eee;
-    padding: 10px 10px;
-    margin-bottom: 40px;
+    padding: 17px 10px;
+    margin: 40px auto;
     border-radius: 5px;
+    box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
+    width: 300px;
+
+    h3 {
+        font-weight: 700;
+    }
+}
+
+.student {
+    background: radial-gradient(#005191, #4399dd);
+    color: white;
+
+}
+.chaperone {
+    background: radial-gradient(#faa71b, #f2b041);
+    color: white;
+}
+.volunteer {
+    background: radial-gradient(#444, #6e6e6e);
+    color: white;
+}
+.partner {
+    background: radial-gradient(#44D7B6, #68e4c8);
+    color: white;
 }
 
 .lastest-fair {
@@ -125,7 +153,7 @@ ion-slide {
 .lastest-fair-description,
 .app-description,
 .resources-description {
-    margin-bottom: 90px;
+    margin-bottom: 20px;
 }
 
 h2 {
@@ -154,6 +182,7 @@ h2 {
     padding: 10px 10px;
     margin-bottom: 40px;
     border-radius: 5px;
+    box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167)
 }
 
 .resource-logo {
@@ -164,7 +193,7 @@ h2 {
 }
 
 .divider {
-    border-bottom: 3px solid #eee;
+    border-bottom: 5px solid #fab716;
 }
 
 #united-way-description {
@@ -174,7 +203,7 @@ h2 {
 
     .uw-logo {
         width: 200px;
-        margin: 120px auto 20px auto;
+        margin: 20px auto 84px auto;
     }
 
 
@@ -204,6 +233,10 @@ ion-col {
     // text-align: center;
 }
 
+ion-footer {
+    border-top: 5px solid #faa71b;
+}
+
 ion-footer > ion-toolbar {
     color: #fff;
     text-align: center;
@@ -224,9 +257,4 @@ ion-footer ion-button {
     text-transform: capitalize;
     display: block;
     margin: 29px auto;
-}
-
-.floating-dot {
-    position: relative;
-    top: 0.3em;
 }

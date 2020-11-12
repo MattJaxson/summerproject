@@ -72,27 +72,29 @@
 
     <ion-row class="ion-justify-content-center" >
       <!-- Fairs -->
-      <ion-col  class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+      <ion-col  class="" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
 
         <!-- Fairs -->
-        <div class="illustration"></div>
-        <h2>Fairs</h2>
+        <div class="ion-text-center">
+          <img src="../../../assets/icons/Fair-Illustration.svg" class="illustration" />
+        </div>
+        <h1>Fairs</h1>
         <p class="fairs-description">Give the user a little more information about what Fairs are. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
 
-        <div class="usertype">
-          <h4>Student</h4>
+        <div class="usertype student">
+          <h3>Student</h3>
           <p>This is the description of the usertype.</p>
         </div>
-        <div class="usertype">
-          <h4>Chaperone</h4>
+        <div class="usertype chaperone">
+          <h3>Chaperone</h3>
           <p>This is the description of the usertype.</p>
         </div>
-        <div class="usertype">
-          <h4>Volunteer</h4>
+        <div class="usertype volunteer">
+          <h3>Volunteer</h3>
           <p>This is the description of the usertype.</p>
         </div>
-        <div class="usertype">
-          <h4>Booth Partner</h4>
+        <div class="usertype partner">
+          <h3>Booth Partner</h3>
           <p>This is the description of the usertype.</p>
         </div>
 
@@ -100,14 +102,19 @@
         <h2>Latest Fair</h2>
         <img class="lastest-fair" src="../../../assets/Journi_flyer-500x357.png" alt="">
         <p class="lastest-fair-description">Information about latest fair. Lorem ias ashs jsh uii pooi juhy tui bh nui sas hha shh just rew tol poold sa sd woo as we will work.</p>
-        <ion-button class="landing-page-button">Sign up</ion-button>
+        <div class="ion-text-center">
+          <ion-button
+          (click)="fairsPage()"class="landing-page-button">Sign up</ion-button>
+        </div>
         <hr class="divider">
       </ion-col>
 
       <!-- FYF App -->
-      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <div class="illustration"></div>
-        <h2>FYF</h2>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="ion-text-center">
+          <img src="../../../assets/icons/FYF-App-Illustration.svg" class="illustration">
+        </div>
+        <h1>FYF</h1>
         <p class="app-description">Give the user a little more information about The FYF App. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
 
         <div class="feature">
@@ -126,39 +133,48 @@
           <h3>Mentors</h3>
           <p>This is the description of the feature.</p>
         </div>
-        <ion-button class="landing-page-button">Sign up</ion-button>
+        <div class="ion-text-center">
+          <ion-button
+        (click)="loginSignup()" class="landing-page-button">Sign up</ion-button>
+        </div>
         <hr class="divider">
       </ion-col>
 
       <!-- Resources -->
-      <ion-col class="ion-text-center" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <div class="illustration"></div>
-        <h2>Resources</h2>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+        <div class="ion-text-center">
+          <img src="../../../assets/icons/Resources-Illustration.svg" class="illustration">
+        </div>
+        <h1>Resources</h1>
         <p class="resources-description">
           Tell the user a little more information about Resources.
         </p>
         <strong>Just a few resources:</strong>
-        <div class="resource">
-          <img class="resource-logo" src="" alt="">
-          <h4>Resource 1</h4>
+        <div class="ion-text-center">
+          <div class="resource">
+            <img class="resource-logo" src="" alt="">
+            <h4>Resource 1</h4>
+          </div>
+          <div class="resource">
+            <img class="resource-logo" src="" alt="">
+            <h4>Resource 2</h4>
+          </div>
+          <div class="resource">
+            <img class="resource-logo" src="" alt="">
+            <h4>Resource 3</h4>
+          </div>
         </div>
-        <div class="resource">
-          <img class="resource-logo" src="" alt="">
-          <h4>Resource 2</h4>
+        <div class="ion-text-center">
+          <ion-button
+          (click)="resources()"class="landing-page-button">View More</ion-button>
         </div>
-        <div class="resource">
-          <img class="resource-logo" src="" alt="">
-          <h4>Resource 3</h4>
-        </div>
-        <ion-button class="landing-page-button">View More</ion-button>
         <hr class="divider">
       </ion-col>
 
       <!-- About United Way -->
       <ion-col id="united-way-description" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <div class="ion-text-center">
-          <img class="uw-logo" src="../../../assets/United_Way_Logo_3.svg" />
-        </div>
+        <img class="uw-logo" src="../../../assets/United_Way_Logo_3.svg" />
+        <h1>Who is United Way?</h1>
         <p>
           United Way advances the common good in communities across the world. Our focus is on education, income and health — the building blocks for a good quality of life.
           <br>
@@ -166,6 +182,9 @@
           United Way works with companies, governments, nonprofits and other organizations to address complex challenges on a worldwide scale. Our partners contribute more than money. Their ideas, volunteer power, in-kind support and more are helping build stronger communities.
         </p>
         <br>
+        <div class="ion-text-center">
+          <ion-button class="landing-page-button" href="https://www.unitedway.org/" target="_blank">Website</ion-button>
+        </div>
         <h3>United Way Partners</h3>
         <img class="partner-logo" src="../../../assets/logos/Ford_logo_flat.png" alt="" srcset="">
         <img class="partner-logo" src="../../../assets/logos/National_Football_League_logo.png" alt="" srcset="">
