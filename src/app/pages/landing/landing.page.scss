@@ -9,6 +9,7 @@ ion-grid {
     overflow: hidden;
     position: fixed;
     z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
   }
   
   .progress-bar {
@@ -63,10 +64,6 @@ ion-header > ion-toolbar {
     border-bottom: 5px solid #fab716;
 }
 
-.button-row {
-   
-}
-
 .header-image {
     // background-image: url('../../../assets/Fair_Agenda.jpg');
     // background-position: center;
@@ -103,7 +100,7 @@ ion-slide {
             margin-top: 2.5rem;
             font-size: 1.6rem;
             font-weight: 700;
-            color: #fff;
+            color: #fab716;
         }
 
         h4 {
@@ -134,6 +131,17 @@ h1{
     height: 350px;
     width: 300px;
     margin: 35px auto;
+}
+.illustration:nth-child(1) {
+    // background: lightgray;
+    height: auto;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.paralax-bg-1 {
+    background: linear-gradient(#eee 70%, #fab716 30%);
+    background-attachment: fixed;
 }
 
 .usertype {
@@ -178,6 +186,11 @@ h1{
 .app-description,
 .resources-description {
     margin-bottom: 20px;
+    color: #777;
+}
+
+strong {
+    color: #005191;
 }
 
 h2 {
@@ -268,7 +281,7 @@ h2 {
 ion-col {
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 120px;
+    // padding-bottom: 120px;
     // text-align: center;
 }
 
