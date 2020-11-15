@@ -55,7 +55,7 @@ export class ResourcesPage implements OnInit {
     console.log('ScrollTop: ', winScroll);
     console.log('Height: ', height);
     // console.log('Scroll %', scrolled);
-    document.getElementById('scrollBar').style.width = scrolled + '%';
+    document.getElementById('scrollBarResources').style.width = scrolled + '%';
   }
 
   back() {

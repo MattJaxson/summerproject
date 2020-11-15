@@ -64,16 +64,9 @@ ion-header > ion-toolbar {
     border-bottom: 5px solid #fab716;
 }
 
-.header-image {
-    // background-image: url('../../../assets/Fair_Agenda.jpg');
-    // background-position: center;
-    // background-attachment: fixed;
-    height: auto;
-    width: auto;
-    border-bottom: 5px solid #fab716;
-}
 ion-slides {
     width: 100%;
+    margin: -3px 0;
 }
 
 .swiper-pagination {
@@ -121,7 +114,7 @@ ion-slide {
 }
 
 h1{
-    margin: 20px 0;
+    margin-top: 50px;
     font-size: 40px;
 }
 
@@ -136,21 +129,20 @@ h1{
     // background: lightgray;
     height: auto;
     width: 100%;
-    margin: 0px auto;
+    margin: -10px auto;
 }
 
-.paralax-bg-1 {
-    background: linear-gradient(#eee 70%, #fab716 30%);
-    background-attachment: fixed;
-}
+// .paralax-bg-1 {
+//     background: linear-gradient(#eee 70%, #fab716 30%);
+//     background-attachment: fixed;
+// }
 
 .usertype {
-    background: #eee;
-    padding: 17px 10px;
-    margin: 40px auto;
+    padding: 17px 0px 10px 10px;
+    margin: 22px auto;
     border-radius: 5px;
     box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
-    width: 300px;
+    width: 99%;
 
     h3 {
         font-weight: 700;
@@ -175,6 +167,15 @@ h1{
     color: white;
 }
 
+.student,
+.chaperone,
+.volunteer,
+.partner {
+    h3 {
+        font-size: 2em;
+    }
+}
+
 .lastest-fair {
     background: blue;
     width: 500px;
@@ -186,10 +187,12 @@ h1{
 .app-description,
 .resources-description {
     margin-bottom: 20px;
-    color: #777;
+    color: #444;
+    font-size: 1.2em;
 }
 
 strong {
+    margin-top: 20px;
     color: #005191;
 }
 
@@ -255,7 +258,7 @@ h2 {
 
     .uw-logo {
         width: 200px;
-        margin: 20px auto 84px auto;
+        margin: 60px;
     }
 
 
