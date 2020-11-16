@@ -78,13 +78,13 @@
 
     <ion-row class="ion-justify-content-center" >
       <!-- Fairs -->
-      <ion-col class="paralax-bg-1" size="12">
+      <ion-col size="12">
         <img src="../../../assets/icons/Fair-Illustration.svg" class="illustration" />
       </ion-col>
       <ion-col  class="" size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
 
 
-        <h1>Register for Fair</h1>
+        <h1>Register for Fair.</h1>
         <!-- Fairs -->
 
         <p class="fairs-description">Give the user a little more information about what Fairs are. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
@@ -102,27 +102,26 @@
           <h3>Chaperone</h3>
           <p>This is the description of the usertype.</p>
         </div>
-        <div class="usertype volunteer">
-          <h3>Volunteer</h3>
-          <p>This is the description of the usertype.</p>
-        </div>
         <div class="usertype partner">
           <h3>Booth Partner</h3>
+          <p>This is the description of the usertype.</p>
+        </div>
+        <div class="usertype volunteer">
+          <h3>Volunteer</h3>
           <p>This is the description of the usertype.</p>
         </div>
         <div class="ion-text-center">
           <ion-button
           (click)="fairsPage()"class="landing-page-button">Sign up</ion-button>
         </div>
-        <hr class="divider">
       </ion-col>
 
       <!-- FYF App -->
+      <ion-col size="12">
+        <img style="margin-top: 50px;" src="../../../assets/icons/FYF-App-Illustration.svg" class="illustration">
+      </ion-col>
       <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
-        <div class="ion-text-center">
-          <img src="../../../assets/icons/FYF-App-Illustration.svg" class="illustration">
-        </div>
-        <h1>FYF</h1>
+        <h1>Find Your Future App</h1>
         <p class="app-description">Give the user a little more information about The FYF App. This is just some filler here just to get the point across. I want there to be THIS much text.</p>
 
         <div class="feature">
@@ -145,14 +144,16 @@
           <ion-button
         (click)="loginSignup()" class="landing-page-button">Sign up</ion-button>
         </div>
-        <hr class="divider">
       </ion-col>
 
       <!-- Resources -->
-      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+      <ion-col size="12">
         <div class="ion-text-center">
-          <img src="../../../assets/icons/Resources-Illustration.svg" class="illustration">
+          <img style="margin-top: 50px;" src="../../../assets/icons/Resources-Illustration.svg" class="illustration">
         </div>
+      </ion-col>
+      <ion-col size-xs="11" size-sm="8" size-md="8" size-lg="6" size-xl="6">
+
         <h1>Resources</h1>
         <p class="resources-description">
           Tell the user a little more information about Resources.
@@ -182,7 +183,6 @@
           <ion-button
           (click)="resources()"class="landing-page-button">View More</ion-button>
         </div>
-        <hr class="divider">
       </ion-col>
 
       <!-- About United Way -->
@@ -200,8 +200,8 @@
         <br>
         <div class="ion-text-center">
           <ion-button class="landing-page-button" href="https://www.unitedway.org/" target="_blank">Website</ion-button>
+          <strong>United Way Partners</strong>
         </div>
-        <h3>United Way Partners</h3>
         <img class="partner-logo" src="../../../assets/logos/Ford_logo_flat.png" alt="" srcset="">
         <img class="partner-logo" src="../../../assets/logos/National_Football_League_logo.png" alt="" srcset="">
         <img class="partner-logo" src="../../../assets/logos/United_Parcel_Service_logo_2014.png" alt="" srcset="">

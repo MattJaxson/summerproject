@@ -114,18 +114,12 @@ ion-slide {
 }
 
 h1{
-    margin-top: 50px;
+    margin-top: 100px;
     font-size: 40px;
 }
 
 
 .illustration {
-    // background: lightgray;
-    height: 350px;
-    width: 300px;
-    margin: 35px auto;
-}
-.illustration:nth-child(1) {
     // background: lightgray;
     height: auto;
     width: 100%;
@@ -141,8 +135,8 @@ h1{
     padding: 17px 0px 10px 10px;
     margin: 22px auto;
     border-radius: 5px;
-    box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
-    width: 99%;
+    // box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
+    width: 94%;
 
     h3 {
         font-weight: 700;
@@ -150,21 +144,41 @@ h1{
 }
 
 .student {
-    background: radial-gradient(#005191, #4399dd);
-    color: white;
+    // background: radial-gradient(#005191, #4399dd);
+    color: #777;
+    border: 2.5px solid rgba(0, 81, 145, 0.4);
+
+    h3{
+        color: #005191;
+    }
 
 }
 .chaperone {
-    background: radial-gradient(#faa71b, #f2b041);
-    color: white;
+    // background: radial-gradient(#faa71b, #f2b041);
+    border: 2.5px solid #faa71b88;
+    color: #777;
+
+    h3{
+        color: #faa71b;
+    }
 }
 .volunteer {
-    background: radial-gradient(#444, #6e6e6e);
-    color: white;
+    // background: radial-gradient(#444, #6e6e6e);
+    border: 2.5px solid rgba(119, 119, 119, 0.603);
+    color: #777;
+
+    h3{
+        color: #777;
+    }
 }
 .partner {
-    background: radial-gradient(#44D7B6, #68e4c8);
-    color: white;
+    // background: radial-gradient(#44D7B6, #68e4c8);
+    border: 2.5px solid #44D7B688;
+    color: #777;
+
+    h3{
+        color: #44D7B6;
+    }
 }
 
 .student,
@@ -173,6 +187,10 @@ h1{
 .partner {
     h3 {
         font-size: 2em;
+    }
+
+    p {
+        font-size: 1.2em;
     }
 }
 
@@ -208,20 +226,30 @@ h2 {
 
 .lastest-fair-description,
 .app-description{
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 
-.resources-description {
-
+.resources {
+    h4 {
+        color: #777;
+    }
 }
 
 .feature {
-    background: #eee;
+    background: #f6f6f6;
     padding: 10px 10px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167)
+    // box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
+
+    p{
+        font-size: 1.2em;
+    }
+
+    h3 {
+        color: #005191
+    }
 }
 
 .resource-logo {
@@ -240,9 +268,6 @@ h2 {
     margin-top: 20px;
 }
 
-.divider {
-    border-bottom: 5px solid #fab716;
-}
 
 .small-divder {
     height: 2px;
@@ -252,15 +277,26 @@ h2 {
 }
 
 #united-way-description {
+    padding-bottom: 100px;
+
     p {
         font-size: 1.3em;
+        color: #777;
     }
 
     .uw-logo {
         width: 200px;
-        margin: 60px;
+        margin-top: 40px;
     }
 
+    strong {
+        width: 300px;
+        display: block;
+        margin: 70px auto;
+        border-bottom: 1px solid #7777;
+        font-size: 1.3em;
+        padding-bottom: 20px;
+    }
 
     .partner-logo {
         width: 170px;

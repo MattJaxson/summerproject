@@ -1,53 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="720px" height="840px" viewBox="0 0 720 840" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1138px" height="759px" viewBox="0 0 1138 759" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
     <title>Resources-Illustration</title>
     <desc>Created with Sketch.</desc>
     <g id="Resources-Illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(157.000000, 141.000000)">
-            <rect id="Rectangle" fill="#003863" x="0" y="0" width="59" height="505" rx="9"></rect>
-            <text id="Science" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
-                <tspan x="8.38" y="23">Science</tspan>
-            </text>
-            <text id="Volume-1" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="9.0875" y="491">Volume 1</tspan>
-            </text>
-        </g>
-        <g id="Group-2" transform="translate(216.000000, 141.000000)">
-            <rect id="Rectangle-Copy" fill="#005191" x="0" y="0" width="59" height="505" rx="9"></rect>
-            <text id="Technology" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="5.5015" y="23">Technology</tspan>
-            </text>
-            <text id="Volume-1-Copy" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="9.0875" y="491">Volume 1</tspan>
-            </text>
-        </g>
-        <g id="Group-3" transform="translate(275.000000, 141.000000)">
-            <rect id="Rectangle-Copy-2" fill="#0072C9" x="0" y="0" width="59" height="505" rx="9"></rect>
-            <text id="Egineering" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="6.4915" y="23">Egineering</tspan>
-            </text>
-            <text id="Volume-1-Copy-2" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="9.0875" y="491">Volume 1</tspan>
-            </text>
-        </g>
-        <g id="Group-4" transform="translate(334.000000, 142.000000)">
-            <rect id="Rectangle-Copy-3" fill="#0081E3" x="0" y="0" width="59" height="505" rx="9"></rect>
-            <text id="Arts" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
-                <tspan x="17.392" y="23">Arts</tspan>
-            </text>
-            <text id="Volume-1-Copy-3" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="9.0875" y="491">Volume 1</tspan>
-            </text>
-        </g>
-        <g id="Group-5" transform="translate(449.500000, 394.500000) rotate(-7.000000) translate(-449.500000, -394.500000) translate(420.000000, 142.000000)">
-            <rect id="Rectangle-Copy-4" fill="#0088F0" x="0" y="0" width="59" height="505" rx="9"></rect>
-            <text id="Math" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
-                <tspan x="14.728" y="22">Math</tspan>
-            </text>
-            <text id="Volume-1-Copy-4" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
-                <tspan x="9.0875" y="490">Volume 1</tspan>
-            </text>
+        <rect id="Rectangle" fill="#FFB351" x="0" y="0" width="1138" height="759"></rect>
+        <g id="Group-6" transform="translate(408.000000, 194.000000)">
+            <g id="Group">
+                <rect id="Rectangle" fill="#003863" x="0" y="0" width="59" height="370" rx="9"></rect>
+                <text id="Science" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
+                    <tspan x="8.38" y="20">Science</tspan>
+                </text>
+                <text id="Volume-1" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="9.0875" y="362">Volume 1</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(59.000000, 0.000000)">
+                <rect id="Rectangle-Copy" fill="#005191" x="0" y="0" width="59" height="370" rx="9"></rect>
+                <text id="Technology" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="5.5015" y="19">Technology</tspan>
+                </text>
+                <text id="Volume-1-Copy" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="9.0875" y="362">Volume 1</tspan>
+                </text>
+            </g>
+            <g id="Group-3" transform="translate(118.000000, 0.000000)">
+                <rect id="Rectangle-Copy-2" fill="#0072C9" x="0" y="0" width="59" height="370" rx="9"></rect>
+                <text id="Egineering" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="6.4915" y="19">Egineering</tspan>
+                </text>
+                <text id="Volume-1-Copy-2" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="9.0875" y="362">Volume 1</tspan>
+                </text>
+            </g>
+            <g id="Group-4" transform="translate(177.000000, 1.000000)">
+                <rect id="Rectangle-Copy-3" fill="#0081E3" x="0" y="0" width="59" height="370" rx="9"></rect>
+                <text id="Arts" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
+                    <tspan x="17.392" y="20">Arts</tspan>
+                </text>
+                <text id="Volume-1-Copy-3" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="9.0875" y="362">Volume 1</tspan>
+                </text>
+            </g>
+            <g id="Group-5" transform="translate(263.000000, 1.000000)">
+                <rect id="Rectangle-Copy-4" fill="#0088F0" x="0" y="0" width="59" height="370" rx="9"></rect>
+                <text id="Math" font-family="Avenir-Black, Avenir" font-size="12" font-weight="700" fill="#FFFFFF">
+                    <tspan x="14.728" y="19">Math</tspan>
+                </text>
+                <text id="Volume-1-Copy-4" font-family="Avenir-Black, Avenir" font-size="9" font-weight="700" fill="#FFFFFF">
+                    <tspan x="9.0875" y="361">Volume 1</tspan>
+                </text>
+            </g>
         </g>
     </g>
 </svg>
