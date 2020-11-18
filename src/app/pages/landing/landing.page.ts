@@ -84,7 +84,7 @@ export class LandingPage implements OnInit {
     const sun = document.getElementById('Sun');
     const moon = document.getElementById('Moon');
 
-    
+
     lady.style.display = 'none';
     message.style.display = 'none';
     messageTwo.style.display = 'none';
@@ -98,7 +98,7 @@ export class LandingPage implements OnInit {
 
     phoneBody.style.display = 'none';
     phoneShadow.style.display = 'none';
-    
+
     sun.style.display = 'none';
     moon.style.display = 'block';
 
@@ -113,19 +113,19 @@ export class LandingPage implements OnInit {
       messageTwo.style.display = 'block';
     }
 
-    if (scrolled > 8) {
+    if (scrolled > 11.9) {
       console.log('@ Fairs Usertype Shapes. \n');
       studentShape.style.display = 'inline-block';
     }
-    if (scrolled > 9) {
+    if (scrolled > 13.9) {
       console.log('@ Fairs Usertype Shapes. \n');
       chaporoneShape.style.display = 'inline-block';
     }
-    if (scrolled > 10) {
+    if (scrolled > 15.9) {
       console.log('@ Fairs Usertype Shapes. \n');
       partnerShape.style.display = 'inline-block';
     }
-    if (scrolled > 11) {
+    if (scrolled > 17.9) {
       console.log('@ Fairs Usertype Shapes. \n');
       volunteerShape.style.display = 'inline-block';
     }
@@ -136,7 +136,7 @@ export class LandingPage implements OnInit {
       phoneShadow.style.display = 'block';
     }
 
-    if (scrolled > 43) {
+    if (scrolled > 45) {
       console.log('@ Resources Illustration. \n');
       sun.style.display = 'block';
       moon.style.display = 'none';

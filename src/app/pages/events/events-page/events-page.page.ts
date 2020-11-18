@@ -47,7 +47,7 @@ export class EventsPagePage implements OnInit, OnDestroy {
     ) { }
 
   ngOnDestroy(): void {
-      this.eventsSub.unsubscribe();
+      // this.eventsSub.unsubscribe();
       this.eventEmitterService.subsVar.unsubscribe();
     }
 
