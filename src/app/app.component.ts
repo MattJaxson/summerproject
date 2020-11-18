@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { StudentChatService } from './services/student-chat.service';
-import { MentorChatService } from './services/mentor-chat.service';
+
 
 
 @Component({
@@ -20,8 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private platform: Platform,
     private auth: AuthService,
     private router: Router,
-    private studentChat: StudentChatService,
-    private mentorChat: MentorChatService
+    // private studentChat: StudentChatService,
+    // private mentorChat: MentorChatService
   ) {
     this.initializeApp();
   }

@@ -114,8 +114,9 @@ ion-slide {
 }
 
 h1{
-    margin-top: 100px;
-    font-size: 40px;
+    margin-top: 60px;
+    font-size: 31px;
+    font-weight: 600;
 }
 
 
@@ -132,52 +133,71 @@ h1{
 // }
 
 .usertype {
-    padding: 17px 0px 10px 10px;
+    padding: 0px 0px 0px 5px;
     margin: 22px auto;
     border-radius: 5px;
     // box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.167);
     width: 94%;
+    border-bottom-right-radius: 50px;
 
     h3 {
         font-weight: 700;
     }
+
+    .usertype-shape {
+        height: 2em;
+    }
 }
 
 .student {
-    // background: radial-gradient(#005191, #4399dd);
-    color: #777;
+    background: linear-gradient(117.29681322931958deg, rgba(240, 248, 255,1) 23.545955882352942%,rgba(255, 255, 255,1) 62.44301470588236%);    color: #777;
     border: 2.5px solid rgba(0, 81, 145, 0.4);
 
     h3{
         color: #005191;
+        display: inline-block;
+        position: relative;
+        left: 15px;
+        top: -3px;
+        margin-bottom: 0px;
     }
 
 }
 .chaperone {
-    // background: radial-gradient(#faa71b, #f2b041);
-    border: 2.5px solid #faa71b88;
+    background: linear-gradient(117.9522397824037deg, rgba(250, 248, 245,1) 9.996323529411764%,rgba(255, 255, 255,1) 62.79044117647058%);    border: 2.5px solid #faa71b88;
     color: #777;
 
     h3{
         color: #faa71b;
+        display: inline-block;
+        position: relative;
+        left: 15px;
+        top: -3px;
     }
 }
 .volunteer {
-    // background: radial-gradient(#444, #6e6e6e);
-    border: 2.5px solid rgba(119, 119, 119, 0.603);
+    background: linear-gradient(101.17791478250604deg, rgba(247, 247, 247,1) 18.814338235294116%,rgba(255, 255, 255,1) 80.21139705882352%);    border: 2.5px solid rgba(119, 119, 119, 0.603);
     color: #777;
 
     h3{
         color: #777;
+        display: inline-block;
+        position: relative;
+        left: 15px;
+        top: -3px;
     }
 }
 .partner {
-    // background: radial-gradient(#44D7B6, #68e4c8);
-    border: 2.5px solid #44D7B688;
+    background: linear-gradient(101.17791478250604deg, rgba(247, 255, 253,1) 18.814338235294116%,rgba(255, 255, 255,1) 80.21139705882352%);    border: 2.5px solid #44D7B688;
     color: #777;
 
     h3{
         color: #44D7B6;
+        display: inline-block;
+        position: relative;
+        left: 15px;
+        top: -3px;
+        margin-bottom: 0px;
     }
 }
 
@@ -202,9 +222,14 @@ h1{
 
 .fairs-description,
 .lastest-fair-description,
-.app-description,
+.app-description {
+    margin-bottom: 65px;
+    color: #444;
+    font-size: 1.2em;
+}
+
 .resources-description {
-    margin-bottom: 20px;
+    margin: 0;
     color: #444;
     font-size: 1.2em;
 }
@@ -219,7 +244,7 @@ h2 {
 }
 
 .landing-page-button {
-    margin: 50px auto;
+    margin: 100px auto;
     width: 200px;
     font-size: 1.23rem;
 }
@@ -286,7 +311,7 @@ h2 {
 
     .uw-logo {
         width: 200px;
-        margin-top: 40px;
+        margin-top: 70px;
     }
 
     strong {
@@ -325,7 +350,7 @@ ion-col {
 }
 
 ion-footer {
-    border-top: 5px solid #faa71b;
+    // border-top: 5px solid #faa71b;
 }
 
 ion-footer > ion-toolbar {
@@ -348,4 +373,148 @@ ion-footer ion-button {
     text-transform: capitalize;
     display: block;
     margin: 29px auto;
+}
+
+
+// Illustration Animations
+
+#Lady {
+    opacity: 0;
+    transform: 0.5s;
+    animation: lady-slide 0.5s ease forwards;
+}
+
+#Message {
+    opacity: 0;
+    transform: 0.5s;
+    animation: message-slide 0.5s ease forwards;
+}
+#Message-2 {
+    opacity: 0;
+    transform: 0.5s;
+    animation: message-2-slide 0.5s ease forwards;
+}
+
+@keyframes lady-slide {
+    from {
+        opacity: 0;
+        transform: translate(80%, 60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(70%, 50%);
+        opacity: 1;
+    }
+}
+@keyframes message-slide {
+    from {
+        opacity: 0;
+        transform: translate(0%, 0%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(10%, 10%);
+    }
+}
+@keyframes message-2-slide {
+    from {
+        opacity: 0;
+        transform: translate(0%, 60%);
+    }
+    to {
+        transform: translate(10%, 65%);
+        opacity: 1;
+    }
+}
+#student-shape {
+    opacity: 0;
+    display: none;
+    animation: usertype-shape-slide 0.5s ease forwards;
+}
+#chaporone-shape {
+    opacity: 0;
+    display: none;
+    animation: usertype-shape-slide 0.5s ease forwards;
+}
+#volunteer-shape {
+    opacity: 0;
+    display: none;
+    animation: usertype-shape-slide 0.5s ease forwards;
+}
+#partner-shape {
+    opacity: 0;
+    display: none;
+    animation: usertype-shape-slide 0.5s ease forwards;
+}
+
+@keyframes usertype-shape-slide {
+    from {
+        transform: translateX(-30px);
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+#Phone-Shadow {
+    display: none;
+    opacity: 0;
+    animation: phone-shadow-fade-in 1s ease 0.5s forwards;
+}
+#Phone {
+    display: none;
+    animation: phone-slide-up 1s ease forwards;
+}
+
+@keyframes phone-shadow-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes phone-slide-up  {
+    from{
+        opacity: 0;
+        transform-origin: 20% 40%;
+        transform: translate(0px, 0px)
+    }
+    to {
+        opacity: 1;
+        transform: translate(420px, 0px)
+    }
+}
+
+#Resources-Background-Day,
+#Resources-Background-Night {
+    transition: 1s;
+}
+
+#Sun {
+     animation: sun-slide 1s ease forwards;
+}
+#Moon {
+    animation: moon-slide 1s ease forwards;
+}
+
+@keyframes sun-slide {
+    from {
+        transform: translate(50px, 20px)
+    }
+    to {
+        opacity: 1;
+        transform: translate(80px, 80px)
+    }
+}
+@keyframes moon-slide {
+    from {
+        opacity: 0;
+        transform: translate(50px, 20px)
+    }
+    to {
+        opacity: 1;
+        transform: translate(10px, 50px)
+    }
 }
