@@ -84,7 +84,10 @@
             <ion-row class="ion-justify-content-center">
               <!-- 1080x1350 -->
               <ion-col size="11.3">
-               <p class="post-content">{{post.post}}</p>
+                <app-read-more [dataLength]="dataLength">
+                  {{post.post}}
+                </app-read-more>
+               <!-- <p class="post-content">{{post.post}}</p> -->
               </ion-col>
            </ion-row>
           </ion-col>

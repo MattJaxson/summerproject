@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="152px" height="172px" viewBox="0 0 152 172" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>no-notifications-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="no-notifications-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="152" height="172"></rect>
+        <path d="M11.5,60.5 L38.5,60.5" id="Line-2-Copy" stroke="#FFFEFE" stroke-width="3" stroke-linecap="square"></path>
+        <path d="M45,123 C47.4161181,140.333333 55.1901123,149 68.3219825,149 C81.4538527,149 90.3465252,140.333333 95,123 L45,123 Z" id="Path-4" stroke="#6D7278" stroke-width="10"></path>
+        <circle id="Oval" stroke="#979797" stroke-width="11" opacity="0.522739955" cx="70" cy="73" r="68"></circle>
+        <path d="M101,120 L38.5,34" id="Line" stroke="#979797" stroke-width="14" opacity="0.522739955" stroke-linecap="square"></path>
+        <path d="M70,5 C56.9635967,5.09636297 44.3179493,14.9824917 44.0087342,15.2024988 C35.3258479,21.3803897 28.1949603,30.1992983 24.7946429,39.3004415 C19.5125284,53.4383214 20.4375,70.157164 20.4375,85.1382983 C20.4375,95.1257211 16.625,106.746288 9,120 L131,120 C123.011905,106.864773 119.017857,95.2442055 119.017857,85.1382983 C119.017857,69.9794374 118.033311,53.031042 113.571429,39.3152592 C110.59684,30.1714041 104.787317,22.0065749 96.1428571,14.8207716 C87.4052213,8.21056209 78.6909356,4.93697154 70,5 Z" id="Path-3" stroke="#6D7278" stroke-width="10"></path>
+    </g>
+</svg>

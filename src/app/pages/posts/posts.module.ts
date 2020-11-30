@@ -6,6 +6,7 @@ import { PostsPage } from './posts.page';
 import { PostRoutingModule } from './post-routing.module';
 import { CustomComponentsModule } from '../../components/custom-component.module';
 import { ThirdPersonProfilePageModule } from 'src/app/modals/third-person-profile/third-person-profile.module';
+import { ReadMoreComponent } from '../../components/read-more/read-more.component';
 
 
 
@@ -19,6 +20,7 @@ import { ThirdPersonProfilePageModule } from 'src/app/modals/third-person-profil
     ReactiveFormsModule,
     PostRoutingModule,
     ThirdPersonProfilePageModule,
+    ReadMoreComponent,
   ],
   declarations: [
     PostsPage]
