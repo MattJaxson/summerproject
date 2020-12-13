@@ -54,7 +54,7 @@ export class LoginPage implements OnInit, AfterViewInit {
 
 
     // Chrome, Edge,
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener('onbeforeinstallprompt', (e) => {
       console.log('beforeinstallprompt Event fired');
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();

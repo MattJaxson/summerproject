@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve ",
+    "start": "ng serve --ssl --ssl-key localhost-key.pem --ssl-cert localhost.pem",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,7 +20,7 @@
     "@angular/forms": "~8.1.2",
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
-    "@angular/pwa": "^0.901.9",
+    "@angular/pwa": "^0.901.12",
     "@angular/router": "~8.1.2",
     "@angular/service-worker": "~8.1.2",
     "@auth0/angular-jwt": "^3.0.1",

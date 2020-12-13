@@ -6,8 +6,10 @@ import { GoingIconComponent } from './going-icon/going-icon.component';
 import { NotGoingIconComponent } from './not-going-icon/not-going-icon.component';
 import { FollowIconComponent } from './follow-icon/follow-icon.component';
 import { UpDownVoteButtonsComponent } from './up-down-vote-buttons/up-down-vote-buttons.component';
-import { CommentVoteBarComponent } from "./comment-vote-bar/comment-vote-bar.component";
+import { CommentVoteBarComponent } from './comment-vote-bar/comment-vote-bar.component';
 import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-comment-buttons.component';
+import { ReadMoreComponent } from './read-more/read-more.component';
+
 
 @NgModule({
     imports: [
@@ -21,7 +23,8 @@ import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-c
         FollowIconComponent,
         UpDownVoteButtonsComponent,
         CommentVoteBarComponent,
-        FollowCommentButtonsComponent
+        FollowCommentButtonsComponent,
+        ReadMoreComponent
     ],
     exports: [
         HeartIconComponent,
@@ -30,7 +33,8 @@ import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-c
         FollowIconComponent,
         UpDownVoteButtonsComponent,
         CommentVoteBarComponent,
-        FollowCommentButtonsComponent
+        FollowCommentButtonsComponent,
+        ReadMoreComponent
     ]
 })
 export class CustomComponentsModule {}
