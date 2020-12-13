@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController, Platform } from '@ionic/angular';
 
-import { Platform, AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Subscription } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
