@@ -62,16 +62,6 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'resources',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/resources/resources.module').then(m => m.ResourcesPageModule)
-          }
-        ]
-      }
     ]
   }
 ];

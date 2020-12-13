@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
@@ -16,7 +15,7 @@ import { environment } from '../../environments/environment';
 export class ProfileService {
   BACKEND_URL = environment.url;
   activeEmail = '';
-  user = {};
+  // user = {};
 
   fullName = new BehaviorSubject('');
   about = new BehaviorSubject('');

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,8 +11,8 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  tabsPlacement: string = 'bottom';
-  tabsLayout: string = 'icon-top';
+  tabsPlacement = 'bottom';
+  tabsLayout = 'icon-top';
 
   constructor(
     private platform: Platform,
@@ -23,9 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
     // private mentorChat: MentorChatService
   ) {
     this.initializeApp();
+    
   }
 
   ngOnInit() {
+
     
   }
 
@@ -46,5 +47,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigate(['']);
       }
     });
+  }
+
+  createOnline$() {
+    
   }
 }

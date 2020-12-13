@@ -4,7 +4,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
-import { Storage } from '@ionic/storage';
 import { Platform, AlertController } from '@ionic/angular';
 
 import { environment } from '../../environments/environment';
@@ -168,17 +167,18 @@ doesUserExists(email, password) {
         catchError(e => {
           console.error(e);
           if (e.error.msg === 'The email and password don\'t match.') {
-            this.presentAlert('Incorrect Email/Password', "The email and password don't match.");
-          } else if (e.error.msg == 'The user does not exist') {
+            this.presentAlert('Incorrect Email/Password', 'The email and password don\'t match.');
+          } else if (e.error.msg === 'The user does not exist') {
             this.presentAlert('Nonexistent User Account', 'There is no account with that email address.');
           } else if (e.message.startsWith('Http failure response')) {
             this.presentAlert('Server Connection Error', 'There was a problem connecting to the server. Please try again later.');
           }  else {
-            this.presentAlert('Email/Password Error', 'Please try again.')
+            this.presentAlert('Email/Password Error', 'Please try again.');
           }
           throw new Error(e);
         })
-      ).subscribe();
+      )
+      .subscribe();
   }
 
   async presentToast() {
