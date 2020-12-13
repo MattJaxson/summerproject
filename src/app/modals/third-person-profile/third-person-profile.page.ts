@@ -7,8 +7,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostsService } from 'src/app/services/post.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-third-person-profile',
   templateUrl: './third-person-profile.page.html',
@@ -17,6 +15,7 @@ import { Router } from '@angular/router';
 export class ThirdPersonProfilePage implements OnInit {
 
   commentForm: FormGroup;
+  userProfilePicture;
   creatorEmail: string;
   creatorName: string;
   allTheirPosts = [];

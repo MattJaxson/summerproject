@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { StudentChatService } from './services/student-chat.service';
-import { MentorChatService } from './services/mentor-chat.service';
 
 
 @Component({
@@ -13,20 +11,22 @@ import { MentorChatService } from './services/mentor-chat.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  tabsPlacement: string = 'bottom';
-  tabsLayout: string = 'icon-top';
+  tabsPlacement = 'bottom';
+  tabsLayout = 'icon-top';
 
   constructor(
     private platform: Platform,
     private auth: AuthService,
     private router: Router,
-    private studentChat: StudentChatService,
-    private mentorChat: MentorChatService
+    // private studentChat: StudentChatService,
+    // private mentorChat: MentorChatService
   ) {
     this.initializeApp();
+    
   }
 
   ngOnInit() {
+
     
   }
 
@@ -47,5 +47,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigate(['']);
       }
     });
+  }
+
+  createOnline$() {
+    
   }
 }

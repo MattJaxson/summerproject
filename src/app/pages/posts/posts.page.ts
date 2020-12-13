@@ -8,6 +8,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
+import { ReadMoreComponent } from '../../components/read-more/read-more.component';
 import { StudentChatService } from 'src/app/services/student-chat.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { Subscription } from 'rxjs';

@@ -42,6 +42,7 @@ p {
   padding: 50px 0 50px 0;
 
   .orange-button{
+    opacity: 0;
     animation: buttons-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) .9s forwards;
   }
 }
@@ -100,7 +101,8 @@ span {
   height: 45px;
   width: 120px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  margin-bottom: 39%;
+  margin-bottom: 52px auto;
+  animation: buttons-slide-right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s forwards;
 }
 
 @keyframes text-slide-up {
@@ -155,7 +157,7 @@ span {
 
 @media screen and (max-width: 992px) {
   p {
-    font-size: 1em;
+    font-size: 1.2em;
   }
    span {
     color: #005191;

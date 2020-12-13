@@ -41,7 +41,7 @@ export class ApplyPage implements OnInit, OnDestroy {
   ) { }
   ngOnDestroy(): void {
     this.profileSub.unsubscribe();
-    this.sendAppSub.unsubscribe();
+    // this.sendAppSub.unsubscribe();
   }
 
   ngOnInit() {

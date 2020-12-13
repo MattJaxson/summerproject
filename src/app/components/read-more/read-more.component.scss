@@ -1,0 +1,50 @@
+$font-size: 1.3em;
+$line-height: 1.5;
+$lines-to-show: 1;
+$blue: #005191;
+$red: #e4405f;
+
+div.collapsed {
+  transition: 0.5s;
+  display: -webkit-inline-box;
+  display: inline-block;
+  font-size: $font-size;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.collapsed-text {
+  color: $blue;
+  font-size: $font-size;
+  opacity: 0.5;
+}
+.not-collapsed-text {
+  color: $red;
+  font-size: $font-size;
+
+  background: #eee;
+}
+
+.read-more{
+  margin-top: -3px;
+  line-height: 1.4;
+  font-size: $font-size;
+}
+.isCollapsed {
+  transition: 0.5s;
+  width: 100%;
+}
+.cb {
+  clear: both;
+  height: 0;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+

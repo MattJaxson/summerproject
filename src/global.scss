@@ -160,6 +160,7 @@ ion-title {
   position: relative;
   bottom: 20px !important;
   left: 45%;
+  top: -90px;
   bottom: calc(env(safe-area-inset-bottom) + 40px) !important;
   background: #eee;
   border-radius: 50px;
@@ -194,7 +195,8 @@ ion-input:focus {
     // --background: white;
       --border-color: transparent!important;
       --highlight-height: 0;
-      margin: 20px auto;
+      height: 40px;
+      margin: 8px auto;
       border: 2px solid #dedede;
       transition: 0.2s;
       border-radius: 4px;
@@ -237,7 +239,7 @@ ion-select-option {
 }
 
 .orange-button {
-  width: 150px;
+  width: 200px;
   height: 40px;
   font-size: 1em;
   font-weight: 800;
@@ -285,7 +287,7 @@ ion-select-option {
   --background: #e0e0e0;
   --background-hover: #e0e0e0;
   color: #999;
-  width: 150px;
+  width: 200px;
   height: 40px;
   font-size: 1em;
   font-weight: 800;
@@ -301,13 +303,11 @@ ion-select-option {
 }
 
 .blue-button {
-  width: 150px;
+  width: 200px;
   height: 40px;
   font-size: 1em;
   font-weight: 800;
   margin: 10px auto;
-  position: relative;
-  top: 5px;
   --background: #005191;
   --transition: 1s;
   --color: white;

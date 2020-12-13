@@ -7,7 +7,6 @@ import { By } from '@angular/platform-browser';
 
 
 import { PersonalInfoPage } from './personal-info.page';
-import { IonicStorageModule } from '@ionic/storage';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
@@ -21,7 +20,6 @@ describe('Signup - Persnonal Info', () => {
       declarations: [ PersonalInfoPage ],
       imports: [
         IonicModule.forRoot(),
-        IonicStorageModule.forRoot(),
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
         ReactiveFormsModule

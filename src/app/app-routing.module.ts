@@ -5,13 +5,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
-    // loadChildren: () => import('./pages/posts/student-chat/student-chat.module').then( m => m.StudentChatPageModule)
-    // loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
-    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-    // loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
-    // loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
-    // loadChildren: () => import('./modals/fair-student-register/fair-student-register.module').then( m => m.FairStudentRegisterPageModule)
+    loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule),
   },
   {
     path: 'home',
@@ -45,10 +39,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/auth/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'landing',
-    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-  },
-  {
     path: 'replies-page',
     loadChildren: () => import('./modals/replies-page/replies-page.module').then( m => m.RepliesPagePageModule)
   },
@@ -65,10 +55,6 @@ const routes: Routes = [
     loadChildren: () => import('./modals/third-person-profile/third-person-profile.module').then( m => m.ThirdPersonProfilePageModule)
   },
   {
-    path: 'resources',
-    loadChildren: () => import('./pages/resources/resources.module').then( m => m.ResourcesPageModule)
-  },
-  {
     path: 'report-convo',
     loadChildren: () => import('./modals/report-convo/report-convo.module').then( m => m.ReportConvoPageModule)
   },
@@ -83,30 +69,6 @@ const routes: Routes = [
   {
     path: 'report-convo-mentor',
     loadChildren: () => import('./modals/report-convo-mentor/report-convo-mentor.module').then( m => m.ReportConvoMentorPageModule)
-  },
-  {
-    path: 'selection',
-    loadChildren: () => import('./pages/fairs/selection/selection.module').then( m => m.SelectionPageModule)
-  },
-  {
-    path: 'fair-student-register',
-    loadChildren: () => import('./modals/fair-student-register/fair-student-register.module').then( m => m.FairStudentRegisterPageModule)
-  },
-  {
-    path: 'fair-chaperone-register',
-    loadChildren: () => import('./modals/fair-chaperone-register/fair-chaperone-register.module').then( m => m.FairChaperoneRegisterPageModule)
-  },
-  {
-    path: 'fair-partner-register',
-    loadChildren: () => import('./modals/fair-partner-register/fair-partner-register.module').then( m => m.FairPartnerRegisterPageModule)
-  },
-  {
-    path: 'fair-volunteer-register',
-    loadChildren: () => import('./modals/fair-volunteer-register/fair-volunteer-register.module').then( m => m.FairVolunteerRegisterPageModule)
-  },
-  {
-    path: 'fair-page/:id/:fair/:date/:address/:city/:state/:zip/:usertype/:summary/:agenda/:faq/:partners',
-    loadChildren: () => import('./pages/fairs/selection/fair-page/fair-page.module').then( m => m.FairPagePageModule)
   },
   {
     path: 'upload-resume-modal',
