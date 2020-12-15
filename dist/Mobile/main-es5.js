@@ -1501,13 +1501,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _environments_environment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
-    /*! ../environments/environment */
-    "./src/environments/environment.ts");
-    /* harmony import */
-
-
-    var _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    var _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
     /*! @angular/service-worker */
     "./node_modules/@angular/service-worker/fesm2015/service-worker.js"); // Angular Modules
 
@@ -1543,8 +1537,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           useFactory: jwtOptionsFactory,
           deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_16__["Storage"]]
         }
-      }), _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__["ServiceWorkerModule"].register('ngsw-worker.js', {
-        enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_21__["environment"].production
+      }), _angular_service_worker__WEBPACK_IMPORTED_MODULE_21__["ServiceWorkerModule"].register('ngsw-worker.js', {
+        enabled: true
       })],
       providers: [_emitters_post_page_emitter_service__WEBPACK_IMPORTED_MODULE_13__["PostPageEmitterService"], _emitters_favorites_event_emitter_service__WEBPACK_IMPORTED_MODULE_14__["FavoritesEventEmitterService"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_17__["Camera"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_18__["File"], _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_19__["FilePath"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_20__["WebView"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"],
