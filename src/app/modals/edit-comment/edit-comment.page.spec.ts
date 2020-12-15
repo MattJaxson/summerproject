@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { EditCommentPage } from './edit-comment.page';
@@ -7,7 +7,7 @@ describe('EditCommentPage', () => {
   let component: EditCommentPage;
   let fixture: ComponentFixture<EditCommentPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ EditCommentPage ],
       imports: [IonicModule.forRoot()]

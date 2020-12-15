@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { FollowCommentButtonsComponent } from './follow-comment-buttons.component';
@@ -7,7 +7,7 @@ describe('FollowCommentButtonsComponent', () => {
   let component: FollowCommentButtonsComponent;
   let fixture: ComponentFixture<FollowCommentButtonsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FollowCommentButtonsComponent ],
       imports: [IonicModule.forRoot()]
