@@ -105,13 +105,13 @@ export class NewMessageStudentPage implements OnInit {
             }
           }
           // tslint:disable-next-line: max-line-length
-          this.studentChat.newChatroom(this.requestingUserFullname, this.requestingUserEmail, this.requestingUserPhoto, respondingUserFullName, respondingUserEmail, respondingUserPhoto);
+          // this.studentChat.newChatroom(this.requestingUserFullname, this.requestingUserEmail, this.requestingUserPhoto, respondingUserFullName, respondingUserEmail, respondingUserPhoto);
 
-          this.studentChat.newChatRoom.subscribe(
-            d => {
-              this.studentChat.conversations$.next(Object.values(d));
-            }
-          );
+          // this.studentChat.newChatRoom.subscribe(
+          //   d => {
+          //     this.studentChat.conversations$.next(Object.values(d));
+          //   }
+          // );
 
           this.cancel();
         });

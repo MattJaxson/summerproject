@@ -1,6 +1,60 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["change-email-change-email-change-email-module"],{
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-email/change-email/change-email.page.html":
+/***/ "7DMG":
+/*!********************************************************************************!*\
+  !*** ./src/app/pages/profile/change-email/change-email/change-email.page.scss ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-title {\n  margin: 0;\n}\n\n.blue-button {\n  -webkit-animation: none;\n          animation: none;\n  opacity: unset;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL2NoYW5nZS1lbWFpbC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0FBQ0o7O0FBRUE7RUFDSSx1QkFBQTtVQUFBLGVBQUE7RUFDQSxjQUFBO0FBQ0oiLCJmaWxlIjoiY2hhbmdlLWVtYWlsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZSB7XG4gICAgbWFyZ2luOiAwO1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICAgIGFuaW1hdGlvbjogbm9uZTtcbiAgICBvcGFjaXR5OiB1bnNldDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "N4dY":
+/*!****************************************************************************************!*\
+  !*** ./src/app/pages/profile/change-email/change-email/change-email-routing.module.ts ***!
+  \****************************************************************************************/
+/*! exports provided: ChangeEmailPageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeEmailPageRoutingModule", function() { return ChangeEmailPageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _change_email_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change-email.page */ "xTfj");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _change_email_page__WEBPACK_IMPORTED_MODULE_3__["ChangeEmailPage"]
+    },
+    {
+        path: 'confirm',
+        loadChildren: () => __webpack_require__.e(/*! import() | confirm-confirm-module */ "confirm-confirm-module").then(__webpack_require__.bind(null, /*! ../confirm/confirm.module */ "QGQF")).then(m => m.ConfirmPageModule)
+    }
+];
+let ChangeEmailPageRoutingModule = class ChangeEmailPageRoutingModule {
+};
+ChangeEmailPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], ChangeEmailPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "S8gy":
 /*!**********************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-email/change-email/change-email.page.html ***!
   \**********************************************************************************************************************/
@@ -13,48 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/app/pages/profile/change-email/change-email/change-email-routing.module.ts":
-/*!****************************************************************************************!*\
-  !*** ./src/app/pages/profile/change-email/change-email/change-email-routing.module.ts ***!
-  \****************************************************************************************/
-/*! exports provided: ChangeEmailPageRoutingModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeEmailPageRoutingModule", function() { return ChangeEmailPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _change_email_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change-email.page */ "./src/app/pages/profile/change-email/change-email/change-email.page.ts");
-
-
-
-
-const routes = [
-    {
-        path: '',
-        component: _change_email_page__WEBPACK_IMPORTED_MODULE_3__["ChangeEmailPage"]
-    },
-    {
-        path: 'confirm',
-        loadChildren: () => __webpack_require__.e(/*! import() | confirm-confirm-module */ "confirm-confirm-module").then(__webpack_require__.bind(null, /*! ../confirm/confirm.module */ "./src/app/pages/profile/change-email/confirm/confirm.module.ts")).then(m => m.ConfirmPageModule)
-    }
-];
-let ChangeEmailPageRoutingModule = class ChangeEmailPageRoutingModule {
-};
-ChangeEmailPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
-    })
-], ChangeEmailPageRoutingModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/profile/change-email/change-email/change-email.module.ts":
+/***/ "SmxB":
 /*!********************************************************************************!*\
   !*** ./src/app/pages/profile/change-email/change-email/change-email.module.ts ***!
   \********************************************************************************/
@@ -64,13 +77,13 @@ ChangeEmailPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeEmailPageModule", function() { return ChangeEmailPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _change_email_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./change-email-routing.module */ "./src/app/pages/profile/change-email/change-email/change-email-routing.module.ts");
-/* harmony import */ var _change_email_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./change-email.page */ "./src/app/pages/profile/change-email/change-email/change-email.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _change_email_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./change-email-routing.module */ "N4dY");
+/* harmony import */ var _change_email_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./change-email.page */ "xTfj");
 
 
 
@@ -80,7 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let ChangeEmailPageModule = class ChangeEmailPageModule {
 };
-ChangeEmailPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+ChangeEmailPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -97,20 +110,7 @@ ChangeEmailPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/pages/profile/change-email/change-email/change-email.page.scss":
-/*!********************************************************************************!*\
-  !*** ./src/app/pages/profile/change-email/change-email/change-email.page.scss ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-title {\n  margin: 0;\n}\n\n.blue-button {\n  -webkit-animation: none;\n          animation: none;\n  opacity: unset;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtZW1haWwvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC9jaGFuZ2UtZW1haWwucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQ0NKOztBREVBO0VBQ0ksdUJBQUE7VUFBQSxlQUFBO0VBQ0EsY0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2UtZW1haWwvY2hhbmdlLWVtYWlsL2NoYW5nZS1lbWFpbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGUge1xuICAgIG1hcmdpbjogMDtcbn1cblxuLmJsdWUtYnV0dG9uIHtcbiAgICBhbmltYXRpb246IG5vbmU7XG4gICAgb3BhY2l0eTogdW5zZXQ7XG59IiwiaW9uLXRpdGxlIHtcbiAgbWFyZ2luOiAwO1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICBhbmltYXRpb246IG5vbmU7XG4gIG9wYWNpdHk6IHVuc2V0O1xufSJdfQ== */");
-
-/***/ }),
-
-/***/ "./src/app/pages/profile/change-email/change-email/change-email.page.ts":
+/***/ "xTfj":
 /*!******************************************************************************!*\
   !*** ./src/app/pages/profile/change-email/change-email/change-email.page.ts ***!
   \******************************************************************************/
@@ -120,13 +120,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeEmailPage", function() { return ChangeEmailPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../services/profile.service */ "./src/app/services/profile.service.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_change_email_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./change-email.page.html */ "S8gy");
+/* harmony import */ var _change_email_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./change-email.page.scss */ "7DMG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../services/auth.service */ "lGQG");
+/* harmony import */ var _services_profile_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../services/profile.service */ "Aso2");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+
+
 
 
 
@@ -157,12 +161,12 @@ let ChangeEmailPage = class ChangeEmailPage {
     }
     ngOnInit() {
         this.changeEmail = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(8),
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].email]],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose([
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(8),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
                     // this is for the letters (both uppercase and lowercase) and numbers validation
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
                 ])]
         });
         this.changeEmail.valueChanges.subscribe(_ => {
@@ -180,7 +184,7 @@ let ChangeEmailPage = class ChangeEmailPage {
         this.router.navigate(['/home/profile/edit-profile-page']);
     }
     presentToast() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const toast = yield this.toast.create({
                 message: 'There was an error with your password or email. Please try again.',
                 duration: 5000,
@@ -192,7 +196,7 @@ let ChangeEmailPage = class ChangeEmailPage {
         });
     }
     presentAlert() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const alert = yield this.alertController.create({
                 cssClass: 'danger-alert',
                 header: 'Invalid Email',
@@ -215,25 +219,25 @@ let ChangeEmailPage = class ChangeEmailPage {
     }
 };
 ChangeEmailPage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
-    { type: _services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"] },
+    { type: _services_profile_service__WEBPACK_IMPORTED_MODULE_7__["ProfileService"] }
 ];
-ChangeEmailPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+ChangeEmailPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-change-email',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./change-email.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-email/change-email/change-email.page.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./change-email.page.scss */ "./src/app/pages/profile/change-email/change-email/change-email.page.scss")).default]
+        template: _raw_loader_change_email_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_change_email_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-        _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"],
-        _services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+        _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"],
+        _services_profile_service__WEBPACK_IMPORTED_MODULE_7__["ProfileService"]])
 ], ChangeEmailPage);
 
 

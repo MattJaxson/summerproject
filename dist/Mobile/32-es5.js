@@ -1,860 +1,899 @@
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+(function () {
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[32], {
-  /***/
-  "./node_modules/@ionic/core/dist/esm/ion-item-option_3-md.entry.js":
-  /*!*************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-item-option_3-md.entry.js ***!
-    \*************************************************************************/
-
-  /*! exports provided: ion_item_option, ion_item_options, ion_item_sliding */
-
-  /***/
-  function node_modulesIonicCoreDistEsmIonItemOption_3MdEntryJs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ion_item_option", function () {
-      return ItemOption;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ion_item_options", function () {
-      return ItemOptions;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ion_item_sliding", function () {
-      return ItemSliding;
-    });
-    /* harmony import */
-
-
-    var _core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-feeeff0d.js */
-    "./node_modules/@ionic/core/dist/esm/core-feeeff0d.js");
-    /* harmony import */
-
-
-    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-3c7f3790.js */
-    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-    /* harmony import */
-
-
-    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-46f4a262.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-    /* harmony import */
-
-
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./theme-18cbe2cc.js */
-    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
-
-    var ItemOption = /*#__PURE__*/function () {
-      function ItemOption(hostRef) {
-        _classCallCheck(this, ItemOption);
-
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * If `true`, the user cannot interact with the item option.
-         */
-
-        this.disabled = false;
-        /**
-         * If `true`, the option will expand to take up the available width and cover any other options.
-         */
-
-        this.expandable = false;
-        /**
-         * The type of the button.
-         */
-
-        this.type = 'button';
-
-        this.onClick = function (ev) {
-          var el = ev.target.closest('ion-item-option');
-
-          if (el) {
-            ev.preventDefault();
-          }
-        };
-      }
-
-      _createClass(ItemOption, [{
-        key: "render",
-        value: function render() {
-          var _Object$assign;
-
-          var disabled = this.disabled,
-              expandable = this.expandable,
-              href = this.href;
-          var TagType = href === undefined ? 'button' : 'a';
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var attrs = TagType === 'button' ? {
-            type: this.type
-          } : {
-            download: this.download,
-            href: this.href,
-            target: this.target
-          };
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            onClick: this.onClick,
-            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'item-option-disabled', disabled), _defineProperty(_Object$assign, 'item-option-expandable', expandable), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            "class": "button-native",
-            disabled: disabled
-          }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            "class": "button-inner"
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "top"
-          }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            "class": "horizontal-wrapper"
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "start"
-          }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "icon-only"
-          }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "end"
-          })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "bottom"
-          })), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "style",
-        get: function get() {
-          return ":host{--background:var(--ion-color-primary,#3880ff);--color:var(--ion-color-primary-contrast,#fff);background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit)}:host(.in-list.item-options-end:last-child){padding-right:calc(.7em + var(--ion-safe-area-right))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-list.item-options-end:last-child){padding-right:unset;-webkit-padding-end:calc(.7em + var(--ion-safe-area-right));padding-inline-end:calc(.7em + var(--ion-safe-area-right))}}:host(.in-list.item-options-start:first-child){padding-left:calc(.7em + var(--ion-safe-area-left))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-list.item-options-start:first-child){padding-left:unset;-webkit-padding-start:calc(.7em + var(--ion-safe-area-left));padding-inline-start:calc(.7em + var(--ion-safe-area-left))}}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}.button-native{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;padding-left:.7em;padding-right:.7em;padding-top:0;padding-bottom:0;display:inline-block;position:relative;width:100%;height:100%;border:0;outline:none;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:.7em;padding-inline-start:.7em;-webkit-padding-end:.7em;padding-inline-end:.7em}}.button-inner{-ms-flex-flow:column nowrap;flex-flow:column nowrap;height:100%}.button-inner,.horizontal-wrapper{display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%}.horizontal-wrapper{-ms-flex-flow:row nowrap;flex-flow:row nowrap}::slotted(*){-ms-flex-negative:0;flex-shrink:0}::slotted([slot=start]){margin-left:0;margin-right:5px;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:5px;margin-inline-end:5px}}::slotted([slot=end]){margin-left:5px;margin-right:0;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:0;margin-inline-end:0}}::slotted([slot=icon-only]){padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-left:10px;margin-right:10px;margin-top:0;margin-bottom:0;min-width:.9em;font-size:1.8em}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=icon-only]){margin-left:unset;margin-right:unset;-webkit-margin-start:10px;margin-inline-start:10px;-webkit-margin-end:10px;margin-inline-end:10px}}:host(.item-option-expandable){-ms-flex-negative:0;flex-shrink:0;-webkit-transition-duration:0;transition-duration:0;-webkit-transition-property:none;transition-property:none;-webkit-transition-timing-function:cubic-bezier(.65,.05,.36,1);transition-timing-function:cubic-bezier(.65,.05,.36,1)}:host(.item-option-disabled){pointer-events:none}:host(.item-option-disabled) .button-native{cursor:default;opacity:.5;pointer-events:none}:host{font-size:14px;font-weight:500;text-transform:uppercase}";
-        }
-      }]);
-
-      return ItemOption;
-    }();
-
-    var ItemOptions = /*#__PURE__*/function () {
-      function ItemOptions(hostRef) {
-        _classCallCheck(this, ItemOptions);
-
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * The side the option button should be on. Possible values: `"start"` and `"end"`. If you have multiple `ion-item-options`, a side must be provided for each.
-         *
-         */
-
-        this.side = 'end';
-        this.ionSwipe = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionSwipe", 7);
-      }
-      /** @internal */
-
-
-      _createClass(ItemOptions, [{
-        key: "fireSwipeEvent",
-        value: function () {
-          var _fireSwipeEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    this.ionSwipe.emit({
-                      side: this.side
-                    });
-
-                  case 1:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-
-          function fireSwipeEvent() {
-            return _fireSwipeEvent.apply(this, arguments);
-          }
-
-          return fireSwipeEvent;
-        }()
-      }, {
-        key: "render",
-        value: function render() {
-          var _class;
-
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var isEnd = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.side);
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-options-".concat(mode), true), _defineProperty(_class, 'item-options-start', !isEnd), _defineProperty(_class, 'item-options-end', isEnd), _class)
-          });
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "style",
-        get: function get() {
-          return "ion-item-options{top:0;right:0;-ms-flex-pack:end;justify-content:flex-end;display:none;position:absolute;height:100%;font-size:14px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1}:host-context([dir=rtl]) ion-item-options,[dir=rtl] ion-item-options{-ms-flex-pack:start;justify-content:flex-start}:host-context([dir=rtl]) ion-item-options:not(.item-options-end),[dir=rtl] ion-item-options:not(.item-options-end){right:auto;left:0;-ms-flex-pack:end;justify-content:flex-end}.item-options-start{right:auto;left:0;-ms-flex-pack:start;justify-content:flex-start}:host-context([dir=rtl]) .item-options-start,[dir=rtl] .item-options-start{-ms-flex-pack:end;justify-content:flex-end}.item-options-start ion-item-option:first-child{padding-right:var(--ion-safe-area-left)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.item-options-start ion-item-option:first-child{padding-right:unset;-webkit-padding-end:var(--ion-safe-area-left);padding-inline-end:var(--ion-safe-area-left)}}.item-options-end ion-item-option:last-child{padding-right:var(--ion-safe-area-right)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.item-options-end ion-item-option:last-child{padding-right:unset;-webkit-padding-end:var(--ion-safe-area-right);padding-inline-end:var(--ion-safe-area-right)}}:host-context([dir=rtl]) .item-sliding-active-slide.item-sliding-active-options-start ion-item-options:not(.item-options-end),[dir=rtl] .item-sliding-active-slide.item-sliding-active-options-start ion-item-options:not(.item-options-end){width:100%;visibility:visible}.item-sliding-active-slide ion-item-options{display:-ms-flexbox;display:flex;visibility:hidden}.item-sliding-active-slide.item-sliding-active-options-end ion-item-options:not(.item-options-start),.item-sliding-active-slide.item-sliding-active-options-start .item-options-start{width:100%;visibility:visible}.item-options-md{border-bottom-style:solid;border-bottom-color:var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,.13))))}.item-options-md,.list-md-lines-none .item-options-md{border-bottom-width:0}.list-md-lines-full .item-options-md,.list-md-lines-inset .item-options-md.item-options-end{border-bottom-width:1px}";
-        }
-      }]);
-
-      return ItemOptions;
-    }();
-
-    var SWIPE_MARGIN = 30;
-    var ELASTIC_FACTOR = 0.55;
-    var openSlidingItem;
-
-    var ItemSliding = /*#__PURE__*/function () {
-      function ItemSliding(hostRef) {
-        _classCallCheck(this, ItemSliding);
-
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.item = null;
-        this.openAmount = 0;
-        this.initialOpenAmount = 0;
-        this.optsWidthRightSide = 0;
-        this.optsWidthLeftSide = 0;
-        this.sides = 0
-        /* None */
-        ;
-        this.optsDirty = true;
-        this.state = 2
-        /* Disabled */
-        ;
-        /**
-         * If `true`, the user cannot interact with the sliding item.
-         */
-
-        this.disabled = false;
-        this.ionDrag = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionDrag", 7);
-      }
-
-      _createClass(ItemSliding, [{
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          if (this.gesture) {
-            this.gesture.setDisabled(this.disabled);
-          }
-        }
-      }, {
-        key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this = this;
-
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    this.item = this.el.querySelector('ion-item');
-                    _context2.next = 3;
-                    return this.updateOptions();
-
-                  case 3:
-                    _context2.next = 5;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-624eea58.js */
-                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
-
-                  case 5:
-                    this.gesture = _context2.sent.createGesture({
-                      el: this.el,
-                      gestureName: 'item-swipe',
-                      gesturePriority: 100,
-                      threshold: 5,
-                      canStart: function canStart() {
-                        return _this.canStart();
-                      },
-                      onStart: function onStart() {
-                        return _this.onStart();
-                      },
-                      onMove: function onMove(ev) {
-                        return _this.onMove(ev);
-                      },
-                      onEnd: function onEnd(ev) {
-                        return _this.onEnd(ev);
-                      }
-                    });
-                    this.disabledChanged();
-
-                  case 7:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
-      }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
-          }
-
-          this.item = null;
-          this.leftOptions = this.rightOptions = undefined;
-
-          if (openSlidingItem === this.el) {
-            openSlidingItem = undefined;
-          }
-        }
-        /**
-         * Get the amount the item is open in pixels.
-         */
-
-      }, {
-        key: "getOpenAmount",
-        value: function getOpenAmount() {
-          return Promise.resolve(this.openAmount);
-        }
-        /**
-         * Get the ratio of the open amount of the item compared to the width of the options.
-         * If the number returned is positive, then the options on the right side are open.
-         * If the number returned is negative, then the options on the left side are open.
-         * If the absolute value of the number is greater than 1, the item is open more than
-         * the width of the options.
-         */
-
-      }, {
-        key: "getSlidingRatio",
-        value: function getSlidingRatio() {
-          return Promise.resolve(this.getSlidingRatioSync());
-        }
-        /**
-         * Open the sliding item.
-         *
-         * @param side The side of the options to open. If a side is not provided, it will open the first set of options it finds within the item.
-         */
-
-      }, {
-        key: "open",
-        value: function () {
-          var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(side) {
-            var _this2 = this;
-
-            var optionsToOpen, isStartOpen, isEndOpen;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (!(this.item === null)) {
-                      _context3.next = 2;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 2:
-                    optionsToOpen = this.getOptions(side);
-
-                    if (optionsToOpen) {
-                      _context3.next = 5;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 5:
-                    /**
-                     * If side is not set, we need to infer the side
-                     * so we know which direction to move the options
-                     */
-                    if (side === undefined) {
-                      side = optionsToOpen === this.leftOptions ? 'start' : 'end';
-                    } // In RTL we want to switch the sides
-
-
-                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(side) ? 'end' : 'start';
-                    isStartOpen = this.openAmount < 0;
-                    isEndOpen = this.openAmount > 0;
-                    /**
-                     * If a side is open and a user tries to
-                     * re-open the same side, we should not do anything
-                     */
-
-                    if (!(isStartOpen && optionsToOpen === this.leftOptions)) {
-                      _context3.next = 11;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 11:
-                    if (!(isEndOpen && optionsToOpen === this.rightOptions)) {
-                      _context3.next = 13;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 13:
-                    this.closeOpened();
-                    this.state = 4
-                    /* Enabled */
-                    ;
-                    requestAnimationFrame(function () {
-                      _this2.calculateOptsWidth();
-
-                      var width = side === 'end' ? _this2.optsWidthRightSide : -_this2.optsWidthLeftSide;
-                      openSlidingItem = _this2.el;
-
-                      _this2.setOpenAmount(width, false);
-
-                      _this2.state = side === 'end' ? 8
-                      /* End */
-                      : 16
-                      /* Start */
-                      ;
-                    });
-
-                  case 16:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, this);
-          }));
-
-          function open(_x) {
-            return _open.apply(this, arguments);
-          }
-
-          return open;
-        }()
-        /**
-         * Close the sliding item. Items can also be closed from the [List](../../list/List).
-         */
-
-      }, {
-        key: "close",
-        value: function () {
-          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    this.setOpenAmount(0, true);
-
-                  case 1:
-                  case "end":
-                    return _context4.stop();
-                }
-              }
-            }, _callee4, this);
-          }));
-
-          function close() {
-            return _close.apply(this, arguments);
-          }
-
-          return close;
-        }()
-        /**
-         * Close all of the sliding items in the list. Items can also be closed from the [List](../../list/List).
-         */
-
-      }, {
-        key: "closeOpened",
-        value: function () {
-          var _closeOpened = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    if (!(openSlidingItem !== undefined)) {
-                      _context5.next = 4;
-                      break;
-                    }
-
-                    openSlidingItem.close();
-                    openSlidingItem = undefined;
-                    return _context5.abrupt("return", true);
-
-                  case 4:
-                    return _context5.abrupt("return", false);
-
-                  case 5:
-                  case "end":
-                    return _context5.stop();
-                }
-              }
-            }, _callee5);
-          }));
-
-          function closeOpened() {
-            return _closeOpened.apply(this, arguments);
-          }
-
-          return closeOpened;
-        }()
-        /**
-         * Given an optional side, return the ion-item-options element.
-         *
-         * @param side This side of the options to get. If a side is not provided it will
-         * return the first one available.
-         */
-
-      }, {
-        key: "getOptions",
-        value: function getOptions(side) {
-          if (side === undefined) {
-            return this.leftOptions || this.rightOptions;
-          } else if (side === 'start') {
-            return this.leftOptions;
-          } else {
-            return this.rightOptions;
-          }
-        }
-      }, {
-        key: "updateOptions",
-        value: function () {
-          var _updateOptions = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            var options, sides, i, option, side;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    options = this.el.querySelectorAll('ion-item-options');
-                    sides = 0; // Reset left and right options in case they were removed
-
-                    this.leftOptions = this.rightOptions = undefined;
-                    i = 0;
-
-                  case 4:
-                    if (!(i < options.length)) {
-                      _context6.next = 13;
-                      break;
-                    }
-
-                    _context6.next = 7;
-                    return options.item(i).componentOnReady();
-
-                  case 7:
-                    option = _context6.sent;
-                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(option.side) ? 'end' : 'start';
-
-                    if (side === 'start') {
-                      this.leftOptions = option;
-                      sides |= 1
-                      /* Start */
-                      ;
-                    } else {
-                      this.rightOptions = option;
-                      sides |= 2
-                      /* End */
-                      ;
-                    }
-
-                  case 10:
-                    i++;
-                    _context6.next = 4;
-                    break;
-
-                  case 13:
-                    this.optsDirty = true;
-                    this.sides = sides;
-
-                  case 15:
-                  case "end":
-                    return _context6.stop();
-                }
-              }
-            }, _callee6, this);
-          }));
-
-          function updateOptions() {
-            return _updateOptions.apply(this, arguments);
-          }
-
-          return updateOptions;
-        }()
-      }, {
-        key: "canStart",
-        value: function canStart() {
-          var selected = openSlidingItem;
-
-          if (selected && selected !== this.el) {
-            this.closeOpened();
-            return false;
-          }
-
-          return !!(this.rightOptions || this.leftOptions);
-        }
-      }, {
-        key: "onStart",
-        value: function onStart() {
-          openSlidingItem = this.el;
-
-          if (this.tmr !== undefined) {
-            clearTimeout(this.tmr);
-            this.tmr = undefined;
-          }
-
-          if (this.openAmount === 0) {
-            this.optsDirty = true;
-            this.state = 4
-            /* Enabled */
-            ;
-          }
-
-          this.initialOpenAmount = this.openAmount;
-
-          if (this.item) {
-            this.item.style.transition = 'none';
-          }
-        }
-      }, {
-        key: "onMove",
-        value: function onMove(gesture) {
-          if (this.optsDirty) {
-            this.calculateOptsWidth();
-          }
-
-          var openAmount = this.initialOpenAmount - gesture.deltaX;
-
-          switch (this.sides) {
-            case 2
-            /* End */
-            :
-              openAmount = Math.max(0, openAmount);
-              break;
-
-            case 1
-            /* Start */
-            :
-              openAmount = Math.min(0, openAmount);
-              break;
-
-            case 3
-            /* Both */
-            :
-              break;
-
-            case 0
-            /* None */
-            :
-              return;
-
-            default:
-              console.warn('invalid ItemSideFlags value', this.sides);
-              break;
-          }
-
-          var optsWidth;
-
-          if (openAmount > this.optsWidthRightSide) {
-            optsWidth = this.optsWidthRightSide;
-            openAmount = optsWidth + (openAmount - optsWidth) * ELASTIC_FACTOR;
-          } else if (openAmount < -this.optsWidthLeftSide) {
-            optsWidth = -this.optsWidthLeftSide;
-            openAmount = optsWidth + (openAmount - optsWidth) * ELASTIC_FACTOR;
-          }
-
-          this.setOpenAmount(openAmount, false);
-        }
-      }, {
-        key: "onEnd",
-        value: function onEnd(gesture) {
-          var velocity = gesture.velocityX;
-          var restingPoint = this.openAmount > 0 ? this.optsWidthRightSide : -this.optsWidthLeftSide; // Check if the drag didn't clear the buttons mid-point
-          // and we aren't moving fast enough to swipe open
-
-          var isResetDirection = this.openAmount > 0 === !(velocity < 0);
-          var isMovingFast = Math.abs(velocity) > 0.3;
-          var isOnCloseZone = Math.abs(this.openAmount) < Math.abs(restingPoint / 2);
-
-          if (swipeShouldReset(isResetDirection, isMovingFast, isOnCloseZone)) {
-            restingPoint = 0;
-          }
-
-          var state = this.state;
-          this.setOpenAmount(restingPoint, true);
-
-          if ((state & 32
-          /* SwipeEnd */
-          ) !== 0 && this.rightOptions) {
-            this.rightOptions.fireSwipeEvent();
-          } else if ((state & 64
-          /* SwipeStart */
-          ) !== 0 && this.leftOptions) {
-            this.leftOptions.fireSwipeEvent();
-          }
-        }
-      }, {
-        key: "calculateOptsWidth",
-        value: function calculateOptsWidth() {
-          this.optsWidthRightSide = 0;
-
-          if (this.rightOptions) {
-            this.rightOptions.style.display = 'flex';
-            this.optsWidthRightSide = this.rightOptions.offsetWidth;
-            this.rightOptions.style.display = '';
-          }
-
-          this.optsWidthLeftSide = 0;
-
-          if (this.leftOptions) {
-            this.leftOptions.style.display = 'flex';
-            this.optsWidthLeftSide = this.leftOptions.offsetWidth;
-            this.leftOptions.style.display = '';
-          }
-
-          this.optsDirty = false;
-        }
-      }, {
-        key: "setOpenAmount",
-        value: function setOpenAmount(openAmount, isFinal) {
-          var _this3 = this;
-
-          if (this.tmr !== undefined) {
-            clearTimeout(this.tmr);
-            this.tmr = undefined;
-          }
-
-          if (!this.item) {
-            return;
-          }
-
-          var style = this.item.style;
-          this.openAmount = openAmount;
-
-          if (isFinal) {
-            style.transition = '';
-          }
-
-          if (openAmount > 0) {
-            this.state = openAmount >= this.optsWidthRightSide + SWIPE_MARGIN ? 8
-            /* End */
-            | 32
-            /* SwipeEnd */
-            : 8
-            /* End */
-            ;
-          } else if (openAmount < 0) {
-            this.state = openAmount <= -this.optsWidthLeftSide - SWIPE_MARGIN ? 16
-            /* Start */
-            | 64
-            /* SwipeStart */
-            : 16
-            /* Start */
-            ;
-          } else {
-            this.tmr = setTimeout(function () {
-              _this3.state = 2
-              /* Disabled */
-              ;
-              _this3.tmr = undefined;
-            }, 600);
-            openSlidingItem = undefined;
-            style.transform = '';
-            return;
-          }
-
-          style.transform = "translate3d(".concat(-openAmount, "px,0,0)");
-          this.ionDrag.emit({
-            amount: openAmount,
-            ratio: this.getSlidingRatioSync()
-          });
-        }
-      }, {
-        key: "getSlidingRatioSync",
-        value: function getSlidingRatioSync() {
-          if (this.openAmount > 0) {
-            return this.openAmount / this.optsWidthRightSide;
-          } else if (this.openAmount < 0) {
-            return this.openAmount / this.optsWidthLeftSide;
-          } else {
-            return 0;
-          }
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          var _class2;
-
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'item-sliding-active-slide', this.state !== 2
-            /* Disabled */
-            ), _defineProperty(_class2, 'item-sliding-active-options-end', (this.state & 8
-            /* End */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-options-start', (this.state & 16
-            /* Start */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-swipe-end', (this.state & 32
-            /* SwipeEnd */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-swipe-start', (this.state & 64
-            /* SwipeStart */
-            ) !== 0), _class2)
-          });
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "watchers",
-        get: function get() {
-          return {
-            "disabled": ["disabledChanged"]
-          };
-        }
-      }, {
-        key: "style",
-        get: function get() {
-          return "ion-item-sliding{display:block;position:relative;width:100%;overflow:hidden}ion-item-sliding,ion-item-sliding .item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.item-sliding-active-slide .item{position:relative;-webkit-transition:-webkit-transform .5s cubic-bezier(.36,.66,.04,1);transition:-webkit-transform .5s cubic-bezier(.36,.66,.04,1);transition:transform .5s cubic-bezier(.36,.66,.04,1);transition:transform .5s cubic-bezier(.36,.66,.04,1),-webkit-transform .5s cubic-bezier(.36,.66,.04,1);opacity:1;z-index:2;pointer-events:none;will-change:transform}.item-sliding-active-swipe-end .item-options-end .item-option-expandable{padding-left:100%;-ms-flex-order:1;order:1;-webkit-transition-duration:.6s;transition-duration:.6s;-webkit-transition-property:padding-left;transition-property:padding-left}:host-context([dir=rtl]) .item-sliding-active-swipe-end .item-options-end .item-option-expandable,[dir=rtl] .item-sliding-active-swipe-end .item-options-end .item-option-expandable{-ms-flex-order:-1;order:-1}.item-sliding-active-swipe-start .item-options-start .item-option-expandable{padding-right:100%;-ms-flex-order:-1;order:-1;-webkit-transition-duration:.6s;transition-duration:.6s;-webkit-transition-property:padding-right;transition-property:padding-right}:host-context([dir=rtl]) .item-sliding-active-swipe-start .item-options-start .item-option-expandable,[dir=rtl] .item-sliding-active-swipe-start .item-options-start .item-option-expandable{-ms-flex-order:1;order:1}";
-        }
-      }]);
-
-      return ItemSliding;
-    }();
-
-    var swipeShouldReset = function swipeShouldReset(isResetDirection, isMovingFast, isOnResetZone) {
-      // The logic required to know when the sliding item should close (openAmount=0)
-      // depends on three booleans (isResetDirection, isMovingFast, isOnResetZone)
-      // and it ended up being too complicated to be written manually without errors
-      // so the truth table is attached below: (0=false, 1=true)
-      // isResetDirection | isMovingFast | isOnResetZone || shouldClose
-      //         0        |       0      |       0       ||    0
-      //         0        |       0      |       1       ||    1
-      //         0        |       1      |       0       ||    0
-      //         0        |       1      |       1       ||    0
-      //         1        |       0      |       0       ||    0
-      //         1        |       0      |       1       ||    1
-      //         1        |       1      |       0       ||    1
-      //         1        |       1      |       1       ||    1
-      // The resulting expression was generated by resolving the K-map (Karnaugh map):
-      return !isMovingFast && isOnResetZone || isResetDirection && isMovingFast;
-    };
+  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[32], {
     /***/
+    "lfGF":
+    /*!*****************************************************************!*\
+      !*** ./node_modules/@ionic/core/dist/esm/ion-select_3.entry.js ***!
+      \*****************************************************************/
 
-  }
-}]);
+    /*! exports provided: ion_select, ion_select_option, ion_select_popover */
+
+    /***/
+    function lfGF(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ion_select", function () {
+        return Select;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ion_select_option", function () {
+        return SelectOption;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ion_select_popover", function () {
+        return SelectPopover;
+      });
+      /* harmony import */
+
+
+      var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-e806d1f6.js */
+      "A36C");
+      /* harmony import */
+
+
+      var _ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./ionic-global-9d5c8ee3.js */
+      "Zgba");
+      /* harmony import */
+
+
+      var _helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./helpers-90f46169.js */
+      "QPqR");
+      /* harmony import */
+
+
+      var _hardware_back_button_4a6b37fb_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./hardware-back-button-4a6b37fb.js */
+      "B4Jq");
+      /* harmony import */
+
+
+      var _overlays_12c20431_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ./overlays-12c20431.js */
+      "oLNq");
+      /* harmony import */
+
+
+      var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ./theme-ff3fc52f.js */
+      "74mu");
+
+      var watchForOptions = function watchForOptions(containerEl, tagName, onChange) {
+        /* tslint:disable-next-line */
+        if (typeof MutationObserver === 'undefined') {
+          return;
+        }
+
+        var mutation = new MutationObserver(function (mutationList) {
+          onChange(getSelectedOption(mutationList, tagName));
+        });
+        mutation.observe(containerEl, {
+          childList: true,
+          subtree: true
+        });
+        return mutation;
+      };
+
+      var getSelectedOption = function getSelectedOption(mutationList, tagName) {
+        var newOption;
+        mutationList.forEach(function (mut) {
+          // tslint:disable-next-line: prefer-for-of
+          for (var i = 0; i < mut.addedNodes.length; i++) {
+            newOption = findCheckedOption(mut.addedNodes[i], tagName) || newOption;
+          }
+        });
+        return newOption;
+      };
+
+      var findCheckedOption = function findCheckedOption(el, tagName) {
+        if (el.nodeType !== 1) {
+          return undefined;
+        }
+
+        var options = el.tagName === tagName.toUpperCase() ? [el] : Array.from(el.querySelectorAll(tagName));
+        return options.find(function (o) {
+          return o.value === el.value;
+        });
+      };
+
+      var selectIosCss = ":host{--placeholder-color:currentColor;--placeholder-opacity:0.33;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:center;align-items:center;font-family:var(--ion-font-family, inherit);overflow:hidden;z-index:2}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}:host(.in-item){position:static;max-width:45%}:host(.select-disabled){opacity:0.4;pointer-events:none}:host(.ion-focused) button{border:2px solid #5e9ed6}.select-placeholder{color:var(--placeholder-color);opacity:var(--placeholder-opacity)}label{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}[dir=rtl] label,:host-context([dir=rtl]) label{left:unset;right:unset;right:0}label::-moz-focus-inner{border:0}button{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.select-icon{position:relative;opacity:0.33}.select-text{-ms-flex:1;flex:1;min-width:16px;font-size:inherit;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.select-icon-inner{left:5px;top:50%;margin-top:-2px;position:absolute;width:0;height:0;border-top:5px solid;border-right:5px solid transparent;border-left:5px solid transparent;color:currentColor;pointer-events:none}[dir=rtl] .select-icon-inner,:host-context([dir=rtl]) .select-icon-inner{left:unset;right:unset;right:5px}:host{--padding-top:10px;--padding-end:10px;--padding-bottom:10px;--padding-start:20px}.select-icon{width:12px;height:18px}";
+      var selectMdCss = ":host{--placeholder-color:currentColor;--placeholder-opacity:0.33;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:center;align-items:center;font-family:var(--ion-font-family, inherit);overflow:hidden;z-index:2}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}:host(.in-item){position:static;max-width:45%}:host(.select-disabled){opacity:0.4;pointer-events:none}:host(.ion-focused) button{border:2px solid #5e9ed6}.select-placeholder{color:var(--placeholder-color);opacity:var(--placeholder-opacity)}label{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}[dir=rtl] label,:host-context([dir=rtl]) label{left:unset;right:unset;right:0}label::-moz-focus-inner{border:0}button{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.select-icon{position:relative;opacity:0.33}.select-text{-ms-flex:1;flex:1;min-width:16px;font-size:inherit;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.select-icon-inner{left:5px;top:50%;margin-top:-2px;position:absolute;width:0;height:0;border-top:5px solid;border-right:5px solid transparent;border-left:5px solid transparent;color:currentColor;pointer-events:none}[dir=rtl] .select-icon-inner,:host-context([dir=rtl]) .select-icon-inner{left:unset;right:unset;right:5px}:host{--padding-top:10px;--padding-end:0;--padding-bottom:10px;--padding-start:16px}.select-icon{width:19px;height:19px}:host-context(.item-label-floating) .select-icon{-webkit-transform:translate3d(0,  -9px,  0);transform:translate3d(0,  -9px,  0)}";
+
+      var Select = /*#__PURE__*/function () {
+        function Select(hostRef) {
+          var _this = this;
+
+          _classCallCheck(this, Select);
+
+          Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          this.ionChange = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionChange", 7);
+          this.ionCancel = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionCancel", 7);
+          this.ionFocus = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
+          this.ionBlur = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
+          this.ionStyle = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionStyle", 7);
+          this.inputId = "ion-sel-".concat(selectIds++);
+          this.didInit = false;
+          this.isExpanded = false;
+          /**
+           * If `true`, the user cannot interact with the select.
+           */
+
+          this.disabled = false;
+          /**
+           * The text to display on the cancel button.
+           */
+
+          this.cancelText = 'Cancel';
+          /**
+           * The text to display on the ok button.
+           */
+
+          this.okText = 'OK';
+          /**
+           * The name of the control, which is submitted with the form data.
+           */
+
+          this.name = this.inputId;
+          /**
+           * If `true`, the select can accept multiple values.
+           */
+
+          this.multiple = false;
+          /**
+           * The interface the select should use: `action-sheet`, `popover` or `alert`.
+           */
+
+          this["interface"] = 'alert';
+          /**
+           * Any additional options that the `alert`, `action-sheet` or `popover` interface
+           * can take. See the [ion-alert docs](../alert), the
+           * [ion-action-sheet docs](../action-sheet) and the
+           * [ion-popover docs](../popover) for the
+           * create options for each interface.
+           *
+           * Note: `interfaceOptions` will not override `inputs` or `buttons` with the `alert` interface.
+           */
+
+          this.interfaceOptions = {};
+
+          this.onClick = function (ev) {
+            _this.setFocus();
+
+            _this.open(ev);
+          };
+
+          this.onFocus = function () {
+            _this.ionFocus.emit();
+          };
+
+          this.onBlur = function () {
+            _this.ionBlur.emit();
+          };
+        }
+
+        _createClass(Select, [{
+          key: "disabledChanged",
+          value: function disabledChanged() {
+            this.emitStyle();
+          }
+        }, {
+          key: "valueChanged",
+          value: function valueChanged() {
+            this.emitStyle();
+
+            if (this.didInit) {
+              this.ionChange.emit({
+                value: this.value
+              });
+            }
+          }
+        }, {
+          key: "connectedCallback",
+          value: function () {
+            var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this2 = this;
+
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      this.updateOverlayOptions();
+                      this.emitStyle();
+                      this.mutationO = watchForOptions(this.el, 'ion-select-option', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                        return regeneratorRuntime.wrap(function _callee$(_context) {
+                          while (1) {
+                            switch (_context.prev = _context.next) {
+                              case 0:
+                                _this2.updateOverlayOptions();
+
+                              case 1:
+                              case "end":
+                                return _context.stop();
+                            }
+                          }
+                        }, _callee);
+                      })));
+
+                    case 3:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function connectedCallback() {
+              return _connectedCallback.apply(this, arguments);
+            }
+
+            return connectedCallback;
+          }()
+        }, {
+          key: "disconnectedCallback",
+          value: function disconnectedCallback() {
+            if (this.mutationO) {
+              this.mutationO.disconnect();
+              this.mutationO = undefined;
+            }
+          }
+        }, {
+          key: "componentDidLoad",
+          value: function componentDidLoad() {
+            this.didInit = true;
+          }
+          /**
+           * Open the select overlay. The overlay is either an alert, action sheet, or popover,
+           * depending on the `interface` property on the `ion-select`.
+           *
+           * @param event The user interface event that called the open.
+           */
+
+        }, {
+          key: "open",
+          value: function () {
+            var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(event) {
+              var _this3 = this;
+
+              var overlay;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      if (!(this.disabled || this.isExpanded)) {
+                        _context3.next = 2;
+                        break;
+                      }
+
+                      return _context3.abrupt("return", undefined);
+
+                    case 2:
+                      _context3.next = 4;
+                      return this.createOverlay(event);
+
+                    case 4:
+                      overlay = this.overlay = _context3.sent;
+                      this.isExpanded = true;
+                      overlay.onDidDismiss().then(function () {
+                        _this3.overlay = undefined;
+                        _this3.isExpanded = false;
+
+                        _this3.setFocus();
+                      });
+                      _context3.next = 9;
+                      return overlay.present();
+
+                    case 9:
+                      return _context3.abrupt("return", overlay);
+
+                    case 10:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function open(_x) {
+              return _open.apply(this, arguments);
+            }
+
+            return open;
+          }()
+        }, {
+          key: "createOverlay",
+          value: function createOverlay(ev) {
+            var selectInterface = this["interface"];
+
+            if ((selectInterface === 'action-sheet' || selectInterface === 'popover') && this.multiple) {
+              console.warn("Select interface cannot be \"".concat(selectInterface, "\" with a multi-value select. Using the \"alert\" interface instead."));
+              selectInterface = 'alert';
+            }
+
+            if (selectInterface === 'popover' && !ev) {
+              console.warn('Select interface cannot be a "popover" without passing an event. Using the "alert" interface instead.');
+              selectInterface = 'alert';
+            }
+
+            if (selectInterface === 'popover') {
+              return this.openPopover(ev);
+            }
+
+            if (selectInterface === 'action-sheet') {
+              return this.openActionSheet();
+            }
+
+            return this.openAlert();
+          }
+        }, {
+          key: "updateOverlayOptions",
+          value: function updateOverlayOptions() {
+            var overlay = this.overlay;
+
+            if (!overlay) {
+              return;
+            }
+
+            var childOpts = this.childOpts;
+            var value = this.value;
+
+            switch (this["interface"]) {
+              case 'action-sheet':
+                overlay.buttons = this.createActionSheetButtons(childOpts, value);
+                break;
+
+              case 'popover':
+                var popover = overlay.querySelector('ion-select-popover');
+
+                if (popover) {
+                  popover.options = this.createPopoverOptions(childOpts, value);
+                }
+
+                break;
+
+              case 'alert':
+                var inputType = this.multiple ? 'checkbox' : 'radio';
+                overlay.inputs = this.createAlertInputs(childOpts, inputType, value);
+                break;
+            }
+          }
+        }, {
+          key: "createActionSheetButtons",
+          value: function createActionSheetButtons(data, selectValue) {
+            var _this4 = this;
+
+            var actionSheetButtons = data.map(function (option) {
+              var value = getOptionValue(option); // Remove hydrated before copying over classes
+
+              var copyClasses = Array.from(option.classList).filter(function (cls) {
+                return cls !== 'hydrated';
+              }).join(' ');
+              var optClass = "".concat(OPTION_CLASS, " ").concat(copyClasses);
+              return {
+                role: isOptionSelected(value, selectValue, _this4.compareWith) ? 'selected' : '',
+                text: option.textContent,
+                cssClass: optClass,
+                handler: function handler() {
+                  _this4.value = value;
+                }
+              };
+            }); // Add "cancel" button
+
+            actionSheetButtons.push({
+              text: this.cancelText,
+              role: 'cancel',
+              handler: function handler() {
+                _this4.ionCancel.emit();
+              }
+            });
+            return actionSheetButtons;
+          }
+        }, {
+          key: "createAlertInputs",
+          value: function createAlertInputs(data, inputType, selectValue) {
+            var _this5 = this;
+
+            var alertInputs = data.map(function (option) {
+              var value = getOptionValue(option); // Remove hydrated before copying over classes
+
+              var copyClasses = Array.from(option.classList).filter(function (cls) {
+                return cls !== 'hydrated';
+              }).join(' ');
+              var optClass = "".concat(OPTION_CLASS, " ").concat(copyClasses);
+              return {
+                type: inputType,
+                cssClass: optClass,
+                label: option.textContent || '',
+                value: value,
+                checked: isOptionSelected(value, selectValue, _this5.compareWith),
+                disabled: option.disabled
+              };
+            });
+            return alertInputs;
+          }
+        }, {
+          key: "createPopoverOptions",
+          value: function createPopoverOptions(data, selectValue) {
+            var _this6 = this;
+
+            var popoverOptions = data.map(function (option) {
+              var value = getOptionValue(option); // Remove hydrated before copying over classes
+
+              var copyClasses = Array.from(option.classList).filter(function (cls) {
+                return cls !== 'hydrated';
+              }).join(' ');
+              var optClass = "".concat(OPTION_CLASS, " ").concat(copyClasses);
+              return {
+                text: option.textContent || '',
+                cssClass: optClass,
+                value: value,
+                checked: isOptionSelected(value, selectValue, _this6.compareWith),
+                disabled: option.disabled,
+                handler: function handler() {
+                  _this6.value = value;
+
+                  _this6.close();
+                }
+              };
+            });
+            return popoverOptions;
+          }
+        }, {
+          key: "openPopover",
+          value: function () {
+            var _openPopover = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(ev) {
+              var interfaceOptions, mode, value, popoverOpts;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      interfaceOptions = this.interfaceOptions;
+                      mode = Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+                      value = this.value;
+                      popoverOpts = Object.assign(Object.assign({
+                        mode: mode
+                      }, interfaceOptions), {
+                        component: 'ion-select-popover',
+                        cssClass: ['select-popover', interfaceOptions.cssClass],
+                        event: ev,
+                        componentProps: {
+                          header: interfaceOptions.header,
+                          subHeader: interfaceOptions.subHeader,
+                          message: interfaceOptions.message,
+                          value: value,
+                          options: this.createPopoverOptions(this.childOpts, value)
+                        }
+                      });
+                      return _context4.abrupt("return", _overlays_12c20431_js__WEBPACK_IMPORTED_MODULE_4__["c"].create(popoverOpts));
+
+                    case 5:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function openPopover(_x2) {
+              return _openPopover.apply(this, arguments);
+            }
+
+            return openPopover;
+          }()
+        }, {
+          key: "openActionSheet",
+          value: function () {
+            var _openActionSheet = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var mode, interfaceOptions, actionSheetOpts;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      mode = Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+                      interfaceOptions = this.interfaceOptions;
+                      actionSheetOpts = Object.assign(Object.assign({
+                        mode: mode
+                      }, interfaceOptions), {
+                        buttons: this.createActionSheetButtons(this.childOpts, this.value),
+                        cssClass: ['select-action-sheet', interfaceOptions.cssClass]
+                      });
+                      return _context5.abrupt("return", _overlays_12c20431_js__WEBPACK_IMPORTED_MODULE_4__["b"].create(actionSheetOpts));
+
+                    case 4:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function openActionSheet() {
+              return _openActionSheet.apply(this, arguments);
+            }
+
+            return openActionSheet;
+          }()
+        }, {
+          key: "openAlert",
+          value: function () {
+            var _openAlert = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var _this7 = this;
+
+              var label, labelText, interfaceOptions, inputType, mode, alertOpts;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      label = this.getLabel();
+                      labelText = label ? label.textContent : null;
+                      interfaceOptions = this.interfaceOptions;
+                      inputType = this.multiple ? 'checkbox' : 'radio';
+                      mode = Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+                      alertOpts = Object.assign(Object.assign({
+                        mode: mode
+                      }, interfaceOptions), {
+                        header: interfaceOptions.header ? interfaceOptions.header : labelText,
+                        inputs: this.createAlertInputs(this.childOpts, inputType, this.value),
+                        buttons: [{
+                          text: this.cancelText,
+                          role: 'cancel',
+                          handler: function handler() {
+                            _this7.ionCancel.emit();
+                          }
+                        }, {
+                          text: this.okText,
+                          handler: function handler(selectedValues) {
+                            _this7.value = selectedValues;
+                          }
+                        }],
+                        cssClass: ['select-alert', interfaceOptions.cssClass, this.multiple ? 'multiple-select-alert' : 'single-select-alert']
+                      });
+                      return _context6.abrupt("return", _overlays_12c20431_js__WEBPACK_IMPORTED_MODULE_4__["a"].create(alertOpts));
+
+                    case 7:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function openAlert() {
+              return _openAlert.apply(this, arguments);
+            }
+
+            return openAlert;
+          }()
+          /**
+           * Close the select interface.
+           */
+
+        }, {
+          key: "close",
+          value: function close() {
+            // TODO check !this.overlay || !this.isFocus()
+            if (!this.overlay) {
+              return Promise.resolve(false);
+            }
+
+            return this.overlay.dismiss();
+          }
+        }, {
+          key: "getLabel",
+          value: function getLabel() {
+            return Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
+          }
+        }, {
+          key: "hasValue",
+          value: function hasValue() {
+            return this.getText() !== '';
+          }
+        }, {
+          key: "getText",
+          value: function getText() {
+            var selectedText = this.selectedText;
+
+            if (selectedText != null && selectedText !== '') {
+              return selectedText;
+            }
+
+            return generateText(this.childOpts, this.value, this.compareWith);
+          }
+        }, {
+          key: "setFocus",
+          value: function setFocus() {
+            if (this.focusEl) {
+              this.focusEl.focus();
+            }
+          }
+        }, {
+          key: "emitStyle",
+          value: function emitStyle() {
+            this.ionStyle.emit({
+              'interactive': true,
+              'select': true,
+              'has-placeholder': this.placeholder != null,
+              'has-value': this.hasValue(),
+              'interactive-disabled': this.disabled,
+              'select-disabled': this.disabled
+            });
+          }
+        }, {
+          key: "render",
+          value: function render() {
+            var _class,
+                _this8 = this;
+
+            var disabled = this.disabled,
+                el = this.el,
+                inputId = this.inputId,
+                isExpanded = this.isExpanded,
+                name = this.name,
+                placeholder = this.placeholder,
+                value = this.value;
+            var mode = Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+
+            var _Object = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["c"])(el, inputId),
+                labelText = _Object.labelText,
+                labelId = _Object.labelId;
+
+            Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["d"])(true, el, name, parseValue(value), disabled);
+            var displayValue = this.getText();
+            var addPlaceholderClass = false;
+            var selectText = displayValue;
+
+            if (selectText === '' && placeholder != null) {
+              selectText = placeholder;
+              addPlaceholderClass = true;
+            }
+
+            var selectTextClasses = {
+              'select-text': true,
+              'select-placeholder': addPlaceholderClass
+            };
+            var textPart = addPlaceholderClass ? 'placeholder' : 'text'; // If there is a label then we need to concatenate it with the
+            // current value (or placeholder) and a comma so it separates
+            // nicely when the screen reader announces it, otherwise just
+            // announce the value / placeholder
+
+            var displayLabel = labelText !== undefined ? selectText !== '' ? "".concat(selectText, ", ").concat(labelText) : labelText : selectText;
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+              onClick: this.onClick,
+              role: "button",
+              "aria-haspopup": "listbox",
+              "aria-disabled": disabled ? 'true' : null,
+              "aria-label": displayLabel,
+              "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'in-item', Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_5__["h"])('ion-item', el)), _defineProperty(_class, 'select-disabled', disabled), _class)
+            }, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "aria-hidden": "true",
+              "class": selectTextClasses,
+              part: textPart
+            }, selectText), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": "select-icon",
+              role: "presentation",
+              part: "icon"
+            }, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": "select-icon-inner"
+            })), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("label", {
+              id: labelId
+            }, displayLabel), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+              type: "button",
+              disabled: disabled,
+              id: inputId,
+              "aria-labelledby": labelId,
+              "aria-haspopup": "listbox",
+              "aria-expanded": "".concat(isExpanded),
+              onFocus: this.onFocus,
+              onBlur: this.onBlur,
+              ref: function ref(focusEl) {
+                return _this8.focusEl = focusEl;
+              }
+            }));
+          }
+        }, {
+          key: "childOpts",
+          get: function get() {
+            return Array.from(this.el.querySelectorAll('ion-select-option'));
+          }
+        }, {
+          key: "el",
+          get: function get() {
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+          }
+        }], [{
+          key: "watchers",
+          get: function get() {
+            return {
+              "disabled": ["disabledChanged"],
+              "placeholder": ["disabledChanged"],
+              "value": ["valueChanged"]
+            };
+          }
+        }]);
+
+        return Select;
+      }();
+
+      var isOptionSelected = function isOptionSelected(currentValue, compareValue, compareWith) {
+        if (currentValue === undefined) {
+          return false;
+        }
+
+        if (Array.isArray(currentValue)) {
+          return currentValue.some(function (val) {
+            return compareOptions(val, compareValue, compareWith);
+          });
+        } else {
+          return compareOptions(currentValue, compareValue, compareWith);
+        }
+      };
+
+      var getOptionValue = function getOptionValue(el) {
+        var value = el.value;
+        return value === undefined ? el.textContent || '' : value;
+      };
+
+      var parseValue = function parseValue(value) {
+        if (value == null) {
+          return undefined;
+        }
+
+        if (Array.isArray(value)) {
+          return value.join(',');
+        }
+
+        return value.toString();
+      };
+
+      var compareOptions = function compareOptions(currentValue, compareValue, compareWith) {
+        if (typeof compareWith === 'function') {
+          return compareWith(currentValue, compareValue);
+        } else if (typeof compareWith === 'string') {
+          return currentValue[compareWith] === compareValue[compareWith];
+        } else {
+          return Array.isArray(compareValue) ? compareValue.includes(currentValue) : currentValue === compareValue;
+        }
+      };
+
+      var generateText = function generateText(opts, value, compareWith) {
+        if (value === undefined) {
+          return '';
+        }
+
+        if (Array.isArray(value)) {
+          return value.map(function (v) {
+            return textForValue(opts, v, compareWith);
+          }).filter(function (opt) {
+            return opt !== null;
+          }).join(', ');
+        } else {
+          return textForValue(opts, value, compareWith) || '';
+        }
+      };
+
+      var textForValue = function textForValue(opts, value, compareWith) {
+        var selectOpt = opts.find(function (opt) {
+          return compareOptions(getOptionValue(opt), value, compareWith);
+        });
+        return selectOpt ? selectOpt.textContent : null;
+      };
+
+      var selectIds = 0;
+      var OPTION_CLASS = 'select-interface-option';
+      Select.style = {
+        ios: selectIosCss,
+        md: selectMdCss
+      };
+      var selectOptionCss = ":host{display:none}";
+
+      var SelectOption = /*#__PURE__*/function () {
+        function SelectOption(hostRef) {
+          _classCallCheck(this, SelectOption);
+
+          Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          this.inputId = "ion-selopt-".concat(selectOptionIds++);
+          /**
+           * If `true`, the user cannot interact with the select option. This property does not apply when `interface="action-sheet"` as `ion-action-sheet` does not allow for disabled buttons.
+           */
+
+          this.disabled = false;
+        }
+
+        _createClass(SelectOption, [{
+          key: "render",
+          value: function render() {
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+              role: "option",
+              id: this.inputId,
+              "class": Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this)
+            });
+          }
+        }, {
+          key: "el",
+          get: function get() {
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+          }
+        }]);
+
+        return SelectOption;
+      }();
+
+      var selectOptionIds = 0;
+      SelectOption.style = selectOptionCss;
+      var selectPopoverCss = ".sc-ion-select-popover-h ion-list.sc-ion-select-popover{margin-left:0;margin-right:0;margin-top:-1px;margin-bottom:-1px}.sc-ion-select-popover-h ion-list-header.sc-ion-select-popover,.sc-ion-select-popover-h ion-label.sc-ion-select-popover{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}";
+
+      var SelectPopover = /*#__PURE__*/function () {
+        function SelectPopover(hostRef) {
+          _classCallCheck(this, SelectPopover);
+
+          Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          /** Array of options for the popover */
+
+          this.options = [];
+        }
+
+        _createClass(SelectPopover, [{
+          key: "onSelect",
+          value: function onSelect(ev) {
+            var option = this.options.find(function (o) {
+              return o.value === ev.target.value;
+            });
+
+            if (option) {
+              Object(_overlays_12c20431_js__WEBPACK_IMPORTED_MODULE_4__["s"])(option.handler);
+            }
+          }
+        }, {
+          key: "render",
+          value: function render() {
+            var checkedOption = this.options.find(function (o) {
+              return o.checked;
+            });
+            var checkedValue = checkedOption ? checkedOption.value : undefined;
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+              "class": Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this)
+            }, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-list", null, this.header !== undefined && Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-list-header", null, this.header), (this.subHeader !== undefined || this.message !== undefined) && Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-item", null, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-label", {
+              "class": "ion-text-wrap"
+            }, this.subHeader !== undefined && Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h3", null, this.subHeader), this.message !== undefined && Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("p", null, this.message))), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-radio-group", {
+              value: checkedValue
+            }, this.options.map(function (option) {
+              return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-item", {
+                "class": Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_5__["g"])(option.cssClass)
+              }, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-label", null, option.text), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-radio", {
+                value: option.value,
+                disabled: option.disabled
+              }));
+            }))));
+          }
+        }]);
+
+        return SelectPopover;
+      }();
+
+      SelectPopover.style = selectPopoverCss;
+      /***/
+    }
+  }]);
+})();
 //# sourceMappingURL=32-es5.js.map

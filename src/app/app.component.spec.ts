@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
 
   let storageSpy, authSpy, jwtHelper;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     storageSpy = jasmine.createSpyObj('jwtHelper', { get: 'sdsds'});
     // storageSpy = jasmine.createSpyObj('JwtHelperService', { get: 'sdsds'});
     authSpy = jasmine.createSpyObj('AuthService', {

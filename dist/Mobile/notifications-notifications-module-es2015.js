@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["notifications-notifications-module"],{
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/notifications/notifications.page.html":
+/***/ "FJnO":
 /*!*********************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/notifications/notifications.page.html ***!
   \*********************************************************************************************************/
@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/app/pages/posts/notifications/notifications-routing.module.ts":
+/***/ "JvHa":
 /*!***************************************************************************!*\
   !*** ./src/app/pages/posts/notifications/notifications-routing.module.ts ***!
   \***************************************************************************/
@@ -23,10 +23,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageRoutingModule", function() { return NotificationsPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _notifications_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notifications.page */ "./src/app/pages/posts/notifications/notifications.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _notifications_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notifications.page */ "knYs");
 
 
 
@@ -39,7 +39,7 @@ const routes = [
 ];
 let NotificationsPageRoutingModule = class NotificationsPageRoutingModule {
 };
-NotificationsPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+NotificationsPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
@@ -50,7 +50,7 @@ NotificationsPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
 
 /***/ }),
 
-/***/ "./src/app/pages/posts/notifications/notifications.module.ts":
+/***/ "kVc8":
 /*!*******************************************************************!*\
   !*** ./src/app/pages/posts/notifications/notifications.module.ts ***!
   \*******************************************************************/
@@ -60,13 +60,13 @@ NotificationsPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _notifications_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notifications-routing.module */ "./src/app/pages/posts/notifications/notifications-routing.module.ts");
-/* harmony import */ var _notifications_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./notifications.page */ "./src/app/pages/posts/notifications/notifications.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _notifications_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notifications-routing.module */ "JvHa");
+/* harmony import */ var _notifications_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./notifications.page */ "knYs");
 
 
 
@@ -76,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let NotificationsPageModule = class NotificationsPageModule {
 };
-NotificationsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+NotificationsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -92,20 +92,7 @@ NotificationsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/pages/posts/notifications/notifications.page.scss":
-/*!*******************************************************************!*\
-  !*** ./src/app/pages/posts/notifications/notifications.page.scss ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("p {\n  font-size: 0.7em;\n  margin-left: 10px;\n}\n\n#date {\n  opacity: 0.5;\n  display: inline-block;\n}\n\n#icon {\n  opacity: 0.2;\n}\n\n#no-notifications {\n  opacity: 0.3;\n}\n\n.margin-top {\n  margin-top: 15%;\n}\n\n.blue-button {\n  width: 100px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvcG9zdHMvbm90aWZpY2F0aW9ucy9ub3RpZmljYXRpb25zLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvcG9zdHMvbm90aWZpY2F0aW9ucy9ub3RpZmljYXRpb25zLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFBO0VBQ0EsaUJBQUE7QUNDRjs7QURLQTtFQUNFLFlBQUE7RUFDQSxxQkFBQTtBQ0ZGOztBREtBO0VBQ0UsWUFBQTtBQ0ZGOztBREtBO0VBQ0UsWUFBQTtBQ0ZGOztBREtBO0VBQ0UsZUFBQTtBQ0ZGOztBREtBO0VBQ0UsWUFBQTtBQ0ZGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9zdHMvbm90aWZpY2F0aW9ucy9ub3RpZmljYXRpb25zLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInAge1xuICBmb250LXNpemU6IDAuN2VtO1xuICBtYXJnaW4tbGVmdDogMTBweDtcbn1cblxuI21lc3NhZ2Uge1xufVxuXG4jZGF0ZSB7XG4gIG9wYWNpdHk6IDAuNTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xufVxuXG4jaWNvbiB7XG4gIG9wYWNpdHk6IDAuMjtcbn1cblxuI25vLW5vdGlmaWNhdGlvbnMge1xuICBvcGFjaXR5OiAwLjM7XG59XG5cbi5tYXJnaW4tdG9wIHtcbiAgbWFyZ2luLXRvcDogMTUlO1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICB3aWR0aDogMTAwcHg7XG59IiwicCB7XG4gIGZvbnQtc2l6ZTogMC43ZW07XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xufVxuXG4jZGF0ZSB7XG4gIG9wYWNpdHk6IDAuNTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xufVxuXG4jaWNvbiB7XG4gIG9wYWNpdHk6IDAuMjtcbn1cblxuI25vLW5vdGlmaWNhdGlvbnMge1xuICBvcGFjaXR5OiAwLjM7XG59XG5cbi5tYXJnaW4tdG9wIHtcbiAgbWFyZ2luLXRvcDogMTUlO1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICB3aWR0aDogMTAwcHg7XG59Il19 */");
-
-/***/ }),
-
-/***/ "./src/app/pages/posts/notifications/notifications.page.ts":
+/***/ "knYs":
 /*!*****************************************************************!*\
   !*** ./src/app/pages/posts/notifications/notifications.page.ts ***!
   \*****************************************************************/
@@ -115,11 +102,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPage", function() { return NotificationsPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/notifications.service */ "./src/app/services/notifications.service.ts");
-/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_notifications_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./notifications.page.html */ "FJnO");
+/* harmony import */ var _notifications_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notifications.page.scss */ "lxwU");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/notifications.service */ "KWWs");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/profile.service */ "Aso2");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "b/SL");
+
+
 
 
 
@@ -148,7 +139,7 @@ let NotificationsPage = class NotificationsPage {
                 this.notifications.notifications$.subscribe(data => {
                     this.allNotifications = Object.values(data);
                     for (let n of this.allNotifications) {
-                        n.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_4__["formatDistanceToNow"])(new Date(n.date), {
+                        n.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["formatDistanceToNow"])(new Date(n.date), {
                             includeSeconds: true,
                             addSuffix: false
                         });
@@ -169,7 +160,7 @@ let NotificationsPage = class NotificationsPage {
                 this.notifications.notifications$.subscribe(data => {
                     this.allNotifications = Object.values(data);
                     for (let n of this.allNotifications) {
-                        n.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_4__["formatDistanceToNow"])(new Date(n.date), {
+                        n.date = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["formatDistanceToNow"])(new Date(n.date), {
                             includeSeconds: true,
                             addSuffix: false
                         });
@@ -188,20 +179,33 @@ let NotificationsPage = class NotificationsPage {
     }
 };
 NotificationsPage.ctorParameters = () => [
-    { type: src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"] },
-    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_3__["ProfileService"] }
+    { type: src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_4__["NotificationsService"] },
+    { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
 ];
-NotificationsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+NotificationsPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-notifications',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./notifications.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/posts/notifications/notifications.page.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./notifications.page.scss */ "./src/app/pages/posts/notifications/notifications.page.scss")).default]
+        template: _raw_loader_notifications_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_notifications_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"],
-        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_3__["ProfileService"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_notifications_service__WEBPACK_IMPORTED_MODULE_4__["NotificationsService"],
+        src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
 ], NotificationsPage);
 
 
+
+/***/ }),
+
+/***/ "lxwU":
+/*!*******************************************************************!*\
+  !*** ./src/app/pages/posts/notifications/notifications.page.scss ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  font-size: 0.7em;\n  margin-left: 10px;\n}\n\n#date {\n  opacity: 0.5;\n  display: inline-block;\n}\n\n#icon {\n  opacity: 0.2;\n}\n\n#no-notifications {\n  opacity: 0.3;\n}\n\n.margin-top {\n  margin-top: 15%;\n}\n\n.blue-button {\n  width: 100px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL25vdGlmaWNhdGlvbnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtBQUNGOztBQUtBO0VBQ0UsWUFBQTtFQUNBLHFCQUFBO0FBRkY7O0FBS0E7RUFDRSxZQUFBO0FBRkY7O0FBS0E7RUFDRSxZQUFBO0FBRkY7O0FBS0E7RUFDRSxlQUFBO0FBRkY7O0FBS0E7RUFDRSxZQUFBO0FBRkYiLCJmaWxlIjoibm90aWZpY2F0aW9ucy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJwIHtcbiAgZm9udC1zaXplOiAwLjdlbTtcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XG59XG5cbiNtZXNzYWdlIHtcbn1cblxuI2RhdGUge1xuICBvcGFjaXR5OiAwLjU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cblxuI2ljb24ge1xuICBvcGFjaXR5OiAwLjI7XG59XG5cbiNuby1ub3RpZmljYXRpb25zIHtcbiAgb3BhY2l0eTogMC4zO1xufVxuXG4ubWFyZ2luLXRvcCB7XG4gIG1hcmdpbi10b3A6IDE1JTtcbn1cblxuLmJsdWUtYnV0dG9uIHtcbiAgd2lkdGg6IDEwMHB4O1xufSJdfQ== */");
 
 /***/ })
 

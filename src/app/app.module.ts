@@ -8,9 +8,9 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://10.0.1.5:3000', options: {} };
+// const config: SocketIoConfig = { url: 'http://10.0.1.5:3000', options: {} };
 
 // Third Party
 import { IonBottomDrawerModule } from 'ion-bottom-drawer';
@@ -56,7 +56,7 @@ export function jwtOptionsFactory(storage) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SocketIoModule.forRoot(config),
+    // SocketIoModule.forRoot(config),
     IonicStorageModule.forRoot(),
     JwtModule.forRoot({
       jwtOptionsProvider: {

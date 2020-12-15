@@ -1,365 +1,659 @@
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+(function () {
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25], {
-  /***/
-  "./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js":
-  /*!*****************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js ***!
-    \*****************************************************************/
+  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25], {
+    /***/
+    "XGij":
+    /*!**************************************************************!*\
+      !*** ./node_modules/@ionic/core/dist/esm/ion-range.entry.js ***!
+      \**************************************************************/
 
-  /*! exports provided: ion_fab, ion_fab_button, ion_fab_list */
+    /*! exports provided: ion_range */
 
-  /***/
-  function node_modulesIonicCoreDistEsmIonFab_3MdEntryJs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
+    /***/
+    function XGij(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
 
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ion_fab", function () {
-      return Fab;
-    });
-    /* harmony export (binding) */
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_fab_button", function () {
-      return FabButton;
-    });
-    /* harmony export (binding) */
+      __webpack_require__.d(__webpack_exports__, "ion_range", function () {
+        return Range;
+      });
+      /* harmony import */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_fab_list", function () {
-      return FabList;
-    });
-    /* harmony import */
+      var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-e806d1f6.js */
+      "A36C");
+      /* harmony import */
 
 
-    var _core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-feeeff0d.js */
-    "./node_modules/@ionic/core/dist/esm/core-feeeff0d.js");
-    /* harmony import */
+      var _ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./ionic-global-9d5c8ee3.js */
+      "Zgba");
+      /* harmony import */
 
 
-    var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./config-3c7f3790.js */
-    "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-    /* harmony import */
+      var _helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./helpers-90f46169.js */
+      "QPqR");
+      /* harmony import */
 
 
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./theme-18cbe2cc.js */
-    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
+      var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./theme-ff3fc52f.js */
+      "74mu");
 
-    var Fab = /*#__PURE__*/function () {
-      function Fab(hostRef) {
-        var _this = this;
+      var rangeIosCss = ":host{--knob-handle-size:calc(var(--knob-size) * 2);display:-ms-flexbox;display:flex;position:relative;-ms-flex:3;flex:3;-ms-flex-align:center;align-items:center;font-family:var(--ion-font-family, inherit);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.range-disabled){pointer-events:none}::slotted(ion-label){-ms-flex:initial;flex:initial}::slotted(ion-icon[slot]){font-size:24px}.range-slider{position:relative;-ms-flex:1;flex:1;width:100%;height:var(--height);contain:size layout style;cursor:-webkit-grab;cursor:grab;-ms-touch-action:pan-y;touch-action:pan-y}:host(.range-pressed) .range-slider{cursor:-webkit-grabbing;cursor:grabbing}.range-pin{position:absolute;background:var(--ion-color-base);color:var(--ion-color-contrast);text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box}.range-knob-handle{left:0;top:calc((var(--height) - var(--knob-handle-size)) / 2);margin-left:calc(0px - var(--knob-handle-size) / 2);position:absolute;width:var(--knob-handle-size);height:var(--knob-handle-size);text-align:center}[dir=rtl] .range-knob-handle,:host-context([dir=rtl]) .range-knob-handle{left:unset;right:unset;right:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.range-knob-handle{margin-left:unset;-webkit-margin-start:calc(0px - var(--knob-handle-size) / 2);margin-inline-start:calc(0px - var(--knob-handle-size) / 2)}}[dir=rtl] .range-knob-handle,:host-context([dir=rtl]) .range-knob-handle{left:unset}.range-knob-handle:active,.range-knob-handle:focus{outline:none}.range-bar{border-radius:var(--bar-border-radius);left:0;top:calc((var(--height) - var(--bar-height)) / 2);position:absolute;width:100%;height:var(--bar-height);background:var(--bar-background);pointer-events:none}[dir=rtl] .range-bar,:host-context([dir=rtl]) .range-bar{left:unset;right:unset;right:0}[dir=rtl] .range-bar,:host-context([dir=rtl]) .range-bar{left:unset}.range-knob{border-radius:var(--knob-border-radius);left:calc(50% - var(--knob-size) / 2);top:calc(50% - var(--knob-size) / 2);position:absolute;width:var(--knob-size);height:var(--knob-size);background:var(--knob-background);-webkit-box-shadow:var(--knob-box-shadow);box-shadow:var(--knob-box-shadow);z-index:2;pointer-events:none}[dir=rtl] .range-knob,:host-context([dir=rtl]) .range-knob{left:unset;right:unset;right:calc(50% - var(--knob-size) / 2)}[dir=rtl] .range-knob,:host-context([dir=rtl]) .range-knob{left:unset}:host(.range-pressed) .range-bar-active{will-change:left, right}:host(.in-item){width:100%}:host(.in-item) ::slotted(ion-label){-ms-flex-item-align:center;align-self:center}:host{--knob-border-radius:50%;--knob-background:#ffffff;--knob-box-shadow:0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);--knob-size:28px;--bar-height:2px;--bar-background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);--bar-background-active:var(--ion-color-primary, #3880ff);--bar-border-radius:0;--height:42px;padding-left:16px;padding-right:16px;padding-top:8px;padding-bottom:8px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px}}:host(.ion-color) .range-bar-active,:host(.ion-color) .range-tick-active{background:var(--ion-color-base)}::slotted([slot=start]){margin-left:0;margin-right:16px;margin-top:0;margin-bottom:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){::slotted([slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px}}::slotted([slot=end]){margin-left:16px;margin-right:0;margin-top:0;margin-bottom:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){::slotted([slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0}}:host(.range-has-pin){padding-top:20px}.range-bar-active{bottom:0;width:auto;background:var(--bar-background-active)}.range-tick{margin-left:-1px;border-radius:0;position:absolute;top:18px;width:2px;height:8px;background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);pointer-events:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.range-tick{margin-left:unset;-webkit-margin-start:-1px;margin-inline-start:-1px}}.range-tick-active{background:var(--bar-background-active)}.range-pin{-webkit-transform:translate3d(0,  28px,  0) scale(0.01);transform:translate3d(0,  28px,  0) scale(0.01);padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;display:inline-block;position:relative;top:-20px;min-width:28px;-webkit-transition:-webkit-transform 120ms ease;transition:-webkit-transform 120ms ease;transition:transform 120ms ease;transition:transform 120ms ease, -webkit-transform 120ms ease;background:transparent;color:var(--ion-text-color, #000);font-size:12px;text-align:center}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.range-pin{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}.range-knob-pressed .range-pin{-webkit-transform:translate3d(0,  0,  0) scale(1);transform:translate3d(0,  0,  0) scale(1)}:host(.range-disabled){opacity:0.5}";
+      var rangeMdCss = ":host{--knob-handle-size:calc(var(--knob-size) * 2);display:-ms-flexbox;display:flex;position:relative;-ms-flex:3;flex:3;-ms-flex-align:center;align-items:center;font-family:var(--ion-font-family, inherit);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.range-disabled){pointer-events:none}::slotted(ion-label){-ms-flex:initial;flex:initial}::slotted(ion-icon[slot]){font-size:24px}.range-slider{position:relative;-ms-flex:1;flex:1;width:100%;height:var(--height);contain:size layout style;cursor:-webkit-grab;cursor:grab;-ms-touch-action:pan-y;touch-action:pan-y}:host(.range-pressed) .range-slider{cursor:-webkit-grabbing;cursor:grabbing}.range-pin{position:absolute;background:var(--ion-color-base);color:var(--ion-color-contrast);text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box}.range-knob-handle{left:0;top:calc((var(--height) - var(--knob-handle-size)) / 2);margin-left:calc(0px - var(--knob-handle-size) / 2);position:absolute;width:var(--knob-handle-size);height:var(--knob-handle-size);text-align:center}[dir=rtl] .range-knob-handle,:host-context([dir=rtl]) .range-knob-handle{left:unset;right:unset;right:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.range-knob-handle{margin-left:unset;-webkit-margin-start:calc(0px - var(--knob-handle-size) / 2);margin-inline-start:calc(0px - var(--knob-handle-size) / 2)}}[dir=rtl] .range-knob-handle,:host-context([dir=rtl]) .range-knob-handle{left:unset}.range-knob-handle:active,.range-knob-handle:focus{outline:none}.range-bar{border-radius:var(--bar-border-radius);left:0;top:calc((var(--height) - var(--bar-height)) / 2);position:absolute;width:100%;height:var(--bar-height);background:var(--bar-background);pointer-events:none}[dir=rtl] .range-bar,:host-context([dir=rtl]) .range-bar{left:unset;right:unset;right:0}[dir=rtl] .range-bar,:host-context([dir=rtl]) .range-bar{left:unset}.range-knob{border-radius:var(--knob-border-radius);left:calc(50% - var(--knob-size) / 2);top:calc(50% - var(--knob-size) / 2);position:absolute;width:var(--knob-size);height:var(--knob-size);background:var(--knob-background);-webkit-box-shadow:var(--knob-box-shadow);box-shadow:var(--knob-box-shadow);z-index:2;pointer-events:none}[dir=rtl] .range-knob,:host-context([dir=rtl]) .range-knob{left:unset;right:unset;right:calc(50% - var(--knob-size) / 2)}[dir=rtl] .range-knob,:host-context([dir=rtl]) .range-knob{left:unset}:host(.range-pressed) .range-bar-active{will-change:left, right}:host(.in-item){width:100%}:host(.in-item) ::slotted(ion-label){-ms-flex-item-align:center;align-self:center}:host{--knob-border-radius:50%;--knob-background:var(--bar-background-active);--knob-box-shadow:none;--knob-size:18px;--bar-height:2px;--bar-background:rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.26);--bar-background-active:var(--ion-color-primary, #3880ff);--bar-border-radius:0;--height:42px;--pin-background:var(--ion-color-primary, #3880ff);--pin-color:var(--ion-color-primary-contrast, #fff);padding-left:14px;padding-right:14px;padding-top:8px;padding-bottom:8px;font-size:12px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:14px;padding-inline-start:14px;-webkit-padding-end:14px;padding-inline-end:14px}}:host(.ion-color) .range-bar{background:rgba(var(--ion-color-base-rgb), 0.26)}:host(.ion-color) .range-bar-active,:host(.ion-color) .range-knob,:host(.ion-color) .range-pin,:host(.ion-color) .range-pin::before,:host(.ion-color) .range-tick{background:var(--ion-color-base);color:var(--ion-color-contrast)}::slotted([slot=start]){margin-left:0;margin-right:14px;margin-top:0;margin-bottom:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){::slotted([slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:14px;margin-inline-end:14px}}::slotted([slot=end]){margin-left:14px;margin-right:0;margin-top:0;margin-bottom:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){::slotted([slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:14px;margin-inline-start:14px;-webkit-margin-end:0;margin-inline-end:0}}:host(.range-has-pin){padding-top:28px}.range-bar-active{bottom:0;width:auto;background:var(--bar-background-active)}.range-knob{-webkit-transform:scale(0.67);transform:scale(0.67);-webkit-transition-duration:120ms;transition-duration:120ms;-webkit-transition-property:background-color, border, -webkit-transform;transition-property:background-color, border, -webkit-transform;transition-property:transform, background-color, border;transition-property:transform, background-color, border, -webkit-transform;-webkit-transition-timing-function:ease;transition-timing-function:ease;z-index:2}.range-tick{position:absolute;top:calc((var(--height) - var(--bar-height)) / 2);width:var(--bar-height);height:var(--bar-height);background:var(--bar-background-active);z-index:1;pointer-events:none}.range-tick-active{background:transparent}.range-pin{padding-left:0;padding-right:0;padding-top:8px;padding-bottom:8px;border-radius:50%;-webkit-transform:translate3d(0,  0,  0) scale(0.01);transform:translate3d(0,  0,  0) scale(0.01);display:inline-block;position:relative;min-width:28px;height:28px;-webkit-transition:background 120ms ease, -webkit-transform 120ms ease;transition:background 120ms ease, -webkit-transform 120ms ease;transition:transform 120ms ease, background 120ms ease;transition:transform 120ms ease, background 120ms ease, -webkit-transform 120ms ease;background:var(--pin-background);color:var(--pin-color);text-align:center}.range-pin::before{left:50%;top:3px;margin-left:-13px;border-radius:50% 50% 50% 0;position:absolute;width:26px;height:26px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transition:background 120ms ease;transition:background 120ms ease;background:var(--pin-background);content:\"\";z-index:-1}[dir=rtl] .range-pin::before,:host-context([dir=rtl]) .range-pin::before{left:unset;right:unset;right:50%}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.range-pin::before{margin-left:unset;-webkit-margin-start:-13px;margin-inline-start:-13px}}[dir=rtl] .range-pin::before,:host-context([dir=rtl]) .range-pin::before{left:unset}.range-knob-pressed .range-pin{-webkit-transform:translate3d(0,  -24px,  0) scale(1);transform:translate3d(0,  -24px,  0) scale(1)}:host(:not(.range-has-pin)) .range-knob-pressed .range-knob{-webkit-transform:scale(1);transform:scale(1)}:host(.range-disabled) .range-bar-active,:host(.range-disabled) .range-bar,:host(.range-disabled) .range-tick{background-color:var(--ion-color-step-250, #bfbfbf)}:host(.range-disabled) .range-knob{-webkit-transform:scale(0.55);transform:scale(0.55);outline:5px solid #fff;background-color:var(--ion-color-step-250, #bfbfbf)}";
 
-        _classCallCheck(this, Fab);
+      var Range = /*#__PURE__*/function () {
+        function Range(hostRef) {
+          var _this = this;
 
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * If `true`, the fab will display on the edge of the header if
-         * `vertical` is `"top"`, and on the edge of the footer if
-         * it is `"bottom"`. Should be used with a `fixed` slot.
-         */
+          _classCallCheck(this, Range);
 
-        this.edge = false;
-        /**
-         * If `true`, both the `ion-fab-button` and all `ion-fab-list` inside `ion-fab` will become active.
-         * That means `ion-fab-button` will become a `close` icon and `ion-fab-list` will become visible.
-         */
+          Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          this.ionChange = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionChange", 7);
+          this.ionStyle = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionStyle", 7);
+          this.ionFocus = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
+          this.ionBlur = Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
+          this.didLoad = false;
+          this.noUpdate = false;
+          this.hasFocus = false;
+          this.ratioA = 0;
+          this.ratioB = 0;
+          /**
+           * How long, in milliseconds, to wait to trigger the
+           * `ionChange` event after each change in the range value.
+           * This also impacts form bindings such as `ngModel` or `v-model`.
+           */
 
-        this.activated = false;
+          this.debounce = 0;
+          /**
+           * The name of the control, which is submitted with the form data.
+           */
 
-        this.onClick = function () {
-          var hasList = !!_this.el.querySelector('ion-fab-list');
+          this.name = '';
+          /**
+           * Show two knobs.
+           */
 
-          var getButton = _this.getFab();
+          this.dualKnobs = false;
+          /**
+           * Minimum integer value of the range.
+           */
 
-          var isButtonDisabled = getButton && getButton.disabled;
+          this.min = 0;
+          /**
+           * Maximum integer value of the range.
+           */
 
-          if (hasList && !isButtonDisabled) {
-            _this.activated = !_this.activated;
-          }
-        };
-      }
+          this.max = 100;
+          /**
+           * If `true`, a pin with integer value is shown when the knob
+           * is pressed.
+           */
 
-      _createClass(Fab, [{
-        key: "activatedChanged",
-        value: function activatedChanged() {
-          var activated = this.activated;
-          var fab = this.getFab();
+          this.pin = false;
+          /**
+           * If `true`, the knob snaps to tick marks evenly spaced based
+           * on the step property value.
+           */
 
-          if (fab) {
-            fab.activated = activated;
-          }
+          this.snaps = false;
+          /**
+           * Specifies the value granularity.
+           */
 
-          Array.from(this.el.querySelectorAll('ion-fab-list')).forEach(function (list) {
-            list.activated = activated;
-          });
-        }
-      }, {
-        key: "componentDidLoad",
-        value: function componentDidLoad() {
-          if (this.activated) {
-            this.activatedChanged();
-          }
-        }
-        /**
-         * Close an active FAB list container.
-         */
+          this.step = 1;
+          /**
+           * If `true`, tick marks are displayed based on the step value.
+           * Only applies when `snaps` is `true`.
+           */
 
-      }, {
-        key: "close",
-        value: function () {
-          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          this.ticks = true;
+          /**
+           * If `true`, the user cannot interact with the range.
+           */
+
+          this.disabled = false;
+          /**
+           * the value of the range.
+           */
+
+          this.value = 0;
+
+          this.clampBounds = function (value) {
+            return Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(_this.min, value, _this.max);
+          };
+
+          this.ensureValueInBounds = function (value) {
+            if (_this.dualKnobs) {
+              return {
+                lower: _this.clampBounds(value.lower),
+                upper: _this.clampBounds(value.upper)
+              };
+            } else {
+              return _this.clampBounds(value);
+            }
+          };
+
+          this.setupGesture = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var rangeSlider;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    this.activated = false;
+                    rangeSlider = _this.rangeSlider;
 
-                  case 1:
+                    if (!rangeSlider) {
+                      _context.next = 6;
+                      break;
+                    }
+
+                    _context.next = 4;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-f49d994d.js */
+                    "iWo5"));
+
+                  case 4:
+                    _this.gesture = _context.sent.createGesture({
+                      el: rangeSlider,
+                      gestureName: 'range',
+                      gesturePriority: 100,
+                      threshold: 0,
+                      onStart: function onStart(ev) {
+                        return _this.onStart(ev);
+                      },
+                      onMove: function onMove(ev) {
+                        return _this.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this.onEnd(ev);
+                      }
+                    });
+
+                    _this.gesture.enable(!_this.disabled);
+
+                  case 6:
                   case "end":
                     return _context.stop();
                 }
               }
-            }, _callee, this);
+            }, _callee);
           }));
 
-          function close() {
-            return _close.apply(this, arguments);
-          }
+          this.handleKeyboard = function (knob, isIncrease) {
+            var step = _this.step;
+            step = step > 0 ? step : 1;
+            step = step / (_this.max - _this.min);
 
-          return close;
-        }()
-      }, {
-        key: "getFab",
-        value: function getFab() {
-          return this.el.querySelector('ion-fab-button');
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          var _class;
-
-          var horizontal = this.horizontal,
-              vertical = this.vertical,
-              edge = this.edge;
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            onClick: this.onClick,
-            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "fab-horizontal-".concat(horizontal), horizontal !== undefined), _defineProperty(_class, "fab-vertical-".concat(vertical), vertical !== undefined), _defineProperty(_class, 'fab-edge', edge), _class)
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "watchers",
-        get: function get() {
-          return {
-            "activated": ["activatedChanged"]
-          };
-        }
-      }, {
-        key: "style",
-        get: function get() {
-          return ":host{position:absolute;z-index:999}:host(.fab-horizontal-center){left:50%;margin-left:-28px}:host-context([dir=rtl]).fab-horizontal-center,:host-context([dir=rtl]):host(.fab-horizontal-center){left:unset;right:unset;right:50%}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-horizontal-center){margin-left:unset;-webkit-margin-start:-28px;margin-inline-start:-28px}}:host(.fab-horizontal-start){left:calc(10px + var(--ion-safe-area-left, 0px))}:host-context([dir=rtl]).fab-horizontal-start,:host-context([dir=rtl]):host(.fab-horizontal-start){left:unset;right:unset;right:calc(10px + var(--ion-safe-area-left, 0px))}:host(.fab-horizontal-end){right:calc(10px + var(--ion-safe-area-right, 0px))}:host-context([dir=rtl]).fab-horizontal-end,:host-context([dir=rtl]):host(.fab-horizontal-end){left:unset;right:unset;left:calc(10px + var(--ion-safe-area-right, 0px))}:host(.fab-vertical-top){top:10px}:host(.fab-vertical-top.fab-edge){top:-28px}:host(.fab-vertical-bottom){bottom:10px}:host(.fab-vertical-bottom.fab-edge){bottom:-28px}:host(.fab-vertical-center){margin-top:-28px;top:50%}";
-        }
-      }]);
-
-      return Fab;
-    }();
-
-    var FabButton = /*#__PURE__*/function () {
-      function FabButton(hostRef) {
-        var _this2 = this;
-
-        _classCallCheck(this, FabButton);
-
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * If `true`, the fab button will be show a close icon.
-         */
-
-        this.activated = false;
-        /**
-         * If `true`, the user cannot interact with the fab button.
-         */
-
-        this.disabled = false;
-        /**
-         * When using a router, it specifies the transition direction when navigating to
-         * another page using `href`.
-         */
-
-        this.routerDirection = 'forward';
-        /**
-         * If `true`, the fab button will show when in a fab-list.
-         */
-
-        this.show = false;
-        /**
-         * If `true`, the fab button will be translucent.
-         * Only applies when the mode is `"ios"` and the device supports
-         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
-
-        this.translucent = false;
-        /**
-         * The type of the button.
-         */
-
-        this.type = 'button';
-
-        this.onFocus = function () {
-          _this2.ionFocus.emit();
-        };
-
-        this.onBlur = function () {
-          _this2.ionBlur.emit();
-        };
-
-        this.ionFocus = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionBlur", 7);
-      }
-
-      _createClass(FabButton, [{
-        key: "render",
-        value: function render() {
-          var _Object$assign,
-              _this3 = this;
-
-          var el = this.el,
-              disabled = this.disabled,
-              color = this.color,
-              href = this.href,
-              activated = this.activated,
-              show = this.show,
-              translucent = this.translucent,
-              size = this.size;
-          var inList = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-fab-list', el);
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var TagType = href === undefined ? 'button' : 'a';
-          var attrs = TagType === 'button' ? {
-            type: this.type
-          } : {
-            download: this.download,
-            href: href,
-            rel: this.rel,
-            target: this.target
-          };
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            "aria-disabled": disabled ? 'true' : null,
-            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'fab-button-in-list', inList), _defineProperty(_Object$assign, 'fab-button-translucent-in-list', inList && translucent), _defineProperty(_Object$assign, 'fab-button-close-active', activated), _defineProperty(_Object$assign, 'fab-button-show', show), _defineProperty(_Object$assign, 'fab-button-disabled', disabled), _defineProperty(_Object$assign, 'fab-button-translucent', translucent), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, "fab-button-".concat(size), size !== undefined), _Object$assign))
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            "class": "button-native",
-            disabled: disabled,
-            onFocus: this.onFocus,
-            onBlur: this.onBlur,
-            onClick: function onClick(ev) {
-              return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, _this3.routerDirection);
+            if (!isIncrease) {
+              step *= -1;
             }
-          }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            "class": "close-icon"
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
-            name: "close",
-            lazy: false
-          })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            "class": "button-inner"
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "style",
-        get: function get() {
-          return ":host{--color-hover:var(--color);--background-hover:var(--ion-color-primary-tint,#4c8dff);--transition:background-color,opacity 100ms linear;--ripple-color:currentColor;--border-radius:50%;--border-width:0;--border-style:none;--border-color:initial;--padding-top:0;--padding-end:0;--padding-bottom:0;--padding-start:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;width:56px;height:56px;font-size:14px;text-align:center;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transform:var(--transform);transform:var(--transform);-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);background-clip:padding-box;color:var(--color);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:strict;cursor:pointer;overflow:hidden;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-inner{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform}:host(.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.fab-button-disabled){opacity:.5;pointer-events:none}:host(.fab-button-disabled) .button-native{cursor:default;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}:host(.ion-color:hover) .button-native{background:var(--ion-color-tint);color:var(--ion-color-contrast)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade)}:host(.activated) .button-native{background:var(--background-activated);color:var(--color-activated)}:host(.ion-color.activated) .button-native,:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade);color:var(--ion-color-contrast)}::slotted(ion-icon){line-height:1}:host(.fab-button-small){margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;width:40px;height:40px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-button-small){margin-left:unset;margin-right:unset;-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:8px;margin-inline-end:8px}}.close-icon{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transform:scale(.4) rotate(-45deg);transform:scale(.4) rotate(-45deg);-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;opacity:0}:host(.fab-button-close-active) .close-icon{-webkit-transform:scale(1) rotate(0deg);transform:scale(1) rotate(0deg);opacity:1}:host(.fab-button-close-active) .button-inner{-webkit-transform:scale(.4) rotate(45deg);transform:scale(.4) rotate(45deg);opacity:0}ion-ripple-effect{color:var(--ripple-color)}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){:host(.fab-button-translucent) .button-native{-webkit-backdrop-filter:var(--backdrop-filter);backdrop-filter:var(--backdrop-filter)}}:host{--background:var(--ion-color-primary,#3880ff);--background-activated:var(--background);--background-focused:var(--background-activated);--color:var(--ion-color-primary-contrast,#fff);--color-activated:var(--ion-color-primary-contrast,#fff);--color-focused:var(--color-activated);--box-shadow:0 3px 5px -1px rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.14),0 1px 18px 0 rgba(0,0,0,0.12);--transition:box-shadow 280ms cubic-bezier(0.4,0,0.2,1),background-color 280ms cubic-bezier(0.4,0,0.2,1),color 280ms cubic-bezier(0.4,0,0.2,1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0,0,0.2,1) 0ms}:host(.activated){--box-shadow:0 7px 8px -4px rgba(0,0,0,0.2),0 12px 17px 2px rgba(0,0,0,0.14),0 5px 22px 4px rgba(0,0,0,0.12)}.close-icon,::slotted(ion-icon){font-size:24px}:host(.fab-button-in-list){--color:rgba(var(--ion-text-color-rgb,0,0,0),0.54);--color-activated:rgba(var(--ion-text-color-rgb,0,0,0),0.54);--color-focused:var(--color-activated);--background:var(--ion-color-light,#f4f5f8);--background-activated:var(--ion-color-light-shade,#d7d8da);--background-focused:var(--background-activated);--background-hover:var(--ion-color-light-tint,#f5f6f9)}:host(.fab-button-in-list) ::slotted(ion-icon){font-size:18px}";
-        }
-      }]);
 
-      return FabButton;
-    }();
+            if (knob === 'A') {
+              _this.ratioA = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(0, _this.ratioA + step, 1);
+            } else {
+              _this.ratioB = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(0, _this.ratioB + step, 1);
+            }
 
-    var FabList = /*#__PURE__*/function () {
-      function FabList(hostRef) {
-        _classCallCheck(this, FabList);
+            _this.updateValue();
+          };
 
-        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        /**
-         * If `true`, the fab list will show all fab buttons in the list.
-         */
+          this.onBlur = function () {
+            if (_this.hasFocus) {
+              _this.hasFocus = false;
 
-        this.activated = false;
-        /**
-         * The side the fab list will show on relative to the main fab button.
-         */
+              _this.ionBlur.emit();
 
-        this.side = 'bottom';
-      }
+              _this.emitStyle();
+            }
+          };
 
-      _createClass(FabList, [{
-        key: "activatedChanged",
-        value: function activatedChanged(activated) {
-          var fabs = Array.from(this.el.querySelectorAll('ion-fab-button')); // if showing the fabs add a timeout, else show immediately
+          this.onFocus = function () {
+            if (!_this.hasFocus) {
+              _this.hasFocus = true;
 
-          var timeout = activated ? 30 : 0;
-          fabs.forEach(function (fab, i) {
-            setTimeout(function () {
-              return fab.show = activated;
-            }, i * timeout);
-          });
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          var _class2;
+              _this.ionFocus.emit();
 
-          var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'fab-list-active', this.activated), _defineProperty(_class2, "fab-list-side-".concat(this.side), true), _class2)
-          }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "watchers",
-        get: function get() {
-          return {
-            "activated": ["activatedChanged"]
+              _this.emitStyle();
+            }
           };
         }
-      }, {
-        key: "style",
-        get: function get() {
-          return ":host{margin-left:0;margin-right:0;margin-top:66px;margin-bottom:66px;display:none;position:absolute;top:0;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;min-width:56px;min-height:56px}:host(.fab-list-active){display:-ms-flexbox;display:flex}::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:8px;margin-bottom:8px;width:40px;height:40px;-webkit-transform:scale(0);transform:scale(0);opacity:0;visibility:hidden}:host(.fab-list-side-bottom) ::slotted(.fab-button-in-list),:host(.fab-list-side-top) ::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px}:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:5px;margin-right:5px;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:unset;margin-right:unset;-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:5px;margin-inline-end:5px}}::slotted(.fab-button-in-list.fab-button-show){-webkit-transform:scale(1);transform:scale(1);opacity:1;visibility:visible}:host(.fab-list-side-top){top:auto;bottom:0;-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.fab-list-side-start){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;right:0;-ms-flex-direction:row-reverse;flex-direction:row-reverse}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-start){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-start,:host-context([dir=rtl]):host(.fab-list-side-start){left:unset;right:unset;left:0}:host(.fab-list-side-end){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;left:0;-ms-flex-direction:row;flex-direction:row}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-end,:host-context([dir=rtl]):host(.fab-list-side-end){left:unset;right:unset;right:0}";
+
+        _createClass(Range, [{
+          key: "debounceChanged",
+          value: function debounceChanged() {
+            this.ionChange = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["e"])(this.ionChange, this.debounce);
+          }
+        }, {
+          key: "minChanged",
+          value: function minChanged() {
+            if (!this.noUpdate) {
+              this.updateRatio();
+            }
+          }
+        }, {
+          key: "maxChanged",
+          value: function maxChanged() {
+            if (!this.noUpdate) {
+              this.updateRatio();
+            }
+          }
+        }, {
+          key: "disabledChanged",
+          value: function disabledChanged() {
+            if (this.gesture) {
+              this.gesture.enable(!this.disabled);
+            }
+
+            this.emitStyle();
+          }
+        }, {
+          key: "valueChanged",
+          value: function valueChanged(value) {
+            if (!this.noUpdate) {
+              this.updateRatio();
+            }
+
+            value = this.ensureValueInBounds(value);
+            this.ionChange.emit({
+              value: value
+            });
+          }
+        }, {
+          key: "componentDidLoad",
+          value: function componentDidLoad() {
+            this.setupGesture();
+            this.didLoad = true;
+          }
+        }, {
+          key: "connectedCallback",
+          value: function connectedCallback() {
+            this.updateRatio();
+            this.debounceChanged();
+            this.disabledChanged();
+            /**
+             * If we have not yet rendered
+             * ion-range, then rangeSlider is not defined.
+             * But if we are moving ion-range via appendChild,
+             * then rangeSlider will be defined.
+             */
+
+            if (this.didLoad) {
+              this.setupGesture();
+            }
+          }
+        }, {
+          key: "disconnectedCallback",
+          value: function disconnectedCallback() {
+            if (this.gesture) {
+              this.gesture.destroy();
+              this.gesture = undefined;
+            }
+          }
+        }, {
+          key: "getValue",
+          value: function getValue() {
+            var value = this.value || 0;
+
+            if (this.dualKnobs) {
+              if (typeof value === 'object') {
+                return value;
+              }
+
+              return {
+                lower: 0,
+                upper: value
+              };
+            } else {
+              if (typeof value === 'object') {
+                return value.upper;
+              }
+
+              return value;
+            }
+          }
+        }, {
+          key: "emitStyle",
+          value: function emitStyle() {
+            this.ionStyle.emit({
+              'interactive': true,
+              'interactive-disabled': this.disabled
+            });
+          }
+        }, {
+          key: "onStart",
+          value: function onStart(detail) {
+            var rect = this.rect = this.rangeSlider.getBoundingClientRect();
+            var currentX = detail.currentX; // figure out which knob they started closer to
+
+            var ratio = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(0, (currentX - rect.left) / rect.width, 1);
+
+            if (document.dir === 'rtl') {
+              ratio = 1 - ratio;
+            }
+
+            this.pressedKnob = !this.dualKnobs || Math.abs(this.ratioA - ratio) < Math.abs(this.ratioB - ratio) ? 'A' : 'B';
+            this.setFocus(this.pressedKnob); // update the active knob's position
+
+            this.update(currentX);
+          }
+        }, {
+          key: "onMove",
+          value: function onMove(detail) {
+            this.update(detail.currentX);
+          }
+        }, {
+          key: "onEnd",
+          value: function onEnd(detail) {
+            this.update(detail.currentX);
+            this.pressedKnob = undefined;
+          }
+        }, {
+          key: "update",
+          value: function update(currentX) {
+            // figure out where the pointer is currently at
+            // update the knob being interacted with
+            var rect = this.rect;
+            var ratio = Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(0, (currentX - rect.left) / rect.width, 1);
+
+            if (document.dir === 'rtl') {
+              ratio = 1 - ratio;
+            }
+
+            if (this.snaps) {
+              // snaps the ratio to the current value
+              ratio = valueToRatio(ratioToValue(ratio, this.min, this.max, this.step), this.min, this.max);
+            } // update which knob is pressed
+
+
+            if (this.pressedKnob === 'A') {
+              this.ratioA = ratio;
+            } else {
+              this.ratioB = ratio;
+            } // Update input value
+
+
+            this.updateValue();
+          }
+        }, {
+          key: "updateRatio",
+          value: function updateRatio() {
+            var value = this.getValue();
+            var min = this.min,
+                max = this.max;
+
+            if (this.dualKnobs) {
+              this.ratioA = valueToRatio(value.lower, min, max);
+              this.ratioB = valueToRatio(value.upper, min, max);
+            } else {
+              this.ratioA = valueToRatio(value, min, max);
+            }
+          }
+        }, {
+          key: "updateValue",
+          value: function updateValue() {
+            this.noUpdate = true;
+            var valA = this.valA,
+                valB = this.valB;
+            this.value = !this.dualKnobs ? valA : {
+              lower: Math.min(valA, valB),
+              upper: Math.max(valA, valB)
+            };
+            this.noUpdate = false;
+          }
+        }, {
+          key: "setFocus",
+          value: function setFocus(knob) {
+            if (this.el.shadowRoot) {
+              var knobEl = this.el.shadowRoot.querySelector(knob === 'A' ? '.range-knob-a' : '.range-knob-b');
+
+              if (knobEl) {
+                knobEl.focus();
+              }
+            }
+          }
+        }, {
+          key: "render",
+          value: function render() {
+            var _barStyle,
+                _Object,
+                _this2 = this;
+
+            var min = this.min,
+                max = this.max,
+                step = this.step,
+                el = this.el,
+                handleKeyboard = this.handleKeyboard,
+                pressedKnob = this.pressedKnob,
+                disabled = this.disabled,
+                pin = this.pin,
+                ratioLower = this.ratioLower,
+                ratioUpper = this.ratioUpper;
+            var mode = Object(_ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var barStart = "".concat(ratioLower * 100, "%");
+            var barEnd = "".concat(100 - ratioUpper * 100, "%");
+            var doc = document;
+            var isRTL = doc.dir === 'rtl';
+            var start = isRTL ? 'right' : 'left';
+            var end = isRTL ? 'left' : 'right';
+
+            var tickStyle = function tickStyle(tick) {
+              return _defineProperty({}, start, tick[start]);
+            };
+
+            var barStyle = (_barStyle = {}, _defineProperty(_barStyle, start, barStart), _defineProperty(_barStyle, end, barEnd), _barStyle);
+            var ticks = [];
+
+            if (this.snaps && this.ticks) {
+              for (var value = min; value <= max; value += step) {
+                var ratio = valueToRatio(value, min, max);
+                var tick = {
+                  ratio: ratio,
+                  active: ratio >= ratioLower && ratio <= ratioUpper
+                };
+                tick[start] = "".concat(ratio * 100, "%");
+                ticks.push(tick);
+              }
+            }
+
+            Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["d"])(true, el, this.name, JSON.stringify(this.getValue()), disabled);
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+              onFocusin: this.onFocus,
+              onFocusout: this.onBlur,
+              "class": Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color, (_Object = {}, _defineProperty(_Object, mode, true), _defineProperty(_Object, 'in-item', Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object, 'range-disabled', disabled), _defineProperty(_Object, 'range-pressed', pressedKnob !== undefined), _defineProperty(_Object, 'range-has-pin', pin), _Object))
+            }, Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+              name: "start"
+            }), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": "range-slider",
+              ref: function ref(rangeEl) {
+                return _this2.rangeSlider = rangeEl;
+              }
+            }, ticks.map(function (tick) {
+              return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+                style: tickStyle(tick),
+                role: "presentation",
+                "class": {
+                  'range-tick': true,
+                  'range-tick-active': tick.active
+                },
+                part: tick.active ? 'tick-active' : 'tick'
+              });
+            }), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": "range-bar",
+              role: "presentation",
+              part: "bar"
+            }), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": "range-bar range-bar-active",
+              role: "presentation",
+              style: barStyle,
+              part: "bar-active"
+            }), renderKnob(isRTL, {
+              knob: 'A',
+              pressed: pressedKnob === 'A',
+              value: this.valA,
+              ratio: this.ratioA,
+              pin: pin,
+              disabled: disabled,
+              handleKeyboard: handleKeyboard,
+              min: min,
+              max: max
+            }), this.dualKnobs && renderKnob(isRTL, {
+              knob: 'B',
+              pressed: pressedKnob === 'B',
+              value: this.valB,
+              ratio: this.ratioB,
+              pin: pin,
+              disabled: disabled,
+              handleKeyboard: handleKeyboard,
+              min: min,
+              max: max
+            })), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+              name: "end"
+            }));
+          }
+        }, {
+          key: "valA",
+          get: function get() {
+            return ratioToValue(this.ratioA, this.min, this.max, this.step);
+          }
+        }, {
+          key: "valB",
+          get: function get() {
+            return ratioToValue(this.ratioB, this.min, this.max, this.step);
+          }
+        }, {
+          key: "ratioLower",
+          get: function get() {
+            if (this.dualKnobs) {
+              return Math.min(this.ratioA, this.ratioB);
+            }
+
+            return 0;
+          }
+        }, {
+          key: "ratioUpper",
+          get: function get() {
+            if (this.dualKnobs) {
+              return Math.max(this.ratioA, this.ratioB);
+            }
+
+            return this.ratioA;
+          }
+        }, {
+          key: "el",
+          get: function get() {
+            return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+          }
+        }], [{
+          key: "watchers",
+          get: function get() {
+            return {
+              "debounce": ["debounceChanged"],
+              "min": ["minChanged"],
+              "max": ["maxChanged"],
+              "disabled": ["disabledChanged"],
+              "value": ["valueChanged"]
+            };
+          }
+        }]);
+
+        return Range;
+      }();
+
+      var renderKnob = function renderKnob(isRTL, _ref3) {
+        var knob = _ref3.knob,
+            value = _ref3.value,
+            ratio = _ref3.ratio,
+            min = _ref3.min,
+            max = _ref3.max,
+            disabled = _ref3.disabled,
+            pressed = _ref3.pressed,
+            pin = _ref3.pin,
+            handleKeyboard = _ref3.handleKeyboard;
+        var start = isRTL ? 'right' : 'left';
+
+        var knobStyle = function knobStyle() {
+          var style = {};
+          style[start] = "".concat(ratio * 100, "%");
+          return style;
+        };
+
+        return Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          onKeyDown: function onKeyDown(ev) {
+            var key = ev.key;
+
+            if (key === 'ArrowLeft' || key === 'ArrowDown') {
+              handleKeyboard(knob, false);
+              ev.preventDefault();
+              ev.stopPropagation();
+            } else if (key === 'ArrowRight' || key === 'ArrowUp') {
+              handleKeyboard(knob, true);
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          "class": {
+            'range-knob-handle': true,
+            'range-knob-a': knob === 'A',
+            'range-knob-b': knob === 'B',
+            'range-knob-pressed': pressed,
+            'range-knob-min': value === min,
+            'range-knob-max': value === max
+          },
+          style: knobStyle(),
+          role: "slider",
+          tabindex: disabled ? -1 : 0,
+          "aria-valuemin": min,
+          "aria-valuemax": max,
+          "aria-disabled": disabled ? 'true' : null,
+          "aria-valuenow": value
+        }, pin && Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          "class": "range-pin",
+          role: "presentation",
+          part: "pin"
+        }, Math.round(value)), Object(_index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+          "class": "range-knob",
+          role: "presentation",
+          part: "knob"
+        }));
+      };
+
+      var ratioToValue = function ratioToValue(ratio, min, max, step) {
+        var value = (max - min) * ratio;
+
+        if (step > 0) {
+          value = Math.round(value / step) * step + min;
         }
-      }]);
 
-      return FabList;
-    }();
-    /***/
+        return Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(min, value, max);
+      };
 
-  }
-}]);
+      var valueToRatio = function valueToRatio(value, min, max) {
+        return Object(_helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_2__["h"])(0, (value - min) / (max - min), 1);
+      };
+
+      Range.style = {
+        ios: rangeIosCss,
+        md: rangeMdCss
+      };
+      /***/
+    }
+  }]);
+})();
 //# sourceMappingURL=25-es5.js.map

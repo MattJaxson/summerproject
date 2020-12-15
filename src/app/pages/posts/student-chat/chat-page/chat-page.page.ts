@@ -72,30 +72,30 @@ export class ChatPagePage implements OnInit, OnDestroy {
     const messageList = document.getElementById('message-list');
 
 
-    this.studentChatService.getChat(this.chatId, this.email);
+    // this.studentChatService.getChat(this.chatId, this.email);
 
-    this._chatroomSub = this.studentChatService.currentChatRoom
-    .subscribe(
-      data => {
-        // console.log(data);
-        this.chatroom = data['messages'];
-        this.requestingUserFullname = data['requestingUserFullname'];
-        this.requestingUserEmail = data['requestingUserEmail'];
-        this.requestingUserPhoto = data['requestingUserPhoto'];
-        this.respondingUserFullname = data['respondingUserFullname'];
-        this.respondingUserEmail = data['respondingUserEmail'];
-        this.respondingUserPhoto = data['respondingUserPhoto'];
+    // this._chatroomSub = this.studentChatService.currentChatRoom
+    // .subscribe(
+    //   data => {
+    //     // console.log(data);
+    //     this.chatroom = data['messages'];
+    //     this.requestingUserFullname = data['requestingUserFullname'];
+    //     this.requestingUserEmail = data['requestingUserEmail'];
+    //     this.requestingUserPhoto = data['requestingUserPhoto'];
+    //     this.respondingUserFullname = data['respondingUserFullname'];
+    //     this.respondingUserEmail = data['respondingUserEmail'];
+    //     this.respondingUserPhoto = data['respondingUserPhoto'];
 
-        // if (this.chatroom.length >= 5) {
-        //   console.log('more than 3 messages sent');
-        //   this.studentChatService.deleteMessages(this.chatId, this.fullName , this.email);
-        // }
+    //     // if (this.chatroom.length >= 5) {
+    //     //   console.log('more than 3 messages sent');
+    //     //   this.studentChatService.deleteMessages(this.chatId, this.fullName , this.email);
+    //     // }
 
-        for (let message of this.chatroom) {
-          message.date = formatDistanceToNow(new Date(message.date));
-        }
-        // console.log(this.chatroom);
-      });
+    //     for (let message of this.chatroom) {
+    //       message.date = formatDistanceToNow(new Date(message.date));
+    //     }
+    //     // console.log(this.chatroom);
+    //   });
   }
 
   ngOnDestroy(): void {
@@ -127,7 +127,7 @@ export class ChatPagePage implements OnInit, OnDestroy {
     }
 
     // tslint:disable-next-line: max-line-length
-    await this.studentChatService.sendMessage(this.chatId, this.message.value, this.fullName, this.profilePicture, this.requestingUserFullname, this.requestingUserEmail, this.requestingUserPhoto, this.respondingUserFullname, this.respondingUserEmail, this.respondingUserPhoto);
+    // await this.studentChatService.sendMessage(this.chatId, this.message.value, this.fullName, this.profilePicture, this.requestingUserFullname, this.requestingUserEmail, this.requestingUserPhoto, this.respondingUserFullname, this.respondingUserEmail, this.respondingUserPhoto);
 
     // this.studentChatService.conversations$.next(this.chatroom);
 
@@ -136,7 +136,7 @@ export class ChatPagePage implements OnInit, OnDestroy {
     this.message.focus();
 
 
-    this.studentChatService.getChat(this.chatId, this.email);
+    // this.studentChatService.getChat(this.chatId, this.email);
     // this.message = '';
   }
 

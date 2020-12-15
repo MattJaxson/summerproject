@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["change-school-change-school-change-school-module"],{
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-school/change-school/change-school.page.html":
+/***/ "/gsg":
 /*!*************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-school/change-school/change-school.page.html ***!
   \*************************************************************************************************************************/
@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/app/pages/profile/change-school/change-school/change-school-routing.module.ts":
+/***/ "68Uv":
 /*!*******************************************************************************************!*\
   !*** ./src/app/pages/profile/change-school/change-school/change-school-routing.module.ts ***!
   \*******************************************************************************************/
@@ -23,10 +23,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeSchoolPageRoutingModule", function() { return ChangeSchoolPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _change_school_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change-school.page */ "./src/app/pages/profile/change-school/change-school/change-school.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _change_school_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change-school.page */ "LKet");
 
 
 
@@ -38,12 +38,12 @@ const routes = [
     },
     {
         path: 'confirm',
-        loadChildren: () => __webpack_require__.e(/*! import() | confirm-confirm-module */ "confirm-confirm-module").then(__webpack_require__.bind(null, /*! ../confirm/confirm.module */ "./src/app/pages/profile/change-school/confirm/confirm.module.ts")).then(m => m.ConfirmPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | confirm-confirm-module */ "confirm-confirm-module").then(__webpack_require__.bind(null, /*! ../confirm/confirm.module */ "RPEx")).then(m => m.ConfirmPageModule)
     }
 ];
 let ChangeSchoolPageRoutingModule = class ChangeSchoolPageRoutingModule {
 };
-ChangeSchoolPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+ChangeSchoolPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
@@ -54,63 +54,7 @@ ChangeSchoolPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 
 /***/ }),
 
-/***/ "./src/app/pages/profile/change-school/change-school/change-school.module.ts":
-/*!***********************************************************************************!*\
-  !*** ./src/app/pages/profile/change-school/change-school/change-school.module.ts ***!
-  \***********************************************************************************/
-/*! exports provided: ChangeSchoolPageModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeSchoolPageModule", function() { return ChangeSchoolPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _change_school_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./change-school-routing.module */ "./src/app/pages/profile/change-school/change-school/change-school-routing.module.ts");
-/* harmony import */ var _change_school_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./change-school.page */ "./src/app/pages/profile/change-school/change-school/change-school.page.ts");
-
-
-
-
-
-
-
-let ChangeSchoolPageModule = class ChangeSchoolPageModule {
-};
-ChangeSchoolPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-            _change_school_routing_module__WEBPACK_IMPORTED_MODULE_5__["ChangeSchoolPageRoutingModule"]
-        ],
-        declarations: [_change_school_page__WEBPACK_IMPORTED_MODULE_6__["ChangeSchoolPage"]]
-    })
-], ChangeSchoolPageModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/profile/change-school/change-school/change-school.page.scss":
-/*!***********************************************************************************!*\
-  !*** ./src/app/pages/profile/change-school/change-school/change-school.page.scss ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-title {\n  margin: 0;\n}\n\n.blue-button {\n  -webkit-animation: none;\n          animation: none;\n  opacity: unset;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2Utc2Nob29sL2NoYW5nZS1zY2hvb2wvY2hhbmdlLXNjaG9vbC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvY2hhbmdlLXNjaG9vbC9jaGFuZ2Utc2Nob29sL2NoYW5nZS1zY2hvb2wucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQ0NKOztBREVBO0VBQ0ksdUJBQUE7VUFBQSxlQUFBO0VBQ0EsY0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcHJvZmlsZS9jaGFuZ2Utc2Nob29sL2NoYW5nZS1zY2hvb2wvY2hhbmdlLXNjaG9vbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGUge1xuICAgIG1hcmdpbjogMDtcbn1cblxuLmJsdWUtYnV0dG9uIHtcbiAgICBhbmltYXRpb246IG5vbmU7XG4gICAgb3BhY2l0eTogdW5zZXQ7XG59IiwiaW9uLXRpdGxlIHtcbiAgbWFyZ2luOiAwO1xufVxuXG4uYmx1ZS1idXR0b24ge1xuICBhbmltYXRpb246IG5vbmU7XG4gIG9wYWNpdHk6IHVuc2V0O1xufSJdfQ== */");
-
-/***/ }),
-
-/***/ "./src/app/pages/profile/change-school/change-school/change-school.page.ts":
+/***/ "LKet":
 /*!*********************************************************************************!*\
   !*** ./src/app/pages/profile/change-school/change-school/change-school.page.ts ***!
   \*********************************************************************************/
@@ -120,12 +64,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeSchoolPage", function() { return ChangeSchoolPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _services_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../services/profile.service */ "./src/app/services/profile.service.ts");
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_change_school_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./change-school.page.html */ "/gsg");
+/* harmony import */ var _change_school_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./change-school.page.scss */ "Xf1Y");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_profile_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../services/profile.service */ "Aso2");
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/auth.service */ "lGQG");
+
+
 
 
 
@@ -146,9 +94,9 @@ let ChangeSchoolPage = class ChangeSchoolPage {
     }
     ngOnInit() {
         this.changeSchool = this.formBuilder.group({
-            newSchool: [`${this.school}`, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            newGrade: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            newSchool: [`${this.school}`, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            newGrade: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
         });
     }
     back() {
@@ -159,26 +107,82 @@ let ChangeSchoolPage = class ChangeSchoolPage {
     }
 };
 ChangeSchoolPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-    { type: _services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"] },
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+    { type: _services_profile_service__WEBPACK_IMPORTED_MODULE_6__["ProfileService"] },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
 ];
-ChangeSchoolPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+ChangeSchoolPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-change-school',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./change-school.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/change-school/change-school/change-school.page.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./change-school.page.scss */ "./src/app/pages/profile/change-school/change-school/change-school.page.scss")).default]
+        template: _raw_loader_change_school_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_change_school_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-        _services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"],
-        src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
+        _services_profile_service__WEBPACK_IMPORTED_MODULE_6__["ProfileService"],
+        src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
 ], ChangeSchoolPage);
 
 
+
+/***/ }),
+
+/***/ "UWje":
+/*!***********************************************************************************!*\
+  !*** ./src/app/pages/profile/change-school/change-school/change-school.module.ts ***!
+  \***********************************************************************************/
+/*! exports provided: ChangeSchoolPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangeSchoolPageModule", function() { return ChangeSchoolPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _change_school_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./change-school-routing.module */ "68Uv");
+/* harmony import */ var _change_school_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./change-school.page */ "LKet");
+
+
+
+
+
+
+
+let ChangeSchoolPageModule = class ChangeSchoolPageModule {
+};
+ChangeSchoolPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _change_school_routing_module__WEBPACK_IMPORTED_MODULE_5__["ChangeSchoolPageRoutingModule"]
+        ],
+        declarations: [_change_school_page__WEBPACK_IMPORTED_MODULE_6__["ChangeSchoolPage"]]
+    })
+], ChangeSchoolPageModule);
+
+
+
+/***/ }),
+
+/***/ "Xf1Y":
+/*!***********************************************************************************!*\
+  !*** ./src/app/pages/profile/change-school/change-school/change-school.page.scss ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-title {\n  margin: 0;\n}\n\n.blue-button {\n  -webkit-animation: none;\n          animation: none;\n  opacity: unset;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL2NoYW5nZS1zY2hvb2wucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksU0FBQTtBQUNKOztBQUVBO0VBQ0ksdUJBQUE7VUFBQSxlQUFBO0VBQ0EsY0FBQTtBQUNKIiwiZmlsZSI6ImNoYW5nZS1zY2hvb2wucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRpdGxlIHtcbiAgICBtYXJnaW46IDA7XG59XG5cbi5ibHVlLWJ1dHRvbiB7XG4gICAgYW5pbWF0aW9uOiBub25lO1xuICAgIG9wYWNpdHk6IHVuc2V0O1xufSJdfQ== */");
 
 /***/ })
 

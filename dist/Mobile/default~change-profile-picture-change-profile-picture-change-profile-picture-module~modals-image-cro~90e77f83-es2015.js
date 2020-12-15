@@ -1,6 +1,160 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~change-profile-picture-change-profile-picture-change-profile-picture-module~modals-image-cro~90e77f83"],{
 
-/***/ "./node_modules/cropperjs/dist/cropper.js":
+/***/ "1tJ+":
+/*!************************************************************!*\
+  !*** ./src/app/modals/image-cropper/image-cropper.page.ts ***!
+  \************************************************************/
+/*! exports provided: ImageCropperPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageCropperPage", function() { return ImageCropperPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_image_cropper_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./image-cropper.page.html */ "ikT7");
+/* harmony import */ var _image_cropper_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./image-cropper.page.scss */ "wb48");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! cropperjs */ "urRO");
+/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(cropperjs__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+
+
+
+
+
+
+let ImageCropperPage = class ImageCropperPage {
+    constructor(modal, navParams, loading, toast) {
+        this.modal = modal;
+        this.navParams = navParams;
+        this.loading = loading;
+        this.toast = toast;
+        this.imageDestination = '';
+    }
+    ngAfterViewInit() {
+        this.cropper = new cropperjs__WEBPACK_IMPORTED_MODULE_4___default.a(this.imageElement.nativeElement, {
+            zoomable: true,
+            scalable: true,
+            aspectRatio: 1,
+            autoCropArea: 1,
+            wheelZoomRatio: 0.8,
+            viewMode: 0,
+            responsive: true,
+            movable: true,
+            // minCropBoxWidth: 500,
+            // minCropBoxHeight: 500,
+            zoomOnTouch: true,
+            zoomOnWheel: true,
+            crop: () => {
+                const canvas = this.cropper.getCroppedCanvas();
+                this.imageDestination = canvas.toDataURL('image/png');
+            },
+            cropend: () => {
+                console.log('The crop ended');
+            }
+        });
+    }
+    ngOnInit() {
+        this.uploadedPhotoURL = this.navParams.get('uploadedPhotoURL');
+    }
+    back() {
+        this.modal.dismiss();
+    }
+    crop(imageDestination) {
+        console.log('cropping');
+        // let blob = this.dataURLtoBlob(uploadedPhotoURL);
+        this.modal.dismiss(imageDestination);
+    }
+    dataURLtoBlob(dataurl) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1], bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+    }
+};
+ImageCropperPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavParams"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"] }
+];
+ImageCropperPage.propDecorators = {
+    imageElement: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ['image', { static: false },] }],
+    imageDestination: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"], args: ['src',] }]
+};
+ImageCropperPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-image-cropper',
+        template: _raw_loader_image_cropper_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_image_cropper_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavParams"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"]])
+], ImageCropperPage);
+
+
+
+/***/ }),
+
+/***/ "Scpy":
+/*!**************************************************************!*\
+  !*** ./src/app/modals/image-cropper/image-cropper.module.ts ***!
+  \**************************************************************/
+/*! exports provided: ImageCropperPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageCropperPageModule", function() { return ImageCropperPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _image_cropper_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./image-cropper-routing.module */ "zRHt");
+/* harmony import */ var _image_cropper_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./image-cropper.page */ "1tJ+");
+
+
+
+
+
+
+
+let ImageCropperPageModule = class ImageCropperPageModule {
+};
+ImageCropperPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _image_cropper_routing_module__WEBPACK_IMPORTED_MODULE_5__["ImageCropperPageRoutingModule"]
+        ],
+        declarations: [_image_cropper_page__WEBPACK_IMPORTED_MODULE_6__["ImageCropperPage"]]
+    })
+], ImageCropperPageModule);
+
+
+
+/***/ }),
+
+/***/ "ikT7":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modals/image-cropper/image-cropper.page.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header style=\"display: none;\"></ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"8\">\n        <p>Please crop your photo to get the highest quality. You can zoom in and out to make sure you get the best fit within the frame.</p>\n      </ion-col>\n    </ion-row>\n\n    <!-- Selected Image -->\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"6\">\n        <img [src]=\"imageDestination\" class=\"img-preview\">\n      </ion-col>\n    </ion-row>\n\n    <!-- Image Container -->\n    <ion-row>\n      <ion-col size=\"12\">\n       <div class=\"img-container\">\n        <img #image [src]=\"uploadedPhotoURL\" crossorigin>\n      </div>\n     </ion-col>\n    </ion-row>\n\n    <!-- Buttons -->\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"6\">\n        <ion-button class=\"orange-button\" (click)=\"crop(imageDestination)\">\n          Crop\n        </ion-button>\n     </ion-col>\n     <ion-col class=\"ion-text-center\" size=\"6\">\n       <ion-button class=\"blue-button\" (click)=\"back()\">\n         Cancel\n       </ion-button>\n    </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "urRO":
 /*!************************************************!*\
   !*** ./node_modules/cropperjs/dist/cropper.js ***!
   \************************************************/
@@ -3634,20 +3788,20 @@
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/modals/image-cropper/image-cropper.page.html":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modals/image-cropper/image-cropper.page.html ***!
-  \****************************************************************************************************/
+/***/ "wb48":
+/*!**************************************************************!*\
+  !*** ./src/app/modals/image-cropper/image-cropper.page.scss ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header style=\"display: none;\"></ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"8\">\n        <p>Please crop your photo to get the highest quality. You can zoom in and out to make sure you get the best fit within the frame.</p>\n      </ion-col>\n    </ion-row>\n\n    <!-- Selected Image -->\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"6\">\n        <img [src]=\"imageDestination\" class=\"img-preview\">\n      </ion-col>\n    </ion-row>\n\n    <!-- Image Container -->\n    <ion-row>\n      <ion-col size=\"12\">\n       <div class=\"img-container\">\n        <img #image [src]=\"uploadedPhotoURL\" crossorigin>\n      </div>\n     </ion-col>\n    </ion-row>\n\n    <!-- Buttons -->\n    <ion-row class=\"ion-justify-content-center\">\n      <ion-col class=\"ion-text-center\" size=\"6\">\n        <ion-button class=\"orange-button\" (click)=\"crop(imageDestination)\">\n          Crop\n        </ion-button>\n     </ion-col>\n     <ion-col class=\"ion-text-center\" size=\"6\">\n       <ion-button class=\"blue-button\" (click)=\"back()\">\n         Cancel\n       </ion-button>\n    </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = (".img-container {\n  width: 100%;\n  height: 30vh;\n  margin: 10px auto;\n  position: relative;\n  background: #edf3f8;\n  right: 5px;\n}\n\n@media screen and (min-width: 959px) {\n  .img-container {\n    height: 500px;\n  }\n}\n\n.img-preview {\n  width: 120px;\n  height: 120px;\n  border-radius: 100px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #005191;\n}\n\n.img-preview::after {\n  width: 130px;\n  height: 130px;\n  border-radius: 100px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #fab17f;\n}\n\n.blue-button, .orange-button {\n  margin: 5px auto;\n}\n\np {\n  margin-top: 50px;\n  font-size: 1.1em;\n  color: #666;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2ltYWdlLWNyb3BwZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxVQUFBO0FBQ0Y7O0FBRUE7RUFDRTtJQUNFLGFBQUE7RUFDRjtBQUNGOztBQUVBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxvQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtBQUFGOztBQUdBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxvQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtBQUFGOztBQUdBO0VBQ0UsZ0JBQUE7QUFBRjs7QUFHQTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUFBRiIsImZpbGUiOiJpbWFnZS1jcm9wcGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWctY29udGFpbmVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMzB2aDtcbiAgbWFyZ2luOiAxMHB4IGF1dG87XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYmFja2dyb3VuZDogI2VkZjNmODtcbiAgcmlnaHQ6IDVweDtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogOTU5cHgpIHtcbiAgLmltZy1jb250YWluZXIge1xuICAgIGhlaWdodDogNTAwcHg7XG4gIH1cbn1cblxuLmltZy1wcmV2aWV3IHtcbiAgd2lkdGg6IDEyMHB4O1xuICBoZWlnaHQ6IDEyMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMDBweDtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgIzAwNTE5MTtcbn1cblxuLmltZy1wcmV2aWV3OjphZnRlciB7XG4gIHdpZHRoOiAxMzBweDtcbiAgaGVpZ2h0OiAxMzBweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNmYWIxN2Y7XG59XG5cbi5ibHVlLWJ1dHRvbiwgLm9yYW5nZS1idXR0b24ge1xuICBtYXJnaW46IDVweCBhdXRvO1xufVxuXG5wIHtcbiAgbWFyZ2luLXRvcDogNTBweDtcbiAgZm9udC1zaXplOiAxLjFlbTtcbiAgY29sb3I6ICM2NjY7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn0iXX0= */");
 
 /***/ }),
 
-/***/ "./src/app/modals/image-cropper/image-cropper-routing.module.ts":
+/***/ "zRHt":
 /*!**********************************************************************!*\
   !*** ./src/app/modals/image-cropper/image-cropper-routing.module.ts ***!
   \**********************************************************************/
@@ -3657,10 +3811,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageCropperPageRoutingModule", function() { return ImageCropperPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _image_cropper_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-cropper.page */ "./src/app/modals/image-cropper/image-cropper.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _image_cropper_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-cropper.page */ "1tJ+");
 
 
 
@@ -3673,166 +3827,12 @@ const routes = [
 ];
 let ImageCropperPageRoutingModule = class ImageCropperPageRoutingModule {
 };
-ImageCropperPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+ImageCropperPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
     })
 ], ImageCropperPageRoutingModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/modals/image-cropper/image-cropper.module.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/modals/image-cropper/image-cropper.module.ts ***!
-  \**************************************************************/
-/*! exports provided: ImageCropperPageModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageCropperPageModule", function() { return ImageCropperPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _image_cropper_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./image-cropper-routing.module */ "./src/app/modals/image-cropper/image-cropper-routing.module.ts");
-/* harmony import */ var _image_cropper_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./image-cropper.page */ "./src/app/modals/image-cropper/image-cropper.page.ts");
-
-
-
-
-
-
-
-let ImageCropperPageModule = class ImageCropperPageModule {
-};
-ImageCropperPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _image_cropper_routing_module__WEBPACK_IMPORTED_MODULE_5__["ImageCropperPageRoutingModule"]
-        ],
-        declarations: [_image_cropper_page__WEBPACK_IMPORTED_MODULE_6__["ImageCropperPage"]]
-    })
-], ImageCropperPageModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/modals/image-cropper/image-cropper.page.scss":
-/*!**************************************************************!*\
-  !*** ./src/app/modals/image-cropper/image-cropper.page.scss ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".img-container {\n  width: 100%;\n  height: 30vh;\n  margin: 10px auto;\n  position: relative;\n  background: #edf3f8;\n  right: 5px;\n}\n\n@media screen and (min-width: 959px) {\n  .img-container {\n    height: 500px;\n  }\n}\n\n.img-preview {\n  width: 120px;\n  height: 120px;\n  border-radius: 100px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #005191;\n}\n\n.img-preview::after {\n  width: 130px;\n  height: 130px;\n  border-radius: 100px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #fab17f;\n}\n\n.blue-button, .orange-button {\n  margin: 5px auto;\n}\n\np {\n  margin-top: 50px;\n  font-size: 1.1em;\n  color: #666;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mZXJyby9EZXNrdG9wL1VuaXRlZC1XYXkvTW9iaWxlL3NyYy9hcHAvbW9kYWxzL2ltYWdlLWNyb3BwZXIvaW1hZ2UtY3JvcHBlci5wYWdlLnNjc3MiLCJzcmMvYXBwL21vZGFscy9pbWFnZS1jcm9wcGVyL2ltYWdlLWNyb3BwZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxVQUFBO0FDQ0Y7O0FERUE7RUFDRTtJQUNFLGFBQUE7RUNDRjtBQUNGOztBREVBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxvQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtBQ0FGOztBREdBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxvQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSx5QkFBQTtBQ0FGOztBREdBO0VBQ0UsZ0JBQUE7QUNBRjs7QURHQTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUNBRiIsImZpbGUiOiJzcmMvYXBwL21vZGFscy9pbWFnZS1jcm9wcGVyL2ltYWdlLWNyb3BwZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmltZy1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAzMHZoO1xuICBtYXJnaW46IDEwcHggYXV0bztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kOiAjZWRmM2Y4O1xuICByaWdodDogNXB4O1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA5NTlweCkge1xuICAuaW1nLWNvbnRhaW5lciB7XG4gICAgaGVpZ2h0OiA1MDBweDtcbiAgfVxufVxuXG4uaW1nLXByZXZpZXcge1xuICB3aWR0aDogMTIwcHg7XG4gIGhlaWdodDogMTIwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMHB4O1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjMDA1MTkxO1xufVxuXG4uaW1nLXByZXZpZXc6OmFmdGVyIHtcbiAgd2lkdGg6IDEzMHB4O1xuICBoZWlnaHQ6IDEzMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMDBweDtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI2ZhYjE3Zjtcbn1cblxuLmJsdWUtYnV0dG9uLCAub3JhbmdlLWJ1dHRvbiB7XG4gIG1hcmdpbjogNXB4IGF1dG87XG59XG5cbnAge1xuICBtYXJnaW4tdG9wOiA1MHB4O1xuICBmb250LXNpemU6IDEuMWVtO1xuICBjb2xvcjogIzY2NjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSIsIi5pbWctY29udGFpbmVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMzB2aDtcbiAgbWFyZ2luOiAxMHB4IGF1dG87XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYmFja2dyb3VuZDogI2VkZjNmODtcbiAgcmlnaHQ6IDVweDtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogOTU5cHgpIHtcbiAgLmltZy1jb250YWluZXIge1xuICAgIGhlaWdodDogNTAwcHg7XG4gIH1cbn1cbi5pbWctcHJldmlldyB7XG4gIHdpZHRoOiAxMjBweDtcbiAgaGVpZ2h0OiAxMjBweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMwMDUxOTE7XG59XG5cbi5pbWctcHJldmlldzo6YWZ0ZXIge1xuICB3aWR0aDogMTMwcHg7XG4gIGhlaWdodDogMTMwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMHB4O1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZmFiMTdmO1xufVxuXG4uYmx1ZS1idXR0b24sIC5vcmFuZ2UtYnV0dG9uIHtcbiAgbWFyZ2luOiA1cHggYXV0bztcbn1cblxucCB7XG4gIG1hcmdpbi10b3A6IDUwcHg7XG4gIGZvbnQtc2l6ZTogMS4xZW07XG4gIGNvbG9yOiAjNjY2O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */");
-
-/***/ }),
-
-/***/ "./src/app/modals/image-cropper/image-cropper.page.ts":
-/*!************************************************************!*\
-  !*** ./src/app/modals/image-cropper/image-cropper.page.ts ***!
-  \************************************************************/
-/*! exports provided: ImageCropperPage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageCropperPage", function() { return ImageCropperPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cropperjs */ "./node_modules/cropperjs/dist/cropper.js");
-/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(cropperjs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-
-
-
-
-let ImageCropperPage = class ImageCropperPage {
-    constructor(modal, navParams, loading, toast) {
-        this.modal = modal;
-        this.navParams = navParams;
-        this.loading = loading;
-        this.toast = toast;
-        this.imageDestination = '';
-    }
-    ngAfterViewInit() {
-        this.cropper = new cropperjs__WEBPACK_IMPORTED_MODULE_2___default.a(this.imageElement.nativeElement, {
-            zoomable: true,
-            scalable: true,
-            aspectRatio: 1,
-            autoCropArea: 1,
-            wheelZoomRatio: 0.8,
-            viewMode: 0,
-            responsive: true,
-            movable: true,
-            // minCropBoxWidth: 500,
-            // minCropBoxHeight: 500,
-            zoomOnTouch: true,
-            zoomOnWheel: true,
-            crop: () => {
-                const canvas = this.cropper.getCroppedCanvas();
-                this.imageDestination = canvas.toDataURL('image/png');
-            },
-            cropend: () => {
-                console.log('The crop ended');
-            }
-        });
-    }
-    ngOnInit() {
-        this.uploadedPhotoURL = this.navParams.get('uploadedPhotoURL');
-    }
-    back() {
-        this.modal.dismiss();
-    }
-    crop(imageDestination) {
-        console.log('cropping');
-        // let blob = this.dataURLtoBlob(uploadedPhotoURL);
-        this.modal.dismiss(imageDestination);
-    }
-    dataURLtoBlob(dataurl) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1], bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-        return new Blob([u8arr], { type: mime });
-    }
-};
-ImageCropperPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] }
-];
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('image', { static: false }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
-], ImageCropperPage.prototype, "imageElement", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('src'),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], ImageCropperPage.prototype, "imageDestination", void 0);
-ImageCropperPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-image-cropper',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./image-cropper.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/modals/image-cropper/image-cropper.page.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./image-cropper.page.scss */ "./src/app/modals/image-cropper/image-cropper.page.scss")).default]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]])
-], ImageCropperPage);
 
 
 

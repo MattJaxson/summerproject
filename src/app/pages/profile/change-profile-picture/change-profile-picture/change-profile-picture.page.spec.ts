@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ChangeProfilePicturePage } from './change-profile-picture.page';
@@ -7,7 +7,7 @@ describe('ChangeProfilePicturePage', () => {
   let component: ChangeProfilePicturePage;
   let fixture: ComponentFixture<ChangeProfilePicturePage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ChangeProfilePicturePage ],
       imports: [IonicModule.forRoot()]
