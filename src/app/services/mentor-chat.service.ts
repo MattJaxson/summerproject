@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Socket, SocketIoConfig } from 'ngx-socket-io';
+// import { Socket, SocketIoConfig } from 'ngx-socket-io';
 
-export class SocketNameSpace extends Socket{
-  constructor(socketConfig: SocketIoConfig){
-    super(socketConfig);
-  }
-}
+// export class SocketNameSpace extends Socket{
+//   constructor(socketConfig: SocketIoConfig){
+//     super(socketConfig);
+//   }
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class MentorChatService {
 
-  mentorsChat: SocketNameSpace;
+  // mentorsChat: SocketNameSpace;
   constructor() {
-    this.mentorsChat  = new SocketNameSpace({url: 'http://127.0.0.1:3000/mentor-chat', options: {} });
+    // this.mentorsChat  = new SocketNameSpace({url: 'http://127.0.0.1:3000/mentor-chat', options: {} });
   }
 
-  newChatroom(): void {
-    this.mentorsChat
-      .emit('addChatroom', { chatId: this.chatId() });
-  }
+  // newChatroom(): void {
+  //   this.mentorsChat
+  //     .emit('addChatroom', { chatId: this.chatId() });
+  // }
 
   private chatId(): string {
     let text = 'chat-';
