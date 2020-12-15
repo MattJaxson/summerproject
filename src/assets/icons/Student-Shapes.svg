@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>Student-Shapes</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Student-Shapes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#005191" cx="88" cy="94" r="56"></circle>
+        <circle id="Oval-Copy" fill="#005191" cx="223" cy="215" r="56"></circle>
+        <rect id="Rectangle" fill="#005191" x="176" y="47" width="95" height="95"></rect>
+        <rect id="Rectangle-Copy" fill="#005191" x="41" y="168" width="95" height="95"></rect>
+    </g>
+</svg>

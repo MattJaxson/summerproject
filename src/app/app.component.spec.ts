@@ -4,7 +4,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { Storage } from '@ionic/storage';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 

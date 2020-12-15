@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1138px" height="759px" viewBox="0 0 1138 759" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>FYF-App-Illustration</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="134.789671%" gradientTransform="translate(0.500000,0.000000),scale(0.126761,1.000000),rotate(90.000000),scale(1.000000,8.083752),translate(-0.500000,-0.000000)" id="radialGradient-1">
+            <stop stop-color="#000000" stop-opacity="0.424852491" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.464024257" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="FYF-App-Illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Phone" transform="translate(420.000000, 63.000000)">
+            <rect id="Phone-Body" stroke="#979797" stroke-width="3" fill="#1F1F1F" x="1.5" y="1.5" width="294" height="526" rx="18"></rect>
+            <rect id="Rectangle" fill="#FFFFFF" x="12" y="24" width="274" height="435" rx="4"></rect>
+            <circle id="Oval" fill="#005191" cx="103.5" cy="200.5" r="34.5"></circle>
+            <ellipse id="Oval-Copy" fill="#21CE99" cx="194.5" cy="286" rx="34.5" ry="35"></ellipse>
+            <circle id="Oval-Copy-2" fill="#005191" cx="105.5" cy="371.5" r="34.5"></circle>
+            <rect id="Rectangle" fill="#777777" x="77" y="254" width="63" height="64"></rect>
+            <rect id="Rectangle-Copy-4" fill="#005191" x="165" y="339" width="64" height="64"></rect>
+            <rect id="Rectangle-Copy-3" fill="#FFB351" x="163" y="169" width="63" height="64"></rect>
+            <g id="Menu-Button" transform="translate(0.000000, 460.000000)">
+                <rect id="Rectangle" x="0" y="-2.84217094e-14" width="99" height="59"></rect>
+                <g id="Group" transform="translate(43.000000, 21.000000)" stroke="#979797" stroke-linecap="square" stroke-width="3">
+                    <path d="M0.5,0 L0.5,18.6041667" id="Line"></path>
+                    <path d="M6.5,0 L6.5,18.6041667" id="Line-Copy"></path>
+                    <path d="M12.5,0 L12.5,18.6041667" id="Line-Copy-2"></path>
+                </g>
+            </g>
+            <g id="Middle-Button" transform="translate(99.000000, 460.000000)">
+                <rect id="Rectangle-Copy" x="0" y="-2.84217094e-14" width="99" height="59"></rect>
+                <rect id="Rectangle" stroke="#979797" stroke-width="2" x="40" y="17" width="20" height="26" rx="9"></rect>
+            </g>
+            <g id="Back-Button" transform="translate(198.000000, 460.000000)">
+                <rect id="Rectangle-Copy-2" x="0" y="-2.84217094e-14" width="99" height="59"></rect>
+                <g id="Group-4" transform="translate(44.000000, 23.000000)" stroke="#979797" stroke-linecap="square" stroke-width="3">
+                    <path d="M0.227272727,5.75 L9.77272727,0" id="Line-2"></path>
+                    <path d="M0.227272727,13.75 L9.58333333,6.75" id="Line-2-Copy" transform="translate(5.000000, 10.000000) scale(-1, 1) translate(-5.000000, -10.000000) "></path>
+                </g>
+            </g>
+        </g>
+        <ellipse id="Phone-Shadow" fill="url(#radialGradient-1)" cx="569" cy="678" rx="142" ry="18"></ellipse>
+        <image id="fyf-logo-2" x="471" y="116" width="217" height="67" xlink:href="data:image/png;base64,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"></image>
+    </g>
+</svg>

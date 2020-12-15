@@ -10,14 +10,13 @@
 
 import 'zone.js/dist/zone-error';
 
-const ip = '10.0.1.5';
-const baseUrl = `http://${ip}:3000`;
+const ip = '10.229.210.221';
+const baseUrl = `https://${ip}:4040`;
 
 export const environment = {
   production: false,
   url: baseUrl
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file
