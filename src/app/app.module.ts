@@ -65,7 +65,7 @@ export function jwtOptionsFactory(storage) {
         deps: [Storage],
       }
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
   ],
   providers: [
     PostPageEmitterService,
