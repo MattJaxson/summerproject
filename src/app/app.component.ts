@@ -3,7 +3,6 @@ import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

@@ -54,7 +54,7 @@ export class LoginPage implements OnInit, AfterViewInit {
 
 
     // Chrome, Edge,
-    window.addEventListener('onbeforeinstallprompt', (e) => {
+    window.addEventListener('beforeinstallprompt', (e) => {
       console.log('beforeinstallprompt Event fired');
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
@@ -99,7 +99,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
      // Chrome Desktop
     if (deviceType.search('Chrome') > -1) {
-      this.downloadButton.innerHTML = 'Chrome';
+      // this.downloadButton.innerHTML = 'Chrome';
     }
     // Firefox Desktop
     if (deviceType.search('Firefox') > -1) {

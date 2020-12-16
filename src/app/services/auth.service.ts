@@ -226,7 +226,7 @@ doesUserExists(email, password) {
         password: ''
       },
       this.authenticationState.next(false);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 

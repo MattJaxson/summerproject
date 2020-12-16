@@ -16,6 +16,9 @@ ion-footer {
   border: none;
 
 }
+ion-button {
+  margin: 0;
+}
 
 #download-button {
   background: linear-gradient(90deg, rgba(31, 204, 109,1) 19.625%,rgba(30, 203, 108,1) 19.625%,rgba(23, 191, 40,1) 79.625%)
@@ -29,8 +32,12 @@ ion-footer {
   font-weight: 500;
   margin: 0;
   border-radius: 0 !important;
-  animation: slide-up 0.5s ease 1s forwards;
-  transform: translateY(100%);
+  transition: 0.5;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  // animation: slide-up 0.5s ease 1s forwards;
+  // transform: translateY(100%);
 }
 
 @keyframes slide-up {
