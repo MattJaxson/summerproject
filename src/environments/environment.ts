@@ -11,7 +11,7 @@
 import 'zone.js/dist/zone-error';
 
 const ip = '10.0.1.4';
-const baseUrl = `http://${ip}:3000`;
+const baseUrl = `https://${ip}:4040`;
 
 export const environment = {
   production: false,

@@ -52,23 +52,6 @@ export class LoginPage implements OnInit, AfterViewInit {
       console.log('We are ONLINE!');
     }
 
-
-    // Chrome, Edge,
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('beforeinstallprompt Event fired');
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
-      if (this.deferredPrompt) {
-        this.downloadButton.style.display = 'block';
-        this.downloadButton.addEventListener('click', () => {
-          this.showInstallBanner();
-        });
-      }
-      console.log('This is the stashed event');
-      console.log(e);
-    });
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
       password: ['Lacrosse2', Validators.compose([
@@ -222,8 +205,6 @@ export class LoginPage implements OnInit, AfterViewInit {
 
     // Check to see if the app is already installed on the users device
     console.log(window.navigator);
-
-    
 
     // Detect if app is launched from home screen
     if (window.matchMedia('(display-mode: standalone)').matches) {

@@ -27,7 +27,7 @@ export class PostsPage implements OnInit, OnDestroy {
   postsSub: Subscription;
   notificationsSub: Subscription;
   profileSub: Subscription;
-  
+
   commentForm: FormGroup;
   allPosts;
   followedPost;
