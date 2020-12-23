@@ -36,8 +36,9 @@ ion-button {
   position: fixed;
   bottom: 0;
   left: 0;
-  // animation: slide-up 0.5s ease 1s forwards;
-  // transform: translateY(100%);
+  display: none;
+  animation: slide-up 0.5s ease 1s forwards;
+  transform: translateY(100%);
 }
 
 @keyframes slide-up {
