@@ -25,6 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+
 html, body {
   box-sizing: border-box;
   min-height: 100%;
@@ -33,6 +35,10 @@ html, body {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+* {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 ion-grid {
@@ -45,7 +51,7 @@ ion-grid {
 
 ion-header {
   background: #fff;
-  // box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.15);
   color: #005191;
   // height: 60px;
 }
@@ -57,6 +63,11 @@ ion-list {
 
 ion-content {
   --background: white;
+}
+
+
+ion-footer {
+  // background: #edf3f8;
 }
 
 .full-page {
@@ -121,6 +132,13 @@ ion-title {
   white-space: pre-wrap;
 }
 
+.searchbar{
+  transition: 0.5s;
+  height: 60px;
+  // background: #edf3f8;
+
+}
+
 .searchbar-input {
   background: #FFF !important;
   border: 2px solid #005191 !important;
@@ -128,7 +146,7 @@ ion-title {
   height: 40px !important;
   padding: 10px 0px 10px 20px !important;
   max-width: 100%;
-  font-size: 1.4em !important;
+  font-size: 1em !important;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.1) !important;
 }
 

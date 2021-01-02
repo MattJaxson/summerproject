@@ -7,13 +7,13 @@
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="following()">
-        <ion-icon  size="large" src="../../assets/icons/following-icon.svg"></ion-icon>
+        <ion-icon class="header-icons" src="../../assets/icons/following-icon.svg"></ion-icon>
       </ion-button>
       <!-- <ion-button (click)="chat()">
         <ion-icon size="medium" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
       </ion-button> -->
       <ion-button (click)="notifications()">
-        <ion-icon size="large" src="../../assets/icons/notifications-icon.svg"></ion-icon>
+        <ion-icon class="header-icons" src="../../assets/icons/notifications-icon.svg"></ion-icon>
         <span style="background: none; color: #e4405f; height: 15px; width: 15px; border-radius: 100px; position: relative; font-size: 1.5em;">{{notificationsLength}}</span>
       </ion-button>
     </ion-buttons>
@@ -33,7 +33,7 @@
 <ion-content>
 
   <!-- fab placed to the bottom end -->
-  <ion-fab class="ion-hide-lg-up" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab [@inOutAnimation] id="fab-wrapper" class="ion-hide-lg-up" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="add-post-button" (click)="addPost()">
       <ion-icon name="add" size="large"></ion-icon>
     </ion-fab-button>
@@ -185,7 +185,7 @@
           <ion-col size="11">
             <ion-row style="position: relative; right: 5px; top: -4px;" >
             <!-- Profile Picture -->
-            <ion-col size="1.3" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
+            <ion-col size="1" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 35xpx; width: 35px;">
             </ion-col>
 
@@ -193,7 +193,6 @@
             <ion-col size="10" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
               <p class="post-name">{{post.creatorName}}</p>
               <p class="post-date">{{post.date}}</p>
-              <hr class="header-hr">
             </ion-col>
 
           </ion-row>
@@ -206,7 +205,11 @@
               <!-- 1080x1350 -->
               <ion-col size="11">
                 <p class="post-title">{{post.title}}</p>
-                <p class="post-content">{{post.post}}</p>
+                <p [ngClass]="{'show-less': showShortDesciption}" class="post-content">{{post.post}}</p>
+                <span class="ellipsis" *ngIf="post.post.length > 350 && showShortDesciption">...</span>
+                <button *ngIf="post.post.length > 350" class="show-more-or-less-button" type="button" (click)="alterDescriptionText()">
+                  {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
+                </button>
               </ion-col>
           </ion-row>
           </ion-col>
@@ -246,17 +249,52 @@
 
           <!-- Post Buttons -->
           <ion-col size="12">
-            <ion-row class="ion-justify-content-center">
-              <!-- Upvote & Downvote-->
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button *ngIf="!upVoted" class="upvote" (click)="upVotePost()">
+                  <ion-icon size="large" src="../assets/icon/caret-up-outline.svg"></ion-icon>
+                  {{upVoteLength}}
+                </ion-button>
+                <ion-button *ngIf="upVoted" class="upvote" (click)="upVotePost()">
+                  <ion-icon  size="large" src="../assets/icon/caret-up-outline-active.svg"></ion-icon>
+                  {{upVoteLength}}
+                </ion-button>
+            
+                <!-- Downvotes -->
+                <ion-button *ngIf="!downVoted" class="downvote" (click)="downVotePost()">
+                  <ion-icon size="large" src="../assets/icon/caret-down-outline.svg">
+                  </ion-icon>
+                  {{downVoteLength}}
+                </ion-button>
+                  <ion-button *ngIf="downVoted" class="downvote" (click)="downVotePost()">
+                    <ion-icon size="large" src="../assets/icon/caret-down-outline-active.svg"></ion-icon>
+                    {{downVoteLength}}
+                  </ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button *ngIf="!following && !isUser" class="follow-button" (click)="follow(postID)">Follow ({{followingLength}})
+                </ion-button>
+                <ion-button *ngIf="following && !isUser" class="unfollow-button" (click)="unFollow(postID)">Unfollow ({{followingLength}})
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-buttons slot="end">
+                <ion-button  (click)="postPage(post.id)">
+                <ion-icon
+                (click)="postPage()" slot="start" src="../../assets/icons/comments-icon.svg"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <!-- <ion-row class="ion-justify-content-center">
               <ion-col pull="1" size="4" size-xs="4.4">
                 <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
               </ion-col>
 
-              <!-- Follow & Comment -->
               <ion-col push="1" size="6" class="ion-float-right">
                 <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
-            </ion-row>
+            </ion-row> -->
           </ion-col>
 
         </ion-row>
@@ -266,4 +304,30 @@
   </ion-grid>
 
 </ion-content>
+
+<ion-footer>
+  <div
+  id="searchbar-wrapper">
+    <ion-searchbar
+    debounce="2000"
+      class="searchbar"
+      animated="true"
+      searchIcon="none"
+      showCancelButton="true"
+      placeholder="Search Posts by Hashtags #"
+      (ionFocus)="searchBarFocus()"
+      (ionBlur)="searchBarBlur()"
+      (ionChange)="filter($event)">
+    </ion-searchbar>
+    <div id="search-options">
+      <p>You can choose up to five hashtags. Please seperate each tag with a comma ( , ) . Example: "Computers, Science, Technology"</p>
+      <p>Current Search: ----</p>
+      <div>
+        <ion-button class="cancel-button">
+          Cancel
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-footer>
 

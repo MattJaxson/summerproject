@@ -8,21 +8,36 @@ import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
-import { ReadMoreComponent } from '../../components/read-more/read-more.component';
 import { StudentChatService } from 'src/app/services/student-chat.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { Subscription } from 'rxjs';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-posts',
   templateUrl: 'posts.page.html',
-  styleUrls: ['posts.page.scss']
+  styleUrls: ['posts.page.scss'],
+  animations: [
+    trigger(
+      'inOutAnimation',
+      [
+        transition(':leave', [
+          animate('0.8s ease-out', style({ transform: 'translateX(100px)' }))
+        ])
+      ]
+    )
+  ]
 })
 export class PostsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
+
+  showShortDesciption = true
+
+ alterDescriptionText() {
+    this.showShortDesciption = !this.showShortDesciption
+ }
 
   postsSub: Subscription;
   notificationsSub: Subscription;
@@ -77,6 +92,32 @@ export class PostsPage implements OnInit, OnDestroy {
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
+  }
+
+  filter(event) {
+    console.log(event);
+  }
+
+  searchBarFocus() {
+    console.log('Focusing on Searchbar');
+
+    let searchBarWrapper = document.getElementById('searchbar-wrapper');
+    let fabWrapper = document.getElementById('fab-wrapper');
+    console.log(searchBarWrapper);
+    searchBarWrapper.style.height = '300px';
+    searchBarWrapper.style.background = 'linear-gradient(43deg, rgba(0,81,145,1) 33%, rgba(40,107,160,1) 100%)';
+    fabWrapper.style.display = 'none';
+  }
+  searchBarBlur() {
+    console.log('Blurring out of Searchbar');
+
+    let searchBarWrapper = document.getElementById('searchbar-wrapper');
+    let fabWrapper = document.getElementById('fab-wrapper');
+
+    console.log(searchBarWrapper);
+    searchBarWrapper.style.height = '60px';
+    searchBarWrapper.style.background = '#edf3f8';
+    fabWrapper.style.display = 'block';
   }
 
   postPage(post) {
