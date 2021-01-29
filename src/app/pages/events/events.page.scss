@@ -1,8 +1,16 @@
 ion-header {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-  background: #edf3f8;
-  border-bottom: 1px solid #005191;
 }
+
+#searchbar-wrapper {
+  transition: 0.5s;
+  height: 60px;
+  background: #edf3f8;
+ }
+
+ .fairs-info{
+   background: #eee;
+ }
 
 #my-events-button {
   opacity: 1;
@@ -46,10 +54,6 @@ ion-card ion-card-content {
   bottom: 0;
   padding: 0;
   width: 100%;
-}
-
-ion-toolbar {
-  --background: none;
 }
 
 ion-searchbar {

@@ -7,14 +7,14 @@
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="following()">
-        <ion-icon class="header-icons" src="../../assets/icons/following-icon.svg"></ion-icon>
+        <ion-icon class="header-icons" src="../../assets/icon/following.svg"></ion-icon>
       </ion-button>
       <!-- <ion-button (click)="chat()">
         <ion-icon size="medium" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
       </ion-button> -->
       <ion-button (click)="notifications()">
-        <ion-icon class="header-icons" src="../../assets/icons/notifications-icon.svg"></ion-icon>
-        <span style="background: none; color: #e4405f; height: 15px; width: 15px; border-radius: 100px; position: relative; font-size: 1.5em;">{{notificationsLength}}</span>
+        <ion-icon class="header-icons" src="../../assets/icon/notifications-icon.svg"></ion-icon>
+        <span style="color: #e4405f; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -248,7 +248,7 @@
           </ion-col>
 
           <!-- Post Buttons -->
-          <ion-col size="12">
+          <ion-col class="post-buttons" size="12">
             <ion-toolbar>
               <ion-buttons slot="start">
                 <ion-button *ngIf="!upVoted" class="upvote" (click)="upVotePost()">

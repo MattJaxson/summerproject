@@ -15,10 +15,12 @@ export class AddPostPage implements OnInit, AfterViewInit {
 
   @ViewChild('postChars', {static: false}) postChars;
   @ViewChild('titleChars', {static: false}) titleChars;
+  @ViewChild('hashtagRef', {static: false}) hashtagRef;
   creatorEmail;
   creatorName;
   postValue;
   char;
+  hashtags = [];
 
   textPostForm: FormGroup;
 
@@ -39,6 +41,7 @@ export class AddPostPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.textPostForm = this.formBuilder.group({
       title: ['', Validators.required],
+      hashtags: ['', Validators.required],
       post: ['', Validators.required]
     }
     );
@@ -57,9 +60,9 @@ export class AddPostPage implements OnInit, AfterViewInit {
     this.router.navigate(['/home/posts']);
   }
 
-  async post(creatorName, creatorEmail, creatorProfilePicture, post, title) {
+  async post(creatorName, creatorEmail, creatorProfilePicture, hashtags, post, title) {
     await this.presentLoading();
-    await this.posts.addPost(creatorName, creatorEmail, creatorProfilePicture, post, title).subscribe(
+    await this.posts.addPost(creatorName, creatorEmail, creatorProfilePicture, hashtags, post, title).subscribe(
       data => {
         console.log(data);
       }
@@ -77,6 +80,32 @@ export class AddPostPage implements OnInit, AfterViewInit {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+  }
+
+  addHashTag(event) {
+    console.log(event);
+    let hashtagControl = this.textPostForm.get('hashtags');
+    if(event.code === "Enter") {
+      console.log('ENTER button pressed.');
+      console.log('Value: ');
+      console.log(hashtagControl.value);
+      console.log('Hashtags: ');
+      this.hashtags.push(hashtagControl.value);
+      console.log(this.hashtags);
+
+    }
+
+  }
+
+  deleteTag(i) {
+    console.log(i);
+    let index = this.hashtags.indexOf(i);
+    console.log(index);
+
+    if (index = -1) {
+      this.hashtags.splice(index, 1);
+      console.log(this.hashtags);
+    }
   }
 
 }
