@@ -52,23 +52,28 @@ export class LoginPage implements OnInit, AfterViewInit {
       console.log('We are ONLINE!');
     }
 
-
-    // Chrome, Edge,
-    window.addEventListener('onbeforeinstallprompt', (e) => {
+     // Chrome, Edge,
+     window.addEventListener('beforeinstallprompt', (e) => {
       console.log('beforeinstallprompt Event fired');
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
+      console.log(this.deferredPrompt);
+      
       if (this.deferredPrompt) {
         this.downloadButton.style.display = 'block';
         this.downloadButton.addEventListener('click', () => {
-          this.showInstallBanner();
+          this.deferredPrompt.prompt();
         });
       }
-      console.log('This is the stashed event');
-      console.log(e);
+      // If there was no Install Prompt event returned,
+      // do not display the Install App button.
+      if (!this.deferredPrompt) {
+        this.downloadButton.style.display = 'none';
+      }
     });
+
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
       password: ['Lacrosse2', Validators.compose([
@@ -78,9 +83,6 @@ export class LoginPage implements OnInit, AfterViewInit {
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])]
     });
-
-    console.log(this.loginForm.value);
-    // this.wrongPasswordToast();
 
 
     this.downloadButton = document.getElementById('download-button');
@@ -99,7 +101,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
      // Chrome Desktop
     if (deviceType.search('Chrome') > -1) {
-      this.downloadButton.innerHTML = 'Chrome';
+      // this.downloadButton.innerHTML = 'Chrome';
     }
     // Firefox Desktop
     if (deviceType.search('Firefox') > -1) {
@@ -222,8 +224,6 @@ export class LoginPage implements OnInit, AfterViewInit {
 
     // Check to see if the app is already installed on the users device
     console.log(window.navigator);
-
-    
 
     // Detect if app is launched from home screen
     if (window.matchMedia('(display-mode: standalone)').matches) {

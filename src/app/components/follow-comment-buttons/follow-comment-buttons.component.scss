@@ -1,55 +1,22 @@
 .comment-button{
   width: 130px;
-  --background: #005191;
-  --background-hover: #005191;
-  --color: white;
-  font-size: 0.6em;
+  --color: #0055a5;
+  font-size: 1em;
   font-size: 800;
   border-radius: 5px;
-}
-
-.comment-button:focus {
-  --color: orange;
-}
-
-.follow-button {
-  --color: white;
-  --background: #24d8a8;
-  --background-hover: #24d8a8;
-  font-size: 0.6em;
-  font-size: 800;
-  border-radius: 5px;
-  width: 130px;
-}
-
-// Change color
-.unfollow-button {
-  font-weight: 800;
-  line-height: 1em;
-  // background: #faa71b;
-  border: 1px solid #faa71b;
-  width: 300px;
-  color: #faa71b;
-  font-size: 1.5em;
-  padding: 2px 0px 2px 0px;
-  position: relative;
-  right: 20px;
-  border-radius: 50px;
-}
-
-.follow-button:hover, .unfollow-button:hover, .comment-button:hover {
-  --color: white;
 }
 
 ion-icon {
-  font-size: 3em;
-  height: 100px;
-  width: 100px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  left: -5px;
+
 }
 
 @media screen and (max-width: 567px) {
   .comment-button, .follow-button, .unfollow-button {
-      font-size: 0.5em;
-      width: 100px;
+      font-size: 1em;
+      width: 130px;
   }
 }

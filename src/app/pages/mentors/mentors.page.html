@@ -1,23 +1,18 @@
 <ion-header no-border class="ion-hide-lg-up">
-  <!-- Mobile & Tablet Toolbar -->
-  <ion-toolbar style="padding: 10px;">
-    <ion-searchbar
-          (ionChange)="filter($event)"
-          debounce="2000"
-          class="searchbar"
-          showCancelButton="focus"
-          placeholder="Search Mentors"
-          ></ion-searchbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="chat()">
-        <ion-icon size="large" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar>
+    <ion-title>Mentors</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10" size-xl="5">
+        <p>Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
+      <hr style="border-top: #9993 solid 2px;
+      margin-bottom: 20px;">
+      </ion-col>
+    </ion-row>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
       <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="10" size-xl="5">
         <ion-list>
@@ -30,12 +25,12 @@
               <p>{{mentor.title}}</p>
             </ion-label>
             <ion-buttons slot="end">
-              <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="mentorPage(mentor)">
+              <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; font-weight: 600; margin-right: 20px; width: 80px;" (click)="mentorPage(mentor)">
                 Info
               </ion-button>
-              <ion-button (click)="newMessage()">
+              <!-- <ion-button (click)="newMessage()">
                 <ion-icon size="large"  class="new-message" slot="start" name="create"></ion-icon>
-              </ion-button>
+              </ion-button> -->
             </ion-buttons>
           </ion-item>
         </ion-list>
@@ -43,3 +38,29 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <div
+  id="searchbar-wrapper">
+    <ion-searchbar
+    debounce="2000"
+      class="searchbar"
+      animated="true"
+      searchIcon="none"
+      showCancelButton="true"
+      placeholder="Search for Mentor by Name"
+      (ionFocus)="searchBarFocus()"
+      (ionBlur)="searchBarBlur()"
+      (ionChange)="filter($event)">
+    </ion-searchbar>
+    <div id="search-options">
+      <p>You can choose up to five hashtags. Please seperate each tag with a comma ( , ) . Example: "Computers, Science, Technology"</p>
+      <p>Current Search: ----</p>
+      <div>
+        <ion-button class="cancel-button">
+          Cancel
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-footer>

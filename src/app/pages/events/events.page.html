@@ -1,20 +1,12 @@
 <ion-header no-border class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-    <ion-searchbar
-      debounce="2000"
-      class="searchbar"
-      animated="true"
-      searchIcon="none"
-      showCancelButton="true"
-      placeholder="Search Event Titles"
-      (ionChange)="filter($event)"
-       ></ion-searchbar>
+   <ion-title>Events</ion-title>
 
        <ion-buttons slot="end">
         <ion-button (click)="going()">
          <!-- My Events ({{ eventsGoingLength }}) -->
-         <ion-icon slot="start" src="../../assets/icons/my-events-icon.svg"></ion-icon>
+         <ion-icon slot="start" src="../../assets/icon/my-events-icon.svg"></ion-icon>
      </ion-button>
        </ion-buttons>
   </ion-toolbar>
@@ -29,6 +21,24 @@
 
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="fairs-info" size="11">
+        <h1>United Way Fairs</h1>
+        <p>Upcoming fairs with United Way</p>
+        <div>
+          <h2>{{allFairs[0].title}}</h2>
+          <h2>{{allFairs[0].date}}</h2>
+          <h2>{{allFairs[0].time}}</h2>
+          <h2>{{allFairs[0].address}}, {{allFairs[0].city}},{{allFairs[0].state}}</h2>
+          <ion-button (click)="onClick()">
+            Info
+          </ion-button>
+
+        <hr style="border-top: #9993 solid 2px;
+        margin-bottom: 20px;">
+        </div>
+      </ion-col>
+    </ion-row>
     <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
       <ion-col size="6">
         <h6 class="text-header">There were no search results with that name.</h6>
@@ -42,6 +52,9 @@
     <ion-row  style="margin-top: 30px;" class="ion-justify-content-center" *ngIf="!noSearchInput" >
       <ion-col size-lg="6" size-md="8" size-sm="10" size-xs="11.5 ">
         <ion-card *ngFor="let event of allEvents">
+          <div *ngIf="allEvents.length === 0">
+            <p>There are no Events, please come back later.</p>
+          </div>
           <img src="../assets/Journi_flyer.jpg" />
           <ion-card-header (click)="eventPage(event)">
             <ion-card-title>{{ event.title }}</ion-card-title>
@@ -125,3 +138,39 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <div
+  id="searchbar-wrapper">
+    <ion-searchbar
+    debounce="2000"
+      class="searchbar"
+      animated="true"
+      searchIcon="none"
+      showCancelButton="true"
+      placeholder="Search for Events by Title"
+      (ionFocus)="searchBarFocus()"
+      (ionBlur)="searchBarBlur()"
+      (ionChange)="filter($event)">
+    </ion-searchbar>
+    <div id="search-options">
+      <p>You can choose up to five hashtags. Please seperate each tag with a comma ( , ) . Example: "Computers, Science, Technology"</p>
+      <p>Current Search: ----</p>
+      <div>
+        <ion-button class="cancel-button">
+          Cancel
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-footer>
+
+<!-- <ion-searchbar
+debounce="2000"
+class="searchbar"
+id="post-searchbar"
+animated="true"
+searchIcon="none"
+showCancelButton="true"
+placeholder="Search Event Titles"
+(ionChange)="filter($event)"></ion-searchbar> -->

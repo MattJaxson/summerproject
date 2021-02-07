@@ -19,5 +19,10 @@
         <ion-icon size="large" src="../assets/icon/caret-down-outline-active.svg"></ion-icon>
         {{downVoteLength}}
       </ion-button>
+
+      <ion-button *ngIf="!following" class="follow-button" (click)="follow(postID)">Follow {{followingLength}}
+      </ion-button>
+      <ion-button *ngIf="following" class="unfollow-button" (click)="unFollow(postID)">Unfollow {{followingLength}}
+      </ion-button>
   </ion-buttons>
 </ion-toolbar>
