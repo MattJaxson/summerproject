@@ -12,7 +12,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 
 export class FairsService {
   allFairs = [];
-  BACKEND_URL = environment.url;
+  FAIRS_BACKEND_URL = environment.fairsUrl;
 
   constructor(
     private http: HttpClient,
@@ -23,29 +23,29 @@ export class FairsService {
 
   getFairs() {
     console.log('Getting Fairs');
-    return this.http.get(`${this.BACKEND_URL}/api/fairs`);
+    return this.http.get(`${this.FAIRS_BACKEND_URL}/api/fairs`);
   }
 
   getFair(name) {
     console.log(name);
     console.log('id from fairs service');
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/fair`, {name});
+    return this.http.post(`${this.FAIRS_BACKEND_URL}/api/fairs/fair`, {name});
   }
 
   registerStudent(student) {
-  return this.http.post(`${this.BACKEND_URL}/api/fairs/register-student`, student);
+  return this.http.post(`${this.FAIRS_BACKEND_URL}/api/fairs/register-student`, student);
   }
 
   registerChaperone(chaperone) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-chaperone`, chaperone);
+    return this.http.post(`${this.FAIRS_BACKEND_URL}/api/fairs/register-chaperone`, chaperone);
   }
 
   registerPartner(partner) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-partner`, partner);
+    return this.http.post(`${this.FAIRS_BACKEND_URL}/api/fairs/register-partner`, partner);
   }
 
   async registerVolunteer(volunteer) {
-    return this.http.post(`${this.BACKEND_URL}/api/fairs/register-volunteer`, volunteer).subscribe(
+    return this.http.post(`${this.FAIRS_BACKEND_URL}/api/fairs/register-volunteer`, volunteer).subscribe(
       async data => {
         await console.log('registering volunteer to fair');
         await console.log(data);
@@ -108,7 +108,7 @@ async presentAlert() {
 
 getSchools() {
   console.log('Getting schools');
-  return this.http.get(`${this.BACKEND_URL}/api/admin/fairs/get-schools`);
+  return this.http.get(`${this.FAIRS_BACKEND_URL}/api/admin/fairs/get-schools`);
 }
 
 

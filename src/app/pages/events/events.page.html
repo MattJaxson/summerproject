@@ -22,14 +22,17 @@
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
     <ion-row class="ion-justify-content-center">
-      <ion-col class="fairs-info" size="12">
+      <ion-col class="fairs-info" size="11">
         <h1>United Way Fairs</h1>
         <p>Upcoming fairs with United Way</p>
         <div>
-          <h2>Title</h2>
-          <h2>Date</h2>
-          <h2>Time</h2>
-          <h2>Location</h2>
+          <h2>{{allFairs[0].title}}</h2>
+          <h2>{{allFairs[0].date}}</h2>
+          <h2>{{allFairs[0].time}}</h2>
+          <h2>{{allFairs[0].address}}, {{allFairs[0].city}},{{allFairs[0].state}}</h2>
+          <ion-button (click)="onClick()">
+            Info
+          </ion-button>
 
         <hr style="border-top: #9993 solid 2px;
         margin-bottom: 20px;">

@@ -112,24 +112,13 @@ ion-button {
 }
 
 ion-card-title {
-  font-weight: 400;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  padding-bottom: 10px;
-  font-size: 2em;
-  color: #005191;
-  border-bottom: 1px solid #005191;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #0055a5;
 }
 
 ion-card-subtitle {
-  font-weight: 800;
-  line-height: 1em;
-  background: #fff1d9;
-  width: 200px;
-  color: #faa71b;
   font-size: 1.3em;
-  padding: 10px 0px 10px 20px;
-  border-radius: 50px;
 }
 
 @media screen and (min-width: 1200px) {

@@ -7,6 +7,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 import { isAfter } from 'date-fns';
 import { Subscription } from 'rxjs';
+import { FairsService } from 'src/app/services/fairs.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
   profileSub: Subscription;
   eventsGoingSub: Subscription;
   deleteEventSub: Subscription;
+  allFairs = [];
   eventsGoing;
   eventsGoingLength;
   searching = false;
@@ -37,6 +39,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private events: EventsService,
     private profile: ProfileService,
+    private fairs: FairsService,
     private toast: ToastController,
     public loading: LoadingController,
     private eventEmitterService: EventsEventEmitterService
@@ -53,6 +56,12 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.fairs.getFairs().subscribe(
+      data => {
+        console.log(data);
+        this.allFairs = Object.values(data);
+      }
+    )
     this.deleteEvent();
 
     if (this.eventEmitterService.subsVar == undefined) {

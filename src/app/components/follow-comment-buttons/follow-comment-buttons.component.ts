@@ -19,10 +19,12 @@ export class FollowCommentButtonsComponent implements OnInit {
   following = false;
 
   @Input() postID;
-  @Input() isUser;
+  @Input() commentLength;
   @Input() postEmail;
   followingLength$ = new BehaviorSubject(null);
   followingLength = null;
+  commentsLength$ = new BehaviorSubject(null);
+  commentsLength = null;
 
   constructor(
     private router: Router,
@@ -53,11 +55,6 @@ export class FollowCommentButtonsComponent implements OnInit {
                 following = true;
               }
           }
-
-            if (userEmail === this.postEmail) {
-              return this.isUser === true;
-            }
-
             this.followers = followers;
             this.comments = comments;
             this.userEmail = userEmail;
@@ -65,6 +62,11 @@ export class FollowCommentButtonsComponent implements OnInit {
             this.followingLength$.next(followers.length);
             this.followingLength$.subscribe(data => {
               this.followingLength = data;
+            });
+            this.commentsLength$.next(followers.length);
+            this.commentsLength$.subscribe(data => {
+              this.commentsLength = data;
+              
             });
         });
 

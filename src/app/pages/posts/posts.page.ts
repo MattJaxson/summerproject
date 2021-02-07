@@ -104,8 +104,8 @@ export class PostsPage implements OnInit, OnDestroy {
     let searchBarWrapper = document.getElementById('searchbar-wrapper');
     let fabWrapper = document.getElementById('fab-wrapper');
     console.log(searchBarWrapper);
-    searchBarWrapper.style.height = '300px';
-    searchBarWrapper.style.background = 'linear-gradient(43deg, rgba(0,81,145,1) 33%, rgba(40,107,160,1) 100%)';
+    searchBarWrapper.style.height = '400px';
+    searchBarWrapper.style.background = '#0055a5';
     fabWrapper.style.display = 'none';
   }
   searchBarBlur() {

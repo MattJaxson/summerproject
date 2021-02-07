@@ -79,6 +79,9 @@
               <!-- 1080x1350 -->
               <ion-col size="11.3">
                <p class="post-title">{{post.title}}</p>
+               <p *ngFor="let tag of post.hashtags" style="font-size: 0.9em; display: inline-block; margin-right: 5px; color: #777;">
+                #{{tag}},
+              </p>
               </ion-col>
            </ion-row>
             <ion-row class="ion-justify-content-center">
@@ -205,11 +208,15 @@
               <!-- 1080x1350 -->
               <ion-col size="11">
                 <p class="post-title">{{post.title}}</p>
-                <p [ngClass]="{'show-less': showShortDesciption}" class="post-content">{{post.post}}</p>
-                <span class="ellipsis" *ngIf="post.post.length > 350 && showShortDesciption">...</span>
-                <button *ngIf="post.post.length > 350" class="show-more-or-less-button" type="button" (click)="alterDescriptionText()">
+                  <p [ngClass]="{'show-less': showShortDesciption}" class="post-content">{{post.post}}</p>
+                <span class="ellipsis" *ngIf="post.post.length > 400 && showShortDesciption">...</span>
+                <button *ngIf="post.post.length > 400" class="show-more-or-less-button" type="button" (click)="alterDescriptionText()">
                   {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
                 </button>
+
+                <p *ngFor="let tag of post.hashtags" style="font-size: 0.7em; font-weight: 600; display: inline-block; margin-right: 5px; color: #ea8400;">
+                  #{{tag}}
+                </p>
               </ion-col>
           </ion-row>
           </ion-col>
@@ -238,7 +245,7 @@
                           .get('comment')
                           .pristine && commentForm.value.comment.length >= 3"
                     name="send"
-                    type="submit">Post
+                    type="submit">Post Comment
                 </ion-button>
                 </form>
 
@@ -248,53 +255,18 @@
           </ion-col>
 
           <!-- Post Buttons -->
-          <ion-col class="post-buttons" size="12">
-            <ion-toolbar>
-              <ion-buttons slot="start">
-                <ion-button *ngIf="!upVoted" class="upvote" (click)="upVotePost()">
-                  <ion-icon size="large" src="../assets/icon/caret-up-outline.svg"></ion-icon>
-                  {{upVoteLength}}
-                </ion-button>
-                <ion-button *ngIf="upVoted" class="upvote" (click)="upVotePost()">
-                  <ion-icon  size="large" src="../assets/icon/caret-up-outline-active.svg"></ion-icon>
-                  {{upVoteLength}}
-                </ion-button>
-            
-                <!-- Downvotes -->
-                <ion-button *ngIf="!downVoted" class="downvote" (click)="downVotePost()">
-                  <ion-icon size="large" src="../assets/icon/caret-down-outline.svg">
-                  </ion-icon>
-                  {{downVoteLength}}
-                </ion-button>
-                  <ion-button *ngIf="downVoted" class="downvote" (click)="downVotePost()">
-                    <ion-icon size="large" src="../assets/icon/caret-down-outline-active.svg"></ion-icon>
-                    {{downVoteLength}}
-                  </ion-button>
-              </ion-buttons>
-              <ion-buttons slot="end">
-                <ion-button *ngIf="!following && !isUser" class="follow-button" (click)="follow(postID)">Follow ({{followingLength}})
-                </ion-button>
-                <ion-button *ngIf="following && !isUser" class="unfollow-button" (click)="unFollow(postID)">Unfollow ({{followingLength}})
-                </ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-            <ion-toolbar>
-              <ion-buttons slot="end">
-                <ion-button  (click)="postPage(post.id)">
-                <ion-icon
-                (click)="postPage()" slot="start" src="../../assets/icons/comments-icon.svg"></ion-icon>
-                </ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-            <!-- <ion-row class="ion-justify-content-center">
-              <ion-col pull="1" size="4" size-xs="4.4">
-                <app-up-down-vote-buttons [postID]="post._id"></app-up-down-vote-buttons>
+          <ion-col size="11">
+            <ion-row>
+              <!-- Upvote & Downvote-->
+              <ion-col pull="0.8" size="8">
+                <app-up-down-vote-buttons [postID]="post._id" [postEmail]="post.creatorEmail"></app-up-down-vote-buttons>
               </ion-col>
 
-              <ion-col push="1" size="6" class="ion-float-right">
-                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
+              <!-- Follow & Comment -->
+              <ion-col push="0.5" size="3">
+                <app-follow-comment-buttons [postID]="post._id" [commentLength]="post.comments.length"></app-follow-comment-buttons>
               </ion-col>
-            </ion-row> -->
+            </ion-row>
           </ion-col>
 
         </ion-row>
@@ -323,6 +295,9 @@
       <p>You can choose up to five hashtags. Please seperate each tag with a comma ( , ) . Example: "Computers, Science, Technology"</p>
       <p>Current Search: ----</p>
       <div>
+        <ion-button class="search-button">
+          Search
+        </ion-button>
         <ion-button class="cancel-button">
           Cancel
         </ion-button>

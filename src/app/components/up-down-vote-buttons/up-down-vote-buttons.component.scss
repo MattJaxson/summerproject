@@ -40,3 +40,28 @@ ion-buttons {
 .unfollowed-toast {
   --background: #FFB351;
 }
+
+.follow-button {
+  --color: #24d8a8;
+  --border-style: solid;
+  --border-width: 3px;
+  --border-color: #24d8a8;
+  font-size: 0.60em;
+  font-weight: 800;
+  border-radius: 5px;
+  width: 100px;
+  margin-left: 10px;
+}
+
+// Change color
+.unfollow-button {
+  --color: #faa71b;
+  --border-style: solid;
+  --border-width: 3px;
+  --border-color: #faa71b;
+  font-size: 0.60em;
+  font-weight: 800;
+  border-radius: 5px;
+  width: 100px;
+  margin-left: 10px;
+}

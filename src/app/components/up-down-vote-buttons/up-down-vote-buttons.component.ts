@@ -16,8 +16,13 @@ export class UpDownVoteButtonsComponent implements OnInit {
   userEmail;
 
   @Input() postID;
+  @Input() postEmail;
   upVotes$ = new BehaviorSubject(null);
   downVotes$ = new BehaviorSubject(null);
+
+  followingLength$ = new BehaviorSubject(null);
+  followingLength = null;
+  following = false;
 
   upVoteLength;
   downVoteLength;
@@ -27,6 +32,7 @@ export class UpDownVoteButtonsComponent implements OnInit {
 
   upVoters = [];
   downVoters = [];
+  followers = [];
 
   upVoted = false;
   downVoted = false;
@@ -50,6 +56,8 @@ export class UpDownVoteButtonsComponent implements OnInit {
         this.upVoters = postInfo['upvoters'];
         this.downVoters = postInfo['downvoters'];
 
+        let followers = postInfo['followers'];
+
         this.upVotes$.next(this.upVotes);
         this.downVotes$.next(this.downVotes);
 
@@ -60,9 +68,22 @@ export class UpDownVoteButtonsComponent implements OnInit {
         this.profile.getUserDetails()
           .subscribe( userDetails => {
           let userEmail = userDetails['email'];
+          let following = false;
           let upVoted = false;
           let downVoted = false;
 
+
+          followers.find(findFollower);
+
+          function findFollower(follower) {
+            if (!follower) {
+              // User is not following post
+            }
+
+            if (follower === userEmail) {
+              following = true;
+            }
+        }
           this.upVoters.find(findUpVoter);
           this.downVoters.find(findDownVoter);
 
@@ -86,9 +107,19 @@ export class UpDownVoteButtonsComponent implements OnInit {
             }
         }
 
+        
+
           this.userEmail = userEmail;
           this.upVoted = upVoted;
           this.downVoted = downVoted;
+          this.followers = followers;
+          this.following = following;
+          console.log(followers.length);
+          
+          this.followingLength$.next(followers.length);
+          this.followingLength$.subscribe(data => {
+            this.followingLength = data;
+          });
         });
       });
     }
@@ -154,6 +185,42 @@ export class UpDownVoteButtonsComponent implements OnInit {
       duration: 2000
     });
     downVoteToast.present();
+  }
+
+  async follow(postID) {
+    await console.log('Following Post');
+    await console.log(postID);
+    await this.posts.followPost(postID, this.postEmail);
+    this.following = true;
+    this.followingLength$.next(this.followingLength + 1);
+    await this.followToast();
+  }
+
+  async followToast() {
+    const followToast = await this.toast.create({
+      cssClass: 'followed-toast',
+      message: 'You are FOLLOWING this post',
+      duration: 2000
+    });
+    followToast.present();
+  }
+
+  async unFollow(postID) {
+    await console.log('Unfollowing Post');
+    await console.log(postID);
+    await this.posts.unFollowPost(postID, this.postEmail);
+    this.following = false;
+    this.followingLength$.next(this.followingLength - 1);
+    await this.unFollowToast();
+  }
+
+  async unFollowToast() {
+    const unFollowToast = await this.toast.create({
+      cssClass: 'unfollowed-toast',
+      message: 'You are UNFOLLOWING this post',
+      duration: 2000
+    });
+    unFollowToast.present();
   }
 
 }

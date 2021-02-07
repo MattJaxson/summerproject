@@ -37,7 +37,7 @@
 
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="7" size-xl="6">
-        <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.post.length > 0 ? post(this.creatorName, this.creatorEmail, this.hashtags, this.creatorProfilePicture, this.textPostForm.controls.post.value, this.textPostForm.controls.title.value) : null">
+        <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.post.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.hashtags, this.textPostForm.controls.post.value, this.textPostForm.controls.title.value) : null">
 
           <ion-list class="line-input">
             <ion-label>Title</ion-label>
@@ -67,7 +67,7 @@
               clearInput="true"
               (keydown)="addHashTag($event)"
               formControlName="hashtags"
-              placeholder="Type tag then press Enter"></ion-input>
+              placeholder="Type tag then press Enter">#</ion-input>
             </ion-item>
             <!-- <p class="char-limit">{{titleChars.value.length}} / 100 character limit</p> -->
 
