@@ -7,7 +7,6 @@ import { ToastController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
-import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 import { StudentChatService } from 'src/app/services/student-chat.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { Subscription } from 'rxjs';
@@ -294,18 +293,6 @@ export class PostsPage implements OnInit, OnDestroy {
     await this.router.navigate(['/home/posts/post-page', postID]);
   }
 
-  async thirdPersonProfileModal(creatorEmail, creatorName) {
-    const thirdPersonProfileModalConfig = await this.modal.create({
-    component: ThirdPersonProfilePage,
-    componentProps: {
-      creatorEmail,
-      creatorName
-    },
-    cssClass: 'third-person-profile-modal'
-    });
-
-    await thirdPersonProfileModalConfig.present();
-  }
 
 
 }

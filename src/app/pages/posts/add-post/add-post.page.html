@@ -82,7 +82,7 @@
                   maxlength="1000"
                   formControlName="post"
                   placeholder="What do you have to say?"
-                  (keydown.control.enter)="textPostForm.value.textPost.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost, this.textPostForm.value.title) : null">
+                  (keydown.control.enter)="textPostForm.value.textPost.length > 0 ? post(this.hashtags, this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.textPostForm.value.textPost, this.textPostForm.value.title) : null">
                 </ion-textarea>
               </ion-item>
               <p class="char-limit">{{postChars.value.length}} / 3000 character limit</p>

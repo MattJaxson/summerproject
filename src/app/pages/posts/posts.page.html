@@ -55,12 +55,12 @@
           <ion-col size="11">
             <ion-row class="ion-align-items-center">
             <!-- Profile Picture -->
-            <ion-col push="0.2" size="1" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
+            <ion-col push="0.2" size="1">
               <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 40px; width: 40px;">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="4" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
+            <ion-col size="4">
               <h6 style="font-size: 1em; font-weight: 500;">{{post.creatorName}}</h6>
             </ion-col>
 
@@ -137,7 +137,7 @@
 
               <!-- Follow & Comment -->
               <ion-col push="0.8" size="6">
-                <app-follow-comment-buttons [isUser]="post.isUser" [postID]="post._id"></app-follow-comment-buttons>
+                <app-follow-comment-buttons [postID]="post._id"></app-follow-comment-buttons>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -188,12 +188,12 @@
           <ion-col size="11">
             <ion-row style="position: relative; right: 5px; top: -4px;" >
             <!-- Profile Picture -->
-            <ion-col size="1" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
+            <ion-col size="1">
               <img src="{{post.creatorProfilePicture}}" style="background: #999; border-radius: 100px; height: 35xpx; width: 35px;">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col size="10" (click)="thirdPersonProfileModal(post.creatorEmail, post.creatorName)">
+            <ion-col size="10">
               <p class="post-name">{{post.creatorName}}</p>
               <p class="post-date">{{post.date}}</p>
             </ion-col>

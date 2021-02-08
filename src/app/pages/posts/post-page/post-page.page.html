@@ -33,12 +33,12 @@
             <ion-row>
 
             <!-- Profile Picture -->
-            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1" (click)="thirdPersonProfileModal(creatorEmail, creatorName)">
+            <ion-col class="ion-hide-md-down" pull-lg="0.2" size="1">
               <img class="profile-picture" src="{{creatorProfilePicture}}">
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col (click)="thirdPersonProfileModal(creatorEmail, creatorName)" class="ion-hide-md-down" size="5">
+            <ion-col>
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}} - <span style="font-size: 0.5em;">{{date}}  ago</span></h6>
             </ion-col>
 
@@ -146,10 +146,10 @@
           <ion-row>
             <ion-col>
               <ion-item lines="none">
-                <ion-avatar class="comment-avatar" slot="start" (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
+                <ion-avatar class="comment-avatar" slot="start">
                   <img src="{{comment.userProfilePicture}}">
                 </ion-avatar>
-                <ion-label (click)="thirdPersonProfileModal(comment.userEmail, comment.userFullName)">
+                <ion-label>
                   <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} </h6>
 
                   <hr class="header-hr">

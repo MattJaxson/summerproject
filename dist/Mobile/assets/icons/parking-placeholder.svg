@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="602px" height="1203px" viewBox="0 0 602 1203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>parking-placeholder</title>
+    <desc>Created with Sketch.</desc>
+    <g id="parking-placeholder" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="602" height="1203"></rect>
+        <g id="Group" transform="translate(1.000000, 0.000000)" fill="#D8D8D8">
+            <rect id="Rectangle" x="0.946748729" y="0" width="242.106503" height="26.8123652"></rect>
+            <polygon id="Rectangle-Copy" transform="translate(14.396977, 140.764735) rotate(90.000000) translate(-14.396977, -140.764735) " points="-102.907303 127.314241 131.701257 127.314241 131.701257 154.215229 -102.907303 154.215229"></polygon>
+        </g>
+        <g id="Group-Copy" transform="translate(479.000000, 1073.500000) scale(-1, -1) translate(-479.000000, -1073.500000) translate(357.000000, 944.000000)" fill="#D8D8D8">
+            <rect id="Rectangle" x="0.946748729" y="0" width="242.106503" height="26.8123652"></rect>
+            <polygon id="Rectangle-Copy" transform="translate(14.396977, 140.764735) rotate(90.000000) translate(-14.396977, -140.764735) " points="-102.907303 127.314241 131.701257 127.314241 131.701257 154.215229 -102.907303 154.215229"></polygon>
+        </g>
+        <g id="Group-Copy-3" transform="translate(479.000000, 129.500000) scale(-1, 1) translate(-479.000000, -129.500000) translate(357.000000, 0.000000)" fill="#D8D8D8">
+            <rect id="Rectangle" x="0.946748729" y="0" width="242.106503" height="26.8123652"></rect>
+            <polygon id="Rectangle-Copy" transform="translate(14.396977, 140.764735) rotate(90.000000) translate(-14.396977, -140.764735) " points="-102.907303 127.314241 131.701257 127.314241 131.701257 154.215229 -102.907303 154.215229"></polygon>
+        </g>
+        <g id="Group-Copy-2" transform="translate(123.000000, 1073.500000) scale(1, -1) translate(-123.000000, -1073.500000) translate(1.000000, 944.000000)" fill="#D8D8D8">
+            <rect id="Rectangle" x="0.946748729" y="0" width="242.106503" height="26.8123652"></rect>
+            <polygon id="Rectangle-Copy" transform="translate(14.396977, 140.764735) rotate(90.000000) translate(-14.396977, -140.764735) " points="-102.907303 127.314241 131.701257 127.314241 131.701257 154.215229 -102.907303 154.215229"></polygon>
+        </g>
+        <text id="PARKING" font-family="Avenir-Book, Avenir" font-size="80" font-weight="normal" fill="#005191">
+            <tspan x="132.84" y="602">PARKING</tspan>
+        </text>
+    </g>
+</svg>

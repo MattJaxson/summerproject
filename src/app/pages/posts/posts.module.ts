@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsPage } from './posts.page';
 import { PostRoutingModule } from './post-routing.module';
 import { CustomComponentsModule } from '../../components/custom-component.module';
-import { ThirdPersonProfilePageModule } from 'src/app/modals/third-person-profile/third-person-profile.module';
 // import { ReadMoreComponent } from '../../components/read-more/read-more.component';
 
 
@@ -19,7 +18,6 @@ import { ThirdPersonProfilePageModule } from 'src/app/modals/third-person-profil
     CustomComponentsModule,
     ReactiveFormsModule,
     PostRoutingModule,
-    ThirdPersonProfilePageModule,
     // ReadMoreComponent,
   ],
   declarations: [

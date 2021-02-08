@@ -9,7 +9,6 @@ import { FollowIconComponent } from '../../../components/follow-icon/follow-icon
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { PlatformLocation } from '@angular/common';
-import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 
 
 @Component({
@@ -71,19 +70,6 @@ export class FollowingPage implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
-  }
-
-  async thirdPersonProfileModal(creatorEmail, creatorName) {
-    const thirdPersonProfileModalConfig = await this.modal.create({
-    component: ThirdPersonProfilePage,
-    componentProps: {
-      creatorEmail,
-      creatorName
-    },
-    cssClass: 'third-person-profile-modal'
-    });
-
-    await thirdPersonProfileModalConfig.present();
   }
 
   postPage(post) {

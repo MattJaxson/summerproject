@@ -13,7 +13,6 @@ import { EditPostPage } from 'src/app/modals/edit-post/edit-post.page';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
-import { ThirdPersonProfilePage } from 'src/app/modals/third-person-profile/third-person-profile.page';
 import { SinglePostPageEmitterService } from 'src/app/emitters/single-post-page-emitter.service';
 import { Subscription } from 'rxjs';
 import { SubjectSubscriber } from 'rxjs/internal/Subject';
@@ -393,18 +392,6 @@ export class PostPagePage implements OnInit, OnDestroy {
     await repliesPageModalConfig.present();
   }
 
-  async thirdPersonProfileModal(creatorEmail, creatorName) {
-    const thirdPersonProfileModalConfig = await this.modal.create({
-    component: ThirdPersonProfilePage,
-    componentProps: {
-      creatorEmail,
-      creatorName
-    },
-    cssClass: 'third-person-profile-modal'
-    });
-
-    await thirdPersonProfileModalConfig.present();
-  }
 
   async editComment(commentID, commentCotents, postID, userEmail) {
     await console.log(commentID);

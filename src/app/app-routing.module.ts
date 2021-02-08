@@ -51,10 +51,6 @@ const routes: Routes = [
     loadChildren: () => import('./modals/image-cropper/image-cropper.module').then( m => m.ImageCropperPageModule)
   },
   {
-    path: 'third-person-profile',
-    loadChildren: () => import('./modals/third-person-profile/third-person-profile.module').then( m => m.ThirdPersonProfilePageModule)
-  },
-  {
     path: 'report-convo',
     loadChildren: () => import('./modals/report-convo/report-convo.module').then( m => m.ReportConvoPageModule)
   },
