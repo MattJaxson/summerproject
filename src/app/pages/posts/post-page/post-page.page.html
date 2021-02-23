@@ -38,7 +38,7 @@
             </ion-col>
 
             <!-- Post Creator's Name -->
-            <ion-col>
+            <ion-col class="ion-hide-md-down">
               <h6 style="font-size: 1em; font-weight: 500; opacity: 0.4;">{{creatorName}} - <span style="font-size: 0.5em;">{{date}}  ago</span></h6>
             </ion-col>
 
@@ -99,10 +99,10 @@
           </ion-col>
 
           <!-- Upvote and Downvote Post -->
-          <ion-col size="4.5">
+          <ion-col pull="1" size="6">
             <app-up-down-vote-buttons [postID]="postID"></app-up-down-vote-buttons>
           </ion-col>
-          <ion-col push-lg="0.25" size="6.5">
+          <ion-col push-lg="0.25" size="4">
               <ion-button *ngIf="this.isUser === true" (click)="deletePost(this.postID)"  class="delete ion-float-right">
                 Delete
               </ion-button>
@@ -195,7 +195,7 @@
             </ion-col>
             <!-- Report, Edit & Reply -->
             <ion-col push="1" size="6">
-              <ion-toolbar>
+              <ion-toolbar style="--background: none;">
                 <ion-buttons slot="end">
                   <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture, comment.userFullName, comment.userEmail)" class="reply ion-float-right">
                     Reply

@@ -78,7 +78,7 @@
 }
 
 .post-content{
-  font-size: 0.9em;
+  font-size: 1.1em;
   line-height: 25px;
   text-align: justify;
 }
@@ -236,16 +236,12 @@ font-size: 0.7em;
 margin-right: 10px;
 }
 
-ion-toolbar {
-  background: #edf3f8;
-}
-
 ion-title {
-  color: #005191;
+  color: #0055a5;
 }
 
 .toolbar {
-  --background: none;
+  --background: #0055a5;
 }
 
 ion-item {
