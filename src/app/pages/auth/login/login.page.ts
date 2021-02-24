@@ -97,30 +97,30 @@ export class LoginPage implements OnInit, AfterViewInit {
     // Safari Desktop
     if (deviceType.search('Safari' && 'Version') > -1) {
       console.log('Safari');
-      this.downloadButton.innerHTML = 'Safari';
+      this.downloadButton.innerHTML = 'Download App';
     }
      // Chrome Desktop
     if (deviceType.search('Chrome') > -1) {
-      // this.downloadButton.innerHTML = 'Chrome';
+      this.downloadButton.innerHTML = 'Download App';
     }
     // Firefox Desktop
     if (deviceType.search('Firefox') > -1) {
-      this.downloadButton.innerHTML = 'Firefox';
+      this.downloadButton.innerHTML = 'Download App';
     }
     // Edge Desktop
     if (deviceType.search('Edg') > -1) {
-      this.downloadButton.innerHTML = 'Edge';
+      this.downloadButton.innerHTML = 'Download App';
     }
     // Opera Desktop
     if (deviceType.search('OPR') > -1) {
       console.log('Opera');
-      this.downloadButton.innerHTML = 'Opera';
+      this.downloadButton.innerHTML = 'Download App';
     }
 
     // iOS
     // (Mobile) Safari iOS
     if (deviceType.search('Safari' && 'Version' && 'Mobile') > -1) {
-      this.downloadButton.innerHTML = 'iOS Safari';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.style.display = 'block';
       this.downloadButton.addEventListener('click', () => {
         console.log('Clicked Button');
@@ -133,7 +133,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
     // (Mobile) Chrome iOS
     if (deviceType.search('CriOS') > -1) {
-      this.downloadButton.innerHTML = 'iOS Chrome';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.addEventListener('click', () => {
         console.log('Clicked Button');
         this.openSafariBanner.style.display = 'block';
@@ -145,7 +145,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
     // (Mobile) FireFox iOS
     if (deviceType.search('FxiOS') > -1) {
-      this.downloadButton.innerHTML = 'iOS Firefox';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.style.display = 'block';
       this.downloadButton.addEventListener('click', () => {
         console.log('Clicked Button');
@@ -159,7 +159,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
     // (Mobile) Edge iOS
     if (deviceType.search('EdgiOS') > -1) {
-      this.downloadButton.innerHTML = 'iOS Edge';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.style.display = 'block';
       this.downloadButton.addEventListener('click', () => {
         this.openSafariBanner.style.display = 'block';
@@ -172,7 +172,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
     // (Mobile) Opera iOS
     if (deviceType.search('OPT') > -1) {
-      this.downloadButton.innerHTML = 'iOS Opera';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.style.display = 'block';
       this.downloadButton.addEventListener('click', () => {
         console.log('Clicked Button');
@@ -187,7 +187,7 @@ export class LoginPage implements OnInit, AfterViewInit {
 
     // iPad
     if (deviceType.search('iPad') > -1) {
-      this.downloadButton.innerHTML = 'iPad';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.style.display = 'block';
     }
 
@@ -197,7 +197,7 @@ export class LoginPage implements OnInit, AfterViewInit {
       deviceType.search('Chrome') > -1 &&
       deviceType.search('Android') > -1
       ) {
-      this.downloadButton.innerHTML = 'Chrome Android';
+      this.downloadButton.innerHTML = 'Download App';
       this.downloadButton.addEventListener('click', () => {
         this.iPhoneInstallBanner.style.display = 'none';
         this.showInstallBanner();
@@ -208,18 +208,18 @@ export class LoginPage implements OnInit, AfterViewInit {
       deviceType.search('Firefox') > -1 &&
       deviceType.search('Android') > -1) {
 
-        this.downloadButton.innerHTML = 'Firefox Android';
+        this.downloadButton.innerHTML = 'Download App';
     }
     // (Mobile) Edge Android
     if (
       deviceType.search('EdgA') > -1) {
-      this.downloadButton.innerHTML = 'Edge Android';
+      this.downloadButton.innerHTML = 'Download App';
     }
     // (Mobile) Opera Mini Android
 
     // Samsung Browser
     if (deviceType.search('SamsungBrowser') > -1) {
-      this.downloadButton.innerHTML = 'Samsung Browser';
+      this.downloadButton.innerHTML = 'Download App';
     }
 
     // Check to see if the app is already installed on the users device

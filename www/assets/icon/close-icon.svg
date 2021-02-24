@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="152px" height="172px" viewBox="0 0 152 172" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>close-icon</title>
+    <g id="close-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <line x1="133.5" y1="143.5" x2="18.5" y2="29.5" id="Line-4" stroke="#005191" stroke-width="15"></line>
+        <line x1="133.5" y1="143.5" x2="18.5" y2="29.5" id="Line-4-Copy" stroke="#005191" stroke-width="15" transform="translate(76.000000, 86.500000) scale(-1, 1) translate(-76.000000, -86.500000) "></line>
+    </g>
+</svg>
