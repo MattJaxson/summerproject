@@ -1,9 +1,9 @@
 // Production Environment App
 
-const ip = '3.133.97.204';
+const ip = 'findyourfuturesem.org/';
 
-const baseUrl = `http://${ip}:3000`;
-const fairsUrl = `http://${ip}:4000`;
+const baseUrl = `http://${ip}`;
+const fairsUrl = `http://${ip}`;
 
 export const environment = {
   production: true,

@@ -14,9 +14,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
-
   credentialsForm: FormGroup;
-
   passwordsMatch = false;
   code = '';
   email;
