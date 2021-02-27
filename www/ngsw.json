@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1614403767658,
+  "timestamp": 1614405136136,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -232,8 +232,8 @@
         "/common-es2015.4915a386e2b821507956.js",
         "/common-es5.4915a386e2b821507956.js",
         "/index.html",
-        "/main-es2015.30fc76256d73497b5daa.js",
-        "/main-es5.30fc76256d73497b5daa.js",
+        "/main-es2015.fa506195f30f1af3bd01.js",
+        "/main-es5.fa506195f30f1af3bd01.js",
         "/manifest.webmanifest",
         "/polyfills-core-js-es2015.d75ae581b81822e48637.js",
         "/polyfills-core-js-es5.d75ae581b81822e48637.js",
@@ -832,10 +832,10 @@
     "/common-es2015.4915a386e2b821507956.js": "da21893a7db6eed9f5ad1bb25a0be5cd3b9d88fb",
     "/common-es5.4915a386e2b821507956.js": "aa20141366c0ea1bba7f0202c1d75b03068bd130",
     "/default-pro-picture.682aee7d81e75d081b1c.svg": "7aa97af1d198711e11c8edbff406f599960b915c",
-    "/index.html": "6f3b229c269eb32c28d52e336053d7d7c5f086a1",
+    "/index.html": "1f1bbdd5c8dc696120e03bdc60915bed79657e08",
     "/journi-logo.d1df781953a8e42a7e0f.png": "39a39276d0dfd67b7ac18946cdb8805c9ef80b8a",
-    "/main-es2015.30fc76256d73497b5daa.js": "9492c6ae99889a4e4ccb3e2986631f285d316e81",
-    "/main-es5.30fc76256d73497b5daa.js": "d88a0b94b5cf03561760ba99aa2c989f98372b17",
+    "/main-es2015.fa506195f30f1af3bd01.js": "c3349679139e1f00c2f8bd4a3e239fbcbfd37865",
+    "/main-es5.fa506195f30f1af3bd01.js": "84f0f50d9f1c177a81e49c965e767fd6ba88e756",
     "/manifest.webmanifest": "bb5d48a055b81d536d5b65f4668ad4a02508ef2a",
     "/polyfills-core-js-es2015.d75ae581b81822e48637.js": "472b34f7a5f548be7d49810f30b89afe81f91a57",
     "/polyfills-core-js-es5.d75ae581b81822e48637.js": "2c0522c1522c15e9ae7f410278b748d63282aa59",

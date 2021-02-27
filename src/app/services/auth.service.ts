@@ -148,7 +148,7 @@ doesUserExists(email, password) {
   // Login User
   login(data) {
     console.log('Logging in');
-    return this.loginSub = this.http.post(`${this.BACKEND_URL}/api/`,
+    return this.loginSub = this.http.post(`${this.BACKEND_URL}/api`,
     { email: data.email,
       password: data.password
     })
