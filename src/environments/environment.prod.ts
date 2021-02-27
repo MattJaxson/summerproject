@@ -1,9 +1,10 @@
 // Production Environment App
 
-const ip = 'findyourfuturesem.org/';
+const fyfApi = 'findyourfuturesem.org/';
+const fairsApi = `fairs.findyourfuturesem.org/`;
 
-const baseUrl = `http://${ip}`;
-const fairsUrl = `http://${ip}`;
+const baseUrl = `https://${fyfApi}`;
+const fairsUrl = `https://${fairsApi}`;
 
 export const environment = {
   production: true,
