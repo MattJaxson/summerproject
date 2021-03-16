@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
+
 
 
 @Component({
@@ -43,7 +45,7 @@ export class GoingIconComponent implements OnInit {
 
   constructor(
     private events: EventsService,
-    private favs: FavoritesService,
+    private eventsEventEmitterService: EventsEventEmitterService,
     private toast: ToastController,
     private router: Router,
     private profile: ProfileService) { }
@@ -98,7 +100,6 @@ export class GoingIconComponent implements OnInit {
       this.notGoingToast();
       console.log('No longer going to Event');
       this.events.notGoingToEvent(event._id, this.userEmail, this.id).subscribe(events => {
-
         const eventsGoing = this.events.eventsGoing$.getValue();
 
         for (let i = 0; i < eventsGoing.length; i++) {
@@ -109,6 +110,7 @@ export class GoingIconComponent implements OnInit {
         console.log(eventsGoing);
 
         this.events.eventsGoing$.next(eventsGoing);
+
       });
 
     }

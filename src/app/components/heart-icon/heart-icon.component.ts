@@ -12,12 +12,12 @@ import { ProfileService } from 'src/app/services/profile.service';
 
     trigger('heart', [
         state('unfavorited', style({
-            color: '#faa71b',
+            color: '#999',
             opacity: '1',
             transform: 'scale(0.9)'
         })),
         state('favorited', style({
-            color: '#faa71b',
+            color: '#e4405f',
             opacity: '1',
             transform: 'scale(1)'
 
@@ -30,7 +30,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class HeartIconComponent implements OnInit {
 
   favoriteState = 'unfavorited';
-  public iconName = 'heart-empty';
+  public iconName = 'heart';
   @Input() job;
   @Input() favoriteJobs;
 
@@ -69,7 +69,7 @@ export class HeartIconComponent implements OnInit {
 
   setFavoriteStateOff() {
     this.favoriteState = 'unfavorited';
-    this.iconName = 'heart-empty';
+    this.iconName = 'heart';
   }
 
 }

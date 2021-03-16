@@ -13,10 +13,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['profile.page.scss']
 })
 export class ProfilePage implements OnInit, OnDestroy {
-
   detailsSub: Subscription;
-
-
   userObject: any = {
     fullName: '',
     about: '',

@@ -1,10 +1,9 @@
-<!-- Mobile Header -->
-<ion-header no-border class="ion-hide-lg-up">
+<ion-header class="ion-hide-lg-up">
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    <ion-title class="toolbar-title" slot="start">Mentor</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mentors</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,33 +23,27 @@
     </ion-row>
 
     <!-- Mentors -->
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="12">
-        <ion-row class="mentor ion-justify-content-center">
-          <ion-col size-xs="9" size-sm="10" size-md="10" push-lg="1" size-lg="10">
+    <ion-row class="mentor ion-justify-content-center">
+      <ion-col size-xs="9" size-sm="10" size-md="10" push-lg="1" size-lg="10">
             <div id="mentor-profile-picture"></div>
 
             <!-- <ion-button id="contact-button-header" (click)="contactMentor()">
             Contact
             </ion-button> -->
             <!-- <ion-img [src]="{{mentorPhoto}}" style="background: #999; border-radius: 100px;"></ion-img> -->
-          </ion-col>
-          <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
+      </ion-col>
+      <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
             <p id="mentor-name">{{mentorName}}</p>
             <p id="mentor-title">{{mentorTitle}}</p>
             <p id="mentor-location">{{mentorCity}}, {{mentorState}}</p>
-          </ion-col>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
-              <p id="mentor-description">{{mentorDescription}}</p>
-            </ion-col>
-          </ion-row>
-        </ion-row>
+      </ion-col>
+      <ion-col size-xs="9" size-sm="10" size-md="10" size-lg="8">
+        <p id="mentor-description">{{mentorDescription}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="9" size-md="2" class="ion-text-center">
-        <ion-button class="orange-button" style="margin: 100px 0 100px 0;" (click)="contactMentor()">
+        <ion-button class="orange-button"  (click)="contactMentor()">
           Contact
         </ion-button>
       </ion-col>

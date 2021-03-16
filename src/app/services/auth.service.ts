@@ -155,7 +155,7 @@ doesUserExists(email, password) {
       .pipe(
         tap(res => {
           if (!res) {
-            console.log('There was no response. There might be a bad password');
+            console.log('There was no response.');
           }
           this.storage.set(this.TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken( res['token']);

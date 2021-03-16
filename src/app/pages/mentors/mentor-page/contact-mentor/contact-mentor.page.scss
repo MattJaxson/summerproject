@@ -1,4 +1,6 @@
-
+ion-content {
+    --background: #f4f5f8;
+}
 
 .name {
     display: block;
@@ -38,15 +40,17 @@
     animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.45s forwards;
 }
 
-ion-item {
+.message-input {
   padding: 20px 0;
   margin-bottom: 90px;
   border-radius: 5px;
-  box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
+  font-size: 1.2em;
+  box-shadow: 10px 10px 60px rgb(0 0 0 / 10%);
 
 }
 
 .orange-button {
+    opacity: 0;
     margin-bottom: 30px;
     animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.9s forwards;
 }

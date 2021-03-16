@@ -6,11 +6,10 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
+    <ion-row style="background: #f4f5f8" class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10" size-xl="5">
+        <img style="margin: 20px 0;" height="50" src="../../../assets/icon/mentor-icon.svg" alt="" srcset="">
         <p>Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
-      <hr style="border-top: #9993 solid 2px;
-      margin-bottom: 20px;">
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
@@ -38,27 +37,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<ion-footer>
-  <div
-  id="searchbar-wrapper">
-    <ion-searchbar
-    debounce="2000"
-      class="searchbar"
-      animated="true"
-      searchIcon="none"
-      showCancelButton="true"
-      placeholder="Search for Mentor by Name"
-      (ionChange)="filter($event)">
-    </ion-searchbar>
-    <div id="search-options">
-      <p>You can choose up to five hashtags. Please seperate each tag with a comma ( , ) . Example: "Computers, Science, Technology"</p>
-      <p>Current Search: ----</p>
-      <div>
-        <ion-button class="cancel-button">
-          Cancel
-        </ion-button>
-      </div>
-    </div>
-  </div>
-</ion-footer>

@@ -5,10 +5,23 @@ ion-title {
 .thumbnail {
   width: 200px;
 }
+.going {
+  --color: white;
+  width: 50px;
+  font-weight: 500;
+  --background: #24d8a8;
+  --background-hover: #24d8a8;
 
+  &:hover {
+    --color: white;
+  }
+}
 p {
+  
   font-size: 1.2em;
-  color: #999;
+  color: #0055a5;
+  font-weight: 600;
+
 }
 
 

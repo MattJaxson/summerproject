@@ -24,7 +24,7 @@
         <!-- Instructions -->
         <ion-row class="ion-justify-content-center">
           <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-            <p style="color: #005191">Please go over your information before you send your application.</p>
+            <p style="color: #0055a5;font-weight: 600;font-size: 1.2em;margin: 0;">Please go over your information before you send your application.</p>
           </ion-col>
         </ion-row>
 
@@ -43,7 +43,6 @@
                   <div class="info-section">
 
                     <p class="instructions" >Resume</p>
-                    <ion-item style="border: none;  position: relative; right: 20px;">
                       <ion-button class="blue-button" style="height: 45px;" (click)="viewResumeModal()">
                         View Resume
                       </ion-button>
@@ -51,21 +50,19 @@
                       <ion-input type="file" class="custom-file-input ">
                         <label style="margin-right: 10px;">Upload Resume</label>
                       </ion-input>
-                    </ion-item>
 
                   </div>
                   <div class="info-section">
 
                     <p class="instructions" >Why are you a good fit for this job?</p>
-                    <ion-item>
                       <ion-textarea
+                      style="background: #d1d8e0"
                       formControlName="reasonTextArea"
                       maxlength="2500"
-                      rows="10"
+                      rows="15"
                       placeholder="Add message here - 2500 characters max"
                       (keydown.control.enter)="finishApplication()"
                       ></ion-textarea>
-                    </ion-item>
                   </div>
 
 

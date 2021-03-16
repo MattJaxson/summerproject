@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
-import { format, formatDistanceToNow, parseISO } from 'date-fns';
-import { ToastController, IonSearchbar, LoadingController } from '@ionic/angular';
+import { format, formatDistanceToNow } from 'date-fns';
+import {IonSearchbar, LoadingController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { EventsEventEmitterService } from 'src/app/emitters/events-event-emitter.service';
 import { isAfter } from 'date-fns';
 import { Subscription } from 'rxjs';
-import { FairsService } from 'src/app/services/fairs.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { FairsService } from 'src/app/services/fairs.service';
   templateUrl: './events.page.html',
   styleUrls: ['./events.page.scss'],
 })
-export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
+export class EventsPage implements OnInit {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
@@ -39,29 +38,16 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private events: EventsService,
     private profile: ProfileService,
-    private fairs: FairsService,
-    private toast: ToastController,
     public loading: LoadingController,
     private eventEmitterService: EventsEventEmitterService
     ) { }
-
-  ngOnDestroy(): void {
-    this.eventsGoingSub.unsubscribe();
-  }
-
-  ngAfterViewInit() {
-        this.searchbar.getInputElement().then(  (searchbarInputElement) => {
-         searchbarInputElement.style.boxShadow = "none";
-    });
-  }
-
   ngOnInit() {
-    this.fairs.getFairs().subscribe(
-      data => {
-        console.log(data);
-        this.allFairs = Object.values(data);
-      }
-    )
+    // this.fairs.getFairs().subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.allFairs = Object.values(data);
+    //   }
+    // )
     this.deleteEvent();
 
     if (this.eventEmitterService.subsVar == undefined) {
@@ -94,6 +80,7 @@ export class EventsPage implements OnInit, AfterViewInit, OnDestroy {
       // .
 
       // First Array of Events
+      // this.allEvents = Object.values(events);
       this.allEvents = Object.values(events);
       this.allEventsLength  = this.allEvents.length;
       this.allEvents.reverse();

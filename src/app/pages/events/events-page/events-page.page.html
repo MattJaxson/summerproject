@@ -12,17 +12,13 @@
     <ion-grid>
 
         <!-- Picture Header -->
-        <ion-row class="ion-justify-content-center header ion-align-items-center">
-          <ion-col size-lg="">
-            <!-- Image needs to be 500x357, 800x571, or 1050x750 -->
-              <div class="event-image"></div>
-          </ion-col>
+        <ion-row class="ion-justify-content-center event-image">
         </ion-row>
 
         <!-- Event Details -->
         <ion-row class="details ion-justify-content-center ion-align-items-center">
           <ion-col size-xs="11" size-lg="6">
-            <h3>Title</h3>
+            <h3>Event Title</h3>
             <p>{{ eventTitle }}</p>
             <h3>Address </h3>
             <p>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
@@ -39,7 +35,7 @@
 
         <!-- GOING? -->
         <ion-row *ngIf="!going" class="going ion-justify-content-center">
-            <ion-col class="ion-text-center" size="12">
+            <ion-col class="ion-text-center" size="10">
               <p class="going-text">Do you want to go to this event?<br> By clicking 'Yes', this event will be added to your Your Events.</p>
               <ion-button class="going-button" (click)="goingToEvent()">
                    Yes.
@@ -52,7 +48,7 @@
         <!-- NOT GOING -->
         <ion-row *ngIf="going" class="going ion-justify-content-center">
               <ion-col class="ion-text-center" size="10">
-                <p class="going-text">Do you want to go to this event?<br> By clicking 'No', this event will be deleted to your Your Events.</p>
+                <p class="going-text">Do you want to go to this event?<br> By clicking 'No', this event will be deleted from your Your Events.</p>
                 <ion-button class="not-going-button" (click)="notGoingToEvent()">
                  No.
                 </ion-button><br><br>

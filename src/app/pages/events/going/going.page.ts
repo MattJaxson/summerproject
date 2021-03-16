@@ -13,7 +13,7 @@ import { PlatformLocation } from '@angular/common';
   templateUrl: './going.page.html',
   styleUrls: ['./going.page.scss'],
 })
-export class GoingPage implements OnInit, OnDestroy {
+export class GoingPage implements OnInit {
   profileSub: Subscription;
   eventsGoingSub: Subscription;
   cancelSub: Subscription;
@@ -31,12 +31,6 @@ export class GoingPage implements OnInit, OnDestroy {
     private eventEmitterService: EventsEventEmitterService,
     private location: PlatformLocation
     ) { }
-  ngOnDestroy(): void {
-    this.profileSub.unsubscribe();
-    this.eventsGoingSub.unsubscribe();
-    // this.cancelSub.unsubscribe();
-  }
-
   ngOnInit() {
 
     this.location.onPopState(() => {
@@ -68,27 +62,6 @@ export class GoingPage implements OnInit, OnDestroy {
     this.router.navigate(['/home/events']);
   }
 
-  cancel(eventID) {
-    console.log(eventID);
-    console.log(`Removing ${eventID} from this Users eventsGoing property`);
-    this.cancelSub = this.events.notGoingToEvent(eventID, this.userEmail, this.id).subscribe( events => {
-
-      const eventsGoing = this.events.eventsGoing$.getValue();
-
-      for (let i = 0; i < eventsGoing.length; i++) {
-        if (eventsGoing[i] === eventID) {
-          eventsGoing.splice(i, 1);
-        }
-      }
-      console.log(eventsGoing);
-      this.goingToEvents = eventsGoing;
-      this.events.eventsGoing$.next(eventsGoing);
-      this.eventEmitterService.resetEvents();
-      this.presentNotGoingToast();
-      }
-    );
-  }
-
   refreshGoingEvents() {
     this.eventsGoingSub = this.events.getEventsGoing(this.id).subscribe( eventsGoing => {
         this.goingToEvents = Object.values(eventsGoing);
@@ -103,6 +76,8 @@ export class GoingPage implements OnInit, OnDestroy {
             addSuffix: true
           });
         }
+
+        this.eventEmitterService.resetEvents();
       });
   }
 
@@ -112,30 +87,6 @@ export class GoingPage implements OnInit, OnDestroy {
       duration: 2000
     });
     toast.present();
-  }
-
-
-  async presentAlertMultipleButtons(eventID) {
-    const alert = await this.alert.create({
-      header: 'Are you sure you want to delete this from My Events?',
-      buttons: [{
-        text: 'Yes',
-        handler: () => {
-          this.cancel(eventID);
-          return true;
-        }
-      },
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log('confirm cancel');
-        }
-      }]
-    });
-
-    await alert.present();
-
   }
 
 }

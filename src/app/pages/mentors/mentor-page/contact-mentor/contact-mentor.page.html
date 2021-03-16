@@ -26,13 +26,13 @@
 
     <!-- Contact Form -->
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="8">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="10" size-md="8" size-lg="8">
         <!-- Form -->
         <!-- Mentor Photo -->
         <div id="mentor-photo" class="ion-hide-lg-up"></div>
         <form id="mentor-form" [formGroup]="contactMenorForm"  (ngSubmit)="confirm(this.contactMenorForm.value)">
-            <ion-item lines="none" >
-                <ion-textarea
+          <ion-textarea
+                class="message-input"
                 formControlName="message"
                 placeholder="Have a question for a {{mentorName}}? Send them an email!"
                 rows="10"
@@ -40,7 +40,6 @@
                 required
                 spellcheck="true"
                 (keydown.control.enter)="messageValid ? confirm(this.contactMenorForm.value) : null"></ion-textarea>
-            </ion-item>
             <ion-button type="submit" class="orange-button" [disabled]="!messageValid"
             expand="block">
                 Send

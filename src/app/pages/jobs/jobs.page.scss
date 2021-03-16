@@ -29,12 +29,13 @@ ion-header {
   background-position: center;
 }
 
-#job-details {
+.job-details {
   --background: #edf3f8;
   --background-hover: #edf3f8;
   color: #005191;
   margin-right: 10px;
   font-size: 15px;
+  font-weight: 600;
   height: 45px;
   border-radius: 5px;
 }

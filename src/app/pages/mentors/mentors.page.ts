@@ -9,7 +9,7 @@ import { NewMessageMentorPage } from 'src/app/modals/new-message-mentor/new-mess
   templateUrl: './mentors.page.html',
   styleUrls: ['./mentors.page.scss'],
 })
-export class MentorsPage implements OnInit, AfterViewInit {
+export class MentorsPage implements OnInit {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
@@ -30,12 +30,6 @@ export class MentorsPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getMentors();
   }
-
-  ngAfterViewInit() {
-          this.searchbar.getInputElement().then(  (searchbarInputElement) => {
-           searchbarInputElement.style.boxShadow = "none";
-      });
-    }
 
   getMentors() {
     this.mentors.getMentors().subscribe(

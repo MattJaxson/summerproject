@@ -24,7 +24,7 @@
       </ion-row>
 
       <ion-row *ngIf="goingToEvents.length === 0" class="ion-justify-content-center">
-        <ion-col size="10" class="ion-text-center" style="margin-top: 3%;">
+        <ion-col size="10" class="ion-text-center" style="margin-top: 100px;">
           <p>You have no events saved in My Events list.</p>
         </ion-col>
       </ion-row>
@@ -43,9 +43,6 @@
           <ion-button class="grey-button" (click)="eventPage(event)">
             Details
           </ion-button>
-          <ion-button class="orange-button" (click)="presentAlertMultipleButtons(event._id)">
-            Cancel
-          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -53,8 +50,10 @@
     <!-- Mobile -->
     <ion-grid class="ion-hide-lg-up">
       <ion-row *ngIf="goingToEvents.length === 0" class="ion-justify-content-center">
-        <ion-col size="10" class="ion-text-center" style="margin-top: 3%;">
-          <p>You have no events saved in My Events list.</p>
+        <ion-col size-xs="11" size-sm="10" size-md="9" class="ion-text-center" style="margin-top: 100px;">
+          <p>You have no events saved in My Events list. Please hit the <ion-button class="going">
+            Go
+        </ion-button> button on an Event to save it to this list.</p>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
@@ -68,13 +67,8 @@
               <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
               <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
             </ion-card-header>
-            <ion-card-content class="ion-text-center">
-              <ion-button class="grey-button"(click)="eventPage(event)">
-                Details
-              </ion-button>
-              <ion-button class="orange-button" (click)="cancel(event._id)">
-                Cancel
-              </ion-button>
+            <ion-card-content>
+                <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
            </ion-card-content>
           </ion-card>
         </ion-col>

@@ -19,6 +19,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
 
   favoriteSubs: Subscription;
   profileSub: Subscription;
+  noFavorites: boolean;
 
   constructor(
     private router: Router,
@@ -67,6 +68,12 @@ export class FavoritesPage implements OnInit, OnDestroy {
             this.favoriteJobsObj = favDetails;
             console.log('Favorite jobs:')
             console.log(favDetails)
+            if(this.favoriteJobsObj.length == 0) {
+              console.log('wassiup');
+              this.noFavorites = true;
+            } else {
+              this.noFavorites = false;
+            }
             for (const job of this.favoriteJobsObj) {
               job.dateCreated = formatDistanceToNow( new Date(job.dateCreated), { addSuffix: true });
             }

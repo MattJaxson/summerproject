@@ -12,7 +12,6 @@ import { ToastController } from '@ionic/angular';
 })
 export class EnterCodePage implements OnInit {
   enterCodeForm: FormGroup;
-
   disabled = true;
   code = '';
   userEmail = '';
@@ -87,6 +86,16 @@ export class EnterCodePage implements OnInit {
     this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
   };
 
+  async presentCodesMatchedToast() {
+    const toast = await this.toast.create({
+      message: 'Codes Matched!',
+      duration: 2000,
+      cssClass: 'wrong-password-toast',
+      keyboardClose: true,
+      position: 'top',
+    });
+    toast.present();
+  }
   async presentErrorToast() {
     const toast = await this.toast.create({
       message: 'The codes do not match. Please try again.',

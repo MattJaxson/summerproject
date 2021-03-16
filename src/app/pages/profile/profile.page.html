@@ -17,22 +17,22 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button class="orange-button" (click)="editPage()">
+          <ion-button class="blue-button" (click)="editPage()">
             Edit Profile
           </ion-button>
         </ion-col>
 
         <ion-col size="6">
-          <ion-button class="orange-button" (click)="updateResume()">
+          <ion-button class="blue-button" (click)="updateResume()">
             View Resume
           </ion-button>
         </ion-col>
 
     </ion-row>
 
-    <ion-row>
-      <ion-col id="profile-info" push="0.5" size="11">
-        <p><span>About</span>{{userObject.about}}</p>
+    <ion-row class="ion-justify-content-center">
+      <ion-col id="profile-info" size="9">
+        <!-- <p><span>About</span>{{userObject.about}}</p> -->
         <p><span>Name:</span> {{userObject.fullName}}</p>
         <p><span>Email:</span> {{userObject.email}}</p>
         <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
@@ -89,12 +89,6 @@
           <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
           <p><span>School:</span> {{userObject.school}}</p>
           <p><span>Grade:</span> {{userObject.grade}}</p>
-        </ion-col>
-
-        <ion-col size="11" offset="0.5">
-          <!-- <ion-button style="--background: white; border-radius: 5px; border: 1px solid #d3d3d3; color: #e4405f; margin-bottom: 50px;" class="orange-button"  (click)="confirmLogout()">
-            Logout
-          </ion-button> -->
         </ion-col>
       </ion-row>
     </ion-grid>
