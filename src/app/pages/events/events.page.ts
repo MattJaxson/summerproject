@@ -186,7 +186,7 @@ export class EventsPage implements OnInit {
       this.searching = false;
       this.getEvents();
     }
-  }
+    }
 
     initializeItems(): void {
     this.allEvents = this.loadedAllEvents;

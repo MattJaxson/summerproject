@@ -217,6 +217,9 @@
                 <p *ngFor="let tag of post.hashtags" style="font-size: 0.7em; font-weight: 600; display: inline-block; margin-right: 5px; color: #ea8400;">
                   #{{tag}}
                 </p>
+                <p *ngIf="post.hashtags.length === 0" style="font-size: 0.7em; font-weight: 600; display: inline-block; margin-right: 5px; color: #333; opacity: 0.5;">
+                  No #hashtags for this post
+                </p>
               </ion-col>
           </ion-row>
           </ion-col>
@@ -281,7 +284,7 @@
   <div
   id="searchbar-wrapper">
     <ion-searchbar
-    debounce="2000"
+    debounce="500"
       class="searchbar"
       animated="true"
       searchIcon="none"

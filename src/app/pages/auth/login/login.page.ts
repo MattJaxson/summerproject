@@ -50,9 +50,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     }
     if (window.navigator.onLine === true) {
       console.log('We are ONLINE!');
-    }
-
-     // Chrome, Edge,
+      // Chrome, Edge,
      window.addEventListener('beforeinstallprompt', (e) => {
       console.log('beforeinstallprompt Event fired');
       // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -72,7 +70,10 @@ export class LoginPage implements OnInit, AfterViewInit {
       if (!this.deferredPrompt) {
         this.downloadButton.style.display = 'none';
       }
-    });
+    })
+    }
+
+     ;
 
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],

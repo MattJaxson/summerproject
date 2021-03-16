@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonFabButton, ModalController } from '@ionic/angular';
+import { IonFabButton, IonSearchbar, ModalController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController } from '@ionic/angular';
@@ -31,8 +31,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class PostsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
+  @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
 
   showShortDesciption = true
+  noSearchInput = false;
+  searchTerm: any;
+  searching = false;
+  allPostsLength: any;
+  loadedAllPosts: any;
 
  alterDescriptionText() {
     this.showShortDesciption = !this.showShortDesciption
@@ -93,8 +99,99 @@ export class PostsPage implements OnInit, OnDestroy {
     });
   }
 
-  filter(event) {
-    console.log(event);
+  // filter(event) {
+  //   console.log(event.detail.value);
+  // }
+
+  filter($event) {
+
+    this.initializeItems();
+    let searchTerm = $event.detail.value;
+    let searchedPosts = [];
+
+
+    this.allPosts = this.allPosts.filter( foundPosts => {
+      let foundPostID = foundPosts._id;
+      foundPosts.hashtags.filter( hashtag => {
+        if(searchTerm == hashtag) {
+          console.log('There was a Posts that had that Hashtag!');
+          console.log('Post ID: ' + foundPostID);
+          searchedPosts.push({_id: foundPostID})
+        }
+
+      });
+
+      this.noSearchInput = true;
+
+  });
+
+
+
+  console.log('These are posts with that Hashtag: ')
+  console.log(searchedPosts);
+
+
+    this.allPostsLength = this.allPosts.length;
+
+    // If there are no matches with the searchTerm
+    // if ( this.allPostsLength === 0 ) {
+
+    //   console.log('No results from that search');
+    //   this.searching = true;
+    //   this.searchTerm = searchTerm;
+
+    //   // this.searchbar.getInputElement().then(  (searchbarInputElement) => {
+    //   //   searchbarInputElement.value = '';
+    //   // });
+
+    //   this.getPosts();
+    //   this.noSearchInput = true;
+    // }
+
+    if (!searchTerm) {
+      console.log('Search term is empty; showing all events instead');
+      this.noSearchInput = false;
+      this.searching = false;
+      this.getPosts();
+    }
+
+
+  this.getFilteredPosts(searchedPosts);
+  }
+
+    initializeItems(): void {
+    this.allPosts = this.loadedAllPosts;
+  }
+  getFilteredPosts(posts) {
+    console.log('These are the Filtered Posts');
+    console.log(posts);
+    this.posts.getPosts().subscribe(
+      data => {
+        console.log(data);
+
+        // Loop through each FILTERED POST, then Loop through all the posts and return any matching posts
+        posts.forEach(post => {
+          console.log(post._id);
+          console.log(data);
+
+          var postsWithHashtags = [];
+          Object.values(data).forEach(allPosts => {
+            if (allPosts._id === post._id) {
+              console.log('FINAL MATCH!');
+              postsWithHashtags.push(allPosts);
+            }
+            console.log(postsWithHashtags);
+          });
+          for (const post of postsWithHashtags) {
+            post.date = formatDistanceToNow( new Date(post.date), {
+              includeSeconds: true,
+              addSuffix: true
+            });
+          }
+          return this.allPosts = postsWithHashtags;
+        });
+      }
+    )
   }
 
   searchBarFocus() {
@@ -102,7 +199,6 @@ export class PostsPage implements OnInit, OnDestroy {
 
     let searchBarWrapper = document.getElementById('searchbar-wrapper');
     let fabWrapper = document.getElementById('fab-wrapper');
-    console.log(searchBarWrapper);
     searchBarWrapper.style.height = '400px';
     searchBarWrapper.style.background = '#0055a5';
     fabWrapper.style.display = 'none';
@@ -113,7 +209,6 @@ export class PostsPage implements OnInit, OnDestroy {
     let searchBarWrapper = document.getElementById('searchbar-wrapper');
     let fabWrapper = document.getElementById('fab-wrapper');
 
-    console.log(searchBarWrapper);
     searchBarWrapper.style.height = '60px';
     searchBarWrapper.style.background = '#edf3f8';
     fabWrapper.style.display = 'block';
@@ -183,7 +278,20 @@ export class PostsPage implements OnInit, OnDestroy {
   async getPosts() {
     this.postsSub = this.posts.getPosts().subscribe( posts => {
       // console.log(posts);
-      this.allPosts = Object.values(posts).reverse();
+
+      // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
+      // .
+
+      // First Array of Events
+      // this.allEvents = Object.values(events);
+      this.allPosts = Object.values(posts);
+      this.allPostsLength  = this.allPosts.length;
+      this.allPosts.reverse();
+
+      // Second Array of Events
+      this.loadedAllPosts = Object.values(posts);
+      this.loadedAllPosts.reverse();
+
       this.posts.postsSubject$.next(this.allPosts);
 
 
