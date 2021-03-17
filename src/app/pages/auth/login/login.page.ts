@@ -226,21 +226,21 @@ export class LoginPage implements OnInit, AfterViewInit {
     // Check to see if the app is already installed on the users device
     console.log(window.navigator);
 
-    // Detect if app is launched from home screen
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      console.log('display-mode is standalone');
-      this.iPhoneInstallBanner.style.display = 'none';
-      this.openSafariBanner.style.display = 'none';
-      this.downloadButton.style.display = 'none';
-    }
-    // Detect if app is launched from home screen
-    // Safari
-    if (window.navigator['standalone'] === true) {
-      console.log('display-mode is standalone');
-      this.iPhoneInstallBanner.style.display = 'none';
-      this.openSafariBanner.style.display = 'none';
-      this.downloadButton.style.display = 'none';
-    }
+    // // Detect if app is launched from home screen
+    // if (window.matchMedia('(display-mode: standalone)').matches) {
+    //   console.log('display-mode is standalone');
+    //   this.iPhoneInstallBanner.style.display = 'none';
+    //   this.openSafariBanner.style.display = 'none';
+    //   this.downloadButton.style.display = 'none';
+    // }
+    // // Detect if app is launched from home screen
+    // // Safari
+    // if (window.navigator['standalone'] === true) {
+    //   console.log('display-mode is standalone');
+    //   this.iPhoneInstallBanner.style.display = 'none';
+    //   this.openSafariBanner.style.display = 'none';
+    //   this.downloadButton.style.display = 'none';
+    // }
   }
 
   showInstallBanner() {
