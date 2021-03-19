@@ -24,10 +24,25 @@ h6 {
     margin: 0 auto;
     // box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
-
+ion-item {
+    padding: 0.4em 0;
+    margin: 32px auto;
+  
+    ion-label {
+      font-weight: 500;
+    }
+  }
+ion-textarea{
+    // background: #d1d8e0;
+    border: 2px solid #dedede;
+    transition: 0.2s;
+    border-radius: 4px;
+    padding: 8px;
+}
 .char-limit {
     float: right;
     position: relative;
-    top: -20px;
+    top: 20px;
+    margin-bottom: 80px;
     color: #e4405f;
 }

@@ -12,7 +12,7 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
   @ViewChild('image', { static: false }) imageElement: ElementRef;
 
   // tslint:disable-next-line: no-input-rename
-  @Input('src')
+  @Input('imageFromProfilePage') imageFromProfilePage;
 
   public imageDestination: string;
   private cropper: Cropper;
@@ -23,7 +23,7 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
     public navParams: NavParams,
     private loading: LoadingController,
     private toast: ToastController) {
-    this.imageDestination = '';
+    this.imageDestination = this.imageFromProfilePage;
 }
 
 public ngAfterViewInit() {
@@ -51,7 +51,8 @@ public ngAfterViewInit() {
 }
 
 public ngOnInit() {
-  this.uploadedPhotoURL = this.navParams.get('uploadedPhotoURL');
+  console.log(this.imageFromProfilePage);
+  this.uploadedPhotoURL = this.imageFromProfilePage.dataUrl;
 }
 
   back() {

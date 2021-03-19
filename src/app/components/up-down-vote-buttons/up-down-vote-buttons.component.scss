@@ -1,6 +1,6 @@
 ion-buttons {
   position: relative;
-  left: 10px;
+  left: -10px;
 }
 
 .upvote{
@@ -42,10 +42,10 @@ ion-buttons {
 }
 
 .follow-button {
-  --color: #24d8a8;
+  --color: #888;
   --border-style: solid;
   --border-width: 3px;
-  --border-color: #24d8a8;
+  --border-color: #888;
   font-size: 0.60em;
   font-weight: 800;
   border-radius: 5px;

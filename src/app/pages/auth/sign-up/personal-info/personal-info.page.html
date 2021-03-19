@@ -1,20 +1,29 @@
-<ion-header style="display: none;">
+<ion-header class="ion-hide-md-up">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-text-center">
-
+  <ion-grid>
     <!-- Header -->
-    <ion-row class="header ion-justify-content-center">
-      <ion-col size-lg="5" size-md="7" size-xs="11">
-        <h6 class="text-header">Please enter your profile information.</h6>
+    <ion-row class="ion-justify-content-center">
+      <ion-col style="margin-top: 100px;" class="ion-hide-md-down" size-lg="3" size-md="7" size-xs="11">
+        <img height="70" src="../../../../../assets/logo-2.png" alt="" srcset="">
+        <h1>Sign Up</h1>
       </ion-col>
     </ion-row>
-
     <ion-row class="ion-justify-content-center">
-
+      <ion-col size-lg="3" size-md="7" size-xs="11">
+        <h3 style="color: #0055a5; font-weight: 600; margin-top: 54px;">Please enter your profile information.</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
       <!-- Form -->
-      <ion-col style="margin-top: 50px;" size-lg="5" size-md="7" size-xs="11">
+      <ion-col size-lg="3" size-md="7" size-xs="11">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -72,25 +81,25 @@
 
             </ion-item>
 
-            <ion-item>
               <ion-textarea
               autogrow="true"
               autocapitalize="true"
-              rows="5"
+              rows="10"
               spellcheck="true"
               wrap="soft"
               type="text"
-              maxlength="500"
-              placeholder="Tell us about yourself" formControlName="about">
+              maxlength="150"
+              placeholder="About Me" formControlName="about">
             </ion-textarea>
-          </ion-item>
-          <p class="char-limit">500 character limit</p>
-
+            <p class="char-limit">150 character limit</p>
             </ion-list>
-            <ion-button class="orange-button" type="submit">NEXT</ion-button><br>
+
+            <div class="ion-text-center">
+              <ion-button class="orange-button" type="submit">NEXT</ion-button><br>
             <ion-button (click)="cancel()" id="cancel-button" class="blue-button" slot="end">
                 cancel
               </ion-button>
+            </div>
         </form>
       </ion-col>
     </ion-row>

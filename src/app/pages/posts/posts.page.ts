@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IonFabButton, IonSearchbar, ModalController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { formatDistanceToNow } from 'date-fns';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
@@ -65,6 +65,7 @@ export class PostsPage implements OnInit, OnDestroy {
     public posts: PostsService,
     private profile: ProfileService,
     private toast: ToastController,
+    private loading: LoadingController,
     private formBuilder: FormBuilder,
     private postsEmitterService: PostPageEmitterService,
     private studentChat: StudentChatService,
@@ -77,8 +78,6 @@ export class PostsPage implements OnInit, OnDestroy {
     this.profileSub.unsubscribe();
     this.posts.followingSubject$.unsubscribe();
   }
-
-
   ngOnInit() {
 
     this.getUserInfo();
@@ -98,40 +97,9 @@ export class PostsPage implements OnInit, OnDestroy {
       comment: ['']
     });
   }
-
-  // filter(event) {
-  //   console.log(event.detail.value);
-  // }
-
   filter($event) {
-
     this.initializeItems();
-    let searchTerm = $event.detail.value;
-    let searchedPosts = [];
-
-
-    this.allPosts = this.allPosts.filter( foundPosts => {
-      let foundPostID = foundPosts._id;
-      foundPosts.hashtags.filter( hashtag => {
-        if(searchTerm == hashtag) {
-          console.log('There was a Posts that had that Hashtag!');
-          console.log('Post ID: ' + foundPostID);
-          searchedPosts.push({_id: foundPostID})
-        }
-
-      });
-
-      this.noSearchInput = true;
-
-  });
-
-
-
-  console.log('These are posts with that Hashtag: ')
-  console.log(searchedPosts);
-
-
-    this.allPostsLength = this.allPosts.length;
+    this.searchTerm = $event.detail.value;
 
     // If there are no matches with the searchTerm
     // if ( this.allPostsLength === 0 ) {
@@ -147,78 +115,108 @@ export class PostsPage implements OnInit, OnDestroy {
     //   this.getPosts();
     //   this.noSearchInput = true;
     // }
-
-    if (!searchTerm) {
-      console.log('Search term is empty; showing all events instead');
-      this.noSearchInput = false;
-      this.searching = false;
-      this.getPosts();
-    }
-
-
-  this.getFilteredPosts(searchedPosts);
   }
+  searchHashtags(){
+    console.log('Searching...');
+    let searchedPosts = [];
+    let searchTermArray = this.searchTerm.split(',');
+    console.log(searchTermArray);
+    
+    console.log(typeof this.searchTerm);
+    this.allPosts = this.allPosts.filter( foundPost => {
+      console.log(foundPost.hashtags);
+       foundPost.hashtags.forEach(hashtag => {
+         if(hashtag === this.searchTerm) {
+           console.log('Post ' + foundPost._id + ' has this hashtag');
+           searchedPosts.push(foundPost)
+         }
+       });
+       if (!this.searchTerm) {
+        console.log('Search term is empty; showing all events instead');
+        this.noSearchInput = false;
+        this.searching = false;
+        this.getPosts();
+      }
 
-    initializeItems(): void {
+      this.noSearchInput = true;
+    });
+
+    this.allPosts = searchedPosts;
+    this.searchBarBlur();
+  }
+  async searchLoading() {
+    const loading = await this.loading.create({
+      cssClass: 'my-custom-class',
+      message: 'Searching ...',
+      duration: 1000
+    });
+    await loading.present();
+
+    await loading.onDidDismiss().then(() => {
+      this.searchHashtags();
+    });
+    console.log('Loading dismissed!');
+  }
+  async searchLoadingEmptySearch() {
+    const loading = await this.loading.create({
+      cssClass: 'my-custom-class',
+      message: 'Refreshing Posts',
+      duration: 1000
+    });
+    await loading.present();
+
+    await loading.onDidDismiss().then(() => {
+      this.getPosts();
+    });
+    console.log('Loading dismissed!');
+  }
+  initializeItems(): void {
     this.allPosts = this.loadedAllPosts;
   }
-  getFilteredPosts(posts) {
-    console.log('These are the Filtered Posts');
-    console.log(posts);
-    this.posts.getPosts().subscribe(
-      data => {
-        console.log(data);
-
-        // Loop through each FILTERED POST, then Loop through all the posts and return any matching posts
-        posts.forEach(post => {
-          console.log(post._id);
-          console.log(data);
-
-          var postsWithHashtags = [];
-          Object.values(data).forEach(allPosts => {
-            if (allPosts._id === post._id) {
-              console.log('FINAL MATCH!');
-              postsWithHashtags.push(allPosts);
-            }
-            console.log(postsWithHashtags);
-          });
-          for (const post of postsWithHashtags) {
-            post.date = formatDistanceToNow( new Date(post.date), {
-              includeSeconds: true,
-              addSuffix: true
-            });
-          }
-          return this.allPosts = postsWithHashtags;
-        });
-      }
-    )
-  }
-
   searchBarFocus() {
     console.log('Focusing on Searchbar');
 
     let searchBarWrapper = document.getElementById('searchbar-wrapper');
     let fabWrapper = document.getElementById('fab-wrapper');
-    searchBarWrapper.style.height = '400px';
-    searchBarWrapper.style.background = '#0055a5';
+    let tabBar = document.getElementById('tabBar');
+    searchBarWrapper.style.height = '275px';
+    // searchBarWrapper.style.background = '#0055a5c7';
     fabWrapper.style.display = 'none';
+    tabBar.style.height = '0px';
+    tabBar.style.transition = '500ms'
+    tabBar.style.transform = 'translateY(40px)';
   }
   searchBarBlur() {
     console.log('Blurring out of Searchbar');
 
     let searchBarWrapper = document.getElementById('searchbar-wrapper');
     let fabWrapper = document.getElementById('fab-wrapper');
-
+    let tabBar = document.getElementById('tabBar');
     searchBarWrapper.style.height = '60px';
-    searchBarWrapper.style.background = '#edf3f8';
+    searchBarWrapper.style.background = 'none';
     fabWrapper.style.display = 'block';
+    tabBar.style.height = '50px';
+    tabBar.style.transition = '500ms'
+    tabBar.style.transform = 'translateY(0px)';
   }
 
+
+  // charHistory = [];
+  // addHashTag(key) {
+  //   this.charHistory.push(key.code);
+  //   console.log(this.charHistory);
+  //   if(key.code === "Backspace") {
+  //     console.log('Gotta Pop from charHistory!');
+  //     let backspace = this.charHistory.pop()
+  //     let lastLetter = this.charHistory.pop()
+  //     console.log(lastLetter);
+  //     console.log(this.charHistory)
+  //   }
+  // }
   postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
-
   getUserInfo() {
     this.postsSub = this.profile.getUserDetails().subscribe( details => {
       this.userEmail = details['email'];
@@ -234,7 +232,6 @@ export class PostsPage implements OnInit, OnDestroy {
       );
     });
   }
-
   getFollowingPosts() {
     // Get the user's posts he/she is following
     this.profileSub = this.profile.getUserDetails().subscribe( details => {
@@ -248,8 +245,7 @@ export class PostsPage implements OnInit, OnDestroy {
       this.studentChat.conversations$.next(Object.values(details['studentChat']).reverse());
     });
   }
-
- doRefresh(event) {
+  doRefresh(event) {
 
     this.getFollowingPosts();
 
@@ -274,7 +270,6 @@ export class PostsPage implements OnInit, OnDestroy {
       toast.then(toast => toast.present());
     }, 2000);
   }
-
   async getPosts() {
     this.postsSub = this.posts.getPosts().subscribe( posts => {
       // console.log(posts);
@@ -303,29 +298,22 @@ export class PostsPage implements OnInit, OnDestroy {
       }
     });
   }
-
-
   addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
-
   myPosts(userEmail) {
     console.log('Going to my posts page');
     this.router.navigate(['/home/posts/my-posts', userEmail]);
   }
-
   following() {
     this.router.navigate(['/home/posts/following']);
   }
-
   chat() {
     this.router.navigate(['/home/posts/student-chat']);
   }
-
   notifications() {
     this.router.navigate(['/home/posts/notifications']);
   }
-
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     console.log(postID, userFullName, userEmail, userProfilePicture, comment);
@@ -400,7 +388,4 @@ export class PostsPage implements OnInit, OnDestroy {
 
     await this.router.navigate(['/home/posts/post-page', postID]);
   }
-
-
-
 }

@@ -6,6 +6,9 @@
   background: #edf3f8;
   right: 5px;
 }
+.cropper-container{
+  width: 100%;
+}
 
 @media screen and (min-width: 959px) {
   .img-container {
@@ -14,8 +17,8 @@
 }
 
 .img-preview {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 100px;
   margin-top: 10px;
   margin-bottom: 10px;
