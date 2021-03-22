@@ -37,6 +37,7 @@ export class PostsPage implements OnInit, OnDestroy {
   noSearchInput = false;
   searchTerm: any;
   searching = false;
+  noPosts = false;
   allPostsLength: any;
   loadedAllPosts: any;
 
@@ -97,52 +98,57 @@ export class PostsPage implements OnInit, OnDestroy {
       comment: ['']
     });
   }
-  filter($event) {
-    this.initializeItems();
-    this.searchTerm = $event.detail.value;
-
-    // If there are no matches with the searchTerm
-    // if ( this.allPostsLength === 0 ) {
-
-    //   console.log('No results from that search');
-    //   this.searching = true;
-    //   this.searchTerm = searchTerm;
-
-    //   // this.searchbar.getInputElement().then(  (searchbarInputElement) => {
-    //   //   searchbarInputElement.value = '';
-    //   // });
-
-    //   this.getPosts();
-    //   this.noSearchInput = true;
-    // }
+  filter(event) {
+    this.searchTerm = event.detail.value.replace(/\s+/g, '')
+    ;
+    console.log(this.searchTerm);
   }
   searchHashtags(){
-    console.log('Searching...');
+    if(this.noPosts) {
+      this.allPosts = this.loadedAllPosts;
+      this.noPosts = false;
+    }
     let searchedPosts = [];
     let searchTermArray = this.searchTerm.split(',');
-    console.log(searchTermArray);
-    
-    console.log(typeof this.searchTerm);
-    this.allPosts = this.allPosts.filter( foundPost => {
-      console.log(foundPost.hashtags);
-       foundPost.hashtags.forEach(hashtag => {
-         if(hashtag === this.searchTerm) {
-           console.log('Post ' + foundPost._id + ' has this hashtag');
-           searchedPosts.push(foundPost)
-         }
-       });
-       if (!this.searchTerm) {
-        console.log('Search term is empty; showing all events instead');
-        this.noSearchInput = false;
-        this.searching = false;
-        this.getPosts();
-      }
+    // console.log('Searching...\n');
+    // console.log('Search Terms: ')
+    // console.log(searchTermArray);
+    // console.log('Loaded Posts')
+    // console.log(this.loadedAllPosts);
 
-      this.noSearchInput = true;
+    searchTermArray.forEach(searchedTag => {
+      console.log(searchedTag);
+      this.loadedAllPosts.filter( foundPost => {
+        console.log(foundPost.hashtags);
+        foundPost.hashtags.forEach(tag => {
+          console.log(tag);
+          if (tag === searchedTag) {
+            // console.log(tag + ' is a match!');
+            searchedPosts.push(foundPost)
+          }
+        });
+         if (!this.searchTerm) {
+          // console.log('Search term is empty; showing all events instead');
+          this.noSearchInput = false;
+          this.searching = false;
+          this.getPosts();
+        }
+        this.noSearchInput = true;
+      });
     });
 
-    this.allPosts = searchedPosts;
-    this.searchBarBlur();
+    // Get Unique values from searchPosts Object
+    this.allPosts = [...new Set(Object.values(searchedPosts))];
+    console.log(this.allPosts);
+    if(this.allPosts.length === 0) {
+      console.log('That search had no results!');
+      return this.noPosts = true;
+    }
+    if(this.allPosts.length > 0) {
+      console.log('That search had results!');
+      return this.noPosts = false;
+    }
+    return this.searchBarBlur();
   }
   async searchLoading() {
     const loading = await this.loading.create({
@@ -153,6 +159,7 @@ export class PostsPage implements OnInit, OnDestroy {
     await loading.present();
 
     await loading.onDidDismiss().then(() => {
+      // this.searching = true;
       this.searchHashtags();
     });
     console.log('Loading dismissed!');
@@ -176,31 +183,36 @@ export class PostsPage implements OnInit, OnDestroy {
   searchBarFocus() {
     console.log('Focusing on Searchbar');
 
-    let searchBarWrapper = document.getElementById('searchbar-wrapper');
-    let fabWrapper = document.getElementById('fab-wrapper');
-    let tabBar = document.getElementById('tabBar');
-    searchBarWrapper.style.height = '275px';
-    // searchBarWrapper.style.background = '#0055a5c7';
-    fabWrapper.style.display = 'none';
-    tabBar.style.height = '0px';
-    tabBar.style.transition = '500ms'
-    tabBar.style.transform = 'translateY(40px)';
+    setTimeout(() => {
+      let searchBarWrapper = document.getElementById('searchbar-wrapper');
+      let fabWrapper = document.getElementById('fab-wrapper');
+      let tabBar = document.getElementById('tabBar');
+      searchBarWrapper.style.height = '275px';
+      // searchBarWrapper.style.background = '#0055a5c7';
+      fabWrapper.style.display = 'none';
+      tabBar.style.height = '0px';
+      tabBar.style.transition = '500ms'
+      tabBar.style.transform = 'translateY(40px)';
+    }, 750);
   }
   searchBarBlur() {
     console.log('Blurring out of Searchbar');
 
-    let searchBarWrapper = document.getElementById('searchbar-wrapper');
-    let fabWrapper = document.getElementById('fab-wrapper');
-    let tabBar = document.getElementById('tabBar');
-    searchBarWrapper.style.height = '60px';
-    searchBarWrapper.style.background = 'none';
-    fabWrapper.style.display = 'block';
-    tabBar.style.height = '50px';
-    tabBar.style.transition = '500ms'
-    tabBar.style.transform = 'translateY(0px)';
+    setTimeout(() => {
+      let searchBarWrapper = document.getElementById('searchbar-wrapper');
+      let fabWrapper = document.getElementById('fab-wrapper');
+      let tabBar = document.getElementById('tabBar');
+      searchBarWrapper.style.height = '60px';
+      searchBarWrapper.style.background = 'none';
+      fabWrapper.style.display = 'block';
+      tabBar.style.height = '50px';
+      tabBar.style.transition = '500ms'
+      tabBar.style.transform = 'translateY(0px)';
+    }, 750);
   }
-
-
+  sortPosts() {
+    console.log('Attempting to Sort Post...')
+  }
   // charHistory = [];
   // addHashTag(key) {
   //   this.charHistory.push(key.code);
@@ -289,12 +301,20 @@ export class PostsPage implements OnInit, OnDestroy {
 
       this.posts.postsSubject$.next(this.allPosts);
 
-
       for (const post of this.allPosts) {
         post.date = formatDistanceToNow( new Date(post.date), {
           includeSeconds: true,
           addSuffix: true
         });
+      }
+      if(this.allPosts.length === 0) {
+        console.log('That search had no results!');
+        return this.noPosts = true;
+      }
+
+      if(this.allPosts.length > 0) {
+        console.log('That search had results!');
+        return this.noPosts = false;
       }
     });
   }

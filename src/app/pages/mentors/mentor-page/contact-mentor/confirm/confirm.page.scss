@@ -1,26 +1,20 @@
 #background {
   opacity: 0;
   height: 90vh;
-  --background: #999;
+  --background: rgb(239, 255, 239);
   --transition: 0.5s;
   animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) .3s forwards;
 }
 
 #confirm-text {
-  color: white;
+  color: #111;
   font-size: 1.3em;
-  opacity: 0;
-  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 2s forwards;
+  animation: slide-in-up-2 0.2s cubic-bezier(.15, .85, .75, .9) 0.3s forwards;
 }
-
-#mentor-photo {
-  opacity: 0;
-  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 1.3s forwards;
-}
-
 ion-button {
-  opacity: 0;
-  animation: slide-in-up-2 0.8s cubic-bezier(.15, .85, .75, .9) 3s forwards;
+  opacity: 1;
+  font-weight: 600;
+  --background: #4DC066;
 }
 
 @keyframes slide-in-up {
@@ -29,7 +23,7 @@ ion-button {
   }
   100% {
       opacity: 1;
-      --background: #797;
+      --background: rgb(220, 255, 220);
       transform: translateY(0px);
   }
   }

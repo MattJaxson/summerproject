@@ -1,20 +1,17 @@
 <ion-tabs>
-
   <!-- Toolbar for Desktop -->
-  <ion-toolbar slot="top" class="ion-hide-md-down">
+  <ion-toolbar slot="top" class="ion-hide-lg-down">
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="1"></ion-col>
-        <ion-col size="2">
-          <img id="logo" src="../../assets/logo-2.png">
+        <ion-col  size="2"></ion-col>
+        <ion-col pull-lg="1.5" pull-xl="0" size="2">
+          <img id="logo" src="../../assets/icon/Logo 2.0.png">
         </ion-col>
-        <ion-col class="ion-float-end" size="8">
+        <ion-col class="ion-float-right" push-lg="1.5"  size-lg="6" push-xl="1" size-xl="4">
+
           <a (click)="logoutConfirm()" style="cursor: pointer;">
             LOGOUT
           </a>
-          <!-- <a routerLink="/home/resources/" routerLinkActive="active-link">
-            RESOURCES
-          </a> -->
           <a routerLink="/home/profile/" routerLinkActive="active-link">
             PROFILE
           </a>
@@ -62,6 +59,5 @@
       <!-- <ion-label>PROFILE</ion-label> -->
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>
 

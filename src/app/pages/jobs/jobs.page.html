@@ -58,8 +58,8 @@
           <!-- First Row w/ Job Tile, Date posted, and Logo -->
           <ion-col push="0.5" push-lg="0.6" size-xs="12 "size="7" style="padding-top: 30px">
             <ion-row class="ion-align-items-start">
-              <ion-col size="1">
-                <div class="company-logo" style="height: 60px; width: 60px;"></div>
+              <ion-col size="2">
+                <img class="company-logo" src="{{job.companyLogo}}" style="height: 80px;">
               </ion-col>
               <ion-col push-xs="1" push-sm="1" push-md="1" push-lg="0.5" size="4">
                 <h5 id="job-title">{{job.title}}</h5>
@@ -73,7 +73,7 @@
           </ion-col>
 
             <ion-row>
-              <ion-col push="0.5"  size="10.5" >
+              <ion-col push="0.5"  size="10.5">
                 <p id="job-summary">{{job.summary}}</p>
               </ion-col>
             </ion-row>

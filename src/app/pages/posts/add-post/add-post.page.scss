@@ -1,15 +1,21 @@
-.blue-button {
-  animation: none;
-  opacity: unset;
-  width: unset;
-  height: 36px;
-  margin-top: 20px;
-  margin-bottom: 4px;
-  position: unset;
+.blue-button-small {
+  --color: white;
+  --background: #0055a5;
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
+}
+h1 {
+  font-weight: 600;
+  font-size: 2em;
+  color: #46c9a3;
+  display: inline;
 }
 
 ion-label {
-  font-size: 1em;
+  font-size: 2em;
   color: #0055a5;
   font-weight: 600;
 }
@@ -43,7 +49,7 @@ h5 {
 }
 
 .line-input > ion-item {
-  margin-bottom: 45px;
+  margin-bottom: 88px;
 }
 
 .char-limit {
@@ -59,7 +65,7 @@ ion-title {
 .message {
   font-size: 1.05em;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5em;
   color: #555;
 }

@@ -1,10 +1,10 @@
 .profile-picture {
-  height: 28px; width: 28px;
+  height: 40px; width: 40px;
   border-radius: 100px;
   margin-right: 5px;
   display: inline-block;
   position: relative;
-  top: 5px;
+  top: 0px;
 }
 
 .header-hr{
@@ -14,15 +14,14 @@
 }
 
 .post {
-  padding: 10px 0;
+  padding: 24px 0;
   margin-bottom: 80px;
-  border-radius: 5px;
-  box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
-  font-size: 1.2em;
+  border-radius: 11px;
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+  font-size: 1.1em;
   line-height: 35px;
   background: white;
 }
-
 .post-title {
   font-weight: 800;
   color: #0055a5;
@@ -56,6 +55,9 @@
 ion-content {
   background: #edf3f8;
 }
+#filter-toolbar{
+  --background: #f4f5f8;
+}
 
 @media screen and (max-width: 744px) {
   .post {
@@ -63,9 +65,30 @@ ion-content {
     top: 0px;
   }
 }
+.searchbar {
+  font-weight: 600;
+  color: #0055a5;
+  background: #0055a5
+}
+.searchbar-desktop {
+  font-weight: 600;
+  color: #0055a5;
+}
+.hash{
+  margin-right: 8px;
+  font-size: 2em;
+  font-weight: 600;
+  color: white;
+}
+.hash-desktop{
+  margin-right: 8px;
+  font-size: 2em;
+  font-weight: 600;
+  color: #0055a5;
+}
 .hashtags{
   position: relative;
-  top: -24px;
+  top: -32px;
 }
 .hashtag{
   font-size: 0.55em;
@@ -73,6 +96,16 @@ ion-content {
   display: inline-block;
   margin-right: 5px;
   color: #ea8400;
+}
+.no-tags {
+  font-size: 0.7em;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+  color: #333;
+  opacity: 0.5;
+  position: relative;
+  top: -32px;
 }
 .post-content {
   font-size: 1em;
@@ -121,9 +154,10 @@ ion-content {
 
  #search-options {
   padding: 10px;
-  color: #222;
+  color: white;
   font-weight: 500;
-  font-size: 0.9em;
+  font-size: 1.2em;
+  background: #0055a5;
 
   .cancel-button {
     display: block;
@@ -136,7 +170,7 @@ ion-content {
     --background: #faa71b;
   }
  }
-
+ 
 
 .user-details {
   position: fixed;
@@ -176,14 +210,16 @@ ion-item {
   --backsground: none;
 }
 
+
 .following-mobile-button {
   display: inline-block;
   opacity: 1;
   --background: #0055a5;
   --color: white;
   box-shadow: 1px 1px 40px rgba(0,0,0,0.1);
-  width: 40px;
-  height: 40px;
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
   font-size: 0.6em;
   font-weight: 600;
   position: relative;
@@ -198,41 +234,36 @@ ion-item {
 }
 
 
-.following-desktop-button {
-  font-weight: 800;
-  height: 36px;
-  width: 150px;
-  margin-top: 20px;
-  font-size: 0.7em;
-  transition: 0s;
-}
 
-.blue-button {
-  height: 36px;
-  animation: none;
-  opacity: unset;
+.following-button {
+  --color: white;
+  --background: #0055a5;
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
 }
-
 .add-button {
   --color: white;
   --background: linear-gradient(#5ad8b2, #40c59d);
   --background-hover: linear-gradient(#5ad8b2, #2e8f72);
-  font-weight: 800;
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
   display: block;
-  width: 150px;
-  margin-top: 20px;
-  font-size: 0.7em;
 }
 
 .my-post-button {
-  --background: #e6e6e6;
-  --background-hover: #999;
-  --color: #888;
-  font-weight: 800;
+  --background: #333;
+  --background-hover: #444;
+  --color: white;
+  font-weight: 600;
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
   display: block;
-  width: 150px;
-  margin-top: 20px;
-  font-size: 0.7em;
 }
 
 .my-post-button:hover {
@@ -253,6 +284,7 @@ form {
 
 .comment-button {
   font-size: 1em;
+  font-weight: 600;
   position: relative;
   right: -20px;
   top: 5px;
@@ -262,14 +294,14 @@ form {
   --border-color: #40c59d;
   --border-width: 2px;
   --border-style: solid;
-  --background: none;
-  --color: #40c59d;
-  transition: 500;
+  --background: #40c59d;
+  --color: white;
   height: 40px;
-  font-weight: 500;
-  font-size: 1.1em;
+  margin: 29px auto;
+  font-weight: 600;
+  font-size: 0.6em;
   border-radius: 5px;
-  width: 98.5%;
+  width: 100px;
 }
 
 .comment-input {
@@ -365,6 +397,7 @@ form {
 
 @media screen and (max-width: 567px) {
   .comment-button, .follow-button, .unfollow-button {
+      font-weight: 600;
       font-size: 0.5em;
       width: 100px;
   }

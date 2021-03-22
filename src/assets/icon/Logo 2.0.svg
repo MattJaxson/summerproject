@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="685px" height="228px" viewBox="0 0 685 228" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Logo 2.0</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F7B500" offset="0%"></stop>
+            <stop stop-color="#FFA76C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Logo-2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(5.000000, 2.000000)" fill="url(#linearGradient-1)">
+            <polygon id="Path-2" points="0 70.4433527 72 0 72 48.5763281 0 118"></polygon>
+            <polygon id="Path-2-Copy-2" transform="translate(108.000000, 59.000000) scale(-1, 1) translate(-108.000000, -59.000000) " points="72 70.4433527 144 0 144 48.5763281 72 118"></polygon>
+            <polygon id="Path-2-Copy-3" transform="translate(108.000000, 157.000000) scale(-1, 1) translate(-108.000000, -157.000000) " points="72 168.443353 144 98 144 146.576328 72 216"></polygon>
+            <polygon id="Path-2-Copy" points="0 168.443353 72 98 72 146.576328 0 216"></polygon>
+        </g>
+        <text id="FUTURE" font-family="Arial-BoldMT, Arial" font-size="120" font-weight="bold" fill="#0055A5">
+            <tspan x="172" y="215">FUTURE</tspan>
+        </text>
+        <text id="FIND-YOUR" font-family="Arial-BoldMT, Arial" font-size="60" font-weight="bold" letter-spacing="18" fill="#0055A5">
+            <tspan x="172" y="63">FIND YOUR </tspan>
+        </text>
+        <line x1="182" y1="97.5" x2="649" y2="98" id="Line" stroke="#005191" stroke-width="10" stroke-linecap="square"></line>
+    </g>
+</svg>

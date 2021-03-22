@@ -44,10 +44,10 @@ export class UpDownVoteButtonsComponent implements OnInit {
     private postsEmitterService: PostPageEmitterService,
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
 
     // Get information about post
-    await this.posts.getPostInfo(this.postID)
+     this.posts.getPostInfo(this.postID)
       .subscribe( postInfo => {
 
         this.upVotes = postInfo['upvotes'];
@@ -107,24 +107,21 @@ export class UpDownVoteButtonsComponent implements OnInit {
             }
         }
 
-        
-
           this.userEmail = userEmail;
           this.upVoted = upVoted;
           this.downVoted = downVoted;
           this.followers = followers;
           this.following = following;
           console.log(followers.length);
-          
+
           this.followingLength$.next(followers.length);
           this.followingLength$.subscribe(data => {
             this.followingLength = data;
           });
         });
       });
-    }
-
-   async upVotePost() {
+  }
+  async upVotePost() {
 
     await this.posts.upVotePost(this.postID, this.userEmail)
       .subscribe(data => {
@@ -146,7 +143,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     this.postsEmitterService.postPageRefresh();
     this.upVotePostToast();
   }
-
   async upVotePostToast() {
     const upVotePostToast = await this.toast.create({
       cssClass: 'upvoted-toast',
@@ -155,7 +151,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     });
     upVotePostToast.present();
   }
-
   async downVotePost() {
 
     await this.posts.downVotePost(this.postID, this.userEmail)
@@ -177,7 +172,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     this.postsEmitterService.postPageRefresh();
     this.downVoteToast();
   }
-
   async downVoteToast() {
     const downVoteToast = await this.toast.create({
       cssClass: 'downvoted-toast',
@@ -186,7 +180,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     });
     downVoteToast.present();
   }
-
   async follow(postID) {
     await console.log('Following Post');
     await console.log(postID);
@@ -195,7 +188,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     this.followingLength$.next(this.followingLength + 1);
     await this.followToast();
   }
-
   async followToast() {
     const followToast = await this.toast.create({
       cssClass: 'followed-toast',
@@ -204,7 +196,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     });
     followToast.present();
   }
-
   async unFollow(postID) {
     await console.log('Unfollowing Post');
     await console.log(postID);
@@ -213,7 +204,6 @@ export class UpDownVoteButtonsComponent implements OnInit {
     this.followingLength$.next(this.followingLength - 1);
     await this.unFollowToast();
   }
-
   async unFollowToast() {
     const unFollowToast = await this.toast.create({
       cssClass: 'unfollowed-toast',
@@ -222,5 +212,4 @@ export class UpDownVoteButtonsComponent implements OnInit {
     });
     unFollowToast.present();
   }
-
 }

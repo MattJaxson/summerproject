@@ -1,30 +1,37 @@
-<ion-header no-border class="ion-hide-lg-up">
+<ion-header no-border class="ion-hide-md-up">
   <ion-toolbar>
-    <ion-title>Mentors</ion-title>
+    <ion-item style="--background: #0055a5;">
+      <ion-avatar slot="start">
+        <img style="border-radius: 80px;" height="50" src="../../../assets/icon/mentor-icon.svg">
+      </ion-avatar>
+      <ion-label style="font-size: 1.2em; color: white;">Mentors</ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row style="background: #f4f5f8" class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10" size-xl="5">
-        <img style="margin: 20px 0;" height="50" src="../../../assets/icon/mentor-icon.svg" alt="" srcset="">
-        <p>Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5">
+        <p class="ion-hide-md-up" style="font-size: 1em;">Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
+
+        <img class="ion-hide-md-down" style="position: relative; right: 24px; top: 24px;" src="../../../assets/icon/mentor-icon-blue.svg" alt="Mentor Icon Blue">
+        <p class="ion-hide-md-down" style="font-size: 1.1em; margin-top: 24px;">Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
-      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="10" size-xl="5">
+      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5">
         <ion-list>
           <ion-item lines="none">
             <ion-avatar slot="start">
-              <img src="../../../assets/aaron.jpg" />
+              <img src="{{mentor.photo}}" />
             </ion-avatar>
             <ion-label>
               <h2>{{mentor.name}}</h2>
               <p>{{mentor.title}}</p>
             </ion-label>
             <ion-buttons slot="end">
-              <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; font-weight: 600; margin-right: 20px; width: 80px;" (click)="mentorPage(mentor)">
+              <ion-button class="info-button" (click)="mentorPage(mentor)">
                 Info
               </ion-button>
               <!-- <ion-button (click)="newMessage()">

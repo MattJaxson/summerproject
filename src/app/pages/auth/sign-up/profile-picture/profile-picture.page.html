@@ -1,5 +1,5 @@
 <ion-header class="ion-hide-md-up">
-  <ion-toolbar>
+  <ion-toolbar mode="md">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -12,7 +12,7 @@
     <ion-row class="ion-justify-content-center">
       <ion-col  size-lg="3" size-md="7" size-xs="11">
         <!-- Picture Wrappers -->
-      <ion-row style="margin-top: 24px;" class="ion-justify-content-center">
+      <ion-row style="margin-top: 54px;" class="ion-justify-content-center">
         <ion-col  size-lg="3" size-md="7" size-xs="11" class="ion-align-items-center">
           <!-- Default Picture if user does not select profile picture Wrapper -->
           <canvas
@@ -21,7 +21,7 @@
             *ngIf="!uploadedPhoto"></canvas>
 
           <!-- User has uploaded cropped profile picture -->
-          <img *ngIf="this.uploadedPhoto" src="{{imageSrc}}">
+          <img id="uploaded-photo" *ngIf="this.uploadedPhoto" src="{{imageSrc}}">
 
             <!-- User has cropped profile picture -->
             <!-- <img
@@ -31,38 +31,30 @@
         </ion-col>
       </ion-row>
       <!-- Get Picture Button -->
-      <ion-row class="ion-justify-content-center" style="margin-top: -16px;">
-        <ion-col (click)="takePicture()" class="get-picture-button ion-text-center" size="10">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="10">
           <img height="80" *ngIf="!this.uploadedPhoto" src="../../../../../assets/icons/carrier-candidate.svg" alt="" srcset="">
-          <h3>Tap to get Profile Picture. <span>Only .png, .jpg, and .jpeg are allowed.</span></h3>
         </ion-col>
-        <!-- <ion-col size="12">
-          <form
-        (ngSubmit)="uploadPhoto()" id="proPicForm" type="multipart/form-data">
-
-          <input
-            name="profile-picture"
-            accept=".jpg, .jpeg, .png"
-            (change)="getFormData($event)"
-            type="file"
-            multiple />
-
-          <ion-button
-            type="submit"
-            class="orange-button"
-            [disabled]="!uploadedPhoto">Next
-          </ion-button>
-          </form>
-        </ion-col> -->
+        <ion-button (click)="takePicture()" class="get-picture-button">
+          Tap to get Profile Picture
+          <!-- <span>Only .png, .jpg, and .jpeg are allowed.</span> -->
+        </ion-button>
+        
       </ion-row>
       <!-- Skip & Cancel Buttons -->
-      <ion-row style="margin-top: -16px;">
-        <ion-col size="12">
-          <ion-button class="skip-button"  (click)="skip()">
+      <ion-row class="ion-justify-content-center" style="margin-top: 16px;">
+        <ion-col size="10">
+          <ion-button
+            (click)="uploadPhoto()"
+            class="orange-button"
+            [disabled]="!this.uploadedPhoto">Next
+          </ion-button>
+
+          <ion-button class="skip-button">
             Skip
           </ion-button>
 
-          <ion-button (click)="cancel()" class="cancel-button">
+          <ion-button class="cancel-button">
               Cancel
           </ion-button>
         </ion-col>

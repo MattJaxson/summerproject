@@ -40,13 +40,14 @@ ion-card {
   // padding-bottom: 20px;
   position: relative;
   top: -5px;
+  width: 320px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
 }
 
 ion-card {
-  min-height: 300px;
-  max-height: 500px;
-  padding-bottom: 150px;
+  // min-height: 300px;
+  // max-height: 500px;
+  padding-bottom: 80px;
 }
 
 ion-card ion-card-content {

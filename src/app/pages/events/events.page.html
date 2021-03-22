@@ -33,23 +33,25 @@
     </ion-row>
 
     <!-- Mobile Events Cards -->
-    <ion-row  style="margin-top: 30px;" class="ion-justify-content-center" *ngIf="!noSearchInput" >
+    <ion-row style="margin-top: 30px;" class="ion-justify-content-center" *ngIf="!noSearchInput" >
       <ion-col size-lg="6" size-md="8" size-sm="10" size-xs="11.5 ">
-        <ion-card *ngFor="let event of allEvents">
-          <div *ngIf="allEvents.length === 0">
-            <p>There are no Events, please come back later.</p>
-          </div>
-          <img src="../assets/Journi_flyer.jpg" />
-          <ion-card-header (click)="eventPage(event)">
-            <ion-card-title>{{ event.title }}</ion-card-title>
-            <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
-            <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
-            <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
-            <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
-          </ion-card-header>
-          <ion-card-content>
-              <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
-         </ion-card-content>
+        <ion-card style="margin: 24px auto 54px auto;" *ngFor="let event of allEvents">
+            <div *ngIf="allEvents.length === 0">
+              <p>There are no Events, please come back later.</p>
+            </div>
+            <div class="ion-text-center">
+              <img height="260" src="{{event.photo}}" />
+            </div>
+            <ion-card-header (click)="eventPage(event)">
+              <ion-card-title>{{ event.title }}</ion-card-title>
+              <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+              <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
+              <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
+            </ion-card-header>
+            <ion-card-content>
+                <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
+           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

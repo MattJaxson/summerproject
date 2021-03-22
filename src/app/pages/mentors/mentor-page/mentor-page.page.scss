@@ -1,27 +1,17 @@
-ion-title {
-    margin: 0;
+.blue-button-small {
+    --background: #0055a5;
+    opacity: 1;
+    height: 24px;
+    width: 100px;
+    font-size: 0.5em;
+    font-weight: 600;
+    position: relative;
+    top: 100px;
+    z-index: 9999;
 }
-
-ion-header {
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  }
-
-.header-wrapper {
-    background: white;
-    width: 50%;
-    height: 100px;
-    border-radius: 100px;
+.orange-button{
+    margin: 120px auto;
 }
-
-.blue-button {
-    animation: none;
-    opacity: unset;
-}
-
-.mentor {
-  
-}
-
 #mentor-profile-picture{
     margin-top: 50px;
     height: 50px; width: 50px;
@@ -30,46 +20,39 @@ ion-header {
     background-size: contain;
     background-position: center;
     border-radius: 50px;
-    opacity: 0;
-    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+    opacity: 1;
+    // animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
-
 #mentor-name {
     font-size: 2em;
     font-weight: 900;
-    opacity: 0;
-    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+    opacity: 1;
 }
 
 #mentor-title {
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
     color: #0055a5;
-    opacity: 0;
-    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
+    opacity: 1;
 }
-
 #mentor-location {
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
     color: #0055a5;
-    opacity: 0;
-    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s forwards;
+    opacity: 1;
 }
 
 #mentor-email {
     font-size: 1em;
     color: #999;
-    opacity: 0;
-    animation: slide-in-left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.7s forwards;
+    opacity: 1;
 }
 
 #mentor-description {
     font-size: 1.1em;
-    color: #666;
+    color: #222;
     line-height: 1.7em;
-    opacity: 0;
-    animation: slide-in-up 0.8s cubic-bezier(.15, .85, .75, .9) 1.9s forwards;
+    opacity: 1;
 }
 
 #contact-button {

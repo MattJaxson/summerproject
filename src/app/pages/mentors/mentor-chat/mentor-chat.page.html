@@ -20,8 +20,12 @@
   <ion-toolbar class="searchbar-wrapper ion-hide-lg-up">
     <ion-searchbar></ion-searchbar>
   </ion-toolbar>
-  <!-- List of Text Items -->
-<ion-list class="ion-hide-lg-up">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5">
+      <!-- List of Text Items -->
+      <ion-list class="ion-hide-lg-up">
   <ion-item-sliding (click)="chatPage()">
   <ion-item class="unread">
     <ion-avatar slot="start">
@@ -50,12 +54,8 @@
         <!-- <ion-item-option color="danger" (click)="delete(item)">Delete</ion-item-option> -->
       </ion-item-options>
   </ion-item-sliding>
-</ion-list>
-
-  <!-- Desktop -->
-  <ion-grid class="ion-hide-lg-down">
-    <ion-row>
-      <ion-col size="6"></ion-col>
+      </ion-list>
+      </ion-col>
       <ion-col size="6"></ion-col>
     </ion-row>
   </ion-grid>

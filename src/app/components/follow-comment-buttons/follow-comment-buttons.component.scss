@@ -1,22 +1,21 @@
 .comment-button{
-  width: 130px;
   --color: #0055a5;
   font-size: 1em;
   font-size: 800;
   border-radius: 5px;
 }
-
 ion-icon {
   height: 40px;
   width: 40px;
   position: relative;
   left: -5px;
-
+  font-weight: 600;
 }
 
 @media screen and (max-width: 567px) {
   .comment-button, .follow-button, .unfollow-button {
       font-size: 1em;
+      font-weight: 600;
       width: 130px;
   }
 }

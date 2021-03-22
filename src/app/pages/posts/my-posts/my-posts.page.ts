@@ -17,6 +17,7 @@ import { PlatformLocation } from '@angular/common';
 export class MyPostsPage implements OnInit {
 
   commentForm: FormGroup;
+  showShortDesciption = true
   userEmail;
   allMyPosts = [];
   userFullName: any;
@@ -61,16 +62,16 @@ export class MyPostsPage implements OnInit {
 
     this.myPosts(this.userEmail);
   }
-
+  alterDescriptionText() {
+  this.showShortDesciption = !this.showShortDesciption
+  }
   addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
-
   back() {
     this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
-
   myPosts(userEmail) {
     this.posts.getMyPosts(userEmail).subscribe(
       data => {
@@ -85,7 +86,6 @@ export class MyPostsPage implements OnInit {
       }
     );
   }
-
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     // Reset Comment Input
@@ -153,5 +153,4 @@ export class MyPostsPage implements OnInit {
 
     await this.router.navigate(['/home/posts/post-page', postID]);
   }
-
 }

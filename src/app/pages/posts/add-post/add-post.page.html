@@ -11,12 +11,10 @@
 <ion-content>
   <ion-grid>
     <!-- Desktop Header -->
-    <ion-row class="header ion-hide-md-down ion-justify-content-center ion-text-center"  style="margin: 2% 0% 3% 0%;">
-      <ion-col size="5">
-        <h1>New Post</h1>
-      </ion-col>
-      <ion-col push="" size="5">
-        <ion-button class="blue-button"  (click)="back()">
+    <ion-row class="header ion-hide-md-down ion-justify-content-center"  style="margin: 4% 0% 1% 0%;">
+      <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="6" size-xl="6">
+        <h1 style="">New Post</h1>
+        <ion-button class="blue-button-small ion-float-right"  (click)="back()">
            Back
         </ion-button>
       </ion-col>
@@ -25,7 +23,7 @@
     <ion-row class="ion-justify-content-center" style="margin-top: 1%;">
       <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="9" size-lg="7" size-xl="6">
         <!-- Mobile Text Header -->
-        <p class="message ion-hide-lg-up">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
+        <p class="message ion-hide-md-up">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
 
         <!-- Desktop Text Header -->
         <p class="message ion-hide-md-down">Please keep your content clean. In order to maintain a high standard of content, each post will have to be verified before they are added to the Posts feed. Happy posting, and be inspired!</p>
@@ -76,7 +74,7 @@
               <ion-item style="height: auto;">
                 <ion-textarea
                   #postChars
-                  rows="50"
+                  rows="10"
                   auto-grow="true"
                   spellcheck="true"
                   maxlength="1000"
@@ -86,19 +84,12 @@
                 </ion-textarea>
               </ion-item>
               <p class="char-limit">{{postChars.value.length}} / 3000 character limit</p>
-            </ion-list>
-
-            <ion-row>
-              <ion-col>
-                <ion-item style="margin: 15px 0 20px;" lines="none">
-                  <ion-button
+              <ion-button
                   class="orange-button"
                   type="submit">
                     Submit
                   </ion-button>
-                </ion-item>
-              </ion-col>
-            </ion-row>
+            </ion-list>
         </form>
       </ion-col>
     </ion-row>

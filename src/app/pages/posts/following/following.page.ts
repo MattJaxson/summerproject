@@ -19,6 +19,7 @@ import { PlatformLocation } from '@angular/common';
 export class FollowingPage implements OnInit {
 
   commentForm: FormGroup;
+  showShortDesciption = true
   userEmail;
   userFullName;
   userProfilePicture;
@@ -71,21 +72,20 @@ export class FollowingPage implements OnInit {
       comment: ['']
     });
   }
-
+  alterDescriptionText() {
+  this.showShortDesciption = !this.showShortDesciption
+  }
   postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
   }
-
   addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
-
   back() {
     this.eventEmitterService.onBackAction();
     this.router.navigate(['/home/posts']);
   }
-
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     // Reset Comment Input
@@ -153,7 +153,6 @@ export class FollowingPage implements OnInit {
 
     await this.router.navigate(['/home/posts/post-page', postID]);
   }
-
   async doRefresh(event) {
 
      // Get the User's Followed Posts

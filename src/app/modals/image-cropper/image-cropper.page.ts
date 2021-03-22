@@ -29,20 +29,22 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
 public ngAfterViewInit() {
   this.cropper = new Cropper(this.imageElement.nativeElement, {
       zoomable: true,
+      modal: true,
       scalable: true,
       aspectRatio: 1,
-      autoCropArea: 1,
+      // autoCropArea: 1,
       wheelZoomRatio: 0.8,
-      viewMode: 0,
-      responsive: true,
+      viewMode: 2,
+      center: true,
+      // responsive: true,
       movable: true,
-      // minCropBoxWidth: 500,
-      // minCropBoxHeight: 500,
+      minContainerWidth: window.innerWidth,
+      minContainerHeight: 200,
       zoomOnTouch: true,
       zoomOnWheel: true,
       crop: () => {
           const canvas = this.cropper.getCroppedCanvas();
-          this.imageDestination = canvas.toDataURL('image/png');
+          this.imageDestination = canvas.toDataURL('image/png', 0.1);
       },
       cropend: () => {
         console.log('The crop ended');
@@ -51,8 +53,25 @@ public ngAfterViewInit() {
 }
 
 public ngOnInit() {
+  let cropperContainer = document.getElementsByClassName('cropper-container') as HTMLCollectionOf<HTMLElement>;
+  console.log(cropperContainer.item(1));
+
+  window.addEventListener('touchstart', (e) => {
+    console.log(e);
+    e.stopPropagation();
+    e.preventDefault(); //Most important
+  })
   console.log(this.imageFromProfilePage);
   this.uploadedPhotoURL = this.imageFromProfilePage.dataUrl;
+
+  // Since I am using this Cropper in a Modal, it needs to
+  // load AFTER the modal loads. SetTimeout was the solution here.
+  setTimeout(() => {
+    let cropperCanvas = document.getElementsByClassName('cropper-canvas')as HTMLCollectionOf<HTMLElement>;
+    console.log(cropperCanvas);
+    // The Canvas can be no bigger than the Container
+    // cropperCanvas.item(0).style.maxHeight = '100px';
+  }, 0);
 }
 
   back() {
@@ -61,21 +80,9 @@ public ngOnInit() {
 
   crop(imageDestination) {
     console.log('cropping');
-
-    // let blob = this.dataURLtoBlob(uploadedPhotoURL);
-
     this.modal.dismiss(
       imageDestination
     );
 
-  }
-
-  dataURLtoBlob(dataurl) {
-    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new Blob([u8arr], {type: mime});
   }
 }

@@ -1,7 +1,13 @@
 ion-toolbar {
   padding: 0px;
 }
-
+ion-list {
+  background: none;
+}
+ion-item{
+  border-radius: 5px;
+  border: 2px solid rgba(117, 116, 116, 0.3);
+}
 .new-message{
   color: #faa71b;
 }
@@ -14,9 +20,12 @@ h2 {
 .blue-button {
   animation: none;
 }
-
-
-
+.info-button {
+  --background: #0055a5;
+  --color: white;
+  font-weight: 600;
+  margin-right: 20px; width: 80px;
+}
 .mentor-thumbnail {
   position: absolute;
   top: 25px;
@@ -29,8 +38,6 @@ h2 {
   background-position: center;
   border-radius: 50px;
 }
-
-
 .mentors {
   background: white;
   height: auto;

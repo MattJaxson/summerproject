@@ -27,6 +27,7 @@ ion-header {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  border-radius: 50px;
 }
 
 .job-details {
@@ -100,14 +101,12 @@ h6, p {
 }
 
 #job-summary {
-  font-size: 1.3em;
+  font-size: 1.1em;
   line-height: 1.3em;
   position: relative;
-  color: #333;
-  opacity: 0.7;
+  color: #222;
   top: -60px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #005191;
+  padding-bottom: 8px;
 }
 
 #company-name {
