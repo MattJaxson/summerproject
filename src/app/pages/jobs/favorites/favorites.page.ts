@@ -69,7 +69,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
             console.log('Favorite jobs:')
             console.log(favDetails)
             if(this.favoriteJobsObj.length == 0) {
-              console.log('wassiup');
+              console.log('wassup');
               this.noFavorites = true;
             } else {
               this.noFavorites = false;
