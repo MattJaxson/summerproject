@@ -29,69 +29,91 @@ ion-header {
   background-position: center;
   border-radius: 50px;
 }
+.filter-message{
+  color: #888;
+  opacity: 0;
+  animation: filter-message-slide 0.5s ease 1s forwards;
+  float: right;
 
+  span {
+    font-weight: 600;
+  }
+}
+@keyframes filter-message-slide {
+  0%{
+    transform: translateX(10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
 .job-details {
-  --background: #edf3f8;
-  --background-hover: #edf3f8;
-  color: #005191;
-  margin-right: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  height: 45px;
-  border-radius: 5px;
-}
-
-#job-details:hover{
-  color: white;
-}
-
-#favorites-button {
-  opacity: 1;
-  --background: #005191;
-  --background-hover: #005191;
+  --background: #0055a5;
   --color: white;
-  --border-style: solid;
-  --border-width: 1px;
-  --border-color: white;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  width: 100px;
-  height: 50px;
-  font-size: 0.8em;
+  --background-hover: rgb(24, 40, 54);
+  height: 24px;
+  --width: 100px;
+  font-size: 0.5em;
   font-weight: 600;
+  display: block;
   position: relative;
-  right: 15px;
+  top: 10px;
 }
+.desktop-toolbar{
+  --background: none;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #33333326;
 
-
-ion-searchbar {
-  margin-left: 10px;
-  --background: white;
-  border-radius: 5px;
-  --height: 60px;
-  width: 95%;
-  font-size: 0.8em;
-  --box-shadow: none;
-  --cancel-button-color: #005191;
-  --clear-button-color: #005191;
-  --placeholder-opacity: 0.5;
-  --icon-color: #005191;
-  transition: 0.5s;
-  padding: 5px;
+  h1 {
+    color: #0055a5;
+  }
 }
-
-ion-searchbar:focus {
-  border: 1px solid #005191;
+.favorites-button {
+  --color: white;
+  --background: #e3405f;
+  --background-hover: linear-gradient(#e3405f, #5f4045);
+  height: 24px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
 }
-
+.filter-button {
+  --color: white;
+  --background: #333;
+  --background-hover: linear-gradient(#e3405f, #da3a57);
+  height: 24px;
+  --border-radius: 5px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
+}
 .job-section {
   background: white;
+  border-radius: 10px;
   height: auto;
   color: #777;
   width: 100%;
+  opacity: 0;
+  padding: 2em 0px;
   margin-bottom: 50px;
-  box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+  animation: job-section-slide 0.5s ease 0.5 forwards;
 }
-
+@keyframes job-section-slide {
+  0%{
+    transform: translateX(-20px);
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  0%{
+  }
+}
 h6, p {
   display: block;
 }
@@ -101,12 +123,9 @@ h6, p {
 }
 
 #job-summary {
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 1.3em;
-  position: relative;
   color: #222;
-  top: -60px;
-  padding-bottom: 8px;
 }
 
 #company-name {

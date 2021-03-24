@@ -22,7 +22,6 @@ export class EventsPage implements OnInit {
   profileSub: Subscription;
   eventsGoingSub: Subscription;
   deleteEventSub: Subscription;
-  allFairs = [];
   eventsGoing;
   eventsGoingLength;
   searching = false;
@@ -42,12 +41,6 @@ export class EventsPage implements OnInit {
     private eventEmitterService: EventsEventEmitterService
     ) { }
   ngOnInit() {
-    // this.fairs.getFairs().subscribe(
-    //   data => {
-    //     console.log(data);
-    //     this.allFairs = Object.values(data);
-    //   }
-    // )
     this.deleteEvent();
 
     if (this.eventEmitterService.subsVar == undefined) {
@@ -84,6 +77,8 @@ export class EventsPage implements OnInit {
       this.allEvents = Object.values(events);
       this.allEventsLength  = this.allEvents.length;
       this.allEvents.reverse();
+
+      console.log(this.allEvents);
 
       // Second Array of Events
       this.loadedAllEvents = Object.values(events);
@@ -237,11 +232,6 @@ export class EventsPage implements OnInit {
       event.target.complete();
       console.log('Events Refreshed');
     }, 2000);
-
-    await this.searchbar.getInputElement().then(  (searchbarInputElement) => {
-      searchbarInputElement.value = '';
-      this.noSearchInput = false;
-    });
 
     await console.log('Refreshing Events Page..');
   }

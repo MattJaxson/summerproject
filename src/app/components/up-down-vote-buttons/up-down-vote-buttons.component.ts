@@ -17,6 +17,7 @@ export class UpDownVoteButtonsComponent implements OnInit {
 
   @Input() postID;
   @Input() postEmail;
+  @Input() isUser;
   upVotes$ = new BehaviorSubject(null);
   downVotes$ = new BehaviorSubject(null);
 

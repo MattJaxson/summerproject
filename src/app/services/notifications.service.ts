@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NotificationsService {
   BACKEND_URL = environment.url;
-  notifications$ = new BehaviorSubject(['']);
+  notifications$ = new BehaviorSubject([]);
 
   constructor(
     private http: HttpClient) { }

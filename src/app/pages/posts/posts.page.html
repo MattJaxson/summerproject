@@ -9,9 +9,9 @@
       <ion-button (click)="following()">
         <ion-icon class="header-icons" src="../../assets/icon/following.svg"></ion-icon>
       </ion-button>
-      <!-- <ion-button (click)="chat()">
-        <ion-icon size="medium" src="../../assets/icons/chat-box-icon.svg"></ion-icon>
-      </ion-button> -->
+      <ion-button (click)="myPosts(this.userEmail)">
+        <ion-icon class="header-icons" name="list"></ion-icon>
+      </ion-button>
       <ion-button (click)="notifications()">
         <ion-icon class="header-icons" src="../../assets/icon/notifications-icon.svg"></ion-icon>
         <span style="color: #e4405f; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
@@ -21,16 +21,6 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <!-- <ion-toolbar>
-      <ion-row class="ion-align-items-center">
-        <ion-col push-xs=".45"  push-sm="0.35"  size-xs="1.2">
-          <img src="{{userProfilePicture}}" style="background: #999; border-radius: 100px; height: 28px; width: 28px;">
-        </ion-col>
-        <ion-col push-sm=".5" size="7">
-          <p id="username">{{userFullName}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
@@ -123,7 +113,8 @@
                       wrap="soft"
                       type="text"
                       #postComment
-                      placeholder="Add a Comment" formControlName="comment">
+                      placeholder="Add a Comment"
+                      formControlName="comment">
                   </ion-textarea>
                   <!-- Comment Post Button -->
                   <ion-button
@@ -165,6 +156,10 @@
             </ion-button>
             <ion-button class="add-button"  (click)="addPost()">
               Add Post
+            </ion-button>
+            <ion-button style="--background: none; --background: none; position: relative; top: 16px;" (click)="notifications()">
+              <ion-icon style="font-size: 1.5em;" src="../../assets/icon/notifications-icon-blue.svg"></ion-icon>
+              <span style="color: #e4405f; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
             </ion-button>
           </ion-col>
         </ion-row>
@@ -227,7 +222,6 @@
             <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
               <ion-textarea
                   (ionBlur)="this.searchBarBlur()"
-                  (ionFocus)="this.searchBarHide()"
                   class="comment-input-mobile"
                   autogrow="true"
                   autocapitalize="true"

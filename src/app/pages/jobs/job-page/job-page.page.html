@@ -9,39 +9,40 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-        <ion-col class="description" size-xs="11" size-sm="10" size-md="8" size-lg="8">
-            <!-- Back and Favorite Buttons (Desktop) -->
-            <ion-row class="ion-align-items-end">
-              <ion-col push="1">
-                <div class="company-logo" style="height: 90px; width: 90px;"></div>
-              </ion-col>
-              <ion-col  class="ion-float-right" size="2" push-xs="2" push-sm="2" push-md="2">
-                <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
-              </ion-col>
-              <ion-col size="2">
-              </ion-col>
-            </ion-row>
-
-            <ion-row>
-              <ion-col push="1" size="10">
-                <h1 id="job-title">{{jobTitle}}</h1>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                <img style="border-radius: 50px;" height="50" src="{{this.jobLogo}}">
                 <h2 id="company-name">{{jobCompanyName}}</h2>
-                <p id="company-name">{{jobCompanyEmail}}</p>
-                <p id="job-full-description">{{jobFullJobDescription}}</p>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="6"  class="ion-text-center">
-        <ion-button (click)="applyForJob()" class="orange-button" style="width: 150px; margin-bottom: 20px;">Apply</ion-button>
-        <ion-button  class="ion-hide-md-down blue-button"(click)="goBack()">
-          Go Back</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
       </ion-col>
     </ion-row>
-
-
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10">
+        <div class="spacer"></div>
+        <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">
+        <div class="toolbar-company-info">
+          <h2>{{jobCompanyName}}</h2>
+          <h3>{{jobTitle}}</h3>
+          <p>${{jobRateOfPay}} / hr</p>
+        </div>
+        <div class="spacer"></div>
+        <p style="margin: 0;" id="job-full-description">{{jobFullJobDescription}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6"  class="ion-text-center">
+        <ion-button (click)="applyForJob()" class="orange-button" style="width: 150px; margin: 120px auto;">Apply</ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

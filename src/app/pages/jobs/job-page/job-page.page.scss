@@ -1,108 +1,85 @@
 ion-title {
   margin: 0;
 }
+.toolbar-company-info{
+  display: inline-block;
+  margin-left: 8px;
 
+  h2, h3, p {
+    margin: 0;
+  }
+  h2 {
+    color: #222;
+    font-weight: 600;
+  }
+  h3 {
+    color: #666
+  }
+  p {
+    color: white;
+    background: #4dc066;
+    width: 71px;
+    padding: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}
 .company-logo {
   border-radius: 50px;
   background-image: url("../../../../assets/journi-logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  opacity: 0;
   animation: logo-slide-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
 }
-
 span {
   font-weight: 700;
 }
-
-.blue-button {
+.back-button {
+  --color: white;
+  --background: #0055a5;
+  --background-hover: linear-gradient(#0055a5, #0d2e4d);
+  height: 24px;
+  --border-radius: 5px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
   display: block;
-  margin: 0px auto 200px auto;
 }
-
-.description {
-  // padding: 10px 0 10px 0;
-  // box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-  // margin: 20px 0 20px 0;
-}
-
-@media only screen and (max-width: 992px) {
-  .description {
-    margin: 10px 0 10px 0;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .orange-button{
-    width: 160px;
-  }
-}
-
-
 #job-summary {
   font-size: 1.1em;
   line-height: 29px;
   position: relative;
   color: #666;
   opacity: 0.7;
-  top: -60px;
+  // top: -60px;
 }
-
 #company-name {
-  margin-top: 0;
-  margin-bottom: 15px;
-  opacity: 0;
-  animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
+  margin-top: 22px;
+  margin-left: 8px;
+  color: #222;
 }
-
 #job-title {
   font-size: 2em;
   font-weight: 900;
-  padding-top: 20px;
-  opacity: 0;
   color: #005191;
-  border-top: 1px solid #005191;
-  animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
 }
-
 #job-posted-date {
   font-size: 10px;
   opacity: 0.7;
   position: relative;
   top: -43px
 }
-
 #job-full-description {
   font-size: 1.2em;
   line-height: 29px;
   color: #333;
-  opacity: 0;
   margin: 50px 0;
-  animation: header-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards;
+  border-top: 1px solid #99999975;
+  padding-top: 16px;
 }
-
-#heart-icon {
-  position: relative;
-  top: -20px
-}
-
-// @media screen and (max-width: 992px) {
-//   #heart-icon{
-//     position: relative;
-//     left: 100px;
-//   }
-// }
-
-@keyframes header-slide-up {
-  0% {
-    transform: translateY(8px);
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
 @keyframes logo-slide-in {
   0% {
     transform: translateX(-20px);

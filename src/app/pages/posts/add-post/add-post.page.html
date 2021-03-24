@@ -34,7 +34,7 @@
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="9" size-lg="7" size-xl="6">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <form [formGroup]="textPostForm" (ngSubmit)="textPostForm.value.post.length > 0 ? post(this.creatorName, this.creatorEmail, this.creatorProfilePicture, this.hashtags, this.textPostForm.controls.post.value, this.textPostForm.controls.title.value) : null">
 
           <ion-list class="line-input">
@@ -84,21 +84,17 @@
                 </ion-textarea>
               </ion-item>
               <p class="char-limit">{{postChars.value.length}} / 3000 character limit</p>
+             <div class="ion-text-center">
               <ion-button
-                  class="orange-button"
-                  type="submit">
-                    Submit
-                  </ion-button>
+              class="orange-button"
+              type="submit">
+                Submit
+              </ion-button>
+             </div>
             </ion-list>
         </form>
       </ion-col>
     </ion-row>
-
-    <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center" size-lg="6" style="margin-bottom: 100px;">
-      </ion-col>
-    </ion-row>
-
   </ion-grid>
 
 </ion-content>

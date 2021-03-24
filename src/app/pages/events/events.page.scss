@@ -1,17 +1,11 @@
 ion-header {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
-
-#searchbar-wrapper {
-  transition: 0.5s;
-  height: 60px;
-  background: #edf3f8;
- }
-
- .fairs-info{
-   background: #eee;
- }
-
+h1 {
+  font-size: 3em;
+  color: #0055a5;
+  font-weight: 600;
+}
 #my-events-button {
   opacity: 1;
   --background: #005191;
@@ -39,15 +33,13 @@ ion-card {
   margin: 0px 0 50px 0;
   // padding-bottom: 20px;
   position: relative;
-  top: -5px;
-  width: 320px;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.1);
 }
 
 ion-card {
   // min-height: 300px;
   // max-height: 500px;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 ion-card ion-card-content {
@@ -113,18 +105,11 @@ ion-button {
 }
 
 ion-card-title {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 600;
   color: #0055a5;
 }
 
 ion-card-subtitle {
-  font-size: 1.3em;
-}
-
-@media screen and (min-width: 1200px) {
-  ion-card.event-card {
-    height: 44vw;
-    max-height: 670px;
-  }
+  font-size: 1em;
 }

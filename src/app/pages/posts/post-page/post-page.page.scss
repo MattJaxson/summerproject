@@ -7,12 +7,17 @@
 .post {
   margin-bottom: 40px;
   background: #edf3f8;
-  padding: 20px 0px;
+  padding: 80px 0px;
 }
 
 .post-title {
   font-weight: 800;
-  color: #005191;
+  color: #0055a5;
+  font-size: 1.2em;
+  position: relative;
+  top: -26px;
+  line-height: 25px;
+  margin: 10px 0px 0px 0px;
 }
 
 .profile-picture {
@@ -27,8 +32,8 @@
 
 .post-name {
   font-size: 1.2em;
-  font-weight: 500;
-  color: #005191;
+  font-weight: 600;
+  color: #444;
   margin: 0;
   line-height: 18px;
   display: inline-block;
@@ -41,17 +46,27 @@
   display: block;
 }
 
-.blue-button {
-  animation: none;
-  opacity: unset;
+.blue-button-small {
+  --color: white;
+  --background: #0055a5;
+  --background-hover: linear-gradient(#0055a5, #0055a2);
+  height: 24px;
   width: 100px;
-  height: 36px;
-  margin-top: 30px;
-  margin-bottom: 4px;
-  position: unset;
-  font-size: 0.7em;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
 }
-
+.hashtags{
+  position: relative;
+  top: -32px;
+}
+.hashtag{
+  font-size: 0.8em;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+  color: #ea8400;
+}
 .post-mobile {
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -78,9 +93,8 @@
 }
 
 .post-content{
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 25px;
-  text-align: justify;
 }
 
 .back-button {
@@ -194,6 +208,7 @@
   border-radius: 5px;
   --color: #005191;
   font-size: 0.6em;
+  font-weight: 600;
   margin-right: 10px;
 }
 .report{
@@ -204,6 +219,7 @@
   border-radius: 5px;
   --color: #888;
   font-size: 0.6em;
+  font-weight: 600;
   margin-right: 10px;
 }
 .edit{
@@ -214,6 +230,7 @@
   border-radius: 5px;
   --color: #faa71b;
   font-size: 0.6em;
+  font-weight: 600;
   margin-right: 10px;
 }
 .delete{
@@ -222,6 +239,7 @@
   border-radius: 5px;
   --color: white;
   font-size: 0.6em;
+  font-weight: 600;
   margin-right: 10px;
 }
 .follow {
@@ -233,6 +251,7 @@ border-radius: 5px;
 --color: white;
 --background: linear-gradient(#5ad8b2, #40c59d);
 font-size: 0.7em;
+font-weight: 600;
 margin-right: 10px;
 }
 
@@ -295,7 +314,6 @@ ion-fab {
 .comment-text {
   color: #222;
   font-size: 1.2em;
-  margin: 0px 0 20px 0;
 }
 
 .reply-wrapper {
@@ -321,30 +339,16 @@ ion-fab {
 }
 
 .comment-input {
-  background: white;
+  background: rgba(213, 232, 236, .3);
   height: auto;
-  margin: 10px 0 0px 0;
-  width: 100%;
+  margin: 20px 0 10px 0;
   box-shadow: none;
-  border: 2px solid rgba(0, 81, 145, 1);
+  padding-left: 10px;
+  border: 3px solid #0055a5;
   border-radius: 2px;
-  padding-left: 10px;
-  transition: 0.5s;
-  transition-timing-function: linear;
-}
-
-.comment-input:hover {
-  background: rgba(250, 167, 27, 0.02);
-  height: auto;
-  margin: 12px 0 0px 0;
-  box-shadow: 1px 1px 3px #999;
-  border: 1px solid rgba(0, 81, 145, 1);
-  border-radius: 5px;
-  padding-left: 10px;
-  transition: 0.5s;
+  transition: 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .comment-input:focus {
   background: rgba(250, 167, 27, 0.04);
   height: auto;
@@ -353,7 +357,6 @@ ion-fab {
   border-radius: 5px;
   padding-left: 10px;
   transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 #reply-date {
   font-size: 0.7em;

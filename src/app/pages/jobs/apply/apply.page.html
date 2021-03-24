@@ -9,39 +9,56 @@
 
 <ion-content>
   <ion-grid>
-      <!-- Logo, Title, Company Name -->
-      <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10"size-md="8" size-lg="10">
-            <div class="company-logo" style="height: 80px; width: 80px;"></div>
-
-            <h1 class="job-title">{{jobTitle}}</h1>
-
-            <h2 class="company-name">{{jobCompanyName}}</h2>
-
-        </ion-col>
-      </ion-row>
-
-        <!-- Instructions -->
-        <ion-row class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-            <p style="color: #0055a5;font-weight: 600;font-size: 1.2em;margin: 0;">Please go over your information before you send your application.</p>
-          </ion-col>
-        </ion-row>
-
-        <!-- Forms -->
-        <ion-row class="ion-justify-content-center" style="margin: 20px auto;">
-            <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="10">
-              <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
-                <ion-list class="line-input">
-
-                  <div class="info-section">
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">
+                <div class="desktop-toolbar-company-info">
+                  <h2>{{jobCompanyName}}</h2>
+                  <h3>{{jobTitle}}</h3>
+                  <p>${{jobRateOfPay}} / hr</p>
+                </div>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10">
+        <div class="spacer"></div>
+        <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">
+        <div class="toolbar-company-info">
+          <h2>{{jobCompanyName}}</h2>
+          <h3>{{jobTitle}}</h3>
+          <p>${{jobRateOfPay}} / hr</p>
+        </div>
+        <div class="spacer"></div>
+      </ion-col>
+    </ion-row>
+    <!-- Instructions -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+            <p style="color: #888; font-weight: 600; font-size: 1.2em;margin: 0;">Please go over your information before you send your application. You can edit your profile's phone number and Resume from here. After you hit submit, an email with your FYF Profile, Resume, and application message will be sent to the employer.</p>
+      </ion-col>
+    </ion-row>
+    <!-- Forms -->
+    <ion-row class="ion-justify-content-center" style="margin: 20px auto;">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
+          <div class="info-section">
                     <p class="instructions" >Phone Number</p>
                   <ion-item>
                     <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
                   </ion-item>
-                  </div>
-                  <div class="info-section">
-
+          </div>
+          <div class="info-section">
                     <p class="instructions" >Resume</p>
                       <ion-button class="blue-button" style="height: 45px;" (click)="viewResumeModal()">
                         View Resume
@@ -51,32 +68,23 @@
                         <label style="margin-right: 10px;">Upload Resume</label>
                       </ion-input>
 
-                  </div>
-                  <div class="info-section">
-
-                    <p class="instructions" >Why are you a good fit for this job?</p>
-                      <ion-textarea
-                      style="background: #d1d8e0"
-                      formControlName="reasonTextArea"
-                      maxlength="2500"
-                      rows="15"
-                      placeholder="Add message here - 2500 characters max"
-                      (keydown.control.enter)="finishApplication()"
-                      ></ion-textarea>
-                  </div>
-
-
-                </ion-list>
-                <p></p>
-                <ion-row>
-                  <ion-col class="ion-text-center" size="12">
-                    <ion-button (click)="finishApplication()" class="orange-button next-button">Submit</ion-button>
-                    <ion-button class="ion-hide-md-down blue-button" (click)="goBack()">
-                      Go Back</ion-button>
-                  </ion-col>
-                </ion-row>
-              </form>
-              </ion-col>
-        </ion-row>
+          </div>
+          <div class="info-section">
+            <p class="instructions" >Why are you a good fit for this job?</p>
+            <ion-textarea
+              class="message-input"
+              formControlName="reasonTextArea"
+              maxlength="2500"
+              rows="15"
+              placeholder="Add message here - 2500 characters max"></ion-textarea>
+          </div>
+          <ion-row>
+            <ion-col class="ion-text-center" size="12">
+              <ion-button (click)="finishApplication()" style="margin: 120px auto;" class="orange-button next-button">Submit</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

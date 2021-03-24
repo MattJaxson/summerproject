@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CustomComponentsModule } from '../../../components/custom-component.module';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -14,6 +14,7 @@ import { ViewResumePageModule } from 'src/app/modals/view-resume/view-resume.mod
   imports: [
     CommonModule,
     FormsModule,
+    CustomComponentsModule,
     ReactiveFormsModule,
     IonicModule,
     ApplyPageRoutingModule,

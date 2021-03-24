@@ -9,7 +9,7 @@ const routes: Routes = [
     component: JobPagePage
   },
   {
-    path: 'apply/:title/:companyName/:companyEmail',
+    path: 'apply/:title/:companyName/:companyEmail/:companyLogo/:rateOfPay',
     loadChildren: () => import('../apply/apply.module').then( m => m.ApplyPageModule)
   },
 ];

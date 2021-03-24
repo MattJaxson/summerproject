@@ -39,13 +39,14 @@ html, body {
 
 * {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  transition: 500ms;
 }
 
 ion-grid {
   --ion-grid-padding: 0px;
 }
-
+.spacer {
+  margin: 50px 0;
+}
 #logo {
   height: 40px;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { PostsService } from 'src/app/services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -56,6 +56,7 @@ export class PostPagePage implements OnInit, OnDestroy {
   post: string;
   comments;
   followers: [];
+  hashtags: [];
   date: string;
   creatorEmail: string;
   creatorName: string;
@@ -81,6 +82,7 @@ export class PostPagePage implements OnInit, OnDestroy {
     private postEmitterService: PostPageEmitterService,
     private singlePostEmitterService: SinglePostPageEmitterService,
     private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
     private posts: PostsService,
     private profile: ProfileService,
     private formBuilder: FormBuilder,
@@ -245,7 +247,6 @@ export class PostPagePage implements OnInit, OnDestroy {
         this.tabBar.style.height = '70px';
     });
   }
-
   // for when the user un focuses out of the comment textarea but hasnt submitted the comment
   blur() {
     this.textarea.getInputElement()
@@ -254,8 +255,6 @@ export class PostPagePage implements OnInit, OnDestroy {
         this.tabBar.style.height = '70px';
     });
   }
-
-
   async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
     console.log(comment);
 
@@ -269,7 +268,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     toast.then(toast => toast.present());
   }
-
   async commentLoading(postID, userFullName, userEmail, userProfilePicture, comment) {
 
     this.postsSub = this.posts.comment(
@@ -318,7 +316,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     const { role, data } = await loading.onDidDismiss();
   }
-
   async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate) {
     // Get information from comment
     await console.log('Attemping to report comment');
@@ -326,7 +323,6 @@ export class PostPagePage implements OnInit, OnDestroy {
     await this.reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, this.userEmail, this.userFullName);
 
   }
-
   async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
 
     const reportModalConfig = await this.modal.create({
@@ -346,12 +342,10 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await reportModalConfig.present();
   }
-
   async reply(commentID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
     await console.log('Attemping to reply to comment');
     await this.replyModal(commentID, this.postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail);
   }
-
   async replyModal(commentID, postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
     const replyModalConfig = await this.modal.create({
       component: ReplyCommentPage,
@@ -369,7 +363,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await replyModalConfig.present();
   }
-
   // tslint:disable-next-line: max-line-length
   async repliesModal(postID, replies, comment, commentID, commentUserFullName, commentUserEmail, commentDate, userProfilePicture, userFullName, userEmail) {
     const repliesPageModalConfig = await this.modal.create({
@@ -391,14 +384,11 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await repliesPageModalConfig.present();
   }
-
-
   async editComment(commentID, commentCotents, postID, userEmail) {
     await console.log(commentID);
     await console.log('Attemping to edit comment');
     await this.editCommentModal(commentID,commentCotents, postID, userEmail);
   }
-
   async editCommentModal(commentID, commentCotents, postID, userEmail) {
     const editAlertConfig = await this.modal.create({
     component: EditCommentPage,
@@ -412,13 +402,11 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await editAlertConfig.present();
   }
-
   async editPost(postID, post) {
 
     await console.log('Attemping to edit comment');
     await this.editPostModal(postID, post);
   }
-
   async editPostModal(postID, post) {
     const editPostModalConfig = await this.modal.create({
     component: EditPostPage,
@@ -430,14 +418,12 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await editPostModalConfig.present();
   }
-
   async deleteComment(commentID) {
     console.log('deleting comment..');
     console.log(this.postID);
     console.log(commentID);
     this.deleteCommentAlert(this.postID, commentID);
   }
-
   async deleteCommentAlert(postID, commentID) {
     const alert = await this.alert.create({
       header: 'Are you sure you want to delete this comment? This cannot be undone.',
@@ -463,7 +449,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await alert.present();
   }
-
   async deleteCommentLoading(postID, commentID) {
 
     this.deleteCommentSub = this.posts.deleteComment(this.postID, commentID).subscribe(
@@ -508,14 +493,13 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+    this.changeDetectorRef.detectChanges();
   }
-
   async deletePost(postID) {
     console.log('deleting post..');
     console.log(postID);
     this.deletePostAlert(postID);
   }
-
   async deletePostAlert(postID) {
     const alert = await this.alert.create({
       header: 'Are you sure you want to delete this post? This cannot be undone.',
@@ -538,7 +522,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await alert.present();
   }
-
   async deletePostLoading(postID) {
     console.log(postID);
     this.deletePostSub = this.posts.deletePost(postID).subscribe(
@@ -560,7 +543,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     const { role, data } = await loading.onDidDismiss();
   }
-
   getPostInfo() {
     this.userDetailsSub = this.profile.getUserDetails().subscribe(
       details => {
@@ -580,6 +562,7 @@ export class PostPagePage implements OnInit, OnDestroy {
             const title = postInfo['title'];
             const post = postInfo['post'];
             const followers = postInfo['followers'];
+            const hashtags = postInfo['hashtags'];
             let comments = postInfo['comments'];
             let following = false;
             let date = formatDistanceToNow(
@@ -646,20 +629,18 @@ export class PostPagePage implements OnInit, OnDestroy {
             this.creatorProfilePicture = creatorProfilePicture;
             this.date = date;
             this.followers = followers;
+            this.hashtags = hashtags;
             this.comments = comments.reverse();
             this.following = following;
             this.post = post;
             this.title = title;
             this.userProfilePicture = userProfilePicture;
             this.userFullName = userFullName;
-
-
           }
         );
       }
     );
   }
-
   filterLanguage(comment) {
     const updatedComment = comment;
     updatedComment.replace('fuck',  '****');
@@ -669,7 +650,6 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     return updatedComment;
   }
-
   async doRefresh(event) {
     this.userDetailsSub = this.profile.getUserDetails().subscribe(
       details => {

@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subscription} from 'rxjs';
+import { Subscription} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-import { IonTabBar, ToastController } from '@ionic/angular';
-import { HeartIconComponent } from '../../../components/heart-icon/heart-icon.component';
+import { ToastController } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { JobsService } from 'src/app/services/jobs.service';
@@ -18,16 +16,17 @@ import { PlatformLocation } from '@angular/common';
 })
 export class JobPagePage implements OnInit, OnDestroy {
 
-  jobObj;
-  jobId;
-  jobTitle;
-  jobCompanyName;
-  jobCompanyEmail;
-  jobSummary;
-  jobFullJobDescription;
-  jobRateOfPay;
-  jobDatePosted;
+  jobObj: string;
+  jobId: string;
+  jobTitle: string;
+  jobCompanyName: string;
+  jobCompanyEmail: string;
+  jobSummary: string;
+  jobFullJobDescription: string;
+  jobRateOfPay: string;
+  jobDatePosted: string;
   favoriteJobsObj;
+  jobLogo: string;
 
   profileSub: Subscription;
   favoriteJobsSub: Subscription;
@@ -61,6 +60,8 @@ export class JobPagePage implements OnInit, OnDestroy {
     // tslint:disable-next-line: radix
     const title  = this.activatedRoute.snapshot.paramMap.get('title');
     // tslint:disable-next-line: radix
+    const companyLogo  = this.activatedRoute.snapshot.paramMap.get('companyLogo');
+    // tslint:disable-next-line: radix
     const companyName  = this.activatedRoute.snapshot.paramMap.get('companyName');
     // tslint:disable-next-line: radix
     const companyEmail  = this.activatedRoute.snapshot.paramMap.get('companyEmail');
@@ -73,6 +74,7 @@ export class JobPagePage implements OnInit, OnDestroy {
 
     this.jobId = id;
     this.jobTitle = title;
+    this.jobLogo = companyLogo;
     // this.jobPosted = posted;
     this.jobCompanyName = companyName;
     this.jobCompanyEmail = companyEmail;
@@ -110,7 +112,7 @@ export class JobPagePage implements OnInit, OnDestroy {
 
   applyForJob() {
     // tslint:disable-next-line: max-line-length
-    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail ]);
+    this.router.navigate(['/home/jobs/job-page/:id/:title/:companyLogo/:companyName/:companyEmail/:summary/:fullJobDescription/:rateOfPay/apply', this.jobTitle, this.jobCompanyName, this.jobCompanyEmail, this.jobLogo, this.jobRateOfPay ]);
   }
 
   favoriteThisJob() {

@@ -11,7 +11,6 @@ export class EventsEventEmitterService {
   subsVar: Subscription;
 
   constructor(
-    private router: Router
   ) { }
 
   onBackAction() {

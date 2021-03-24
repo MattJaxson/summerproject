@@ -1,17 +1,30 @@
-<ion-grid style="margin-bottom: 20px;">
-    <ion-row class="ion-justify-content-center">
-        <ion-col size="12">
-            <div class="ion-text-right">
-                <ion-button class="grey-button" (click)="eventPage(event)">
+<ion-grid>
+    <ion-row class="ion-hide-lg-down ion-justify-content-center">
+        <ion-col style="height: 20px;" size="5">
+            <ion-button class="grey-button" (click)="eventPage(event)">
                     Details
-                </ion-button>
-                <ion-button class="going" *ngIf='!going' (click)="toggleGoingState(event)">
-                    Go
-                </ion-button>
-                <ion-button class="not-going" *ngIf='going' (click)="toggleGoingState(event)">
-                    Cancel
-                </ion-button>
-            </div>
+            </ion-button>
+        </ion-col>
+        <ion-col style="height: 20px;" size="5">
+            <ion-button class="going" *ngIf='!going' (click)="toggleGoingState(event)">
+                Go
+            </ion-button>
+            <ion-button class="not-going" *ngIf='going' (click)="toggleGoingState(event)">
+                Cancel
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 24px;" class="ion-hide-lg-up ion-justify-content-center">
+        <ion-col size="11">
+            <ion-button class="grey-button-mobile" (click)="eventPage(event)">
+                Details
+            </ion-button>
+            <ion-button class="going-mobile" *ngIf='!going' (click)="toggleGoingState(event)">
+                Go
+            </ion-button>
+            <ion-button class="not-going-mobile" *ngIf='going' (click)="toggleGoingState(event)">
+                Cancel
+            </ion-button>
         </ion-col>
     </ion-row>
 </ion-grid>

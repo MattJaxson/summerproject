@@ -238,7 +238,8 @@ export class PostsPage implements OnInit, OnDestroy {
 
       this.notificationsSub = this.notificationsService.notifications$.subscribe(
         notifications => {
-          console.log(notifications.length);
+
+          console.log(notifications);
           this.notificationsLength = notifications.length;
         }
       );

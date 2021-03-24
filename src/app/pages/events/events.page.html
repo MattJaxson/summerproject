@@ -1,8 +1,7 @@
 <ion-header class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-   <ion-title>Events - Home</ion-title>
-
+   <ion-title>Events</ion-title>
        <ion-buttons slot="end">
         <ion-button (click)="going()">
          <!-- My Events ({{ eventsGoingLength }}) -->
@@ -13,112 +12,46 @@
 </ion-header>
 
 <ion-content>
-
-    <!-- Refresh -->
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <!-- Refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-
-  <!-- Mobile -->
-  <ion-grid class="ion-hide-lg-up">
-    <ion-row class="ion-justify-content-center">
-    </ion-row>
-    <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
-      <ion-col size="6">
-        <h6 class="text-header">There were no search results with that name.</h6>
-        <ion-button class="orange-button" expand="block" (click)="doRefresh($event)">
-          Clear Search
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
-    <!-- Mobile Events Cards -->
-    <ion-row style="margin-top: 30px;" class="ion-justify-content-center" *ngIf="!noSearchInput" >
-      <ion-col size-lg="6" size-md="8" size-sm="10" size-xs="11.5 ">
-        <ion-card style="margin: 24px auto 54px auto;" *ngFor="let event of allEvents">
-            <div *ngIf="allEvents.length === 0">
-              <p>There are no Events, please come back later.</p>
-            </div>
-            <div class="ion-text-center">
-              <img height="260" src="{{event.photo}}" />
-            </div>
-            <ion-card-header (click)="eventPage(event)">
-              <ion-card-title>{{ event.title }}</ion-card-title>
-              <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
-              <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
-              <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
-              <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
-            </ion-card-header>
-            <ion-card-content>
-                <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
-           </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid class="ion-hide-md-down">
-
-    <ion-row style="margin: 50px 0 50px 0;">
-
-      <!-- Search Bar -->
-      <ion-col size="8.33" push="1">
-        <ion-searchbar
-            no-border
-            debounce="800"
-            showCancelButton="focus"
-            placeholder="Search Event Titles"
-            (ionChange)="filter($event)"
-            >
-      </ion-searchbar>
-      </ion-col>
-      <ion-col size="2" push="0.5">
-        <ion-row>
-          <ion-col size="12">
-            <ion-button class="blue-button ion-float-right" style="width: 170px; position: fixed; top: 60px;" (click)="going()">
-              <ion-icon slot="start" src="../../assets/icons/my-events-icon.svg"></ion-icon>
-            </ion-button>
+  </ion-refresher>
+  <ion-grid>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="10" size-xl="10.5">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="5" pull-xl="0.5" size-xl="4">
+            <h1>Events</h1>
+          </ion-col>
+          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="5" push-xl="0.5" size-xl="4">
+            <img height="60" class="ion-float-right" src="../../../assets/icons/my-events-icon.svg">
           </ion-col>
         </ion-row>
-
       </ion-col>
     </ion-row>
-
-    <ion-row *ngIf="noSearchInput" class="ion-justify-content-center">
-      <ion-col size="6">
-        <h6 class="text-header" style="margin-top: 25px;">There were no search results with that name.</h6>
-        <ion-button class="orange-button" expand="block" (click)="doRefresh($event)">
-          Clear Search
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
     <!-- Card List -->
-    <ion-row>
-      <ion-col push="1" size="8" size-xl="8">
-        <ion-row>
-          <!-- Search Results -->
-          <ion-col size="11" *ngIf="searching && allEventsLength > 0" class="ion-text-center">
-            <ion-title style="background: rgba(230,230,230,1); padding: 20px; margin-top: 35px;">{{allEventsLength}} search result(s) for '{{searchTerm}}'</ion-title>
+    <ion-row style="padding-top: 40px;" class="ion-justify-content-center">
+      <!-- Individual Cards -->
+      <ion-col size-xs="12" size-sm="10" size-md="10" size-lg="10" size-xl="10.5">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="3" size-xl="3" *ngFor="let event of allEvents">
+            <ion-card class="event-card">
+              <img src="../assets/Journi_flyer.jpg" />
+              <ion-card-header>
+                <ion-card-title>{{ event.title }}</ion-card-title>
+                <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
+                <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
+                <!-- <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle> -->
+                <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
+              </ion-card-header>
+              <ion-card-content class="ion-text-center">
+                <ion-toolbar style="--background: none; height: auto;">
+                  <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
+                </ion-toolbar>
+              </ion-card-content>
+            </ion-card>
           </ion-col>
-          <!-- Individual Cards -->
-          <ion-col size-lg="5.5" *ngFor="let event of allEvents">
-              <ion-card class="event-card">
-                  <img src="../assets/Journi_flyer.jpg" />
-                  <ion-card-header (click)="eventPage(event)">
-                    <ion-card-title>{{ event.title }}</ion-card-title>
-                    <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
-                    <ion-card-subtitle>{{ event.date }}</ion-card-subtitle>
-                    <ion-card-subtitle> {{ event.city }}, {{ event.state }}</ion-card-subtitle>
-                    <!-- <ion-card-subtitle float-right style="opacity: 0.3; margin-top: 60px;">posted: {{ event.dateCreated }}</ion-card-subtitle> -->
-                  </ion-card-header>
-                  <ion-card-content class="ion-text-center" style="width: 91%;">
-                    <ion-toolbar style="--background: none; height: auto;">
-                      <app-going-icon [event]="event" [userEmail]="userEmail" [id]="id"></app-going-icon>
-                    </ion-toolbar>
-                 </ion-card-content>
-              </ion-card>
-            </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>

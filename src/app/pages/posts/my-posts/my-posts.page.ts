@@ -19,6 +19,7 @@ export class MyPostsPage implements OnInit {
   commentForm: FormGroup;
   showShortDesciption = true
   userEmail;
+  isUser = true;
   allMyPosts = [];
   userFullName: any;
   userID: any;

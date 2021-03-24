@@ -27,6 +27,7 @@ export class AuthService {
     about: '',
     gender: '',
     dob: '',
+    phone: '',
     school: '',
     grade: '',
     profilePicture: '',
@@ -65,6 +66,7 @@ getUserInfo() {
 getPersonalInfo(data) {
   console.log('Sent Personal Infoto Auth Service: ');
   this.userInfo.fullName = data.fullName;
+  this.userInfo.phone = data.phone;
   this.userInfo.about = data.about;
   this.userInfo.gender = data.gender;
   this.userInfo.dob = data.dob;
@@ -216,6 +218,7 @@ doesUserExists(email, password) {
       this.userInfo = {
         fullName: '',
         about: '',
+        phone: '',
         gender: '',
         dob: '',
         school: '',

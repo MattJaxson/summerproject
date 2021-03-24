@@ -15,10 +15,6 @@ export class PersonalInfoPage implements OnInit {
   userInfoForm: FormGroup;
 
   validationMessasges = {
-    password: [
-      // tslint:disable-next-line: max-line-length
-      { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
-    ],
     phone: [
       // tslint:disable-next-line: max-line-length
       { type: 'text', message: 'Phone Number has to be 10 digits (xxx) xxx - xxxx'}
@@ -43,6 +39,7 @@ export class PersonalInfoPage implements OnInit {
       // Date of Birth
       dob: '',
       school: ['', Validators.required],
+      phone: ['', Validators.required],
       grade: ['', Validators.required],
       about: ['', Validators.required],
     });

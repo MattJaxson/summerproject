@@ -2,39 +2,59 @@ p {
   transition: 0.5s;
   opacity: 1;
 }
-
 ion-button {
   font-size: 1em;
   font-weight: 800;
-  height: 40px;
+  height: 20px;
   width: 100px;
   margin-left: 0px;
   margin-right: 10px;
+  display: inline;
 }
-
-// .thumbnail {
-
-// }
-
 .not-going {
   --color: white;
+  font-size: 0.65em;
   --background: linear-gradient(#faa71b, #e99b14);
 }
-
 .grey-button{
   margin-right: 10px;
   --background: #edf3f8;
-  color: #005191;
+  --color: #222;
+  font-size: 0.65em;
 }
-
 .going {
   --color: white;
+  font-size: 0.65em;
   --background: #24d8a8;
   --background-hover: #24d8a8;
-
-  &:hover {
-    --color: white;
-  }
+}
+.not-going-mobile  {
+  --color: white;
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  --background: linear-gradient(#faa71b, #e99b14);
+}
+.grey-button-mobile {
+  margin-right: 10px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  --background: #edf3f8;
+  --color: #222;
+  font-size: 1em;
+  top: -8px;
+  position: relative;
+}
+.going-mobile {
+  --color: white;
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  --background: #24d8a8;
+  --background-hover: #24d8a8;
 }
 
 

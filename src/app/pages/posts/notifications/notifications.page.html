@@ -18,30 +18,31 @@
 
   <!-- No Messages -->
   <ion-row *ngIf="this.allNotifications == 0" class="ion-justify-content-center">
-    <ion-col class="margin-top ion-text-center" size-xs="10">
+    <ion-col class="margin-top ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
       <h3 id="no-notifications">You have no notifications</h3>
-    </ion-col>
-  </ion-row>
-  <ion-row *ngIf="this.allNotifications == 0" class="ion-justify-content-center">
-    <ion-col size="4">
       <img id="icon" src="../../../../assets/icons/no-notifications-icon.svg" alt="">
     </ion-col>
   </ion-row>
+  <ion-row *ngIf="this.allNotifications > 0" class="ion-justify-content-center">
+    <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+      <!-- List of Sliding Items -->
+      <ion-list>
+        <ion-item-sliding (click)="goTo()" *ngFor="let n of allNotifications">
+          <ion-item>
+            <ion-avatar>
+              <img [src]="n.instigatingUserProfilePicture" />
+            </ion-avatar>
+            <p id="message">{{n.message}}</p>
+            <p id="date">{{n.date}}</p>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option (click)="delete(n)">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 
 
-<!-- List of Sliding Items -->
-<ion-list>
-  <ion-item-sliding (click)="goTo()" *ngFor="let n of allNotifications">
-    <ion-item>
-      <ion-avatar>
-        <img [src]="n.instigatingUserProfilePicture" />
-      </ion-avatar>
-      <p id="message">{{n.message}}</p>
-      <p id="date">{{n.date}}</p>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option (click)="delete(n)">Delete</ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
+
 </ion-content>

@@ -66,7 +66,6 @@ export class FollowCommentButtonsComponent implements OnInit {
             this.commentsLength$.next(followers.length);
             this.commentsLength$.subscribe(data => {
               this.commentsLength = data;
-              
             });
         });
 

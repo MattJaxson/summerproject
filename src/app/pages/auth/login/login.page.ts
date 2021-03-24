@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { ToastController, LoadingController, IonInput } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, AfterViewInit {
+export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   @ViewChild('autoFocusInput', {static: false})  inputElement: IonInput;
@@ -270,15 +270,6 @@ export class LoginPage implements OnInit, AfterViewInit {
         this.deferredPrompt = null;
       });
     }
-
-
-
-  }
-
-  ngAfterViewInit() {
-      setTimeout(() => {
-         this.inputElement.setFocus();
-    }, 1000);
   }
 
   async presentLoading() {
