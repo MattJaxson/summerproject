@@ -1,14 +1,38 @@
-<ion-header  style="display: none;"></ion-header>
+<ion-header class="ion-hide-md-up">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Sign Up - Upload Resume</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-text-center">
   <ion-grid>
+    <div class="spacer ion-hide-lg-up"></div>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../../../assets/icon/Logo 2.0.svg" alt="" srcset="">
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="cancel()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
 
     <ion-row class="ion-justify-content-center">
       <ion-col size="12">
-        <h6 class="text-header">Please upload your Resume. Only <span>.pdf</span> files are allowed.</h6>
         <form id="resume-form" (ngSubmit)="uploadResume()">
 
-          <input name="resume" (change)="getFormData($event)" placeholder="Upload Image"
+          <input class="get-resume-button" name="resume" (change)="getFormData($event)" placeholder="Upload Image"
           type="file"/>
 
           <ion-button

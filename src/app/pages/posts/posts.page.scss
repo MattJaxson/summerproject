@@ -23,7 +23,6 @@
   background: white;
 }
 .post-title {
-  font-weight: 800;
   color: #0055a5;
   font-size: 0.9em;
   position: relative;
@@ -40,8 +39,8 @@
 
 .post-name {
   font-size: 0.9em;
-  font-weight: 700;
-  color: #666; margin: 0;
+  color: #222;
+  margin: 0;
   line-height: 18px;
 
 }
@@ -91,7 +90,7 @@ ion-content {
   top: -32px;
 }
 .hashtag{
-  font-size: 0.55em;
+  font-size: 0.65em;
   font-weight: 600;
   display: inline-block;
   margin-right: 5px;

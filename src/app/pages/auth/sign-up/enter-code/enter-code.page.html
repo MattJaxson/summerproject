@@ -1,17 +1,42 @@
-<ion-header style="display: none;"></ion-header>
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Sign Up - Enter Code</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
+  <div class="spacer ion-hide-lg-up"></div>
   <ion-grid>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../../../assets/icon/Logo 2.0.svg" alt="" srcset="">
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="cancel()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
 
     <!-- Header -->
     <ion-row class="ion-justify-content-center header">
-      <ion-col size-lg="5" size-md="7" size-xs="11">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="6" size-xl="4">
         <h6 class="text-header">Please enter the 6 character code that was sent to <span>{{userEmail}}</span></h6>
       </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center ion-align-items-center">
-      <ion-col size-lg="5" size-md="7" size-xs="11">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="6" size-xl="4">
         <form (ngSubmit)="thankYouPage()" [formGroup]="enterCodeForm">
           <ion-list class="line-input">
             <ion-item>
@@ -20,11 +45,11 @@
               type="email"
               placeholder="enter code"></ion-input>
             </ion-item>
-            <ion-button class="send-new-code" (click)="sendNewCode()">
-              Send new code
-            </ion-button>
             <ion-button [disabled]="disabled" class="orange-button" type="submit">
               ENTER CODE
+            </ion-button>
+            <ion-button class="send-new-code" (click)="sendNewCode()">
+              Send new code
             </ion-button>
           </ion-list>
         </form>

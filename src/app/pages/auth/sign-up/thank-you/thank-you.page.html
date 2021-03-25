@@ -1,19 +1,17 @@
 <ion-header style="display: none;">
-  <ion-toolbar>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<div class="background">
+<ion-content id="background">
   <ion-grid>
-    <ion-row class="ion-text-center ion-justify-content-center">
-      <ion-col size-xs="11" size-md="4" style="margin-top: 10%;">
-        <ion-icon class="check-icon" src="../../../assets/icon/white-check.svg" ></ion-icon>
-        <h6 style="font-size: 1.5em;">Thank you for signing up with Find Your Future! You can now login to your account</h6>
-        <ion-button (click)="goToLogin()" class="thank-you-button">LOGIN</ion-button>
+    <ion-row class="ion-justify-content-center full-page" style="margin: 15% 0% 3% 0%;">
+      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5" class="ion-text-center">
+        <img src="../../../../../../assets/icon/Green-Checked.svg">
+        <p>Thank you for signing up with Find Your Future! You can now login to your account</p>
+        <ion-button (click)="goToLogin()">
+          Done
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-</div>
 </ion-content>
 

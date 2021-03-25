@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonInput, AlertController } from '@ionic/angular';
@@ -11,7 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
   templateUrl: './login-credentials.page.html',
   styleUrls: ['./login-credentials.page.scss'],
 })
-export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
+export class LoginCredentialsPage implements OnInit, OnDestroy {
 
   @ViewChild('autoFucousInput', {static: false})  inputElement: IonInput;
   credentialsForm: FormGroup;
@@ -53,12 +53,6 @@ export class LoginCredentialsPage implements OnInit, AfterViewInit, OnDestroy {
   });
 
     this.formOnChanges();
-}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-       this.inputElement.setFocus();
-  }, 1000);
 }
 
 ngOnDestroy() {

@@ -1,15 +1,10 @@
 <ion-header no-border class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-    <ion-title>Jobs</ion-title>
-       <ion-buttons slot="end">
-        <ion-button (click)="favoritesPage()">
-          <ion-icon slot="start" src="../../assets/icon/my-favorite-jobs.svg"></ion-icon>
-        </ion-button>
-        <ion-button (click)="filterMenu()">
-          <ion-icon slot="start" name="filter"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -39,11 +34,11 @@
         </ion-row> -->
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
+    <!-- <ion-row class="ion-justify-content-center">
       <ion-col style="position: relative; top: -32px;" class="ion-text-center" size="12">
         <ion-spinner *ngIf="this.filtering" name="bubbles">Filtering</ion-spinner>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row class="ion-justify-content-center">
       <ion-col *ngIf="noFavorites" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <h1>You have no favorites.</h1>

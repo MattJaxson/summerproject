@@ -3,7 +3,7 @@
   <ion-toolbar>
    <ion-title>Events</ion-title>
        <ion-buttons slot="end">
-        <ion-button (click)="going()">
+        <ion-button (click)="myEvents()">
          <!-- My Events ({{ eventsGoingLength }}) -->
          <ion-icon slot="start" src="../../assets/icon/my-events-icon.svg"></ion-icon>
      </ion-button>
@@ -17,25 +17,31 @@
         <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-grid>
-    <!-- Desktop Header -->
-    <ion-row style="padding-top: 80px;" class="ion-hide-lg-down ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="10" size-xl="10.5">
-        <ion-row class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="5" pull-xl="0.5" size-xl="4">
-            <h1>Events</h1>
-          </ion-col>
-          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="5" push-xl="0.5" size-xl="4">
-            <img height="60" class="ion-float-right" src="../../../assets/icons/my-events-icon.svg">
-          </ion-col>
-        </ion-row>
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../assets/icon/my-events-icon.svg" alt="" srcset="">
+                  <h1>Events</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="my-events-button" (click)="myEvents()">
+                  My Events
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
       </ion-col>
     </ion-row>
     <!-- Card List -->
-    <ion-row style="padding-top: 40px;" class="ion-justify-content-center">
+    <ion-row class="ion-justify-content-center">
+      <div class="spacer ion-hide-lg-down"></div>
       <!-- Individual Cards -->
-      <ion-col size-xs="12" size-sm="10" size-md="10" size-lg="10" size-xl="10.5">
+      <ion-col size-xs="12" size-sm="10" size-md="10" size-lg="8" size-xl="8">
         <ion-row class="ion-justify-content-center">
-          <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="3" size-xl="3" *ngFor="let event of allEvents">
+          <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="3" size-xl="3" *ngFor="let event of allEvents">
             <ion-card class="event-card">
               <img src="../assets/Journi_flyer.jpg" />
               <ion-card-header>

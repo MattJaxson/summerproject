@@ -51,10 +51,6 @@ export class ChangePasswordPage implements OnInit {
     this.formOnChanges();
   }
 
-  back() {
-    this.router.navigate(['/home/profile/edit-profile-page']);
-  }
-
   formOnChanges(): void {
     console.log(this.changePassword);
     this.changePassword.valueChanges
@@ -104,5 +100,7 @@ export class ChangePasswordPage implements OnInit {
       this.profile.changePassword(this.activeEmail, oldPassword, newPassword, reTypeNewPassword);
     }
   }
-  
+  goBack() {
+    this.router.navigate(['/home/profile']);
+  }
 }

@@ -35,10 +35,9 @@ export class ViewResumePage implements OnInit {
   sanitizeImageUrl(imageUrl: string): SafeResourceUrl {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(imageUrl);
 }
-
-  back() {
-    this.router.navigate(['/home/profile']);
-  }
+goBack() {
+  this.router.navigate(['/home/profile']);
+}
 
   updateResume() {
     console.log('Updating Resume from View Resume page');

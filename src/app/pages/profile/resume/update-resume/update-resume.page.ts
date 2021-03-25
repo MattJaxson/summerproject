@@ -39,7 +39,7 @@ export class UpdateResumePage implements OnInit {
       );
   }
 
-  back() {
+  goBack() {
     this.router.navigate(['/home/profile/view-resume']);
   }
 

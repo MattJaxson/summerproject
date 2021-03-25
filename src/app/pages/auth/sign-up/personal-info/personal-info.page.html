@@ -9,21 +9,31 @@
 
 <ion-content>
   <ion-grid>
-    <!-- Header -->
-    <ion-row class="ion-justify-content-center">
-      <ion-col style="margin-top: 100px;" class="ion-hide-md-down" size-lg="3" size-md="7" size-xs="11">
-        <img height="70" src="../../../../../assets/logo-2.png" alt="" srcset="">
-        <h1>Sign Up</h1>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../../../assets/icon/Logo 2.0.svg" alt="" srcset="">
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="cancel()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-lg="3" size-md="7" size-xs="11">
-        <h3 style="color: #0055a5; font-weight: 600; margin-top: 54px;">Please enter your profile information.</h3>
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="4">
+        <h3 style="color: #0055a5; font-weight: 600; margin-top: 54px;">Sign Up - Please enter your profile information.</h3>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <!-- Form -->
-      <ion-col size-lg="3" size-md="7" size-xs="11">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="4">
         <form [formGroup]="userInfoForm" (ngSubmit)="goToProfilePicturePage(this.userInfoForm.value)">
 
             <ion-list class="line-input">
@@ -42,9 +52,10 @@
               <ion-input
               autocapitalize="on"
               required
+              maxlength="10"
               inputmode="text"
               formControlName="phone"
-              placeholder="(xxx) xxx - xxxx"></ion-input>
+              placeholder="Phone: (xxx) xxx - xxxx"></ion-input>
             </ion-item>
 
             <ion-item>

@@ -9,19 +9,21 @@
 
 <ion-content  class="ion-text-center">
   <ion-grid>
-    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-      <ion-col offset="3" size="2">
-        <h1>Resume</h1>
-      </ion-col>
-      <ion-col push="2.5" size="2">
-        <ion-button class="back-button"  (click)="back()">
-           Back
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="10">
-        <hr style="background-color: #00000044;" />
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <h1>Change Resume</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">

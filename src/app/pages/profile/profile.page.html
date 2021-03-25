@@ -10,41 +10,73 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-text-center">
+  <ion-grid>
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../assets/icon/profile-icon-blue.svg" alt="" srcset="">
+                  <h1>Profile</h1>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
     <ion-row class="profile-wrapper ion-justify-content-center ion-align-items-center">
-      <ion-col size-xs="11" size-sm="3" size-md="2" size-lg="1.5">
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="12">
-            <img id="profile-picture" src="{{this.userObject.profilePicture}}" alt="User Profile Picture">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-row style="background: rgb(228, 235, 241); padding: 1em; border-radius: 5px;" >
+          <ion-col size-xs="11" size-sm="3" size-md="2" size-lg="1.5">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <img id="profile-picture" src="{{this.userObject.profilePicture}}" alt="User Profile Picture">
+              </ion-col>
+              <ion-col class="ion-text-center" size="12">
+                <ion-button class="blue-button" (click)="changeProfilePicture()">
+                  Change Picture
+                </ion-button>
+              </ion-col>
+            </ion-row>
           </ion-col>
-          <ion-col size="12">
-            <ion-button class="blue-button" (click)="changeProfilePicture()">
-              Change Picture
-            </ion-button>
-          </ion-col>
-          <ion-col size="12">
-              <ion-button class="blue-button" (click)="editPage()">
-                Edit Profile
-              </ion-button>
-          </ion-col>
-          <ion-col size="12">
-            <ion-button class="logout-button" (click)="confirmLogout()">
-              Logout
-            </ion-button>
+          <ion-col size-xs="11" size-sm="6" size-md="5" size-lg="10">
+            <ion-row>
+              <ion-col id="profile-info" size="12">
+                <p><span>About</span>{{userObject.about}}</p>
+                <p><span>Name:</span> {{userObject.fullName}}</p>
+                <p><span>Email:</span> {{userObject.email}}</p>
+                <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
+                <p><span>School:</span> {{userObject.school}}</p>
+                <p><span>Grade:</span> {{userObject.grade}}</p>
+              </ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-col>
-      <ion-col size-xs="11" size-sm="6" size-md="5" size-lg="3">
-        <ion-row>
-          <ion-col id="profile-info" size="12">
-            <!-- <p><span>About</span>{{userObject.about}}</p> -->
-            <p><span>Name:</span> {{userObject.fullName}}</p>
-            <p><span>Email:</span> {{userObject.email}}</p>
-            <p style="text-transform: capitalize;"><span>Gender:</span> {{userObject.gender}}</p>
-            <p><span>School:</span> {{userObject.school}}</p>
-            <p><span>Grade:</span> {{userObject.grade}}</p>
-          </ion-col>
-        </ion-row>
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-list>
+          <ion-item detail="true" lines="none" (click)="changeEmail()">
+            <ion-label>Change Email</ion-label>
+          </ion-item>
+          <ion-item detail="true" lines="none"   (click)="changeAbout()">
+            <ion-label>Change About Description</ion-label>
+          </ion-item>
+          <ion-item detail="true" lines="none"   (click)="changePassword()">
+            <ion-label>Change Password</ion-label>
+          </ion-item>
+          <ion-item detail="true" lines="none"   (click)="changePhoneNumber()">
+            <ion-label>Change Phone Number</ion-label>
+          </ion-item>
+          <ion-item detail="true" lines="none"   (click)="changeSchool()">
+            <ion-label>Change School/Grade</ion-label>
+          </ion-item>
+          <ion-item detail="true" lines="none"   (click)="updateResume()">
+            <ion-label>View/Update Resume</ion-label>
+          </ion-item>
+          <ion-item style="--background: #e3405f; --color: white;" detail="true" lines="none"   (click)="confirmLogout()">
+            <ion-label>Logout</ion-label>
+          </ion-item>
+      </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

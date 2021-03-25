@@ -8,28 +8,30 @@
 </ion-header>
 
 <ion-content>
-  <!-- Desktop Header -->
-    <ion-grid fixed class="ion-text-center">
-      <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-        <ion-col offset="2.5" size="2.5">
-          <h1>Change Email</h1>
-        </ion-col>
-        <ion-col push="2.5" size="2">
-          <ion-button class="blue-button" (click)="back()">
-             Back
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <!-- Horizontal Line for Desktop Header -->
-      <ion-row class="ion-justify-content-center ion-hide-md-down">
-        <ion-col size="10">
-          <hr style="background-color: #00000044;" />
-        </ion-col>
-      </ion-row>
+    <ion-grid  class="ion-text-center">
 
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <h1>Change Email</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="6">
+        <h6 class="text-header" style="width: unset;">{{activeEmail}}</h6>
+      </ion-col>
+    </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6">
-            <h6 class="text-header" style="width: unset;">{{activeEmail}}</h6>
+        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6" size-xl="4">
             <form (ngSubmit)="confirmChangedEmail(this.changeEmail.controls.email.value, this.changeEmail.controls.password.value)" [formGroup]="changeEmail">
 
 

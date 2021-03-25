@@ -32,14 +32,12 @@ export class ChangeSchoolPage implements OnInit {
       password: ['', Validators.required]
     });
   }
-
-    back() {
-      this.router.navigate(['/home/profile/edit-profile-page']);
-    }
-
     confirmChangedSchool(email, newSchool, newGrade, password) {
       this.profile.changeSchool(email, newSchool, newGrade,  password);
 
+    }
+    goBack() {
+      this.router.navigate(['/home/profile']);
     }
 
 }

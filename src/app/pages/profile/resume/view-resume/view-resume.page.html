@@ -9,25 +9,29 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-      <ion-col push-lg="0.5" size="2">
-        <h1>View Resume</h1>
-      </ion-col>
-      <ion-col push-lg="6.4" size="6">
-        <ion-button (click)="updateResume()" class="orange-button" style="width: 150px;">UPDATE</ion-button>
-        <ion-button class="blue-button" (click)="back()">
-          Back
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="11">
-        <hr style="background-color: #666;" />
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <h1>Change Resume</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="update-button" (click)="updateResume()">
+                  Update
+                </ion-button>
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
       </ion-col>
     </ion-row>
 
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center" size-xs="12" size-sm="11" size-md="11" size-lg="11">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="4">
         <h4>You can View and Update your Resume here</h4>
         <object [data]="this.sanitizeImageUrl(this.resume)" width="100%" height="700" type="application/pdf"></object>
 

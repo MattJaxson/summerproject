@@ -1,28 +1,34 @@
-ion-title {
-  margin: 0;
-}
+.desktop-toolbar{
+  --background: none;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #33333326;
 
-.cancel-button {
-  margin: 0 10px;
+  h1 {
+    color: #0055a5;
+  }
 }
-.header {
-  background: #edf3f8;
-  height: 200px;
+.back-button {
+  --color: white;
+  --background: #0055a5;
+  --background-hover: linear-gradient(#0055a5, #0c375f);
+  height: 24px;
+  --border-radius: 5px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
 }
-
 .text-header {
-  font-size: 1em;
-  position: relative;
-  top: 50px;
-  color: #666;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #222;
   z-index: 999;
-  text-align: justify;
 }
 
 .orange-button {
   width: unset;
   display: block;
-  margin: 100px auto 200px auto;
+  margin: 48px auto 48px auto;
   width: 200px;
   animation: none;
   opacity: 1;
@@ -37,12 +43,9 @@ span {
 
 .send-new-code {
   display: block;
-  --background: none;
-  color: #005191;
-  --border-color: #005191;
-  --border-width : 1px;
-  --border-style: solid;
-  border: 1px;
+  --background: #005191;
+  color: white;
+  font-weight: 600;
   width: 150px;
   margin: 50px auto;
   opacity: 0;
@@ -52,7 +55,7 @@ span {
 span {
   font-weight: 900;
   font-size: 1em;
-  color: #005191;
+  color: #e3405f;
 }
 
 @keyframes slide-from-right {

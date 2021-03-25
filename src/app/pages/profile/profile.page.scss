@@ -1,5 +1,5 @@
 .profile-wrapper {
-  margin: 100px auto;
+  margin: 16px auto;
 }
 @media only screen and (max-width: 575px) {
   .profile-wrapper {
@@ -9,13 +9,29 @@
 ion-alert {
   --background: #e4405f;
 }
+ion-list {
+  background: none;
+}
+ion-item {
+  background: none;
+  --color: #0055a5;
+  margin: 8px auto;
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+  border-radius: 5px;
+}
+.desktop-toolbar{
+  --background: none;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #33333326;
 
+  h1 {
+    color: #0055a5;
+  }
+}
 #profile-info {
   height: auto;
-  position: relative;
-  top: 40px;
   text-align: left;
-  padding: 25px;
+  margin-left: 24px;
 }
 
 h4 {

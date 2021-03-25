@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./change-email/change-email/change-email.module').then( m => m.ChangeEmailPageModule)
   },
   {
+    path: 'change-phone/:phone',
+    loadChildren: () => import('./change-phone/change-phone.module').then( m => m.ChangePhonePageModule)
+  },
+  {
     path: 'change-password',
     loadChildren: () => import('./change-password/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
@@ -57,6 +61,10 @@ const routes: Routes = [
   {
     path: 'change-about',
     loadChildren: () => import('./change-about/change-about.module').then( m => m.ChangeAboutPageModule)
+  },
+  {
+    path: 'change-phone',
+    loadChildren: () => import('./change-phone/change-phone.module').then( m => m.ChangePhonePageModule)
   }
 ];
 

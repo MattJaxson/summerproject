@@ -1,0 +1,21 @@
+<ion-radio-group [value]="this.selection" (ionChange)="selectOption($event)" name="job-menu-filter">
+  <ion-item lines="none">
+    <ion-label>Pay - High to Low</ion-label>
+    <ion-radio value="htol"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Pay - Low to High</ion-label>
+    <ion-radio value="ltoh"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Newest</ion-label>
+    <ion-radio value="newest"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Oldest</ion-label>
+    <ion-radio value="oldest"></ion-radio>
+  </ion-item>
+  <ion-item class="ion-text-center" (click)="dismiss()" button lines="none">
+    <ion-label style="color: #e3405f">Close</ion-label>
+  </ion-item>
+</ion-radio-group>

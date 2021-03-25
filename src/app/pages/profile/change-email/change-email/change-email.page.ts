@@ -63,10 +63,6 @@ export class ChangeEmailPage implements OnInit {
     });
   }
 
-  back() {
-    this.router.navigate(['/home/profile/edit-profile-page']);
-  }
-
   async presentToast() {
     const toast = await this.toast.create({
       message: 'There was an error with your password or email. Please try again.',
@@ -98,8 +94,11 @@ export class ChangeEmailPage implements OnInit {
       this.presentAlert();
     }
     else {
-      this.profile.changeEmail('eddie@gmail.com', newEmail, password);
+      this.profile.changeEmail(newEmail, password);
     }
+  }
+  goBack() {
+    this.router.navigate(['/home/profile']);
   }
 
 }

@@ -30,6 +30,7 @@ export class ProfileService {
   profilePicture = new BehaviorSubject('');
   resume = new BehaviorSubject('');
   email = new BehaviorSubject('');
+  phone = new BehaviorSubject('');
 
 
   constructor(
@@ -48,17 +49,14 @@ export class ProfileService {
   getAllUsers() {
     return this.http.get(`${this.BACKEND_URL}/api/home/user`);
   }
-
   //  Gets User Details from Server to populate the Profile tab with User information.
   getUserDetails() {
       return this.http.post(`${this.BACKEND_URL}/api/home/user`, {email: this.activeEmail});
   }
-
   getTheirDetails(email) {
     return this.http.post(`${this.BACKEND_URL}/api/home/user/their-details`, {email});
   }
-
-  changeEmail(activeEmail, newEmail, password) {
+  changeEmail(newEmail, password) {
       // tslint:disable-next-line: max-line-length
       return this.http.post(`${this.BACKEND_URL}/api/home/user/change-email`, {
         oldEmail: this.activeEmail,
@@ -81,10 +79,33 @@ export class ProfileService {
               return console.log('Passwords dont match');
             }
       });
-    }
+  }
+  changePhone(newPhone, password) {
+      // tslint:disable-next-line: max-line-length
+      return this.http.post(`${this.BACKEND_URL}/api/home/user/change-phone`, {
+        email: this.email,
+        newPhone: newPhone,
+        password: password})
+          .pipe(
+            catchError(e => {
+              this.presentFailToast(this.activeEmail);
+              throw new Error(e);
+            }))
+          .subscribe( data => {
+            if ( data === true ) {
+              this.phone.next(newPhone);
+              this.phone = newPhone;
+              this.router.navigate(['/home/profile']);
+              this.presentSuccessToast();
 
-    // Toast for Successful Change
-    presentSuccessToast() {
+             } else {
+              this.presentFailToast(this.activeEmail);
+              return console.log('Passwords dont match');
+            }
+      });
+  }
+  // Toast for Successful Change
+  presentSuccessToast() {
       const successToast = this.toastController.create({
         message: 'Your Email address has been updated.',
         duration: 3000,
@@ -93,9 +114,9 @@ export class ProfileService {
         position: 'bottom'
       });
       successToast.then(t => t.present());
-    }
+  }
 
-    presentFailToast(email) {
+  presentFailToast(email) {
       // Toast for Successful Change
       const failToast = this.toastController.create({
         // tslint:disable-next-line: max-line-length
@@ -106,9 +127,8 @@ export class ProfileService {
         position: 'top'
       });
       failToast.then(t => t.present());
-    }
-
-    async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {
+  }
+  async changePassword(activeEmail, oldPassword, newPassword, reTypeNewPassword ) {
       return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-password`, {
         oldPassword,
         email: activeEmail,
@@ -132,13 +152,11 @@ export class ProfileService {
              console.log('Passwords dont match!');
            }
         });
-    }
-
-    async changeAbout(email, newAbout, passsword) {
-      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-about`, {email, newAbout, passsword}).subscribe();
-    }
-
-    async changeSchool(email, newSchool, newGrade, password) {
+  }
+  async changeAbout(email, newAbout, passsword) {
+      return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-about`, {email, newAbout,passsword}).subscribe();
+  }
+  async changeSchool(email, newSchool, newGrade, password) {
       return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
         email,
         newSchool,
@@ -174,15 +192,13 @@ export class ProfileService {
           return console.log('Passwords dont match');
         }
       });
-    }
-
-    async changeProfilePicture(imageForm, oldPhotoKey) {
+  }
+  async changeProfilePicture(imageForm, oldPhotoKey) {
       return  this.http.post(`${this.BACKEND_URL}/api/photo/change-profile-picture`, {
         imageForm, oldPhotoKey
       }).subscribe();
-    }
-
-    async changeResume(email, newResume, password) {
+  }
+  async changeResume(email, newResume, password) {
       return await this.http.post(`${this.BACKEND_URL}/api/home/user/change-school`, {
         email,
         newResume,
@@ -196,8 +212,7 @@ export class ProfileService {
           return console.log('Passwords dont match');
         }
       });
-    }
-
+  }
     // Delete User
   delete() {
     console.log('Deleted User');

@@ -117,7 +117,7 @@ export class EventsPage implements OnInit {
     this.router.navigate(['/home/events/events-page', event._id, event.title, event.addressOne,  event.addressOne,  event.city,  event.state, event.zip, event.dateCreated, event.date, event.time, event.photo, event.description]);
   }
 
-    going() {
+    myEvents() {
     this.router.navigate(['/home/events/going']);
   }
 

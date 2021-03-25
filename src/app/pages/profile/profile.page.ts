@@ -26,7 +26,8 @@ export class ProfilePage implements OnInit, OnDestroy {
     grade: '',
     profilePicture: '',
     resume: '',
-    email: ''
+    email: '',
+    phone: ''
   };
   user: any;
 
@@ -53,6 +54,7 @@ export class ProfilePage implements OnInit, OnDestroy {
       this.profile.grade.unsubscribe();
       this.profile.profilePicture.unsubscribe();
       this.profile.email.unsubscribe();
+      this.profile.phone.unsubscribe();
       this.profile.resume.unsubscribe();
     }
 
@@ -73,6 +75,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             const profilePicture = res['profilePicture'];
             const resume = res['resume'];
             const email = res['email'];
+            const phone = res['phone'];
 
             // Send initial profile values to Profile Service;
             // Have to initial these values from the Profile Component
@@ -88,6 +91,7 @@ export class ProfilePage implements OnInit, OnDestroy {
             this.profile.profilePicture.next(profilePicture);
             this.profile.resume.next(resume);
             this.profile.email.next(email);
+            this.profile.phone.next(phone);
 
             // Subscribe to all the B.Subjects to get live updates of value changes.
             this.profile.fullName.subscribe(data => {this.userObject.fullName = data;
@@ -134,6 +138,10 @@ export class ProfilePage implements OnInit, OnDestroy {
                 this.userObject.email = data;
               }
             );
+            this.profile.phone.subscribe(data => {
+              this.userObject.phone = data;
+            }
+          );
     });
   }
 
@@ -211,6 +219,29 @@ export class ProfilePage implements OnInit, OnDestroy {
 
       await alert.present();
     }
-
-
+    changeEmail() {
+      console.log('Navigating to Change Email Page');
+      this.router.navigate(['/home/profile/change-email']);
+    }
+    changePhone() {
+      console.log('Navigating to Change Phone Page');
+      this.router.navigate(['/home/profile/change-phone']);
+    }
+    changeAbout() {
+      console.log('Navigating to Change About Page');
+      // tslint:disable-next-line: max-line-length
+      this.router.navigate(['/home/profile/change-about/', this.userObject.about]);
+    }
+    changePassword() {
+      console.log('Navigating to Change Password Page');
+      this.router.navigate(['/home/profile/change-password']);
+    }
+    changePhoneNumber() {
+      console.log('Navigating to Change Phone Number Page');
+      this.router.navigate(['/home/profile/change-phone', this.userObject.phone]);
+    }
+    changeSchool() {
+      console.log('Navigating to Change School Page');
+      this.router.navigate(['/home/profile/change-school', this.userObject.school, this.userObject.grade]);
+    }
 }

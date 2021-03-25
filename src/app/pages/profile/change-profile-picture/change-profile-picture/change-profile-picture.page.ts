@@ -154,8 +154,8 @@ dataURLtoBlob(dataurl) {
   return new Blob([u8arr], {type: mime});
 }
 
-  back() {
-    this.router.navigate(['/home/profile']);
-  }
+goBack() {
+  this.router.navigate(['/home/profile']);
+}
 
 }

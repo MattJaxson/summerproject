@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonRadioGroup, PopoverController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { FilterJobsService } from 'src/app/emitters/filter-jobs.service';
 import { NavParams} from '@ionic/angular';
 

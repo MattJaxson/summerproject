@@ -54,7 +54,10 @@
         </ion-searchbar>
         <p style="font-size: 0.9em;">You can choose up to five hashtags. Please seperate each tag with a comma ( , )  Example: "Computers, Science, Technology"</p>
       </ion-col>
-      <ion-col  size-md="7.5" pull-lg="3" size-lg="3" pull-xl="1" size-xl="1">
+      <ion-col  size-md="7.5" pull-lg="3" size-lg="3" pull-xl="1.5" size-xl="2">
+        <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 1.2em; --background: none; --color: white;" (click)="filterMenu()">
+          <ion-icon slot="start" style="font-size: 1.3em;" color="primary" name="filter"></ion-icon>
+        </ion-button>
         <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 0.7em;" (click)="searchLoading()">
           Search
         </ion-button>
@@ -65,9 +68,9 @@
       <ion-col style="border-top: 1px solid #999; padding: 18px 0px;"  size-md="7.5" size-lg="9" size-xl="6" style="margin-top: 2%;">
         <div class="post" *ngFor="let post of allPosts" style="margin-top: 1%;">
           <!-- Profile Header -->
-          <ion-row class="ion-justify-content-center">
+          <ion-row>
                 <!-- Profile Picture -->
-                <ion-col class="ion-text-center" size="1">
+                <ion-col class="ion-text-center" push="0.2" size="1">
                   <img src="{{post.creatorProfilePicture}}" style="border-radius: 100px; height: 35xpx; width: 35px;">
                 </ion-col>
                 <!-- Post Creator's Name -->

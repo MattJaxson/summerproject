@@ -10,31 +10,26 @@
 <ion-content>
   <ion-grid>
     <!-- Desktop Header -->
-    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <ion-toolbar class="desktop-toolbar">
-              <ion-buttons slot="start">
-                <img style="border-radius: 50px;" height="50" src="{{this.jobLogo}}">
-                <h2 id="company-name">{{jobCompanyName}}</h2>
-              </ion-buttons>
-              <ion-buttons slot="end">
-                <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
-                <ion-button class="back-button" (click)="goBack()">
-                  Back
-                </ion-button>
-              </ion-buttons>
-        </ion-toolbar>
-      </ion-col>
-    </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="toolbar-company-info">
+          <ion-buttons slot="start">
+            <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">
+            <div class="toolbar-company-info">
+              <h2>{{jobCompanyName}}</h2>
+              <h3>{{jobTitle}}</h3>
+              <p>${{jobRateOfPay}} / hr</p>
+            </div>
+          </ion-buttons>
+          <ion-buttons class="ion-hide-lg-down" slot="end">
+            <app-heart-icon  class="ion-float-right" id="heart-icon" [job]="jobObj" [favoriteJobs]="favoriteJobsObj" *ngIf="favoriteJobsObj"></app-heart-icon>
+            <ion-button class="back-button" (click)="goBack()">
+              Back
+            </ion-button>
+          </ion-buttons>
+    </ion-toolbar>
         <div class="spacer"></div>
-        <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">
-        <div class="toolbar-company-info">
-          <h2>{{jobCompanyName}}</h2>
-          <h3>{{jobTitle}}</h3>
-          <p>${{jobRateOfPay}} / hr</p>
-        </div>
+        
         <div class="spacer"></div>
         <p style="margin: 0;" id="job-full-description">{{jobFullJobDescription}}</p>
       </ion-col>

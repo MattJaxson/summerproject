@@ -1,0 +1,82 @@
+<ion-header class="ion-hide-lg-up">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Change Phone</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid  class="ion-text-center">
+
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <h1>Change Phone</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="goBack()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="6">
+        <h6 class="text-header" style="width: unset;">{{phone}}</h6>
+      </ion-col>
+    </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+            <form (ngSubmit)="confirmChangedPhone(this.changePhone.controls.phone.value, this.changePhone.controls.password.value)" [formGroup]="changePhone">
+
+
+            <ion-list class="line-input">
+
+                <!-- Phone -->
+                <ion-item>
+                  <ion-input
+                    required
+                    maxlength="10"
+                    placeholder="New Phone"
+                    formControlName="phone"
+                    type="phone"
+                    (keyup.enter)="formValid ? confirmChangedPhone(this.changePhone.controls.phone.value, this.changePhone.controls.password.value) : null">
+                  </ion-input>
+                </ion-item>
+
+                <!-- Email Validation-->
+                <!-- <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessasges.email">
+                    <div class="error-message"
+                    *ngIf="changePhone
+                      .get('email')
+                      .hasError(validation.type) && (changePhone.get('email')
+                      .dirty || changePhone.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div> -->
+
+                <ion-item>
+                    <ion-input
+                      required
+                      placeholder="password"
+                      formControlName="password"
+                      minlength="8"
+                      type="password"
+                      (keyup.enter)="formValid ? confirmChangedEmail(this.changePhone.controls.email.value, this.changePhone.controls.password.value) : null">
+                    </ion-input>
+                </ion-item>
+          </ion-list>
+                <ion-button type="submit" [disabled]="!formValid" class="orange-button" style="width: unset;">CHANGE PHONE</ion-button>
+              </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+

@@ -12,18 +12,24 @@
     <ion-grid>
 
         <!-- Picture Header -->
-        <ion-row class="ion-justify-content-center event-image">
+        <ion-row style="
+        background: url({{eventPhoto}});" class="ion-hide-sm-up ion-justify-content-center event-image">
+        </ion-row>
+        <ion-row class="ion-hide-sm-down ion-justify-content-center">
+          <ion-col class="ion-text-center" style="margin: 2em 0em;" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+            <img height="350" src="{{this.eventPhoto}}">
+          </ion-col>
         </ion-row>
 
         <!-- Event Details -->
-        <ion-row class="details ion-justify-content-center ion-align-items-center">
-          <ion-col size-xs="11" size-lg="6">
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col class="details" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
             <h3>Event Title</h3>
             <p>{{ eventTitle }}</p>
             <h3>Address </h3>
             <p>{{ eventAddressOne }} {{ eventAddressTwo }}, {{ eventCity }}, {{ eventState }}, {{ eventZip}}</p>
             <h3>Date</h3>
-            <p> {{ eventDate }}</p>
+            <p>{{ eventDate }}</p>
             <h3>Time</h3>
             <p>{{ eventTime }}</p>
             <h3>Description</h3>
@@ -35,7 +41,7 @@
 
         <!-- GOING? -->
         <ion-row *ngIf="!going" class="going ion-justify-content-center">
-            <ion-col class="ion-text-center" size="10">
+            <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
               <p class="going-text">Do you want to go to this event?<br> By clicking 'Yes', this event will be added to your Your Events.</p>
               <ion-button class="going-button" (click)="goingToEvent()">
                    Yes.
@@ -47,7 +53,7 @@
 
         <!-- NOT GOING -->
         <ion-row *ngIf="going" class="going ion-justify-content-center">
-              <ion-col class="ion-text-center" size="10">
+              <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
                 <p class="going-text">Do you want to go to this event?<br> By clicking 'No', this event will be deleted from your Your Events.</p>
                 <ion-button class="not-going-button" (click)="notGoingToEvent()">
                  No.

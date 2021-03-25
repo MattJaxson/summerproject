@@ -8,11 +8,28 @@
 </ion-header>
 
 <ion-content class="ion-text-center">
+  <div class="spacer ion-hide-lg-up"></div>
   <ion-grid>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../../../assets/icon/Logo 2.0.svg" alt="" srcset="">
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="back-button" (click)="cancel()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col  size-lg="3" size-md="7" size-xs="11">
+      <ion-col style="margin-top: 54px;"  size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6"> 
         <!-- Picture Wrappers -->
-      <ion-row style="margin-top: 54px;" class="ion-justify-content-center">
         <ion-col  size-lg="3" size-md="7" size-xs="11" class="ion-align-items-center">
           <!-- Default Picture if user does not select profile picture Wrapper -->
           <canvas
@@ -29,7 +46,6 @@
               *ngIf="uploadedPhoto"
               src="{{croppedPhotoURL}}" /> -->
         </ion-col>
-      </ion-row>
       <!-- Get Picture Button -->
       <ion-row class="ion-justify-content-center">
         <ion-col size="10">

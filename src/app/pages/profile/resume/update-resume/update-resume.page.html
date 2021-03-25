@@ -9,26 +9,33 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-hide-md-down" style="margin: 5% 0% 3% 0%;">
-      <ion-col offset="2.8" size="2.5">
-        <h1>Update Resume</h1>
-      </ion-col>
-      <ion-col push="2.5" size="2">
-        <ion-button class="blue-button" (click)="back()">
-           Back
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center ion-hide-md-down">
-      <ion-col size="6">
-        <hr style="background: #666;" />
-      </ion-col>
-    </ion-row>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+     <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+       <ion-toolbar class="desktop-toolbar">
+             <ion-buttons slot="start">
+                 <h1>Update Resume </h1>
+             </ion-buttons>
+             <ion-buttons slot="end">
+               <ion-button class="back-button" (click)="goBack()">
+                 Back
+               </ion-button>
+             </ion-buttons>
+       </ion-toolbar>
+           <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+           <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+     </ion-col>
+   </ion-row>
+
+   <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-text-center" size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="6">
+      <h6 class="text-header">Please upload a resume from your phone<</h6>
+    </ion-col>
+  </ion-row>
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="6">
+      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="8" size-lg="4">
         <!-- Need to express to User formats that are acceptable -->
         <!-- pdf, ect -->
-        <p class="text-header">Please upload a resume from your phone</p>
         <form
         (ngSubmit)="uploadResume()" id="changeResumeForm">
           <input

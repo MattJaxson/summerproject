@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
       console.log(this.deferredPrompt);
-      
+
       if (this.deferredPrompt) {
         this.downloadButton.style.display = 'block';
         this.downloadButton.addEventListener('click', () => {
@@ -71,9 +71,7 @@ export class LoginPage implements OnInit {
         this.downloadButton.style.display = 'none';
       }
     })
-    }
-
-     ;
+    };
 
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],

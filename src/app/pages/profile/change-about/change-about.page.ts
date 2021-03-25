@@ -97,5 +97,8 @@ export class ChangeAboutPage implements OnInit {
   confirmChangedAbout(email, newAbout, password) {
       this.profile.changeAbout(email, newAbout, password);
   }
+  goBack() {
+    this.router.navigate(['/home/profile']);
+  }
 
 }

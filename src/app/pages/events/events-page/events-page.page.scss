@@ -19,7 +19,8 @@ h3 {
 p {
   font-size: 1.1em;
   color: #333;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
+  white-space: pre-wrap;
 }
 
 .going-link:link {
@@ -48,8 +49,7 @@ p {
 }
 
 .event-image {
-  height: 300px;
-  background: url('../../../../assets/Journi_flyer-500x357.png');
+  height: 350px;
   background-size: cover;
   background-position: center;
 }
@@ -57,7 +57,9 @@ p {
 .details {
   height: auto;
   background: white;
-  padding: 50px 0px;
+  padding: 2em;
+  margin: 2em;;
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
 }
 
 .going-text {
