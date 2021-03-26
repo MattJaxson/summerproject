@@ -57,6 +57,25 @@ ion-content {
 #filter-toolbar{
   --background: #f4f5f8;
 }
+.filter-message{
+  color: #888;
+  opacity: 0;
+  animation: filter-message-slide 0.5s ease 1s forwards;
+  float: right;
+
+  span {
+    font-weight: 600;
+  }
+}
+@keyframes filter-message-slide {
+  0%{
+    transform: translateX(10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
 
 @media screen and (max-width: 744px) {
   .post {

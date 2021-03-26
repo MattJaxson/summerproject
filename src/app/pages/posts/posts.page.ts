@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonFabButton, IonSearchbar, ModalController } from '@ionic/angular';
+import { IonFabButton, IonSearchbar, ModalController, PopoverController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastController, LoadingController } from '@ionic/angular';
@@ -11,6 +11,9 @@ import { StudentChatService } from 'src/app/services/student-chat.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { Subscription } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { PostsFilterPopoverComponent } from 'src/app/components/posts-filter-popover/posts-filter-popover.component';
+import { FilterPostsService } from 'src/app/emitters/filter-posts.service';
+
 
 
 @Component({
@@ -40,6 +43,7 @@ export class PostsPage implements OnInit, OnDestroy {
   noPosts = false;
   allPostsLength: any;
   loadedAllPosts: any;
+  filtering: boolean;
 
  alterDescriptionText() {
     this.showShortDesciption = !this.showShortDesciption
@@ -50,6 +54,7 @@ export class PostsPage implements OnInit, OnDestroy {
   profileSub: Subscription;
 
   commentForm: FormGroup;
+  postFilter = 'newest';
   allPosts;
   followedPost;
   followedPostCount;
@@ -68,7 +73,9 @@ export class PostsPage implements OnInit, OnDestroy {
     private toast: ToastController,
     private loading: LoadingController,
     private formBuilder: FormBuilder,
+    private popoverController: PopoverController,
     private postsEmitterService: PostPageEmitterService,
+    private filterPostsService: FilterPostsService,
     private studentChat: StudentChatService,
     private notificationsService: NotificationsService
   ) {}
@@ -93,12 +100,37 @@ export class PostsPage implements OnInit, OnDestroy {
       });
     }
 
+    // Filter Jobs from Popover
+    if (this.filterPostsService.subsVar == undefined) {
+      this.filterPostsService.subsVar = this.filterPostsService.filterPostsEmitter.subscribe(data => {
+        // Filter jobs
+        this.postFilter = data;
+        this.getPosts();
+      });
+    }
+
      // To collect comment data
     this.commentForm = this.formBuilder.group({
       comment: ['']
     });
   }
-  filter(event) {
+  async filterMenu() {
+    const popover = await this.popoverController.create({
+      component: PostsFilterPopoverComponent,
+      cssClass: 'my-custom-class',
+      // translucent: true,
+      showBackdrop: true,
+      componentProps: {
+        filter: this.postFilter
+      }
+    });
+     await popover.present();
+     await popover.onWillDismiss().then((data) => {
+       console.log(data);
+     }
+     );
+  }
+  search(event) {
     this.searchTerm = event.detail.value.replace(/\s+/g, '')
     ;
     console.log(this.searchTerm);
@@ -210,21 +242,10 @@ export class PostsPage implements OnInit, OnDestroy {
       tabBar.style.transform = 'translateY(0px)';
     }, 750);
   }
-  sortPosts() {
-    console.log('Attempting to Sort Post...')
+  hideEverything() {
+    // Hide Searchbar, Tabbar, and FAB when commenting on a Post
+    // Only for Mobile
   }
-  // charHistory = [];
-  // addHashTag(key) {
-  //   this.charHistory.push(key.code);
-  //   console.log(this.charHistory);
-  //   if(key.code === "Backspace") {
-  //     console.log('Gotta Pop from charHistory!');
-  //     let backspace = this.charHistory.pop()
-  //     let lastLetter = this.charHistory.pop()
-  //     console.log(lastLetter);
-  //     console.log(this.charHistory)
-  //   }
-  // }
   postPage(post) {
     // tslint:disable-next-line: max-line-length
     this.router.navigate(['/home/posts/post-page', post._id]);
@@ -262,8 +283,8 @@ export class PostsPage implements OnInit, OnDestroy {
 
     this.getFollowingPosts();
 
-    this.postsSub = this.posts.getPosts().subscribe( jobs => {
-      this.allPosts = Object.values(jobs).reverse();
+    this.postsSub = this.posts.getPosts().subscribe( posts => {
+      this.allPosts = Object.values(posts).reverse();
 
       for (const post of this.allPosts) {
         post.date = formatDistanceToNow( new Date(post.date), {
@@ -285,38 +306,101 @@ export class PostsPage implements OnInit, OnDestroy {
   }
   async getPosts() {
     this.postsSub = this.posts.getPosts().subscribe( posts => {
-      // console.log(posts);
 
-      // I am using two arrays for the same data to improve the loading of the data. As a User searches through the list events,
-      // .
+      switch (this.postFilter) {
+        case 'mostc':
+          console.log('Most Comments');
+          this.filtering = true;
+          this.postFilter = 'mostc';
+          this.allPosts = Object.values(posts);
+          this.allPostsLength = this.allPosts.length;
 
-      // First Array of Events
-      // this.allEvents = Object.values(events);
-      this.allPosts = Object.values(posts);
-      this.allPostsLength  = this.allPosts.length;
-      this.allPosts.reverse();
+          function mostComments(a, b){
+            console.log('Sorting Price')
+            return a.comments.length - b.comments.length;
+          }
+          this.allPosts.sort(mostComments);
+          this.allPosts.reverse();
+          this.searching = false;
 
-      // Second Array of Events
-      this.loadedAllPosts = Object.values(posts);
-      this.loadedAllPosts.reverse();
+          // Format Times
+          for (const post of this.allPosts) {
+            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          }
+          break;
+        case 'mostu':
+          console.log('Most Upvotes');
+          this.filtering = true;
+          this.postFilter = 'mostu';
+          this.allPosts = Object.values(posts);
+          this.allPostsLength = this.allPosts.length;
+          function mostUpvotes(a, b){
+            console.log('Sorting Price')
+            return a.upvotes - b.upvotes;
+          }
+          this.allPosts.sort(mostUpvotes);
+          this.allPosts.reverse();
+          this.searching = false;
 
-      this.posts.postsSubject$.next(this.allPosts);
+          // Format Times
+          for (const post of this.allPosts) {
+            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          }
+          break;
+        case 'mostf':
+          console.log('Most Followers');
+          this.filtering = true;
+          this.postFilter = 'mostf';
+          this.allPosts = Object.values(posts);
+          this.allPostsLength = this.allPosts.length;
+          function mostFollowers(a, b){
+            console.log('Sorting Price')
+            return a.followers.length - b.followers.length;
+          }
+          this.allPosts.sort(mostFollowers);
+          this.allPosts.reverse();
+          this.searching = false;
 
-      for (const post of this.allPosts) {
-        post.date = formatDistanceToNow( new Date(post.date), {
-          includeSeconds: true,
-          addSuffix: true
-        });
+          // Format Times
+          for (const post of this.allPosts) {
+            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          }
+          break;
+        case 'newest':
+          console.log('Newest');
+          this.filtering = true;
+          this.postFilter = 'newest';
+          this.allPosts = Object.values(posts);
+          this.allPostsLength = this.allPosts.length;
+          this.allPosts.reverse();
+          this.searching = false;
+
+          // Format Times
+          for (const post of this.allPosts) {
+            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          }
+          break;
+        case 'oldest':
+          console.log('Oldest');
+          this.filtering = true;
+          this.postFilter = 'oldest';
+          this.allPosts = Object.values(posts);
+          this.allPostsLength = this.allPosts.length;
+          this.searching = false;
+
+          // Format Times
+          for (const post of this.allPosts) {
+            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          }
+          break;
+
+        default:
+          break;
       }
-      if(this.allPosts.length === 0) {
-        console.log('That search had no results!');
-        return this.noPosts = true;
-      }
 
-      if(this.allPosts.length > 0) {
-        console.log('That search had results!');
-        return this.noPosts = false;
-      }
+      return setTimeout(() => {
+        this.filtering = false;
+      }, 1000);
     });
   }
   addPost() {

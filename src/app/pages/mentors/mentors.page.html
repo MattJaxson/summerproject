@@ -11,18 +11,30 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5">
-        <p class="ion-hide-md-up" style="font-size: 1em;">Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
 
-        <img class="ion-hide-md-down" style="position: relative; right: 24px; top: 24px;" src="../../../assets/icon/mentor-icon-blue.svg" alt="Mentor Icon Blue">
+     <!-- Desktop Header -->
+     <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <img height="50" src="../../../assets/icon/mentor-icon-blue.svg" alt="" srcset="">
+                  <h1>Mentors</h1>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="4">
+        <p class="ion-hide-md-up" style="font-size: 1em;">Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
         <p class="ion-hide-md-down" style="font-size: 1.1em; margin-top: 24px;">Need advice? Want feedback on something? Want to learn about a particular career field? Browse through Find Your Future's list of Mentors, and contact them if you have any questions!</p>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center" *ngFor="let mentor of allMentors" style=" margin-top: 20px;">
-      <ion-col size-xs="11" size-sm="10" size-md="7" size-lg="6" size-xl="5">
+    <ion-row class="ion-justify-content-center"  style=" margin-top: 20px;">
+      <ion-col  size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="4">
         <ion-list>
-          <ion-item lines="none">
+          <ion-item class="mentor" *ngFor="let mentor of allMentors" lines="none">
             <ion-avatar slot="start">
               <img src="{{mentor.photo}}" />
             </ion-avatar>

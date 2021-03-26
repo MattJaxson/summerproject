@@ -16,7 +16,7 @@
         <ion-icon class="header-icons" src="../../assets/icon/notifications-icon.svg"></ion-icon>
         <span style="color: #e4405f; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
       </ion-button>
-      <ion-button style="position: relative; right: 12px" (click)="sortPosts()">
+      <ion-button style="position: relative; right: 12px" (click)="filterMenu()">
         <ion-icon class="header-icons" name="filter"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -40,7 +40,7 @@
   <!-- Desktop -->
   <ion-grid class="ion-hide-lg-down">
     <ion-row style="margin-top: 40px;" class="ion-justify-content-center">
-      <ion-col pull-lg="1" size-md="7.5" size-lg="6" size-xl="4.8">
+      <ion-col pull-lg="1" size-md="7.5" size-lg="6" pull-xl="0.6" size-xl="4.8">
         <ion-searchbar
           class="searchbar-desktop"
           animated="true"
@@ -49,12 +49,12 @@
           showCancelButton="true"
           placeholder="Search Posts by Hashtags"
           (ionFocus)="searchBarFocus()"
-          (ionChange)="filter($event)">
+          (ionChange)="search($event)">
           <span class="hash-desktop">#</span>
         </ion-searchbar>
-        <p style="font-size: 0.9em;">You can choose up to five hashtags. Please seperate each tag with a comma ( , )  Example: "Computers, Science, Technology"</p>
+        <p style="font-size: 0.9em;">You can choose up to five hashtags. Please seperate each tag with a comma ( , )<br>Example: "Computers, Science, Technology"</p>
       </ion-col>
-      <ion-col  size-md="7.5" pull-lg="3" size-lg="3" pull-xl="1.5" size-xl="2">
+      <ion-col  size-md="7.5" pull-lg="1" size-lg="3" pull-xl="1.4" size-xl="2">
         <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 1.2em; --background: none; --color: white;" (click)="filterMenu()">
           <ion-icon slot="start" style="font-size: 1.3em;" color="primary" name="filter"></ion-icon>
         </ion-button>
@@ -64,6 +64,11 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
+      <ion-col style="position: relative; top: -32px;" class="ion-text-center" size="12">
+        <ion-spinner *ngIf="this.filtering" name="bubbles">Filtering</ion-spinner>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
       <!-- Posts -->
       <ion-col style="border-top: 1px solid #999; padding: 18px 0px;"  size-md="7.5" size-lg="9" size-xl="6" style="margin-top: 2%;">
         <div class="post" *ngFor="let post of allPosts" style="margin-top: 1%;">
@@ -107,7 +112,7 @@
                 <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
                   <ion-textarea
                       (ionBlur)="this.searchBarBlur()"
-                      (ionFocus)="this.searchBarHide()"
+                      (ionFocus)="this.hideEverything()"
                       class="comment-input-mobile"
                       autogrow="true"
                       autocapitalize="true"
@@ -172,7 +177,15 @@
 
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
-    <!-- size-xs="12" size-sm="12" size-md="12" size-lg="10" pull-lg="2" -->
+    <ion-row>
+      <ion-col class="ion-hide-lg-up" size="12">
+        <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
+        <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
+        <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
+        <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
+        <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> Oldest</p>
+      </ion-col>
+    </ion-row>
     <!-- Posts -->
     <ion-row class="ion-justify-content-center">
       <ion-col *ngIf="noPosts" size-xs="12" size-sm="11" size-md="10" size-lg="8" size-xl="5">
@@ -279,7 +292,7 @@
       showCancelButton="true"
       placeholder="Search Posts by Hashtags"
       (ionFocus)="searchBarFocus()"
-      (ionChange)="filter($event)">
+      (ionChange)="search($event)">
       <span class="hash">#</span>
     </ion-searchbar>
     <div id="search-options">

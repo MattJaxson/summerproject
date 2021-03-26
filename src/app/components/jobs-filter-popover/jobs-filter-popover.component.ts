@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { IonRadioGroup, PopoverController } from '@ionic/angular';
 import { FilterJobsService } from 'src/app/emitters/filter-jobs.service';
 import { NavParams} from '@ionic/angular';
 
@@ -9,8 +9,8 @@ import { NavParams} from '@ionic/angular';
   styleUrls: ['./jobs-filter-popover.component.scss'],
 })
 export class JobsFilterPopoverComponent implements OnInit {
+  // Initial Filter applied to each no page will be the newest filter.
   selection = "newest";
-  
   filterFromJobsPage;
   constructor(
     private popoverController: PopoverController,
@@ -20,6 +20,7 @@ export class JobsFilterPopoverComponent implements OnInit {
 
   ngOnInit() {
     this.filterFromJobsPage = this.navParams.get('filter');
+    this.selection = this.filterFromJobsPage;
   }
   selectOption(e) {
     this.selection = e.detail.value;

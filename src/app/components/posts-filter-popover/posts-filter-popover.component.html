@@ -1,11 +1,15 @@
-<ion-radio-group [value]="this.selection" (ionChange)="selectOption($event)" name="job-menu-filter">
+<ion-radio-group [value]="this.selection" (ionChange)="selectOption($event)" name="post-menu-filter">
   <ion-item lines="none">
-    <ion-label>Pay - High to Low</ion-label>
-    <ion-radio value="htol"></ion-radio>
+    <ion-label>Most Comments</ion-label>
+    <ion-radio value="mostc"></ion-radio>
   </ion-item>
   <ion-item lines="none">
-    <ion-label>Pay - Low to High</ion-label>
-    <ion-radio value="ltoh"></ion-radio>
+    <ion-label>Most Upvotes</ion-label>
+    <ion-radio value="mostu"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Most Followers</ion-label>
+    <ion-radio value="mostf"></ion-radio>
   </ion-item>
   <ion-item lines="none">
     <ion-label>Newest</ion-label>

@@ -21,21 +21,26 @@
   </ion-refresher>
   <!-- Desktop -->
   <ion-grid class="ion-hide-md-down">
-  <!-- Desktop Header -->
-  <ion-row class="ion-hide-lg-down">
-    <ion-col offset-lg="2" offset-xl="3" size="3" style="margin: 3% 0% 2% 0%;">
-      <h1 style="font-size: 3em;
-      font-weight: 600;">Following</h1>
-    </ion-col>
-    <ion-col style="padding-top: 64px;" push-lg="2.5" push-xl="0.8" size-lg="4.2" size-xl="3.5">
-      <ion-button style="position: relative; top: 33px;" class="add-button"  (click)="addPost()">
-        Add Post
-      </ion-button>
-      <ion-button class="blue-button"  (click)="back()">
-        Back
-      </ion-button>
-    </ion-col>
-  </ion-row>
+    <!-- Desktop Header -->
+    <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="desktop-toolbar">
+              <ion-buttons slot="start">
+                  <h1>Following</h1>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="add-button"  (click)="addPost()">
+                  Add Post
+                </ion-button>
+                <ion-button class="blue-button"  (click)="back()">
+                  Back
+                </ion-button>
+              </ion-buttons>
+        </ion-toolbar>
+            <!-- <img height="50" style="display: inline;" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+            <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
+      </ion-col>
+    </ion-row>
   <ion-row class="ion-justify-content-center" style="margin-top: 1%;">
     <ion-col
     class="no-posts ion-align-items-center"

@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 @Injectable({
@@ -13,7 +12,6 @@ export class FilterJobsService {
 
   filterJobs(selection) {
     console.log('Emitting from FilterJobs Emitter...');
-    
     this.filterJobsEmitter.emit(selection);
   }
 }

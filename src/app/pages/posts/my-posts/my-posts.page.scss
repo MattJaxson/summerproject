@@ -1,7 +1,15 @@
 ion-title {
   margin: 0;
 }
+.desktop-toolbar{
+  --background: none;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #33333326;
 
+  h1 {
+    color: #0055a5;
+  }
+}
 .post {
   padding: 24px 0;
   margin-bottom: 80px;

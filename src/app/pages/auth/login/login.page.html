@@ -1,12 +1,6 @@
 <ion-content>
   <div class="spacer ion-hide-lg-down"></div>
   <ion-grid>
-    <!-- Logo -->
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6" size-xl="5"  style="margin-top: 1%;" class="ion-text-center">
-        
-      </ion-col>
-    </ion-row>
 
     <!-- Form -->
     <ion-row class="ion-justify-content-center ion-align-items-center">
@@ -73,15 +67,11 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="ion-justify-content-center">
+    <ion-row style="position: relative; top: -40px" class="ion-justify-content-center">
       <!-- Sign Up -->
-      <ion-col size="12">
+      <ion-col class="ion-text-center" size="12">
         <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
-        </ion-button>
-      </ion-col>
-
-      <!-- Forgot Password -->
-      <ion-col size="12">
+        </ion-button><br>
         <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
       </ion-col>
     </ion-row>
