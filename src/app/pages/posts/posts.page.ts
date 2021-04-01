@@ -45,10 +45,6 @@ export class PostsPage implements OnInit, OnDestroy {
   loadedAllPosts: any;
   filtering: boolean;
 
- alterDescriptionText() {
-    this.showShortDesciption = !this.showShortDesciption
- }
-
   postsSub: Subscription;
   notificationsSub: Subscription;
   profileSub: Subscription;
@@ -87,7 +83,6 @@ export class PostsPage implements OnInit, OnDestroy {
     this.posts.followingSubject$.unsubscribe();
   }
   ngOnInit() {
-
     this.getUserInfo();
     this.getPosts();
     this.getFollowingPosts();
@@ -114,6 +109,11 @@ export class PostsPage implements OnInit, OnDestroy {
       comment: ['']
     });
   }
+ alterDescriptionText(post) {
+  console.log(post);
+  console.log(post.length);
+   this.showShortDesciption = !this.showShortDesciption
+}
   async filterMenu() {
     const popover = await this.popoverController.create({
       component: PostsFilterPopoverComponent,
@@ -142,15 +142,15 @@ export class PostsPage implements OnInit, OnDestroy {
     }
     let searchedPosts = [];
     let searchTermArray = this.searchTerm.split(',');
-    // console.log('Searching...\n');
-    // console.log('Search Terms: ')
-    // console.log(searchTermArray);
-    // console.log('Loaded Posts')
-    // console.log(this.loadedAllPosts);
+    console.log('Searching...\n');
+    console.log('Search Terms: ')
+    console.log(searchTermArray);
+    console.log('Loaded Posts')
+    console.log(this.loadedAllPosts);
 
     searchTermArray.forEach(searchedTag => {
       console.log(searchedTag);
-      this.loadedAllPosts.filter( foundPost => {
+      this.allPosts.filter( foundPost => {
         console.log(foundPost.hashtags);
         foundPost.hashtags.forEach(tag => {
           console.log(tag);
@@ -209,9 +209,6 @@ export class PostsPage implements OnInit, OnDestroy {
     });
     console.log('Loading dismissed!');
   }
-  initializeItems(): void {
-    this.allPosts = this.loadedAllPosts;
-  }
   searchBarFocus() {
     console.log('Focusing on Searchbar');
 
@@ -242,9 +239,31 @@ export class PostsPage implements OnInit, OnDestroy {
       tabBar.style.transform = 'translateY(0px)';
     }, 750);
   }
-  hideEverything() {
-    // Hide Searchbar, Tabbar, and FAB when commenting on a Post
-    // Only for Mobile
+  commentFocus() {
+    console.log('Blurring out of Comment');
+
+    setTimeout(() => {
+      let searchBarWrapper = document.getElementById('searchbar-wrapper');
+      let fabWrapper = document.getElementById('fab-wrapper');
+      let tabBar = document.getElementById('tabBar');
+      searchBarWrapper.style.height = '0px';
+      searchBarWrapper.style.background = 'none';
+      fabWrapper.style.display = 'none';
+      tabBar.style.height = '0px';
+      tabBar.style.transition = '500ms'
+    }, 750);
+  }
+  commentBlur() {
+    let searchBarWrapper = document.getElementById('searchbar-wrapper');
+    let fabWrapper = document.getElementById('fab-wrapper');
+    let tabBar = document.getElementById('tabBar');
+    searchBarWrapper.style.height = '60px';
+    searchBarWrapper.style.background = 'none';
+    fabWrapper.style.display = 'block';
+    tabBar.style.height = '50px';
+    tabBar.style.transition = '500ms'
+    tabBar.style.transform = 'translateY(0px)';
+
   }
   postPage(post) {
     // tslint:disable-next-line: max-line-length
@@ -279,6 +298,12 @@ export class PostsPage implements OnInit, OnDestroy {
       this.studentChat.conversations$.next(Object.values(details['studentChat']).reverse());
     });
   }
+  formatDistanceToNow(date) {
+    return formatDistanceToNow( new Date(date), {
+      includeSeconds: true,
+      addSuffix: true
+    });
+  }
   doRefresh(event) {
 
     this.getFollowingPosts();
@@ -306,92 +331,74 @@ export class PostsPage implements OnInit, OnDestroy {
   }
   async getPosts() {
     this.postsSub = this.posts.getPosts().subscribe( posts => {
-
+      this.allPosts = Object.values(posts);
+      this.loadedAllPosts = Object.values(posts);
+      // for (const post of this.allPosts) {
+      //   post.date = formatDistanceToNow( new Date(post.date), {
+      //     includeSeconds: true,
+      //     addSuffix: true
+      //   });
+      // }
       switch (this.postFilter) {
         case 'mostc':
           console.log('Most Comments');
           this.filtering = true;
           this.postFilter = 'mostc';
-          this.allPosts = Object.values(posts);
-          this.allPostsLength = this.allPosts.length;
 
           function mostComments(a, b){
-            console.log('Sorting Price')
+            console.log('Sorting Posts')
             return a.comments.length - b.comments.length;
           }
           this.allPosts.sort(mostComments);
           this.allPosts.reverse();
           this.searching = false;
-
-          // Format Times
-          for (const post of this.allPosts) {
-            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
-          }
           break;
         case 'mostu':
           console.log('Most Upvotes');
           this.filtering = true;
           this.postFilter = 'mostu';
-          this.allPosts = Object.values(posts);
-          this.allPostsLength = this.allPosts.length;
           function mostUpvotes(a, b){
-            console.log('Sorting Price')
+            console.log('Sorting Posts')
             return a.upvotes - b.upvotes;
           }
           this.allPosts.sort(mostUpvotes);
           this.allPosts.reverse();
           this.searching = false;
-
-          // Format Times
-          for (const post of this.allPosts) {
-            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
-          }
           break;
         case 'mostf':
           console.log('Most Followers');
           this.filtering = true;
           this.postFilter = 'mostf';
-          this.allPosts = Object.values(posts);
-          this.allPostsLength = this.allPosts.length;
           function mostFollowers(a, b){
-            console.log('Sorting Price')
+            console.log('Sorting Posts')
             return a.followers.length - b.followers.length;
           }
           this.allPosts.sort(mostFollowers);
           this.allPosts.reverse();
           this.searching = false;
-
-          // Format Times
-          for (const post of this.allPosts) {
-            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
-          }
           break;
         case 'newest':
           console.log('Newest');
           this.filtering = true;
           this.postFilter = 'newest';
-          this.allPosts = Object.values(posts);
-          this.allPostsLength = this.allPosts.length;
+          function newestPost(a, b){
+            console.log('Sorting Posts')
+            return a.date - b.date;
+          }
+          this.allPosts.sort(newestPost);
           this.allPosts.reverse();
           this.searching = false;
-
-          // Format Times
-          for (const post of this.allPosts) {
-            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
-          }
           break;
         case 'oldest':
           console.log('Oldest');
           this.filtering = true;
           this.postFilter = 'oldest';
-          this.allPosts = Object.values(posts);
-          this.allPostsLength = this.allPosts.length;
-          this.searching = false;
-
-          // Format Times
-          for (const post of this.allPosts) {
-            post.date = formatDistanceToNow( new Date(post.date), { addSuffix: false });
+          function oldestPost(a, b){
+            console.log('Sorting Posts')
+            return b.date - a.date;
           }
+          this.allPosts.sort(oldestPost);
+          this.searching = false;
           break;
 
         default:

@@ -52,7 +52,11 @@
           (ionChange)="search($event)">
           <span class="hash-desktop">#</span>
         </ion-searchbar>
-        <p style="font-size: 0.9em;">You can choose up to five hashtags. Please seperate each tag with a comma ( , )<br>Example: "Computers, Science, Technology"</p>
+        <p style="font-size: 0.7em;">
+          Please seperate each tag with a comma ( , ).<br>
+          Example: "Computers, Science, Technology"<br>
+          <span style="color: #e4405f">You can choose up to five hashtags.</span>
+        </p>
       </ion-col>
       <ion-col  size-md="7.5" pull-lg="1" size-lg="3" pull-xl="1.4" size-xl="2">
         <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 1.2em; --background: none; --color: white;" (click)="filterMenu()">
@@ -61,6 +65,11 @@
         <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 0.7em;" (click)="searchLoading()">
           Search
         </ion-button>
+        <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
+        <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
+        <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
+        <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
+        <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
@@ -70,7 +79,7 @@
     </ion-row>
     <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
       <!-- Posts -->
-      <ion-col style="border-top: 1px solid #999; padding: 18px 0px;"  size-md="7.5" size-lg="9" size-xl="6" style="margin-top: 2%;">
+      <ion-col style="border-top: 1px solid rgba(153, 153, 153, 0.397); padding: 18px 0px;"  size-md="7.5" size-lg="9" size-xl="6">
         <div class="post" *ngFor="let post of allPosts" style="margin-top: 1%;">
           <!-- Profile Header -->
           <ion-row>
@@ -81,7 +90,7 @@
                 <!-- Post Creator's Name -->
                 <ion-col size="10">
                   <p class="post-name">{{post.creatorName}}</p>
-                  <p class="post-date">{{post.date}}</p>
+                  <p class="post-date">{{this.formatDistanceToNow(post.date)}}</p>
                 </ion-col>
           </ion-row>
           <!-- Post Content -->
@@ -100,8 +109,8 @@
               </p>
               <p style="border-top: 1px solid #999; padding: 18px 0px;"  [ngClass]="{'show-less': showShortDesciption}" class="post-content">{{post.post}}</p>
               <span class="ellipsis" *ngIf="post.post.length > 400 && showShortDesciption">...</span>
-              <button *ngIf="post.post.length > 400" class="show-more-or-less-button" type="button" (click)="alterDescriptionText()">
-                {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
+              <button *ngIf="post.post.length > 400" class="show-more-or-less-button" type="button" (click)="alterDescriptionText(post.post)">
+                {{ showShortDesciption ? 'Read More': 'Hide' }}
               </button>
             </ion-col>
           </ion-row>
@@ -178,12 +187,12 @@
   <!-- Mobile -->
   <ion-grid class="ion-hide-lg-up">
     <ion-row>
-      <ion-col class="ion-hide-lg-up" size="12">
+      <ion-col size-xs="12" size-sm="11" push="0.5" size-md="10" size-lg="8" size-xl="5">
         <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
         <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
         <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
         <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
-        <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> Oldest</p>
+        <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
       </ion-col>
     </ion-row>
     <!-- Posts -->
@@ -194,7 +203,7 @@
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <!-- Posts -->
-      <ion-col size-xs="12" size-sm="11" size-md="10" size-lg="8" size-xl="5">
+      <ion-col size-xs="12" size-sm="11" pull-md="1.5" size-md="8" size-lg="8" size-xl="5">
     <div class="post" *ngFor="let post of allPosts" style="margin-top: 1%;">
       <!-- Profile Header -->
       <ion-row class="ion-justify-content-center">
@@ -206,7 +215,7 @@
             <!-- Post Creator's Name -->
             <ion-col size="10">
               <p class="post-name">{{post.creatorName}}</p>
-              <p class="post-date">{{post.date}}</p>
+              <p class="post-date">{{this.formatDistanceToNow(post.date)}}</p>
             </ion-col>
 
       </ion-row>
@@ -226,8 +235,8 @@
           </p>
           <p [ngClass]="{'show-less': showShortDesciption}" class="post-content">{{post.post}}</p>
           <span class="ellipsis" *ngIf="post.post.length > 400 && showShortDesciption">...</span>
-          <button *ngIf="post.post.length > 400" class="show-more-or-less-button" type="button" (click)="alterDescriptionText()">
-            {{ showShortDesciption ? 'SHOW ALL': 'SHOW LESS' }}
+          <button *ngIf="post.post.length > 400" class="show-more-or-less-button" type="button" (click)="alterDescriptionText(post.post)">
+            {{ showShortDesciption ? 'Read More': 'Hide' }}
           </button>
         </ion-col>
       </ion-row>
@@ -237,16 +246,18 @@
           <ion-item  style="height: auto;" lines="none">
             <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
               <ion-textarea
-                  (ionBlur)="this.searchBarBlur()"
-                  class="comment-input-mobile"
-                  autogrow="true"
-                  autocapitalize="true"
-                  rows="5"
-                  spellcheck="true"
-                  wrap="soft"
-                  type="text"
-                  #postComment
-                  placeholder="Add a Comment" formControlName="comment">
+                (ionBlur)="this.commentBlur()"
+                (ionFocus)="this.commentFocus()"
+                class="comment-input-mobile"
+                autogrow="true"
+                autocapitalize="true"
+                rows="5"
+                spellcheck="true"
+                wrap="soft"
+                type="text"
+                #postComment
+                placeholder="Add a Comment"
+                formControlName="comment">
               </ion-textarea>
               <!-- Comment Post Button -->
               <ion-button

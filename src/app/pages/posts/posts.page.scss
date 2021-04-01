@@ -60,13 +60,20 @@ ion-content {
 .filter-message{
   color: #888;
   opacity: 0;
-  animation: filter-message-slide 0.5s ease 1s forwards;
-  float: right;
+  animation: filter-message-slide 0.5s ease 1.5s forwards;
+  // float: right;
 
   span {
     font-weight: 600;
   }
 }
+// @media screen and (min-width: 922px) {
+//   .filter-message {
+//     position: relative;
+//     right: 8px;
+//     float: left;
+//   }
+// }
 @keyframes filter-message-slide {
   0%{
     transform: translateX(10px);
@@ -127,10 +134,12 @@ ion-content {
 }
 .post-content {
   font-size: 0.9em;
+  height: auto;
+  overflow: hidden;
  }
 
  .show-less {
-  height: auto;
+  height: 100px;
   overflow: hidden;
 }
 
@@ -152,6 +161,7 @@ ion-content {
   position: relative;
   right: 20px;
   top: -18px;
+  font-size: 1.5em;
 }
 
 #searchbar-wrapper {
