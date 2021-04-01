@@ -120,8 +120,6 @@
               <ion-item  style="height: auto;" lines="none">
                 <form (ngSubmit)="comment(post._id, this.userFullName, this.userEmail, this.userProfilePicture, this.commentForm.value)" [formGroup]="commentForm">
                   <ion-textarea
-                      (ionBlur)="this.searchBarBlur()"
-                      (ionFocus)="this.hideEverything()"
                       class="comment-input-mobile"
                       autogrow="true"
                       autocapitalize="true"
