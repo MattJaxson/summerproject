@@ -5,7 +5,7 @@
   "homepage": "findyourfuturesem.org",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl --ssl-key 10.0.1.4-key.pem --ssl-cert 10.0.1.4.pem --host 10.0.1.4 --prod",
+    "start": "ng serve --host 10.0.1.5",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

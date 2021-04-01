@@ -14,6 +14,47 @@
      * Mostly, this is used to mock out identifiers which are otherwise read
      * from the global scope.
      */
+
+   const ASSETS = [
+    '/offline.html',
+    'index.html',
+    'styles.css',
+  ];
+
+  let cache_name = "FYF_Offline_Cache";
+
+  // Adds cahce
+  self.addEventListener('install', event => {
+      console.log('Installing Service Worker ...')
+      console.log(event);
+      event.waitUntil(
+          caches
+              .open(cache_name)
+              .then(cache => {
+                  console.log('Cache: ');
+                  console.log(cache);
+                  return cache.addAll(ASSETS)
+              })
+              .catch(err => {console.log(err)})
+      )
+  });
+
+  self.addEventListener('fetch', event => {
+      event.respondWith(async function() {
+        try{
+          var res = await fetch(event.request);
+          var cache = await caches.open(cache_name);
+          cache.put(event.request.url, res.clone());
+        //   console.log(res)
+          return res;
+        }
+        catch(error){
+            return caches.match(event.request).then(res => {
+              console.log(res);
+          });
+        }
+      }());
+  });
     class Adapter {
         constructor(scopeUrl) {
             this.scopeUrl = scopeUrl;
