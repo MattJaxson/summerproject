@@ -40,7 +40,7 @@
   <!-- Desktop -->
   <ion-grid class="ion-hide-lg-down">
     <ion-row style="margin-top: 40px;" class="ion-justify-content-center">
-      <ion-col pull-lg="1" size-md="7.5" size-lg="6" pull-xl="0.6" size-xl="4.8">
+      <ion-col pull-lg="1" size-md="7.5" size-lg="6" pull-xl="1" size-xl="4">
         <ion-searchbar
           class="searchbar-desktop"
           animated="true"
@@ -52,6 +52,11 @@
           (ionChange)="search($event)">
           <span class="hash-desktop">#</span>
         </ion-searchbar>
+          <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
+          <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
+          <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
+          <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
+          <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
         <p style="font-size: 0.7em;">
           Please seperate each tag with a comma ( , ).<br>
           Example: "Computers, Science, Technology"<br>
@@ -65,11 +70,6 @@
         <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 0.7em;" (click)="searchLoading()">
           Search
         </ion-button>
-        <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
-        <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
-        <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
-        <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
-        <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
@@ -249,7 +249,7 @@
                 class="comment-input-mobile"
                 autogrow="true"
                 autocapitalize="true"
-                rows="5"
+                rows="1"
                 spellcheck="true"
                 wrap="soft"
                 type="text"
@@ -257,6 +257,9 @@
                 placeholder="Add a Comment"
                 formControlName="comment">
               </ion-textarea>
+
+              <!-- Textarea that appears after User focuses on Comment Input -->
+              
               <!-- Comment Post Button -->
               <ion-button
                 style="float: right;"
@@ -290,6 +293,17 @@
 </ion-content>
 
 <ion-footer class="ion-hide-lg-up">
+  <!-- <ion-textarea
+    class="comment-input-mobile-focused"
+    autogrow="true"
+    autocapitalize="true"
+    rows="1"
+    spellcheck="true"
+    wrap="soft"
+    type="text"
+    #postComment
+    placeholder="Add a Comment">
+  </ion-textarea> -->
   <div
   id="searchbar-wrapper">
   <!-- (keyup)="addHashTag($event)"-->

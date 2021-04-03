@@ -51,26 +51,7 @@ export class LoginPage implements OnInit {
     if (window.navigator.onLine === true) {
       console.log('We are ONLINE!');
       // Chrome, Edge,
-     window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('beforeinstallprompt Event fired');
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
-      console.log(this.deferredPrompt);
-
-      if (this.deferredPrompt) {
-        this.downloadButton.style.display = 'block';
-        this.downloadButton.addEventListener('click', () => {
-          this.deferredPrompt.prompt();
-        });
-      }
-      // If there was no Install Prompt event returned,
-      // do not display the Install App button.
-      if (!this.deferredPrompt) {
-        this.downloadButton.style.display = 'none';
-      }
-    })
+     
     };
 
     this.loginForm = this.formBuilder.group({

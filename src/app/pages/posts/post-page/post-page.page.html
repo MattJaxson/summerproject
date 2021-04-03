@@ -71,20 +71,20 @@
           <!-- Comment Input -->
           <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
             <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value )" [formGroup]="commentForm">
-                    <ion-textarea
-                      (ionBlur)="onBlur()"
-                      (onfocusout)="blur()"
-                      (keydown.control.enter)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value) && ScrollToPostedComment()"
-                      class="comment-input"
-                      autogrow="true"
-                      autocapitalize="true"
-                      rows="5"
-                      spellcheck="true"
-                      wrap="soft"
-                      type="text"
-                      placeholder="Add a Comment" formControlName="comment">
-                    </ion-textarea>
-                    <ion-button
+              <ion-textarea
+                (ionBlur)="onBlur()"
+                (onfocusout)="blur()"
+                (keydown.control.enter)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value.comment, false) && ScrollToPostedComment()"
+                class="comment-input"
+                autogrow="true"
+                autocapitalize="true"
+                rows="5"
+                spellcheck="true"
+                wrap="soft"
+                type="text"
+                placeholder="Add a Comment" formControlName="comment">
+              </ion-textarea>
+              <ion-button
                       style="float: right;"
                       class="comment-post-button"
                       type="submit"
@@ -92,7 +92,7 @@
                               .get('comment')
                               .pristine && commentForm.value.comment.length >= 3"
                         name="send">Post
-                      </ion-button>
+              </ion-button>
             </form>
           </ion-col>
 
@@ -132,12 +132,19 @@
       <p style="color: #888;">This post has no comments</p>
       </ion-col>
 
-      <ion-col *ngIf="comments.length > 0" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <p style="color: #888; margin: 0px 0">Comments - {{comments.length}}</p>
+      <ion-col style="margin-bottom: 24px;" *ngIf="comments.length > 0" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-toolbar class="comments-toolbar-mobile ion-hide-lg-up">
+          <p style="color: #888;">Comments - {{comments.length}}</p>
+          <ion-buttons slot="end">
+            <ion-button (click)="filterComments()">
+              <ion-icon slot="start" name="filter"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
       </ion-col>
 
         <!-- Comment Wrapper -->
-        <ion-col *ngFor="let comment of comments" class="comment" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <ion-col *ngFor="let comment of comments" class="comment" size-xs="12" size-sm="10" size-md="10" size-lg="8" size-xl="6">
 
           <!-- Comment Header -->
           <ion-row>
@@ -194,7 +201,7 @@
             <ion-col push="1" size="6">
               <ion-toolbar style="--background: none;">
                 <ion-buttons slot="end">
-                  <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture, comment.userFullName, comment.userEmail)" class="reply ion-float-right">
+                  <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture, comment.userFullName, comment.userEmail, comment.comment)" class="reply ion-float-right">
                     Reply
                   </ion-button>
                   <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userEmail, comment.date)"  class="report ion-float-right">
@@ -217,3 +224,26 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer class="ion-hide-lg-up add-comment-footer">
+  <ion-row class="ion-justify-content-center">
+    <ion-col style="display: inline-block; height: 40px;" size="10">
+      <ion-textarea
+      (ionChange)="commentInput($event)"
+      style="display: inline;"
+      autocapitalize="true"
+      rows="1"
+      spellcheck="true"
+      wrap="soft"
+      type="text"
+      placeholder="Add a Comment"
+      >
+    </ion-textarea>
+    </ion-col>
+    <ion-col style="display: inline-block; height: 50px;" size="1">
+      <ion-button style="--background: none;" (click)="comment(this.postID, this.userFullName, this.userEmail, userProfilePicture, this.commentInputValue, true) && ScrollToPostedComment()">
+      <ion-icon style="font-size: 1.4em; color: #0055a5;" slot="start" name="send"></ion-icon>
+    </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

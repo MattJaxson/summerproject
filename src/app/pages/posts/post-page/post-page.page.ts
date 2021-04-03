@@ -15,7 +15,6 @@ import { RepliesPagePage } from 'src/app/modals/replies-page/replies-page.page';
 import { PlatformLocation } from '@angular/common';
 import { SinglePostPageEmitterService } from 'src/app/emitters/single-post-page-emitter.service';
 import { Subscription } from 'rxjs';
-import { SubjectSubscriber } from 'rxjs/internal/Subject';
 
 
 const LANGUAGE_FILTER_LIST = [
@@ -67,6 +66,8 @@ export class PostPagePage implements OnInit, OnDestroy {
   // debugging
   scroll = '';
   commentForm: FormGroup;
+  // Footer Comment
+  commentInputValue: any;
 
   postInfoSub: Subscription;
   commentsSub: Subscription;
@@ -106,7 +107,6 @@ export class PostPagePage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
     this.location.onPopState(() => {
       this.postEmitterService.onBackAction();
     });
@@ -255,12 +255,25 @@ export class PostPagePage implements OnInit, OnDestroy {
         this.tabBar.style.height = '70px';
     });
   }
-  async comment(postID, userFullName, userEmail, userProfilePicture, comment) {
-    console.log(comment);
-
+  filterComments() {
+    
+  }
+  commentInput(e) {
+    console.log(e.detail.value);
+    this.commentInputValue = e.detail.value;
+  }
+  async comment(postID, userFullName, userEmail, userProfilePicture, comment, fromFooterInput) {
+    // Values from Footer Input and Desktop inputs are different.
+    // Making a standardized values to send to commentLoading()
+    let checkedComment;
+    if(!fromFooterInput) {
+      checkedComment = comment.comment
+    } else {
+      checkedComment = comment
+    }
     // Reset Comment Input
     this.commentForm.reset();
-    this.commentLoading(postID, userFullName, userEmail, userProfilePicture, comment);
+    this.commentLoading(postID, userFullName, userEmail, userProfilePicture, checkedComment);
     const toast = this.toast.create({
       message: 'Your comment has been added.',
       duration: 1500
@@ -269,13 +282,14 @@ export class PostPagePage implements OnInit, OnDestroy {
     toast.then(toast => toast.present());
   }
   async commentLoading(postID, userFullName, userEmail, userProfilePicture, comment) {
-
+    console.log(comment);
+    
     this.postsSub = this.posts.comment(
       postID,
       userFullName,
       userEmail,
       userProfilePicture,
-      comment.comment
+      comment
     ).subscribe( data => {
       this.postInfoSub = this.posts.getPostInfo(this.postID).subscribe(
         post => {
@@ -342,11 +356,11 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     await reportModalConfig.present();
   }
-  async reply(commentID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
+  async reply(commentID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail, comment) {
     await console.log('Attemping to reply to comment');
-    await this.replyModal(commentID, this.postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail);
+    await this.replyModal(commentID, this.postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail, comment);
   }
-  async replyModal(commentID, postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail) {
+  async replyModal(commentID, postID, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail, comment) {
     const replyModalConfig = await this.modal.create({
       component: ReplyCommentPage,
       componentProps: {
@@ -357,6 +371,7 @@ export class PostPagePage implements OnInit, OnDestroy {
         userEmail,
         commentUserEmail,
         commentUserFullName,
+        comment
       },
       cssClass: 'reply-modal'
     });

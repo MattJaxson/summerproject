@@ -24,7 +24,7 @@
     <ion-row class="ion-justify-content-center">
 
       <ion-col size="10">
-        <p id="userfullname"></p>
+        <p id="userfullname">{{this.comment}}</p>
         <form [formGroup]="replyCommentForm" (ngSubmit)="this.replyCommentForm.value.reply.length > 0 ? reply(this.replyCommentForm.value) : null">
           <ion-textarea
             (keydown.control.enter)="this.replyCommentForm.value.reply.length > 0 ? reply(this.replyCommentForm.value) : null"

@@ -249,8 +249,6 @@ export class PostsPage implements OnInit, OnDestroy {
       searchBarWrapper.style.height = '0px';
       searchBarWrapper.style.background = 'none';
       fabWrapper.style.display = 'none';
-      tabBar.style.height = '0px';
-      tabBar.style.transition = '500ms'
     }, 750);
   }
   commentBlur() {
@@ -260,9 +258,6 @@ export class PostsPage implements OnInit, OnDestroy {
     searchBarWrapper.style.height = '60px';
     searchBarWrapper.style.background = 'none';
     fabWrapper.style.display = 'block';
-    tabBar.style.height = '50px';
-    tabBar.style.transition = '500ms'
-    tabBar.style.transform = 'translateY(0px)';
 
   }
   postPage(post) {

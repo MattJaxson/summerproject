@@ -19,6 +19,7 @@ export class ReplyCommentPage implements OnInit {
   commentID: string;
   commentUserFullName: string;
   commentUserEmail: string;
+  comment: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,6 +45,7 @@ export class ReplyCommentPage implements OnInit {
     this.userProfilePicture = this.navParams.get('userProfilePicture');
     this.commentUserFullName = this.navParams.get('commentUserFullName');
     this.commentUserEmail = this.navParams.get('commentUserEmail');
+    this.comment = this.navParams.get('comment');
 
     console.log(this.commentUserEmail);
     console.log(this.userEmail)

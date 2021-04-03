@@ -367,13 +367,24 @@ form {
   transition: 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
+.comment-input-mobile-focused{
+  background: rgba(213, 232, 236, .3);
+  height: auto;
+  margin: 20px 0 10px 0;
+  box-shadow: none;
+  padding-left: 10px;
+  border: 3px solid #0055a5;
+  border-radius: 2px;
+  transition: 1s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  // height: 0px;
+}
 .comment-input-mobile:focus {
   background: rgba(247, 248, 248, 0.5);
   height: 100px;
   margin: 30px 0 150px 0;
   box-shadow: 1px 1px 3px #999;
-  border: 1px solid rgba(0, 81, 145, 1);
+  border: 1px solid rgba(227,64,95, 1);
   border-radius: 5px;
   transition: 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);

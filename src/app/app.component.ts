@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +26,22 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
-    
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(url.includes('/home/posts/post-page/')) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '0.2s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '0.2s'
+        }
+      });
   }
 
   ngOnDestroy() {

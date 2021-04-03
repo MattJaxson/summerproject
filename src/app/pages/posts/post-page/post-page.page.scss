@@ -6,10 +6,13 @@
 
 .post {
   margin-bottom: 40px;
-  background: #edf3f8;
-  padding: 80px 0px;
+  background: white;
+  padding: 20px 0px;
 }
-
+.add-comment-footer{
+  background: rgba(213, 232, 236, 0.3);
+  height: 65px;
+}
 .post-title {
   font-weight: 800;
   color: #0055a5;
@@ -17,7 +20,7 @@
   position: relative;
   top: -26px;
   line-height: 25px;
-  margin: 10px 0px 0px 0px;
+  margin-top: 16px;
 }
 
 .profile-picture {
@@ -127,12 +130,21 @@
   width: 100px;
   margin-top: 20px;
 }
+.comments-toolbar{
+  
+}
+.comments-toolbar-mobile{
+  --background: none;
 
+  ion-icon {
+    color: #0055a5
+  }
+}
 .comment{
   background: white;
   height: auto;
   opacity: 0;
-  margin: 30px 0 60px 0;
+  margin: 8px 0 8px 0;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
   // border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
@@ -144,15 +156,15 @@
 .comment:hover {
   background: white;
   height: auto;
-  margin: 30px 0 60px 0;
+  margin: 24px 0 24px 0;
   box-shadow: none;
   border: 1px solid rgba(0, 81, 145,0.4);
   border-radius: 5px;
   padding-left: 10px;
   transition: 0.5s;
-  transform: scale(1);
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 
 .follow-button {
     width: 100px;
