@@ -11,16 +11,13 @@
 }
 .add-comment-footer{
   background: rgba(213, 232, 236, 0.3);
-  height: 65px;
+  height: 44px;
 }
 .post-title {
   font-weight: 800;
   color: #0055a5;
   font-size: 1.2em;
-  position: relative;
-  top: -26px;
   line-height: 25px;
-  margin-top: 16px;
 }
 
 .profile-picture {
@@ -151,18 +148,6 @@
   padding-left: 10px;
   transition: 0.5s;
   animation: post-button-slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
-}
-
-.comment:hover {
-  background: white;
-  height: auto;
-  margin: 24px 0 24px 0;
-  box-shadow: none;
-  border: 1px solid rgba(0, 81, 145,0.4);
-  border-radius: 5px;
-  padding-left: 10px;
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 

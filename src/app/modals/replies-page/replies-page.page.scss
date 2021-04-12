@@ -1,41 +1,17 @@
-.reply-input {
-  background: white;
-  height: auto;
-  margin: 20px 0 20px 0;
-  box-shadow: none;
-  border: 1px solid rgba(0, 81, 145,0.4);
-  border-radius: 5px;
-  padding-left: 10px;
-  transition: 0.5s;
-  transition-timing-function: linear;
+ion-item {
+  --background: none;
+  position: relative;
+  right: 16px;
 }
-
-.reply-input:hover {
-  background: rgba(250, 167, 27, 0.02);
-  height: auto;
-  box-shadow: 1px 1px 3px #999;
-  border: 1px solid rgba(0, 81, 145, 1);
-  border-radius: 5px;
-  padding-left: 10px;
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.more-icon {
+  color: #0055a5;
+  font-size: 1.3em;
 }
-
-ion-button[type=submit] {
-  --color: white;
-  --background: linear-gradient(#24d8a8, #1baf88)
-}
-
-.blue-button {
-  width: unset;
-  height: 36px;
-  font-size: 0.85em;
-  animation: none;
-  opacity: unset;
-}
-
 .reply-wrapper {
   padding: 10px;
+  margin: 16px;
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
+  background: white;
 }
 
 #reply-avatar {
@@ -43,7 +19,7 @@ ion-button[type=submit] {
   width: 30px;
   border-radius: 50px;
   position: relative;
-  right: 15px;
+  top: 7px;
 }
 
 .reply-name {

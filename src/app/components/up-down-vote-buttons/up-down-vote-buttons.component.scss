@@ -65,3 +65,12 @@ ion-buttons {
   width: 100px;
   margin-left: 10px;
 }
+
+@media screen and (max-width: 567px) {
+  .follow-button, .unfollow-button {
+      font-size: 0.52em;
+      font-weight: 600;
+      width: 80px;
+      --width: 70px;
+  }
+}

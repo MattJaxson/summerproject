@@ -44,7 +44,7 @@
     <!-- Instructions -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-            <p style="color: #888; font-weight: 600; font-size: 1.2em;margin: 0;">Please go over your information before you send your application. You can edit your profile's phone number and Resume from here. After you hit submit, an email with your FYF Profile, Resume, and application message will be sent to the employer.</p>
+            <p>Please go over your information before you send your application. You can edit your profile's phone number and Resume from here. After you hit submit, an email with your FYF Profile, Resume, and application message will be sent to the employer.</p>
       </ion-col>
     </ion-row>
     <!-- Forms -->
@@ -52,21 +52,22 @@
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <form *ngIf="applyPageForm" [formGroup]="applyPageForm">
           <div class="info-section">
-                    <p class="instructions" >Phone Number</p>
-                  <ion-item>
-                    <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
-                  </ion-item>
+            <p class="instructions" >Phone Number</p>
+            <ion-list class="line-input">
+              <ion-item>
+                <ion-input formControlName="phoneNumber" maxlength="10" inputmode="tel"></ion-input>
+              </ion-item>
+            </ion-list>
           </div>
           <div class="info-section">
-                    <p class="instructions" >Resume</p>
-                      <ion-button class="blue-button" style="height: 45px;" (click)="viewResumeModal()">
+            <p class="instructions" >Resume</p>
+            <ion-button class="blue-button" style="height: 45px;" (click)="viewResumeModal()">
                         View Resume
-                      </ion-button>
+            </ion-button>
                       <!-- <p>or</p> -->
-                      <ion-input type="file" class="custom-file-input ">
-                        <label style="margin-right: 10px;">Upload Resume</label>
-                      </ion-input>
-
+            <ion-input type="file" class="custom-file-input ">
+            <label style="margin-right: 10px;">Upload Resume</label>
+            </ion-input>
           </div>
           <div class="info-section">
             <p class="instructions" >Why are you a good fit for this job?</p>

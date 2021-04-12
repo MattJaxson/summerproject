@@ -3,7 +3,6 @@ import { PopoverController } from '@ionic/angular';
 import { NavParams} from '@ionic/angular';
 import { FilterPostsService } from 'src/app/emitters/filter-posts.service';
 
-
 @Component({
   selector: 'app-posts-filter-popover',
   templateUrl: './posts-filter-popover.component.html',

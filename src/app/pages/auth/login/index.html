@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Journi Site</title>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: Helvetica, sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            margin-bottom: 100px;
+            padding: 1%;
+            background: white;
+            box-shadow: 1px 1px 10px rgba(153, 153, 153, 0.36);
+        }
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+        .navbar li {
+            /* background: lightgray; */
+            width: 100px;
+            list-style-type: none;
+            display: inline;
+            /* margin: 4px ; */
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #49bde5;
+        }
+        #html, #css, #command {
+            height: auto;
+            padding: 100px 50px;
+            border-bottom: 5px solid #49bde5;
+        }
+        #html {
+            background: #49bee531;
+        }
+        #css {
+            background: white;
+        }
+        #command {
+           background: #49bee531;
+        }
+        h1 {
+            border-bottom: 1px solid #999;
+            padding-bottom: 10px;
+            color: orange;
+            width: 400px;
+        }
+        div img {
+            margin-bottom: 16px;
+        }
+        .card {
+            background: white;
+            width: 400px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 12px rgba(153, 153, 153, 0.36);
+        }
+        .question {
+            font-weight: 900;
+        }
+        .answer {
+            margin: 16px;
+        }
+        span {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img height="40" src="http://static1.squarespace.com/static/55c4ffcfe4b0b6679a5a2ff5/5633c37ee4b0de7dac39d992/576913dc9f74569d7e0126b0/1469549716553/journilogo.png?format=1500w">
+        <ul>
+            <li>
+                <a href="#html">HTML</a>
+            </li>
+            <li>
+                <a href="#css">CSS</a>
+            </li>
+            <li>
+                <a href="#command">CLI</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="html">
+        <img height="40" src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-html-logo-0.png">
+        <h1>HTML5</h1>
+        <br>
+        <div class="card">
+            <p class="question">What does HTML Stand for?</p>
+            <p class="answer">HyperText Markup Language.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is HTML used for?</p>
+            <p class="answer">Creating the structure of a webpage, with building blocks known as Elements.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is an Element?</p>
+            <p class="answer">An element represents an individual component of an HTML document, like an image, text, or button. These elements are represented with tags.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is an Attribute?</p>
+            <p class="answer">An Attriute describes more information about an element. Attributes are set in the opening tag of every element.</p>
+        </div>
+    </div>
+    <div id="css">
+        <img height="40" src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-css-logo-png-transparent-svg-vector-bie-supply-9.png">
+        <h1>CSS3</h1>
+        <br>
+        <div class="card">
+            <p class="question">What does CSS Stand for?</p>
+            <p class="answer">Cascading Style Sheet.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is CSS used for?</p>
+            <p class="answer">Describing the style of HTML Elements on a webpage.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is structure of a CSS Declaration?</p>
+            <p class="answer">selector {
+                property: value    
+            }</p>
+        </div>
+        <div class="card">
+            <p class="question">What are three different ways to style a webpage with CSS</p>
+            <p class="answer">Inline, Internal, and External</p>
+        </div>
+        <div class="card">
+            <p class="question">What is the difference between a CLASS and an ID</p>
+            <p class="answer">A <span>Class</span> is a CSS Declaration that can be applied to many different elements. A an <span>ID</span> is a CSS Declaration that only applies to one unique element on a page.</p>
+        </div>
+    </div>
+    <div id="command">
+        <img height="40" src="https://static.thenounproject.com/png/133029-200.png" />
+        <h1>Command Line Interface (CLI)</h1>
+        <br>
+        <div class="card">
+            <p class="question">What is a Command Line?</p>
+            <p class="answer">A way for user to interact - or <i>interface</i> - with a computer Operating System, without the need of a graphical interace.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is a graphical interface?</p>
+            <p class="answer">Everything you see on the screen graphically (like buttons) that you can interface - or <i>interface</i> - with.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is the name of the CLI Program on GITPOD?</p>
+            <p class="answer">Terminal, which is the command line of Linux and macOS.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is a directory?</p>
+            <p class="answer">Also known as a "folder", consists of a collection of files, images, videos, and oven other directories.</p>
+        </div>
+        <div class="card">
+            <p class="question">What is the command for finding and going to a directory (changing directories)?</p>
+            <p class="answer">cd</p>
+        </div>
+        <div class="card">
+            <p class="question">What is the command for creating a file</p>
+            <p class="answer">touch</p>
+        </div>
+        <div class="card">
+            <p class="question">What is the command for creating a directory?</p>
+            <p class="answer">mkdir</p>
+        </div>
+    </div>
+</body>
+</html>

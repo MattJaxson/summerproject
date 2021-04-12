@@ -1,17 +1,14 @@
 <ion-header no-border class="ion-hide-lg-up">
   <!-- Mobile & Tablet Toolbar -->
   <ion-toolbar>
-    <img class="ion-float-left" style="position: relative; left: 16px;
-" height="40" src="../../../assets/icon/suitcase-white.svg">
-    <ion-title style="position: relative; top: 16px;
-">Jobs</ion-title>
+    <ion-icon style="position: relative; left: 24px" color="light" name="briefcase-outline"></ion-icon>
        <ion-buttons slot="end">
         <ion-button (click)="favoritesPage()">
           <ion-icon slot="start" src="../../assets/icon/my-favorite-jobs.svg"></ion-icon>
         </ion-button>
-        <ion-button (click)="filterMenu()">
+        <!-- <ion-button (click)="filterMenu()">
           <ion-icon slot="start" name="filter"></ion-icon>
-        </ion-button>
+        </ion-button> -->
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -53,27 +50,40 @@
             <h1 style="display: inline; margin-left: 15px;">Jobs</h1> -->
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col style="position: relative; top: -32px;" class="ion-text-center" size="12">
-        <ion-spinner *ngIf="this.filtering" name="bubbles">Filtering</ion-spinner>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
+    <!-- Filter Toolbar -->
+    <ion-row class="filter-toolbar ion-hide-lg-up ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <ion-row>
-          <ion-col class="ion-hide-lg-up" size="12">
+        <ion-toolbar style="--background: none;">
+          <ion-buttons slot="start">
             <p *ngIf="this.jobFilter === 'htol'" class="filter-message"><span>Filter</span>: Pay - High to Low</p>
             <p *ngIf="this.jobFilter === 'ltoh'" class="filter-message"><span>Filter</span>: Pay - Low to High</p>
             <p *ngIf="this.jobFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
             <p *ngIf="this.jobFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.jobFilter}}</p>
-          </ion-col>
-        </ion-row>
-        <div class="spacer ion-hide-lg-up"></div>
+          </ion-buttons>
+          <ion-buttons slot="end">
+              <ion-button (click)="filterMenu()">
+                <ion-icon class="filter-icon" slot="start" name="filter"></ion-icon>
+              </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+
+    <!-- Filtering Message -->
+    <ion-row *ngIf="this.filtering" class="ion-justify-content-center">
+      <ion-col style="position: relative; top: -100px;" class="ion-text-center" size="12">
+        <ion-spinner  name="bubbles">Filtering</ion-spinner>
+      </ion-col>
+    </ion-row>
+
+    <!-- Jobs -->
+    <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
+      <ion-col style="margin-top: 88px;" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <ion-row class="job-section ion-justify-content-center" *ngFor="let job of allJobs">
               <ion-col push="0.5" size="1">
                 <img class="company-logo" src="{{job.companyLogo}}">
               </ion-col>
-              <ion-col push="0.5" style="height: 80px;">
+              <ion-col push="1" style="height: 80px;">
                 <h5 id="job-title">{{job.title}}</h5>
                 <p id="company-name">{{job.companyName}}</p>
                 <h5 id="job-posted-date">Posted: {{job.dateCreated}}</h5>

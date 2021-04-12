@@ -1,8 +1,14 @@
 ion-title {
   margin: 0;
 }
+.toolbar-apply-button {
+  width: 90px;
+  font-weight: 600;
+  --background: #faa71b;
+  position: relative;
+  right: 8px;
+}
 .toolbar-company-info{
-  margin-top: 40px;
   display: inline-block;
   margin-left: 8px;
   --background: none;
@@ -74,8 +80,8 @@ span {
   top: -43px
 }
 #job-full-description {
-  font-size: 1.2em;
-  line-height: 29px;
+  font-size: 1em;
+  line-height: 1.4em;
   color: #333;
   margin: 50px 0;
   border-top: 1px solid #99999975;

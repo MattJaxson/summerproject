@@ -14,6 +14,7 @@ export class PostsService {
   postsSubject$ = new BehaviorSubject([]);
   commentsSubject$ = new BehaviorSubject([]);
   followingSubject$ = new BehaviorSubject([]);
+  myPostSubject$ = new BehaviorSubject([]);
 
   constructor(
     private http: HttpClient,

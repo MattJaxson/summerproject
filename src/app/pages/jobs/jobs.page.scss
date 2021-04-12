@@ -4,11 +4,9 @@ ion-header {
   border-bottom: 1px solid #005191;
 
   ion-icon {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 }
-
-
 #searchbar-wrapper {
   transition: 0.5s;
   height: 60px;
@@ -21,31 +19,30 @@ ion-header {
   top: 10px;
   left: 10px;
 }
-
 .company-logo {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   border-radius: 50px;
 }
+.filter-toolbar{
+  background: #0055a5;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+}
 .filter-message{
-  color: #888;
-  opacity: 0;
-  animation: filter-message-slide 0.5s ease 1s forwards;
-  float: right;
+  color: white;
+  font-size: 1.2em;
 
   span {
     font-weight: 600;
   }
 }
-@keyframes filter-message-slide {
-  0%{
-    transform: translateX(10px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
+.filter-icon {
+  color: white;
+  font-size: 1.4em;
 }
 .job-details {
   --background: #0055a5;
@@ -96,7 +93,7 @@ ion-header {
   color: #777;
   width: 100%;
   opacity: 0;
-  padding: 2em 0px;
+  padding: 1em 0px;
   margin-bottom: 50px;
   box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
   animation: job-section-slide 0.5s ease 0.5 forwards;

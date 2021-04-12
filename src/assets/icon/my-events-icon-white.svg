@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>my-events-icon-white</title>
+    <g id="my-events-icon-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#0055A5" x="0" y="0" width="72" height="72"></rect>
+        <g id="my-events-icon" transform="translate(5.000000, 5.000000)">
+            <g id="Group" stroke-linecap="square" transform="translate(13.000000, 21.000000)" stroke="#FFFFFF" stroke-width="6">
+                <line x1="0.21875" y1="0.257575758" x2="27.78125" y2="0.257575758" id="Line-5"></line>
+                <line x1="0.21875" y1="8.5" x2="27.78125" y2="8.5" id="Line-5-Copy"></line>
+                <line x1="0.21875" y1="16.7424242" x2="27.78125" y2="16.7424242" id="Line-5-Copy-2"></line>
+            </g>
+            <path d="M11,2.11764707 C11.4990225,0.705882343 12.4990226,0 14,0 C15.5009774,0 16.5009775,0.705882343 17,2.11764707 L17,6 L11,6 L11,2.11764707 Z" id="Rectangle-Copy" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M38,2.11764707 C38.4990225,0.705882343 39.4990226,0 41,0 C42.5009775,0 43.5009772,0.705882343 44,2.11764707 L44,6 L38,6 L38,2.11764707 Z" id="Rectangle-Copy-2" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M4.6014958,6 L50.6150617,6 C52.4725943,6.36397321 53.6787724,7.10929509 54.2335966,8.23596571 C54.7884203,9.36263634 55.0420033,10.8017526 54.9943451,12.5533145 L54.9943451,50.4524955 C54.8545998,51.9213031 54.4826665,53.1017772 53.8785452,53.9939179 C53.2744239,54.8860585 52.186596,55.5547527 50.6150617,56 L4.43980407,56 C3.05199321,55.696529 1.98235017,54.9142906 1.23087486,53.6532853 C0.47939957,52.3922795 0.0724512966,51.2753464 0.0100300454,50.3024862 L0.0100300454,12.7294649 C-0.070730881,11.2244426 0.336217393,9.72660951 1.23087486,8.23596571 M8.88718024,13.026839 L46.2349985,13.026839 C47.69303,13.026839 48.8749985,14.2260763 48.8749985,15.7054104 L48.8749985,46.2221299 C48.8749985,47.7014643 47.69303,48.9007013 46.2349985,48.9007013 L8.88718024,48.9007013 C7.4291485,48.9007013 6.24718024,47.7014643 6.24718024,46.2221299 L6.24718024,15.7054104 C6.24718024,14.2260763 7.4291485,13.026839 8.88718024,13.026839 Z" id="Combined-Shape" stroke="#FFFFFF" fill-rule="nonzero"></path>
+            <g id="Oval" transform="translate(28.000000, 28.000000)">
+                <g id="path-1-link" fill="#000000" fill-rule="nonzero">
+                    <circle id="path-1" cx="17" cy="17" r="17"></circle>
+                </g>
+                <g id="path-1-link" fill="#C5E2ED" stroke="#FFFFFF" stroke-width="4">
+                    <circle id="path-1" cx="17" cy="17" r="17"></circle>
+                </g>
+            </g>
+            <line x1="43" y1="39" x2="43" y2="48" id="Line-2" stroke="#005191" stroke-width="6" stroke-linecap="square"></line>
+            <line x1="47.5" y1="43" x2="47.5" y2="52" id="Line-2-Copy" stroke="#005191" stroke-width="6" stroke-linecap="square" transform="translate(47.500000, 47.500000) scale(-1, 1) rotate(-90.000000) translate(-47.500000, -47.500000) "></line>
+        </g>
+    </g>
+</svg>

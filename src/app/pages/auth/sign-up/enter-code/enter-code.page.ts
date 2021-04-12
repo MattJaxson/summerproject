@@ -19,7 +19,7 @@ export class EnterCodePage implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private auth: AuthService,
+    public auth: AuthService,
     private activatedRoute: ActivatedRoute,
     private toast: ToastController) { }
 
@@ -118,9 +118,9 @@ export class EnterCodePage implements OnInit {
     toast.present();
   }
 
-  cancel() {
+  back() {
     console.log('Sign up cancelled');
-    this.router.navigate(['']);
+    this.router.navigate(['/personal-info/profile-picture/upload-resume/']);
   }
 
 }

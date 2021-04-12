@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title size="small">Sign Up - Enter Code</ion-title>
+    <ion-title size="small">Enter Code</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
                   <img height="50" src="../../../../../assets/icon/Logo 2.0.svg" alt="" srcset="">
               </ion-buttons>
               <ion-buttons slot="end">
-                <ion-button class="back-button" (click)="cancel()">
+                <ion-button class="back-button" (click)="back()">
                   Back
                 </ion-button>
               </ion-buttons>
@@ -30,7 +30,7 @@
 
     <!-- Header -->
     <ion-row class="ion-justify-content-center header">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="6" size-xl="4">
+      <ion-col class="ion-text-center" size="12">
         <h6 class="text-header">Please enter the 6 character code that was sent to <span>{{userEmail}}</span></h6>
       </ion-col>
     </ion-row>
@@ -50,6 +50,9 @@
             </ion-button>
             <ion-button class="send-new-code" (click)="sendNewCode()">
               Send new code
+            </ion-button>
+            <ion-button class="cancel-button" (click)="this.auth.cancelSignUp()">
+              Cancel
             </ion-button>
           </ion-list>
         </form>

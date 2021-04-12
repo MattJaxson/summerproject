@@ -27,15 +27,16 @@
     <ion-row class="post ion-justify-content-center">
        <!-- Profile Header -->
           <!-- Only on Desktop -->
-          <ion-col class="ion-hide-lg-down" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+          <ion-col class="ion-hide-lg-down" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
             <!-- Profile Header -->
+            <div class="spacer"></div>
             <ion-row class="ion-justify-content-center">
               <!-- Profile Picture -->
               <ion-col class="ion-text-center" pull-xl="0.5" pull-lg="0.5" size="0.75">
                 <img src="{{creatorProfilePicture}}" style="border-radius: 100px; height: 35xpx; width: 35px;">
               </ion-col>
               <!-- Post Creator's Name -->
-              <ion-col pull-xl="0.5" pull-lg="0.5" size="9">
+              <ion-col pull-xl="0.4" pull-lg="0.4" size="9">
                 <p class="post-name">{{creatorName}}</p>
                 <p class="post-date">{{date}}</p>
               </ion-col>
@@ -48,8 +49,8 @@
             </ion-row>
           </ion-col>
 
-          <!-- Mlobile header -->
-          <ion-col class="ion-hide-lg-up" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+          <!-- Mobile header -->
+          <ion-col class="ion-hide-lg-up" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="5">
                 <img class="profile-picture" src="{{creatorProfilePicture}}">
                 <div style="display: inline-block; margin-left: 10px;">
                   <p class="post-name">{{creatorName}}</p>
@@ -58,7 +59,7 @@
                 <hr class="header-hr">
           </ion-col>
           <!-- Post Content -->
-          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
                 <p class="post-title">{{title}}</p>
                 <div class="hashtags">
                   <p class="hashtag" *ngFor="let tag of hashtags">
@@ -69,7 +70,7 @@
           </ion-col>
 
           <!-- Comment Input -->
-          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
             <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value )" [formGroup]="commentForm">
               <ion-textarea
                 (ionBlur)="onBlur()"
@@ -201,7 +202,17 @@
             <ion-col push="1" size="6">
               <ion-toolbar style="--background: none;">
                 <ion-buttons slot="end">
-                  <ion-button (click)="reply(comment._id, this.userFullName, this.userEmail, this.userProfilePicture, comment.userFullName, comment.userEmail, comment.comment)" class="reply ion-float-right">
+                  <ion-button (click)="repliesModal(
+                    this.postID,
+                    comment.replies,
+                    comment.comment,
+                    comment._id,
+                    comment.userFullName,
+                    comment.userEmail,
+                    comment.date,
+                    comment.userProfilePicture,
+                    this.userFullName,
+                    this.userEmail)" class="reply ion-float-right">
                     Reply
                   </ion-button>
                   <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userEmail, comment.date)"  class="report ion-float-right">

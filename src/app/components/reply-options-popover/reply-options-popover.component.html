@@ -1,0 +1,17 @@
+<ion-radio-group (ionChange)="selectOption($event)" name="reply-option-menu">
+  <ion-item lines="none">
+    <ion-label>Delete</ion-label>
+    <ion-radio value="delete"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Edit</ion-label>
+    <ion-radio value="edit"></ion-radio>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Report</ion-label>
+    <ion-radio value="report"></ion-radio>
+  </ion-item>
+  <ion-item class="ion-text-center" (click)="dismiss()" button lines="none">
+    <ion-label style="color: #e3405f">Close</ion-label>
+  </ion-item>
+</ion-radio-group>

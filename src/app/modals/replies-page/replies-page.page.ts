@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ModalController, NavParams, LoadingController, AlertController, IonContent, IonTextarea} from '@ionic/angular';
+import { ModalController, NavParams, LoadingController, AlertController, IonContent, IonTextarea, PopoverController} from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PostsService } from 'src/app/services/post.service';
 import { formatDistanceToNow } from 'date-fns';
 import { BehaviorSubject } from 'rxjs';
 import { PostPageEmitterService } from 'src/app/emitters/post-page-emitter.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
-
-
+import { ReplyOptionsPopoverComponent } from 'src/app/components/reply-options-popover/reply-options-popover.component';
 
 @Component({
   selector: 'app-replies-page',
@@ -18,11 +17,12 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class RepliesPagePage implements OnInit {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
-  @ViewChild(IonTextarea, {static: true}) textarea: IonTextarea;
+  @ViewChild('replyTextArea', {static: true}) replyTextArea: IonTextarea;
 
   repliesForm: FormGroup;
   replies$ = new BehaviorSubject([]);
   replies;
+  replyValue;
 
   postID: string;
   commentContents: string;
@@ -41,6 +41,7 @@ export class RepliesPagePage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modal: ModalController,
+    private popover: PopoverController,
     private navParams: NavParams,
     private loading: LoadingController,
     private profile: ProfileService,
@@ -64,7 +65,7 @@ export class RepliesPagePage implements OnInit {
       this.replies = data;
       for (let reply of this.replies) {
         reply.isEditable = false;
-        console.log('Reply: ', reply);
+        // console.log('Reply: ', reply);
         if (reply.userEmail == this.userEmail) {
           reply.isEditable = true;
         }
@@ -89,17 +90,15 @@ export class RepliesPagePage implements OnInit {
     console.log('cancelling comment...');
     this.modal.dismiss();
   }
-
   refreshRepliesAmount() {
     this.postEmitterService.postPageRefresh();
   }
-
   async reply(reply) {
     // Reset Comment Input
     await this.repliesForm.reset();
     await console.log('replying to comment...');
     // tslint:disable-next-line: max-line-length
-    await this.posts.replyComment(this.commentID, this.postID, reply.reply, this.userFullName, this.userEmail, this.commentUserProfilePicture, this.commentUserFullName, this.commentUserEmail)
+    await this.posts.replyComment(this.commentID, this.postID, reply, this.userFullName, this.userEmail, this.commentUserProfilePicture, this.commentUserFullName, this.commentUserEmail)
       .subscribe(
         data => {
           let currentComment;
@@ -152,6 +151,7 @@ export class RepliesPagePage implements OnInit {
            }
 
           this.replies = currentCommentReplies;
+          currentCommentReplies.reverse();
 
 
           this.posts.commentsSubject$.next(comments.reverse());
@@ -161,12 +161,13 @@ export class RepliesPagePage implements OnInit {
           console.log(data);
           // tslint:disable-next-line: max-line-length
           this.notificationsService.replyNotification(this.userEmail, this.commentUserEmail, this.postID, currentComment, data['newReply']).subscribe();
+          console.log(this.replyTextArea.value);
+          this.replyTextArea.value = undefined;
         }
       );
 
     await this.repliesLoading();
   }
-
   async deleteReply(replyID) {
     console.log('Deleting reply with id ', replyID);
     await this.posts.deleteReply(replyID, this.commentID, this.postID).subscribe( data => {
@@ -220,7 +221,6 @@ export class RepliesPagePage implements OnInit {
       this.replies$.next(this.replies.reverse());
     });
   }
-
   async repliesLoading() {
     const loading = await this.loading.create({
       message: 'Replying to Comment...',
@@ -235,7 +235,6 @@ export class RepliesPagePage implements OnInit {
     // await this.confirmAlert();
     console.log('Loading dismissed!');
   }
-
   async confirmAlert() {
     const alert = await this.alert.create({
       cssClass: 'success-alert',
@@ -244,41 +243,26 @@ export class RepliesPagePage implements OnInit {
     });
     await alert.present();
   }
+  // When the user submits the comment, the tabar will show up again
+  ScrollToReply() {
+    let scrollHeight = document.documentElement.scrollHeight;
+    console.log(this.content.getScrollElement().then(
+      data => this.content.scrollToPoint(0, data.scrollHeight, 100)))
+  }
+  replyContent(e) {
+    console.log(e);
+    this.replyValue = e.detail.value;
+  }
+  async optionsPopover(ev: any) {
+    const popover = await this.popover.create({
+      component: ReplyOptionsPopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
 
-    // Hide the Tab bar when the user is attempting to make a comment
-    ScrollToTop() {
-      this.content.scrollToPoint(0, 140, 100);
-      this.tabBar.style.height = '0px';
-      this.votes.style.height = '0px';
-    }
-
-    // When the user submits the comment, the tabar will show up again
-    ScrollToReply() {
-      this.content.scrollToPoint(0, 300, 100);
-      this.textarea.getInputElement()
-        .then((textarea: HTMLTextAreaElement) => {
-          textarea.blur();
-
-      });
-    }
-
-    onBlur() {
-      this.textarea.getInputElement()
-        .then((textarea: HTMLTextAreaElement) => {
-          this.tabBar.style.height = '70px';
-          this.votes.style.height = '70px';
-      });
-    }
-
-    // for when the user un focuses out of the comment textarea but hasnt submitted the comment
-    blur() {
-      this.textarea.getInputElement()
-        .then((textarea: HTMLTextAreaElement) => {
-          textarea.blur();
-          this.tabBar.style.height = '70px';
-          this.votes.style.height = '70px';
-      });
-    }
-
-
+    const { role } = await popover.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 }

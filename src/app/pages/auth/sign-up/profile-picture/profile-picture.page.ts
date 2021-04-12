@@ -7,7 +7,7 @@ import { AuthService } from '../../../../services/auth.service';
 import { PhotoService } from '../../../../services/photo.service';
 import { environment } from '../../../../../environments/environment';
 import { ImageCropperPage } from 'src/app/modals/image-cropper/image-cropper.page';
-
+import Compressor from 'compressorjs';
 
 @Component({
   selector: 'app-profile-picture',
@@ -28,14 +28,14 @@ export class ProfilePicturePage implements OnInit {
     private loadingController: LoadingController,
     private modalController: ModalController,
     private photo: PhotoService,
-    private auth: AuthService,
-    private toast: ToastController ) { }
+    public auth: AuthService,
+    private toastController: ToastController ) { }
 
   ngOnInit() {
   }
   async takePicture() {
       const image = await Camera.getPhoto({
-        quality: 100,
+        quality: 30,
         height: 50,
         webUseInput: true,
         source: CameraSource.Photos,
@@ -44,29 +44,33 @@ export class ProfilePicturePage implements OnInit {
         resultType: CameraResultType.DataUrl
       });
 
-      // function blobToFile(theBlob, fileName){
-      //   //A Blob() is almost a File() - it's just missing the two properties below which we will add
-      //   theBlob.lastModifiedDate = new Date();
-      //   theBlob.name = fileName;
-      //   return theBlob;
-      // }
-      // function dataURLtoBlob(dataurl) {
-      // var arr = dataurl.dataUrl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-      //     bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-      // while(n--){
-      //     u8arr[n] = bstr.charCodeAt(n);
-      // }
-      // return new Blob([u8arr], {type: mime});
-      // }
-      // let formattedImage = dataURLtoBlob(image)
-      // let newFile = blobToFile(formattedImage, 'new-file')
+      console.log(image);
+      let compressedImage = new Compressor(this.dataURLtoBlob(image.dataUrl), {
+        quality: 0.3,
+        success: compressedBlob => {
+          // console.log(compressedBlob)
+          // **blob to dataURL**
+          function blobToDataURL(blob, callback) {
+            var a = new FileReader();
+            a.onload = function(e) {callback(e.target.result);}
+            a.readAsDataURL(blob);
+          }
 
-    this.imageCropperLoading(image)
+          blobToDataURL(compressedBlob, data => {
+            console.log('Compressed Blob to DataURL');
+            this.imageCropperLoading(data)
+          });
+        },
+        error: (err) => {
+          console.log(err)
+        },
+      });
   }
   async imageCropModal(image) {
+    console.log(image)
     const modal = await this.modalController.create({
       component: ImageCropperPage,
-      cssClass: 'my-custom-class',
+      cssClass: 'image-cropper',
       componentProps: {
         imageFromProfilePage: image
       }
@@ -109,6 +113,7 @@ export class ProfilePicturePage implements OnInit {
       await alert.present();
   }
   async imageCropperLoading(image) {
+    console.log(image)
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Loading Image Cropper',
@@ -120,6 +125,9 @@ export class ProfilePicturePage implements OnInit {
     await this.imageCropModal(image)
   }
   uploadPhoto() {
+    if(!this.uploadedPhoto) {
+      return this.noPhotoToast()
+    }
     const formElement = document.querySelectorAll('form');
     formElement.forEach(form => {
       if ( form.id === 'proPicForm') {
@@ -140,12 +148,20 @@ export class ProfilePicturePage implements OnInit {
         this.goToUploadResumePage(data['objectUrl']);
       })
     }
-}
-goToUploadResumePage(photoURL) {
+  }
+  async noPhotoToast() {
+  const toast = await this.toastController.create({
+    message: 'Please upload a photo, or Skip',
+    cssClass: 'danger-toast',
+    duration: 2000
+  });
+  toast.present();
+  }
+  goToUploadResumePage(photoURL) {
   this.auth.getProfilePicture(photoURL);
   console.log('Going to Resume Page >>');
   this.router.navigate(['/personal-info/profile-picture/upload-resume']);
-}
+  }
   cancel() {
     console.log('Sign up cancelled');
   }

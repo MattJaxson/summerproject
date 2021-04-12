@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { IonFabButton, IonSearchbar, ModalController, PopoverController } from '@ionic/angular';
 import { PostsService } from '../../services/post.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -48,12 +49,14 @@ export class PostsPage implements OnInit, OnDestroy {
   postsSub: Subscription;
   notificationsSub: Subscription;
   profileSub: Subscription;
+  routerSub: Subscription;
 
   commentForm: FormGroup;
   postFilter = 'newest';
   allPosts;
   followedPost;
   followedPostCount;
+  myPostsLength;
   userEmail;
   userFullName;
   userProfilePicture;
@@ -80,12 +83,15 @@ export class PostsPage implements OnInit, OnDestroy {
     this.notificationsSub.unsubscribe();
     this.postsEmitterService.subsVar.unsubscribe();
     this.profileSub.unsubscribe();
+    this.routerSub.unsubscribe();
     this.posts.followingSubject$.unsubscribe();
   }
   ngOnInit() {
+
     this.getUserInfo();
     this.getPosts();
     this.getFollowingPosts();
+    this.trackRoute();
 
     // When Users updated their Profile Picture, Unfollow/Follow, Up/Downvote, or Comment on an individual
     if (this.postsEmitterService.subsVar === undefined) {
@@ -109,11 +115,35 @@ export class PostsPage implements OnInit, OnDestroy {
       comment: ['']
     });
   }
- alterDescriptionText(post) {
+  trackRoute() {
+    this.routerSub = this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(
+          url.includes('/home/posts/post-page/') ||
+          url.includes('/home/posts/my-posts/') ||
+          url.includes('/home/posts/following')
+          // url.includes('/home/posts/post-page/')
+          ) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '1s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          console.log(tabBar);
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '1s'
+        }
+      });
+  }
+  alterDescriptionText(post) {
   console.log(post);
   console.log(post.length);
    this.showShortDesciption = !this.showShortDesciption
-}
+  }
   async filterMenu() {
     const popover = await this.popoverController.create({
       component: PostsFilterPopoverComponent,
@@ -266,14 +296,16 @@ export class PostsPage implements OnInit, OnDestroy {
   }
   getUserInfo() {
     this.postsSub = this.profile.getUserDetails().subscribe( details => {
+      console.log(details);
       this.userEmail = details['email'];
       this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
+      this.myPostsLength = details['posts'].length;
       this.followedPost = details['followedPost'];
 
       this.notificationsSub = this.notificationsService.notifications$.subscribe(
         notifications => {
-
+          console.log('Notifications: ')
           console.log(notifications);
           this.notificationsLength = notifications.length;
         }
@@ -288,9 +320,12 @@ export class PostsPage implements OnInit, OnDestroy {
       this.posts.followingSubject$.subscribe( posts => {
         this.followedPostCount = posts.length;
       });
-
-
-      this.studentChat.conversations$.next(Object.values(details['studentChat']).reverse());
+      // TODO:
+      // Add My Posts Counter
+      // this.posts.followingSubject$.next(this.myPosts);
+      // this.posts.followingSubject$.subscribe( posts => {
+      //   this.myPostCount = posts.length;
+      // });
     });
   }
   formatDistanceToNow(date) {
@@ -408,9 +443,9 @@ export class PostsPage implements OnInit, OnDestroy {
   addPost() {
     this.router.navigate(['/home/posts/add-post']);
   }
-  myPosts(userEmail) {
+  myPosts() {
     console.log('Going to my posts page');
-    this.router.navigate(['/home/posts/my-posts', userEmail]);
+    this.router.navigate(['/home/posts/my-posts', this.userEmail]);
   }
   following() {
     this.router.navigate(['/home/posts/following']);

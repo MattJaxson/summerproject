@@ -24,11 +24,18 @@
   color: #222;
   z-index: 999;
 }
-
+.cancel-button {
+  color: #e4405f;
+  --background:  none;
+  --background-hover: linear-gradient(#f15b77, #e4405f);
+  height: 40px;
+  width: 200px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 .orange-button {
-  width: unset;
   display: block;
-  margin: 48px auto 48px auto;
+  margin: 48px auto 16px auto;
   width: 200px;
   animation: none;
   opacity: 1;
@@ -47,7 +54,7 @@ span {
   color: white;
   font-weight: 600;
   width: 150px;
-  margin: 50px auto;
+  margin: 8px auto;
   opacity: 0;
   animation: slide-from-right 1s ease-out 5s forwards;
 }

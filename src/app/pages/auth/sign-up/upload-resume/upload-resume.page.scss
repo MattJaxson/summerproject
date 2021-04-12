@@ -31,18 +31,13 @@
   --background:  linear-gradient(#fdfbfb, #fff7f8);
   --background-hover: linear-gradient(#f15b77, #e4405f);
   height: 50px;
-  width: 150px;
+  width: 200px;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cancel-button:hover {
   color: white;
-}
-
-h6 {
-  margin: 30px auto;
-  padding: unset;
 }
 
 .no-resume {
@@ -64,18 +59,6 @@ animation: slide-up 0.5s ease 1.5s forwards;
   opacity: 0;
   animation: slide-up 0.5s ease 0.5s forwards;
 }
-
-.text-header {
-  background: #edf3f8;
-  width: 100%;
-  position: relative;
-  top: -40px;
-  padding: 50px 0;
-  color: #666;
-  z-index: 999;
-  // box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-}
-
 .get-file{
   display: block;
   --background: none;
@@ -87,43 +70,34 @@ animation: slide-up 0.5s ease 1.5s forwards;
   width: 130px;
   margin: 30px auto;
 }
-
-span{
-  color: #005191;
-  font-weight: 600;
-  background: white;
-  padding: 6px;
-  line-height: 1.5em;
-  border-radius: 5px;
+span {
+  font-weight: 900;
+  font-size: 1em;
+  color: #e3405f;
 }
-
 .skip-button{
   display: block;
   border: none;
   --background: rgb(230, 230, 230);
   color: #888;
-  width: 150px;
-  margin: 40px auto;
+  width: 200px;
+  margin: 8px auto;
   animation: none;
   opacity: 0.5;
 }
 
 input[type=file] {
-  border-radius: 5px;
-  padding-top: 16px;
   background: #1FCC6D;
   color: white;
-  height: 50px;
+  height: 39px;
   font-weight: 600;
-  // border: 2px dotted #1FCC6D;
   margin: 32px auto;
-  text-align: center;
-  cursor: pointer;
-  margin: 50px auto;
+  padding-top: 13px;
+  border-radius: 5px;
 }
 
 input[type=file]:hover {
-  background: linear-gradient(#1FCC6D, #0b6833);
+  background: linear-gradient(#1FCC6D, #46fa94);
   color: white;
 }
 

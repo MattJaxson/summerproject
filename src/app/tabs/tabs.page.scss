@@ -1,6 +1,6 @@
 // Tab-Bar
 ion-tab-bar  {
-  margin: 0 40px;
+  padding: 0 40px;
   height: 50px;
   z-index: 9999;
   // box-shadow: 2px 1px 5px #555;
@@ -18,7 +18,7 @@ ion-label {
 
 ion-tab-button{
   font-size: 0.8em;
-  --color: #D0D4D8;
+  --color: #0055a563;
   --color-selected: #FFB351;
   --padding-end: 0px;
   --padding-start: 10px;
@@ -27,9 +27,8 @@ ion-tab-button{
   --margin-right:0px;
   max-width:100px;
   ion-icon{
-      font-size: 1.7em;
+      font-size: 2em;
       --font-size-selected: 4em;
-      --fill-selected: red;
       --background-color: white;
       transition: 0.5s;
   }}

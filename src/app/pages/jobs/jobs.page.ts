@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { IonSearchbar, LoadingController, PopoverController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { JobsService } from '../../services/jobs.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -24,6 +25,7 @@ export class JobsPage implements OnInit, OnDestroy {
   jobsSub: Subscription;
   profileSub: Subscription;
   favoriteJobsSub: Subscription;
+  routerSub: Subscription;
   jobFilter = 'newest';
   allJobs;
   allJobsLength;
@@ -55,11 +57,6 @@ export class JobsPage implements OnInit, OnDestroy {
     this.favoriteJobsSub.unsubscribe();
   }
   ngOnInit() {
-
-    // Hide Tab Bar
-    const tabBar = document.getElementById('tabBar');
-    tabBar.style.display = 'static';
-
     // Refresh Favorites after one has been deleted from the favoites page.
     if (this.favoritesEventEmitterService.subsVar == undefined) {
       this.favoritesEventEmitterService.subsVar = this.favoritesEventEmitterService.invokeJobsPageRefresh.subscribe(() => {
@@ -76,7 +73,27 @@ export class JobsPage implements OnInit, OnDestroy {
     }
 
     this.getFavoriteJobs();
-    this.getJobs()
+    this.getJobs();
+    this.trackRoute();
+  }
+  trackRoute() {
+    this.routerSub = this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(url.includes('/home/jobs/job-page/')) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '1s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          console.log(tabBar);
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '1s'
+        }
+      });
   }
   async filterMenu() {
     const popover = await this.popoverController.create({

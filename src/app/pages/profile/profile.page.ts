@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToastController, AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 import { ProfileService } from '../../services/profile.service';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Subscribable, Subscription } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Storage } from '@ionic/storage';
 
 
@@ -14,6 +15,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ProfilePage implements OnInit, OnDestroy {
   detailsSub: Subscription;
+  routerSub: Subscription;
   userObject: any = {
     fullName: '',
     about: '',
@@ -59,6 +61,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+      this.trackRoute();
       this.detailsSub = this.profile.getUserDetails()
         .subscribe(
           res => {
@@ -144,7 +147,28 @@ export class ProfilePage implements OnInit, OnDestroy {
           );
     });
   }
-
+  trackRoute() {
+    this.routerSub = this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(url.includes('/home/profile/change') ||
+           url.includes('/home/profile/view-resume') ||
+           url.includes('/home/profile/update-resume')
+        ) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '1s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          console.log(tabBar);
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '1s'
+        }
+      });
+  }
     clearToken() {
       // ONLY FOR TESTING!
       this.storage.remove('access_token');

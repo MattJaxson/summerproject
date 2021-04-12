@@ -24,6 +24,7 @@ export class ImageCropperPage implements OnInit, AfterViewInit {
     private loading: LoadingController,
     private toast: ToastController) {
     this.imageDestination = this.imageFromProfilePage;
+    console.log(this.imageFromProfilePage)
 }
 
 public ngAfterViewInit() {
@@ -62,7 +63,7 @@ public ngOnInit() {
     e.preventDefault(); //Most important
   })
   console.log(this.imageFromProfilePage);
-  this.uploadedPhotoURL = this.imageFromProfilePage.dataUrl;
+  this.uploadedPhotoURL = this.imageFromProfilePage;
 
   // Since I am using this Cropper in a Modal, it needs to
   // load AFTER the modal loads. SetTimeout was the solution here.

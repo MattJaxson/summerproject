@@ -10,6 +10,7 @@ import { CommentVoteBarComponent } from './comment-vote-bar/comment-vote-bar.com
 import { FollowCommentButtonsComponent } from './follow-comment-buttons/follow-comment-buttons.component';
 import { JobsFilterPopoverComponent } from './jobs-filter-popover/jobs-filter-popover.component';
 import { PostsFilterPopoverComponent } from './posts-filter-popover/posts-filter-popover.component';
+import { ReplyOptionsPopoverComponent } from './reply-options-popover/reply-options-popover.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { PostsFilterPopoverComponent } from './posts-filter-popover/posts-filter
         CommentVoteBarComponent,
         FollowCommentButtonsComponent,
         JobsFilterPopoverComponent,
-        PostsFilterPopoverComponent
+        PostsFilterPopoverComponent,
+        ReplyOptionsPopoverComponent
     ],
     exports: [
         HeartIconComponent,
@@ -36,7 +38,8 @@ import { PostsFilterPopoverComponent } from './posts-filter-popover/posts-filter
         CommentVoteBarComponent,
         FollowCommentButtonsComponent,
         JobsFilterPopoverComponent,
-        PostsFilterPopoverComponent
+        PostsFilterPopoverComponent,
+        ReplyOptionsPopoverComponent
     ]
 })
 export class CustomComponentsModule {}

@@ -9,6 +9,13 @@
     top: 100px;
     z-index: 9999;
 }
+.toolbar-contact-button {
+    width: 90px;
+    font-weight: 600;
+    --background: #faa71b;
+    position: relative;
+    right: 8px;
+  }
 .orange-button{
     margin: 120px auto;
 }

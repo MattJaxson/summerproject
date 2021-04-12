@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { MentorsService } from '../../services/mentor.service';
 import { IonSearchbar, LoadingController, ModalController } from '@ionic/angular';
 import { NewMessageMentorPage } from 'src/app/modals/new-message-mentor/new-message-mentor.page';
@@ -12,6 +14,7 @@ import { NewMessageMentorPage } from 'src/app/modals/new-message-mentor/new-mess
 export class MentorsPage implements OnInit {
 
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
+  routerSub: Subscription;
 
   allMentors;
   loadedAllMentors;
@@ -29,8 +32,27 @@ export class MentorsPage implements OnInit {
 
   ngOnInit() {
     this.getMentors();
+    this.trackRoute();
   }
-
+  trackRoute() {
+    this.routerSub = this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(url.includes('/home/mentors/mentor-page/')) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '1s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          console.log(tabBar);
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '1s'
+        }
+      });
+  }
   getMentors() {
     this.mentors.getMentors().subscribe(
       mentors => {

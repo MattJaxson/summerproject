@@ -1,3 +1,7 @@
+.image-cropper {
+  height: 100%;
+  width: 100%;
+}
 .desktop-toolbar{
   --background: none;
   padding-bottom: 16px;
@@ -72,18 +76,12 @@ span{
   bottom: 0;
   font-size: 1em;
 }
-.text-header {
-  font-size: 1.1em;
-  font-weight: 600;
-  color: #333;
-}
-
 .cancel-button {
   color: #e4405f;
   --background:  none;
   --background-hover: linear-gradient(#f15b77, #e4405f);
   height: 50px;
-  width: 150px;
+  width: 200px;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -96,8 +94,6 @@ span{
   --color: white;
   height: 50px;
   font-weight: 600;
-  // border: 2px dotted #1FCC6D;
   margin: 32px auto;
-  // box-shadow: 1px 10px 28px #111111d1;
 }
 

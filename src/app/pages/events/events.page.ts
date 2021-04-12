@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { EventsService } from '../../services/events.service';
 import { format, formatDistanceToNow } from 'date-fns';
 import {IonSearchbar, LoadingController } from '@ionic/angular';
@@ -22,6 +23,7 @@ export class EventsPage implements OnInit {
   profileSub: Subscription;
   eventsGoingSub: Subscription;
   deleteEventSub: Subscription;
+  routerSub: Subscription;
   eventsGoing;
   eventsGoingLength;
   searching = false;
@@ -42,6 +44,7 @@ export class EventsPage implements OnInit {
     ) { }
   ngOnInit() {
     this.deleteEvent();
+    this.trackRoute();
 
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.invokeEventsPageRefresh.subscribe(() => {
@@ -105,7 +108,25 @@ export class EventsPage implements OnInit {
       }
     });
   }
-
+  trackRoute() {
+    this.routerSub = this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)).subscribe(
+      data => {
+        console.log(data['url']);
+        let url = data['url'];
+        if(url.includes('/home/events/event-page/')) {
+          console.log('Hide Tab Bar!');
+          let tabBar = document.getElementById('tabBar');
+          tabBar.style.height = '0px'
+          tabBar.style.transition = '1s'
+        } else {
+          let tabBar = document.getElementById('tabBar');
+          console.log(tabBar);
+          tabBar.style.height = '50px'
+          tabBar.style.transition = '1s'
+        }
+      });
+  }
   deleteEvent() {
     var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11));
     console.log(result);

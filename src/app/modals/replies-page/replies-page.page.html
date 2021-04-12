@@ -18,78 +18,85 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <!-- commentUser Info -->
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-      <ion-item lines="none">
-        <ion-avatar class="comment-avatar" slot="start">
-          <img src="{{commentUserProfilePicture}}">
-        </ion-avatar>
-        <ion-label>
-          <h6 style="opacity: 0.5">{{ commentUserFullName  }} - {{ commentDate }} </h6>
-          </ion-label>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-
-  <!-- Comment -->
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-      <p>{{ commentContents}}</p>
-    </ion-col>
-  </ion-row>
-
-  <!-- Reply Input -->
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-    <form [formGroup]="repliesForm" (ngSubmit)="this.repliesForm.value.reply.length > 0 ? reply(this.repliesForm.value) && ScrollToReply() : null">
-      <ion-textarea
-      (ionFocus)="ScrollToTop()"
-      (ionBlur)="onBlur()"
-      (onfocusout)="blur()"
-      (keydown.control.enter)="this.repliesForm.value.reply.length > 0 ? reply(this.repliesForm.value) && ScrollToReply() : null"
-      class="reply-input"
-      autogrow="true"
-      autocapitalize="true"
-      rows="5"
-      spellcheck="true"
-      wrap="soft"
-      type="text"
-      placeholder="Reply to this comment" formControlName="reply">
-      </ion-textarea>
-      <ion-button type="submit" expand="block">
-        Reply
-      </ion-button>
-    </form>
-    </ion-col>
-  </ion-row>
-
-  <!-- Line-->
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-      <hr style="background-color: #999; opacity: 0.4; margin: 20px 0 20px 0;">
-    </ion-col>
-  </ion-row>
+<ion-content [scrollEvents]="true">
+  <div style="background-color: white; padding: 2em 0 2em 0em;">
+    <!-- commentUser Info -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11">
+        <ion-item lines="none">
+          <ion-avatar class="comment-avatar" slot="start">
+            <img src="{{commentUserProfilePicture}}">
+          </ion-avatar>
+          <ion-label>
+            <h6><span style="color: #0055a5;">{{ commentUserFullName  }}</span><br>{{ commentDate }} </h6>
+            </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- Comment -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11">
+        <p>{{commentContents}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
 
   <!-- Replies -->
   <ion-row *ngFor="let reply of replies" class="ion-justify-content-center ion-align-items-start reply-wrapper">
-    <ion-col size="1">
-      <img id="reply-avatar" src="{{reply.userProfilePicture}}">
-    </ion-col>
-    <ion-col size="5">
-      <p class="reply-name">{{reply.userFullName}}</p>
-      <p class="reply-text">{{reply.reply}}</p>
-    </ion-col>
-    <ion-col size="1.5">
-       <p id="reply-date">{{reply.date}}</p>
-    </ion-col>
-    <ion-col size="2">
-      <ion-button class="blue-button" *ngIf="reply.isEditable" (click)="deleteReply(reply._id)" expand="block">
-        Delete
-      </ion-button>
+    <ion-col size="11">
+      <!-- <ion-col size="6">
+        <p class="reply-name">
+          <img id="reply-avatar" src="{{reply.userProfilePicture}}">
+          {{reply.userFullName}}
+        </p>
+        <p id="reply-date">{{reply.date}} ago</p>
+      </ion-col> -->
+      <ion-col size="11">
+        <ion-item lines="none">
+          <ion-avatar class="comment-avatar" slot="start">
+            <img src="{{reply.userProfilePicture}}">
+          </ion-avatar>
+          <ion-label>
+            <h6><span style="color: #000;">{{ reply.userFullName  }}</span><br>{{ reply.date }} ago</h6>
+            </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="11">
+        <p class="reply-text">{{reply.reply}}</p>
+      </ion-col>
+      <ion-col class="ion-float-right" size="2">
+        <ion-button style="--background: none; position: relative; left: 32px;" (click)="optionsPopover()">
+          <ion-icon class="more-icon" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+        <!-- <ion-button class="blue-button" *ngIf="reply.isEditable" (click)="deleteReply(reply._id)" expand="block">
+          Delete
+        </ion-button> -->
+      </ion-col>
     </ion-col>
   </ion-row>
 
 </ion-content>
+
+<ion-footer class="ion-hide-lg-up add-comment-footer">
+  <ion-row class="ion-justify-content-center">
+    <ion-col style="display: inline-block; height: 40px;" size="10">
+      <ion-textarea
+      #replyTextArea
+      (ionChange)="replyContent($event)"
+      style="display: inline;"
+      autocapitalize="true"
+      rows="1"
+      spellcheck="true"
+      wrap="soft"
+      type="text"
+      placeholder="Add a Reply"
+      >
+    </ion-textarea>
+    </ion-col>
+    <ion-col (click)="reply(this.replyValue) && ScrollToReply()" style="display: inline-block; height: 50px;" size="1">
+      <ion-button style="--background: none;">
+      <ion-icon style="font-size: 1.4em; color: #0055a5;" slot="start" name="send"></ion-icon>
+    </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -10,7 +10,7 @@
 
 import 'zone.js/dist/zone-error';
 
-const ip = '10.0.1.5';
+const ip = '192.168.1.169';
 const baseUrl = `http://${ip}:3000`;
 const fairsUrl = `http://${ip}:4000`;
 

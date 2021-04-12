@@ -3,6 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="triggerJobPageRefresh()"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button style="--width: 50px;" class="toolbar-apply-button" (click)="applyForJob()">
+        Apply
+      </ion-button>
+    </ion-buttons>
   <ion-title>Job Page</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +17,7 @@
     <!-- Desktop Header -->
     <ion-row class="ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <div class="spacer"></div>
         <ion-toolbar class="toolbar-company-info">
           <ion-buttons slot="start">
             <img style="border-radius: 50px;" height="75" src="{{this.jobLogo}}">

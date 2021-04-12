@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { AuthService } from '../../../../services/auth.service';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { ResumeService } from '../../../../services/resume.service';
@@ -12,15 +12,15 @@ import { ResumeService } from '../../../../services/resume.service';
   styleUrls: ['./upload-resume.page.scss'],
 })
 export class UploadResumePage implements OnInit {
-  uploaded = true;
   formDataForS3: FormData;
   formData: FormData;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private auth: AuthService,
-    private resume: ResumeService) { }
+    public auth: AuthService,
+    private resume: ResumeService,
+    private toastController: ToastController) { }
 
   ngOnInit() {
 
@@ -30,21 +30,32 @@ export class UploadResumePage implements OnInit {
     const formElement = document.querySelectorAll('form');
     formElement.forEach(form => {
       if ( form.id === 'resume-form') {
-        console.log('Got Form: ' + form);
+        console.log('Got Form: ');
         this.formData = new FormData(form);
+        console.log(event);
       }
      });
   }
 
   uploadResume() {
-    this.resume.resumeUpload(this.formData).subscribe(
-      data => {
-        console.log(data['objectUrl']);
-        this.goToCredentialsPage(data['objectUrl']);
-      }
-    );
+    if(this.formData == undefined) {
+      return this.noResumeToast();
+    } else {
+      this.resume.resumeUpload(this.formData).subscribe(
+        data => {
+          console.log(data['objectUrl']);
+          return this.goToCredentialsPage(data['objectUrl']);
+        });
+    }
   }
-
+  async noResumeToast() {
+    const toast = await this.toastController.create({
+      message: 'Please upload a Resume, or Skip',
+      cssClass: 'danger-toast',
+      duration: 2000
+    });
+    toast.present();
+    }
   goToCredentialsPage(resume) {
     this.auth.getResume(resume);
     console.log('Going to Credentials Page');
@@ -55,9 +66,9 @@ export class UploadResumePage implements OnInit {
     console.error("TODO: getFileFromPhone() not implemented yet");
   }
 
-  cancel() {
+  back() {
     console.log('Sign up cancelled');
-    this.router.navigate(['']);
+    this.router.navigate(['/personal-info/profile-picture']);
   }
 
   skip() {

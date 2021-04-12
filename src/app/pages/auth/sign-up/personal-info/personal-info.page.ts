@@ -28,7 +28,7 @@ export class PersonalInfoPage implements OnInit {
     // private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

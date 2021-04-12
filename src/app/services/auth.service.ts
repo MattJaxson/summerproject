@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { ToastController, AlertController, Platform } from '@ionic/angular';
-
 import { Storage } from '@ionic/storage';
-
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -43,6 +41,7 @@ export class AuthService {
     private alertController: AlertController,
     private helper: JwtHelperService,
     private plt: Platform,
+    private router: Router,
     private toast: ToastController) {
 
       // Inside the constructor we always check for an existing token so we can automatically log in a user
@@ -56,6 +55,23 @@ export class AuthService {
 
 // tslint:disable-next-line: use-lifecycle-interface
 ngOnDestroy() {
+}
+cancelSignUp() {
+  this.user = {
+    fullName: '',
+    about: '',
+    gender: '',
+    dob: '',
+    phone: '',
+    school: '',
+    grade: '',
+    profilePicture: '',
+    resume: '',
+    email: '',
+    password: ''
+  }
+  this.router.navigateByUrl('');
+  this.cancelSignUpToast();
 }
 // Get UserInfo -- testing purposes. Delete eventually.
 getUserInfo() {
@@ -190,6 +206,15 @@ doesUserExists(email, password) {
       keyboardClose: true,
       position: 'top',
 
+    });
+    toast.present();
+  }
+  async cancelSignUpToast() {
+    const toast = await this.toast.create({
+      message: 'You have cancelled signing up.',
+      duration: 2000,
+      cssClass: 'danger-toast',
+      keyboardClose: true
     });
     toast.present();
   }

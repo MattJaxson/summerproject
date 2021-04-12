@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="117px" height="115px" viewBox="0 0 117 115" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>fyf-white-icon</title>
+    <g id="fyf-white-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(20.000000, 0.000000)" fill="#FFFFFF">
+            <polygon id="Path-2" points="0 37.6095866 38 0 38 25.9348192 0 63"></polygon>
+            <polygon id="Path-2-Copy-2" transform="translate(57.500000, 31.500000) scale(-1, 1) translate(-57.500000, -31.500000) " points="38 37.6095866 77 0 77 25.9348192 38 63"></polygon>
+            <polygon id="Path-2-Copy-3" transform="translate(57.500000, 83.500000) scale(-1, 1) translate(-57.500000, -83.500000) " points="38 89.6095866 77 52 77 77.9348192 38 115"></polygon>
+            <polygon id="Path-2-Copy" points="0 89.6095866 38 52 38 77.9348192 0 115"></polygon>
+        </g>
+    </g>
+</svg>

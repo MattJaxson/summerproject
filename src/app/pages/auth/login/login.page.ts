@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { ToastController, LoadingController, IonInput } from '@ionic/angular';
+import { ToastController, LoadingController, IonInput, IonSpinner } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,9 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   @ViewChild('autoFocusInput', {static: false})  inputElement: IonInput;
+  @ViewChild('initialLoadingIcon', {static: false})  initialLoadingIcon: IonSpinner;
+  @ViewChild('initialLoadingSpinner', {static: false})  initialLoadingISpinner: HTMLImageElement;
+  initialLoading = true;
 
   // For Download Button
   deferredPrompt: any;
@@ -44,14 +47,32 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    // Initiate Loading
 
+      console.log(this.initialLoadingISpinner)
+    if(this.initialLoading) {
+
+      // spinner.style.transition = '0.5s';
+      // spinner.style.translate = 'translateY(-10px);';
+      // spinner.style.opacity = '0';
+      // loadingIcon.style.transition = '0.5s';
+      // loadingIcon.style.translate = 'translateY(-10px);';
+      // loadingIcon.style.opacity = '0';
+    }
+
+    // Hide download buttons while page is loading.
+    if(!this.initialLoading) {
+      let downloadFooter = document.getElementById('download-footer');
+      // downloadFooter.style.display = 'block';
+    }
+
+    // Check if app is online
     if (window.navigator.onLine === false) {
       console.log('We are OFFLINE!');
     }
     if (window.navigator.onLine === true) {
       console.log('We are ONLINE!');
       // Chrome, Edge,
-     
     };
 
     this.loginForm = this.formBuilder.group({

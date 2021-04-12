@@ -6,7 +6,9 @@
   position: relative;
   top: 0px;
 }
-
+.spacer {
+  margin: 21px 0;
+}
 .header-hr{
   border-top: 1px solid #666;
   opacity: 0.5;
@@ -25,9 +27,10 @@
 .post-title {
   color: #0055a5;
   font-size: 0.9em;
+  font-weight: 600;
   position: relative;
-  top: -20px;
-  line-height: 25px;
+  top: -14px;
+  line-height: 16px;
   margin: 10px 0px 0px 0px;
 }
 
@@ -54,36 +57,41 @@
 ion-content {
   background: #edf3f8;
 }
-#filter-toolbar{
-  --background: #f4f5f8;
+.filter-toolbar-wrapper{
+  background: #0055a5;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  // box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+}
+.top-button-wrapper{
+  background: #0055a5;
+  width: 100%;
+}
+.filter-toolbar{
+  height: 40px;
+  position: relative;
+  top: -4px;
 }
 .filter-message{
-  color: #888;
-  opacity: 0;
-  animation: filter-message-slide 0.5s ease 1.5s forwards;
-  // float: right;
+  color: white;
+  font-size: 1.2em;
 
   span {
     font-weight: 600;
   }
 }
-// @media screen and (min-width: 922px) {
-//   .filter-message {
-//     position: relative;
-//     right: 8px;
-//     float: left;
-//   }
-// }
-@keyframes filter-message-slide {
-  0%{
-    transform: translateX(10px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
+.filter-icon {
+  color: white;
+  font-size: 1.4em;
 }
-
+.toolbar-orange-button {
+  width: 130px;
+  font-weight: 600;
+  --background: #faa71b;
+  position: relative;
+  right: 8px;
+}
 @media screen and (max-width: 744px) {
   .post {
     position: relative;
@@ -149,7 +157,7 @@ ion-content {
   right: 0px;
   margin-top: 35px;
   padding: 0.5em;
-  background: #0055a5;
+  background: #666;
   color: white;
   border-radius: 5px;
   font-size: 0.6em;
@@ -438,7 +446,7 @@ form {
   .comment-button, .follow-button, .unfollow-button {
       font-weight: 600;
       font-size: 0.5em;
-      width: 100px;
+      width: 80px;
   }
 }
 
