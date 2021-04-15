@@ -71,7 +71,7 @@
 
           <!-- Comment Input -->
           <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
-            <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value )" [formGroup]="commentForm">
+            <form (ngSubmit)="comment(this.postID, this.userFullName, this.userEmail, this.userProfilePicture, commentForm.value, commentInputValue)" [formGroup]="commentForm">
               <ion-textarea
                 (ionBlur)="onBlur()"
                 (onfocusout)="blur()"

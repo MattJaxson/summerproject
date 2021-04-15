@@ -253,11 +253,10 @@ export class RepliesPagePage implements OnInit {
     console.log(e);
     this.replyValue = e.detail.value;
   }
-  async optionsPopover(ev: any) {
+  async optionsPopover() {
     const popover = await this.popover.create({
       component: ReplyOptionsPopoverComponent,
       cssClass: 'my-custom-class',
-      event: ev,
       translucent: true
     });
     await popover.present();

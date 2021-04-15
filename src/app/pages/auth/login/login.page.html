@@ -73,7 +73,10 @@
 
               <!-- Login Button -->
               <ion-col size="12">
-                <ion-button class="orange-button" type="submit">Login</ion-button>
+                <ion-button class="orange-button" type="submit">Login</ion-button><br>
+                <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
+                </ion-button><br>
+                <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password</ion-button>
               </ion-col>
 
 
@@ -84,10 +87,7 @@
 
     <ion-row class="ion-justify-content-center">
       <!-- Sign Up -->
-      <ion-col style="margin-top: 1em" class="ion-text-center" size="12">
-        <ion-button class="blue-button" [routerLink]="['personal-info']">Sign Up
-        </ion-button><br>
-        <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password?</ion-button>
+      <ion-col class="ion-text-center" size="12">
       </ion-col>
     </ion-row>
 

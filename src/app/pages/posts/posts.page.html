@@ -10,7 +10,7 @@
       <!-- Notifications -->
       <ion-button (click)="notifications()">
         <ion-icon class="header-icons" src="../../assets/icon/notifications-icon.svg"></ion-icon>
-        <span style="color: #e4405f; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
+        <span style="color: #ffb351; height: 25px; width: 25px; border-radius: 100px; position: relative; font-size: 1.4em; font-weight: 600;">{{notificationsLength}}</span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -156,7 +156,7 @@
           <ion-col size="12">
             <img src="{{userProfilePicture}}" style="border-radius: 100px; height: 55px; width: 55px;">
             <h6 style="font-size: 1.2em;">{{userFullName}}</h6>
-            <ion-button class="my-post-button"  (click)="myPosts(this.userEmail)">
+            <ion-button class="my-post-button"  (click)="myPosts()">
               My Posts
             </ion-button>
             <ion-button class="following-button" (click)="following()">
@@ -180,7 +180,7 @@
     <!-- Filter Toolbar -->
     <ion-row class="filter-toolbar-wrapper ion-hide-lg-up ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <ion-toolbar class="filter-toolbar" style="--background: none;">
+        <ion-toolbar class="filter-toolbar">
           <ion-buttons slot="start">
             <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
             <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
@@ -199,7 +199,7 @@
     <!-- Followed Posts and My Posts -->
     <ion-row class="top-button-wrapper ion-hide-lg-up ion-justify-content-center">
       <div class="spacer"></div>
-      <ion-col style="padding-bottom: 16px;" class="ion-text-left" push-xs="1" size-xs="12" size-sm="11" size-md="10">
+      <ion-col class="ion-text-left" push-xs="1" size-xs="12" size-sm="11" size-md="10">
         <ion-button class="toolbar-orange-button" (click)="following()">
           <!-- <ion-icon class="header-icons" src="../../assets/icon/following.svg"></ion-icon> -->
           Following ({{this.followedPostCount}})

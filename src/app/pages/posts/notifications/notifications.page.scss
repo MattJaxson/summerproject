@@ -4,8 +4,30 @@ p {
 }
 
 #message {
+  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
 }
-
+ion-list {
+  background: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+ion-item {
+  --background: linear-gradient(90.2993deg, rgba(255, 255, 255,1) 20.9226%,rgba(253, 254, 254,1) 20.9226%,rgb(217 217 217) 50.685%);
+}
+#clear-button {
+  --background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2));
+  --color: white;
+  --border-color: white;
+  --border-style: solid;
+  --border-width: 2px;
+  font-weight: 600;
+  margin-right: 20px;
+  width: 80px;
+}
+#delete-noti {
+  background: #e3405f;
+  font-weight: 600;
+}
 #date {
   opacity: 0.5;
   display: inline-block;

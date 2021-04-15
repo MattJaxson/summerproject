@@ -6,7 +6,7 @@
       <ion-title>Notifications</ion-title>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button style="--background: linear-gradient(rgba(6, 114, 196, 0.3), rgba(0, 81, 145, 0.2)); --color: #005191; margin-right: 20px; width: 80px;" (click)="clear()">
+      <ion-button id="clear-button" (click)="clear()">
         Clear
       </ion-button>
     </ion-buttons>
@@ -17,26 +17,27 @@
 <ion-content>
 
   <!-- No Messages -->
-  <ion-row *ngIf="this.allNotifications == 0" class="ion-justify-content-center">
-    <ion-col class="margin-top ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+  <ion-row *ngIf="noNotifications" class="ion-justify-content-center">
+    <ion-col class="margin-top ion-text-center" size-xs="12" size-sm="12" size-md="10" size-lg="8" size-xl="6">
       <h3 id="no-notifications">You have no notifications</h3>
       <img id="icon" src="../../../../assets/icons/no-notifications-icon.svg" alt="">
     </ion-col>
   </ion-row>
-  <ion-row *ngIf="this.allNotifications > 0" class="ion-justify-content-center">
-    <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+
+  <ion-row *ngIf="!noNotifications" class="ion-justify-content-center">
+    <ion-col size-xs="12" size-sm="10" size-md="10" size-lg="8" size-xl="6">
       <!-- List of Sliding Items -->
       <ion-list>
         <ion-item-sliding (click)="goTo()" *ngFor="let n of allNotifications">
-          <ion-item>
+          <ion-item lines="none">
             <ion-avatar>
               <img [src]="n.instigatingUserProfilePicture" />
             </ion-avatar>
             <p id="message">{{n.message}}</p>
             <p id="date">{{n.date}}</p>
           </ion-item>
-          <ion-item-options side="end">
-            <ion-item-option (click)="delete(n)">Delete</ion-item-option>
+          <ion-item-options (ionSwipe)="deleteSwipe($event, n.notiID)" side="end">
+            <ion-item-option  id="delete-noti">Slide left to Delete</ion-item-option>
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>

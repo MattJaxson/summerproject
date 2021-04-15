@@ -1,10 +1,10 @@
 .backgound {
-  --background: linear-gradient(180deg,rgba(0,85,165, 0.7) 30%, rgba(0,85,165, 1) 100%), url('../../../../assets/schools-large.png') no-repeat center center / cover;
+  --background: linear-gradient(180deg,rgba(0,85,165, 0.7) 30%, rgba(0,85,165, 1) 100%), url('../../../../assets/schools-small.png') no-repeat center center / cover;
 }
 @media only screen and (max-width: 600px) {
   .backgound {
     // --background: #fff url('../../../../assets/fyf-login-image-small.png') linear-gradient(#eb01a5, #d13531)
-    --background: linear-gradient(180deg, rgba(0,85,165, 0.7) 30%, rgba(0,85,165, 1) 100%), url('../../../../assets/fyf-login-image-small.png') no-repeat center center / cover;
+    --background: linear-gradient(180deg, rgba(0,85,165, 0.7) 30%, rgb(5, 20, 34) 100%), url('../../../../assets/schools-small.png') no-repeat center center / cover;
 
 	-webkit-backdrop-filter: blur(50px);
 	backdrop-filter: blur(50px);
@@ -33,7 +33,7 @@ ion-footer {
 
 }
 ion-button {
-  margin: 0;
+  margin: 8px auto;
 }
 
 #download-button {
@@ -79,25 +79,23 @@ ion-button {
 }
 
 #forgot {
-  width: 220px;
-  height: 50px;
+  width: 200px;
+  height: 40px;
   font-size: 1em;
   font-weight: 700;
-  margin-top: 20px;
   opacity: 0;
-  --background: white;
+  --background: rgb(29, 28, 28);
   --background-hover: #474444;
-  --color: rgba(130,130,130, 0.5);
+  --color: white;
   --transition: 0.5s;
   animation: slide-up 0.5s ease 1.5s forwards;
 }
 
 .grey-button {
-  width: 150px;
+  width: 200px;
   height: 40px;
   font-size: 1em;
   font-weight: 700;
-  margin: 10px auto;
   --border-width: 1px;
   --border-style: solid;
   --border-color: #999;

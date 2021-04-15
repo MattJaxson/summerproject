@@ -142,7 +142,7 @@ export class PostPagePage implements OnInit, OnDestroy {
     this.postsSub = this.posts.postsSubject$.subscribe(posts => {
       let currentPost;
       console.log(posts);
-      
+
       for (const post of posts) {
         if (post._id == this.postID) {
           currentPost = post;

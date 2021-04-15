@@ -124,8 +124,8 @@ export class PostsPage implements OnInit, OnDestroy {
         if(
           url.includes('/home/posts/post-page/') ||
           url.includes('/home/posts/my-posts/') ||
+          url.includes('/home/posts/notifications/') ||
           url.includes('/home/posts/following')
-          // url.includes('/home/posts/post-page/')
           ) {
           console.log('Hide Tab Bar!');
           let tabBar = document.getElementById('tabBar');

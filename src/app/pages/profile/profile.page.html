@@ -12,7 +12,7 @@
   <ion-grid>
      <!-- Desktop Header -->
      <ion-row style="padding-top: 80px; margin-bottom: 40px;" class="ion-hide-lg-down ion-justify-content-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="7">
         <ion-toolbar class="desktop-toolbar">
               <ion-buttons slot="start">
                   <img height="50" src="../../../assets/icon/profile-icon-blue.svg" alt="" srcset="">
@@ -24,8 +24,9 @@
       </ion-col>
     </ion-row>
     <ion-row class="profile-wrapper ion-justify-content-center ion-align-items-center">
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <ion-row style="background: rgb(228, 235, 241); padding: 1em; border-radius: 5px;" >
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="7">
+        <ion-row style="background: rgb(228, 235, 241); padding: 1em; border-radius: 5px;
+        box-shadow: 1px 10px 26px rgba(0,0,0,0.05);" >
           <ion-col size-xs="11" size-sm="3" size-md="2" size-lg="1.5">
             <ion-row class="ion-justify-content-center">
               <ion-col size="12">
@@ -38,7 +39,7 @@
               </ion-col>
             </ion-row>
           </ion-col>
-          <ion-col size-xs="11" size-sm="6" size-md="5" size-lg="10">
+          <ion-col size-xs="11" size-sm="6" size-md="5" size-lg="10" size-xl="5">
             <ion-row>
               <ion-col id="profile-info" size="12">
                 <p><span>About</span>{{userObject.about}}</p>
@@ -52,7 +53,7 @@
           </ion-col>
         </ion-row>
       </ion-col>
-      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+      <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="7">
         <ion-list>
           <ion-item detail="true" lines="none" (click)="changeEmail()">
             <ion-label>Change Email</ion-label>
