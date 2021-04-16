@@ -30,12 +30,30 @@
 ion-footer {
   opacity: 1;
   border: none;
-
+  z-index: 9998;
+  background: #faa71b;
 }
 ion-button {
   margin: 8px auto;
 }
-
+#login-loading {
+  background: #0055a5;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loading-exit 500ms ease 3s forwards;
+}
+@keyframes loading-exit {
+  0% {
+    height: 100vh
+  }
+  100% {
+    height: 0vh;
+    opacity: 0;
+  }
+}
 #download-button {
   background: linear-gradient(90deg, rgba(31, 204, 109,1) 19.625%,rgba(30, 203, 108,1) 19.625%,rgba(23, 191, 40,1) 79.625%)
   ;
@@ -52,8 +70,7 @@ ion-button {
   position: fixed;
   bottom: 0;
   left: 0;
-  display: none;
-  animation: slide-up 0.5s ease 1s forwards;
+  animation: slide-up 0.5s ease 8s forwards;
   transform: translateY(100%);
 }
 

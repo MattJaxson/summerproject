@@ -26,30 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    let tabBar = document.getElementById('tabBar');
-    console.log(tabBar);
-    this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd)).subscribe(
-      data => {
-        console.log(data['url']);
-        let url = data['url'];
-        if(
-          url.includes('/home/posts/post-page/') ||
-          url.includes('/home/mentors/mentor-page/') ||
-          url.includes('/home/posts/post-page/')
-          ) {
-          console.log('Hide Tab Bar!');
-          let tabBar = document.getElementById('tabBar');
-          tabBar.style.height = '0px'
-          tabBar.style.transition = '0.2s'
-        } else {
-          let tabBar = document.getElementById('tabBar');
-          console.log(tabBar);
-          
-          tabBar.style.height = '50px'
-          tabBar.style.transition = '0.2s'
-        }
-      });
+
   }
 
   ngOnDestroy() {

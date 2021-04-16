@@ -11,8 +11,15 @@
 
 </ion-content> -->
 
+
 <!-- When done loading -->
 <ion-content class="backgound">
+  <div id="login-loading">
+    <div>
+      <img height="40" src="../../../../assets/icon/icon-192x192-white.png" alt="" srcset=""><br>
+      <ion-spinner style="color: white; margin-top: 20px;" name="bubbles"></ion-spinner>
+    </div>
+  </div>
   <ion-grid>
     <!-- Form -->
     <!-- <div class="spacer ion-hide-lg-down"></div> -->
@@ -90,12 +97,11 @@
       <ion-col class="ion-text-center" size="12">
       </ion-col>
     </ion-row>
-
   </ion-grid>
 </ion-content>
 
 <!-- Footer without a border -->
-<ion-footer id="download-footer" style="display: none;">
+<ion-footer id="download-footer">
   <button id="download-button" style=" border-radius: 0"></button>
   <button id="iphone-install-banner" style=" border-radius: 0"></button>
 </ion-footer>

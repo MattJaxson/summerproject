@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
     // Hide download buttons while page is loading.
     if(!this.initialLoading) {
       let downloadFooter = document.getElementById('download-footer');
-      // downloadFooter.style.display = 'block';
+      downloadFooter.style.display = 'block';
     }
 
     // Check if app is online
@@ -242,7 +242,6 @@ export class LoginPage implements OnInit {
       this.downloadButton.style.display = 'none';
     }
   }
-
   showInstallBanner() {
 
     console.log('Trying to Show Install Banner ...');
@@ -271,7 +270,6 @@ export class LoginPage implements OnInit {
       });
     }
   }
-
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Logging in...',
@@ -283,20 +281,14 @@ export class LoginPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
   }
-
   login(data) {
     this.presentLoading();
     this.auth.login(data);
   }
-
   back() {
     this.router.navigate(['/landing']);
   }
-
   download() {
     console.log('Attempting to download app..');
-    
   }
-
-
   }
