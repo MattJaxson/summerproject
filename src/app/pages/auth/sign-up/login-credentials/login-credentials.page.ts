@@ -91,25 +91,11 @@ formOnChanges(): void {
 
   enterCodePage(email, password) {
     this.email = this.credentialsForm.controls.email.value;
-    this.auth.doesUserExists(email, password)
-    .pipe(
-      catchError(e => {
-        console.error(e);
-        if (e.error.msg === 'User already registered with that email address.') {
-          return this.userAlreadyExistAlert();
-        }
-      }))
-    .subscribe(value  => {
-      console.log(value);
-      const exists = value['exists'];
-      if ( exists === false) {
-        this.auth.getLoginCredentials(email, password);
-        console.log('Going to Enter Code Page');
-        this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
+    this.auth.getLoginCredentials(email, password)
+    console.log('Going to Enter Code Page');
+    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/', this.email]);
 
       }
-    });
-  }
 
   async userAlreadyExistAlert() {
     const alert = await this.alert.create({
