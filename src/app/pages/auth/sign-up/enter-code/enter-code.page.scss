@@ -18,12 +18,6 @@
   font-weight: 600;
   display: block;
 }
-.text-header {
-  font-size: 1.2em;
-  line-height: 1.5em;
-  color: #222;
-  z-index: 999;
-}
 .cancel-button {
   color: #e4405f;
   --background:  none;
@@ -53,7 +47,8 @@ span {
   --background: #005191;
   color: white;
   font-weight: 600;
-  width: 150px;
+  height: 40px;
+  width: 200px;
   margin: 8px auto;
   opacity: 0;
   animation: slide-from-right 1s ease-out 5s forwards;

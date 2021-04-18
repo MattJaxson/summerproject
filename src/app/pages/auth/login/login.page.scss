@@ -1,11 +1,10 @@
 .backgound {
   --background: linear-gradient(180deg,rgba(0,85,165, 0.7) 30%, rgba(0,85,165, 1) 100%), url('../../../../assets/schools-small.png') no-repeat center center / cover;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 602px) {
   .backgound {
     // --background: #fff url('../../../../assets/fyf-login-image-small.png') linear-gradient(#eb01a5, #d13531)
     --background: linear-gradient(180deg, rgba(0,85,165, 0.7) 30%, rgb(5, 20, 34) 100%), url('../../../../assets/schools-small.png') no-repeat center center / cover;
-
 	-webkit-backdrop-filter: blur(50px);
 	backdrop-filter: blur(50px);
   }

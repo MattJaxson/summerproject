@@ -47,7 +47,6 @@ export class NewPasswordPage implements OnInit {
 
     this.formOnChanges();
   }
-
   formOnChanges(): void {
     console.log(this.newPasswordForm);
     this.newPasswordForm.valueChanges
@@ -57,26 +56,25 @@ export class NewPasswordPage implements OnInit {
         this.newPasswordForm.statusChanges.subscribe(status => {
           console.log(status);
           if ( status === 'VALID') {
-            console.log('you did it bruh');
-            this.passwordsMatch = true;
+            // console.log('you did it bruh');
           }
         });
-
-        if (this.newPasswordForm.controls.newPassword.value === this.newPasswordForm.controls.reTypePassword.value &&
+        console.log(this.newPasswordForm.controls.newPassword.value)
+        console.log(this.newPasswordForm.controls.reTypeNewPassword.value)
+        if (this.newPasswordForm.controls.newPassword.value === this.newPasswordForm.controls.reTypeNewPassword.value &&
           this.newPasswordForm.controls.newPassword.touched) {
-          console.log('Passwords Match');
+            this.passwordsMatch = true;
+            console.log('Passwords Match');
+            this.passwordMatchToast();
       }
 
-        if (this.newPasswordForm.controls.newPassword.value !== this.newPasswordForm.controls.reTypePassword.value) {
-        console.log('Passwords Match');
+        if (this.newPasswordForm.controls.newPassword.value !== this.newPasswordForm.controls.reTypeNewPassword.value) {
+        console.log('Passwords DONT Match');
         this.passwordsMatch = false;
     }
       }
     );
   }
-
-
-
   async goToConfirmPage() {
     const email = this.userEmail;
     let newPassword = this.newPasswordForm.value.newPassword;
@@ -91,19 +89,28 @@ export class NewPasswordPage implements OnInit {
 
     await console.log('Going to Confirm Password Change Page');
     await this.router.navigate(['/enter-email/enter-code/:email/new-password/:email/confirm']);
-    }
-
-    async presentToast() {
+  }
+  async presentToast() {
       const toast = await this.toast.create({
         message: 'The two passwords you entered do not match. Please try again.',
         duration: 2000
       });
       toast.present();
-    }
-
-cancel() {
+  }
+  async passwordMatchToast() {
+      const toast = await this.toast.create({
+        message: 'Passwords Match!',
+        cssClass: 'success-toast',
+        duration: 2000
+      });
+      toast.present();
+  }
+  cancel() {
     console.log('Forgotten password cancelled');
     this.router.navigate(['']);
+  }
+  back() {
+    this.router.navigate(['/enter-email/enter-code']);
   }
 
 }

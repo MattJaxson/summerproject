@@ -1,23 +1,46 @@
+.desktop-toolbar{
+  --background: none;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #33333326;
+
+  h1 {
+    color: #0055a5;
+  }
+}
+.back-button {
+  --color: white;
+  --background: #0055a5;
+  --background-hover: linear-gradient(#0055a5, #0c375f);
+  height: 24px;
+  --border-radius: 5px;
+  width: 100px;
+  font-size: 0.5em;
+  font-weight: 600;
+  display: block;
+}
+.cancel-button {
+  color: #e4405f;
+  --background:  none;
+  --background-hover: linear-gradient(#f15b77, #e4405f);
+  height: 40px;
+  width: 200px;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 .send-new-code {
   display: block;
-  --background: none;
-  color: #005191;
-  --border-color: #005191;
-  --border-width : 1px;
-  --border-style: solid;
-  border: 1px;
-  width: 150px;
-  margin: 50px auto;
+  --background: #005191;
+  color: white;
+  font-weight: 600;
+  height: 40px;
+  width: 200px;
+  margin: 8px auto;
   opacity: 0;
   animation: slide-from-right 1s ease-out 5s forwards;
 }
-
 span {
-  font-weight: 900;
-  font-size: 1.2em;
-  color: #005191;
+  color: #e3405f;
 }
-
 @keyframes slide-from-right {
 
   0% {

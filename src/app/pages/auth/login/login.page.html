@@ -26,8 +26,8 @@
     <!-- <div class="spacer"></div> -->
     <ion-row class="ion-justify-content-center ion-align-items-center">
       <ion-col style="padding: 2em" class="ion-text-center form-wrapper" size-xs="11" size-sm="10" size-md="6" size-lg="4" size-xl="3">
-        <img class="ion-hide-lg-up" id="logo" src="../../../../assets/icon/White-FYF-LOGO.png"/>
-        <img class="ion-hide-lg-down" id="logo" src="../../../../assets/icon/Logo 2.0.png"/>
+        <img class="ion-hide-sm-up" id="logo" src="../../../../assets/icon/White-FYF-LOGO.png"/>
+        <img class="ion-hide-sm-down" id="logo" src="../../../../assets/icon/Logo 2.0.png"/>
           <form  [formGroup]="loginForm"
                  (ngSubmit)="login(this.loginForm.value)">
             <ion-list class="line-input">
@@ -99,10 +99,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<!-- Footer without a border -->
-<ion-footer id="download-footer">
-  <button id="download-button" style=" border-radius: 0"></button>
-  <button id="iphone-install-banner" style=" border-radius: 0"></button>
-</ion-footer>
-

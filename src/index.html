@@ -7,6 +7,11 @@
 
   <base href="/"/>
 
+  <!-- Add to HomeScreen Library -->
+  <link rel="stylesheet" type="text/css" href="./addtohomescreen.css">
+  <script src="./addtohomescreen.js"></script>
+
+
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="format-detection" content="telephone=no"/>
   <meta name="msapplication-tap-highlight" content="no"/>
@@ -28,31 +33,25 @@
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-
   <script>
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('beforeinstallprompt Event fired');
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
-      console.log(this.deferredPrompt);
-
-      if (this.deferredPrompt) {
-        let downloadButton = document.getElementById('download-button');
-        console.log(downloadButton)
-        downloadButton.style.display = 'block';
-        downloadButton.addEventListener('click', () => {
-          this.deferredPrompt.prompt();
-        });
-      }
-      // If there was no Install Prompt event returned,
-      // do not display the Install App button.
-      if (!this.deferredPrompt) {
-        downloadButton.style.display = 'none';
-      }
-    })
-  </script>
+    // addToHomescreen({
+    //   onShow: function () {
+    //     console.log( "showing" );
+    // },
+    // onInit: function () {
+    //     console.log( "initializing" );
+    // },
+    // onAdd: function () {
+    //     console.log( "adding" );
+    // },
+    // onInstall: function () {
+    //     console.log( "Installing" );
+    // },
+    // onCancel: function () {
+    //     console.log( "Cancelling" );
+    // }
+    // });
+    </script>
 
   <script src="runtime-es2015.753698ce096bfd24a355.js" nomodule="" defer=""></script>
 

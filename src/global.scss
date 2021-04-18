@@ -389,14 +389,12 @@ ion-select-option {
   font-size: 0.6em;
 }
 
-// .success-toast {
-//   --border-color: green;
-//   --border-style: solid;
-//   --border-width: 2px;
-//   font-weight: 600;
-//   --background: #dedede;
-//   --color: #222;
-// }
+.success-toast {
+  font-weight: 600;
+  font-size: 1.3em;
+  --background: #46c9a3;
+  --color: white;
+}
 
 .upvoted-toast {
   --background: #0055a5;

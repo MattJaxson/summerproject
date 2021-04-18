@@ -38,7 +38,6 @@ export class EnterCodePage implements OnInit {
     this.formOnChanges();
 
   }
-
   formOnChanges(): void {
     console.log(this.enterCodeForm);
     this.enterCodeForm.valueChanges.subscribe( data => {
@@ -54,7 +53,6 @@ export class EnterCodePage implements OnInit {
         }
       });
   }
-
   async generateCode(length) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -66,7 +64,6 @@ export class EnterCodePage implements OnInit {
     console.log('Generated Code: ' + result);
     return this.code = result;
  }
-
  async sendNewCode() {
   await this.generateCode(6).then(code => {
     console.log('Data: ' + code);
@@ -75,7 +72,6 @@ export class EnterCodePage implements OnInit {
 
   await this.presentNewCodeToast(this.userEmail);
  }
-
   thankYouPage() {
     if (this.enterCodeForm.controls.code.value !== this.code) {
       this.presentErrorToast();
@@ -85,7 +81,6 @@ export class EnterCodePage implements OnInit {
     this.auth.register();
     this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials/enter-code/:email/thank-you-page']);
   };
-
   async presentCodesMatchedToast() {
     const toast = await this.toast.create({
       message: 'Codes Matched!',
@@ -106,7 +101,6 @@ export class EnterCodePage implements OnInit {
     });
     toast.present();
   }
-
   async presentNewCodeToast(email) {
     const toast = await this.toast.create({
       message: `New Code sent to ${email}`,
@@ -117,7 +111,6 @@ export class EnterCodePage implements OnInit {
     });
     toast.present();
   }
-
   back() {
     console.log('Sign up cancelled');
     this.router.navigate(['/personal-info/profile-picture/upload-resume/']);

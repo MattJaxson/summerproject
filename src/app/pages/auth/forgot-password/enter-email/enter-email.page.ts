@@ -29,16 +29,21 @@ export class EnterEmailPage implements OnInit {
     });
 
   }
-
   async goToEnterCodePage(email) {
     console.log('Going to Enter Code Page');
     // check if user exists, then navigate
-    await this.auth.checkIfUserExits(email);
-    await this.router.navigate(['/enter-email/enter-code/', email]);
+    await this.auth.checkIfUserExits(email)
+      .subscribe(
+        data => {
+          console.log(data)
+          this.router.navigate(['/enter-email/enter-code/', email]);
+        });
  }
-
   cancel() {
     console.log('Forgotten password cancelled');
+    this.router.navigate(['']);
+  }
+  back() {
     this.router.navigate(['']);
   }
 

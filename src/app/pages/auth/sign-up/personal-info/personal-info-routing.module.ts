@@ -6,7 +6,7 @@ import { PersonalInfoPage } from './personal-info.page';
 const routes: Routes = [
   {
     path: '',
-    component: PersonalInfoPage
+    component: PersonalInfoPage,
   },
   {
     path: 'profile-picture',

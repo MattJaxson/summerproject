@@ -14,6 +14,7 @@ export class EnterCodePage implements OnInit {
   enterCodeForm: FormGroup;
   code = '';
   userEmail = '';
+  codesMatched: boolean;
 
   validationMessasges = {
     code: [
@@ -47,6 +48,12 @@ export class EnterCodePage implements OnInit {
     console.log(this.enterCodeForm);
     this.enterCodeForm.valueChanges.subscribe( data => {
         console.log(data);
+        if(data.code === this.code) {
+          this.codesMatched = true;
+          return this.codesMatchedToast();
+        } else {
+          return this.codesMatched = false;
+        }
       });
   }
 
@@ -68,7 +75,7 @@ export class EnterCodePage implements OnInit {
     console.log(newPassword);
 
     if (this.enterCodeForm.controls.code.value !== this.code) {
-      this.presentToast();
+      // this.presentToast();
       console.log('Codes do not match');
     } else {
       console.log('Codes matched');
@@ -86,9 +93,11 @@ export class EnterCodePage implements OnInit {
    }
 
 
-  async presentToast() {
+  async codesMatchedToast() {
+    console.log('Codes Matched!')
     const toast = await this.toast.create({
-      message: 'The codes do not match. Please try again.',
+      message: 'Codes Matched!',
+      cssClass: 'success-toast',
       duration: 2000
     });
     toast.present();
@@ -108,6 +117,9 @@ export class EnterCodePage implements OnInit {
   cancel() {
     console.log('Forgot password cancelled');
     this.router.navigate(['']);
+  }
+  back() {
+    this.router.navigate(['/enter-email']);
   }
 
 }

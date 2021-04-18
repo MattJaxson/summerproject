@@ -135,8 +135,7 @@ doesUserExists(email, password) {
 }
 
  checkIfUserExits(email) {
-  return this.http.post(`${this.BACKEND_URL}/api/admin/students`, {email})
-    .subscribe();
+  return this.http.post(`${this.BACKEND_URL}/api/forgot-password`, {email})
 }
 
  getEmailFromToken() {
@@ -155,7 +154,7 @@ doesUserExists(email, password) {
   }
 
   sendEmailWithCodeForgotPassword(code, email)  {
-    return this.http.post(`${this.BACKEND_URL}/api/login-credentials/forgot-password-email-code`, { code, email } ).subscribe();
+    return this.http.post(`${this.BACKEND_URL}/api/forgot-password/email-code`, { code, email } ).subscribe();
   }
 
   // Register User
