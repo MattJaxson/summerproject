@@ -3,9 +3,9 @@
   <ion-toolbar>
     <ion-icon style="position: relative; left: 24px" color="light" name="calendar-outline"></ion-icon>
        <ion-buttons slot="end">
-        <ion-button (click)="myEvents()">
+        <ion-button style="width: 100px; --background: #faa71b; font-weight: 600;" (click)="myEvents()">
          <!-- My Events ({{ eventsGoingLength }}) -->
-         <img height="30" slot="start" src="../../../assets/icon/my-events-icon-white.svg">
+         My Events
      </ion-button>
        </ion-buttons>
   </ion-toolbar>
@@ -43,7 +43,7 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="3" size-xl="3" *ngFor="let event of allEvents">
             <ion-card class="event-card">
-              <img src="../assets/Journi_flyer.jpg" />
+              <img src="{{event.photo}}" />
               <ion-card-header>
                 <ion-card-title>{{ event.title }}</ion-card-title>
                 <ion-card-subtitle>{{ event.time }}</ion-card-subtitle>
