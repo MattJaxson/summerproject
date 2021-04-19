@@ -45,6 +45,7 @@ export class EnterCodePage implements OnInit {
 
        if (data.code === this.code) {
           console.log('codes match');
+          this.presentCodesMatchedToast();
           this.disabled = false;
         }
 
@@ -85,9 +86,7 @@ export class EnterCodePage implements OnInit {
     const toast = await this.toast.create({
       message: 'Codes Matched!',
       duration: 2000,
-      cssClass: 'wrong-password-toast',
-      keyboardClose: true,
-      position: 'top',
+      cssClass: 'success-toast'
     });
     toast.present();
   }

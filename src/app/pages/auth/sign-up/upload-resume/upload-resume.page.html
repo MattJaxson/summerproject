@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <img style="margin-right: 16px;" height="32" src="../../../../../assets/icon/fyf-white-icon.svg">
+    </ion-buttons>
     <ion-title size="small">Upload Resume</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -49,9 +52,9 @@
           NEXT</ion-button>
         </form>
 
-        <ion-button class="blue-button skip-button"  (click)="skip()">
+        <!-- <ion-button class="blue-button skip-button"  (click)="skip()">
           Skip
-        </ion-button>
+        </ion-button> -->
         <ion-button (click)="this.auth.cancelSignUp()" class="cancel-button">
             Cancel
         </ion-button>

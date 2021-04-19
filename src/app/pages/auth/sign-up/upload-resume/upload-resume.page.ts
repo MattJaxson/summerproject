@@ -41,11 +41,7 @@ export class UploadResumePage implements OnInit {
     if(this.formData == undefined) {
       return this.noResumeToast();
     } else {
-      this.resume.resumeUpload(this.formData).subscribe(
-        data => {
-          console.log(data['objectUrl']);
-          return this.goToCredentialsPage(data['objectUrl']);
-        });
+      this.resume.resumeUpload(this.formData);
     }
   }
   async noResumeToast() {
@@ -56,11 +52,6 @@ export class UploadResumePage implements OnInit {
     });
     toast.present();
     }
-  goToCredentialsPage(resume) {
-    this.auth.getResume(resume);
-    console.log('Going to Credentials Page');
-    this.router.navigate(['/personal-info/profile-picture/upload-resume/login-credentials']);
-  }
 
   getFileFromPhone() {
     console.error("TODO: getFileFromPhone() not implemented yet");

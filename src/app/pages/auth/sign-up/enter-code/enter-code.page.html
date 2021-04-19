@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <img style="margin-right: 16px;" height="32" src="../../../../../assets/icon/fyf-white-icon.svg">
+    </ion-buttons>
     <ion-title size="small">Enter Code</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -45,7 +48,7 @@
               type="email"
               placeholder="enter code"></ion-input>
             </ion-item>
-            <ion-button [disabled]="disabled" class="orange-button" type="submit">
+            <ion-button [disabled]="!disabled" class="orange-button" type="submit">
               ENTER CODE
             </ion-button>
             <ion-button class="send-new-code" (click)="sendNewCode()">

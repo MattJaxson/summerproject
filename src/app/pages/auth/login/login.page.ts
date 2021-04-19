@@ -50,6 +50,10 @@ export class LoginPage implements OnInit {
     // Initiate Loading
     console.log(this.initialLoadingISpinner)
     if(this.initialLoading) {
+      setTimeout(() => {
+        console.log('Initial Loading Screen no longer appears')
+        this.initialLoading = false;
+      }, 6000);
     }
 
     // Hide download buttons while page is loading.
