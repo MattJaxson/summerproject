@@ -17,7 +17,7 @@
 
 .post {
   padding: 24px 0;
-  margin-bottom: 8px;
+  margin-bottom: 42px;
   border-radius: 10px;
   box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
   font-size: 1.1em;
@@ -83,9 +83,24 @@ ion-content {
 .filter-message{
   color: white;
   font-size: 1.2em;
+  display: inline;
+  position: relative;
+  right: 16px;
+  top: 6px;
 
   span {
     font-weight: 600;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .filter-message  {
+    color: #0055a5;
+    background-color: white;
+    border: 2px solid #0055a5;
+    padding: 0.7em;
+    border-radius: 50px;
+    margin: 20px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.05);
   }
 }
 .filter-icon {
@@ -217,8 +232,12 @@ ion-content {
 
 .user-details {
   position: fixed;
-  background: none;
-  height: 200px;
+  top: 200px;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid rgb(230, 230, 230);
+  box-shadow: 1px 10px 26px rgb(0 0 0 / 5%);
+  padding: 1em;
 }
 
 #username {

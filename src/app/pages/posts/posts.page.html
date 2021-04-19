@@ -32,8 +32,13 @@
 
   <!-- Desktop -->
   <ion-grid class="ion-hide-lg-down">
-    <ion-row style="margin-top: 40px;" class="ion-justify-content-center">
-      <ion-col pull-lg="1" size-md="7.5" size-lg="6" pull-xl="1" size-xl="4">
+    <!-- Search & Filter -->
+    <ion-row style="background-color: white; box-shadow: 1px 10px 26px rgba(0,0,0,0.05); padding: 2em 0;" class="ion-justify-content-center">
+      <ion-col  size-md="7.5" size-lg="6" pull-xl="0.5" size-xl="5">
+        <p style="font-size: 1em; line-height: 1.5em;">
+          Please seperate each tag with a comma ( , ). Example: "Computers, Science, Technology"<br>
+          <span style="color: #e4405f; font-weight: 600;">You can choose up to five hashtags.</span>
+        </p>
         <ion-searchbar
           class="searchbar-desktop"
           animated="true"
@@ -45,34 +50,37 @@
           (ionChange)="search($event)">
           <span class="hash-desktop">#</span>
         </ion-searchbar>
-          <p *ngIf="this.postFilter === 'mostc'" class="filter-message"><span>Filter</span>: Most Comments</p>
-          <p *ngIf="this.postFilter === 'mostu'" class="filter-message"><span>Filter</span>: Most Upvotes</p>
-          <p *ngIf="this.postFilter === 'mostf'" class="filter-message"><span>Filter</span>: Most Followers</p>
-          <p *ngIf="this.postFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
-          <p *ngIf="this.postFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
-        <p style="font-size: 0.7em;">
-          Please seperate each tag with a comma ( , ).<br>
-          Example: "Computers, Science, Technology"<br>
-          <span style="color: #e4405f">You can choose up to five hashtags.</span>
-        </p>
+        <div>
+          <!-- <ion-button style="display: inline-block; width: 72px; font-size: 1.2em; --background: none; --color: white;" (click)="filterMenu()">
+            <ion-icon slot="start" style="font-size: 1.3em;" color="primary" name="filter"></ion-icon>
+          </ion-button> -->
+          <div class="spacer ion-hide-lg-down"></div>
+          <p *ngIf="this.postFilter === 'mostc'" (click)="filterMenu()" class="filter-message"><span>Filter</span>: Most Comments</p>
+          <p *ngIf="this.postFilter === 'mostu'" (click)="filterMenu()" class="filter-message"><span>Filter</span>: Most Upvotes</p>
+          <p *ngIf="this.postFilter === 'mostf'" (click)="filterMenu()" class="filter-message"><span>Filter</span>: Most Followers</p>
+          <p *ngIf="this.postFilter === 'newest'" (click)="filterMenu()" class="filter-message"><span>Filter</span>: Newest</p>
+          <p *ngIf="this.postFilter === 'oldest'" (click)="filterMenu()" class="filter-message"><span>Filter</span> {{this.postFilter}}</p>
+          <div class="spacer ion-hide-lg-down"></div>
+        </div>
       </ion-col>
-      <ion-col  size-md="7.5" pull-lg="1" size-lg="3" pull-xl="1.4" size-xl="2">
-        <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 1.2em; --background: none; --color: white;" (click)="filterMenu()">
-          <ion-icon slot="start" style="font-size: 1.3em;" color="primary" name="filter"></ion-icon>
-        </ion-button>
-        <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 0.7em;" (click)="searchLoading()">
+      <ion-col  size-md="7.5" size-lg="2" pull-xl="1.8" size-xl="2">
+        <ion-button class="orange-button ion-float-right" style="display: inline-block; width: 72px; font-size: 0.7em; position: relative; top: 77px;" (click)="searchLoading()">
           Search
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <!-- If Filtering -->
     <ion-row class="ion-justify-content-center">
       <ion-col style="position: relative; top: -32px;" class="ion-text-center" size="12">
         <ion-spinner *ngIf="this.filtering" name="bubbles">Filtering</ion-spinner>
       </ion-col>
     </ion-row>
+
+    <!-- Posts & SideBar -->
     <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
       <!-- Posts -->
-      <ion-col style="border-top: 1px solid rgba(153, 153, 153, 0.397); padding: 18px 0px;"  size-md="7.5" size-lg="9" size-xl="6">
+      <ion-col style="padding: 100px 0px;"  size-md="7.5" size-lg="9" size-xl="6">
         <div class="post" *ngFor="let post of allPosts" style="margin-top: 1%;">
           <!-- Profile Header -->
           <ion-row>
@@ -149,10 +157,9 @@
           </ion-row>
         </div>
       </ion-col>
-
       <!-- Sidebar with User Info -->
       <ion-col push="0.5" size="2">
-        <ion-row class="user-details" style="position: fixed; top: 36px;">
+        <ion-row class="user-details">
           <ion-col size="12">
             <img src="{{userProfilePicture}}" style="border-radius: 100px; height: 55px; width: 55px;">
             <h6 style="font-size: 1.2em;">{{userFullName}}</h6>

@@ -26,7 +26,7 @@
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <ion-toolbar class="desktop-toolbar">
               <ion-buttons slot="start">
-                  <img height="50" src="../../../assets/icon/suitcase-blue.svg" alt="" srcset="">
+                  <ion-icon style="font-size: 2em; color: #0055a5; margin-right: 8px;" name="briefcase-outline"></ion-icon>
                   <h1>Jobs</h1>
               </ion-buttons>
               <ion-buttons slot="end">
@@ -51,14 +51,14 @@
       </ion-col>
     </ion-row>
     <!-- Filter Toolbar -->
-    <ion-row class="filter-toolbar ion-hide-lg-up ion-justify-content-center">
+    <ion-row class="filter-toolbar-wrapper ion-hide-lg-up ion-justify-content-center">
       <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
-        <ion-toolbar style="--background: none;">
+        <ion-toolbar class="filter-toolbar">
           <ion-buttons slot="start">
             <p *ngIf="this.jobFilter === 'htol'" class="filter-message"><span>Filter</span>: Pay - High to Low</p>
             <p *ngIf="this.jobFilter === 'ltoh'" class="filter-message"><span>Filter</span>: Pay - Low to High</p>
             <p *ngIf="this.jobFilter === 'newest'" class="filter-message"><span>Filter</span>: Newest</p>
-            <p *ngIf="this.jobFilter === 'oldest'" class="filter-message"><span>Filter</span> {{this.jobFilter}}</p>
+            <p *ngIf="this.jobFilter === 'oldest'" class="filter-message"><span>Filter</span> Oldest</p>
           </ion-buttons>
           <ion-buttons slot="end">
               <ion-button (click)="filterMenu()">
@@ -78,7 +78,8 @@
 
     <!-- Jobs -->
     <ion-row *ngIf="!this.filtering" class="ion-justify-content-center">
-      <ion-col style="margin-top: 88px;" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+      <ion-col style="margin-top: 16px;" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <div class="spacer ion-hide-lg-up"></div>
         <ion-row class="job-section ion-justify-content-center" *ngFor="let job of allJobs">
               <ion-col push="0.5" size="1">
                 <img class="company-logo" src="{{job.companyLogo}}">

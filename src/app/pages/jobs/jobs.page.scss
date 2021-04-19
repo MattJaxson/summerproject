@@ -25,12 +25,22 @@ ion-header {
   background-position: center;
   border-radius: 50px;
 }
-.filter-toolbar{
-  background: #0055a5;
+.filter-toolbar-wrapper{
+  background: linear-gradient(90deg, rgba(0,85,165, 1) 10%, rgb(5, 20, 34) 100%);
   position: fixed;
   width: 100%;
+  height: 50px;
   z-index: 9999;
-  box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+  // box-shadow: 1px 10px 26px rgba(0,0,0,0.05);
+
+  ion-toolbar {
+    --background: none;
+  }
+}
+.filter-toolbar{
+  height: 40px;
+  position: relative;
+  top: -8px;
 }
 .filter-message{
   color: white;
@@ -38,6 +48,11 @@ ion-header {
 
   span {
     font-weight: 600;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .filter-message  {
+    color: #0055a5;
   }
 }
 .filter-icon {

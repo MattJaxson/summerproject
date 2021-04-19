@@ -10,6 +10,13 @@
   <!-- Add to HomeScreen Library -->
   <link rel="stylesheet" type="text/css" href="./addtohomescreen.css">
   <script src="./addtohomescreen.js"></script>
+  <script>
+    addToHomescreen({
+      mandatory: true,
+      autostart: true,
+      lifespan: 10000
+    });
+    </script>
 
 
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -28,30 +35,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.css">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
-<link rel="stylesheet" href="styles.5cbe5209aee6319fa9ee.css"></head>
+<link rel="stylesheet" href="styles.a9bf85b389cfff2d400d.css"></head>
 
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-  <script>
-    addToHomescreen({
-      onShow: function () {
-        console.log( "showing" );
-    },
-    onInit: function () {
-        console.log( "initializing" );
-    },
-    onAdd: function () {
-        console.log( "adding" );
-    },
-    onInstall: function () {
-        console.log( "Installing" );
-    },
-    onCancel: function () {
-        console.log( "Cancelling" );
-    }
-    });
-    </script>
 
   <script src="runtime-es2015.753698ce096bfd24a355.js" nomodule="" defer=""></script>
 
@@ -64,7 +52,7 @@
   <script src="main-es2015.063536b8fb9f288aed56.js" nomodule="" defer=""></script>
 
   <script src="main-es5.063536b8fb9f288aed56.js" nomodule="" defer=""></script>
-<script src="runtime-es2015.9cc308d4cf9c40866c6c.js" type="module"></script><script src="runtime-es5.9cc308d4cf9c40866c6c.js" nomodule defer></script><script src="polyfills-es5.a4e6c4b2fb3742679f88.js" nomodule defer></script><script src="polyfills-es2015.6863ed6e2f937fc57a02.js" type="module"></script><script src="main-es2015.73615c5d59e6da9ddb5c.js" type="module"></script><script src="main-es5.73615c5d59e6da9ddb5c.js" nomodule defer></script></body>
+<script src="runtime-es2015.9a32de9ae531efeef007.js" type="module"></script><script src="runtime-es5.9a32de9ae531efeef007.js" nomodule defer></script><script src="polyfills-es5.a4e6c4b2fb3742679f88.js" nomodule defer></script><script src="polyfills-es2015.6863ed6e2f937fc57a02.js" type="module"></script><script src="main-es2015.73615c5d59e6da9ddb5c.js" type="module"></script><script src="main-es5.73615c5d59e6da9ddb5c.js" nomodule defer></script></body>
 
 </body>
 
