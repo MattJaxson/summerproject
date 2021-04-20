@@ -332,14 +332,14 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     const { role, data } = await loading.onDidDismiss();
   }
-  async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate) {
+  async report(commentID, commentCotents, post, postID, commentUserFullName, commentUserProfilePicture, commentUserEmail, commentDate) {
     // Get information from comment
     await console.log('Attemping to report comment');
     // tslint:disable-next-line: max-line-length
-    await this.reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserEmail, commentDate, this.userEmail, this.userFullName);
+    await this.reportModal(commentID, commentCotents, post, postID, commentUserFullName, commentUserProfilePicture, commentUserEmail, commentDate, this.userEmail, this.userFullName);
 
   }
-  async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserEmail, commentDate, userEmail, userFullName) {
+  async reportModal(commentID, commentContents, post, postID, commentUserFullName, commentUserProfilePicture, commentUserEmail, commentDate, userEmail, userFullName) {
 
     const reportModalConfig = await this.modal.create({
     component: ReportCommentPage,
@@ -349,6 +349,7 @@ export class PostPagePage implements OnInit, OnDestroy {
       post,
       postID,
       commentUserFullName,
+      commentUserProfilePicture,
       commentUserEmail,
       commentDate,
       userEmail,

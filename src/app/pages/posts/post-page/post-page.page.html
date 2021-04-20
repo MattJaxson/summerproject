@@ -215,7 +215,7 @@
                     this.userEmail)" class="reply ion-float-right">
                     Reply
                   </ion-button>
-                  <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userEmail, comment.date)"  class="report ion-float-right">
+                  <ion-button *ngIf="comment.canReport === true" (click)="report(comment._id, comment.comment, this.post, this.postID, comment.userFullName, comment.userProfilePicture, comment.userEmail, comment.date)"  class="report ion-float-right">
                     Report
                   </ion-button>
                   <ion-button

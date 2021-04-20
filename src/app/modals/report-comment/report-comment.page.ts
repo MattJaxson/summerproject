@@ -12,6 +12,7 @@ export class ReportCommentPage implements OnInit {
   reportCommentForm: FormGroup;
   commentContents: string;
   commentUserFullName: string;
+  commentUserProfilePicture: string;
   commentUserEmail: string;
   commentID: string;
   commentDate: string;
@@ -45,6 +46,7 @@ export class ReportCommentPage implements OnInit {
     this.post = this.navParams.get('post');
     this.postID = this.navParams.get('postID');
     this.commentUserFullName = this.navParams.get('commentUserFullName');
+    this.commentUserProfilePicture = this.navParams.get('commentUserProfilePicture');
     this.commentUserEmail = this.navParams.get('commentUserEmail');
     this.commentDate = this.navParams.get('commentDate');
     this.userEmail = this.navParams.get('userEmail');
@@ -56,7 +58,7 @@ export class ReportCommentPage implements OnInit {
     await console.log(this.reportCommentForm.value.reportedReason);
     await this.reportLoading();
     // tslint:disable-next-line: max-line-length
-    await this.posts.reportComment(this.commentID, this.commentContents, this.post, this.postID, this.commentUserFullName, this.commentUserEmail, this.commentDate, this.userEmail, this.userFullName, this.reportCommentForm.value.reportedReason )
+    await this.posts.reportComment(this.commentID, this.commentContents, this.post, this.postID, this.commentUserFullName, this.commentUserProfilePicture, this.commentUserEmail, this.commentDate, this.userEmail, this.userFullName, this.reportCommentForm.value.reportedReason )
       .subscribe();
   }
 

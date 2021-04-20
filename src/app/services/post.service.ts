@@ -120,14 +120,14 @@ export class PostsService {
   }
 
   // tslint:disable-next-line: max-line-length
-  reportComment(commentID, commentContents, post, postID, reportedUserName, reportedUserEmail,commentDate, userEmail, userFullname, reportReason ) {
+  reportComment(commentID, commentContents, post, postID, reportedUserName,reportedUserProfilePicture, reportedUserEmail,  commentDate, userEmail, userFullname, reportReason ) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, post, postID, reportedUserName, reportedUserEmail,commentDate, userEmail, userFullname, reportReason });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/report`, { commentID, commentContents, post, postID, reportedUserName, reportedUserProfilePicture, reportedUserEmail, commentDate, userEmail, userFullname, reportReason });
   }
 
   replyComment(commentID, postID, reply, userFullName, userEmail, userProfilePicture, commentUserFullName, commentUserEmail  ) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID: postID, commentID: commentID, reply: reply, userFullName: userFullName, userProfilePicture: userProfilePicture, userEmail: userEmail, commentUserEmail: commentUserEmail, commentUserFullName: commentUserFullName });
+    return this.http.post(`${this.BACKEND_URL}/api/posts/reply-comment`, { postID: postID, commentID: commentID, reply: reply, userFullName: userFullName, userProfilePicture: userProfilePicture, userEmail: userEmail, commentUserEmail: commentUserEmail, commentUserFullName: commentUserFullName});
   }
 
   deleteReply(replyID, commentID, postID) {
