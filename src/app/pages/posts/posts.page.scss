@@ -58,7 +58,7 @@ ion-content {
   background: #edf3f8;
 }
 .filter-toolbar-wrapper{
-  background: linear-gradient(90deg, rgba(0,85,165, 1) 10%, rgb(5, 20, 34) 100%);
+  background: #c1e1ff;
   position: fixed;
   width: 100%;
   height: 50px;
@@ -76,13 +76,12 @@ ion-content {
   top: 100px;
 }
 .filter-toolbar{
-  height: 40px;
   position: relative;
-  top: -8px;
+  top: -16px;
 }
 .filter-message{
-  color: white;
-  font-size: 1.2em;
+  color: #0055a5;
+  font-size: 1.25em;
   display: inline;
   position: relative;
   right: 16px;
@@ -106,8 +105,8 @@ ion-content {
   }
 }
 .filter-icon {
-  color: white;
-  font-size: 1.4em;
+  font-size: 2.5em;
+  color: #0055a5;
 }
 .toolbar-orange-button {
   width: 130px;
@@ -216,7 +215,7 @@ ion-content {
   padding: 10px;
   color: white;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 0.8em;
   background: #0055a5;
 
   .cancel-button {
@@ -523,12 +522,12 @@ ion-buttons {
 
 
 ion-fab-button {
-  --background: #1baf88;
+  --background: #00c400;
   --color-focused: white;
   --color-hover: white;
   --color-activated: white;
   position: relative;
-  bottom: 50px;
+  bottom: 10px;
   right: 10px;
   opacity: 0;
   transition: 0.5s;

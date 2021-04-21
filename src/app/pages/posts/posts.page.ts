@@ -252,7 +252,7 @@ export class PostsPage implements OnInit, OnDestroy {
       tabBar.style.height = '0px';
       tabBar.style.transition = '500ms'
       tabBar.style.transform = 'translateY(40px)';
-    }, 750);
+    }, 0);
   }
   searchBarBlur() {
     console.log('Blurring out of Searchbar');
@@ -267,7 +267,7 @@ export class PostsPage implements OnInit, OnDestroy {
       tabBar.style.height = '50px';
       tabBar.style.transition = '500ms'
       tabBar.style.transform = 'translateY(0px)';
-    }, 750);
+    }, 0);
   }
   commentFocus() {
     console.log('Blurring out of Comment');

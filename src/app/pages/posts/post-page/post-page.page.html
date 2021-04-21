@@ -4,6 +4,10 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
+      <ion-buttons slot="end">
+        <img class="user-profile-picture" height="30" [src]="this.userProfilePicture" />
+      </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -55,17 +59,21 @@
                 <div style="display: inline-block; margin-left: 10px;">
                   <p class="post-name">{{creatorName}}</p>
                   <p class="post-date">Posted {{date}} ago</p>
+                  <div style="position: relative; top: -16px;">
+                    <p class="hashtag" *ngFor="let tag of hashtags">
+                      #{{tag}}
+                    </p>
+                  </div>
+                </div>
+                <div class="hashtags">
+                  
                 </div>
                 <hr class="header-hr">
           </ion-col>
           <!-- Post Content -->
-          <ion-col size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
+          <ion-col style="position: relative;
+          top: -40px;" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6.5">
                 <p class="post-title">{{title}}</p>
-                <div class="hashtags">
-                  <p class="hashtag" *ngFor="let tag of hashtags">
-                    #{{tag}}
-                  </p>
-                </div>
                <p class="post-content">{{post}}</p>
           </ion-col>
 
@@ -135,7 +143,7 @@
 
       <ion-col style="margin-bottom: 24px;" *ngIf="comments.length > 0" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
         <ion-toolbar class="comments-toolbar-mobile ion-hide-lg-up">
-          <p style="color: #888;">Comments - {{comments.length}}</p>
+          <p class="comments-header">Comments - {{comments.length}}</p>
           <ion-buttons slot="end">
             <ion-button (click)="filterComments()">
               <ion-icon slot="start" name="filter"></ion-icon>
@@ -155,9 +163,9 @@
                   <img src="{{comment.userProfilePicture}}">
                 </ion-avatar>
                 <ion-label>
-                  <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} </h6>
+                  <h6 style="opacity: 0.5">{{ comment.userFullName  }} - {{ comment.date }} ago</h6>
 
-                  <hr class="header-hr">
+                  <!-- <hr class="header-hr"> -->
                   </ion-label>
               </ion-item>
             </ion-col>
@@ -253,7 +261,7 @@
     </ion-col>
     <ion-col style="display: inline-block; height: 50px;" size="1">
       <ion-button style="--background: none;" (click)="comment(this.postID, this.userFullName, this.userEmail, userProfilePicture, this.commentInputValue, true) && ScrollToPostedComment()">
-      <ion-icon style="font-size: 1.4em; color: #0055a5;" slot="start" name="send"></ion-icon>
+      <ion-icon style="font-size: 1.8em; color: #0055a5;" slot="start" name="send"></ion-icon>
     </ion-button>
     </ion-col>
   </ion-row>

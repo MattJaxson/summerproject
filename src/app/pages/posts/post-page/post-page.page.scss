@@ -3,21 +3,37 @@
   opacity: 0.3;
   margin-top: 10px;
 }
-
+.user-profile-picture{
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+  border-radius: 50px;
+}
 .post {
   margin-bottom: 40px;
-  background: white;
+  background: #44474a;
   padding: 20px 0px;
+}
+.comments-header {
+  color: #0055a5;
+  font-size: 1.4em;
+  font-weight: 600;
 }
 .add-comment-footer{
   background: rgba(213, 232, 236, 0.3);
-  height: 44px;
+  height: 80px;
+  font-size: 1.3em;
+  border-top: 6px solid #0055a5;
+  padding-top: 4px;
 }
 .post-title {
-  font-weight: 800;
-  color: #0055a5;
-  font-size: 1.2em;
-  line-height: 25px;
+  color: #67b5ff;
+  padding-top: 24px;
+  margin-bottom: 64px;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-top: 3px solid white;
+
 }
 
 .profile-picture {
@@ -31,18 +47,19 @@
 }
 
 .post-name {
-  font-size: 1.2em;
+  color: white;
+  font-size: 1.6em;
   font-weight: 600;
-  color: #444;
   margin: 0;
-  line-height: 18px;
   display: inline-block;
 }
 
 .post-date {
   opacity: 0.8;
-  font-size: 0.5em;
-  margin: 0; line-height: 18px;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+  margin: 0;
   display: block;
 }
 
@@ -61,7 +78,7 @@
   top: -32px;
 }
 .hashtag{
-  font-size: 0.8em;
+  font-size: 1.3em;
   font-weight: 600;
   display: inline-block;
   margin-right: 5px;
@@ -87,19 +104,20 @@
 
 @media only screen and (max-width: 576px) {
   .profile-picture  {
-    height: 40px;
-    width: 40px;
+    height: 65px;
+    width: 65px;
   }
-}
+}x
 
 .post-content{
-  font-size: 1em;
-  line-height: 25px;
+  font-size: 1.15em;
+  line-height: 28px;
+  color: white;
 }
 
 .back-button {
   --color: white;
-  --background: linear-gradient(#0672c4, #005191);
+  --background: linear-gradient(#0672c4, #0055a5);
   font-weight: 800;
   display: inline-block;
   width: 100px;
@@ -107,17 +125,18 @@
 }
 
 .comment-post-button {
-  --background: linear-gradient(#5ad8b2, #40c59d);
-  height: 40px;
+  --background: #00c400;
+  --background-hover: red;
+  height: 54px;
   margin-top: 10px;
   opacity: 0;
-  font-size: 1.1em;
+  font-size: 1.4em;
+  font-weight: 600;
   width: 100%;
-  transform: 0.5s;
+  transform: 0.2s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: slide-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
-
 // Change color
 .unfollow-button {
   --color: white;
@@ -134,16 +153,17 @@
   --background: none;
 
   ion-icon {
-    color: #0055a5
+    color: #0055a5;
+    font-size: 2.2em;
   }
 }
 .comment{
   background: white;
   height: auto;
   opacity: 0;
-  margin: 8px 0 8px 0;
+  margin:  0 8px 0;
   box-shadow: 1px 10px 10px rgba(0,0,0,0.05);
-  // border: 1px solid rgba(0, 81, 145,0.4);
+  border-top: 3px solid #d7d7d7;
   border-radius: 5px;
   padding-left: 10px;
   transition: 0.5s;
@@ -176,58 +196,58 @@
 
 .upvote{
   border-radius: 5px;
-  width: 50px;
+  width: 80px;
   padding-left: 0px;
-  --color: #005191;
+  --color: white;
 
   ion-icon {
-    color: #005191;
-    font-size: 40px;
+    --color: white;
+    font-size: 48px;
   }
 }
 .downvote {
   border-radius: 5px;
   width: 50px;
   padding-left: 0px;
-  --color: #005191;
+  --color: #0055a5;
 
   ion-icon {
-    color: #005191;
+    color: #0055a5;
     --font-size: 40px;
   }
 }
 
 .reply{
   width: 60px;
-  --border-width: 1px;
-  --border-color: #005191;
+  --border-width: 3px;
+  --border-color: #0055a5;
   --border-style: solid;
   border-radius: 5px;
-  --color: #005191;
-  font-size: 0.6em;
-  font-weight: 600;
+  --color: #0055a5;
+  font-size: 0.7em;
+  font-weight: 900;
   margin-right: 10px;
 }
 .report{
-  --border-width: 1px;
+  --border-width: 3px;
   width: 60px;
-  --border-color: #888;
+  --border-color: #666;
   --border-style: solid;
   border-radius: 5px;
   --color: #888;
-  font-size: 0.6em;
-  font-weight: 600;
+  font-size: 0.7em;
+  font-weight: 900;
   margin-right: 10px;
 }
 .edit{
-  --border-width: 1px;
+  --border-width: 3px;
   width: 60px;
   --border-color: #faa71b;
   --border-style: solid;
   border-radius: 5px;
   --color: #faa71b;
-  font-size: 0.6em;
-  font-weight: 600;
+  font-size: 0.7em;
+  font-weight: 900;
   margin-right: 10px;
 }
 .delete{
@@ -235,12 +255,12 @@
   --background: #faa71b;
   border-radius: 5px;
   --color: white;
-  font-size: 0.6em;
-  font-weight: 600;
+  font-size: 0.7em;
+  font-weight: 900;
   margin-right: 10px;
 }
 .follow {
---border-width: 1px;
+--border-width: 3px;
 width: 80px;
 --border-color: linear-gradient(#24d8a8, #1baf88);;
 --border-style: solid;
@@ -248,7 +268,7 @@ border-radius: 5px;
 --color: white;
 --background: linear-gradient(#5ad8b2, #40c59d);
 font-size: 0.7em;
-font-weight: 600;
+font-weight: 900;
 margin-right: 10px;
 }
 
@@ -275,7 +295,7 @@ ion-fab {
     --background: white;
 
     ion-icon {
-    color: #005191;
+    color: #0055a5;
     }
   }
 }
@@ -326,7 +346,7 @@ ion-fab {
 }
 
 .reply-link {
-  color: #005191;
+  color: #0055a5;
 }
 
 .comment-avatar {
@@ -341,7 +361,10 @@ ion-fab {
   margin: 20px 0 10px 0;
   box-shadow: none;
   padding-left: 10px;
-  border: 3px solid #0055a5;
+  border: 3px solid #faa71b;
+
+  color: white;
+  font-size: 1.3em;
   border-radius: 2px;
   transition: 1s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -361,7 +384,7 @@ ion-fab {
 }
 
 #replies-link {
-  color: #005191;
+  color: #0055a5;
   font-weight: 500;
 }
 

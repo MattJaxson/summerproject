@@ -111,6 +111,7 @@ ion-title {
   position: relative;
   top: -24px;
   width: 98%;
+  color: white;
 }
 
 .comment-text, #mentor-description, #job-full-description, .reply-text, .event-description {
@@ -381,16 +382,18 @@ ion-select-option {
   --border-style: solid;
   --border-width: 2px;
   font-weight: 600;
+  width: 100%;
   --background: #dedede;
-  --color: white;
+  color: white;
   font-size: 0.6em;
 }
 
 .success-toast {
   font-weight: 600;
-  font-size: 1.3em;
-  --background: #46c9a3;
-  --color: white;
+  font-size: 1em;
+  width: 100%;
+  --background: #00c400;
+  color: white;
 }
 
 .upvoted-toast {
