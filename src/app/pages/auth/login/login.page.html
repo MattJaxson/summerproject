@@ -85,17 +85,18 @@
                 </ion-button><br>
                 <ion-button [routerLink]="['enter-email']" id="forgot">Forgot Password</ion-button>
               </ion-col>
-
-
             </form>
-
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-justify-content-center">
-      <!-- Sign Up -->
-      <ion-col class="ion-text-center" size="12">
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer (click)="download()">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size="6">
+        <ion-icon name="download-outline"></ion-icon>
+        <p>Download App</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

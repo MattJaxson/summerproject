@@ -16,14 +16,10 @@ export class LoginPage implements OnInit {
   @ViewChild('initialLoadingIcon', {static: false})  initialLoadingIcon: IonSpinner;
   @ViewChild('initialLoadingSpinner', {static: false})  initialLoadingISpinner: HTMLImageElement;
   initialLoading = true;
-
   // For Download Button
-  deferredPrompt: any;
+  downloadPrompt: any;
   downloadButton;
-  iPhoneInstallBanner: HTMLElement;
-  openSafariBanner: HTMLElement;
-  closeIPhoneInstallBannerButton: HTMLElement;
-  openSafariClose: HTMLElement;
+  
 
   validationMessasges = {
     email: [
@@ -34,8 +30,6 @@ export class LoginPage implements OnInit {
       { type: 'pattern', message: 'Password must be at least 6 characters with at least one lowercase character, one uppcase character, and one number.'}
     ]
   };
-
-
   constructor(
     // private auth: AuthService,
     private formBuilder: FormBuilder,
@@ -47,30 +41,6 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    // Initiate Loading
-    console.log(this.initialLoadingISpinner)
-    if(this.initialLoading) {
-      setTimeout(() => {
-        console.log('Initial Loading Screen no longer appears')
-        this.initialLoading = false;
-      }, 6000);
-    }
-
-    // Hide download buttons while page is loading.
-    if(!this.initialLoading) {
-      let downloadFooter = document.getElementById('download-footer');
-      downloadFooter.style.display = 'block';
-    }
-
-    // Check if app is online
-    if (window.navigator.onLine === false) {
-      console.log('We are OFFLINE!');
-    }
-    if (window.navigator.onLine === true) {
-      console.log('We are ONLINE!');
-      // Chrome, Edge,
-    };
-
     this.loginForm = this.formBuilder.group({
       email: ['eddielacrosse2@gmail.com', [Validators.required, Validators.email]],
       password: ['Lacrosse2', Validators.compose([
@@ -80,43 +50,27 @@ export class LoginPage implements OnInit {
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])]
     });
-
-    // Detect if app is launched from home screen
-    // Safari
-    if (window.navigator['standalone'] === true) {
-      console.log('display-mode is standalone');
-      this.iPhoneInstallBanner.style.display = 'none';
-      this.openSafariBanner.style.display = 'none';
-      this.downloadButton.style.display = 'none';
+    // Initiate Loading
+    // if(this.initialLoading) {
+    //   setTimeout(() => {
+    //     console.log('Initial Loading Screen no longer appears')
+    //     this.initialLoading = false;
+    //   }, 6000);
+    // }
+    // Check if app is online
+    if (window.navigator.onLine === false) {
+      console.log('We are OFFLINE!');
     }
-  }
-  showInstallBanner() {
-
-    console.log('Trying to Show Install Banner ...');
-    console.log(this.deferredPrompt);
-    if (this.deferredPrompt === undefined) {
-      console.log('This page was already installed');
-      this.downloadButton.style.display = 'none';
-    }
-    if (this.deferredPrompt !== undefined && this.deferredPrompt !== null) {
-      // Hide Download Button
-      this.downloadButton.style.display = 'none';
-      // Show the prompt
-      this.deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      this.deferredPrompt.userChoice
-      .then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          this.downloadButton.style.display = 'block';
-          this.downloadButton.style.margin = '0 auto 90px auto';
-          console.log('User dismissed the A2HS prompt');
-        }
-        // We no longer need the prompt.  Clear it up.
-        this.deferredPrompt = null;
-      });
-    }
+    if (window.navigator.onLine === true) {
+      console.log('We are ONLINE!');
+      // Chrome, Edge,
+    };
+    if ("onbeforeinstallprompt" in window) {
+	  window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      return this.auth.downloadPrompt = e;
+    });
+	}
   }
   async presentLoading() {
     const loading = await this.loading.create({
@@ -129,6 +83,18 @@ export class LoginPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
   }
+  async downloadPageLoading() {
+    const loading = await this.loading.create({
+      message: '',
+      duration: 2000,
+      keyboardClose: true,
+    });
+    await loading.present();
+    await loading.onDidDismiss().then(
+      (e) => {
+        this.router.navigateByUrl('download');
+      });
+  }
   login(data) {
     this.presentLoading();
     this.auth.login(data);
@@ -137,6 +103,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/landing']);
   }
   download() {
-    console.log('Attempting to download app..');
+    // this.deferredPrompt.prompt();
+    this.downloadPageLoading();
   }
   }

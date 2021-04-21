@@ -32,7 +32,6 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-
 // For JWT
 export function jwtOptionsFactory(storage) {
   return {

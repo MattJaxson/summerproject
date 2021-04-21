@@ -40,6 +40,7 @@
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/storage": "^2.3.1",
     "@types/hammerjs": "^2.0.36",
+    "add-to-homescreen": "^3.2.6",
     "aws-sdk": "^2.810.0",
     "compressorjs": "^1.0.7",
     "cordova-android": "^9.0.0",

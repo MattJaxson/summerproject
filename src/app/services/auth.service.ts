@@ -15,6 +15,7 @@ export class AuthService {
   BACKEND_URL = environment.url;
   TOKEN_KEY = 'access_token';
   user = null;
+  downloadPrompt;
 
   authenticationState = new BehaviorSubject(false);
   activeEmail = '';

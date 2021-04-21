@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'upload-resume-modal',
     loadChildren: () => import('./modals/upload-resume-modal/upload-resume-modal.module').then( m => m.UploadResumeModalPageModule)
+  },
+  {
+    path: 'download',
+    loadChildren: () => import('./pages/auth/download/download.module').then( m => m.DownloadPageModule)
   }
 ];
 @NgModule({
