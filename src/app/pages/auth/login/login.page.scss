@@ -26,25 +26,41 @@
     background: none;
   }
 }
+ion-footer:hover {
+  background: linear-gradient(#02850b, #02850b);
+}
 ion-footer {
   opacity: 1;
   border: none;
+  border-radius: 40px 40px 0px 0px;
   position: fixed;
   bottom: 0;
   height: 50px;
   z-index: 9998;
-  padding-top: 12px;
-  background: #00c90c;
+  padding-top: 10px;
+  background: linear-gradient(#00c90c, #02850b);
   opacity: 0;
   animation: slide-up 0.2s ease 3s forwards;
   * {
-    font-size: 1.1em;
-    font-weight: 600;
+    font-size: 1.15em;
     color: white;
   }
   ion-icon {
     display: inline-block;
+    font-weight: 600;
     margin-right: 8px;
+    animation: up-and-down 1.5s ease infinite forwards;
+  }
+  @keyframes up-and-down {
+    0% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
   }
   p {
     display: inline;

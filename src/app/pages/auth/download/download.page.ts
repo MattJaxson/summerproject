@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./download.page.scss'],
 })
 export class DownloadPage implements OnInit {
+  appInstalled = false;
   platform = {
 	  isCompatible: false,
     isIDevice: false,
@@ -32,6 +33,21 @@ export class DownloadPage implements OnInit {
 
   ngOnInit() {
     this.checkplatform();
+    if ("onbeforeinstallprompt" in window) {
+	  window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        console.log(e);
+        return this.auth.downloadPrompt = e;
+      });
+    }
+    if ("onappinstalled" in window) {
+      window.addEventListener("appinstalled", function(evt) {
+        evt.preventDefault();
+        this.appInstalled = true;
+        console.log(evt);
+        console.log('App has already been installed');
+      });
+	  }
   }
   download() {
     this.auth.downloadPrompt.prompt();
@@ -62,6 +78,7 @@ export class DownloadPage implements OnInit {
 
 	  this.platform.isChromium = "onbeforeinstallprompt" in window;
 	  // this.platform.isInWebAppiOS = window.navigator.standalone === true;
+    console.log(window)
 	  this.platform.isInWebAppChrome =
 		window.matchMedia("(display-mode: fullscreen)").matches ||
 		window.matchMedia("(display-mode: standalone)").matches ||
@@ -81,7 +98,13 @@ export class DownloadPage implements OnInit {
 		this.platform.isOpera ||
 		this.platform.isIDevice;
 
-		console.log(this.platform)
+		if(this.platform.isChromium) {
+      console.log('We are on Chrome!')
+    }
+		if(this.platform.isIDevice) {
+
+      console.log('We are on Chrome!')
+    }
 	}
 
 }

@@ -36,7 +36,6 @@ export class PostsPage implements OnInit, OnDestroy {
 
   @ViewChild(IonFabButton, {static: true}) fabButton: IonFabButton;
   @ViewChild(IonSearchbar, { static: false }) searchbar: IonSearchbar;
-
   showShortDesciption = true
   noSearchInput = false;
   searchTerm: any;
@@ -296,7 +295,7 @@ export class PostsPage implements OnInit, OnDestroy {
   }
   getUserInfo() {
     this.postsSub = this.profile.getUserDetails().subscribe( details => {
-      console.log(details);
+      // console.log(details);
       this.userEmail = details['email'];
       this.userProfilePicture = details['profilePicture'];
       this.userFullName = details['fullName'];
@@ -461,7 +460,7 @@ export class PostsPage implements OnInit, OnDestroy {
     console.log(postID, userFullName, userEmail, userProfilePicture, comment);
 
     // Reset Comment Input
-    this.commentForm.reset();
+    this.commentForm.reset()
     console.log('Posting comment');
     console.log('Post ID: ' + postID);
 

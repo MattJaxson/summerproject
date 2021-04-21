@@ -40,6 +40,7 @@ export class PostPagePage implements OnInit, OnDestroy {
 
   @ViewChild(IonContent, {static: true}) content: IonContent;
   @ViewChild(IonTextarea, {static: true}) textarea: IonTextarea;
+  @ViewChild('footerCommentInput', {static: true}) footerCommentInput: IonTextarea;
 
   tabBar = document.getElementById('myTabBar');
   votes = document.getElementById('votes');
@@ -274,7 +275,8 @@ export class PostPagePage implements OnInit, OnDestroy {
       checkedComment = comment
     }
     // Reset Comment Input
-    this.commentForm.reset();
+    console.log(this.footerCommentInput)
+    this.footerCommentInput.value = null;
     this.commentLoading(postID, userFullName, userEmail, userProfilePicture, checkedComment);
     const toast = this.toast.create({
       message: 'Your comment has been added.',
@@ -283,6 +285,7 @@ export class PostPagePage implements OnInit, OnDestroy {
 
     toast.then(toast => toast.present());
   }
+
   async commentLoading(postID, userFullName, userEmail, userProfilePicture, comment) {
     console.log(comment);
     
@@ -648,7 +651,7 @@ export class PostPagePage implements OnInit, OnDestroy {
             this.date = date;
             this.followers = followers;
             this.hashtags = hashtags;
-            this.comments = comments.reverse();
+            this.comments = comments;
             this.following = following;
             this.post = post;
             this.title = title;
