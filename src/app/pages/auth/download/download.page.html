@@ -1,21 +1,26 @@
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 94vh;">
-      <div class="ion-text-center" id="download-icon">
+      <ion-col size-xs="11" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+      <div id="download-icon">
         <img src="../../../../assets/icons/download-outline.svg" alt="Download-Icon">
-        <h3 *ngIf="this.appInstalled">App Installed!</h3>
       </div>
-      <ion-col class="ion-text-center" size-xs="11" size-sm="10" size-md="10" size-lg="8" size-xl="6">
+        <h2 *ngIf="this.appInstalled">App Installed!</h2>
         <h2 *ngIf="this.platform.isChromium">Download this app to from Chrome to your Device. No need to look for it in an app store!</h2>
-        <h2 *ngIf="this.platform.isiPad">Download this app to Ipad</h2>
-        <h2 *ngIf="this.platform.isiPhone">Download this app to iPhone</h2>
-        <h2 *ngIf="this.platform.isMobileSafari">Download this app to Safari iOS</h2>
         <h2 *ngIf="this.platform.isSamsung">Download this app to Samsung</h2>
         <h2 *ngIf="this.platform.isOpera">Download this app to Opera</h2>
         <h2 *ngIf="this.platform.isFireFox">Download this app to Firefox</h2>
         <!-- <h2 *ngIf="this.platform.isStandalone">This app is Standalone</h2> -->
-        <div class="ion-text-center">
-          <ion-button *ngIf="!this.platform.isIDevice" class="green-button" (click)="download()">
+        <!-- <h2 *ngIf="this.platform.isiPad">Download this app to Ipad</h2>
+        <h2 *ngIf="this.platform.isiPhone">Download this app to iPhone</h2>
+        <h2 *ngIf="this.platform.isMobileSafari">Download this app to Safari iOS</h2> -->
+        <h2 *ngIf="this.platform.isIDevice">
+        1) Look for <img height="24" src="../../../../assets/icons/share-outline.svg" alt="Apple-Share-Button"><br>
+        2) Select "Add To Homescreen"
+      </h2>
+
+        <div class="ion-text-center" *ngIf="!this.platform.isIDevice">
+          <ion-button class="green-button" (click)="download()">
             Download
           </ion-button>
         </div>

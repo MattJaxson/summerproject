@@ -33,13 +33,6 @@ export class DownloadPage implements OnInit {
 
   ngOnInit() {
     this.checkplatform();
-    if ("onbeforeinstallprompt" in window) {
-	  window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        console.log(e);
-        return this.auth.downloadPrompt = e;
-      });
-    }
     if ("onappinstalled" in window) {
       window.addEventListener("appinstalled", function(evt) {
         evt.preventDefault();

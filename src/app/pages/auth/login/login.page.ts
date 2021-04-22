@@ -65,6 +65,13 @@ export class LoginPage implements OnInit {
       console.log('We are ONLINE!');
       // Chrome, Edge,
     };
+    if ("onbeforeinstallprompt" in window) {
+      window.addEventListener("beforeinstallprompt", (e) => {
+          e.preventDefault();
+          console.log(e);
+          return this.auth.downloadPrompt = e;
+        });
+      }
   }
   async presentLoading() {
     const loading = await this.loading.create({
