@@ -90,12 +90,17 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer (click)="download()">
+<!-- (click)="download()" -->
+<ion-footer id="download-footer">
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center" size="6">
-        <ion-icon name="download-outline"></ion-icon>
-        <p>Download App</p>
+      <ion-col class="ion-text-center" size="12">
+        <div id="footer-text">
+              <p style="font-size: 0.9em; ">Preparing Download </p>
+              <span id="dot-one">.</span>
+              <span id="dot-two">.</span>
+              <span id="dot-three">.</span>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

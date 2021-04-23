@@ -50,13 +50,6 @@ export class LoginPage implements OnInit {
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
      ])]
     });
-    // Initiate Loading
-    // if(this.initialLoading) {
-    //   setTimeout(() => {
-    //     console.log('Initial Loading Screen no longer appears')
-    //     this.initialLoading = false;
-    //   }, 6000);
-    // }
     // Check if app is online
     if (window.navigator.onLine === false) {
       console.log('We are OFFLINE!');
@@ -65,10 +58,34 @@ export class LoginPage implements OnInit {
       console.log('We are ONLINE!');
       // Chrome, Edge,
     };
+
+    let downloadFooter = document.getElementById('download-footer');
+    let footerText = document.getElementById('footer-text');
+
+    if("onbeforeinstallprompt" in window == false) {
+      // setTimeout(() => {
+      //   downloadFooter.style.background = "#e3405f";
+      //   footerText.innerHTML = "Cannot Download App.";
+      //   }, 10000);
+      }
     if ("onbeforeinstallprompt" in window) {
       window.addEventListener("beforeinstallprompt", (e) => {
+          setTimeout(() => {
+            console.log('lol')
+          }, 2000);
           e.preventDefault();
           console.log(e);
+          downloadFooter.style.background = "#00c90c";
+          downloadFooter.addEventListener('mouseover', (e) => {
+            downloadFooter.style.background = "#52975e";
+          });
+          downloadFooter.addEventListener('mouseout', (e) => {
+            downloadFooter.style.background = "#00c90c";
+          });
+          downloadFooter.addEventListener('click', () => {
+            this.downloadPageLoading();
+          });
+          footerText.innerHTML = "<ion-icon style='font-size: 1em; animation: up-and-down 1s ease infinite forwards;' name='download-outline'></ion-icon><p style='font-size: 0.7em; margin-left: 8px; display: inline;'>Download App</p>";
           return this.auth.downloadPrompt = e;
         });
       }
@@ -87,7 +104,7 @@ export class LoginPage implements OnInit {
   async downloadPageLoading() {
     const loading = await this.loading.create({
       message: '',
-      duration: 2000,
+      duration: 1000,
       keyboardClose: true,
     });
     await loading.present();

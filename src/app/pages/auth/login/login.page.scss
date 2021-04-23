@@ -38,18 +38,44 @@ ion-footer {
   height: 50px;
   z-index: 9998;
   padding-top: 10px;
-  background: linear-gradient(#00c90c, #02850b);
+  // background: linear-gradient(#00c90c, #02850b);
+  background: #faa71b;
   opacity: 0;
-  animation: slide-up 0.2s ease 3s forwards;
+  // display: none;
+  animation: slide-up 0.2s ease forwards;
   * {
     font-size: 1.15em;
     color: white;
+    width: 100%;
+  }
+  p {
+    font-size: 0.9em;
+    width: 100%;
   }
   ion-icon {
     display: inline-block;
     font-weight: 600;
     margin-right: 8px;
-    animation: up-and-down 1.5s ease infinite forwards;
+  }
+  #dot-one {
+    animation: flash 2s ease 0.5s infinite forwards;
+  }
+  #dot-two {
+    animation: flash 2s ease 1s infinite forwards;
+  }
+  #dot-three {
+    animation: flash 2s ease 1.5s infinite forwards;
+  }
+  @keyframes flash {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
   }
   @keyframes up-and-down {
     0% {
@@ -86,7 +112,7 @@ ion-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: loading-exit 500ms ease 1.5s forwards;
+  animation: loading-exit 500ms ease 2s forwards;
 }
 @keyframes loading-exit {
   0% {
