@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // private mentorChat: MentorChatService
   ) {
     this.initializeApp();
-    let tabBar = document.getElementById('tabBar');
   }
 
   ngOnInit() {
@@ -35,9 +33,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   initializeApp() {
     this.auth.checkToken();
+    Notification.requestPermission((e) => {
+      console.log(e);
+    });
+    let img = '../assets/icons/icon-72x72.svg';
+    let text = 'This is a notification.';
+    let notification = new Notification('To do list', {body: text, icon: img});
     this.platform.ready().then(() => {
     });
-
     // State for the User. If Authentication State == False, the app reverts back to the landing page
     this.auth.authenticationState.subscribe(async state => {
       if (state) {

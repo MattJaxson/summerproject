@@ -19,7 +19,6 @@ export class LoginPage implements OnInit {
   // For Download Button
   downloadPrompt: any;
   downloadButton;
-  
 
   validationMessasges = {
     email: [
@@ -58,16 +57,8 @@ export class LoginPage implements OnInit {
       console.log('We are ONLINE!');
       // Chrome, Edge,
     };
-
     let downloadFooter = document.getElementById('download-footer');
     let footerText = document.getElementById('footer-text');
-
-    if("onbeforeinstallprompt" in window == false) {
-      // setTimeout(() => {
-      //   downloadFooter.style.background = "#e3405f";
-      //   footerText.innerHTML = "Cannot Download App.";
-      //   }, 10000);
-      }
     if ("onbeforeinstallprompt" in window) {
       window.addEventListener("beforeinstallprompt", (e) => {
           setTimeout(() => {
@@ -90,7 +81,7 @@ export class LoginPage implements OnInit {
           footerText.innerHTML = "<ion-icon style='font-size: 1em; animation: up-and-down 1s ease infinite forwards;' name='download-outline'></ion-icon><p style='font-size: 0.7em; margin-left: 8px; display: inline;'>Download App</p>";
           return this.auth.downloadPrompt = e;
         });
-      }
+    }
   }
   async presentLoading() {
     const loading = await this.loading.create({
@@ -126,4 +117,4 @@ export class LoginPage implements OnInit {
     // this.deferredPrompt.prompt();
     this.downloadPageLoading();
   }
-  }
+}
