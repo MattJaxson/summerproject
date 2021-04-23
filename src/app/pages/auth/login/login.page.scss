@@ -56,6 +56,7 @@ ion-footer {
     display: inline-block;
     font-weight: 600;
     margin-right: 8px;
+    animation: up-and-down 2s ease 1.5s infinite forwards;
   }
   #dot-one {
     animation: flash 2s ease 0.5s infinite forwards;
