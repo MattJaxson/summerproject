@@ -76,6 +76,8 @@ export class LoginPage implements OnInit {
           e.preventDefault();
           console.log(e);
           downloadFooter.style.background = "#00c90c";
+          console.log(e);
+          downloadFooter.style.display = "block";
           downloadFooter.addEventListener('mouseover', (e) => {
             downloadFooter.style.background = "#52975e";
           });
